@@ -7,7 +7,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./propiertys-carousel.component.scss']
 })
 export class PropiertysCarouselComponent {
-  images = [1, 2, 3, 4].map(() => `https://picsum.photos/1920/1200?random&t=${Math.random()}`);
+  images = [1, 2, 3, 4].map(() => `https://picsum.photos/1920/500?random&t=${Math.random()}`);
 
   constructor(config: NgbCarouselConfig) {
     // customize default values of carousels used by this component tree

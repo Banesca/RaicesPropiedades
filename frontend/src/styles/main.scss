@@ -73,8 +73,22 @@ a {
 
 }
 
-.carousel-inner {
-	height: 95vh;
+.dropdown-item:active {
+	color: $white;
+	text-decoration: none;
+	background-color: $brown_main_color;
+	border-color: none;
+}
+
+.carousel-item:after {
+  content:"";
+  display:block;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(0,0,0,0.5);
 }
 
 .carousel-caption {
@@ -173,6 +187,12 @@ footer {
 	}
 }
 
+.header-bottom {
+	hr{
+		border-color: $white;
+	}
+}
+
 
 .fab {
 	color: #fff;
@@ -193,4 +213,13 @@ footer {
 
 .font-weight-extrabold {
 	font-weight: 900;
+}
+
+.search-dropdown {
+	background-color: $white;
+	color: $gray_main_color;
+	border-radius: 0;
+	&::after{
+		color: $yellow_main_color;
+	} 
 }

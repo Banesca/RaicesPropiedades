@@ -14,6 +14,10 @@ var map = {
 	"./modules/blog/blog.module": [
 		"./src/app/modules/blog/blog.module.ts",
 		"modules-blog-blog-module"
+	],
+	"./modules/offices/offices.module": [
+		"./src/app/modules/offices/offices.module.ts",
+		"modules-offices-offices-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -102,12 +106,8 @@ var routes = [
         loadChildren: './modules/blog/blog.module#BlogModule'
     },
     {
-        path: 'oportunidades',
-        loadChildren: './modules/blog/blog.module#BlogModule'
-    },
-    {
         path: 'sucursales',
-        loadChildren: './modules/blog/blog.module#BlogModule'
+        loadChildren: './modules/offices/offices.module#OfficesModule'
     },
     { path: '**', component: _page_nopagefound_nopagefound_component__WEBPACK_IMPORTED_MODULE_6__["NopagefoundComponent"] }
 ];
@@ -380,7 +380,7 @@ var ArticleModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-blog-header  *ngFor=\"let imagen of gArticulo.imagen, last as isLast\">\r\n    <header *ngIf=\"isLast\" [ngStyle]=\"{ 'background-image': 'linear-gradient(rgba(0, 0, 0,0.7), rgba(0, 0, 0,0.5)), url(' + imagen.img + ')'}\"   class=\"blog-header blog-header-overlay mb-3 mb-lg-5\" id=\"blog-header\"> \r\n        <ul class=\"navigation-responsive pt-3 d-block d-md-none\"  [ngClass]=\"status ? 'active' : 'hide'\" id=\"navigation-responsive\">\r\n            <li class=\"nav-item\">\r\n                <a href=\"#\" class=\"link-nav\">\r\n                  <span class=\"nav-underline\">Inicio</span>\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a href=\"#\" class=\"link-nav\">\r\n                  <span class=\"nav-underline\">Blog</span>\r\n                </a>\r\n              </li>\r\n        </ul>    \r\n        <a class=\"back-link\"  [ngClass]=\"status ? 'active' : 'hide'\" (click)=\"status = !status\" id=\"back-link\"></a>\r\n      <div class=\"bg-white-overlay text-white\">\r\n          <div class=\"topbar pt-5\">\r\n              <div class=\"container\">\r\n                  <ul class=\"navigation\">\r\n                      <a class=\"mr-4\" href=\"/\">\r\n                        <img src=\"../assets/img/Iconos-Header/Logo.svg\" style=\"width: 7.5rem;\">\r\n                    </a>\r\n                    <a class=\"mr-4 ml-auto d-block d-md-none\" (click)=\"status = !status\" id=\"btn-menu\">\r\n                      <img src=\"../assets/img/menu/Responsive-menu.svg\" style=\"width: 4rem;\">\r\n                  </a>\r\n                  <li class=\"nav-item d-none d-md-block\">\r\n                    <a  routerLink=\"\" class=\"link-nav\">\r\n                      <span class=\"nav-underline\">Inicio</span>\r\n                    </a>\r\n                  </li>        \r\n                   <li class=\"nav-item d-none d-md-block\">\r\n                    <a routerLink=\"/blog\"  class=\"link-nav\">\r\n                      <span class=\"nav-underline\">Blog</span>\r\n                    </a>\r\n                  </li>\r\n                  <li class=\"nav-item email-number-header d-none d-lg-block ml-auto\">\r\n                      <a class=\"link-nav \">\r\n                        <img src=\"../assets/img/Iconos-Header/Icono-Email-Header.svg\" style=\"width: 2rem;\">\r\n                        <span class=\"nav-underline ml-2 contact-data\">smartdevs@gmail.com</span>\r\n                      </a>\r\n                    </li>\r\n                  <li class=\"nav-item email-number-header d-none d-lg-block\">\r\n                    <a class=\"link-nav \">\r\n                      <img src=\"../assets/img/Iconos-Header/Icono-Movil-header.svg\" style=\"width: 2rem; color: #fff;\">\r\n                      <span class=\"nav-underline ml-2 contact-data\">+52 099854563</span>\r\n                    </a>\r\n                  </li>\r\n                </ul> \r\n              </div>               \r\n            </div>\r\n            <div class=\"row pt-4\">\r\n                <div class=\"container blog-title d-flex align-items-center justify-content-center\">\r\n                    <h1 class=\"mx-2 text-center\">{{gArticulo['titulo']}}</h1>\r\n                                  </div>\r\n            </div>\r\n             \r\n    <app-blog-author>\r\n      <h4>Wladimir Hernández</h4>\r\n      <p class=\"blog-author-date\">14 Abril</p>\r\n      </app-blog-author>\r\n      </div>\r\n      </header>\r\n</app-blog-header>\r\n  <app-blog-body><div class=\"container px-5\" [innerHTML]=\"gArticulo['body']\">\r\n  </div> </app-blog-body>\r\n  <app-blog-articles><span>Artículos Relacionados</span></app-blog-articles>\r\n  <app-comments></app-comments>\r\n  <app-footer></app-footer>\r\n"
+module.exports = "<app-blog-header  *ngFor=\"let imagen of gArticulo.imagen, last as isLast\">\r\n    <header *ngIf=\"isLast\" [ngStyle]=\"{ 'background-image': 'linear-gradient(rgba(0, 0, 0,0.7), rgba(0, 0, 0,0.5)), url(' + imagen.img + ')'}\"   class=\"blog-header blog-header-overlay mb-3 mb-lg-5\" id=\"blog-header\"> \r\n        <ul class=\"navigation-responsive pt-3 d-block d-md-none\"  [ngClass]=\"status ? 'active' : 'hide'\" id=\"navigation-responsive\">\r\n            <li class=\"nav-item\">\r\n                <a href=\"#\" class=\"link-nav\">\r\n                  <span class=\"nav-underline\">Inicio</span>\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item\">\r\n                <a href=\"#\" class=\"link-nav\">\r\n                  <span class=\"nav-underline\">Blog</span>\r\n                </a>\r\n              </li>\r\n        </ul>    \r\n        <a class=\"back-link\"  [ngClass]=\"status ? 'active' : 'hide'\" (click)=\"status = !status\" id=\"back-link\"></a>\r\n      <div class=\"bg-white-overlay text-white\">\r\n          <div class=\"topbar pt-5\">\r\n              <div class=\"container\">\r\n                  <ul class=\"navigation\">\r\n                      <a class=\"mr-4\" href=\"/\">\r\n                        <img src=\"../assets/img/Iconos-Header/Logo.svg\" style=\"width: 7.5rem;\">\r\n                    </a>\r\n                    <a class=\"mr-4 ml-auto d-block d-md-none\" (click)=\"status = !status\" id=\"btn-menu\">\r\n                      <img src=\"../assets/img/menu/Responsive-menu.svg\" style=\"width: 4rem;\">\r\n                  </a>\r\n                  <li class=\"nav-item d-none d-md-block\">\r\n                    <a  routerLink=\"\" class=\"link-nav\">\r\n                      <span class=\"nav-underline\">Inicio</span>\r\n                    </a>\r\n                  </li>        \r\n                   <li class=\"nav-item d-none d-md-block\">\r\n                    <a routerLink=\"/blog\"  class=\"link-nav\">\r\n                      <span class=\"nav-underline\">Blog</span>\r\n                    </a>\r\n                  </li>\r\n                  <li class=\"nav-item email-number-header d-none d-lg-block ml-auto\">\r\n                      <a class=\"link-nav \">\r\n                        <img src=\"../assets/img/Iconos-Header/Icono-Email-Header.svg\" style=\"width: 2rem;\">\r\n                        <span class=\"nav-underline ml-2 contact-data\">smartdevs@gmail.com</span>\r\n                      </a>\r\n                    </li>\r\n                  <li class=\"nav-item email-number-header d-none d-lg-block\">\r\n                    <a class=\"link-nav \">\r\n                      <img src=\"../assets/img/Iconos-Header/Icono-Movil-header.svg\" style=\"width: 2rem; color: #fff;\">\r\n                      <span class=\"nav-underline ml-2 contact-data\">+52 099854563</span>\r\n                    </a>\r\n                  </li>\r\n                </ul> \r\n              </div>               \r\n            </div>\r\n            <div class=\"row pt-4\">\r\n                <div class=\"container blog-title d-flex align-items-center justify-content-center\">\r\n                    <h1 class=\"mx-2 text-center\">{{gArticulo['titulo']}}</h1>\r\n                                  </div>\r\n            </div>\r\n             \r\n    <app-blog-author>\r\n      <h4>Wladimir Hernández</h4>\r\n      <p class=\"blog-author-date\">14 Abril</p>\r\n      </app-blog-author>\r\n      </div>\r\n      </header>\r\n</app-blog-header>\r\n  <app-blog-body><div class=\"container px-5\" [innerHTML]=\"gArticulo['body']\">\r\n  </div> </app-blog-body>\r\n  <app-footer></app-footer>\r\n"
 
 /***/ }),
 
@@ -460,7 +460,7 @@ var LayoutComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <img src=\"../../../../assets/images/icons/Recurso 6.svg\" class=\"position-absolute d-none d-md-block\" style=\"bottom: -5%;\" alt=\"\">\r\n<div class=\"bg-yellow polygon py-3\">\r\n  <div class=\"col-sm-12 text-white\">\r\n          <h1 class=\"font-weight-extrabold text-center text-uppercase\">Buscador</h1>\r\n          <h3 class=\"font-weight-light text-center\">Escuentra el inmueble ideal para ti</h3>\r\n      </div>   \r\n    </div>\r\n  </div>\r\n"
+module.exports = ""
 
 /***/ }),
 
@@ -601,62 +601,6 @@ var ContactComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/modules/home/header-bottom/header-bottom.component.html":
-/*!*************************************************************************!*\
-  !*** ./src/app/modules/home/header-bottom/header-bottom.component.html ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = " <section id=\"header-bottom\" class=\"position-relative header-bottom text-white align-items-center w-100 d-flex justify-contend-between\">      \r\n        <ng-content select=\".title\"></ng-content>\r\n        <div class=\"container d-flex justify-content-end mr-5\">\r\n            <ul class=\"nav flex-column\">\r\n                <li class=\"facebook my-2\"><a href=\"#\" data-toggle=\"tooltip\" title=\"Facebook\"><img class=\"social-icon\" src=\"../../../../assets/images/icons/Recurso 5.svg\"></a></li>\r\n                <li class=\"twitter my-2\"><a href=\"#\" data-toggle=\"tooltip\" title=\"Twitter\"></a><img class=\"social-icon\" src=\"../../../../assets/images/icons/Recurso 4.svg\"></li>\r\n                <li class=\"instagram my-2\"><a href=\"#\" data-toggle=\"tooltip\" title=\"Instagram\"><img class=\"social-icon\" src=\"../../../../assets/images/icons/Recurso 3.svg\"></a></li>\r\n                <li class=\"linkedin my-2\"><a href=\"#\" data-toggle=\"tooltip\" title=\"Youtube\"><img class=\"social-icon\" src=\"../../../../assets/images/icons/Recurso 5.svg\" ></a></li>\r\n          </ul>\r\n        </div>\r\n  </section>\r\n\r\n    <!--\r\n            <div class=\"container\">\r\n                <div class=\"row d-flex justify-contend-between\">\r\n                    <div class=\"dropdown\">\r\n                        <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                          Dropdown button\r\n                        </button>\r\n                        <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\r\n                          <a class=\"dropdown-item\" href=\"#\">Action</a>\r\n                          <a class=\"dropdown-item\" href=\"#\">Another action</a>\r\n                          <a class=\"dropdown-item\" href=\"#\">Something else here</a>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"dropdown\">\r\n                          <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                            Dropdown button\r\n                          </button>\r\n                          <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\r\n                            <a class=\"dropdown-item\" href=\"#\">Action</a>\r\n                            <a class=\"dropdown-item\" href=\"#\">Another action</a>\r\n                            <a class=\"dropdown-item\" href=\"#\">Something else here</a>\r\n                          </div>\r\n                        </div>\r\n                        <div class=\"dropdown\">\r\n                            <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                              Dropdown button\r\n                            </button>\r\n                            <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\r\n                              <a class=\"dropdown-item\" href=\"#\">Action</a>\r\n                              <a class=\"dropdown-item\" href=\"#\">Another action</a>\r\n                              <a class=\"dropdown-item\" href=\"#\">Something else here</a>\r\n                            </div>\r\n                          </div>\r\n                          <div class=\"dropdown\">\r\n                              <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                                Dropdown button\r\n                              </button>\r\n                              <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\r\n                                <a class=\"dropdown-item\" href=\"#\">Action</a>\r\n                                <a class=\"dropdown-item\" href=\"#\">Another action</a>\r\n                                <a class=\"dropdown-item\" href=\"#\">Something else here</a>\r\n                              </div>\r\n                            </div>\r\n                            <div class=\"dropdown\">\r\n                                <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                                  Dropdown button\r\n                                </button>\r\n                                <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\r\n                                  <a class=\"dropdown-item\" href=\"#\">Action</a>\r\n                                  <a class=\"dropdown-item\" href=\"#\">Another action</a>\r\n                                  <a class=\"dropdown-item\" href=\"#\">Something else here</a>\r\n                                </div>\r\n                              </div>\r\n                </div>\r\n              <div class=\"row d-flex justify-contend-between\">\r\n                    <div class=\"dropdown\">\r\n                        <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                          Dropdown button\r\n                        </button>\r\n                        <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\r\n                          <a class=\"dropdown-item\" href=\"#\">Action</a>\r\n                          <a class=\"dropdown-item\" href=\"#\">Another action</a>\r\n                          <a class=\"dropdown-item\" href=\"#\">Something else here</a>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"dropdown\">\r\n                          <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                            Dropdown button\r\n                          </button>\r\n                          <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\r\n                            <a class=\"dropdown-item\" href=\"#\">Action</a>\r\n                            <a class=\"dropdown-item\" href=\"#\">Another action</a>\r\n                            <a class=\"dropdown-item\" href=\"#\">Something else here</a>\r\n                          </div>\r\n                        </div>\r\n                        <div class=\"dropdown\">\r\n                            <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                              Dropdown button\r\n                            </button>\r\n                            <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\r\n                              <a class=\"dropdown-item\" href=\"#\">Action</a>\r\n                              <a class=\"dropdown-item\" href=\"#\">Another action</a>\r\n                              <a class=\"dropdown-item\" href=\"#\">Something else here</a>\r\n                            </div>\r\n                          </div>\r\n                          <div class=\"dropdown\">\r\n                              <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                                Dropdown button\r\n                              </button>\r\n                              <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\r\n                                <a class=\"dropdown-item\" href=\"#\">Action</a>\r\n                                <a class=\"dropdown-item\" href=\"#\">Another action</a>\r\n                                <a class=\"dropdown-item\" href=\"#\">Something else here</a>\r\n                              </div>\r\n                            </div>\r\n              </div>\r\n            </div>-->"
-
-/***/ }),
-
-/***/ "./src/app/modules/home/header-bottom/header-bottom.component.scss":
-/*!*************************************************************************!*\
-  !*** ./src/app/modules/home/header-bottom/header-bottom.component.scss ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsZXMvaG9tZS9oZWFkZXItYm90dG9tL2hlYWRlci1ib3R0b20uY29tcG9uZW50LnNjc3MifQ== */"
-
-/***/ }),
-
-/***/ "./src/app/modules/home/header-bottom/header-bottom.component.ts":
-/*!***********************************************************************!*\
-  !*** ./src/app/modules/home/header-bottom/header-bottom.component.ts ***!
-  \***********************************************************************/
-/*! exports provided: HeaderBottomComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderBottomComponent", function() { return HeaderBottomComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var HeaderBottomComponent = /** @class */ (function () {
-    function HeaderBottomComponent() {
-    }
-    HeaderBottomComponent.prototype.ngOnInit = function () {
-    };
-    HeaderBottomComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-header-bottom',
-            template: __webpack_require__(/*! ./header-bottom.component.html */ "./src/app/modules/home/header-bottom/header-bottom.component.html"),
-            styles: [__webpack_require__(/*! ./header-bottom.component.scss */ "./src/app/modules/home/header-bottom/header-bottom.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], HeaderBottomComponent);
-    return HeaderBottomComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/modules/home/home.module.ts":
 /*!*********************************************!*\
   !*** ./src/app/modules/home/home.module.ts ***!
@@ -671,11 +615,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _header_bottom_header_bottom_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./header-bottom/header-bottom.component */ "./src/app/modules/home/header-bottom/header-bottom.component.ts");
-/* harmony import */ var _suscrit_suscrit_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./suscrit/suscrit.component */ "./src/app/modules/home/suscrit/suscrit.component.ts");
-/* harmony import */ var _contact_contact_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./contact/contact.component */ "./src/app/modules/home/contact/contact.component.ts");
-/* harmony import */ var _services_services_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/services.component */ "./src/app/modules/home/services/services.component.ts");
-
+/* harmony import */ var _suscrit_suscrit_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./suscrit/suscrit.component */ "./src/app/modules/home/suscrit/suscrit.component.ts");
+/* harmony import */ var _contact_contact_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./contact/contact.component */ "./src/app/modules/home/contact/contact.component.ts");
+/* harmony import */ var _services_services_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/services.component */ "./src/app/modules/home/services/services.component.ts");
 
 
 
@@ -689,10 +631,9 @@ var HomeModule = /** @class */ (function () {
     HomeModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _header_bottom_header_bottom_component__WEBPACK_IMPORTED_MODULE_4__["HeaderBottomComponent"],
-                _suscrit_suscrit_component__WEBPACK_IMPORTED_MODULE_5__["SuscritComponent"],
-                _contact_contact_component__WEBPACK_IMPORTED_MODULE_6__["ContactComponent"],
-                _services_services_component__WEBPACK_IMPORTED_MODULE_7__["ServicesComponent"]
+                _suscrit_suscrit_component__WEBPACK_IMPORTED_MODULE_4__["SuscritComponent"],
+                _contact_contact_component__WEBPACK_IMPORTED_MODULE_5__["ContactComponent"],
+                _services_services_component__WEBPACK_IMPORTED_MODULE_6__["ServicesComponent"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
@@ -700,10 +641,9 @@ var HomeModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"]
             ],
             exports: [
-                _header_bottom_header_bottom_component__WEBPACK_IMPORTED_MODULE_4__["HeaderBottomComponent"],
-                _suscrit_suscrit_component__WEBPACK_IMPORTED_MODULE_5__["SuscritComponent"],
-                _contact_contact_component__WEBPACK_IMPORTED_MODULE_6__["ContactComponent"],
-                _services_services_component__WEBPACK_IMPORTED_MODULE_7__["ServicesComponent"]
+                _suscrit_suscrit_component__WEBPACK_IMPORTED_MODULE_4__["SuscritComponent"],
+                _contact_contact_component__WEBPACK_IMPORTED_MODULE_5__["ContactComponent"],
+                _services_services_component__WEBPACK_IMPORTED_MODULE_6__["ServicesComponent"]
             ]
         })
     ], HomeModule);
@@ -1001,62 +941,6 @@ export class ArticlesComponent implements OnInit {
 
 /***/ }),
 
-/***/ "./src/app/modules/shared/components/blog-articles/blog-articles.component.html":
-/*!**************************************************************************************!*\
-  !*** ./src/app/modules/shared/components/blog-articles/blog-articles.component.html ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<section class=\"pb-5 pt-3\">\r\n  <div class=\"container\">\r\n      <div class=\"row\"> \r\n          <div class=\"col-md-12 my-4\">         \r\n            <h4 class=\"mb-4 title blog-span\"><ng-content></ng-content></h4>\r\n          </div>\r\n        </div>\r\n       <div class=\"row\"> \r\n              <div class=\"related-articles d-flex\">         \r\n                      <a><img src=\"../assets/img/test-2.png\" alt=\"\" class=\"px-2\"></a>\r\n                      <a><img src=\"../assets/img/test-2.png\" alt=\"\" class=\"px-2\"></a>\r\n                      <a><img src=\"../assets/img/test-2.png\" alt=\"\" class=\"px-2\"></a>\r\n                      <a><img src=\"../assets/img/test-2.png\" alt=\"\" class=\"px-2\"></a>\r\n                      <a><img src=\"../assets/img/test-2.png\" alt=\"\" class=\"px-2\"></a>\r\n                      <a><img src=\"../assets/img/test-2.png\" alt=\"\" class=\"px-2\"></a>\r\n                      <a><img src=\"../assets/img/test-2.png\" alt=\"\" class=\"px-2\"></a>                        \r\n                  </div>\r\n\r\n            </div>\r\n      </div>\r\n</section>"
-
-/***/ }),
-
-/***/ "./src/app/modules/shared/components/blog-articles/blog-articles.component.scss":
-/*!**************************************************************************************!*\
-  !*** ./src/app/modules/shared/components/blog-articles/blog-articles.component.scss ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsZXMvc2hhcmVkL2NvbXBvbmVudHMvYmxvZy1hcnRpY2xlcy9ibG9nLWFydGljbGVzLmNvbXBvbmVudC5zY3NzIn0= */"
-
-/***/ }),
-
-/***/ "./src/app/modules/shared/components/blog-articles/blog-articles.component.ts":
-/*!************************************************************************************!*\
-  !*** ./src/app/modules/shared/components/blog-articles/blog-articles.component.ts ***!
-  \************************************************************************************/
-/*! exports provided: BlogArticlesComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BlogArticlesComponent", function() { return BlogArticlesComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var BlogArticlesComponent = /** @class */ (function () {
-    function BlogArticlesComponent() {
-    }
-    BlogArticlesComponent.prototype.ngOnInit = function () {
-    };
-    BlogArticlesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-blog-articles',
-            template: __webpack_require__(/*! ./blog-articles.component.html */ "./src/app/modules/shared/components/blog-articles/blog-articles.component.html"),
-            styles: [__webpack_require__(/*! ./blog-articles.component.scss */ "./src/app/modules/shared/components/blog-articles/blog-articles.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], BlogArticlesComponent);
-    return BlogArticlesComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/modules/shared/components/blog-author/blog-author.component.html":
 /*!**********************************************************************************!*\
   !*** ./src/app/modules/shared/components/blog-author/blog-author.component.html ***!
@@ -1279,79 +1163,6 @@ var BlogPaginationComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/modules/shared/components/comments/comments.component.html":
-/*!****************************************************************************!*\
-  !*** ./src/app/modules/shared/components/comments/comments.component.html ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<section class=\"comments pt-5 pb-2 blog-background\">\r\n  <div class=\"container\">\r\n     <div class=\"row\"> \r\n         <div class=\"col-md-12 my-4\">         \r\n           <h4 class=\"mb-4 title blog-span\"> <span>Comentarios</span> </h4>\r\n         </div>\r\n       </div>\r\n       <div class=\"row\"> \r\n     <div  *ngFor=\"let comentario of mComentario;\" class=\"container blog-comment py-2\">\r\n         <div class=\"d-flex align-items-center\" >\r\n         <img src=\"../../assets/img/user-icon.jpg\" alt=\"\" class=\"blog-comment-icon\">\r\n         <div class=\"flex-column ml-3\">\r\n             <div class=\"d-md-flex blog-author\" >\r\n           <h4>{{comentario.usuario}}</h4>\r\n           <button class=\"btn-primary ml-md-3\"> Responder </button>\r\n             </div>\r\n           <div class=\"d-flex pt-3 pt-md-0\"><p class=\"blog-author-date mr-2\">{{comentario.created_at|date:\"mediumDate\" }} </p><span class=\"d-none d-sm-block\">-</span><p class=\"ml-2 blog-author-date\">{{ comentario.created_at | date:'shortTime' }}</p></div>\r\n         </div>\r\n       </div>\r\n       <div class=\"comment container pl-3 pl-md-4 ml-lg-5 pl-lg-5\"><p>{{comentario.comentario}}</p></div>\r\n   </div>\r\n   <div class=\"reply-container\">\r\n   <div class=\"container blog-comment-reply py-2\">\r\n       <div class=\"d-flex align-items-center\" >\r\n       <img src=\"../../assets/img/user-icon.jpg\" alt=\"\" class=\"blog-comment-icon\">\r\n       <div class=\"flex-column ml-3\">\r\n           <div class=\"d-md-flex blog-author\" >\r\n         <h4 class=\"\">Wladimir Hernández</h4>\r\n         <button class=\"btn-primary ml-md-3\"> Responder </button>\r\n           </div>\r\n         <div class=\"d-flex pt-3 pt-md-0\"><p class=\"blog-author-date mr-2\">Mzo 13, 2019 </p><span class=\"d-none d-sm-block\">-</span><p class=\"ml-2 blog-author-date\">9:47 PM</p></div>\r\n       </div>\r\n     </div>\r\n     <div class=\"comment container pl-3 pl-md-4 ml-lg-5 pl-lg-5\"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos placeat nobis nostrum, earum quam quo voluptatibus quasi ipsa, aut mollitia impedit non rem nihil odit magni, esse iure maiores dolore!</p></div>\r\n </div>\r\n</div>\r\n</div>\r\n</div>\r\n</section>\r\n<app-send-comment></app-send-comment>"
-
-/***/ }),
-
-/***/ "./src/app/modules/shared/components/comments/comments.component.scss":
-/*!****************************************************************************!*\
-  !*** ./src/app/modules/shared/components/comments/comments.component.scss ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsZXMvc2hhcmVkL2NvbXBvbmVudHMvY29tbWVudHMvY29tbWVudHMuY29tcG9uZW50LnNjc3MifQ== */"
-
-/***/ }),
-
-/***/ "./src/app/modules/shared/components/comments/comments.component.ts":
-/*!**************************************************************************!*\
-  !*** ./src/app/modules/shared/components/comments/comments.component.ts ***!
-  \**************************************************************************/
-/*! exports provided: CommentsComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommentsComponent", function() { return CommentsComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _servicios_servicios_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../servicios/servicios.index */ "./src/app/servicios/servicios.index.ts");
-
-
-
-var CommentsComponent = /** @class */ (function () {
-    function CommentsComponent(_ComentariosService) {
-        this._ComentariosService = _ComentariosService;
-        this.mComentario;
-        this.getAll();
-    }
-    CommentsComponent.prototype.ngOnInit = function () {
-    };
-    CommentsComponent.prototype.getAll = function () {
-        var _this = this;
-        this._ComentariosService
-            .All()
-            .then(function (data) {
-            _this.mComentario = data.result;
-            console.log(_this.mComentario);
-        })
-            .catch(function (error) {
-            console.log(_this.mComentario);
-        });
-    };
-    CommentsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-comments',
-            template: __webpack_require__(/*! ./comments.component.html */ "./src/app/modules/shared/components/comments/comments.component.html"),
-            styles: [__webpack_require__(/*! ./comments.component.scss */ "./src/app/modules/shared/components/comments/comments.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_servicios_index__WEBPACK_IMPORTED_MODULE_2__["ComentarioService"]])
-    ], CommentsComponent);
-    return CommentsComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/modules/shared/components/footer/footer.component.html":
 /*!************************************************************************!*\
   !*** ./src/app/modules/shared/components/footer/footer.component.html ***!
@@ -1406,6 +1217,62 @@ var FooterComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/modules/shared/components/header-bottom/header-bottom.component.html":
+/*!**************************************************************************************!*\
+  !*** ./src/app/modules/shared/components/header-bottom/header-bottom.component.html ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<section id=\"header-bottom\" class=\"position-relative header-bottom text-white align-items-center w-100 d-flex justify-contend-between\">      \r\n  <ng-content select=\".title\"></ng-content>\r\n  <div class=\"container d-flex justify-content-end mr-5\">\r\n      <ul class=\"nav flex-column\">\r\n          <li class=\"facebook my-2\"><a href=\"#\" data-toggle=\"tooltip\" title=\"Facebook\"><img class=\"social-icon\" src=\"../../../../assets/images/icons/Recurso 5.svg\"></a></li>\r\n          <li class=\"twitter my-2\"><a href=\"#\" data-toggle=\"tooltip\" title=\"Twitter\"></a><img class=\"social-icon\" src=\"../../../../assets/images/icons/Recurso 4.svg\"></li>\r\n          <li class=\"instagram my-2\"><a href=\"#\" data-toggle=\"tooltip\" title=\"Instagram\"><img class=\"social-icon\" src=\"../../../../assets/images/icons/Recurso 3.svg\"></a></li>\r\n          <li class=\"linkedin my-2\"><a href=\"#\" data-toggle=\"tooltip\" title=\"Youtube\"><img class=\"social-icon\" src=\"../../../../assets/images/icons/Recurso 5.svg\" ></a></li>\r\n    </ul>\r\n  </div>\r\n</section>"
+
+/***/ }),
+
+/***/ "./src/app/modules/shared/components/header-bottom/header-bottom.component.scss":
+/*!**************************************************************************************!*\
+  !*** ./src/app/modules/shared/components/header-bottom/header-bottom.component.scss ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsZXMvc2hhcmVkL2NvbXBvbmVudHMvaGVhZGVyLWJvdHRvbS9oZWFkZXItYm90dG9tLmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/modules/shared/components/header-bottom/header-bottom.component.ts":
+/*!************************************************************************************!*\
+  !*** ./src/app/modules/shared/components/header-bottom/header-bottom.component.ts ***!
+  \************************************************************************************/
+/*! exports provided: HeaderBottomComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderBottomComponent", function() { return HeaderBottomComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var HeaderBottomComponent = /** @class */ (function () {
+    function HeaderBottomComponent() {
+    }
+    HeaderBottomComponent.prototype.ngOnInit = function () {
+    };
+    HeaderBottomComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-header-bottom',
+            template: __webpack_require__(/*! ./header-bottom.component.html */ "./src/app/modules/shared/components/header-bottom/header-bottom.component.html"),
+            styles: [__webpack_require__(/*! ./header-bottom.component.scss */ "./src/app/modules/shared/components/header-bottom/header-bottom.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], HeaderBottomComponent);
+    return HeaderBottomComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/modules/shared/components/header/header.component.html":
 /*!************************************************************************!*\
   !*** ./src/app/modules/shared/components/header/header.component.html ***!
@@ -1413,7 +1280,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- HEADER-->\r\n<header class=\"main-header\" id=\"header\"> \r\n  <ul class=\"navigation-responsive pt-3 d-block d-md-none\" id=\"navigation-responsive\">\r\n      <li class=\"nav-item\">\r\n          <a routerLink=\"/\" class=\"link-nav\">\r\n            <span class=\"nav-underline\">Home</span>\r\n          </a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a routerLink=\"/nosotros\" class=\"link-nav\">\r\n            <span class=\"nav-underline\">Nosotros</span>\r\n          </a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n            <a routerLink=\"/oportunidades\" class=\"link-nav\">\r\n              <span class=\"nav-underline\">Oportunidades</span>\r\n            </a>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n            <a routerLink=\"/\" class=\"link-nav\">\r\n              <span class=\"nav-underline\">Sucursales</span>\r\n            </a>\r\n          </li>\r\n  </ul>    \r\n  <a class=\"back-link\" id=\"back-link\"></a>\r\n<div class=\"text-white\">\r\n    <div class=\"topbar\">\r\n        <div class=\"container\">\r\n            <ul class=\"navigation d-flex align-items-center\"> \r\n            <li class=\"nav-item d-none d-md-block ml-lg-none\">\r\n              <a routerLink=\"/\" class=\"link-nav\">\r\n                <span class=\"nav-underline\">Home</span>\r\n              </a>\r\n            </li>\r\n            <li class=\"nav-item d-none d-md-block\">\r\n              <a routerLink=\"/nosotros\" class=\"link-nav\">\r\n                <span class=\"nav-underline\">Nosotros</span>\r\n              </a>\r\n            </li>\r\n            <li class=\"nav-item d-none d-md-block ml-lg-none\">\r\n                <a routerLink=\"/oportunidades\" class=\"link-nav\">\r\n                  <span class=\"nav-underline\">Oportunidades</span>\r\n                </a>\r\n              </li>\r\n              <li class=\"nav-item d-none d-md-block\">\r\n                <a routerLink=\"/\" class=\"link-nav\">\r\n                  <span class=\"nav-underline\">Sucursales</span>\r\n                </a>\r\n              </li>\r\n              <li class=\"d-none d-md-block\">\r\n                  <a (click)=\"openModal()\" class=\"link-nav\">\r\n                    <span class=\"nav-underline yellow-text\" style=\"cursor: pointer;\">Transacción Sin Costo</span>\r\n                  </a>\r\n                </li>\r\n            <li class=\"nav-item d-none d-md-block ml-auto ml-lg-none\">\r\n                <a routerLink=\"/\" class=\"link-nav py-1\">\r\n                 <img src=\"../../../../assets/images/logo.png\" style=\"width: 320px;\" alt=\"\">\r\n                </a>\r\n              </li>\r\n          </ul> \r\n        </div>               \r\n      </div>\r\n</div>\r\n</header>"
+module.exports = "<!-- HEADER-->\r\n<header class=\"main-header\" id=\"header\"> \r\n  <ul class=\"navigation-responsive pt-3 d-block d-md-none\" id=\"navigation-responsive\">\r\n      <li class=\"nav-item\">\r\n          <a routerLink=\"/\" class=\"link-nav\">\r\n            <span class=\"nav-underline\">Home</span>\r\n          </a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a routerLink=\"/nosotros\" class=\"link-nav\">\r\n            <span class=\"nav-underline\">Nosotros</span>\r\n          </a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n            <a routerLink=\"/oportunidades\" class=\"link-nav\">\r\n              <span class=\"nav-underline\">Oportunidades</span>\r\n            </a>\r\n          </li>\r\n          <li class=\"nav-item\">\r\n            <a routerLink=\"/\" class=\"link-nav\">\r\n              <span class=\"nav-underline\">Sucursales</span>\r\n            </a>\r\n          </li>\r\n  </ul>    \r\n  <a class=\"back-link\" id=\"back-link\"></a>\r\n<div class=\"text-white\">\r\n    <div class=\"topbar\">\r\n        <div class=\"container\">\r\n            <ul class=\"navigation d-flex align-items-center\"> \r\n            <li class=\"nav-item d-none d-md-block ml-lg-none\">\r\n              <a routerLink=\"/\" class=\"link-nav\">\r\n                <span class=\"nav-underline\">Home</span>\r\n              </a>\r\n            </li>\r\n            <li class=\"nav-item d-none d-md-block\">\r\n              <a routerLink=\"/nosotros\" class=\"link-nav\">\r\n                <span class=\"nav-underline\">Nosotros</span>\r\n              </a>\r\n            </li>\r\n            <li class=\"nav-item d-none d-md-block ml-lg-none\">\r\n                <a routerLink=\"/oportunidades\" class=\"link-nav\">\r\n                  <span class=\"nav-underline\">Oportunidades</span>\r\n                </a>\r\n              </li>\r\n              <li ngbDropdown class=\"nav-item d-none d-md-block\">\r\n                <a ngbDropdown class=\"link-nav\">\r\n                  <span ngbDropdownToggle class=\"nav-underline  brown-text\">\r\n                       Sucursales\r\n                        <div ngbDropdownMenu class=\"m-0 p-0 brown-text\" aria-labelledby=\"dropdownBasic1\">\r\n                          <button class=\"text-uppercase\"  routerLink=\"/sucursales\" ngbDropdownItem>Pilar</button>\r\n                          <div class=\"dropdown-divider m-0 p-0\"></div>\r\n                          <button class=\"text-uppercase\"  routerLink=\"/sucursales\" ngbDropdownItem>Open Door</button>\r\n                        </div>\r\n                    </span>\r\n                </a>\r\n              </li>\r\n              <li class=\"d-none d-md-block\">\r\n                  <a (click)=\"openModal()\" class=\"link-nav\">\r\n                    <span class=\"nav-underline yellow-text\" style=\"cursor: pointer;\">Transacción Sin Costo</span>\r\n                  </a>\r\n                </li>\r\n            <li class=\"nav-item d-none d-md-block ml-auto ml-lg-none\">\r\n                <a routerLink=\"/\" class=\"link-nav py-1\">\r\n                 <img src=\"../../../../assets/images/logo.png\" style=\"width: 320px;\" alt=\"\">\r\n                </a>\r\n              </li>\r\n          </ul> \r\n        </div>               \r\n      </div>\r\n</div>\r\n</header>"
 
 /***/ }),
 
@@ -1476,7 +1343,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ngb-carousel class=\"position-relative\" style=\"height: 95vh;\" *ngIf=\"images\">\r\n  <ng-template ngbSlide>\r\n    <img [src]=\"images[0]\" alt=\"Random first slide\">\r\n    <div class=\"carousel-caption\">\r\n      <h3>First slide label</h3>\r\n      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>\r\n    </div>\r\n  </ng-template>\r\n  <ng-template ngbSlide>\r\n    <img [src]=\"images[1]\" alt=\"Random second slide\">\r\n    <div class=\"carousel-caption\">\r\n      <h3>Second slide label</h3>\r\n      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\r\n    </div>\r\n  </ng-template>\r\n  <ng-template ngbSlide>\r\n    <img [src]=\"images[2]\" alt=\"Random third slide\">\r\n    <div class=\"carousel-caption\">\r\n      <h3>Third slide label</h3>\r\n      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>\r\n    </div>\r\n  </ng-template>\r\n</ngb-carousel>"
+module.exports = "<ngb-carousel class=\"position-relative\" style=\"height: 9vh;\" *ngIf=\"images\">\r\n  <ng-template ngbSlide>\r\n    <img [src]=\"images[0]\" alt=\"Random first slide\">\r\n    <div class=\"carousel-caption\">\r\n      <h1>First slide label</h1>\r\n      <h3>Nulla vitae elit libero, a pharetra augue mollis interdum.</h3>\r\n    </div>\r\n  </ng-template>\r\n  <ng-template ngbSlide>\r\n    <img [src]=\"images[1]\" alt=\"Random second slide\">\r\n    <div class=\"carousel-caption\">\r\n      <h1>Second slide label</h1>\r\n      <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>\r\n    </div>\r\n  </ng-template>\r\n  <ng-template ngbSlide>\r\n    <img [src]=\"images[2]\" alt=\"Random third slide\">\r\n    <div class=\"carousel-caption\">\r\n      <h1>Third slide label</h1>\r\n      <h3>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</h3>\r\n    </div>\r\n  </ng-template>\r\n</ngb-carousel>"
 
 /***/ }),
 
@@ -1581,6 +1448,79 @@ var PropiertysListComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], PropiertysListComponent);
     return PropiertysListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modules/shared/components/search/search.component.html":
+/*!************************************************************************!*\
+  !*** ./src/app/modules/shared/components/search/search.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n  <img src=\"../../../../assets/images/icons/Recurso 6.svg\" class=\"position-absolute d-none d-md-block\" style=\"bottom: -5%;\" alt=\"\">\r\n<div class=\"bg-yellow polygon py-3\">\r\n<div class=\"col-sm-12 text-white\">\r\n        <h1 class=\"font-weight-extrabold text-center text-uppercase\">Buscador</h1>\r\n        <h3 class=\"font-weight-light text-center\">Escuentra el inmueble ideal para ti</h3>\r\n    </div>  \r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n          <div class=\"col-lg-3\">\r\n              <label class=\"col font-weight-extrabold\">Buscar en:</label>\r\n                <div ngbDropdown class=\"d-inline-block\">\r\n                  <button class=\"btn search-dropdown\" id=\"dropdownBasic1\" ngbDropdownToggle>Toggle dropdown</button>\r\n                  <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n                    <button ngbDropdownItem>Action - 1</button>\r\n                    <button ngbDropdownItem>Another Action</button>\r\n                    <button ngbDropdownItem>Something else is here</button>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n         <div class=\"col-lg-3\">\r\n      <label class=\"col font-weight-extrabold\">Buscar en:</label>\r\n        <div ngbDropdown class=\"d-inline-block\">\r\n          <button class=\"btn search-dropdown\" id=\"dropdownBasic1\" ngbDropdownToggle>Toggle dropdown</button>\r\n          <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n            <button ngbDropdownItem>Action - 1</button>\r\n            <button ngbDropdownItem>Another Action</button>\r\n            <button ngbDropdownItem>Something else is here</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n         <div class=\"col-lg-3\">\r\n      <label class=\"col font-weight-extrabold\">Buscar en:</label>\r\n        <div ngbDropdown class=\"d-inline-block\">\r\n          <button class=\"btn search-dropdown\" id=\"dropdownBasic1\" ngbDropdownToggle>Toggle dropdown</button>\r\n          <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n            <button ngbDropdownItem>Action - 1</button>\r\n            <button ngbDropdownItem>Another Action</button>\r\n            <button ngbDropdownItem>Something else is here</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n         <div class=\"col-lg-3\">\r\n      <label class=\"col font-weight-extrabold\">Buscar en:</label>\r\n        <div ngbDropdown class=\"d-inline-block\">\r\n          <button class=\"btn search-dropdown\" id=\"dropdownBasic1\" ngbDropdownToggle>Toggle dropdown</button>\r\n          <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n            <button ngbDropdownItem>Action - 1</button>\r\n            <button ngbDropdownItem>Another Action</button>\r\n            <button ngbDropdownItem>Something else is here</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <label class=\"col font-weight-extrabold\">Buscar en:</label>\r\n      </div>\r\n      <div class=\"row\">\r\n      <div class=\"col-lg-3\">\r\n        <div ngbDropdown class=\"d-inline-block\">\r\n          <button class=\"btn search-dropdown\" id=\"dropdownBasic1\" ngbDropdownToggle>Toggle dropdown</button>\r\n          <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n            <button ngbDropdownItem>Action - 1</button>\r\n            <button ngbDropdownItem>Another Action</button>\r\n            <button ngbDropdownItem>Something else is here</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-lg-3\">\r\n        <div ngbDropdown class=\"d-inline-block\">\r\n          <button class=\"btn search-dropdown\" id=\"dropdownBasic1\" ngbDropdownToggle>Toggle dropdown</button>\r\n          <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n            <button ngbDropdownItem>Action - 1</button>\r\n            <button ngbDropdownItem>Another Action</button>\r\n            <button ngbDropdownItem>Something else is here</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-lg-3\">\r\n        <div ngbDropdown class=\"d-inline-block\">\r\n          <button class=\"btn search-dropdown\" id=\"dropdownBasic1\" ngbDropdownToggle>Toggle dropdown</button>\r\n          <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n            <button ngbDropdownItem>Action - 1</button>\r\n            <button ngbDropdownItem>Another Action</button>\r\n            <button ngbDropdownItem>Something else is here</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-lg-3\">\r\n        <div ngbDropdown class=\"d-inline-block\">\r\n          <button class=\"btn search-dropdown\" id=\"dropdownBasic1\" ngbDropdownToggle>Toggle dropdown</button>\r\n          <div ngbDropdownMenu aria-labelledby=\"dropdownBasic1\">\r\n            <button ngbDropdownItem>Action - 1</button>\r\n            <button ngbDropdownItem>Another Action</button>\r\n            <button ngbDropdownItem>Something else is here</button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n  </div>\r\n  <div class=\"col-sm-12 text-white d-flex justify-content-center\">\r\n      <button class=\"btn brown-button text-uppercase font-weight-bold\">Buscar información</button>\r\n  </div> \r\n</div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/modules/shared/components/search/search.component.scss":
+/*!************************************************************************!*\
+  !*** ./src/app/modules/shared/components/search/search.component.scss ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".search-dropdown {\n  background-color: white; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kdWxlcy9zaGFyZWQvY29tcG9uZW50cy9zZWFyY2gvQzpcXFVzZXJzXFxXbGFkaW1pcnRcXERlc2t0b3BcXGRldlxcUmFpY2VzUHJvcGllZGFkZXNcXGZyb250ZW5kL3NyY1xcYXBwXFxtb2R1bGVzXFxzaGFyZWRcXGNvbXBvbmVudHNcXHNlYXJjaFxcc2VhcmNoLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksdUJBQXVCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9tb2R1bGVzL3NoYXJlZC9jb21wb25lbnRzL3NlYXJjaC9zZWFyY2guY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2VhcmNoLWRyb3Bkb3duIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/modules/shared/components/search/search.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/modules/shared/components/search/search.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: SearchComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchComponent", function() { return SearchComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _servicios_servicios_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../servicios/servicios.index */ "./src/app/servicios/servicios.index.ts");
+
+
+
+var SearchComponent = /** @class */ (function () {
+    function SearchComponent(_ComentariosService) {
+        this._ComentariosService = _ComentariosService;
+        this.mComentario;
+        this.getAll();
+    }
+    SearchComponent.prototype.ngOnInit = function () {
+    };
+    SearchComponent.prototype.getAll = function () {
+        var _this = this;
+        this._ComentariosService
+            .All()
+            .then(function (data) {
+            _this.mComentario = data.result;
+            console.log(_this.mComentario);
+        })
+            .catch(function (error) {
+            console.log(_this.mComentario);
+        });
+    };
+    SearchComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-search',
+            template: __webpack_require__(/*! ./search.component.html */ "./src/app/modules/shared/components/search/search.component.html"),
+            styles: [__webpack_require__(/*! ./search.component.scss */ "./src/app/modules/shared/components/search/search.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_servicios_servicios_index__WEBPACK_IMPORTED_MODULE_2__["ComentarioService"]])
+    ], SearchComponent);
+    return SearchComponent;
 }());
 
 
@@ -1885,11 +1825,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_articles_articles_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/articles/articles.component */ "./src/app/modules/shared/components/articles/articles.component.ts");
 /* harmony import */ var _components_header_header_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/header/header.component */ "./src/app/modules/shared/components/header/header.component.ts");
 /* harmony import */ var _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/footer/footer.component */ "./src/app/modules/shared/components/footer/footer.component.ts");
-/* harmony import */ var _components_blog_articles_blog_articles_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/blog-articles/blog-articles.component */ "./src/app/modules/shared/components/blog-articles/blog-articles.component.ts");
+/* harmony import */ var _components_header_bottom_header_bottom_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/header-bottom/header-bottom.component */ "./src/app/modules/shared/components/header-bottom/header-bottom.component.ts");
 /* harmony import */ var _components_blog_author_blog_author_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/blog-author/blog-author.component */ "./src/app/modules/shared/components/blog-author/blog-author.component.ts");
 /* harmony import */ var _components_blog_body_blog_body_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/blog-body/blog-body.component */ "./src/app/modules/shared/components/blog-body/blog-body.component.ts");
 /* harmony import */ var _components_blog_header_blog_header_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/blog-header/blog-header.component */ "./src/app/modules/shared/components/blog-header/blog-header.component.ts");
-/* harmony import */ var _components_comments_comments_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/comments/comments.component */ "./src/app/modules/shared/components/comments/comments.component.ts");
+/* harmony import */ var _components_search_search_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/search/search.component */ "./src/app/modules/shared/components/search/search.component.ts");
 /* harmony import */ var _components_blog_pagination_blog_pagination_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/blog-pagination/blog-pagination.component */ "./src/app/modules/shared/components/blog-pagination/blog-pagination.component.ts");
 /* harmony import */ var _components_propiertys_list_propiertys_list_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/propiertys-list/propiertys-list.component */ "./src/app/modules/shared/components/propiertys-list/propiertys-list.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
@@ -1938,11 +1878,11 @@ var SharedModule = /** @class */ (function () {
                 _components_header_header_component__WEBPACK_IMPORTED_MODULE_7__["HeaderComponent"],
                 _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_8__["FooterComponent"],
                 _components_articles_articles_component__WEBPACK_IMPORTED_MODULE_6__["ArticlesComponent"],
-                _components_blog_articles_blog_articles_component__WEBPACK_IMPORTED_MODULE_9__["BlogArticlesComponent"],
+                _components_header_bottom_header_bottom_component__WEBPACK_IMPORTED_MODULE_9__["HeaderBottomComponent"],
                 _components_blog_author_blog_author_component__WEBPACK_IMPORTED_MODULE_10__["BlogAuthorComponent"],
                 _components_blog_body_blog_body_component__WEBPACK_IMPORTED_MODULE_11__["BlogBodyComponent"],
                 _components_blog_header_blog_header_component__WEBPACK_IMPORTED_MODULE_12__["BlogHeaderComponent"],
-                _components_comments_comments_component__WEBPACK_IMPORTED_MODULE_13__["CommentsComponent"],
+                _components_search_search_component__WEBPACK_IMPORTED_MODULE_13__["SearchComponent"],
                 _components_blog_pagination_blog_pagination_component__WEBPACK_IMPORTED_MODULE_14__["BlogPaginationComponent"],
                 _components_transaction_modal_transaction_modal_component__WEBPACK_IMPORTED_MODULE_20__["TransactionModalComponent"],
                 _components_propiertys_list_propiertys_list_component__WEBPACK_IMPORTED_MODULE_15__["PropiertysListComponent"],
@@ -1951,11 +1891,11 @@ var SharedModule = /** @class */ (function () {
                 _components_propiertys_carousel_propiertys_carousel_component__WEBPACK_IMPORTED_MODULE_21__["PropiertysCarouselComponent"],
                 _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_8__["FooterComponent"],
                 _components_articles_articles_component__WEBPACK_IMPORTED_MODULE_6__["ArticlesComponent"],
-                _components_blog_articles_blog_articles_component__WEBPACK_IMPORTED_MODULE_9__["BlogArticlesComponent"],
+                _components_header_bottom_header_bottom_component__WEBPACK_IMPORTED_MODULE_9__["HeaderBottomComponent"],
                 _components_blog_author_blog_author_component__WEBPACK_IMPORTED_MODULE_10__["BlogAuthorComponent"],
                 _components_blog_body_blog_body_component__WEBPACK_IMPORTED_MODULE_11__["BlogBodyComponent"],
                 _components_blog_header_blog_header_component__WEBPACK_IMPORTED_MODULE_12__["BlogHeaderComponent"],
-                _components_comments_comments_component__WEBPACK_IMPORTED_MODULE_13__["CommentsComponent"],
+                _components_search_search_component__WEBPACK_IMPORTED_MODULE_13__["SearchComponent"],
                 _components_blog_pagination_blog_pagination_component__WEBPACK_IMPORTED_MODULE_14__["BlogPaginationComponent"],
                 _components_header_header_component__WEBPACK_IMPORTED_MODULE_7__["HeaderComponent"],
                 _components_transaction_modal_transaction_modal_component__WEBPACK_IMPORTED_MODULE_20__["TransactionModalComponent"],
@@ -1987,7 +1927,7 @@ var SharedModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-bottom>\n  <div class=\"container title col-md-4 py-5 ml-5\"> \n    <div class=\"col-sm-12\">\n      <h1 class=\"font-weight-light text-uppercase\">Nosotros</h1>\n    </div>\n  </div>\n</app-header-bottom>\n<app-contact></app-contact>\n<div class=\"container-fluid bg-light polygon d-flex align-items-center pl-0\">\n    <div class=\"col-md-7 m-0 p-0 pb-4\">\n        <img src=\"../../../../assets/images/IMAGEN-NOSOTROS.png\" class=\"img-fluid position-sticky\" alt=\"\">\n  </div>\n  <div class=\"container col-md-5 py-5\"> \n        <div class=\"col-sm-12\">\n            <h3 class=\"font-weight-light brown-text text-right text-uppercase\">Raices</h3>\n          </div>\n          <div class=\"col-sm-12\">\n            <h3 class=\"font-weight-extrabold brown-text text-right text-uppercase\">Propiedades</h3>\n          </div>\n        <p class=\"col-sm-12 text-right brown-text\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio eos aliquam veniam repudiandae. Dolor quibusdam laudantium nobis alias, quisquam necessitatibus consequatur totam atque, iusto animi ratione, impedit in fuga delectus?\n          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum architecto consequatur exercitationem blanditiis. Voluptates optio exercitationem officiis ut excepturi dolorem doloribus blanditiis illum quisquam eaque! Voluptates aspernatur aliquam fugit omnis.</p>\n      </div>\n</div>"
+module.exports = "<app-header-bottom>\n  <div class=\"container title col-md-4 py-5 ml-5\"> \n    <div class=\"col-sm-12\">\n      <h1 class=\"font-weight-light text-uppercase\">Nosotros</h1>\n    </div>\n  </div>\n</app-header-bottom>\n<app-search></app-search>\n<div class=\"container-fluid bg-light polygon d-flex align-items-center pl-0\">\n    <div class=\"col-md-7 m-0 p-0 pb-4\">\n        <img src=\"../../../../assets/images/IMAGEN-NOSOTROS.png\" class=\"img-fluid position-sticky\" alt=\"\">\n  </div>\n  <div class=\"container col-md-5 py-5\"> \n        <div class=\"col-sm-12\">\n            <h3 class=\"font-weight-light brown-text text-right text-uppercase\">Raices</h3>\n          </div>\n          <div class=\"col-sm-12\">\n            <h3 class=\"font-weight-extrabold brown-text text-right text-uppercase\">Propiedades</h3>\n          </div>\n        <p class=\"col-sm-12 text-right brown-text\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio eos aliquam veniam repudiandae. Dolor quibusdam laudantium nobis alias, quisquam necessitatibus consequatur totam atque, iusto animi ratione, impedit in fuga delectus?\n          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum architecto consequatur exercitationem blanditiis. Voluptates optio exercitationem officiis ut excepturi dolorem doloribus blanditiis illum quisquam eaque! Voluptates aspernatur aliquam fugit omnis.</p>\n      </div>\n</div>"
 
 /***/ }),
 
@@ -2043,7 +1983,7 @@ var AboutComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-bottom>\r\n    <div class=\"container title col-md-4 py-5 ml-5\"> \r\n        <div class=\"col-sm-12\">\r\n          <h1 class=\"font-weight-light text-uppercase\">Nombre de\r\n          <span class=\"font-weight-extrabold\">la propiedad</span></h1>\r\n        </div>\r\n        <p class=\"col-sm-12\">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem aperiam obcaecati quas repellat quisquam consectetur explicabo dignissimos.</p>\r\n          <button class=\"col-md-6 mx-3 btn white-button text-white\">Ver Mas</button>\r\n    </div>\r\n</app-header-bottom>\r\n<app-contact></app-contact>\r\n<app-services></app-services>\r\n<app-suscrit></app-suscrit>\r\n<app-propiertys-list>\r\n    <h1 class=\"mb-4 brown-text font-weight-extrabold text-uppercase\">Novedades</h1>\r\n</app-propiertys-list>\r\n\r\n"
+module.exports = "<app-header-bottom>\r\n    <div class=\"container title col-md-4 py-5 ml-5\"> \r\n        <div class=\"col-sm-12\">\r\n          <h1 class=\"font-weight-light text-uppercase\">Nombre de\r\n          <span class=\"font-weight-extrabold\">la propiedad</span></h1>\r\n        </div>\r\n        <p class=\"col-sm-12\">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem aperiam obcaecati quas repellat quisquam consectetur explicabo dignissimos.</p>\r\n          <button class=\"col-md-6 mx-3 btn white-button text-white\">Ver Mas</button>\r\n    </div>\r\n</app-header-bottom>\r\n<app-search></app-search>\r\n<app-services></app-services>\r\n<app-suscrit></app-suscrit>\r\n<app-propiertys-list>\r\n    <h1 class=\"mb-4 brown-text font-weight-extrabold text-uppercase\">Novedades</h1>\r\n</app-propiertys-list>\r\n\r\n"
 
 /***/ }),
 
@@ -2155,7 +2095,7 @@ var NopagefoundComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-propiertys-carousel></app-propiertys-carousel>\r\n<app-contact></app-contact>\r\n<!--<app-header-bottom>\r\n    <div class=\"container title col-md-4 py-5 ml-5\"> \r\n        <div class=\"col-sm-12\">\r\n          <h1 class=\"font-weight-light text-uppercase\">Oportunidades</h1>\r\n        </div>\r\n    </div>\r\n</app-header-bottom>-->\r\n<app-propiertys-list>\r\n  <h1 class=\"mb-4 brown-text font-weight-extrabold text-uppercase\">Oportunidades</h1>\r\n</app-propiertys-list>\r\n"
+module.exports = "<app-propiertys-carousel></app-propiertys-carousel>\r\n<app-search></app-search>\r\n<!--<app-header-bottom>\r\n    <div class=\"container title col-md-4 py-5 ml-5\"> \r\n        <div class=\"col-sm-12\">\r\n          <h1 class=\"font-weight-light text-uppercase\">Oportunidades</h1>\r\n        </div>\r\n    </div>\r\n</app-header-bottom>-->\r\n<app-propiertys-list>\r\n  <h1 class=\"mb-4 brown-text font-weight-extrabold text-uppercase\">Oportunidades</h1>\r\n</app-propiertys-list>\r\n"
 
 /***/ }),
 

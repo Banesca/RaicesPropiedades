@@ -47,7 +47,7 @@ var BlogRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 class=\"text-center\">Blog Funcionando</h1>"
+module.exports = "<app-header-bottom>\r\n    <div class=\"container title col-md-4 py-5 ml-5\"> \r\n      <div class=\"col-sm-12\">\r\n        <h1 class=\"font-weight-light text-uppercase\">Buscador</h1>\r\n      </div>\r\n    </div>\r\n  </app-header-bottom>\r\n<app-search></app-search>\r\n<app-propiertys-list>\r\n    <h1 class=\"mb-4 brown-text font-weight-extrabold text-uppercase\">Busquedas frecuentes</h1>\r\n</app-propiertys-list>\r\n  "
 
 /***/ }),
 
