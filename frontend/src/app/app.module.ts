@@ -13,12 +13,14 @@ import { NopagefoundComponent } from './page/nopagefound/nopagefound.component';
 
 import { HomeModule } from './modules/home/home.module';
 import { ArticleModule } from './modules/blog/modules/article/article.module';
+import { AboutComponent } from './page/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NopagefoundComponent
+    NopagefoundComponent,
+    AboutComponent
   ],
   imports: [
    

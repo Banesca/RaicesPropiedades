@@ -2,6 +2,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SendCommentModule } from './components/send-comment/send-comment.module';
 import { registerLocaleData } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 
 import { ArticlesComponent } from './components/articles/articles.component';
@@ -53,6 +54,7 @@ registerLocaleData(localeEn, 'en')
   imports: [
     CommonModule,
     SendCommentModule,
+    RouterModule
   ],
   entryComponents: [TransactionModalComponent],
   providers: [ { provide: LOCALE_ID, useValue: 'es' } ],
