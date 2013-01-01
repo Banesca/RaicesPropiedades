@@ -12,6 +12,17 @@ html {
 	overflow-x: hidden;
 }
 
+li {
+	list-style: none;
+	.footer-icons {
+		width: 0.6rem;
+	}
+	.footer-contact-icons {
+		width: 25px;
+		height: 25px;
+	}
+}
+
 body {
 	background-color: $white;
 	font-family: 'Open Sans', sans-serif;
@@ -162,4 +173,13 @@ footer {
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 95vh;
+}
+
+.social-icon {
+	height: 2rem;
+	width: 2rem;
+}
+
+.font-weight-extrabold {
+	font-weight: 900;
 }
