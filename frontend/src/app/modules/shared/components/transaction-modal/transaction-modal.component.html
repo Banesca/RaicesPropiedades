@@ -1,6 +1,6 @@
 <div class="transaction-modal modal-body bg-yellow text-white">
     <div class="container position-relative font-weight-semibold">
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="contactForm">
         <div *ngIf="!hideForm" class="row">
         <button type="button" class="position-absolute close-button text-white" (click)="activeModal.dismiss('Cross click')">
             <span>&times;</span>
@@ -17,6 +17,17 @@
                   </div>
               </div>
             </div>
+            <div class="col-sm-12">
+              <label for="exampleFormControlSelect1" class="text-uppercase">Email</label>
+              <div class="form-group mb-3">
+                  <input formControlName="email" type="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control form-control-lg" placeholder="testing@gmail.com"
+                  aria-describedby="basic-addon1">
+                  <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required">El Email es Requerido</div>
+                      <div *ngIf="f.email.errors.email">Colocal email que cumpla con las siguientes características: testing@gmail.com</div>
+                  </div>
+            </div>
+          </div>
             <div class="col-sm-12">
               <label for="exampleFormControlSelect1" class="text-uppercase">Teléfono</label>
               <div class="form-group mb-3">
@@ -64,11 +75,19 @@
               </div>
           </div>
           <label for="exampleFormControlSelect1" class="text-uppercase">Adjuntar Fotos</label>
-          <div class="form-group mb-5 d-sm-flex">
-            <input type="text" class="form-control form-control-lg" placeholder="file1.jpg">
-            <button class="btn font-weight-bold btn-lg btn-block col-sm-5 text-uppercase mx-auto brown-button">Agregar</button> 
+          <div class="form-group mb-3">
+            <input type="file" formControlName="imagen_1" class="form-control form-control-lg" placeholder="file1.jpg">
+            <div *ngIf="submitted && f.imagen_1.errors" type="alert" class="invalid-feedback d-block">
+              <div *ngIf="f.imagen_1.errors.required">Las imagenes son Requerida</div>
           </div>
-          <button class="btn font-weight-bold btn-lg btn-block col-lg-5 text-uppercase mx-auto brown-button">Enviar</button> 
+          </div>
+          <div class="form-group mb-5">
+            <input type="file" formControlName="imagen_2" class="form-control form-control-lg" placeholder="file1.jpg">
+            <div *ngIf="submitted && f.imagen_2.errors" type="alert" class="invalid-feedback d-block">
+              <div *ngIf="f.imagen_2.errors.required">Las imagen son Requerida</div>
+          </div>
+          </div>
+          <button  (click)="onSubmit()" class="btn font-weight-bold btn-lg btn-block col-lg-5 text-uppercase mx-auto brown-button">Enviar</button> 
        </div> 
       </div>
     </form>

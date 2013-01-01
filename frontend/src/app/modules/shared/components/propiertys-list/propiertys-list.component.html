@@ -2,20 +2,11 @@
   <section class="releases section-container bg-white polygon" id="releases">
       <div class="container">
         <div class="row d-flex justify-content-center mx-5">
-            <ng-content></ng-content>
+            <ng-content select="h3"></ng-content>
         </div>
         <div style="overflow-x: scroll; z-index: 100;" class="container list d-flex py-5 mx-auto">
-            <ng-container *ngFor="let publicaciones of mCategorias">
-            <div *ngIf="publicaciones.ficha1.esUnaNovedad == '1'" class="col-md-4 col-9 p-4">
-              <div  [routerLink]="[baseUrl,publicaciones.idFichas]" class="card">
-                <img [src]="publicaciones.ficha2.imagen1" class="card-img-top">
-                <div class="card-footer font-weight-semibold text-uppercase " >
-                    {{ publicaciones.ficha1.descipcion }}
-                </div>
-                </div>
-              </div>
-            </ng-container>
-           </div>
+          <ng-content select="ng-container"></ng-content>   
+        </div>
           </div>
     </section>
 </div>
