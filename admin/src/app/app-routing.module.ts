@@ -15,6 +15,7 @@ import { ConfigColorComponent } from './component/config-color/config-color.comp
 import { SuscripcionComponent } from './component/suscripcion/suscripcion.component';
 
 import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
+import { GestionUsuarioComponent } from './component/gestion-usuario/gestion-usuario.component';
 
 
 

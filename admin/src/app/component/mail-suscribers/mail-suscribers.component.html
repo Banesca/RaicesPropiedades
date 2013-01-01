@@ -1,33 +1,20 @@
-
-<div class="container-fluid" style="max-width: 100%;">
+<div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
         <h3 class="py-5 text-center font-weight-bold">Mail a Suscriptores</h3>
-        <!--
-        <div [formGroup]="filterForm">
-        -->
-          <div class="form-group mx-auto" style="width: 100%; display: flex;">
             <button
             (click)="nuevo()"
             type="button"
             class="btn btn-primary"
-            class="btn btn-success mr-2"
+            class="btn btn-success my-4"
             [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
           >
             <i class="fa fa-plus"></i>
            Nuevo
            </button>
-      <!-- 
-            <button type="button" class="btn btn-success ml-2" (click)="filtrar()"
-              [disabled]=" inPromise">
-              Buscar
-            </button> -->
-          
           </div>
-  
-      <!--  </div> -->
       </div>
-    </div>
+
 
   
 <div *ngIf="mFormaEstado == enCRUD.Eliminar">

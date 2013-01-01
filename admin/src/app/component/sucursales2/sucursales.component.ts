@@ -16,7 +16,7 @@ export class Sucursales2Component implements OnInit {
   sucursalList: ISucursales[] = [];
   sucursalSelected: ISucursales;
   myForm: FormGroup
-  mLoading: boolean = true;
+  mLoading: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -32,7 +32,6 @@ export class Sucursales2Component implements OnInit {
   }
 
   ngOnInit() {
-    this.mLoading = false;
     this.mFormaEstado = enCRUD.Eliminar;
     this.getSucursalList();
 

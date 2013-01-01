@@ -1,32 +1,24 @@
-<div class="container-fluid" style="max-width: 100%;">
-  <div class="row">
-    <div class="col-md-12" style="padding: 0px;">
-      <h3 class="py-5 text-center font-weight-bold">Sucursales</h3>
 
-      <div class="form-group mx-auto" style="width: 100%; display: flex;">
-        <div class="form-group mx-auto" style="width: 100%; display: flex;">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="py-5 text-center font-weight-bold">Sucursales</h3>
           <button
           (click)="nuevo()"
           type="button"
           class="btn btn-primary"
-          class="btn btn-success mr-2"
+          class="btn btn-success my-4"
           [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
         >
           <i class="fa fa-plus"></i>
          Nuevo
          </button>
-
-
-
-      </div>
-
+        </div>
     </div>
-  </div>
-</div>
-<!-- listado de Sucursales -->
-<mat-spinner *ngIf="mLoading" style="margin:0 auto;" [diameter]="50"></mat-spinner>
 
-<div  *ngIf="mFormaEstado == enCRUD.Eliminar && !mLoading">
+
+<!-- listado de Sucursales -->
+<div  *ngIf="mFormaEstado == enCRUD.Eliminar">
   <div class="row">
     <div class="col-md-12">
       <div class="table-responsive">
@@ -82,14 +74,19 @@
             </tr>
           </tbody>
         </table>
-        <div *ngIf="sucursalList.length === 0 && !inPromise" class="alert alert-info" role="alert">
-          <strong>No existen</strong> Sucursales que mostrar...
-        </div>
+        <div
+        *ngIf="(sucursalList | keys).length === 0 && !mLoading"
+        class="alert alert-info"
+        role="alert"
+      >
+        <strong>No existen</strong> Sucursales que mostrar...
       </div>
-      <mat-spinner *ngIf="inPromise" style="margin:0 auto;" [diameter]="50"></mat-spinner>
-
+      <div *ngIf="mLoading" class="alert alert-warning" role="alert">
+        <strong>Cargando</strong> por favor espere...
+      </div>
     </div>
   </div>
+</div>
 </div>
 
 <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
@@ -174,7 +171,7 @@
   </div>
 </div>
 
-  <div *ngIf="mFormaEstado == enCRUD.Leer && !mLoading" class="row animated fadeIn fast">
+  <div *ngIf="mFormaEstado == enCRUD.Leer" class="row animated fadeIn fast">
     <div class="col-md-12">
       <form>
         <div class="form-group text-right">
@@ -231,3 +228,4 @@
       </form>
     </div>
   </div>
+</div>
