@@ -1,5 +1,5 @@
 
-<div class="container" style="max-width: 100%;">
+<div class="container-fluid" style="max-width: 100%;">
     <div class="row">
       <div class="col-md-12">
         <h3 class="py-5 text-center font-weight-bold">Mail a Suscriptores</h3>
@@ -28,7 +28,7 @@
       <!--  </div> -->
       </div>
     </div>
-  </div>
+
   
 <div *ngIf="mFormaEstado == enCRUD.Eliminar">
     <div class="row animated fadeIn fast">
@@ -66,7 +66,7 @@
                 <i class="fas fa-pencil-alt"></i>
                 </button>
                 <button
-                  (click)="eliminar(categoria.id)"
+                  (click)="eliminar(categoria.idSuscripcionUser)"
                   type="button"
                   class="btn mr-2 btn-danger"
                 >
@@ -113,16 +113,26 @@
             <i class="fa fa-plus"></i>
             Nuevo
           </button>
+          <button
+          *ngIf="mFormaEstado == enCRUD.Crear"
+          (click)="guardar()"
+          [disabled]="!vForma.valid"
+          style="margin: 5px"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
   
           <button
-            (click)="accion()"
+            *ngIf="mFormaEstado == enCRUD.Actualizar"
+            (click)="actualizar(mCategoriasSelect.idSuscripcionUser)"
             [disabled]="!vForma.valid"
             style="margin: 5px"
             class="btn btn-primary"
           >
             <i class="fa fa-save"></i>
-            <span *ngIf="mFormaEstado == enCRUD.Crear"> Guardar</span>
-            <span *ngIf="mFormaEstado == enCRUD.Actualizar"> Modificar</span>
+            Modificar
           </button>
         </div>
         <div class="form-group">
@@ -198,4 +208,4 @@
         </form>
       </div>
     </div>
-  
+  </div>

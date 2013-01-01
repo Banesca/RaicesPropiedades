@@ -40,10 +40,10 @@ export class MailSuscribersService {
       .toPromise();
   }
 
-  actualizarCategoria(pCategoria: IMailSuscriber, pKey: string) {
+  actualizarCategoria(pCategoria: IMailSuscriber, pKey: number) {
     const lCategoria = JSON.stringify(pCategoria);
     return this._HttpClient
-      .patch(this.mUrl + this.mService + '/' + pKey, lCategoria, {
+      .put(environment.apiHost + '/api/v1/editarSuscripcion/' + pKey + '/' , lCategoria, {
         headers: getHeaders()
       })
       .pipe(
@@ -53,9 +53,9 @@ export class MailSuscribersService {
       ).toPromise();
   }
 
-  eliminarCategoria(pKey: string) {
+  eliminarCategoria(pKey: number) {
     return this._HttpClient
-      .delete(this.mUrl + this.mService + '/' + pKey, { headers: getHeaders() })
+      .delete(environment.apiHost + '/api/v1/borrarSuscripcion' + '/' + pKey, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;

@@ -496,11 +496,11 @@ export class MailSuscribersComponent implements OnInit {
   }
 
   modificar(pCategoria: IMailSuscriber) {
-    this.mForma.setValue(pCategoria);
+    this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
   }
 
-  eliminar(pKey: string) {
+  eliminar(pKey: number) {
     this.mLoading = true;
     this._MailSuscribersService
       .eliminarCategoria(pKey)
@@ -523,32 +523,34 @@ export class MailSuscribersComponent implements OnInit {
     this.mFormaEstado = enCRUD.Leer;
   }
 
-  accion() {
+  actualizar(pKey: number) {
     this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
-    if (this.mFormaEstado === enCRUD.Crear) {
-      this.guardar();
-    } else if (this.mFormaEstado === enCRUD.Actualizar) {
-      this.actualizar();
-    }
-  }
-
-  guardar() {
     this.mLoading = true;
     this._MailSuscribersService
-      .nuevaCategoria(this.mCategoriasSelect)
+      .actualizarCategoria(this.mCategoriasSelect, pKey,)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
+        this._AlertsService.msg('OK', 'EXITO!', 'Sucursal Actualizada Correctamente.')
       })
-      .catch(error => {
+      .catch(err => {
+        // Parsear Object errors a Array de errores para poder mapearlos
+        const mapped = Object.keys(err.error.errors).map(key => ({ type: key, value: err.error.errors[key] }));
+        // Notificando Errores
+        mapped ? mapped.map(e => { this._AlertsService.msg('ERR', 'ERROR', e.value) }) :
+          err.error.message ? this._AlertsService.msg('ERR', 'ERROR', err.error.message) :
+            this._AlertsService.msg('ERR', 'ERROR', 'Error al Guardar.')
+
       });
   }
 
-  actualizar() {
+
+  guardar() {
+    this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
     this.mLoading = true;
     this._MailSuscribersService
-      .actualizarCategoria(this.mCategoriasSelect, this.mCategoriasSelect.id)
+      .nuevaCategoria(this.mCategoriasSelect)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
