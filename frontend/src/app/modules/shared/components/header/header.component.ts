@@ -8,6 +8,7 @@ import { TransactionModalComponent } from '../transaction-modal/transaction-moda
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  status = false;
   
   constructor(private modalService: NgbModal) {}
 
