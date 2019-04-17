@@ -1,0 +1,193 @@
+{
+	"variables": [],
+	"info": {
+		"name": "raices",
+		"_postman_id": "210a2549-a951-3f98-0d68-37f85dc5a669",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuarios",
+			"description": "",
+			"item": [
+				{
+					"name": "creacion de user",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/crearUser",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "pedro",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alecortez240192@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456789",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": "para crear un nuevo cliente"
+					},
+					"response": []
+				},
+				{
+					"name": "editar User",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/editarUser/3",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY4OTY3OTJkZjFhNjU3M2IwMGRlMmJhNmI0NjQ4Nzg3NGNkZjllZDBhMzUwZWM4ZDRhYzE1YTU2YmJkMDI0NzNkODk0M2U4MGJhMDk0NDA1In0.eyJhdWQiOiIxIiwianRpIjoiZjg5Njc5MmRmMWE2NTczYjAwZGUyYmE2YjQ2NDg3ODc0Y2RmOWVkMGEzNTBlYzhkNGFjMTVhNTZiYmQwMjQ3M2Q4OTQzZTgwYmEwOTQ0MDUiLCJpYXQiOjE1NTU1MjMwOTMsIm5iZiI6MTU1NTUyMzA5MywiZXhwIjoxNTg3MTQ1NDkzLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.gx2hD_tVMnEM0RmB93Za1wKBSbdi0eWcoVY1midesbkKvlTJ0xpNQuPU-EF-Hgi6un6VdCkEovrDhyiWT1hLuiMHsxUoejseTAd_fKVlf6ZJ88p0zVdcAuuo0vReeDr1lgM-vc0H9Lt0gYDSSoCsOsMXoQXkS_5eqIexASF653ewiMtGWmoRXFUua_EvIleXwC9B8OFOfx-uBJZuUJvnrGj7UuOG7qOjxINMdDFXSCYgGUgcorG9ueY5AkfY6Rqn8Mz0wehsIH2sZjAhHZxmf0i_0pUtMmz46S2lEVl_8XJvSm1ODGD5OQAXNTuaw2hrUbt30Vhk9OoJidJHu_Ag60fmKo04j8xP1Um-kztQVMjqTeOa3ArEq-GjxsDUftxzTGFPs0zoTLDkoVbGbrDKw7aaWBXss3i3Mq1Zv0OYxb7i13aLyoYB0_DvdmdX_40xW167mtwiUOT-q5MJ4U91niwdQBuOclYN3X89ozalL9FfWtLFKQwZaJPS0IUXKu9syCqAw0-mOR4mN3CxCJtQEUtD5gVvve-U6K2qVImsgp7ZUkc6J3zMFm3oqOfwOt2lN9GaQY8TwxKggd-0c1gILJQcaLiiOd8aJq-odpFvxMkBr7w6Mvc5ADCaID-Dcny32kzkrz-UeZXJ-1MsD1w4qhQ8WiY4c_EpNOfU14xi_tg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "alejandro parrilla",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alecortez240192@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar usuarios",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/listarUsers",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "offset",
+									"value": "1",
+									"description": "opcional",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"description": "opcional",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "borrar usuario",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/borrarUser/3",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY4OTY3OTJkZjFhNjU3M2IwMGRlMmJhNmI0NjQ4Nzg3NGNkZjllZDBhMzUwZWM4ZDRhYzE1YTU2YmJkMDI0NzNkODk0M2U4MGJhMDk0NDA1In0.eyJhdWQiOiIxIiwianRpIjoiZjg5Njc5MmRmMWE2NTczYjAwZGUyYmE2YjQ2NDg3ODc0Y2RmOWVkMGEzNTBlYzhkNGFjMTVhNTZiYmQwMjQ3M2Q4OTQzZTgwYmEwOTQ0MDUiLCJpYXQiOjE1NTU1MjMwOTMsIm5iZiI6MTU1NTUyMzA5MywiZXhwIjoxNTg3MTQ1NDkzLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.gx2hD_tVMnEM0RmB93Za1wKBSbdi0eWcoVY1midesbkKvlTJ0xpNQuPU-EF-Hgi6un6VdCkEovrDhyiWT1hLuiMHsxUoejseTAd_fKVlf6ZJ88p0zVdcAuuo0vReeDr1lgM-vc0H9Lt0gYDSSoCsOsMXoQXkS_5eqIexASF653ewiMtGWmoRXFUua_EvIleXwC9B8OFOfx-uBJZuUJvnrGj7UuOG7qOjxINMdDFXSCYgGUgcorG9ueY5AkfY6Rqn8Mz0wehsIH2sZjAhHZxmf0i_0pUtMmz46S2lEVl_8XJvSm1ODGD5OQAXNTuaw2hrUbt30Vhk9OoJidJHu_Ag60fmKo04j8xP1Um-kztQVMjqTeOa3ArEq-GjxsDUftxzTGFPs0zoTLDkoVbGbrDKw7aaWBXss3i3Mq1Zv0OYxb7i13aLyoYB0_DvdmdX_40xW167mtwiUOT-q5MJ4U91niwdQBuOclYN3X89ozalL9FfWtLFKQwZaJPS0IUXKu9syCqAw0-mOR4mN3CxCJtQEUtD5gVvve-U6K2qVImsgp7ZUkc6J3zMFm3oqOfwOt2lN9GaQY8TwxKggd-0c1gILJQcaLiiOd8aJq-odpFvxMkBr7w6Mvc5ADCaID-Dcny32kzkrz-UeZXJ-1MsD1w4qhQ8WiY4c_EpNOfU14xi_tg",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"url": "http://127.0.0.1:8000/api/v1/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "alecortez240192@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456789",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
