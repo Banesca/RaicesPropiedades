@@ -23,7 +23,6 @@ Route::group([ 'prefix' => 'auth' ], function() {
 
 Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::post('login', 'API\AuthController@login'); //logear
-
     Route::post('crearUser', 'UserController@store');
     Route::post('listarUsers', 'UserController@listar');
     Route::post('buscadorPersonas', 'UserController@buscarPersonas');
