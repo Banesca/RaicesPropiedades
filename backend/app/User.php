@@ -34,9 +34,11 @@ class User extends Authenticatable {
     protected $hidden = [
         'password',
         'remember_token',
-        'tockenActivarCuenta'
+        'tockenActivarCuenta',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
-
 
 
     protected $dates = [ 'created_at', 'deleted_at' ];
@@ -50,27 +52,27 @@ class User extends Authenticatable {
 
     public function generateTokenActivacion() {
         $this->tockenActivarCuenta = str_random(30);
-        $this->statusUser=0;
+        $this->statusUser          = 0;
         $this->save();
 
         return $this->tockenActivarCuenta;
     }
 
-   /* public function perfil() {
-        return $this->belongsTo('App\Perfil', 'fk_idPerfil');
-    }*/
+    /* public function perfil() {
+         return $this->belongsTo('App\Perfil', 'fk_idPerfil');
+     }*/
 
     public function statusUser() {
         return $this->belongsTo('App\StatusUser', 'fk_statusUser');
     }
 
-   /*public function ReclamosSugerencias() {
-        return $this->hasMany('App\ReclamosYSugerencia', 'fk_idUser'); //muchos reclamos
-    }
+    /*public function ReclamosSugerencias() {
+         return $this->hasMany('App\ReclamosYSugerencia', 'fk_idUser'); //muchos reclamos
+     }
 
-    public function notificacionPorUser() {
-        return $this->hasMany('App\NotificacionPorUser', 'idUser');
-    }*/
+     public function notificacionPorUser() {
+         return $this->hasMany('App\NotificacionPorUser', 'idUser');
+     }*/
 
 
 }

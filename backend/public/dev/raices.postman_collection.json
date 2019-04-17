@@ -157,6 +157,236 @@
 			]
 		},
 		{
+			"name": "modulos",
+			"description": "",
+			"item": [
+				{
+					"name": "Agregar modulo",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/modulo/agregar",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "modulo",
+									"value": "Usuarios",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Editar modulo",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/modulo/editar/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "modulo",
+									"value": "Usuarios MOD",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Modulo para la gestion de user MOD",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar modulo",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/modulo/borrar/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Lista modulo",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/modulo/listar",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "offset",
+									"value": "",
+									"description": "opcional",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "opcional",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Asiganar modulo",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/usuario/asignarModulo",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "fk_idModulo",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Listar asignaciones de modulos",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/asinacion/modulos/listar",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "offset",
+									"value": "",
+									"description": "opcional",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "opcional",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar asignacion del modulos",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/usuario/EliminarAsignacionModulo/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "login",
 			"request": {
 				"url": "http://127.0.0.1:8000/api/v1/login",
