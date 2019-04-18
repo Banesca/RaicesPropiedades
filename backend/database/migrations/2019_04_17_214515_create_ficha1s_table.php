@@ -16,8 +16,13 @@ class CreateFicha1sTable extends Migration
         Schema::create('tb_ficha1', function (Blueprint $table) {
             $table->increments('idFicha1');
             $table->string('descipcion')->nullable();
-            $table->string('descipcion')->nullable();
+            $table->integer('fk_tipoPropiedad')->unsigned()->nullable();
+            $table->string('esUnaPropiedad')->nullable();
+            $table->string('esUnaNovedad')->nullable();
+            $table->string('apareceEnGaleriaInicia')->nullable();
+            $table->string('estado')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
