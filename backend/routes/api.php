@@ -24,6 +24,12 @@ Route::group([ 'prefix' => 'auth' ], function() {
         Route::delete('modulo/borrar/{idM}', 'ModuloController@destroy');
         Route::post('usuario/asignarModulo', 'ModulosDelUserController@asignarModuloAUser');
         Route::delete('usuario/EliminarAsignacionModulo/{idMU}', 'ModulosDelUserController@eliminarAsignacion');
+
+        Route::post('config/agregarActualizar','ConfigGeneralController@storeOrUpdate');
+
+        Route::post('addMail','MailController@addMail');
+        Route::post('editMail/{idMail}','MailController@update');
+        Route::delete('borrarMail/{idMail}','MailController@destroy');
     });
 });
 
@@ -36,6 +42,10 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
 
     Route::post('modulo/listar', 'ModuloController@listar');
     Route::post('asinacion/modulos/listar', 'ModulosDelUserController@listar');
+
+    Route::get('config/get','ConfigGeneralController@getConfig');
+
+    Route::get('listar/mails','MailController@listar');
 });
 
 
