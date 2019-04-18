@@ -11,10 +11,15 @@ class ModuloController extends Controller {
 
     public function store(Request $request) {
         $this->validate($request, [
-            'modulo' => 'required|unique:tb_modulos,modulo,'.$request->idM.',idM,deleted_at,NULL',
+            'modulo'      => 'required|unique:tb_modulos,modulo,'.$request->idM.',idM,deleted_at,NULL',
+            'url'         => 'required',
+            'iconomodulo' => 'required',
         ], [
-            'modulo.required' => 'El Nombre es requerido',
-            'modulo.unique'   => 'Este Email ya se encuentra en uso',
+            'modulo.required'      => 'El modulo es requerido',
+            'modulo.unique'        => 'Este Email ya se encuentra en uso',
+            'url.required'         => 'La url es requerida',
+            'iconomodulo.required' => 'El icon es requerido',
+
         ]);
 
         DB::beginTransaction();

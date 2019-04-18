@@ -188,7 +188,19 @@
 								},
 								{
 									"key": "descripcion",
-									"value": "",
+									"value": "hola",
+									"description": "opcional",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "www.google.co.ve",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "iconomodulo",
+									"value": "fgh fhgfh fhdhhdhfhd dgdhdhdhdhdgghhdh",
 									"description": "",
 									"type": "text"
 								}
@@ -227,6 +239,18 @@
 								{
 									"key": "descripcion",
 									"value": "Modulo para la gestion de user MOD",
+									"description": "opcional",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "adasdsa",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "iconomodulo",
+									"value": "34234234234324242",
 									"description": "",
 									"type": "text"
 								}

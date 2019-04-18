@@ -17,6 +17,8 @@ class CreateModulosTable extends Migration
             $table->increments('idM');
             $table->string('modulo')->nullable();
             $table->string('descripcion')->nullable();
+            $table->string('url')->nullable();
+            $table->text('iconomodulo')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -13,6 +13,9 @@ class Modulo extends Model {
     protected $fillable = [
         'modulo',
         'descripcion',
+        'url',
+        'iconomodulo',
+
     ];
 
     protected $hidden = [
