@@ -387,6 +387,200 @@
 			]
 		},
 		{
+			"name": "ConfigGeneral",
+			"description": "",
+			"item": [
+				{
+					"name": "Agregar o actualizar configuracion general",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/config/agregarActualizar",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "quienesSomos",
+									"value": "holadf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "direcciondf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "celular1",
+									"value": "0424917536d",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "celular2",
+									"value": "01154545dfdf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "test@test.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "url_face",
+									"value": "kjldf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "url_intagram",
+									"value": "jkldf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "url_twitter",
+									"value": "jklf",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener configuracion general",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/config/get",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mail",
+			"description": "",
+			"item": [
+				{
+					"name": "agregar mail",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/addMail",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ho1@gmail.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Editar mail",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/editMail/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ho1@gmail.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Lista de mails",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/listar/mails",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ho1@gmail.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "login",
 			"request": {
 				"url": "http://127.0.0.1:8000/api/v1/login",
