@@ -47,12 +47,12 @@ class ModuloController extends Controller {
         }
     }
 
-    public function update(Request $request, $idM) {
+    public function update(Request $request, $idModulo) {
 
         DB::beginTransaction();
 
         try {
-            $modulo = Modulo::findOrFail($idM);
+            $modulo = Modulo::findOrFail($idModulo);
             $modulo->fill($request->all());
 
             $modulo->save();
@@ -75,12 +75,12 @@ class ModuloController extends Controller {
         }
     }
 
-    public function destroy($idM) {
+    public function destroy($idModulo) {
 
         DB::beginTransaction();
 
         try {
-            $modulo = Modulo::find($idM);
+            $modulo = Modulo::find($idModulo);
 
             if (is_null($modulo)) {
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ModulosDelUser extends Model {
     use SoftDeletes;
     protected $table      = 'tb_modulos_del_users';
-    protected $primaryKey = 'idMU';
+    protected $primaryKey = 'idModuloUser';
 
     protected $fillable = [
         'fk_idUser',

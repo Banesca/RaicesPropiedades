@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Modulo extends Model {
     use SoftDeletes;
     protected $table      = 'tb_modulos';
-    protected $primaryKey = 'idM';
+    protected $primaryKey = 'idModulo';
 
     protected $fillable = [
         'modulo',
         'descripcion',
         'url',
         'iconomodulo',
-
     ];
 
     protected $hidden = [

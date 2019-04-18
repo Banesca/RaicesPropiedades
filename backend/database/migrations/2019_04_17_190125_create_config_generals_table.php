@@ -12,7 +12,7 @@ class CreateConfigGeneralsTable extends Migration {
      */
     public function up() {
         Schema::create('tb_config_general', function(Blueprint $table) {
-            $table->increments('idCG');
+            $table->increments('idConfigGeneral');
             $table->string('quienesSomos')->nullable();
             $table->mediumText('direccion')->nullable();
             $table->string('celular1')->nullable();

@@ -14,7 +14,7 @@ class CreateModulosTable extends Migration
     public function up()
     {
         Schema::create('tb_modulos', function (Blueprint $table) {
-            $table->increments('idM');
+            $table->increments('idModulo');
             $table->string('modulo')->nullable();
             $table->string('descripcion')->nullable();
             $table->string('url')->nullable();

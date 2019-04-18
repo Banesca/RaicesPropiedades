@@ -52,12 +52,12 @@ class ModulosDelUserController extends Controller {
 
     }
 
-    public function eliminarAsignacion($idMU){
+    public function eliminarAsignacion($idModuloUser){
 
         DB::beginTransaction();
 
         try {
-            $mod = ModulosDelUser::find($idMU);
+            $mod = ModulosDelUser::find($idModuloUser);
 
             if (is_null($mod)) {
 

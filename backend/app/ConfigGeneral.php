@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ConfigGeneral extends Model {
     use SoftDeletes;
     protected $table      = 'tb_config_general';
-    protected $primaryKey = 'idCG';
+    protected $primaryKey = 'idConfigGeneral';
 
     protected $fillable = [
         'quienesSomos',

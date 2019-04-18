@@ -10,7 +10,7 @@ class ModulosDelSistemaSeeder extends Seeder {
      */
     public function run() {
         \App\Modulo::create([
-            'idM'         => 1,
+            'idModulo'         => 1,
             'modulo'      => 'Usuarios',
             'descripcion' => 'Gestion se Usuarios',
             'url'         => 'www.google.co.ve',
@@ -18,7 +18,7 @@ class ModulosDelSistemaSeeder extends Seeder {
         ]);
 
         \App\Modulo::create([
-            'idM'         => 2,
+            'idModulo'         => 2,
             'modulo'      => 'Publicaciones',
             'descripcion' => 'Gestion de Publicaciones',
             'url'         => 'www.google.co.ve',
@@ -26,7 +26,7 @@ class ModulosDelSistemaSeeder extends Seeder {
         ]);
 
         \App\Modulo::create([
-            'idM'         => 3,
+            'idModulo'         => 3,
             'modulo'      => 'Sucursales',
             'descripcion' => 'Gestion de Sucursales',
             'url'         => 'www.google.co.ve',
@@ -34,7 +34,7 @@ class ModulosDelSistemaSeeder extends Seeder {
         ]);
 
         \App\Modulo::create([
-            'idM'         => 4,
+            'idModulo'         => 4,
             'modulo'      => 'Editar Perfil',
             'descripcion' => 'Gestion del Perfil',
             'url'         => 'www.google.co.ve',
@@ -42,7 +42,7 @@ class ModulosDelSistemaSeeder extends Seeder {
         ]);
 
         \App\Modulo::create([
-            'idM'         => 5,
+            'idModulo'         => 5,
             'modulo'      => 'Config General',
             'descripcion' => 'Gestion Config General',
             'url'         => 'www.google.co.ve',
@@ -50,7 +50,7 @@ class ModulosDelSistemaSeeder extends Seeder {
         ]);
 
         \App\Modulo::create([
-            'idM'         => 6,
+            'idModulo'         => 6,
             'modulo'      => 'Envio de Email',
             'descripcion' => 'Gestion del Email',
             'url'         => 'www.google.co.ve',
@@ -58,7 +58,7 @@ class ModulosDelSistemaSeeder extends Seeder {
         ]);
 
         \App\Modulo::create([
-            'idM'         => 7,
+            'idModulo'         => 7,
             'modulo'      => 'Galeria del Home',
             'descripcion' => 'Gestion de Galeria del Home',
             'url'         => 'www.google.co.ve',
@@ -66,8 +66,8 @@ class ModulosDelSistemaSeeder extends Seeder {
         ]);
 
         \App\Modulo::create([
-            'idM'         => 8,
-            'modulo'      => 'Tasación',
+            'idModulo'         => 8,
+            'modulo'      => 'Tasacion',
             'descripcion' => 'Gestion de Tasación',
             'url'         => 'www.google.co.ve',
             'iconomodulo' => '',

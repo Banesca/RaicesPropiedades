@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateModulosDelUsersTable extends Migration
+class CreateFicha123sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateModulosDelUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_modulos_del_users', function (Blueprint $table) {
-            $table->increments('idModuloUser');
-            $table->integer('fk_idUser')->unsigned();
-            $table->integer('fk_idModulo')->unsigned();
-            $table->softDeletes();
+        Schema::create('ficha123s', function (Blueprint $table) {
+            $table->increments('id');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateModulosDelUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_modulos_del_users');
+        Schema::dropIfExists('ficha123s');
     }
 }
