@@ -85,7 +85,6 @@ class MailController extends Controller {
             $mail->delete();
             $response = [
                 'msj'  => 'Mail eliminado correctamente',
-                'user' => $mail,
             ];
 
             DB::commit();
