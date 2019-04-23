@@ -601,6 +601,156 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "borar Mail",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/borrarMail/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjY0YjlmZTUwMmNmZTI1ODg0NjQ3MzdjYWI3ODVkNzZkNmY1MzYxZTNlYjdkNDU5ZTA5NGU2NWM0NTRjNGQ2ZmUzMGYyZGIxYjVhMDMyNDJmIn0.eyJhdWQiOiIxIiwianRpIjoiNjRiOWZlNTAyY2ZlMjU4ODQ2NDczN2NhYjc4NWQ3NmQ2ZjUzNjFlM2ViN2Q0NTllMDk0ZTY1YzQ1NGM0ZDZmZTMwZjJkYjFiNWEwMzI0MmYiLCJpYXQiOjE1NTU5ODQwNTUsIm5iZiI6MTU1NTk4NDA1NSwiZXhwIjoxNTg3NjA2NDU0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.EN0yPSO8xyVD_W2RXPla1K0LMO12sL6Oowvk6K4U5imSkOJxGf9B5HJcXbyDafMJQD8ilnktdbQMGDls2wRn0p9zF3RJC-qeghaFcpJSV1U0citHV5L94QdgwSJSEiarPrRrWROPwekQAOQbapb9APXkFgiaacM4eLtjr8bmOlF5gvnSog5cCh8eH2G-_6iLfFumNfUr7sq35KUTIuXsGdgkRWkttmEoq8qNnyAorbDYEv2ZUmtQVinmE0leoB4PB9fzNDHIpHzebNBfXUEK6sqNU2BPxTp4olw3goB4KsslaoB-zYsemBE7YbRwllLyRArgyymUSm5d5--d4Gk7XcJ2g1CxO0zCPimTfgVVY330NIba6-JmPc3pfHFu_2LWPeWAlTOGFdJ9KmjCP3KjiBGFtfQITq4bevc2XRqWKdflbCFr9jD8Yk3XgtsSlr_VIzNBf3XmxkKety6RA9nd2LzjES1dKc8o5Kqf042Oafq6iYUli1H7oMd91xsghc5GQG20WbLQqd0JJIhGbyOTbOSADl46aqNIHti4P62YZpJAlZ0L-mv-s-suBNKQVN9laP50k7vnY_UAdOZFyqCqf55UNz_7fZ3r3dAxPsA6g6rUEm76RJiT4VWfheKAaEa7BnI1IxKEXjhNgYZkfAqe4jAHBudcGm-Xv_rBDdBHa4g",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sucursales",
+			"description": "",
+			"item": [
+				{
+					"name": "crear sucursal",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/sucursal/add",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombreSucursal",
+									"value": "hola",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "telefonoSucursal",
+									"value": "5454545",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "emailSucursal",
+									"value": "hyh@gmai.com",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "direccionSucursal",
+									"value": "hhj",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "editar sucursal",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/sucursal/edit/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombreSucursal",
+									"value": "holae",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "telefonoSucursal",
+									"value": "5454545e",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "emailSucursal",
+									"value": "hyh@gmai.come",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "direccionSucursal",
+									"value": "hhje",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "borar sucursal",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/sucursal/borrar/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
