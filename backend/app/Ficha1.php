@@ -16,7 +16,7 @@ class Ficha1 extends Model {
         'esUnaPropiedad',
         'esUnaNovedad',
         'apareceEnGaleriaInicia',
-        'estado',
+        'fk_estado_publicacion',
     ];
 
     protected $hidden = [
@@ -24,6 +24,14 @@ class Ficha1 extends Model {
         'updated_at',
         'deleted_at',
     ];
+
+    public function estadoPublicacion() {
+        return $this->belongsTo('App\EstadoPublicacion', 'fk_estado_publicacion');
+    }
+
+    public function tipoPropiedad() {
+        return $this->belongsTo('App\TipoPropiedad', 'fk_tipoPropiedad');
+    }
 
 
 }

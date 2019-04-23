@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusDelUserSeeder::class);
         $this->call(ModulosDelSistemaSeeder::class);
         $this->call(TipoPropiedadSeeder::class);
+        $this->call(EstadoPublicacionSeeder::class);
+        $this->call(TipoOperacionSeeder::class);
        /* $this->call(PerfilesSeeder::class);
         $this->call(SatateOrderSeeder::class);
         $this->call(SectionAppSeeder::class);

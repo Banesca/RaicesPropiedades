@@ -20,7 +20,7 @@ class CreateFicha1sTable extends Migration
             $table->string('esUnaPropiedad')->nullable();
             $table->string('esUnaNovedad')->nullable();
             $table->string('apareceEnGaleriaInicia')->nullable();
-            $table->string('estado')->nullable();
+            $table->integer('fk_estado_publicacion')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

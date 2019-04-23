@@ -10,7 +10,8 @@ class TipoPropiedadSeeder extends Seeder {
      */
     public function run() {
 
-        $as = [ 'Departamento',
+        $as = [
+            'Departamento',
             'Departamento Tipo Casa',
             'Casa',
             'Quinta',

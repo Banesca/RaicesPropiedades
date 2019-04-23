@@ -13,9 +13,18 @@ class CreateFicha2sTable extends Migration
      */
     public function up()
     {
-        Schema::create('ficha2s', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('tb_ficha2s', function (Blueprint $table) {
+            $table->increments('idFicha2');
+            $table->string('imagen1')->nullable();
+            $table->string('imagen2')->nullable();
+            $table->string('imagen3')->nullable();
+            $table->string('imagen4')->nullable();
+            $table->string('imagen5')->nullable();
+            $table->string('imagen6')->nullable();
+            $table->string('imagen7')->nullable();
+            $table->string('imagen_para_galeria')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +35,6 @@ class CreateFicha2sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ficha2s');
+        Schema::dropIfExists('tb_ficha2s');
     }
 }
