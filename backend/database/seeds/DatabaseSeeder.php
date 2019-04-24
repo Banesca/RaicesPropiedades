@@ -17,21 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoPropiedadSeeder::class);
         $this->call(EstadoPublicacionSeeder::class);
         $this->call(TipoOperacionSeeder::class);
-       /* $this->call(PerfilesSeeder::class);
-        $this->call(SatateOrderSeeder::class);
-        $this->call(SectionAppSeeder::class);
-        $this->call(StatusReclamo::class);
-        $this->call(StatusSistemaSeeder::class);
-
-        //$this->call(ProductosSeeder::class);
-        //$this->call(OrderSeed::class);
-        $this->call(TipoDeFacturaSeeder::class);
-        $this->call(StatusTurnoSeeder::class);
-        $this->call(TipoDescuetoSeeder::class);
-        $this->call(TipoOrdenSeeder::class);
-        $this->call(MetodoEntregaSeeder::class);
-        $this->call(SeccionesPaginaSeed::class);        
-        $this->call(footerInicialSeeder::class);
-        $this->call(StatusNotificacionSeeder::class);*/
+        $this->call(MonedasSeeder::class);
     }
 }
