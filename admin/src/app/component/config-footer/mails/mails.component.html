@@ -1,0 +1,21 @@
+<div class="card mt-4 row" style="overflow-x:hidden;">
+  <div class="card-body">
+    <div [formGroup]="myForm" class="col-12">
+      <div class="form-group">
+        
+        <input type="input" formControlName="correo" class="form-control" placeholder="Escriba El Correo">
+        <small *ngIf="myForm.get('correo').invalid" >Es requerido</small><br>
+        <small *ngIf="myForm.get('correo').invalid" >Debe ser correo electronico</small>
+      </div>
+    </div>
+  </div>
+  <div class=" row">
+    <div class="col-6 mt-2 text-center">
+      <button class="btn btn-danger" (click)="close()">Cancelar</button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="btn btn-success"  (click)="add()">Añadir</button>
+    </div>
+  </div>
+
+</div>

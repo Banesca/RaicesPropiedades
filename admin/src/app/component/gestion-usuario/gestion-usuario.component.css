@@ -1,0 +1,32 @@
+img.clickeable{
+    cursor: pointer;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.12);
+}
+
+img.clickeable:hover{
+    border: 3px #367fa9 solid;
+}
+.boton-gestion{
+    width: 48%;
+    margin-right: 5px;
+    margin-bottom: 10px;
+
+}
+li{
+    display: block;
+}
+li button{
+    width: 100%;
+    margin-left: 0px!important;
+    
+}
+h5{
+    margin-top: 1.5em;
+    font-weight: bold;
+}
+.texto{
+    color: blue;
+}
+.container{
+    min-width: 700px;
+}

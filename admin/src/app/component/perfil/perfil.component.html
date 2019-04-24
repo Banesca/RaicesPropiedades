@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <!--   <div class="col-md-4">
+          <div class="form-group">
+              <img src="{{img_perfil}}" class="img-fluid" alt="" width="100"> <br>    
+              <label for="">Editar Foto de Perfil </label> <br>
+              <input type="file" (change)="upImgPerfil($event)"> <br>
+              <button class="btn btn-primary" (click)="upgradeImgPerfil()">Cambiar foto de perfil</button>
+          </div>
+      </div> -->
+      <div [formGroup]="myForm" class="col-md-12" >
+            <div class="form-group">
+                <label for="">Nombre</label>
+                <input type="text" [(ngModel)]="form.name" formControlName="name" class="form-control">
+                <small *ngIf="myForm.get('name').invalid">Es requerido</small>
+            </div>
+            <div class="form-group">
+                <label for="">Correo Electronico</label>
+                <input type="text" [(ngModel)]="form.email" formControlName="email" class="form-control">
+                <small *ngIf="myForm.get('email').invalid">Es requerido</small><br>
+                <small *ngIf="myForm.get('email').invalid">Debe ser Email</small>
+            </div>
+            <div class="form-group">
+                <label for="">Contraseña</label>
+                <input  [(ngModel)]="form.password" type="password" formControlName="password" class="form-control"(keyup)="validPasswordConfirm()">
+              
+            </div> 
+            <div class="form-group">
+                    <label for="">Confirmar Contraseña</label>
+                    <input  [(ngModel)]="form.passwordConfirm" type="password" formControlName="passwordConfirm" (keyup)="validPasswordConfirm()" class="form-control">
+                    <small *ngIf="myForm.get('passwordConfirm').invalid">Contraseñas No Coinciden</small>
+                </div>        
+            <div class="form-group">
+              <button class="btn btn-primary" (click)="upgradeFormPerfil()" [disabled]="myForm.invalid">Actualizar</button>
+            </div> 
+      </div>
+  </div>
+</div>

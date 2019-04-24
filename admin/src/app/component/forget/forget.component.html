@@ -1,0 +1,27 @@
+<div class="modal fade" id="forgetModal" tabindex="-1" role="dialog" aria-labelledby="forgetModalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-naranja">
+          <h5 class="modal-title txt-blanco" id="forgetModalTitle">Recuperar mi contraseña</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="txt-blanco">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">  
+          <form [formGroup]="myForm">
+            <div class="form-group">
+              <label for="">Escribe tu correo electronico</label> <br>
+              <input type="email" placeholder="Correo Electronico" formControlName='email'  class="form-control">
+              <div class="alert alert-warning" *ngIf="showMsj" role="alert" style="margin-top:2%;">Si no recibió el mail en unos minutos revisé la bandeja de spam </div>             
+            </div>    
+          </form>        
+        </div>
+        <div class="modal-footer">
+            <mat-spinner *ngIf="inPromise" diameter="30" style="margin: 0 auto"></mat-spinner>
+            <div *ngIf='!inPromise'>
+              <button class="btn btn-primary" [disabled]='!myForm.valid' (click)="newForget()">Listo, enviar</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,14 @@
+#nav-lateral{
+  padding-top: 15%;
+}
+
+#nav-lateral a{
+  color: black;
+  text-decoration: none;
+  margin-bottom: 3%;
+}
+
+#nav-lateral a:hover{
+  background-color: azure;
+  color: black;
+}

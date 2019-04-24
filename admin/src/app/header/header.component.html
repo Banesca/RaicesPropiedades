@@ -1,0 +1,60 @@
+<header class="main-header">
+
+  <!-- Logo -->
+  <a href="index2.html" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>A</b>LT</span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><b>Raíces </b></span>
+  </a>
+
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top row">
+    <!-- Sidebar toggle button-->
+    <div class="col-3">
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" (click)="toggle()" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+    </div>
+    <!-- Navbar Right Menu -->
+    <div class="navbar-custom-menu col-9 d-flex justify-content-end">
+      <ul class="nav navbar-nav">
+
+        <!-- User Account: style can be found in dropdown.less -->
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="hidden-xs">{{dataUser.userEmail}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <!-- User image -->
+            <!-- <li class="user-header"> -->
+            <!-- <img src="{{dataUser.img_perfil}}" class="img-circle" alt="User Image"> -->
+            <!-- 
+                <p>
+                  {{dataUser.userName}}
+                  <small>Perfil</small>
+                </p>
+              </li> -->
+            <!-- Menu Body -->
+
+            <!-- Menu Footer-->
+            <li class="user-footer">
+            
+              <div class="btn btn-success btn-flat btn-block text-center"><a style="color:white;" routerLink="/perfil" >Editar Perfil</a></div>
+              <div class="btn btn-danger btn-flat btn-block text-center" (click)="salirLogin()">Cerrar Sesion</div>
+              <!-- <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                </div>
+                <div class="pull-right">
+                  
+                </div> -->
+            </li>
+          </ul>
+        </li>
+        <!-- Control Sidebar Toggle Button -->
+
+      </ul>
+    </div>
+
+  </nav>
+</header>

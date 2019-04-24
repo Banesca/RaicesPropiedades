@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/bootstrap.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+@import '~ngx-toastr/toastr.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+.pac-container {
+    z-index: 10000 !important;
+}
+
+.font-light{ font-family: 'Open Sans', sans-serif; font-weight: 300; }
+.font-bold{ font-family: 'Open Sans', sans-serif; font-weight: 700 }
+.txt-blanco{ color: #ffffff }
+.ngx-datatable .datatable-footer .datatable-pager .pager li a {
+    color: black !important;
+}

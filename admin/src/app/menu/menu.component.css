@@ -1,0 +1,8 @@
+.treeview-menu{
+    /* width: 300px!important; */
+    width:auto!important;
+    display: block;
+}
+span{
+    margin-left: 5px;
+}

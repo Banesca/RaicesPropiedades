@@ -1,0 +1,49 @@
+<!--Segundo Nav-->
+<div class="container-fluid">
+  <div class="row" style="padding-top: 2%; padding-bottom: 2%;">
+    <div class="col-md-4">
+      <!-- Logo -->
+      <img *ngIf="c_h.set_logo" src="{{c_h.set_logo}}" alt="" class="img-fluid mx-auto d-block">
+      <!-- <img src="../../assets/logo.png" class="img-fluid" alt=""> -->
+    </div>
+    <div class="col-md-8">
+      <div id="searchInput" style="margin-top:5%;">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Buscador" aria-label="Buscador" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-sm" type="button" id="button-addon2" (click)="close_buscar()">
+              <img src="../../assets/x.png" class="img-fluid" alt=""  style="cursor:pointer">
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="nav-dos">
+          <ul class="nav font-light justify-content-end" style="margin-top:3%; font-size:18px;">
+              <li class="nav-item txt-negro">
+                <a href="#" class="nav-link active font-bold">OFERTAS</a>
+              </li>
+              <li class="nav-item txt-negro">
+                  <a href="#" class="nav-link" data-toggle="modal" data-target="#mascotasModal">MASCOTAS</a>
+              </li>
+              <li class="nav-item txt-negro">
+                <a href="#" class="nav-link" data-toggle="modal" data-target="#marcaModal">MARCAS</a>
+              </li>
+              <li class="nav-item txt-negro">
+                <a href="#" class="nav-link">SERVICIOS</a>
+              </li>
+              <li class="nav-item txt-negro">
+                  <a href="#" class="nav-link">BLOG</a>
+              </li>
+              <li class="nav-item txt-negro">
+                <a href="#" class="nav-link">RECOMPRAR</a>
+              </li>
+              <li class="nav-item txt-negro">
+                <a href="#" class="nav-link">
+                  <img src="../../assets/lupa.png" class="img-fluid" alt="" (click)="buscar()" style="cursor:pointer">
+                </a>
+              </li>
+            </ul>
+      </div>
+    </div>
+  </div>
+</div>
