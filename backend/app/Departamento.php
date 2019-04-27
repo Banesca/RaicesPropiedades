@@ -5,8 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Departamento extends Model
-{
+class Departamento extends Model {
     use SoftDeletes;
     protected $table      = 'tb_departamentos';
     protected $primaryKey = 'idDepartamento';
@@ -35,16 +34,16 @@ class Departamento extends Model
         'AptoProfesional',
         'CantidadCocheras',
         'CocheraOptativa',
-        'Disposicion',
+        'fk_Disposicion',
         'Expensas',
-        'Orientacion',
+        'fk_Orientacion',
         'PropiedadOcupada',
-        'TipoBalcon',
-        'TipoExpensas',
-        'TipoVista',
-        'TipoCosta',
-        'TipoUnidad',
-        'Estado',
+        'fk_TipoBalcon',
+        'fk_TipoExpensas',
+        'fk_TipoVista',
+        'fk_TipoCosta',
+        'fk_TipoUnidad',
+        'fk_Estado',
         'CantidadBanos',
         'CantidadAmbientes',
         'CantidadDormitorios',
@@ -130,7 +129,7 @@ class Departamento extends Model
         'Servicios_Vigilancia',
         'Generales_PermiteMascotas',
         'Generales_SeguroCaucion',
-        'Edificio_TipoEdificio',
+        'fk_Edificio_TipoEdificio',
         'Edificio_Estado',
         'Edificio_CantidadCocheras',
         'Edificio_PropiedadOcupada',
@@ -141,9 +140,9 @@ class Departamento extends Model
         'Edificio_SuperficieDeposito',
         'Edificio_LongitudFrente',
         'Edificio_LongitudFondo',
-        'Edificio_TipoFrente',
-        'Edificio_TipoVista',
-        'Edificio_TipoCosta',
+        'fk_Edificio_TipoFrente',
+        'fk_Edificio_TipoVista',
+        'fk_Edificio_TipoCosta',
         'Edificio_Disponibilidad',
         'Edificio_Servicios_ABL',
         'Edificio_Servicios_AguaCorriente',
@@ -181,167 +180,6 @@ class Departamento extends Model
         'updated_at',
         'deleted_at',
     ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
