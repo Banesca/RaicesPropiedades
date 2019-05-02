@@ -5,7 +5,6 @@ import { NotificationappComponent } from './component/notificationapp/notificati
 import { AuthbackendComponent } from './component/authbackend/authbackend.component';
 import { GestionUsuarioComponent } from './component/gestion-usuario/gestion-usuario.component';
 import { ForgetComponent } from './component/forget/forget.component';
-;
 import { PerfilComponent } from './component/perfil/perfil.component';
 import { ConfigFooterComponent } from './component/config-footer/config-footer.component';
 

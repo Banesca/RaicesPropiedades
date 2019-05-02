@@ -3,13 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TipoOperacion extends Model
-{
-    use SoftDeletes;
-    protected $table      = 'tb_tipo_operacions';
-    protected $primaryKey = 'idTipoOperaion';
+class TipoTecho extends Model {
+    protected $table      = 'tb_tipo_techos';
+    protected $primaryKey = 'idTipoTecho';
 
     protected $fillable = [
         'descripcion',

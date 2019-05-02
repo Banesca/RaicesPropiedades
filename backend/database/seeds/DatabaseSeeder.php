@@ -23,5 +23,12 @@ class DatabaseSeeder extends Seeder {
         $this->call(TipoVistaSeeder::class);
         $this->call(TipoCostaSeeder::class);
         $this->call(TipoUnidadDepartamentoSeeder::class);
+        $this->call(EstadoPropiedadSeeder::class);
+        $this->call(TipoEdidificioSeeder::class);
+        $this->call(TipoFrenteSeeder::class);
+        $this->call(TipoTechoSeeder::class);
+        $this->call(TipoUnidadCasaSeeder::class);
+        $this->call(TipoPisoSeeder::class);
+        $this->call(TipoPendienteSeeder::class);
     }
 }
