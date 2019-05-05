@@ -12,8 +12,8 @@ class TipoBalconSeeder extends Seeder
     public function run()
     {
         \App\TipoBalcon::create([
-            'idBalcon'=>'1',
-            'descripcion'=>'Francés'
+            'idBalcon'    => '1',
+            'descripcion' => 'Francés',
         ]);  \App\TipoBalcon::create([
             'idBalcon'=>'2',
             'descripcion'=>'Corrido'

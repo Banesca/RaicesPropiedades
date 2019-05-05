@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoCobertura extends Model
+class TipoAscensor extends Model
 {
-    protected $table      = 'tb_tipo_coberturas';
-    protected $primaryKey = 'idTipoCobertura';
+    protected $table      = 'tb_tipo_ascensores';
+    protected $primaryKey = 'idTipoAscensor';
 
     protected $fillable = [
         'descripcion',
@@ -16,7 +16,5 @@ class TipoCobertura extends Model
         'created_at',
         'updated_at',
     ];
-
-
 
 }
