@@ -11,8 +11,11 @@ html {
 	scroll-behavior: smooth;
 }
 
+body {
+	background-color: $white;
+}
+
 router-outlet ~ * {
-  position: absolute;
   height: 100%;
   width: 100%;
 }
@@ -26,5 +29,36 @@ a {
 	text-decoration: none;
 	&:hover {
 		text-decoration: none;
+	}
+}
+
+.brown-button {
+	background-color: $brown_main_color;
+	color: $white;
+}
+
+.suscrit {
+	background-color: $yellow_main_color;
+	button{
+	border-radius: none;
+	}
+}
+
+.releases {
+	.card-footer{
+		background-color: $yellow_main_color;
+		color: $white;
+	}
+}
+
+.brown-text {
+	color: $brown_main_color;
+}
+
+footer {
+	background-color: $brown_main_color;
+	color: $white;
+	hr{
+		border-color: $white;
 	}
 }
