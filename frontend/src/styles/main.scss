@@ -32,6 +32,35 @@ a {
 	}
 }
 
+.navigation {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.link-nav {
+	display: block;
+	padding: 16px;
+	font-size: 1rem;
+	color: $brown_main_color;
+}
+
+.nav-underline {
+	position: relative;
+}
+
+.nav-underline::before {
+	content: '';
+	position: absolute;
+	bottom: -4px;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background-color: $white;
+	transition: 250ms width ease-out;
+}
+
 .brown-button {
 	background-color: $brown_main_color;
 	color: $white;
@@ -39,6 +68,12 @@ a {
 
 .suscrit {
 	background-color: $yellow_main_color;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
 }
 
 .releases {
@@ -58,4 +93,10 @@ footer {
 	hr{
 		border-color: $white;
 	}
+}
+
+
+.fab {
+	color: #fff;
+	font-size: 1.5rem;
 }
