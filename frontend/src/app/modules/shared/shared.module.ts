@@ -5,6 +5,7 @@ import { registerLocaleData } from '@angular/common';
 
 
 import { ArticlesComponent } from './components/articles/articles.component';
+import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BlogArticlesComponent } from './components/blog-articles/blog-articles.component';
 import { BlogAuthorComponent } from './components/blog-author/blog-author.component';
@@ -16,6 +17,7 @@ import { BlogPaginationComponent } from './components/blog-pagination/blog-pagin
 import localePy from '@angular/common/locales/es-PY';
 import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/en';
+import { TransactionModalComponent } from './components/transaction-modal/transaction-modal.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localePy, 'es');
@@ -25,6 +27,7 @@ registerLocaleData(localeEn, 'en')
 
 @NgModule({
   declarations: [
+    HeaderComponent,
     FooterComponent,
     ArticlesComponent,
     BlogArticlesComponent,
@@ -32,7 +35,8 @@ registerLocaleData(localeEn, 'en')
     BlogBodyComponent,
     BlogHeaderComponent,
     CommentsComponent,
-    BlogPaginationComponent
+    BlogPaginationComponent,
+    TransactionModalComponent
   ],
   exports: [
     FooterComponent,
@@ -42,12 +46,15 @@ registerLocaleData(localeEn, 'en')
     BlogBodyComponent,
     BlogHeaderComponent,
     CommentsComponent,
-    BlogPaginationComponent
+    BlogPaginationComponent,
+    HeaderComponent,
+    TransactionModalComponent
   ],
   imports: [
     CommonModule,
     SendCommentModule,
   ],
+  entryComponents: [TransactionModalComponent],
   providers: [ { provide: LOCALE_ID, useValue: 'es' } ],
 })
 export class SharedModule { }

@@ -9,10 +9,12 @@
 
 html {
 	scroll-behavior: smooth;
+	
 }
 
 body {
 	background-color: $white;
+	font-family: 'Open Sans', sans-serif;
 }
 
 router-outlet ~ * {
@@ -69,6 +71,28 @@ a {
 .suscrit {
 	background-color: $yellow_main_color;
 }
+.polygon {
+	clip-path: polygon(100% 0, 100% 80%, 50% 100%, 0 80%, 0 0);
+	// clip-path: polygon(50% 30%, 0 0, 100% 0);
+	border: none !important;
+}
+
+.row {
+	border: none !important;
+
+}
+
+.bg-brown {
+	background-color: $brown_main_color;
+}
+
+.bg-yellow {
+	background-color: $yellow_main_color;
+}
+
+.bg-gray {
+	background-color: $gray_main_color;
+}
 
 .card-img-top {
     width: 100%;
@@ -87,6 +111,10 @@ a {
 	color: $brown_main_color;
 }
 
+.yellow-text {
+	color: $yellow_main_color;
+}
+
 footer {
 	background-color: $brown_main_color;
 	color: $white;
@@ -99,4 +127,11 @@ footer {
 .fab {
 	color: #fff;
 	font-size: 1.5rem;
+}
+
+.header-bottom {
+	background: linear-gradient(rgba(0, 0, 0,0.8), rgba(0,0,0,0.7)),url("../assets/images/IMAGEN-NOSOTROS.png");
+	background-size: inherit;
+	background-repeat: no-repeat;
+	height: 80vh;
 }

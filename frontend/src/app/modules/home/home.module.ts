@@ -8,12 +8,10 @@ import { SuscritComponent } from './suscrit/suscrit.component';
 import { ContactComponent } from './contact/contact.component';
 import { DemosComponent } from './demos/demos.component';
 import { ServicesComponent } from './services/services.component';
-import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [ 
     HeaderBottomComponent,
-    HeaderComponent,
     SuscritComponent,
     ContactComponent,
     DemosComponent,
@@ -27,7 +25,6 @@ import { HeaderComponent } from './header/header.component';
   ],
   exports:[
     HeaderBottomComponent,
-    HeaderComponent,
     SuscritComponent,
     ContactComponent,
     DemosComponent,
