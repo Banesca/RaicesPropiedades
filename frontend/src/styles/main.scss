@@ -9,7 +9,7 @@
 
 html {
 	scroll-behavior: smooth;
-	
+	overflow-x: hidden;
 }
 
 body {
@@ -34,18 +34,32 @@ a {
 	}
 }
 
+.nav-item{
+	&:hover{
+		.link-nav {
+			color: $brown_main_color;		
+		}
+		.nav-underline::before {
+			width: 100%;
+	}
+}
+} 
+
+
 .navigation {
 	display: flex;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
+ 
 
 .link-nav {
 	display: block;
 	padding: 16px;
-	font-size: 1rem;
+	font-size: 1.1rem;
 	color: $brown_main_color;
+
 }
 
 .nav-underline {
@@ -53,29 +67,39 @@ a {
 }
 
 .nav-underline::before {
-	content: '';
-	position: absolute;
-	bottom: -4px;
-	left: 0;
-	width: 0;
-	height: 2px;
-	background-color: $white;
-	transition: 250ms width ease-out;
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2.5px;
+  background-color: $brown_main_color;
+  transition: 250ms width ease-out;
 }
+
+
 
 .brown-button {
 	background-color: $brown_main_color;
 	color: $white;
+	border-radius: 0;
+	&:hover {
+		color: $white;
+		opacity: 0.9;
+	}
 }
 
 .suscrit {
 	background-color: $yellow_main_color;
 }
+
+/*
 .polygon {
 	clip-path: polygon(100% 0, 100% 80%, 50% 100%, 0 80%, 0 0);
 	// clip-path: polygon(50% 30%, 0 0, 100% 0);
 	border: none !important;
-}
+}*/
+
 
 .row {
 	border: none !important;
@@ -112,6 +136,10 @@ a {
 }
 
 .yellow-text {
+	color: $yellow_main_color;
+}
+
+.main-spinner {
 	color: $yellow_main_color;
 }
 

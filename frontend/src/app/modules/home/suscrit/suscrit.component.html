@@ -2,7 +2,7 @@
     <div class="modal-body">
         <div *ngIf="mLoading" class="row">
             <div class="col-lg-12 d-flex justify-content-center my-2">
-              <div class="spinner-border main-spinner text-primary m-5" role="status">
+              <div class="spinner-border main-spinner m-5" role="status">
                 <span class="sr-only">Enviando...</span>
               </div>
             </div>
@@ -11,15 +11,14 @@
             <div class="col-lg-12 my-2">
               <h3 class="text-center mt-3 font-weight-bold">Suscripción Realizada!</h3>
               <p class="mb-5 text-center font-weight-bold">Hemos enviado la confirmación a tu bandeja de correo</p>
-              <button  class="btn btn-primary btn-lg mx-auto btn-block col-lg-5" (click)="submittedClose()">Volver</button>
+              <button  class="btn btn-lg brown-button mx-auto btn-block col-lg-5" (click)="submittedClose()">Volver</button>
             </div>
           </div>
           <div *ngIf="errorMensaje" class="row">
               <div class="col-lg-12 my-2">
                 <h3 class="text-center mt-3 font-weight-bold">Hubo un problema al realizar la suscripción</h3>
                 <p class="mb-5 text-center font-weight-bold">Por favor intente nuevamente</p>
-                <button  class="btn btn-primary btn-lg mx-auto btn-block col-lg-5" (click)="submittedClose()">Volver <i
-                  class="fas fa-angle-right"></i></button>
+                <button  class="btn brown-button btn-lg mx-auto btn-block col-lg-5" (click)="submittedClose()">Volver</button>
               </div>
             </div>
     </div>
@@ -33,9 +32,9 @@
   <form [formGroup]="suscritForm" (ngSubmit)="onSubmit()">
     <div class="row py-5 d-flex justify-content-center">
       <input formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="text" class="form-control shadow col-10 col-md-7 col-lg-6 form-control-lg sub-input" placeholder="Tu Correo" aria-label="email" aria-describedby="basic-addon1">
-      <button class="btn shadow btn-block brown-button btn-lg col-10 col-md-4 col-lg-3 d-flex justify-content-around main-button"
+      <button class="btn shadow btn-block brown-button text-uppercase font-weight-bold text-center btn-lg col-10 col-md-4 col-lg-3 d-flex justify-content-around main-button"
       (click)="suscritForm.valid ? open(content) : true"
-      >SUSCRIBETE
+      >Suscribete
       <img class="my-auto" src="../../assets/img/Iconos-Header/Fecha-Botones-Header.svg" alt="" style="width: 1rem;">
     </button>
    </div>
