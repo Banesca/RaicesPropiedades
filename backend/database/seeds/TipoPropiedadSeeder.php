@@ -23,7 +23,8 @@ class TipoPropiedadSeeder extends Seeder {
             'Campo',
             'Fondo de Comercio',
             'Galpón',
-            'Negocio Especial' ];
+            'Negocio Especial'
+        ];
 
         foreach ($as as $a){
             \App\TipoPropiedad::create([
