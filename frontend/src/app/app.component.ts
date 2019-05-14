@@ -9,6 +9,5 @@ import { fadeAnimation } from './animations';
   animations: [fadeAnimation],
 })
 export class AppComponent {
-  title = 'smart-devs';
 
 }

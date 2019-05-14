@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "smart-devs": {
+    "raices-propiedades": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/smart-devs",
+            "outputPath": "dist/raices-propiedades",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "smart-devs:build"
+            "browserTarget": "raices-propiedades:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "smart-devs:build:production"
+              "browserTarget": "raices-propiedades:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "smart-devs:build"
+            "browserTarget": "raices-propiedades:build"
           }
         },
         "test": {
@@ -104,7 +104,7 @@
         }
       }
     },
-    "smart-devs-e2e": {
+    "raices-propiedades-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -113,11 +113,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "smart-devs:serve"
+            "devServerTarget": "raices-propiedades:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "smart-devs:serve:production"
+              "devServerTarget": "raices-propiedades:serve:production"
             }
           }
         },
@@ -133,7 +133,7 @@
       }
     }
   },
-  "defaultProject": "smart-devs",
+  "defaultProject": "raices-propiedades",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
