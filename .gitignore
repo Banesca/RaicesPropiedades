@@ -1,5 +1,6 @@
     
 frontend/package-lock.json
+frontend/node_modules
 admin/package-lock.json
 registroRuta/src/assets/bower_components
 /backend/etc

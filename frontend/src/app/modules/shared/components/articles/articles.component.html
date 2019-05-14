@@ -1,0 +1,39 @@
+<section class="py-5" id="blog">
+  <div class="container">
+    <ng-content select=".row"></ng-content>
+    <div class="row">
+      <!-- Articulos -->
+      <ng-container *ngFor="let articulo of mArticulo;" >
+          <div *ngIf="articulo.categoria" class="col-lg-6 my-3">
+           <!--  <div *ngIf="articulo.categoria==selectedCategory" class="col-lg-6 my-3">
+      <div class="card" [routerLink]="['/blog',obj.url]">--> 
+        <div class="card" >
+            <ng-container *ngFor="let imagen of articulo.imagen; first as isFirst">
+                <img [src]="imagen.img" class="img-fluid" *ngIf="isFirst">
+           </ng-container>
+      <a href="blog/{{articulo.url}}" >
+      <div class="card-img-overlay">
+            <a href="blog/{{articulo.url}}" class="btn btn-primary btn-lg btn-block blog-date col-md-5 col-9">{{articulo.fecha|date:"mediumDate" }}</a>
+          </div>
+        </a>
+          <div class="card-body body-blog">
+            <a  href="blog/{{articulo.url}}"><h6>{{articulo.nombre}}</h6></a>
+            <div class="d-flex justify-content-end mt-3">
+              <div class="p-2">
+                <a href="#"><img src="assets/img/Iconos-Blog/Icono-Comentario-Blog.svg" class="mr-2 icon-blog">{{articulo.commentarios}}</a>
+              </div>
+              <div class="p-2">
+                <a href="#"><img src="assets/img/Iconos-Blog/Icono-Vista-Blog.svg" class="mr-2 icon-blog">{{articulo.vistas}}</a>
+              </div>
+              <div class="p-2">
+                <a href="#"><img src="assets/img/Iconos-Blog/Icono-Categoria-Blog.svg" class="mr-2 icon-blog">
+                  {{articulo.categoria}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    </div>
+  </div>
+</section>

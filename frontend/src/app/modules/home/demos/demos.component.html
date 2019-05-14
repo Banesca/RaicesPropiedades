@@ -1,0 +1,71 @@
+
+<section class="py-5" id="demos">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="mb-4 title"> <span>Demos</span> </h4>
+        <h6 class="sub-title">Trabajos realizados por nuestros clientes e implementaciones de nuevas tecnologías.</h6>
+      </div>
+    </div>
+    <div class="row p-3 py-md-5 d-md-flex justify-content-center">
+      <button (click)="setAll()" class="btn btn-lg btn-primary col-10 col-lg-2" [ngClass]=" a ? 'active' : 'not-active-button'">
+        Todos
+      </button>
+      <button (click)="setWeb()" class="btn  btn-lg btn-primary col-10 col-lg-2" [ngClass]="b ? 'active' : 'not-active-button'">
+        Web
+      </button>
+      <button (click)="setMovil()" class="btn  btn-lg btn-primary col-10 col-lg-2" [ngClass]="c ? 'active' : 'not-active-button'">
+        Movil
+      </button>
+      <button (click)="setSoftware()" class="btn btn-lg btn-primary col-10 col-lg-2" [ngClass]="d ? 'active' : 'not-active-button'">
+        Software
+      </button>
+    </div>
+    <div  *ngIf="a"  class="row text-center">
+      <div  *ngFor="let demo of demos" class="col-md-6 col-lg-4 my-3">
+        <div class="card card-demos">
+          <img [src]=[demo.url] class="img-fluid card-img-top">
+          <div class="card-body ">
+            <a href="#">{{demo.name}}</a>
+          </div>
+      </div>
+    </div>
+      </div>
+      <div  *ngIf="b"  class="row text-center">
+          <ng-container *ngFor="let demo of demos">
+          <div *ngIf="demo.type=='web'" class="col-md-6 col-lg-4 my-3">
+            <div class="card card-demos">
+              <img [src]=[demo.url] class="img-fluid card-img-top">
+              <div class="card-body ">
+                <a href="#">{{demo.name}}</a>
+              </div>
+          </div>
+        </div>
+      </ng-container>
+          </div>
+          <div  *ngIf="c"  class="row text-center">
+              <ng-container *ngFor="let demo of demos">
+              <div *ngIf="demo.type=='movil'" class="col-md-6 col-lg-4 my-3">
+                <div class="card card-demos">
+                  <img [src]=[demo.url] class="img-fluid card-img-top">
+                  <div class="card-body ">
+                    <a href="#">{{demo.name}}</a>
+                  </div>
+              </div>
+            </div>
+          </ng-container>
+              </div>
+              <div  *ngIf="d"  class="row text-center">
+                  <ng-container *ngFor="let demo of demos">
+                  <div *ngIf="demo.type=='software'" class="col-md-6 col-lg-4 my-3">
+                    <div class="card card-demos">
+                      <img [src]=[demo.url] class="img-fluid card-img-top">
+                      <div class="card-body ">
+                        <a href="#">{{demo.name}}</a>
+                      </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+</section>

@@ -1,0 +1,30 @@
+//colors
+@import './colors.scss';
+
+//fonts
+@import './fonts.scss';
+
+//urls
+@import './urls.scss';
+
+html {
+	scroll-behavior: smooth;
+}
+
+router-outlet ~ * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+
+.preloader {
+	height: 100vh;
+}
+
+a {
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}

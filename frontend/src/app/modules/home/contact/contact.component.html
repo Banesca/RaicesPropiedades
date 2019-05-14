@@ -1,0 +1,107 @@
+<section class="py-5 contact" id="contact">
+  <div class="container">
+    <div class="row py-3">
+      <button
+        (click)="open(content)"
+        class="col-10 col-md-5 col-lg-4 btn btn-block contact-button btn-lg btn-primary mx-auto my-5 d-flex justify-content-around main-button">
+        CONTÁCTANOS
+        <img src="assets/img/nuevos/fecha.svg" alt="">
+      </button>
+    </div>
+  </div>
+</section>
+<ng-template #content let-modal>
+    <div class="modal-body">
+            <div class="container position-relative">
+            <form  [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                <div  *ngIf="!hideForm" class="row">
+                <button type="button" class="position-absolute close" style="right: 3%; z-index: 1024;" aria-label="Close" (click)="onSave()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              <div class="col-md-5 my-2">
+                <h4 class="mb-4 title"> <span>Contacto</span> </h4>
+                <h6 class="sub-title mb-4">¿Tienes un Proyecto?</h6>
+              </div>
+              <div class="col-lg-12">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <label for="exampleFormControlSelect1">Nombres <span>*</span></label>
+                      <div class="form-group mb-3">
+                          <input formControlName="nombres" type="text" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }" class="form-control form-control-lg" placeholder="Nombres"
+                          aria-describedby="basic-addon1">
+                          <div *ngIf="submitted && f.nombres.errors" type="alert" class="invalid-feedback">
+                              <div *ngIf="f.nombres.errors.required">El Nombre es Requerido</div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <label for="exampleFormControlSelect1">Apellidos <span>*</span></label>
+                      <div class="form-group mb-3">
+                        <input formControlName="apellidos" type="text" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" class="form-control form-control-lg" placeholder="Apellidos"
+                          aria-describedby="basic-addon1">
+                          <div *ngIf="submitted && f.apellidos.errors" type="alert" class="invalid-feedback">
+                              <div *ngIf="f.apellidos.errors.required">El Apellido es Requerido</div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <label for="exampleFormControlSelect1">Tema <span>*</span></label>
+                      <div class="form-group mb-3">
+                        <input formControlName="tema" type="text" [ngClass]="{ 'is-invalid': submitted && f.tema.errors }" class="form-control form-control-lg" placeholder="Tema"
+                          aria-describedby="basic-addon1">
+                          <div *ngIf="submitted && f.tema.errors" type="alert" class="invalid-feedback">
+                              <div *ngIf="f.tema.errors.required">El Tema es Requerido</div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <label for="exampleFormControlSelect1">Email <span>*</span></label>
+                      <div class="form-group mb-3">
+                        <input formControlName="email" type="text" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control form-control-lg" placeholder="Email"
+                          aria-describedby="basic-addon1">
+                          <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback">
+                              <div *ngIf="f.email.errors.required">El Email es Requerido</div>
+                              <div *ngIf="f.email.errors.email">Por favor ingrese un Email válido</div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <label for="exampleFormControlSelect1">Mensaje <span>*</span></label>
+                  <div class="form-group mb-3">
+                    <textarea formControlName="mensaje" name="" [ngClass]="{ 'is-invalid': submitted && f.mensaje.errors }" cols="30" rows="10" placeholder="Mensaje"
+                      class="form-control form-control-lg"></textarea>
+                      <div *ngIf="submitted && f.mensaje.errors" type="alert" class="invalid-feedback">
+                          <div *ngIf="f.mensaje.errors.required">El Mensaje es Requerido</div>
+                      </div>
+                  </div>
+                  <label class="mb-5"><small>(<span>*</span>)Requerido</small></label>
+                  <button class="btn btn-primary btn-lg btn-block col-lg-5">ENVIAR MENSAJE</button> 
+               </div> 
+              </div>
+            </form>
+        <div *ngIf="mLoading" class="row">
+            <div class="col-lg-12 d-flex justify-content-center my-2">
+              <div class="spinner-border main-spinner text-primary m-5" role="status">
+                <span class="sr-only">Enviando...</span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="successMensaje" class="row">
+              <div class="col-lg-12 my-2">
+                <h3 class="text-center mt-3 font-weight-bold">Mensaje Enviado!</h3>
+                <p class="mb-5 text-center font-weight-bold">Pronto nos contactaremos contigo</p>
+                <button (click)="submittedClose()"  class="btn btn-primary btn-lg mx-auto btn-block col-lg-5" type="button" data-dismiss="modal" aria-label="Close">Volver <i
+                  class="fas fa-angle-right"></i></button>
+              </div>
+            </div>
+            <div *ngIf="errorMensaje" class="row">
+                <div class="col-lg-12 my-2">
+                  <h3 class="text-center mt-3 font-weight-bold">Ocurrió un error al mardar el mensaje</h3>
+                  <p class="mb-5 text-center font-weight-bold">Por favor intete nuevamente</p>
+                  <button (click)="reintentar()"  class="btn btn-primary btn-lg mx-auto btn-block col-lg-5">Volver <i
+                    class="fas fa-angle-right"></i></button>
+                </div>
+              </div>
+    </div>
+  </div>
+  </ng-template>
