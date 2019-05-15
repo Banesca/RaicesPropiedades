@@ -88,7 +88,9 @@ a {
   transition: 250ms width ease-out;
 }
 
-
+.white-button {
+	background-color: rgba(255, 255, 255,0.4);
+}
 
 .brown-button {
 	background-color: $brown_main_color;

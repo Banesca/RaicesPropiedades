@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderBottomComponent } from './header-bottom/header-bottom.component';
 import { SuscritComponent } from './suscrit/suscrit.component';
 import { ContactComponent } from './contact/contact.component';
-import { DemosComponent } from './demos/demos.component';
 import { ServicesComponent } from './services/services.component';
 
 @NgModule({
@@ -13,7 +12,6 @@ import { ServicesComponent } from './services/services.component';
     HeaderBottomComponent,
     SuscritComponent,
     ContactComponent,
-    DemosComponent,
     ServicesComponent
   ],
   imports: [
@@ -25,7 +23,6 @@ import { ServicesComponent } from './services/services.component';
     HeaderBottomComponent,
     SuscritComponent,
     ContactComponent,
-    DemosComponent,
     ServicesComponent
   ]
 })
