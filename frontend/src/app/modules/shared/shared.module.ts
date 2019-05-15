@@ -14,6 +14,7 @@ import { BlogBodyComponent } from './components/blog-body/blog-body.component';
 import { BlogHeaderComponent } from './components/blog-header/blog-header.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { BlogPaginationComponent } from './components/blog-pagination/blog-pagination.component';
+import { PropiertysListComponent } from './propiertys-list/propiertys-list.component';
 
 import localePy from '@angular/common/locales/es-PY';
 import localePt from '@angular/common/locales/pt';
@@ -37,7 +38,8 @@ registerLocaleData(localeEn, 'en')
     BlogHeaderComponent,
     CommentsComponent,
     BlogPaginationComponent,
-    TransactionModalComponent
+    TransactionModalComponent,
+    PropiertysListComponent
   ],
   exports: [
     FooterComponent,
@@ -49,7 +51,8 @@ registerLocaleData(localeEn, 'en')
     CommentsComponent,
     BlogPaginationComponent,
     HeaderComponent,
-    TransactionModalComponent
+    TransactionModalComponent,
+    PropiertysListComponent
   ],
   imports: [
     CommonModule,
