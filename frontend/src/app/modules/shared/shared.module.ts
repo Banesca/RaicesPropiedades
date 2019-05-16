@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SendCommentModule } from './components/send-comment/send-comment.module';
 import { registerLocaleData } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { ArticlesComponent } from './components/articles/articles.component';
@@ -14,12 +15,15 @@ import { BlogBodyComponent } from './components/blog-body/blog-body.component';
 import { BlogHeaderComponent } from './components/blog-header/blog-header.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { BlogPaginationComponent } from './components/blog-pagination/blog-pagination.component';
-import { PropiertysListComponent } from './propiertys-list/propiertys-list.component';
+import { PropiertysListComponent } from './components/propiertys-list/propiertys-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import localePy from '@angular/common/locales/es-PY';
 import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/en';
 import { TransactionModalComponent } from './components/transaction-modal/transaction-modal.component';
+import { PropiertysCarouselComponent } from './components/propiertys-carousel/propiertys-carousel.component';
+
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localePy, 'es');
@@ -29,6 +33,7 @@ registerLocaleData(localeEn, 'en')
 
 @NgModule({
   declarations: [
+    PropiertysCarouselComponent,
     HeaderComponent,
     FooterComponent,
     ArticlesComponent,
@@ -39,9 +44,11 @@ registerLocaleData(localeEn, 'en')
     CommentsComponent,
     BlogPaginationComponent,
     TransactionModalComponent,
-    PropiertysListComponent
+    PropiertysListComponent,
+    
   ],
   exports: [
+    PropiertysCarouselComponent,
     FooterComponent,
     ArticlesComponent,
     BlogArticlesComponent,
@@ -57,7 +64,10 @@ registerLocaleData(localeEn, 'en')
   imports: [
     CommonModule,
     SendCommentModule,
-    RouterModule
+    RouterModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [TransactionModalComponent],
   providers: [ { provide: LOCALE_ID, useValue: 'es' } ],

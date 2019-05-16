@@ -1,8 +1,7 @@
-<!--
 <div class="modal-body bg-yellow text-white">
     <div class="container position-relative">
-    <form>
-        <div  *ngIf="!hideForm" class="row">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="!hideForm" class="row">
         <button type="button" class="position-absolute close" style="right: 3%; z-index: 1024;" aria-label="Close" (click)="onSave()">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -73,19 +72,15 @@
       <div class="col-lg-12 my-2">
         <h3 class="text-center mt-3 font-weight-bold">Mensaje Enviado!</h3>
         <p class="mb-5 text-center font-weight-bold">Pronto nos contactaremos contigo</p>
-        <button (click)="submittedClose()"  class="btn btn-primary btn-lg mx-auto btn-block col-lg-5" type="button" data-dismiss="modal" aria-label="Close">Volver <i
-          class="fas fa-angle-right"></i></button>
+        <button (click)="submittedClose()"  class="btn brown-button btn-lg mx-auto btn-block col-lg-5" type="button" data-dismiss="modal" aria-label="Close">Volver</button>
       </div>
     </div>
     <div *ngIf="errorMensaje" class="row">
         <div class="col-lg-12 my-2">
           <h3 class="text-center mt-3 font-weight-bold">Ocurrió un error al mardar el mensaje</h3>
           <p class="mb-5 text-center font-weight-bold">Por favor intete nuevamente</p>
-          <button (click)="reintentar()"  class="btn btn-primary btn-lg mx-auto btn-block col-lg-5">Volver <i
-            class="fas fa-angle-right"></i></button>
+          <button (click)="reintentar()"  class="btn brown-button btn-lg mx-auto btn-block col-lg-5">Volver</button>
         </div>
       </div>
 </div>
 </div>
-
--->
