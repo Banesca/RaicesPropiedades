@@ -14,12 +14,8 @@ const routes: Routes = [
     loadChildren: './modules/blog/blog.module#BlogModule'
   },
   {
-    path: 'oportunidades',
-    loadChildren: './modules/blog/blog.module#BlogModule'
-  },
-  {
     path: 'sucursales',
-    loadChildren: './modules/blog/blog.module#BlogModule'
+    loadChildren: './modules/offices/offices.module#OfficesModule'
   },
   { path: '**', component: NopagefoundComponent }
 ];

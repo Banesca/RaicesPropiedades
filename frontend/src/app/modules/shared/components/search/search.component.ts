@@ -3,11 +3,12 @@ import { IComentario } from "../../../../servicios/interfaces.index";
 import { ComentarioService } from "../../../../servicios/servicios.index";
 
 @Component({
-  selector: 'app-comments',
-  templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.scss']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss']
 })
-export class CommentsComponent implements OnInit {
+
+export class SearchComponent implements OnInit {
   mComentario: IComentario[];
 
   constructor(private _ComentariosService: ComentarioService) { 

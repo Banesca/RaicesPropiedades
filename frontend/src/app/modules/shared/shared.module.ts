@@ -9,11 +9,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { BlogArticlesComponent } from './components/blog-articles/blog-articles.component';
+import { HeaderBottomComponent } from './components/header-bottom/header-bottom.component';
 import { BlogAuthorComponent } from './components/blog-author/blog-author.component';
 import { BlogBodyComponent } from './components/blog-body/blog-body.component';
 import { BlogHeaderComponent } from './components/blog-header/blog-header.component';
-import { CommentsComponent } from './components/comments/comments.component';
+import { SearchComponent } from './components/search/search.component';
 import { BlogPaginationComponent } from './components/blog-pagination/blog-pagination.component';
 import { PropiertysListComponent } from './components/propiertys-list/propiertys-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -37,11 +37,11 @@ registerLocaleData(localeEn, 'en')
     HeaderComponent,
     FooterComponent,
     ArticlesComponent,
-    BlogArticlesComponent,
+    HeaderBottomComponent,
     BlogAuthorComponent,
     BlogBodyComponent,
     BlogHeaderComponent,
-    CommentsComponent,
+    SearchComponent,
     BlogPaginationComponent,
     TransactionModalComponent,
     PropiertysListComponent,
@@ -51,11 +51,11 @@ registerLocaleData(localeEn, 'en')
     PropiertysCarouselComponent,
     FooterComponent,
     ArticlesComponent,
-    BlogArticlesComponent,
+    HeaderBottomComponent,
     BlogAuthorComponent,
     BlogBodyComponent,
     BlogHeaderComponent,
-    CommentsComponent,
+    SearchComponent,
     BlogPaginationComponent,
     HeaderComponent,
     TransactionModalComponent,
