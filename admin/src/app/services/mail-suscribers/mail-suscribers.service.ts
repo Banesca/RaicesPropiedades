@@ -17,7 +17,7 @@ export class MailSuscribersService {
 
   allCategorias() {
     return this._HttpClient
-      .get(environment.apiHost + '/api/v1/listarUsers/', {
+      .get(environment.apiHost + '/api/v1/ListarMensajesMailMasivos', {
         headers: getHeaders()
       })
       .pipe(
@@ -31,7 +31,7 @@ export class MailSuscribersService {
   nuevaCategoria(pCategoria: IMailSuscriber) {
     const lCategoria = JSON.stringify(pCategoria);
     return this._HttpClient
-      .post(environment.apiHost, lCategoria, { headers: getHeaders() })
+      .post(environment.apiHost + '/api/v1/ListarMensajesMailMasivos', lCategoria, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;
