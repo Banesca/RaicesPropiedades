@@ -23,14 +23,14 @@ class SuscripcionUserController extends Controller {
 
         try {
 
-            $sus                     = new SuscripcionUser($request->all());
+            $sus = new SuscripcionUser($request->all());
 
             $sus->save();
 
             //Mail::to($request->email)->send(new SuscripcionMail($sus));
 
             $response = [
-                'msj'               => 'Suscripción Creada Satisfactoriamente',
+                'msj'             => 'Suscripción Creada Satisfactoriamente',
                 'SuscripcionUser' => [
                     'id'          => $sus->idSuscripcionUser,
                     'titulo'      => $sus->titulo,
@@ -49,5 +49,16 @@ class SuscripcionUserController extends Controller {
                 'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
             ], 500);
         }
+    }
+
+    public function listar() {
+        $sus = SuscripcionUser::all();
+
+        $response = [
+            'msj'         => 'Lista de Mensajes',
+            'suscripcion' => $sus,
+        ];
+
+        return response()->json($response, 200);
     }
 }

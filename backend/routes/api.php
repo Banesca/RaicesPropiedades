@@ -54,6 +54,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::post('sucursal/listar', 'SucursalController@listar');
 
     Route::post('enviarMailMasivos', 'SuscripcionUserController@add');
+    Route::get('ListarMensajesMailMasivos', 'SuscripcionUserController@listar');
 });
 
 
