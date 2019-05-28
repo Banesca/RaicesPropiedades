@@ -19,6 +19,7 @@ import { PageComponent } from './component/layout/page/page.component';
 import { PrincipalComponent } from './component/layout/principal/principal.component';
 
 import { AuthGuard } from './services/auth.guard';
+import { SucursalesComponent } from './component/sucursales/sucursales.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,7 @@ const routes: Routes = [
       { path: 'gestionar-usuarios', component: GestionUsuarioComponent, canActivate: [AuthGuard] },
       { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
       { path: 'config-footer', component: ConfigFooterComponent, canActivate: [AuthGuard] },
-     
+      { path: 'sucursales', component: SucursalesComponent, canActivate: [AuthGuard] },
       { path: 'config-color', component: ConfigColorComponent, canActivate: [AuthGuard] },
       
     ]

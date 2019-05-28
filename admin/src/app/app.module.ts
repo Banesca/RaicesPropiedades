@@ -46,6 +46,7 @@ import { MaterialUiModule } from './material-ui.module';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MailsComponent } from './component/config-footer/mails/mails.component';
+import { SucursalesComponent } from './component/sucursales/sucursales.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,8 @@ import { MailsComponent } from './component/config-footer/mails/mails.component'
     RegistroComponent,
     PageComponent,
     PrincipalComponent,
-    MailsComponent,  
+    MailsComponent,
+    SucursalesComponent,  
 
   ],
   imports: [

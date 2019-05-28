@@ -1,0 +1,21 @@
+<div [formGroup]="myForm" class="row" style="padding: 20px;">
+    
+  <div class="col-6 mt-4" >
+    <label for="">Nombre</label>
+    <input type="input" formControlName="nombre" class="form-control" placeholder="Escriba El Nombre de la Sucursal">
+    <small *ngIf="myForm.get('nombre').invalid" >Es requerido</small>
+</div>
+  <div class="col-12 mt-4" >
+        <label for="">Dirección</label>
+        <input type="input" formControlName="direccion" class="form-control" placeholder="Escriba La Dirección">
+        <small *ngIf="myForm.get('direccion').invalid" >Es requerido</small>
+  </div>
+
+ 
+  
+  <div class="col-12 mt-4 text-center">
+    <button class="btn btn-success" (click)="upgradeCondigFooter()">
+        Actualizar
+    </button>
+  </div>
+</div>
