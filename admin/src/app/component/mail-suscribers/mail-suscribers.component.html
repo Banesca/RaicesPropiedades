@@ -11,16 +11,12 @@
             (click)="nuevo()"
             type="button"
             class="btn btn-primary"
-            class="btn btn-success btn-sm mr-2"
+            class="btn btn-success mr-2"
             [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
           >
             <i class="fa fa-plus"></i>
            Nuevo
            </button>
-  
-            <input type="text" placeholder="Buscar por titulo ,  usuario , email" formControlName="filtro"
-              class="form-control" style="width: 80%;">
-  
       <!-- 
             <button type="button" class="btn btn-success ml-2" (click)="filtrar()"
               [disabled]=" inPromise">

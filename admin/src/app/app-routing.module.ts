@@ -14,6 +14,9 @@ import { ConfigColorComponent } from './component/config-color/config-color.comp
 
 import { SuscripcionComponent } from './component/suscripcion/suscripcion.component';
 
+import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
+
+
 
 import { RegistroComponent } from './component/registro/registro.component';
 import { PageComponent } from './component/layout/page/page.component';
@@ -30,9 +33,11 @@ const routes: Routes = [
       {path: '', redirectTo: 'perfil', pathMatch: 'full' },
      
       { path: 'gestionar-usuarios', component: GestionUsuarioComponent, canActivate: [AuthGuard] },
+      { path: 'gestionar-publicaciones', component: GestionPublicacionesComponent, canActivate: [AuthGuard] },
       { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [AuthGuard] },
       { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
       { path: 'config-footer', component: ConfigFooterComponent, canActivate: [AuthGuard] },
+
      
       { path: 'config-color', component: ConfigColorComponent, canActivate: [AuthGuard] },
       
