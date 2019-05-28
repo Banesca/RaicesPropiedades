@@ -20,7 +20,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var blogRoutes = [
     { path: '', component: _blog_component__WEBPACK_IMPORTED_MODULE_3__["BlogComponent"] },
-    { path: ':ruta',
+    { path: 'detail',
         loadChildren: './modules/article/article.module#ArticleModule'
     },
 ];
@@ -47,7 +47,7 @@ var BlogRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header-bottom>\r\n    <div class=\"container title col-md-4 py-5 ml-5\"> \r\n      <div class=\"col-sm-12\">\r\n        <h1 class=\"font-weight-light text-uppercase\">Buscador</h1>\r\n      </div>\r\n    </div>\r\n  </app-header-bottom>\r\n<app-search></app-search>\r\n<app-propiertys-list>\r\n    <h1 class=\"mb-4 brown-text font-weight-extrabold text-uppercase\">Busquedas frecuentes</h1>\r\n</app-propiertys-list>\r\n  "
+module.exports = "<app-header-bottom>\r\n    <div class=\"container title col-md-4 py-5 ml-5\"> \r\n      <div class=\"col-sm-12\">\r\n        <h1 class=\"font-weight-light text-uppercase\">Buscador</h1>\r\n        <hr class=\"col-2 mx-0 my-1\">\r\n      </div>\r\n    </div>\r\n  </app-header-bottom>\r\n<app-search></app-search>\r\n<app-propiertys-list>\r\n    <h3 class=\"mb-4 brown-text font-weight-extrabold text-uppercase\">Busquedas frecuentes</h3>\r\n</app-propiertys-list>\r\n  "
 
 /***/ }),
 

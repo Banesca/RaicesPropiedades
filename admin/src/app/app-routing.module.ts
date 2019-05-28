@@ -8,6 +8,7 @@ import { ForgetComponent } from './component/forget/forget.component';
 ;
 import { PerfilComponent } from './component/perfil/perfil.component';
 import { ConfigFooterComponent } from './component/config-footer/config-footer.component';
+import { MailSuscribersComponent } from './component/mail-suscribers/mail-suscribers.component';
 
 import { ConfigColorComponent } from './component/config-color/config-color.component';
 
@@ -30,6 +31,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'perfil', pathMatch: 'full' },
      
       { path: 'gestionar-usuarios', component: GestionUsuarioComponent, canActivate: [AuthGuard] },
+      { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [AuthGuard] },
       { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
       { path: 'config-footer', component: ConfigFooterComponent, canActivate: [AuthGuard] },
       { path: 'sucursales', component: SucursalesComponent, canActivate: [AuthGuard] },

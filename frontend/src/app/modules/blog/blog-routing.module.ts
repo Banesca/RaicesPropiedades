@@ -5,7 +5,7 @@ import { BlogComponent } from './blog.component';
 
 const blogRoutes: Routes = [
   { path: '', component: BlogComponent },
-  { path: ':ruta',
+  { path: 'detail',
   loadChildren: './modules/article/article.module#ArticleModule'
 },
 ];
