@@ -43,7 +43,7 @@
               <th>#</th>
               <th>Titulo</th>
               <th>Descripcion</th>
-              <th>Estado</th>
+              <th>Acción</th>
               <th></th>
             </thead>
             <tbody>
@@ -51,31 +51,32 @@
                 *ngFor="let categoria of mCategorias; let i = index"
                 (dblclick)="modificar(categoria)"
               >
-              <td class="text-right">
+              <td>{{categoria.idSuscripcionUser}}</td>
+              <td>{{categoria.titulo}}</td>
+              <td>{{categoria.descripcion}}</td>
+              <td>
                   <button
                   (click)="ver(categoria)"
                   type="button"
-                  class="btn btn-secondary"
+                  class="btn mr-2 btn-info"
                 >
-                  <i class="fa fa-eye"></i>
-                </button>
+                <i class="far fa-eye"></i>    
+                          </button>
                 <button
                   (click)="modificar(categoria)"
                   type="button"
-                  class="btn btn-primary"
+                  class="btn mr-2 btn-primary"
                 >
-                  <i class="fa fa-pencil"></i>
+                <i class="fas fa-pencil-alt"></i>
                 </button>
                 <button
                   (click)="eliminar(categoria.id)"
                   type="button"
-                  class="btn btn-danger"
+                  class="btn mr-2 btn-danger"
                 >
                   <i class="fa fa-trash"></i>
                 </button>
               </td>
-              <td>{{categoria.titulo}}</td>
-              <td>{{categoria.descripcion}}</td>
               </tr>
             </tbody>
           </table>

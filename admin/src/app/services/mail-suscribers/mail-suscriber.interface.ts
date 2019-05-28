@@ -1,6 +1,6 @@
 export interface IMailSuscriberRs {
-    count: number;
-    result: IMailSuscriber[];
+    msj: string;
+    suscripcion: IMailSuscriber[];
   }
   
   export interface IMailSuscriber {

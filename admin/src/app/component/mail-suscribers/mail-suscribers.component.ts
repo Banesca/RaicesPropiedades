@@ -487,10 +487,11 @@ export class MailSuscribersComponent implements OnInit {
     this._MailSuscribersService
       .allCategorias()
       .then(data => {
-        this.mCategorias = data.result;
+        this.mCategorias = data.suscripcion;
         this.mLoading = false;
       })
       .catch(error => {
+        console.log(error)
       });
   }
 
