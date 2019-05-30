@@ -1,0 +1,203 @@
+<div class="container" style="max-width: 100%;">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="py-5 text-center font-weight-bold">Gestión de Publicaciones</h3>
+      <!--
+      <div [formGroup]="filterForm">
+      -->
+        <div class="form-group mx-auto" style="width: 100%; display: flex;">
+          <button
+          (click)="nuevo()"
+          type="button"
+          class="btn btn-primary"
+          class="btn btn-success mr-2"
+          [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
+        >
+          <i class="fa fa-plus"></i>
+         Nueva
+         </button>
+
+    <!-- 
+          <button type="button" class="btn btn-success ml-2" (click)="filtrar()"
+            [disabled]=" inPromise">
+            Buscar
+          </button> -->
+        
+        </div>
+
+    <!--  </div> -->
+    </div>
+  </div>
+</div>
+
+<div *ngIf="mFormaEstado == enCRUD.Eliminar">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <th>#</th>
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Tipo</th>
+            <th>Oportunidad</th>
+            <th>Novedad</th>
+            <th>Estado</th>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let categoria of mCategorias; let i = index"
+              (dblclick)="modificar(categoria)"
+            >
+            <td class="text-right">
+                <button
+                (click)="ver(categoria)"
+                type="button"
+                class="btn btn-secondary"
+              >
+                <i class="fa fa-eye"></i>
+              </button>
+              <button
+                (click)="modificar(categoria)"
+                type="button"
+                class="btn btn-primary"
+              >
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button
+                (click)="eliminar(categoria.id)"
+                type="button"
+                class="btn btn-danger"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+            <td>{{categoria.titulo}}</td>
+            <td>{{categoria.descripcion}}</td>
+            <td>{{categoria.tipo}}</td>
+            <td>{{categoria.oportunidad}}</td>
+            <td>{{categoria.novedad}}</td>
+            <td>{{categoria.estado}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div
+          *ngIf="(mCategorias | keys).length === 0 && !mLoading"
+          class="alert alert-info"
+          role="alert"
+        >
+          <strong>No existen</strong> Publicaciones que mostrar...
+        </div>
+        <div *ngIf="mLoading" class="alert alert-warning" role="alert">
+          <strong>Cargando</strong> por favor espere...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row">
+  <div class="col-md-12">
+    <form [formGroup]="mForma" #vForma="ngForm">
+      <div class="row">
+          <div class="form-group col-lg-6">
+              <label for="">Titulo</label>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="titulo"
+                placeholder="titulo"
+              />
+              <p *ngIf="mForma.controls['titulo'].errors?.required" class="text-danger">
+                Titulo es requerido</p>
+                <p *ngIf="mForma.controls['titulo'].errors?.minlength" class="text-danger">
+                Minimo de 5 caracteres</p>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="">Tipo</label>
+                <input
+                class="form-control"
+                type="text"
+                formControlName="tipo"
+                placeholder="Tipo"
+              />
+              </div>
+              <div class="form-group col-lg-12">
+                <label for="">Descripcion</label>
+                <textarea
+                  class="form-control"
+                  type="text"
+                  formControlName="descripcion"
+                ></textarea>
+              </div>
+      </div>
+      <div class="form-group">
+        <button
+          (click)="mFormaEstado = enCRUD.Eliminar"
+          type="button"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-backward"></i>
+          Regresar
+        </button>
+        <button
+        (click)="accion()"
+        [disabled]="!vForma.valid"
+        style="margin: 5px"
+        class="btn btn-primary"
+      >
+        <i class="fa fa-save"></i>
+        <span *ngIf="mFormaEstado == enCRUD.Crear"> Guardar</span>
+        <span *ngIf="mFormaEstado == enCRUD.Actualizar"> Modificar</span>
+      </button>
+        <button
+          (click)="nuevo()"
+          *ngIf="mFormaEstado == enCRUD.Actualizar"
+          style="margin: 5px"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-plus"></i>
+          Nuevo
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="mFormaEstado == enCRUD.Leer" class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="form-group text-right">
+          <button
+            (click)="mFormaEstado = enCRUD.Eliminar"
+            type="button"
+            class="btn btn-primary"
+          >
+            <i class="fa fa-backward"></i>
+            Regresar
+          </button>
+        </div>
+        <div class="form-group">
+          <label for="">titulo</label>
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="mCategoriasSelect.titulo"
+            name="mCategoriasSelect.titulo"
+            readonly
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="">Descripcion</label>
+          <textarea
+            class="form-control"
+            type="text"
+            [(ngModel)]="mCategoriasSelect.descripcion"
+            name="mCategoriasSelect.descripcion"
+            readonly
+          ></textarea>
+        </div>
+      </form>
+    </div>
+  </div>

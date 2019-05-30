@@ -6,6 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import {MatProgressSpinnerModule} from '@angular/material';
 // import { UserIdleModule } from 'angular-user-idle';
 
+//Pipes 
+import { KeysPipe } from './pipes/keys.pipe';
+
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -38,7 +42,7 @@ import { RegistroComponent } from './component/registro/registro.component';
 import { PageComponent } from './component/layout/page/page.component';
 import { PrincipalComponent } from './component/layout/principal/principal.component';
 import { AuthGuard } from './services/auth.guard';
-import { MaterialUiModule } from './material-ui.module';
+import { MaterialUiModule } from './models/material/material-ui.module';
 
 
 
@@ -46,6 +50,12 @@ import { MaterialUiModule } from './material-ui.module';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MailsComponent } from './component/config-footer/mails/mails.component';
+import { MailSuscribersComponent } from './component/mail-suscribers/mail-suscribers.component';
+import { EditMailComponent } from './component/mail-suscribers/edit-mail/edit-mail.component';
+import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
+import { UsuariosComponent } from './component/usuarios/usuarios.component';
+import { SucursalesComponent } from './component/sucursales/sucursales.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,12 +66,12 @@ import { MailsComponent } from './component/config-footer/mails/mails.component'
     FooterComponent,
     NavUnoComponent,
     NavDosComponent,
- 
+    KeysPipe,
     NotificationappComponent,
     AuthbackendComponent,
     GestionUsuarioComponent,
     ForgetComponent,
-
+    GestionPublicacionesComponent,
     SuscripcionComponent,
     
     SuscripcionComponent,
@@ -74,7 +84,11 @@ import { MailsComponent } from './component/config-footer/mails/mails.component'
     RegistroComponent,
     PageComponent,
     PrincipalComponent,
-    MailsComponent,  
+    MailsComponent,
+    MailSuscribersComponent,
+    EditMailComponent,
+    UsuariosComponent,
+    SucursalesComponent,  
 
   ],
   imports: [

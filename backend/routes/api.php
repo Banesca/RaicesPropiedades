@@ -52,6 +52,15 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::get('listar/mails', 'MailController@listar');
 
     Route::post('sucursal/listar', 'SucursalController@listar');
+
+
+    /*   crud del mail masivo    */
+    Route::post('enviarMailMasivos', 'SuscripcionUserController@add'); // agregar
+    Route::put('editarSuscripcion/{idSuscripcionUser}','SuscripcionUserController@editar'); //editar
+    Route::delete('borrarSuscripcion/{idSuscripcionUser}','SuscripcionUserController@destroy'); //borrar
+    Route::get('ListarMensajesMailMasivos', 'SuscripcionUserController@listar'); //listar
+    /*   crud del mail masivo    */
+
 });
 
 
