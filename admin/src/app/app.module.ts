@@ -53,6 +53,7 @@ import { MailsComponent } from './component/config-footer/mails/mails.component'
 import { MailSuscribersComponent } from './component/mail-suscribers/mail-suscribers.component';
 import { EditMailComponent } from './component/mail-suscribers/edit-mail/edit-mail.component';
 import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
+import { UsuariosComponent } from './component/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { GestionPublicacionesComponent } from './component/gestion-publicaciones
     PrincipalComponent,
     MailsComponent,
     MailSuscribersComponent,
-    EditMailComponent,  
+    EditMailComponent,
+    UsuariosComponent,  
 
   ],
   imports: [
