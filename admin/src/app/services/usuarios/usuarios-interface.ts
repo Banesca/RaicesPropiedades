@@ -1,5 +1,5 @@
 export interface IUsuariosRs {
-    msj: number;
+    msj: string;
     users: IUsuarios[];
   }
   
