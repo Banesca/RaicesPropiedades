@@ -45,6 +45,14 @@ a {
 	}
 }
 
+.link-nav {
+	&.active-route {
+		.nav-underline::before {
+			width: 100%;
+	}
+	}
+}
+
 .nav-item{
 	&:hover{
 		.link-nav {
