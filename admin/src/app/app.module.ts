@@ -53,6 +53,8 @@ import { MailsComponent } from './component/config-footer/mails/mails.component'
 import { SucursalesComponent } from './component/sucursales/sucursales.component';
 import { MailSuscribersComponent } from './component/mail-suscribers/mail-suscribers.component';
 import { EditMailComponent } from './component/mail-suscribers/edit-mail/edit-mail.component';
+import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +70,7 @@ import { EditMailComponent } from './component/mail-suscribers/edit-mail/edit-ma
     AuthbackendComponent,
     GestionUsuarioComponent,
     ForgetComponent,
-
+    GestionPublicacionesComponent,
     SuscripcionComponent,
     
     SuscripcionComponent,
