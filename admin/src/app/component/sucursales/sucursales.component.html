@@ -1,21 +1,127 @@
-<div [formGroup]="myForm" class="row" style="padding: 20px;">
-    
-  <div class="col-6 mt-4" >
-    <label for="">Nombre</label>
-    <input type="input" formControlName="nombre" class="form-control" placeholder="Escriba El Nombre de la Sucursal">
-    <small *ngIf="myForm.get('nombre').invalid" >Es requerido</small>
+<!--  -->
+<div class="container" style="max-width: 100%;">
+  <div class="row">
+    <div class="col-md-12" style="padding: 0px;">
+      <h3 class="py-5 text-center font-weight-bold">Sucursales</h3>
+
+      <div class="form-group mx-auto" style="width: 100%; display: flex;">
+        <button type="button" class="btn btn-primary" class="btn btn-success mr-2" data-toggle="modal"
+          data-target="#nuevoSucursalModal">
+          <i class="fa fa-plus"></i>
+          Nuevo
+        </button>
+
+
+
+      </div>
+
+    </div>
+  </div>
 </div>
-  <div class="col-12 mt-4" >
-        <label for="">Dirección</label>
-        <input type="input" formControlName="direccion" class="form-control" placeholder="Escriba La Dirección">
-        <small *ngIf="myForm.get('direccion').invalid" >Es requerido</small>
+<!-- listado de Sucursales -->
+<div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+
+            <th>Nombre</th>
+            <th>Numero de Contacto</th>
+            <th>Email</th>
+            <th>Dirección</th>
+          <!--   <th></th> -->
+          </thead>
+          <tbody>
+            <tr *ngFor="let sucursal of sucursalList; let i = index">
+
+              <td>{{sucursal.nombreSucursal}}</td>
+              <td>{{sucursal.telefonoSucursal}}</td>
+              <td>{{sucursal.emailSucursal}}</td>
+              <td>{{sucursal.direccionSucursal}}</td>
+             <!--  <td class="text-right">
+                <button (click)="modificar(sucursal)" type="button" class="btn btn-primary">
+                  <i class="fa fa-pencil"></i>
+                </button>
+                <button (click)="eliminar(sucursal)" type="button" class="btn btn-danger">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td> -->
+
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="sucursalList.length === 0 && !inPromise" class="alert alert-info" role="alert">
+          <strong>No existen</strong> Sucursales que mostrar...
+        </div>
+      </div>
+      <mat-spinner *ngIf="inPromise" style="margin:0 auto;" [diameter]="50"></mat-spinner>
+
+    </div>
   </div>
 
+  <!-- modal nuevo -->
  
-  
-  <div class="col-12 mt-4 text-center">
-    <button class="btn btn-success" (click)="upgradeCondigFooter()">
-        Actualizar
-    </button>
+  <div class="modal fade" id="nuevoSucursalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="false">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Nueva Sucursal</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div [formGroup]="myForm" class="row" style="padding: 20px;">
+
+            <div class="col-12 mt-4">
+              <label for="">Nombre Sucursal</label>
+              <input type="input" formControlName="nombre" class="form-control"
+                placeholder="Escriba El Nombre de la Sucursal">
+              <small class="errorText" *ngIf="myForm.get('nombre').invalid">Es requerido</small>
+            </div>
+            <div class="col-12 mt-4">
+              <label for="">Número de Contacto</label>
+              <input type="input" formControlName="numeroContacto" class="form-control"
+                placeholder="Escriba El Nombre de la Sucursal">
+              <small class="errorText" *ngIf="myForm.get('numeroContacto').hasError('required')">Es requerido <br>
+              </small>
+              <small class="errorText" *ngIf="myForm.get('numeroContacto').hasError('pattern')">Sólo Dígitos </small>
+
+            </div>
+            <div class="col-12 mt-4">
+              <label for="">Email</label>
+              <input type="input" formControlName="email" class="form-control"
+                placeholder="Escriba El Nombre de la Sucursal">
+              <small class="errorText" *ngIf="myForm.get('email').hasError('required')">Es requerido <br></small>
+              <small class="errorText" *ngIf="myForm.get('email').hasError('email')">Debe ser email.</small>
+            </div>
+            <div class="col-12 mt-4">
+              <label for="">Dirección</label>
+              <textarea formControlName="direccion" class="form-control" placeholder="Escriba La Dirección"></textarea>
+              <small class="errorText" *ngIf="myForm.get('direccion').invalid">Es requerido</small>
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <mat-spinner *ngIf="inPromise" style="margin:0 auto;" [diameter]="50"></mat-spinner>
+          <div *ngIf="!inPromise" class="col-12 mt-4 text-rigth">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            <button class=" ml-3 btn btn-success" [disabled]="myForm.invalid " (click)="addSucursal()">
+              Guardar
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
-</div>
