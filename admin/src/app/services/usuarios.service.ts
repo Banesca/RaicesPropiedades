@@ -37,15 +37,16 @@ export class UsuariosService {
     return this.http.post<any>(environment.apiHost + '/api/v1/crearUser/',data,httpOptions);
   }
 
-  upgradeUsers(data,id){
-    return this.http.post<any>(environment.apiHost + '/api/v1/user/'+id,data,httpOptions);
-  }
   editUser(data,id){
     
     return this.http.post<any>(environment.apiHost + '/api/auth/editarUser/'+id,data,httpOptions);
   }
   deleteUser(id:number){
     return this.http.delete(environment.apiHost + '/api/v1/user/'+id,httpOptions);
+  }
+
+  upgradeUsers(data,id){
+    return this.http.post<any>(environment.apiHost + '/api/v1/user/'+id,data,httpOptions);
   }
 
   filtrarUsuarios2(data:any){

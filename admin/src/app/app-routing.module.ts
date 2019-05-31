@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { NotificationappComponent } from './component/notificationapp/notificationapp.component';
 import { AuthbackendComponent } from './component/authbackend/authbackend.component';
-import { GestionUsuarioComponent } from './component/gestion-usuario/gestion-usuario.component';
+import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { ForgetComponent } from './component/forget/forget.component';
 ;
 import { PerfilComponent } from './component/perfil/perfil.component';
@@ -22,6 +22,9 @@ import { RegistroComponent } from './component/registro/registro.component';
 import { PageComponent } from './component/layout/page/page.component';
 import { PrincipalComponent } from './component/layout/principal/principal.component';
 
+import { SucursalesComponent } from './component/sucursales/sucursales.component';
+
+
 import { AuthGuard } from './services/auth.guard';
 import { Sucursales2Component } from './component/sucursales2/sucursales.component';
 
@@ -33,7 +36,7 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'perfil', pathMatch: 'full' },
      
-      { path: 'gestionar-usuarios', component: GestionUsuarioComponent, canActivate: [AuthGuard] },
+      { path: 'gestionar-usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
       { path: 'gestionar-publicaciones', component: GestionPublicacionesComponent, canActivate: [AuthGuard] },
       { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [AuthGuard] },
       { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },

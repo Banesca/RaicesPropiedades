@@ -6,7 +6,8 @@ import { PropiertysComponent } from './page/propiertys/propiertys.component';
 import { NopagefoundComponent } from './page/nopagefound/nopagefound.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full', },
+  {path: '', redirectTo:'home' , pathMatch: 'full'},
+  { path: 'home', component: HomeComponent },
   { path: 'nosotros', component: AboutComponent },
   { path: 'oportunidades', component: PropiertysComponent },
   {
