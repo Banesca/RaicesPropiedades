@@ -6,11 +6,11 @@ import { SucursalService } from 'src/app/services/sucursales/sucursal.service';
 import { AlertsService } from 'src/app/services/alerts.service';
 declare var $
 @Component({
-  selector: 'app-sucursales',
+  selector: 'app-sucursales2',
   templateUrl: './sucursales.component.html',
   styleUrls: ['./sucursales.component.css']
 })
-export class SucursalesComponent implements OnInit {
+export class Sucursales2Component implements OnInit {
   mFormaEstado: string;
   enCRUD = enCRUD;
   sucursalList: Sucursal[] = [];

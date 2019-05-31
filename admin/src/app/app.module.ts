@@ -50,7 +50,7 @@ import { MaterialUiModule } from './models/material/material-ui.module';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MailsComponent } from './component/config-footer/mails/mails.component';
-import { SucursalesComponent } from './component/sucursales/sucursales.component';
+import { Sucursales2Component } from './component/sucursales2/sucursales.component';
 import { MailSuscribersComponent } from './component/mail-suscribers/mail-suscribers.component';
 import { EditMailComponent } from './component/mail-suscribers/edit-mail/edit-mail.component';
 import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
@@ -84,7 +84,7 @@ import { GestionPublicacionesComponent } from './component/gestion-publicaciones
     PageComponent,
     PrincipalComponent,
     MailsComponent,
-    SucursalesComponent,  
+    Sucursales2Component,  
     MailSuscribersComponent,
     EditMailComponent,  
 

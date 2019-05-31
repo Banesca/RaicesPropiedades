@@ -23,7 +23,7 @@ import { PageComponent } from './component/layout/page/page.component';
 import { PrincipalComponent } from './component/layout/principal/principal.component';
 
 import { AuthGuard } from './services/auth.guard';
-import { SucursalesComponent } from './component/sucursales/sucursales.component';
+import { Sucursales2Component } from './component/sucursales2/sucursales.component';
 
 const routes: Routes = [
   {
@@ -38,7 +38,7 @@ const routes: Routes = [
       { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [AuthGuard] },
       { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
       { path: 'config-footer', component: ConfigFooterComponent, canActivate: [AuthGuard] },
-      { path: 'sucursales', component: SucursalesComponent, canActivate: [AuthGuard] },
+      { path: 'sucursales', component: Sucursales2Component, canActivate: [AuthGuard] },
 
      
       { path: 'config-color', component: ConfigColorComponent, canActivate: [AuthGuard] },
