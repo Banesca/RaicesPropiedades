@@ -1,15 +1,20 @@
-<!--  -->
-<div class="container" style="max-width: 100%;">
+<div class="container-fluid" style="max-width: 100%;">
   <div class="row">
     <div class="col-md-12" style="padding: 0px;">
       <h3 class="py-5 text-center font-weight-bold">Sucursales</h3>
 
       <div class="form-group mx-auto" style="width: 100%; display: flex;">
-        <button type="button" class="btn btn-primary" class="btn btn-success mr-2" data-toggle="modal"
-          data-target="#nuevoSucursalModal">
+        <div class="form-group mx-auto" style="width: 100%; display: flex;">
+          <button
+          (click)="nuevo()"
+          type="button"
+          class="btn btn-primary"
+          class="btn btn-success mr-2"
+          [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
+        >
           <i class="fa fa-plus"></i>
-          Nuevo
-        </button>
+         Nuevo
+         </button>
 
 
 
@@ -19,7 +24,9 @@
   </div>
 </div>
 <!-- listado de Sucursales -->
-<div>
+<mat-spinner *ngIf="mLoading" style="margin:0 auto;" [diameter]="50"></mat-spinner>
+
+<div  *ngIf="mFormaEstado == enCRUD.Eliminar && !mLoading">
   <div class="row">
     <div class="col-md-12">
       <div class="table-responsive">
@@ -30,6 +37,7 @@
             <th>Numero de Contacto</th>
             <th>Email</th>
             <th>Dirección</th>
+            <th>Acción</th>
           <!--   <th></th> -->
           </thead>
           <tbody>
@@ -39,6 +47,29 @@
               <td>{{sucursal.telefonoSucursal}}</td>
               <td>{{sucursal.emailSucursal}}</td>
               <td>{{sucursal.direccionSucursal}}</td>
+              <td>
+                <button
+                (click)="ver(sucursal)"
+                type="button"
+                class="btn mr-2 btn-info"
+              >
+              <i class="far fa-eye"></i>    
+                        </button>
+              <button
+                (click)="modificar(sucursal)"
+                type="button"
+                class="btn mr-2 btn-primary"
+              >
+              <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button
+                (click)="eliminar(sucursal.idSucursal)"
+                type="button"
+                class="btn mr-2 btn-danger"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
              <!--  <td class="text-right">
                 <button (click)="modificar(sucursal)" type="button" class="btn btn-primary">
                   <i class="fa fa-pencil"></i>
@@ -59,69 +90,144 @@
 
     </div>
   </div>
+</div>
 
-  <!-- modal nuevo -->
- 
-  <div class="modal fade" id="nuevoSucursalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="false">
-    <div class="modal-dialog " role="document">
-      <div class="modal-content">
+<div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
+  <div class="col-md-12">
+    <form [formGroup]="myForm">
+      <div class="form-group text-right">
+        <button
+          (click)="mFormaEstado = enCRUD.Eliminar"
+          type="button"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-backward"></i>
+          Regresar
+        </button>
 
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Nueva Sucursal</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
+        <button
+          (click)="nuevo()"
+          *ngIf="mFormaEstado == enCRUD.Actualizar"
+          style="margin: 5px"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-plus"></i>
+          Nuevo
+        </button>
 
-        <!-- Modal body -->
-        <div class="modal-body">
-          <div [formGroup]="myForm" class="row" style="padding: 20px;">
-
-            <div class="col-12 mt-4">
-              <label for="">Nombre Sucursal</label>
-              <input type="input" formControlName="nombre" class="form-control"
-                placeholder="Escriba El Nombre de la Sucursal">
-              <small class="errorText" *ngIf="myForm.get('nombre').invalid">Es requerido</small>
-            </div>
-            <div class="col-12 mt-4">
-              <label for="">Número de Contacto</label>
-              <input type="input" formControlName="numeroContacto" class="form-control"
-                placeholder="Escriba El Nombre de la Sucursal">
-              <small class="errorText" *ngIf="myForm.get('numeroContacto').hasError('required')">Es requerido <br>
-              </small>
-              <small class="errorText" *ngIf="myForm.get('numeroContacto').hasError('pattern')">Sólo Dígitos </small>
-
-            </div>
-            <div class="col-12 mt-4">
-              <label for="">Email</label>
-              <input type="input" formControlName="email" class="form-control"
-                placeholder="Escriba El Nombre de la Sucursal">
-              <small class="errorText" *ngIf="myForm.get('email').hasError('required')">Es requerido <br></small>
-              <small class="errorText" *ngIf="myForm.get('email').hasError('email')">Debe ser email.</small>
-            </div>
-            <div class="col-12 mt-4">
-              <label for="">Dirección</label>
-              <textarea formControlName="direccion" class="form-control" placeholder="Escriba La Dirección"></textarea>
-              <small class="errorText" *ngIf="myForm.get('direccion').invalid">Es requerido</small>
-            </div>
-
-
-
-
-          </div>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <mat-spinner *ngIf="inPromise" style="margin:0 auto;" [diameter]="50"></mat-spinner>
-          <div *ngIf="!inPromise" class="col-12 mt-4 text-rigth">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-            <button class=" ml-3 btn btn-success" [disabled]="myForm.invalid " (click)="addSucursal()">
-              Guardar
-            </button>
-          </div>
-        </div>
-
+        <button
+          *ngIf="mFormaEstado == enCRUD.Crear"
+          (click)="guardar()"
+          [disabled]="!myForm.valid"
+          style="margin: 5px"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+        <button
+        *ngIf="mFormaEstado == enCRUD.Actualizar"
+        (click)="actualizar(sucursalSelected.idSucursal)"
+        [disabled]="!myForm.valid"
+        style="margin: 5px"
+        class="btn btn-primary"
+      >
+        <i class="fa fa-save"></i>
+         Modificar
+      </button>
       </div>
+      <div class="form-group">
+        <label for="">Nombre Sucursal</label>
+        <input type="input" formControlName="nombreSucursal" class="form-control"
+          placeholder="Escriba El Nombre de la Sucursal">
+        <small class="errorText" *ngIf="myForm.get('nombreSucursal').invalid">Es requerido</small>
+      </div>
+      <div class="form-group">
+        <label for="">Número de Contacto</label>
+        <input type="input" formControlName="telefonoSucursal" class="form-control"
+          placeholder="Escriba El Nombre de la Sucursal">
+        <small class="errorText" *ngIf="myForm.get('telefonoSucursal').hasError('required')">Es requerido <br>
+        </small>
+        <small class="errorText" *ngIf="myForm.get('telefonoSucursal').hasError('pattern')">Sólo Dígitos </small>
+      </div>
+      <div class="form-group">
+        <label for="">Email</label>
+        <input type="input" formControlName="emailSucursal" class="form-control"
+          placeholder="Escriba El Nombre de la Sucursal">
+        <small class="errorText" *ngIf="myForm.get('emailSucursal').hasError('required')">Es requerido <br></small>
+        <small class="errorText" *ngIf="myForm.get('emailSucursal').hasError('email')">Debe ser email.</small>
+      </div>
+      <div class="form-group">
+        <label for="">Dirección</label>
+        <textarea formControlName="direccionSucursal" class="form-control" placeholder="Escriba La Dirección"></textarea>
+        <small class="errorText" *ngIf="myForm.get('direccionSucursal').invalid">Es requerido</small>
+      </div>
+        <!--
+        <div
+          *ngIf="mForma.controls['name'].errors?.password"
+          class="alert alert-danger"
+          role="alert"
+        >
+          email es requerido
+        </div>-->
+    </form>
+  </div>
+</div>
+
+  <div *ngIf="mFormaEstado == enCRUD.Leer && !mLoading" class="row animated fadeIn fast">
+    <div class="col-md-12">
+      <form>
+        <div class="form-group text-right">
+          <button
+            (click)="mFormaEstado = enCRUD.Eliminar"
+            type="button"
+            class="btn btn-primary"
+          >
+            <i class="fa fa-backward"></i>
+            Regresar
+          </button>
+        </div>
+        <div class="form-group">
+          <label for="">Nombre</label>
+          <input
+            class="form-control"
+            type="text"
+            [value]="sucursalSelected.nombreSucursal"
+            name="sucursalSelected.nombreSucursal"
+            readonly
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Telefono</label>
+          <input
+            class="form-control"
+            type="text"
+            [value]="sucursalSelected.nombreSucursal"
+            name="sucursalSelected.nombreSucursal"
+            readonly
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="">Email</label>
+          <input
+            class="form-control"
+            type="text"
+            [value]="sucursalSelected.emailSucursal"
+            name="sucursalSelected.emailSucursal"
+            readonly
+          />
+        </div>
+        <div class="form-group">
+          <label for="">Descripcion</label>
+          <textarea
+            class="form-control"
+            type="text"
+            [value]="sucursalSelected.direccionSucursal"
+            name="sucursalSelected.direccionSucursal"
+            readonly
+          ></textarea>
+        </div>
+      </form>
     </div>
   </div>

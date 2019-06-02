@@ -97,7 +97,6 @@ export class SucursalesComponent implements OnInit {
   }
 
   ver(pCategoria: ISucursales) {
-    console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }

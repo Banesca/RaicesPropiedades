@@ -39,4 +39,26 @@ export class SucursalService {
       )
       .toPromise();
   }
+
+  actualizarCategoria(sucursal: any, pKey: number) {
+    return this._HttpClient
+      .post(environment.apiHost +  '/api/auth/sucursal/edit/' + pKey + '/', sucursal, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      ).toPromise();
+  }
+
+  eliminarCategoria(pKey: number) {
+    return this._HttpClient
+      .delete(environment.apiHost +  '/api/auth/sucursal/borrar/' + pKey, { headers: getHeaders() })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      ).toPromise();
+  }
 }
