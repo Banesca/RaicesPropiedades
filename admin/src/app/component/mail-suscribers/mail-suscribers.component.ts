@@ -512,7 +512,7 @@ export class MailSuscribersComponent implements OnInit {
       });
   }
 
-  nuevo(pForma: NgForm) {
+  nuevo() {
     this.mForma.reset();
     this.mFormaEstado = enCRUD.Crear;
   }

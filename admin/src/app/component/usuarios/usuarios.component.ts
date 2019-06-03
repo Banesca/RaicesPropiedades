@@ -87,7 +87,7 @@ export class UsuariosComponent implements OnInit {
       });
   }
 
-  nuevo(pForma: NgForm) {
+  nuevo() {
     this.mForma.reset();
     this.mFormaEstado = enCRUD.Crear;
   }
