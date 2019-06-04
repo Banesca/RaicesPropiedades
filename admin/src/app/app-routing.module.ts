@@ -16,10 +16,13 @@ import { GestionPublicacionesComponent } from './component/gestion-publicaciones
 import { RegistroComponent } from './component/registro/registro.component';
 import { PageComponent } from './component/layout/page/page.component';
 import { PrincipalComponent } from './component/layout/principal/principal.component';
+import { SuscribersComponent } from './component/suscribers/suscribers.component';
 
 
 import { AuthGuard } from './services/auth.guard';
 import { SucursalesComponent } from './component/sucursales/sucursales.component';
+import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.component';
+
 
 const routes: Routes = [
   {
@@ -30,13 +33,13 @@ const routes: Routes = [
       {path: '', redirectTo: 'perfil', pathMatch: 'full' },
      
       { path: 'gestionar-usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
+      { path: 'galeria-home', component: GaleriaHomeComponent, canActivate: [AuthGuard] },
       { path: 'gestionar-publicaciones', component: GestionPublicacionesComponent, canActivate: [AuthGuard] },
       { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [AuthGuard] },
       { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
       { path: 'config-footer', component: ConfigFooterComponent, canActivate: [AuthGuard] },
       { path: 'sucursales', component: SucursalesComponent, canActivate: [AuthGuard] },
-
-     
+      { path: 'suscribers', component: SuscribersComponent, canActivate: [AuthGuard] },
       { path: 'config-color', component: ConfigColorComponent, canActivate: [AuthGuard] },
       
     ]

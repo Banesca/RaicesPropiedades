@@ -54,6 +54,8 @@ import { MailSuscribersComponent } from './component/mail-suscribers/mail-suscri
 import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { SucursalesComponent } from './component/sucursales/sucursales.component';
+import { SuscribersComponent } from './component/suscribers/suscribers.component';
+import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,9 @@ import { SucursalesComponent } from './component/sucursales/sucursales.component
     MailsComponent,
     MailSuscribersComponent,
     UsuariosComponent,
-    SucursalesComponent,  
+    SucursalesComponent,
+    SuscribersComponent,
+    GaleriaHomeComponent,  
 
   ],
   imports: [
