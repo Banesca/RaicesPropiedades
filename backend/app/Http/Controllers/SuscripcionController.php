@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\ConfigFooter;
-use App\Mail\SuscripcionMail;
 use App\Suscripcion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Redirect;
 
 class SuscripcionController extends Controller {
 
     public function nuevaSus(Request $request) {
-        dd('asd');
         $this->validate($request, [
             'email' => 'required|email|unique:tb_suscripcions,email,'.$request->idSuscripcion.',idSuscripcion',
         ], [
@@ -31,6 +26,7 @@ class SuscripcionController extends Controller {
             $sus->fk_idStatusSistema = 1;
 
             $sus->save();
+            $sus->status;
 
             // Mail::to($request->email)->send(new SuscripcionMail($sus));
 
@@ -122,7 +118,6 @@ class SuscripcionController extends Controller {
     }
 
     public function listarSuscripciones() {
-        dd('as');
 
         $sus = Suscripcion::where('fk_idStatusSistema', 1)->get();
 

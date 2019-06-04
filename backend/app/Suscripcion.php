@@ -13,14 +13,17 @@ class Suscripcion extends Model {
     protected $fillable = [
         'email',
         'motivoDeCancelacion',
-        'fk_idStatusSistema',
         'tocken',
         'sugerencia',
     ];
     protected $hidden   = [
         'created_at',
         'updated_at',
+        'fk_idStatusSistema',
     ];
 
+    public function status() {
+        return $this->belongsTo('App\StatusUser', 'fk_idStatusSistema')->select('descripcion');
+    }
 
 }

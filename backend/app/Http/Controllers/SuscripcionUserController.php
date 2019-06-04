@@ -63,7 +63,6 @@ class SuscripcionUserController extends Controller {
     }
 
     public function editar(Request $request, $idSuscripcionUser = null) {
-
         $this->validate($request, [
             'titulo'      => 'required',
             'descripcion' => 'required',
