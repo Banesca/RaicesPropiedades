@@ -6,7 +6,6 @@ use App\SuscripcionUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\sus;
 use Illuminate\Support\Facades\Mail;
 
 class SuscripcionUserController extends Controller {
