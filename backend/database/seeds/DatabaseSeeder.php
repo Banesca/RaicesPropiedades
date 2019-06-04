@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder {
         $this->call(TipoVistaSeeder::class);
         $this->call(TipoCostaSeeder::class);
         $this->call(TipoUnidadDepartamentoSeeder::class);
+        $this->call(StatusSistemaSeeder::class);
     }
 }
