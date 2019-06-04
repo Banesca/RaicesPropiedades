@@ -1,0 +1,985 @@
+{
+	"variables": [],
+	"info": {
+		"name": "raices",
+		"_postman_id": "210a2549-a951-3f98-0d68-37f85dc5a669",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuarios",
+			"description": "",
+			"item": [
+				{
+					"name": "creacion de user",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/crearUser",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "pedro",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alecortez240192@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456789",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": "para crear un nuevo cliente"
+					},
+					"response": []
+				},
+				{
+					"name": "editar User",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/editarUser/3",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY4OTY3OTJkZjFhNjU3M2IwMGRlMmJhNmI0NjQ4Nzg3NGNkZjllZDBhMzUwZWM4ZDRhYzE1YTU2YmJkMDI0NzNkODk0M2U4MGJhMDk0NDA1In0.eyJhdWQiOiIxIiwianRpIjoiZjg5Njc5MmRmMWE2NTczYjAwZGUyYmE2YjQ2NDg3ODc0Y2RmOWVkMGEzNTBlYzhkNGFjMTVhNTZiYmQwMjQ3M2Q4OTQzZTgwYmEwOTQ0MDUiLCJpYXQiOjE1NTU1MjMwOTMsIm5iZiI6MTU1NTUyMzA5MywiZXhwIjoxNTg3MTQ1NDkzLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.gx2hD_tVMnEM0RmB93Za1wKBSbdi0eWcoVY1midesbkKvlTJ0xpNQuPU-EF-Hgi6un6VdCkEovrDhyiWT1hLuiMHsxUoejseTAd_fKVlf6ZJ88p0zVdcAuuo0vReeDr1lgM-vc0H9Lt0gYDSSoCsOsMXoQXkS_5eqIexASF653ewiMtGWmoRXFUua_EvIleXwC9B8OFOfx-uBJZuUJvnrGj7UuOG7qOjxINMdDFXSCYgGUgcorG9ueY5AkfY6Rqn8Mz0wehsIH2sZjAhHZxmf0i_0pUtMmz46S2lEVl_8XJvSm1ODGD5OQAXNTuaw2hrUbt30Vhk9OoJidJHu_Ag60fmKo04j8xP1Um-kztQVMjqTeOa3ArEq-GjxsDUftxzTGFPs0zoTLDkoVbGbrDKw7aaWBXss3i3Mq1Zv0OYxb7i13aLyoYB0_DvdmdX_40xW167mtwiUOT-q5MJ4U91niwdQBuOclYN3X89ozalL9FfWtLFKQwZaJPS0IUXKu9syCqAw0-mOR4mN3CxCJtQEUtD5gVvve-U6K2qVImsgp7ZUkc6J3zMFm3oqOfwOt2lN9GaQY8TwxKggd-0c1gILJQcaLiiOd8aJq-odpFvxMkBr7w6Mvc5ADCaID-Dcny32kzkrz-UeZXJ-1MsD1w4qhQ8WiY4c_EpNOfU14xi_tg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "alejandro parrilla",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alecortez240192@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar usuarios",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/listarUsers",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "offset",
+									"value": "1",
+									"description": "opcional",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"description": "opcional",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "borrar usuario",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/borrarUser/3",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY4OTY3OTJkZjFhNjU3M2IwMGRlMmJhNmI0NjQ4Nzg3NGNkZjllZDBhMzUwZWM4ZDRhYzE1YTU2YmJkMDI0NzNkODk0M2U4MGJhMDk0NDA1In0.eyJhdWQiOiIxIiwianRpIjoiZjg5Njc5MmRmMWE2NTczYjAwZGUyYmE2YjQ2NDg3ODc0Y2RmOWVkMGEzNTBlYzhkNGFjMTVhNTZiYmQwMjQ3M2Q4OTQzZTgwYmEwOTQ0MDUiLCJpYXQiOjE1NTU1MjMwOTMsIm5iZiI6MTU1NTUyMzA5MywiZXhwIjoxNTg3MTQ1NDkzLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.gx2hD_tVMnEM0RmB93Za1wKBSbdi0eWcoVY1midesbkKvlTJ0xpNQuPU-EF-Hgi6un6VdCkEovrDhyiWT1hLuiMHsxUoejseTAd_fKVlf6ZJ88p0zVdcAuuo0vReeDr1lgM-vc0H9Lt0gYDSSoCsOsMXoQXkS_5eqIexASF653ewiMtGWmoRXFUua_EvIleXwC9B8OFOfx-uBJZuUJvnrGj7UuOG7qOjxINMdDFXSCYgGUgcorG9ueY5AkfY6Rqn8Mz0wehsIH2sZjAhHZxmf0i_0pUtMmz46S2lEVl_8XJvSm1ODGD5OQAXNTuaw2hrUbt30Vhk9OoJidJHu_Ag60fmKo04j8xP1Um-kztQVMjqTeOa3ArEq-GjxsDUftxzTGFPs0zoTLDkoVbGbrDKw7aaWBXss3i3Mq1Zv0OYxb7i13aLyoYB0_DvdmdX_40xW167mtwiUOT-q5MJ4U91niwdQBuOclYN3X89ozalL9FfWtLFKQwZaJPS0IUXKu9syCqAw0-mOR4mN3CxCJtQEUtD5gVvve-U6K2qVImsgp7ZUkc6J3zMFm3oqOfwOt2lN9GaQY8TwxKggd-0c1gILJQcaLiiOd8aJq-odpFvxMkBr7w6Mvc5ADCaID-Dcny32kzkrz-UeZXJ-1MsD1w4qhQ8WiY4c_EpNOfU14xi_tg",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "modulos",
+			"description": "",
+			"item": [
+				{
+					"name": "Agregar modulo",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/modulo/agregar",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "modulo",
+									"value": "Usuarios",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "hola",
+									"description": "opcional",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "www.google.co.ve",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "iconomodulo",
+									"value": "fgh fhgfh fhdhhdhfhd dgdhdhdhdhdgghhdh",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Editar modulo",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/modulo/editar/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "modulo",
+									"value": "Usuarios MOD",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Modulo para la gestion de user MOD",
+									"description": "opcional",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "adasdsa",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "iconomodulo",
+									"value": "34234234234324242",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar modulo",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/modulo/borrar/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Lista modulo",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/modulo/listar",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "offset",
+									"value": "",
+									"description": "opcional",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "opcional",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Asiganar modulo",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/usuario/asignarModulo",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "fk_idModulo",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Listar asignaciones de modulos",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/asinacion/modulos/listar",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "offset",
+									"value": "",
+									"description": "opcional",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "opcional",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar asignacion del modulos",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/usuario/EliminarAsignacionModulo/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ConfigGeneral",
+			"description": "",
+			"item": [
+				{
+					"name": "Agregar o actualizar configuracion general",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/config/agregarActualizar",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "quienesSomos",
+									"value": "holadf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "direcciondf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "celular1",
+									"value": "0424917536d",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "celular2",
+									"value": "01154545dfdf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "correo",
+									"value": "test@test.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "url_face",
+									"value": "kjldf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "url_intagram",
+									"value": "jkldf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "url_twitter",
+									"value": "jklf",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener configuracion general",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/config/get",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mail",
+			"description": "",
+			"item": [
+				{
+					"name": "agregar mail",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/addMail",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ho1@gmail.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Editar mail",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/editMail/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ho1@gmail.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Lista de mails",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/listar/mails",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ho1@gmail.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "borar Mail",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/borrarMail/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjY0YjlmZTUwMmNmZTI1ODg0NjQ3MzdjYWI3ODVkNzZkNmY1MzYxZTNlYjdkNDU5ZTA5NGU2NWM0NTRjNGQ2ZmUzMGYyZGIxYjVhMDMyNDJmIn0.eyJhdWQiOiIxIiwianRpIjoiNjRiOWZlNTAyY2ZlMjU4ODQ2NDczN2NhYjc4NWQ3NmQ2ZjUzNjFlM2ViN2Q0NTllMDk0ZTY1YzQ1NGM0ZDZmZTMwZjJkYjFiNWEwMzI0MmYiLCJpYXQiOjE1NTU5ODQwNTUsIm5iZiI6MTU1NTk4NDA1NSwiZXhwIjoxNTg3NjA2NDU0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.EN0yPSO8xyVD_W2RXPla1K0LMO12sL6Oowvk6K4U5imSkOJxGf9B5HJcXbyDafMJQD8ilnktdbQMGDls2wRn0p9zF3RJC-qeghaFcpJSV1U0citHV5L94QdgwSJSEiarPrRrWROPwekQAOQbapb9APXkFgiaacM4eLtjr8bmOlF5gvnSog5cCh8eH2G-_6iLfFumNfUr7sq35KUTIuXsGdgkRWkttmEoq8qNnyAorbDYEv2ZUmtQVinmE0leoB4PB9fzNDHIpHzebNBfXUEK6sqNU2BPxTp4olw3goB4KsslaoB-zYsemBE7YbRwllLyRArgyymUSm5d5--d4Gk7XcJ2g1CxO0zCPimTfgVVY330NIba6-JmPc3pfHFu_2LWPeWAlTOGFdJ9KmjCP3KjiBGFtfQITq4bevc2XRqWKdflbCFr9jD8Yk3XgtsSlr_VIzNBf3XmxkKety6RA9nd2LzjES1dKc8o5Kqf042Oafq6iYUli1H7oMd91xsghc5GQG20WbLQqd0JJIhGbyOTbOSADl46aqNIHti4P62YZpJAlZ0L-mv-s-suBNKQVN9laP50k7vnY_UAdOZFyqCqf55UNz_7fZ3r3dAxPsA6g6rUEm76RJiT4VWfheKAaEa7BnI1IxKEXjhNgYZkfAqe4jAHBudcGm-Xv_rBDdBHa4g",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sucursales",
+			"description": "",
+			"item": [
+				{
+					"name": "crear sucursal",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/sucursal/add",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombreSucursal",
+									"value": "hola",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "telefonoSucursal",
+									"value": "5454545",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "emailSucursal",
+									"value": "hyh@gmai.com",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "direccionSucursal",
+									"value": "hhj",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "editar sucursal",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/sucursal/edit/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombreSucursal",
+									"value": "holae",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "telefonoSucursal",
+									"value": "5454545e",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "emailSucursal",
+									"value": "hyh@gmai.come",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "direccionSucursal",
+									"value": "hhje",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "borar sucursal",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/auth/sucursal/borrar/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjI0NTNiNzM3ZGEzN2UyYzlkNDMwZDgzYTA0MGQxNGRhMmFjMTEwZDA1NmJhNWFhNzQ4NjVjNmEzODFlOWNlMWVmMzkwYTAwMmUzOWRiZDM5In0.eyJhdWQiOiIxIiwianRpIjoiMjQ1M2I3MzdkYTM3ZTJjOWQ0MzBkODNhMDQwZDE0ZGEyYWMxMTBkMDU2YmE1YWE3NDg2NWM2YTM4MWU5Y2UxZWYzOTBhMDAyZTM5ZGJkMzkiLCJpYXQiOjE1NTU1MjQxMzMsIm5iZiI6MTU1NTUyNDEzMywiZXhwIjoxNTg3MTQ2NTMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.BMb_ROFwskZsTuIskaJFF_944FloBGFrMiUEnOvVheLp-dFgelRAqbvbKZT9hpValcUIqMfhBbg9FwWzUdPqmg3jYQx7szQE1eLXvVb-e1hYxWNxRdcQF_ECMwnrtxC_ByqfMDj7SOoG7cXWBRu3-thjsoGLHGyMYCkWGieXqCBM2Q64snoAaujo6pFfgnJHXrwka8WSNATKNxcU1e4_CytuWYS6jadD_MkePbBB1omVFU7I9ZRACrCdd_sGZCQRviMuOB4b3wyV1WoBZOSrLO8kTlPfOLUxEzd1Fgu1CxqTy3FzS3OtXLxP7Eq2aGx_N8aITzPZBUU60lm6ibRDoztwwrQZeZP_dPMv3gk5FupplMoMzOeTFi80RsU1FLSflALswjSM0yo2YTgvGHIzWNte3Bm1eWrvbPrQXiQTsKdzVuV_TsVPgos66CrNAVgEVcoO0lrJbR8HZO1ge2czK8ldWPaKljhPu6_BGH0DpW01AvVSdpDRF40RRGtcU9Og-JlyuDXIezEQ3HLNOVJKLrpqz72V7D4Ngi0kfBoSm28ZqbR-bU2LwE7POkAhT5mtz2LarZNZesDsLsHlt0n50IqBvQRq29dTo1TaDqlO0rsb6b-TU0I0C1k-Rb9xv905zZUCfP6fcroL_UQ4a_3XIBqqGf31TSFerNWPnU4yE10",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mail masivos",
+			"description": "",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"url": "localhost:8000/api/v1/enviarMailMasivos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "titulo",
+									"value": "sdsd",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "descripcion",
+									"value": "sdsdsdsdsd",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"url": "localhost:8000/api/v1/editarSuscripcion/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "titulo",
+									"value": "sdsd",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "sdsdsdsdsd",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "borrar",
+					"request": {
+						"url": "localhost:8000/api/v1/borrarSuscripcion/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar",
+					"request": {
+						"url": "localhost:8000/api/v1/ListarMensajesMailMasivos",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "titulo",
+									"value": "sdsd",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "descripcion",
+									"value": "sdsdsdsdsd",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "suscripciones",
+			"description": "",
+			"item": [
+				{
+					"name": "listar usuarios",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/suscripcion/add",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "cambiarStatusSus",
+					"request": {
+						"url": "localhost:8000/api/v1/suscripcion/cambiarStatusSus/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"url": "localhost:8000/api/v1/suscripcion/add",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "alecortez240141492111@gmail.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"url": "http://127.0.0.1:8000/api/v1/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "alecortez240192@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456789",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
