@@ -28,10 +28,9 @@ export class _UsuariosService {
       .toPromise();
   }
 
-  nuevaCategoria(pCategoria: IUsuarios) {
-    const lCategoria = JSON.stringify(pCategoria);
+  nuevaCategoria(Categoria: any,) {
     return this._HttpClient
-      .post(environment.apiHost + '/api/v1/crearUser/' + lCategoria, { headers: getHeaders() })
+      .post<any>(environment.apiHost + '/api/v1/crearUser/', Categoria, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;
@@ -40,10 +39,9 @@ export class _UsuariosService {
       .toPromise();
   }
 
-  actualizarCategoria(pCategoria: IUsuarios, pKey: string) {
-    const lCategoria = JSON.stringify(pCategoria);
+  actualizarCategoria(Categoria: any, pKey: number) {
     return this._HttpClient
-      .post(environment.apiHost +  '/api/auth/editarUser/' + pKey, lCategoria, {
+      .post(environment.apiHost +  '/api/auth/editarUser/' + pKey + '/', Categoria, {
         headers: getHeaders()
       })
       .pipe(
@@ -53,7 +51,7 @@ export class _UsuariosService {
       ).toPromise();
   }
 
-  eliminarCategoria(pKey: string) {
+  eliminarCategoria(pKey: number) {
     return this._HttpClient
       .delete(environment.apiHost +  '/api/auth/borrarUser/' + pKey, { headers: getHeaders() })
       .pipe(
@@ -62,4 +60,19 @@ export class _UsuariosService {
         })
       ).toPromise();
   }
+
+
+  filtrarUsuarios(data:any) {
+    return this._HttpClient
+      .post(environment.apiHost + '/api/v1/buscadorPersonas/', data, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      )
+      .toPromise();
+  }
+
 }

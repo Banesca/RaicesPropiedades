@@ -4,7 +4,7 @@ export interface IMailSuscriberRs {
   }
   
   export interface IMailSuscriber {
-    id: string;
+    idSuscripcionUser: number;
     titulo: string;
     descripcion: string;
     estado?: string;
@@ -13,7 +13,7 @@ export interface IMailSuscriberRs {
   export class MailSuscribers {
     static empy() {
       return {
-        id: '',
+        idSuscripcionUser: null,
         titulo: '',
         descripcion: '',
         estado: ''

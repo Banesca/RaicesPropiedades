@@ -1,5 +1,4 @@
 import { enCRUD } from "./../../misc/enums";
-import { Usuarios } from './../../services/interfaces.index'
 import {
   NgForm,
   FormGroup,
@@ -24,8 +23,11 @@ export class UsuariosComponent implements OnInit {
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
+  id: number;
+  searchResult: any [] = [];
 
   mForma: FormGroup;
+  filterForm: FormGroup;
   mFormaEstado: string;
   enCRUD = enCRUD;
 
@@ -35,30 +37,23 @@ export class UsuariosComponent implements OnInit {
     private _AlertsService: AlertsService
   ) {
     this.mCategorias = [];
-    this.mCategoriasSelect = Usuarios.empy();
-    this.mForma = this.generarFormulario();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
+    this.mForma = this._formBuilder.group({
+      name: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      password_confirmation: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    }),
+    this.filterForm = this._formBuilder.group({
+      search: [''],
+      searchRol: [''],
+      aprobados:[''],
+
+    })
   }
 
   ngOnInit() {}
-
-  generarFormulario() {
-    // Estructura de nuestro formulario
-    return this._formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      password_confirmation: [''],
-    }, {Validator: this.checkPassword});
-  }
-
-  checkPassword(group: FormGroup) {
-  let pass = group.controls.password.value;
-  let confirmPass = group.controls.password_confirmation.value;
-
-  return pass === confirmPass ? null : { notSame: true }     
-}
 
   getAll() {
     this.mLoading = true;
@@ -74,23 +69,25 @@ export class UsuariosComponent implements OnInit {
   }
 
 
-  modificar() {
+  modificar(categoria) {
     this.mFormaEstado = enCRUD.Actualizar;
+    this.id = categoria.id;
   }
 
-  eliminar(pKey: string) {
+  eliminar(pKey: number) {
     this.mLoading = true;
     this._usuarios
       .eliminarCategoria(pKey)
       .then(data => {
         this.getAll();
+        console.log(pKey)
         this.mLoading = false;
       })
       .catch(error => {
       });
   }
 
-  nuevo(pForma: NgForm) {
+  nuevo() {
     this.mForma.reset();
     this.mFormaEstado = enCRUD.Crear;
   }
@@ -101,16 +98,10 @@ export class UsuariosComponent implements OnInit {
     this.mFormaEstado = enCRUD.Leer;
   }
 
-  accion() {
-    this.mCategoriasSelect = this.mForma.value as IUsuarios;
-    if (this.mFormaEstado === enCRUD.Crear) {
-      this.guardar();
-    } else if (this.mFormaEstado === enCRUD.Actualizar) {
-      this.actualizar();
-    }
-  }
+
 
   guardar() {
+    this.mCategoriasSelect = this.mForma.value as IUsuarios;
     this.mLoading = true;
     this._usuarios
       .nuevaCategoria(this.mCategoriasSelect)
@@ -120,13 +111,33 @@ export class UsuariosComponent implements OnInit {
         this.mLoading = false;
       })
       .catch(error => {
+        console.log(this.mCategoriasSelect)
       });
   }
 
-  actualizar() {
+  filtrar() {
     this.mLoading = true;
+    const val = this.filterForm.value
+    console.log(val)
+    this._usuarios.filtrarUsuarios(val)
+      .then(res => {
+        this.searchResult = res;
+        this.mCategorias = this.searchResult;
+        this.mLoading = false;
+        console.log(this.searchResult, this.mCategorias);
+      })
+    .catch(error => {
+      console.log(error);
+      this._AlertsService.msg('ERR', 'error', 'error al filtrar');
+    }); 
+  }
+
+  actualizar() {
+    this.mCategoriasSelect = this.mForma.value as IUsuarios;
+    this.mLoading = true;
+    console.log(this.id)
     this._usuarios
-      .actualizarCategoria(this.mCategoriasSelect, this.mCategoriasSelect.id)
+      .actualizarCategoria(this.mCategoriasSelect, this.id)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();

@@ -61,6 +61,16 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::get('ListarMensajesMailMasivos', 'SuscripcionUserController@listar'); //listar
     /*   crud del mail masivo    */
 
+    /*SUSCRIPCIONES*/
+    Route::post('suscripcion/add','SuscripcionController@nuevaSus');
+    Route::post('suscripcion/cambiarStatusSus/{id}','SuscripcionController@cambiarStatusSus');
+    Route::post('suscripcion/cancelarSus/{id}','SuscripcionController@cancelarSus');
+    Route::get('suscripcion/listarSuscripciones','SuscripcionController@listarSuscripciones');
+    Route::get('suscripcion/listarSuscripcionesCanceladas','SuscripcionController@listarSuscripcionesCanceladas');
+    Route::get('suscripcion/buscarSuscripcionPorEmail/{email}','SuscripcionController@buscarSuscripcionPorEmail');
+    Route::post('suscripcion/cancelarSuscripcionTocken/{tocken}','SuscripcionController@cancelarSuscripcionTocken');
+    /*SUSCRIPCIONES*/
+
 });
 
 

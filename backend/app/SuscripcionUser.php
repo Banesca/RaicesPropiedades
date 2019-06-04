@@ -20,8 +20,4 @@ class SuscripcionUser extends Model
         'updated_at',
     ];
 
-
-
-
-
 }

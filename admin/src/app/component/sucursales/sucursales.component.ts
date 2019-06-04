@@ -1,139 +1,127 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { enCRUD } from "./../../misc/enums";
-import { Sucursales } from './../../services/interfaces.index'
-import {
-  NgForm,
-  FormGroup,
-  FormBuilder,
-  Validators
-} from "@angular/forms";
-import { Component, OnInit } from "@angular/core";
+import { SucursalService } from './../../services/sucursales/sucursal.service';
 import { ISucursales } from './../../services/sucursales/sucursales-interface'
-import { SucursalesService } from './../../services/sucursales/sucursales-service'
-import { AlertsService } from '../../services/alerts.service';
-
+import { AlertsService } from 'src/app/services/alerts.service';
 
 @Component({
   selector: 'app-sucursales',
   templateUrl: './sucursales.component.html',
   styleUrls: ['./sucursales.component.css']
 })
+
 export class SucursalesComponent implements OnInit {
-
-  mCategorias: ISucursales[];
-  mCategoriasSelect: ISucursales;
-  mLoading: boolean;
-  mMostrarForma = false;
-  mNuevo = false;
-
-  mForma: FormGroup;
   mFormaEstado: string;
   enCRUD = enCRUD;
+  sucursalList: ISucursales[] = [];
+  sucursalSelected: ISucursales;
+  myForm: FormGroup
+  mLoading: boolean;
 
   constructor(
-    private _formBuilder: FormBuilder,
-    private sucursales: SucursalesService,
-    private _AlertsService: AlertsService
+    private fb: FormBuilder,
+    private _sucursalService: SucursalService,
+    private _as: AlertsService
   ) {
-    this.mCategorias = [];
-    this.mCategoriasSelect = Sucursales.empy();
-    this.mForma = this.generarFormulario();
-    this.mFormaEstado = enCRUD.Eliminar;
-    this.getAll();
-  }
-
-  ngOnInit() {}
-
-  generarFormulario() {
-    // Estructura de nuestro formulario
-    return this._formBuilder.group({
+    this.myForm = this.fb.group({
       nombreSucursal: ['', Validators.required],
-      telefonoSucursal:['',Validators.required],
+      telefonoSucursal: ['', [Validators.required, Validators.pattern(new RegExp(/^[0-9]+$/))]],
       emailSucursal: ['', [Validators.required, Validators.email]],
       direccionSucursal: ['', Validators.required]
     })
   }
 
-  checkPassword(group: FormGroup) {
-  let pass = group.controls.password.value;
-  let confirmPass = group.controls.password_confirmation.value;
+  ngOnInit() {
+    this.mFormaEstado = enCRUD.Eliminar;
+    this.getSucursalList();
 
-  return pass === confirmPass ? null : { notSame: true }     
-}
+  }
 
-  getAll() {
+  getSucursalList() {
     this.mLoading = true;
-    this.sucursales
-      .allCategorias()
-      .then(data => {
-        this.mCategorias = data.suculsales;
-        this.mLoading = false;
-        console.log(data)
-      })
-      .catch(error => {
-        console.log(error)
-      });
+    this._sucursalService
+    .getAll()
+    .then(data => {
+      this.sucursalList = data.suculsales;
+      this.getSucursalList();
+      this.mLoading = false;
+    })
+    .catch(error => {
+      this._as.msg('ERR', 'ERROR', 'Error al Obtener Datos.')
+    });
+
   }
 
-
-  modificar() {
-    this.mFormaEstado = enCRUD.Actualizar;
-  }
-
-  eliminar(pKey: string) {
-    this.mLoading = true;
-    this.sucursales
-      .eliminarCategoria(pKey)
-      .then(data => {
-        this.getAll();
-        this.mLoading = false;
-      })
-      .catch(error => {
-      });
-  }
-
-  nuevo(pForma: NgForm) {
-    this.mForma.reset();
+  nuevo() {
+    this.myForm.reset();
     this.mFormaEstado = enCRUD.Crear;
   }
 
+  guardar() {
+    this.sucursalSelected = this.myForm.value as ISucursales;
+    this.mLoading = true;
+    this._sucursalService
+      .addNew(this.sucursalSelected)
+      .then(data => {
+        this.mFormaEstado = enCRUD.Eliminar;
+        this.getSucursalList();
+        this.mLoading = false;
+        this._as.msg('OK', 'EXITO!', 'Sucursal Creada Correctamente.')
+      })
+      .catch(err => {
+         // Parsear Object errors a Array de errores para poder mapearlos
+         const mapped = Object.keys(err.error.errors).map(key => ({ type: key, value: err.error.errors[key] }));
+         // Notificando Errores
+         mapped ? mapped.map(e => { this._as.msg('ERR', 'ERROR', e.value) }) :
+           err.error.message ? this._as.msg('ERR', 'ERROR', err.error.message) :
+             this._as.msg('ERR', 'ERROR', 'Error al Guardar.')
+      });
+  }
+
   ver(pCategoria: ISucursales) {
-    console.log(pCategoria);
-    this.mCategoriasSelect = pCategoria;
+    this.sucursalSelected = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }
 
-  accion() {
-    this.mCategoriasSelect = this.mForma.value as ISucursales;
-    if (this.mFormaEstado === enCRUD.Crear) {
-      this.guardar();
-    } else if (this.mFormaEstado === enCRUD.Actualizar) {
-      this.actualizar();
-    }
+  modificar(pCategoria: ISucursales) {
+    this.sucursalSelected = pCategoria;
+    this.mFormaEstado = enCRUD.Actualizar;
   }
 
-  guardar() {
+  actualizar(pKey: number) {
+    this.sucursalSelected = this.myForm.value as ISucursales;
     this.mLoading = true;
-    this.sucursales
-      .nuevaCategoria(this.mCategoriasSelect)
+    this._sucursalService
+      .actualizarCategoria(this.sucursalSelected, pKey,)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
-        this.getAll();
+        this.getSucursalList();
         this.mLoading = false;
+        this._as.msg('OK', 'EXITO!', 'Sucursal Actualizada Correctamente.')
       })
-      .catch(error => {
+      .catch(err => {
+        // Parsear Object errors a Array de errores para poder mapearlos
+        const mapped = Object.keys(err.error.errors).map(key => ({ type: key, value: err.error.errors[key] }));
+        // Notificando Errores
+        mapped ? mapped.map(e => { this._as.msg('ERR', 'ERROR', e.value) }) :
+          err.error.message ? this._as.msg('ERR', 'ERROR', err.error.message) :
+            this._as.msg('ERR', 'ERROR', 'Error al Guardar.')
+
       });
   }
 
-  actualizar() {
-    this.mLoading = true;
-    this.sucursales
-      .actualizarCategoria(this.mCategoriasSelect, this.mCategoriasSelect.idSucursal)
+  eliminar(pKey: number) {
+    this._sucursalService
+      .eliminarCategoria(pKey)
       .then(data => {
-        this.mFormaEstado = enCRUD.Eliminar;
-        this.getAll();
-        this.mLoading = false;
+        this.getSucursalList();
+        this._as.msg('OK', 'EXITO!', 'Sucursal Eliminada Correctamente.')
       })
       .catch(error => {
+        this._as.msg('ERR', 'ERROR', 'Error al Eliminar.')
       });
   }
+
+
 }

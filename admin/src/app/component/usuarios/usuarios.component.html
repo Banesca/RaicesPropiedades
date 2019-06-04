@@ -1,34 +1,36 @@
-<div class="container" style="max-width: 100%;">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
       <h3 class="py-5 text-center font-weight-bold">Usuarios</h3>
-      <!--
-      <div [formGroup]="filterForm">
-      -->
-        <div class="form-group mx-auto" style="width: 100%; display: flex;">
-          <button
-          (click)="nuevo()"
-          type="button"
-          class="btn btn-primary"
-          class="btn btn-success mr-2"
-          [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
-        >
-          <i class="fa fa-plus"></i>
-         Nuevo
-         </button>
-    <!-- 
-          <button type="button" class="btn btn-success ml-2" (click)="filtrar()"
-            [disabled]=" inPromise">
-            Buscar
-          </button> -->
-        
+      <div class="d-flex col-md-12 justify-content-between">
+      <button
+      (click)="nuevo()"
+      type="button"
+      class="btn btn-success col-md-1 my-4"
+      [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
+    >
+      <i class="fa fa-plus"></i>
+     Nuevo
+     </button>
+      <form [formGroup]="filterForm" class="col-md-9 d-flex align-items-center">
+        <div class="form-group col-md-10 mb-0">
+
+          <input type="text" placeholder="Buscar por nombre ,  usuario , email" formControlName="search"
+            class="form-control">
+
+   
+          
         </div>
+        <button type="button" class="btn btn-success ml-2" (click)="filtrar()"
+        [disabled]=" mLoading">
+        Buscar
+      </button>
+      </form>
+      </div>
+ 
 
-    <!--  </div> -->
-    </div>
-  </div>
-</div>
 
+<div class="col-md-12">
 <div *ngIf="mFormaEstado == enCRUD.Eliminar">
   <div class="row animated fadeIn fast">
     <div class="col-md-12">
@@ -39,6 +41,7 @@
             <th>Nombre</th>
             <th>Email</th>
             <th>Acción</th>
+            <th></th>
           </thead>
           <tbody>
             <tr
@@ -111,78 +114,66 @@
           <i class="fa fa-plus"></i>
           Nuevo
         </button>
+        <button
+        *ngIf="mFormaEstado == enCRUD.Crear"
+        (click)="guardar()"
+        [disabled]="!vForma.valid"
+        style="margin: 5px"
+        class="btn btn-primary"
+      >
+        <i class="fa fa-save"></i>
+        Guardar
+      </button>
 
         <button
-          (click)="accion()"
+          *ngIf="mFormaEstado == enCRUD.Actualizar"
+          (click)="actualizar()"
           [disabled]="!vForma.valid"
           style="margin: 5px"
           class="btn btn-primary"
         >
           <i class="fa fa-save"></i>
-          <span *ngIf="mFormaEstado == enCRUD.Crear"> Guardar</span>
-          <span *ngIf="mFormaEstado == enCRUD.Actualizar"> Modificar</span>
+          Modificar
         </button>
       </div>
       <div class="form-group">
-        <label for="">Nombre</label>
+        <label for="">Nombres</label>
         <input
           class="form-control"
           type="text"
           formControlName="name"
           placeholder="Nombre"
         />
-        <div
-          *ngIf="mForma.controls['name'].errors?.required"
-          class="alert alert-danger"
-          role="alert"
-        >
-          Nombre es requerido
-        </div>
       </div>
 
       <div class="form-group">
         <label for="">Email</label>
         <input
           class="form-control"
-          type="text"
+          type="email"
           formControlName="email"
           placeholder="Email"
         />
-        <div
-          *ngIf="mForma.controls['name'].errors?.email"
-          class="alert alert-danger"
-          role="alert"
-        >
-          email es requerido
+      </div>
+        <div class="form-group">
+          <label for="">Password</label>
+          <input
+            class="form-control"
+            type="password"
+            formControlName="password"
+            placeholder="Password"
+          />
         </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="">Password</label>
-        <input
-          class="form-control"
-          type="text"
-          formControlName="password"
-          placeholder="password"
-        />
-      </div>
+
         <div class="form-group">
           <label for="">Confirmar Password</label>
           <input
             class="form-control"
-            type="text"
+            type="password"
             formControlName="password_confirmation"
-            placeholder="password"
+            placeholder="Confirmar Password"
           />
-        <!--
-        <div
-          *ngIf="mForma.controls['name'].errors?.password"
-          class="alert alert-danger"
-          role="alert"
-        >
-          email es requerido
-        </div>-->
-      </div>
+        </div>
     </form>
   </div>
 </div>
@@ -201,26 +192,30 @@
           </button>
         </div>
         <div class="form-group">
-          <label for="">titulo</label>
+          <label for="">Nombre</label>
           <input
             class="form-control"
             type="text"
-            [(ngModel)]="mCategoriasSelect.titulo"
-            name="mCategoriasSelect.titulo"
+            [(ngModel)]="mCategoriasSelect.name"
+            name="mCategoriasSelect.name"
             readonly
           />
         </div>
 
         <div class="form-group">
-          <label for="">Descripcion</label>
-          <textarea
+          <label for="">Email</label>
+          <input
             class="form-control"
             type="text"
-            [(ngModel)]="mCategoriasSelect.descripcion"
-            name="mCategoriasSelect.descripcion"
+            [(ngModel)]="mCategoriasSelect.email"
+            name="mCategoriasSelect.email"
             readonly
-          ></textarea>
+          />
         </div>
       </form>
     </div>
   </div>
+</div>
+</div>
+</div>
+</div>

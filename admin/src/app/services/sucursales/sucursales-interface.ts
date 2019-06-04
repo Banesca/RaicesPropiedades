@@ -4,11 +4,11 @@ export interface ISucursalesRs {
   }
   
   export interface ISucursales {
-    idSucursal: number,
-    nombreSucursal: string,
-    telefonoSucursal: string,
-    emailSucursal: string,
-    direccionSucursal: string,
+    idSucursal?: number;
+    nombreSucursal: string;
+    telefonoSucursal: string;
+    emailSucursal: string;
+    direccionSucursal: string;
   }
   
   export class Sucursales {
