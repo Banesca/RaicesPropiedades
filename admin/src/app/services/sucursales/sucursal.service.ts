@@ -2,36 +2,24 @@ import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { IMailSuscriber, IMailSuscriberRs } from './mail-suscriber.interface'
+
 import { getHeaders } from '../../misc/Headers';
+import { Sucursal } from './sucursal';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MailSuscribersService {
-  private mService = 'categorias';
-  private mUrl: string;
-  constructor(
-    private _HttpClient: HttpClient) {
-  }
+export class SucursalService {
 
-  allCategorias() {
+  constructor(
+    private _HttpClient: HttpClient
+  ) { }
+
+  getAll() {
     return this._HttpClient
-      .get(environment.apiHost + '/api/v1/ListarMensajesMailMasivos', {
+      .post(environment.apiHost + '/api/v1/sucursal/listar',null, {
         headers: getHeaders()
       })
-      .pipe(
-        map((data: IMailSuscriberRs) => {
-          return data;
-        })
-      )
-      .toPromise();
-  }
-
-  nuevaCategoria(pCategoria: IMailSuscriber) {
-    const lCategoria = JSON.stringify(pCategoria);
-    return this._HttpClient
-      .post(environment.apiHost + '/api/v1/enviarMailMasivos', lCategoria, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;
@@ -40,10 +28,21 @@ export class MailSuscribersService {
       .toPromise();
   }
 
-  actualizarCategoria(pCategoria: IMailSuscriber, pKey: number) {
-    const lCategoria = JSON.stringify(pCategoria);
+  addNew(sucursal: any) {
+/*     const data = JSON.stringify(sucursal); */
     return this._HttpClient
-      .put(environment.apiHost + '/api/v1/editarSuscripcion/' + pKey + '/' , lCategoria, {
+      .post(environment.apiHost+'/api/auth/sucursal/add', sucursal, { headers: getHeaders() })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+
+  actualizarCategoria(sucursal: any, pKey: number) {
+    return this._HttpClient
+      .post(environment.apiHost +  '/api/auth/sucursal/edit/' + pKey + '/', sucursal, {
         headers: getHeaders()
       })
       .pipe(
@@ -55,7 +54,7 @@ export class MailSuscribersService {
 
   eliminarCategoria(pKey: number) {
     return this._HttpClient
-      .delete(environment.apiHost + '/api/v1/borrarSuscripcion' + '/' + pKey, { headers: getHeaders() })
+      .delete(environment.apiHost +  '/api/auth/sucursal/borrar/' + pKey, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;

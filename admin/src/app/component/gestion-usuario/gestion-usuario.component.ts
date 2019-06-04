@@ -216,7 +216,7 @@ export class GestionUsuarioComponent implements OnInit {
     this.inPromise = true;
     this.UsuariosService._addUser(user).subscribe(
       resp => {
-        console.log(resp);
+        console.log(user);
         if (resp) {
           this.inPromise = false;
           $("#newUserModal").modal('hide');

@@ -82,7 +82,7 @@ export class GestionPublicacionesComponent implements OnInit {
       });
   }
 
-  nuevo(pForma: NgForm) {
+  nuevo() {
     this.mForma.reset();
     this.mFormaEstado = enCRUD.Crear;
   }

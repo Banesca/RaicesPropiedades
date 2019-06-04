@@ -51,7 +51,6 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MailsComponent } from './component/config-footer/mails/mails.component';
 import { MailSuscribersComponent } from './component/mail-suscribers/mail-suscribers.component';
-import { EditMailComponent } from './component/mail-suscribers/edit-mail/edit-mail.component';
 import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { SucursalesComponent } from './component/sucursales/sucursales.component';
@@ -60,7 +59,6 @@ import { SucursalesComponent } from './component/sucursales/sucursales.component
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     MenuComponent,
     SetingComponent,
     FooterComponent,
@@ -86,7 +84,6 @@ import { SucursalesComponent } from './component/sucursales/sucursales.component
     PrincipalComponent,
     MailsComponent,
     MailSuscribersComponent,
-    EditMailComponent,
     UsuariosComponent,
     SucursalesComponent,  
 
