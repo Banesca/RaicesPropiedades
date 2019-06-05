@@ -60,17 +60,21 @@ class SuscripcionController extends Controller {
         try {
 
             $sus = Suscripcion::find($id);
+
             if ($sus) {
-                $sus->fill([ 'fk_idStatusSistema' => $request->fk_idStatusSistema ]);
+                $sus->fk_idStatusSistema = $request->fk_idStatusSistema;
+                $sus->save();
+                $sus->status;
+
                 $response = [
                     'msj'         => 'Status de la suscripcion cambiada',
                     'suscripcion' => $sus,
                 ];
 
-                $sus->save();
+
                 DB::commit();
 
-                return response()->json($response, 200);
+                return response()->json($response);
             } else {
                 $response = [
                     'msj' => 'No existe la suscripcion con ese id',
