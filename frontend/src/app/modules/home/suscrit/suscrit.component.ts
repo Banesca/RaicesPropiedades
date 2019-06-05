@@ -84,6 +84,7 @@ export class SuscritComponent implements OnInit {
     })
     .catch(error => {
       this.errorMensaje = true;
+      console.log(error)
       this.mLoading = false;
     });
 }
