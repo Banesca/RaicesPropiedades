@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
 export class SuscripcionService {
 
 /** Nombre de recurso ha obtener en la API */
-private mService = '/api/v1/suscripcion/';
+private mService = '/api/v1/suscripcion/add';
 /** Url obtenida del servicio de configuracion */
 private mUrl: string;
 
