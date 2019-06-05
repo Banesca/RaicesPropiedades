@@ -26,6 +26,6 @@ export class GaleriaHomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.publicacionesList.length);
+     
      }
 }
