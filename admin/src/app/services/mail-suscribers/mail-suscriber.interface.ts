@@ -28,20 +28,16 @@ export interface IMailSuscriberRs {
   }
   
   export interface ISuscriber {
-    idSuscripcionUser: number;
-    titulo: string;
-    descripcion: string;
-    estado?: string;
+    idSuscripcion: number;
+    email: string;
   }
 
   export class Suscriber {
     static empy() {
       return {
-        idSuscripcionUser: null,
-        titulo: '',
-        descripcion: '',
-        estado: ''
-      } as IMailSuscriber;
+        idSuscripcion: null,
+        email: ''
+      } as ISuscriber;
     }
   }
   
