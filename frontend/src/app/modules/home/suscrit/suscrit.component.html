@@ -1,0 +1,42 @@
+<ng-template #content let-modal>
+    <div class="modal-body">
+        <div *ngIf="mLoading" class="row">
+            <div class="col-lg-12 d-flex justify-content-center my-2">
+              <div class="spinner-border main-spinner m-5" role="status">
+                <span class="sr-only">Enviando...</span>
+              </div>
+            </div>
+          </div>
+        <div *ngIf="successMensaje" class="row">
+            <div class="col-lg-12 my-2">
+              <h3 class="text-center mt-3 font-weight-bold">Suscripción Realizada!</h3>
+              <p class="mb-5 text-center font-weight-bold">Hemos enviado la confirmación a tu bandeja de correo</p>
+              <button  class="btn btn-lg brown-button mx-auto btn-block col-lg-5" (click)="submittedClose()">Volver</button>
+            </div>
+          </div>
+          <div *ngIf="errorMensaje" class="row">
+              <div class="col-lg-12 my-2">
+                <h3 class="text-center mt-3 font-weight-bold">Hubo un problema al realizar la suscripción</h3>
+                <p class="mb-5 text-center font-weight-bold">Por favor intente nuevamente</p>
+                <button  class="btn brown-button btn-lg mx-auto btn-block col-lg-5" (click)="submittedClose()">Volver</button>
+              </div>
+            </div>
+    </div>
+  </ng-template>
+
+<section class="py-5 mb-5 suscrit sec2" id="suscrit">
+  <div class="container section-container">
+      <div class="row d-flex justify-content-center">
+          <h3 style=" z-index: 103;" class="mb-4 text-white text-uppercase font-weight-bold">Suscríbete</h3>
+      </div>
+  <form [formGroup]="suscritForm" (ngSubmit)="onSubmit()">
+    <div class="row py-5 d-flex justify-content-center">
+      <input formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="text" class="form-control shadow col-10 col-md-7 col-lg-6 form-control-lg sub-input" placeholder="Tu Correo" aria-label="email" aria-describedby="basic-addon1">
+      <button class="btn shadow btn-block brown-button text-uppercase font-weight-bold btn-lg col-10 col-md-4 col-lg-3 d-flex justify-content-around main-button"
+      (click)="suscritForm.valid ? open(content) : true"
+      >Suscribete
+    </button>
+   </div>
+  </form>
+  </div>
+  </section>

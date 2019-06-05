@@ -1,0 +1,29 @@
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 d-lg-flex justify-content-center">        
+                    <div ngbDropdown class="col-lg-4 px-0" autoClose="outside">
+                        <button class="btn btn-primary btn-lg btn-block dropdown-toggle" id="dropdownForm1" ngbDropdownToggle> Todas las categorias</button>
+                        <div ngbDropdownMenu>
+                              <label *ngFor="let categoria of mCategoria; let i = index" class="dropdown-item d-flex justify-content-start">
+                                  <div class="checkbox my-1">
+                                    <input type="checkbox" id="{{categoria.nombre}}">
+                                    <label for="{{categoria.nombre}}">
+                                        {{categoria.nombre}}
+                                    </label>
+                                </div>
+                                </label>
+                        </div>
+                      </div>                            
+                    <input class="form-control search col-12 col-lg-5 search-blog form-control-lg" type="search" placeholder="Encuentra lo que buscas" aria-label="Search">
+                    <button class="btn btn-primary btn-lg btn-block col-lg-3 d-flex justify-content-around">BUSCAR</button>
+        </div>
+      </div>
+      <div class="row">
+      <!--- <app-articles>
+          
+        </app-articles>---> 
+      </div>
+    </div>
+</section>
