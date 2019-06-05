@@ -2,7 +2,7 @@ import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { IMailSuscriber, IMailSuscriberRs } from './mail-suscriber.interface'
+import { IMailSuscriber, IMailSuscriberRs, ISuscriberRs, ISuscriber } from './mail-suscriber.interface'
 import { getHeaders } from '../../misc/Headers';
 
 @Injectable({
@@ -22,6 +22,19 @@ export class MailSuscribersService {
       })
       .pipe(
         map((data: IMailSuscriberRs) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+
+  allSuscribers() {
+    return this._HttpClient
+      .get(environment.apiHost + '/api/v1/suscripcion/listarSuscripciones', {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: ISuscriberRs) => {
           return data;
         })
       )

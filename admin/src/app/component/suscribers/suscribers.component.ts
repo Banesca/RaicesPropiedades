@@ -1,5 +1,5 @@
 import { enCRUD } from "./../../misc/enums";
-import { MailSuscribers } from './../../services/interfaces.index'
+import { ISuscriber, Suscriber } from './../../services/interfaces.index'
 import {
   NgForm,
   FormGroup,
@@ -7,7 +7,6 @@ import {
   Validators
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { IMailSuscriber } from './../../services/mail-suscribers/mail-suscriber.interface'
 import { MailSuscribersService } from './../../services/mail-suscribers/mail-suscribers.service'
 import { AlertsService } from '../../services/alerts.service';
 
@@ -19,8 +18,8 @@ import { AlertsService } from '../../services/alerts.service';
 })
 export class SuscribersComponent implements OnInit {
 
-  mCategorias: IMailSuscriber[];
-  mCategoriasSelect: IMailSuscriber;
+  mCategorias: ISuscriber[];
+  mCategoriasSelect: ISuscriber;
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
@@ -35,7 +34,7 @@ export class SuscribersComponent implements OnInit {
     private _AlertsService: AlertsService
   ) {
     this.mCategorias = [];
-    this.mCategoriasSelect = MailSuscribers.empy();
+    this.mCategoriasSelect = Suscriber.empy();
     this.mForma = this.generarFormulario();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
@@ -56,17 +55,18 @@ export class SuscribersComponent implements OnInit {
   getAll() {
     this.mLoading = true;
     this._MailSuscribersService
-      .allCategorias()
+      .allSuscribers()
       .then(data => {
         this.mCategorias = data.suscripcion;
         this.mLoading = false;
+        console.log(this.mCategorias)
       })
       .catch(error => {
         console.log(error)
       });
   }
 
-  modificar(pCategoria: IMailSuscriber) {
+  modificar(pCategoria: ISuscriber) {
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
   }
@@ -88,14 +88,14 @@ export class SuscribersComponent implements OnInit {
     this.mFormaEstado = enCRUD.Crear;
   }
 
-  ver(pCategoria: IMailSuscriber) {
+  ver(pCategoria: ISuscriber) {
     console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }
 
   actualizar(pKey: number) {
-    this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
+    this.mCategoriasSelect = this.mForma.value as ISuscriber;
     this.mLoading = true;
     this._MailSuscribersService
       .actualizarCategoria(this.mCategoriasSelect, pKey,)
@@ -118,7 +118,7 @@ export class SuscribersComponent implements OnInit {
 
 
   guardar() {
-    this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
+    this.mCategoriasSelect = this.mForma.value as ISuscriber;
     this.mLoading = true;
     this._MailSuscribersService
       .nuevaCategoria(this.mCategoriasSelect)
