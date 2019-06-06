@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 /** Class Categoria CRUD por medio de un servicio web */
 export class SucursalesService {
   /** Nombre de recurso ha obtener en la API */
-  private mService = '/api/v1/sucursal/listar';
+  private mService = '/api/v1/sucursal/';
   /** Url obtenida del servicio de configuracion */
   private mUrl: string;
 
@@ -34,7 +34,7 @@ export class SucursalesService {
    * @returns Coleccion de datos de tipo ICategoria
    */
   All() {
-    return this._HttpClient.post(this.mUrl + this.mService, {
+    return this._HttpClient.post(this.mUrl + this.mService + 'listar', {
       headers: getHeaders()
     }).pipe(
       map((data: ISucursales) => {

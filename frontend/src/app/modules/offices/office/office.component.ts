@@ -47,6 +47,7 @@ export class OfficeComponent implements OnInit {
   });
   }
 
+
   get f() { return this.contactForm.controls; }
 
   onSubmit() {
@@ -63,8 +64,9 @@ export class OfficeComponent implements OnInit {
 
   GetSucursalUrl() {
     this._SucursalesService.getSucursal(this.mId).then(data => {
-      this.gSucursal = data;
+      this.gSucursal = data.suculsales;
       console.log(this.gSucursal)
+      console.log(this.mId)
     })
 
     
