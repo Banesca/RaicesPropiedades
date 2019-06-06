@@ -52,6 +52,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::get('listar/mails', 'MailController@listar');
 
     Route::post('sucursal/listar', 'SucursalController@listar');
+    Route::get('sucursal/{id}', 'SucursalController@listarPorId');
 
 
     /*   crud del mail masivo    */
