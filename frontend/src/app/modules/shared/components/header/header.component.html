@@ -58,9 +58,10 @@
                   <span ngbDropdownToggle class="nav-underline  brown-text">
                        Sucursales
                         <div ngbDropdownMenu class="m-0 p-0 brown-text" aria-labelledby="dropdownBasic1">
-                          <button class="text-uppercase"   routerLink="/sucursales" ngbDropdownItem>Pilar</button>
+                          <ng-container *ngFor="let sucursal of mCategoria">
+                          <button class="text-uppercase"   [routerLink]="[baseUrl,sucursal.idSucursal]" ngbDropdownItem>{{sucursal.nombreSucursal}}</button>
                           <div class="dropdown-divider m-0 p-0 m-0 p-0"></div>
-                          <button class="text-uppercase"  routerLink="/sucursales" ngbDropdownItem>Open Door</button>
+                        </ng-container>
                         </div>
                     </span>
                 </a>

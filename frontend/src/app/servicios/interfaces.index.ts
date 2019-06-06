@@ -5,3 +5,5 @@ export * from  './comentario/comentario.interface';
 export * from  './contacto/contacto.interface';
 export * from './imagen/imagen.interface';
 export * from  './suscripcion/suscripcion.interface';
+export * from  './configuracion-general/configuracion-general.interface';
+export * from  './sucursales/sucursales.interface';

@@ -1,24 +1,18 @@
 export interface IContacto {
-    id?: string;
     nombres?: string;
-    apellidos?: string;
     email?: string;
-    tema: string;
+    telefono: string;
     mensaje: string;
-    created_at:string;
 }
 
 
 export class CContacto{
     static empy() {
         return {
-            id: '',
             nombres: '',
-            apellidos: '',
             email: '',
-            tema: '',
+            telefono: '',
             mensaje:'',
-            created_at:''
         } as IContacto
     }
 }
