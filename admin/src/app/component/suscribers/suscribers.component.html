@@ -2,10 +2,27 @@
   <div class="row">
     <div class="col-md-12">
       <h3 class="py-5 text-center font-weight-bold">Suscriptores</h3>
-  
+<div class="d-flex">
+  <div class="d-flex my-3">
+     <button class="btn btn-success mr-3" (click)="activos =! activos" [disabled]="activos">Activos</button>
+     <button class="btn btn-danger" (click)="activos =! activos" [disabled]="!activos">Cancelados</button>
+    </div>
+    <form class="col-md-9 d-flex align-items-center" [formGroup]="mForma" #vForma="ngForm">
+        <div class="form-group col-md-10 mb-0">
 
+          <input type="text" placeholder="Buscar por email" 
+            class="form-control" formControlName="email"
+            >
 
-
+   
+          
+        </div>
+        <button type="button" class="btn btn-success ml-2"
+        [disabled]=" mLoading" (click)="guardar()">
+        Buscar
+      </button>
+      </form>
+    </div>
 <div *ngIf="mFormaEstado == enCRUD.Eliminar">
   <div class="row animated fadeIn fast">
     <div class="col-md-12">
@@ -16,41 +33,51 @@
             <th>Email</th>
             <th>Acción</th>
           </thead>
-          <tbody>
-            <tr
+          <tbody *ngIf="activos">
+  
+              <tr
               *ngFor="let categoria of mCategorias; let i = index"
               (dblclick)="modificar(categoria)"
             >
-            <td>{{categoria.idSuscripcion}}</td>
-            <td>{{categoria.email}}</td>
-            <td>
-                <button
-                (click)="ver(categoria)"
-                type="button"
-                class="btn mr-2 btn-info"
-              >
-              <i class="far fa-eye"></i>    
-                        </button>
+     
+          <td>{{categoria.idSuscripcion}}</td>
+          <td>{{categoria.email}}</td>
+          <td>
               <button
-                (click)="modificar(categoria)"
-                type="button"
-                class="btn mr-2 btn-primary"
-              >
-              <i class="fas fa-pencil-alt"></i>
-              </button>
-              <button
-                (click)="eliminar(categoria.idSuscripcion)"
-                type="button"
-                class="btn mr-2 btn-danger"
-              >
-                <i class="fa fa-trash"></i>
-              </button>
-            </td>
-            </tr>
-          </tbody>
+              (click)="ver(categoria)"
+              type="button"
+              class="btn mr-2 btn-info"
+            >
+            <i class="far fa-eye"></i>    
+                      </button>
+            <button
+              (click)="modificar(categoria)"
+              type="button"
+              class="btn mr-2 btn-primary"
+            >
+            <i class="fas fa-pencil-alt"></i>
+            </button>
+            <button
+              (click)="eliminar(categoria.idSuscripcion)"
+              type="button"
+              class="btn mr-2 btn-danger"
+            >
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+          </tr>
+        </tbody>
+        
         </table>
         <div
-          *ngIf="(mCategorias | keys).length === 0 && !mLoading"
+          *ngIf="(mCategorias | keys).length === 0 && !mLoading && activos"
+          class="alert alert-info"
+          role="alert"
+        >
+          <strong>No existen</strong> Mails que mostrar...
+        </div>
+        <div
+          *ngIf="!activos"
           class="alert alert-info"
           role="alert"
         >
