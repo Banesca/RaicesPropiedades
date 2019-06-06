@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "raices",
-		"_postman_id": "210a2549-a951-3f98-0d68-37f85dc5a669",
+		"_postman_id": "27f11766-eb69-9d9f-0fa1-c9ca5ad83b83",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -149,7 +149,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -277,7 +280,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -403,7 +409,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -500,7 +509,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -619,7 +631,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -747,6 +762,26 @@
 								"description": ""
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar sucursal por id",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/sucursal/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
 						"body": {},
 						"description": ""
 					},
@@ -841,7 +876,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -897,7 +935,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -914,7 +955,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []

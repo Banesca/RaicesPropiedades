@@ -139,4 +139,18 @@ class SucursalController extends Controller {
 
         return response()->json($response, 200);
     }
+
+    public function listarPorId($id) {
+
+
+        $sucursals = Sucursal::find($id);
+
+
+        $response = [
+            'msj'        => 'Sucursal',
+            'suculsales' => $sucursals,
+        ];
+
+        return response()->json($response, 200);
+    }
 }

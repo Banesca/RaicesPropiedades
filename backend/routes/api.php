@@ -52,6 +52,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::get('listar/mails', 'MailController@listar');
 
     Route::post('sucursal/listar', 'SucursalController@listar');
+    Route::get('sucursal/{id}', 'SucursalController@listarPorId');
 
 
     /*   crud del mail masivo    */
@@ -70,6 +71,22 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::get('suscripcion/buscarSuscripcionPorEmail/{email}','SuscripcionController@buscarSuscripcionPorEmail');
     Route::post('suscripcion/cancelarSuscripcionTocken/{tocken}','SuscripcionController@cancelarSuscripcionTocken');
     /*SUSCRIPCIONES*/
+
+    Route::get('limpiar_cache', function () {
+        Artisan::call(
+            'cache:clear');
+        Artisan::call('config:cache');
+        //Artisan::call('vendor:publish');
+        return response()->json('cache borrada y configurada');
+
+    });
+
+    Route::get('serve', function () {
+        Artisan::call('serve --host=0.0.0.0 --port=8753');
+
+        return response()->json('servidor iniciado puerto 8753');
+
+    });
 
 });
 
