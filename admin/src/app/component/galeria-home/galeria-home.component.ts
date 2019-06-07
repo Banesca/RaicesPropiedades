@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 })
 export class GaleriaHomeComponent implements OnInit {
     myForm: FormGroup;
-    publicacionesList: any[]=['test','test','test','test'];
+    
     constructor(
         private _alertService: AlertsService,
         private fb: FormBuilder
@@ -19,13 +19,11 @@ export class GaleriaHomeComponent implements OnInit {
         this.myForm = fb.group({
             titulo: ['',Validators.required],
             descripcion: ['',Validators.required],
-            publicaciones: ['',Validators.required],
         })
 
 
     }
 
     ngOnInit() {
-     
      }
 }

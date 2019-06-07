@@ -27,22 +27,15 @@
 <section class="py-5 mb-5 suscrit sec2" id="suscrit">
   <div class="container section-container">
       <div class="row d-flex justify-content-center">
-          <h3 style=" z-index: 103;" class="mb-3 text-white text-uppercase font-weight-bold">Suscríbete</h3>
+          <h3 style=" z-index: 103;" class="mb-4 text-white text-uppercase font-weight-bold">Suscríbete</h3>
       </div>
-  <form [formGroup]="suscritForm" (ngSubmit)="onSubmit()" >
-    <div class="row py-5 d-flex flex-column align-items-center" >
-      <div class="d-flex my-2 col-lg-12 justify-content-center"> <input (capsLock)="capsOn=$event"  formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="text" class="form-control shadow col-10 col-md-7 col-lg-6 form-control-lg sub-input" placeholder="Tu Correo" aria-label="email" aria-describedby="basic-addon1">
-        <button class="btn shadow btn-block brown-button text-uppercase font-weight-bold btn-lg col-10 col-md-4 col-lg-3 d-flex justify-content-around main-button"
-        (click)="suscritForm.valid ? open(content) : true"
-        >Suscribete
-      </button></div>
-      <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback text-center">
-          <h6 *ngIf="f.email.errors.required">El Email es Requerido</h6>
-          <h6 *ngIf="f.email.errors.email">Por favor ingrese un Email válido</h6>
-      </div>
-      <div *ngIf="capsOn" type="alert" class="invalid-feedback text-center">
-          <h6>Bloq Mayús activado</h6>
-      </div>
+  <form [formGroup]="suscritForm" (ngSubmit)="onSubmit()">
+    <div class="row py-5 d-flex justify-content-center">
+      <input formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="text" class="form-control shadow col-10 col-md-7 col-lg-6 form-control-lg sub-input" placeholder="Tu Correo" aria-label="email" aria-describedby="basic-addon1">
+      <button class="btn shadow btn-block brown-button text-uppercase font-weight-bold btn-lg col-10 col-md-4 col-lg-3 d-flex justify-content-around main-button"
+      (click)="suscritForm.valid ? open(content) : true"
+      >Suscribete
+    </button>
    </div>
   </form>
   </div>
