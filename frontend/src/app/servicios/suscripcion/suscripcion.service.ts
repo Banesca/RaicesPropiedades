@@ -38,7 +38,7 @@ private mUrl: string;
   * @ICategoria  Recibe un objeto del tipo ISuscripcion como parametro
   * @returns Item de dato de Tipo Isuscripcion
   */
-  search(pSuscripcion: ISuscripcion) {
+ New(pSuscripcion: ISuscripcion) {
     const lSuscripcion = JSON.stringify(pSuscripcion);
     return this._HttpClient.post(this.mUrl + this.mService, lSuscripcion, {
       headers: getHeaders()
