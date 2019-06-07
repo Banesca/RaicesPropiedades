@@ -31,7 +31,6 @@
           <thead class="thead-dark">
             <th>#</th>
             <th>Email</th>
-            <th>Acción</th>
           </thead>
           <tbody *ngIf="activos">
   
@@ -42,29 +41,6 @@
      
           <td>{{categoria.idSuscripcion}}</td>
           <td>{{categoria.email}}</td>
-          <td>
-              <button
-              (click)="ver(categoria)"
-              type="button"
-              class="btn mr-2 btn-info"
-            >
-            <i class="far fa-eye"></i>    
-                      </button>
-            <button
-              (click)="modificar(categoria)"
-              type="button"
-              class="btn mr-2 btn-primary"
-            >
-            <i class="fas fa-pencil-alt"></i>
-            </button>
-            <button
-              (click)="eliminar(categoria.idSuscripcion)"
-              type="button"
-              class="btn mr-2 btn-danger"
-            >
-              <i class="fa fa-trash"></i>
-            </button>
-          </td>
           </tr>
         </tbody>
         
