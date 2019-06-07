@@ -17,12 +17,13 @@ import { AlertsService } from '../../services/alerts.service';
   styleUrls: ['./suscribers.component.css']
 })
 export class SuscribersComponent implements OnInit {
-
+  activos: boolean = true;
   mCategorias: ISuscriber[];
   mCategoriasSelect: ISuscriber;
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
+  searchResult: any [] = [];
 
   mForma: FormGroup;
   mFormaEstado: string;
@@ -116,18 +117,21 @@ export class SuscribersComponent implements OnInit {
       });
   }
 
-
+*/
   guardar() {
-    this.mCategoriasSelect = this.mForma.value as ISuscriber;
+    this.mCategoriasSelect = this.mForma.controls["email"].value;
     this.mLoading = true;
     this._MailSuscribersService
-      .nuevaCategoria(this.mCategoriasSelect)
+      .search(this.mCategoriasSelect)
       .then(data => {
-        this.mFormaEstado = enCRUD.Eliminar;
-        this.getAll();
+          this.mCategorias = data.suscripcion;
         this.mLoading = false;
+        console.log(this.mCategoriasSelect,  this.mCategorias)
       })
       .catch(error => {
+        this.mLoading = false;
+        console.log(error)
+        console.log(this.mCategoriasSelect)
       });
   }
 }

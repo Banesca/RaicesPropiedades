@@ -52,6 +52,16 @@ export class MailSuscribersService {
       )
       .toPromise();
   }
+  search(pCategoria: any) {
+    return this._HttpClient
+      .get(environment.apiHost + '/api/v1/suscripcion/buscarSuscripcionPorEmail' + '/' + pCategoria  , { headers: getHeaders() })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
 
   actualizarCategoria(pCategoria: IMailSuscriber, pKey: number) {
     const lCategoria = JSON.stringify(pCategoria);

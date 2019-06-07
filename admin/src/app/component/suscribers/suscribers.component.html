@@ -2,10 +2,27 @@
   <div class="row">
     <div class="col-md-12">
       <h3 class="py-5 text-center font-weight-bold">Suscriptores</h3>
-  
+<div class="d-flex">
+  <div class="d-flex my-3">
+     <button class="btn btn-success mr-3" (click)="activos =! activos" [disabled]="activos">Activos</button>
+     <button class="btn btn-danger" (click)="activos =! activos" [disabled]="!activos">Cancelados</button>
+    </div>
+    <form class="col-md-9 d-flex align-items-center" [formGroup]="mForma" #vForma="ngForm">
+        <div class="form-group col-md-10 mb-0">
 
+          <input type="text" placeholder="Buscar por email" 
+            class="form-control" formControlName="email"
+            >
 
-
+   
+          
+        </div>
+        <button type="button" class="btn btn-success ml-2"
+        [disabled]=" mLoading" (click)="guardar()">
+        Buscar
+      </button>
+      </form>
+    </div>
 <div *ngIf="mFormaEstado == enCRUD.Eliminar">
   <div class="row animated fadeIn fast">
     <div class="col-md-12">
@@ -13,47 +30,30 @@
         <table class="table table-striped">
           <thead class="thead-dark">
             <th>#</th>
-            <th>Titulo</th>
-            <th>Descripcion</th>
-            <th>Acción</th>
-            <th></th>
+            <th>Email</th>
           </thead>
-          <tbody>
-            <tr
+          <tbody *ngIf="activos">
+  
+              <tr
               *ngFor="let categoria of mCategorias; let i = index"
               (dblclick)="modificar(categoria)"
             >
-            <td>{{categoria.idSuscripcionUser}}</td>
-            <td>{{categoria.titulo}}</td>
-            <td>{{categoria.descripcion}}</td>
-            <td>
-                <button
-                (click)="ver(categoria)"
-                type="button"
-                class="btn mr-2 btn-info"
-              >
-              <i class="far fa-eye"></i>    
-                        </button>
-              <button
-                (click)="modificar(categoria)"
-                type="button"
-                class="btn mr-2 btn-primary"
-              >
-              <i class="fas fa-pencil-alt"></i>
-              </button>
-              <button
-                (click)="eliminar(categoria.idSuscripcionUser)"
-                type="button"
-                class="btn mr-2 btn-danger"
-              >
-                <i class="fa fa-trash"></i>
-              </button>
-            </td>
-            </tr>
-          </tbody>
+     
+          <td>{{categoria.idSuscripcion}}</td>
+          <td>{{categoria.email}}</td>
+          </tr>
+        </tbody>
+        
         </table>
         <div
-          *ngIf="(mCategorias | keys).length === 0 && !mLoading"
+          *ngIf="(mCategorias | keys).length === 0 && !mLoading && activos"
+          class="alert alert-info"
+          role="alert"
+        >
+          <strong>No existen</strong> Mails que mostrar...
+        </div>
+        <div
+          *ngIf="!activos"
           class="alert alert-info"
           role="alert"
         >
@@ -102,7 +102,7 @@
 
         <button
           *ngIf="mFormaEstado == enCRUD.Actualizar"
-          (click)="actualizar(mCategoriasSelect.idSuscripcionUser)"
+          (click)="actualizar(mCategoriasSelect.idSuscripcion)"
           [disabled]="!vForma.valid"
           style="margin: 5px"
           class="btn btn-primary"
@@ -112,36 +112,27 @@
         </button>
       </div>
       <div class="form-group">
-        <label for="">titulo</label>
+        <label for="">Email</label>
         <input
           class="form-control"
           type="text"
-          formControlName="titulo"
-          placeholder="titulo del mail"
+          formControlName="email"
+          placeholder="Email"
         />
         <div
-          *ngIf="mForma.controls['titulo'].errors?.required"
+          *ngIf="mForma.controls['email'].errors?.required"
           class="alert alert-danger"
           role="alert"
         >
-          titulo es requerido
+          Email es requerido
         </div>
         <div
-          *ngIf="mForma.controls['titulo'].errors?.minlength"
+          *ngIf="mForma.controls['email'].errors?.email"
           class="alert alert-danger"
           role="alert"
         >
-          minimo de 5 caracteres
+          Debe ser un email
         </div>
-      </div>
-
-      <div class="form-group">
-        <label for="">Descripcion</label>
-        <textarea
-          class="form-control"
-          type="text"
-          formControlName="descripcion"
-        ></textarea>
       </div>
     </form>
   </div>
@@ -161,25 +152,14 @@
           </button>
         </div>
         <div class="form-group">
-          <label for="">titulo</label>
+          <label for="">Email</label>
           <input
             class="form-control"
             type="text"
-            [(ngModel)]="mCategoriasSelect.titulo"
-            name="mCategoriasSelect.titulo"
+            [(ngModel)]="mCategoriasSelect.email"
+            name="mCategoriasSelect.email"
             readonly
           />
-        </div>
-
-        <div class="form-group">
-          <label for="">Descripcion</label>
-          <textarea
-            class="form-control"
-            type="text"
-            [(ngModel)]="mCategoriasSelect.descripcion"
-            name="mCategoriasSelect.descripcion"
-            readonly
-          ></textarea>
         </div>
       </form>
     </div>
