@@ -1,5 +1,5 @@
 {
-    "UrlAPI": "",
-    "timeOut": 10000
+  "UrlAPI": "http://localhost:8000",
+  "timeOut": 1000
   }
   
