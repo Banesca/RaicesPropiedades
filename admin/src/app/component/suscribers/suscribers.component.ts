@@ -117,7 +117,6 @@ export class SuscribersComponent implements OnInit {
       });
   }
 
-*/
   guardar() {
     this.mCategoriasSelect = this.mForma.controls["email"].value;
     this.mLoading = true;
