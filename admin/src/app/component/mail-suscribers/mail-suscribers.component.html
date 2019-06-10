@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="py-5 text-center font-weight-bold">Mail a Suscriptores</h3>
+        <h3 class="py-5 text-center font-weight-bold">Mails a Suscriptores</h3>
             <button
             (click)="nuevo()"
             type="button"
@@ -22,10 +22,10 @@
       <div class="col-md-12">
         <div class="table-responsive">
           <table class="table table-striped">
-            <thead class="thead-dark">
-              <th>#</th>
-              <th>Titulo</th>
-              <th>Descripcion</th>
+            <thead class="thead-dark ">
+              <th class="d-flex justify-content-center">#</th>
+              <th>Título</th>
+              <th>Descripción</th>
               <th>Acción</th>
               <th></th>
             </thead>
@@ -34,7 +34,7 @@
                 *ngFor="let categoria of mCategorias; let i = index"
                 (dblclick)="modificar(categoria)"
               >
-              <td>{{categoria.idSuscripcionUser}}</td>
+              <td  class="d-flex justify-content-center">{{categoria.idSuscripcionUser}}</td>
               <td>{{categoria.titulo}}</td>
               <td>{{categoria.descripcion}}</td>
               <td>
@@ -123,31 +123,31 @@
           </button>
         </div>
         <div class="form-group">
-          <label for="">titulo</label>
+          <label for="">Título</label>
           <input
             class="form-control"
             type="text"
             formControlName="titulo"
-            placeholder="titulo del mail"
+            placeholder="Título del Mail"
           />
           <div
             *ngIf="mForma.controls['titulo'].errors?.required"
             class="alert alert-danger"
             role="alert"
           >
-            titulo es requerido
+            Título es requerido
           </div>
           <div
             *ngIf="mForma.controls['titulo'].errors?.minlength"
             class="alert alert-danger"
             role="alert"
           >
-            minimo de 5 caracteres
+            Mínimo de 5 caracteres
           </div>
         </div>
   
         <div class="form-group">
-          <label for="">Descripcion</label>
+          <label for="">Descripción</label>
           <textarea
             class="form-control"
             type="text"
@@ -172,7 +172,7 @@
             </button>
           </div>
           <div class="form-group">
-            <label for="">titulo</label>
+            <label for="">Título</label>
             <input
               class="form-control"
               type="text"
@@ -183,7 +183,7 @@
           </div>
   
           <div class="form-group">
-            <label for="">Descripcion</label>
+            <label for="">Descripción</label>
             <textarea
               class="form-control"
               type="text"
