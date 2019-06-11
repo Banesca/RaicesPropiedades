@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropiertysListComponent implements OnInit {
 
+  public baseUrl: string = 'sucursales/detail/1'
+
+
   constructor() { }
 
   ngOnInit() {
