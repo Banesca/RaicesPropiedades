@@ -106,7 +106,7 @@ export class SucursalesComponent implements OnInit {
     console.log(this.sucursalSelected);
 
     this._sucursalService
-      .actualizarCategoria(this.sucursalSelected, pKey)
+      .actualizarCategoria(this.sucursalSelected, this.sucursalSelected.idSucursal)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getSucursalList();

@@ -17,7 +17,7 @@ export class SucursalService {
 
   getAll() {
     return this._HttpClient
-      .post(environment.apiHost + '/api/v1/sucursal/listar',null, {
+      .post(environment.apiHost + '/api/v1/sucursal/listar', null, {
         headers: getHeaders()
       })
       .pipe(
@@ -29,9 +29,9 @@ export class SucursalService {
   }
 
   addNew(sucursal: any) {
-/*     const data = JSON.stringify(sucursal); */
+    /*     const data = JSON.stringify(sucursal); */
     return this._HttpClient
-      .post(environment.apiHost+'/api/auth/sucursal/add', sucursal, { headers: getHeaders() })
+      .post(environment.apiHost + '/api/auth/sucursal/add', sucursal, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;
@@ -42,7 +42,7 @@ export class SucursalService {
 
   actualizarCategoria(sucursal: any, pKey: number) {
     return this._HttpClient
-      .post(environment.apiHost +  '/api/auth/sucursal/edit/' + pKey + '/', sucursal, {
+      .post(environment.apiHost + '/api/auth/sucursal/edit/' + pKey, sucursal, {
         headers: getHeaders()
       })
       .pipe(
@@ -54,7 +54,7 @@ export class SucursalService {
 
   eliminarCategoria(pKey: number) {
     return this._HttpClient
-      .delete(environment.apiHost +  '/api/auth/sucursal/borrar/' + pKey, { headers: getHeaders() })
+      .delete(environment.apiHost + '/api/auth/sucursal/borrar/' + pKey, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;
