@@ -72,6 +72,11 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::post('suscripcion/cancelarSuscripcionTocken/{tocken}','SuscripcionController@cancelarSuscripcionTocken');
     /*SUSCRIPCIONES*/
 
+    /*   Transacciones    */
+    /*   Agregada 11/6/2019    */
+    Route::get('transacciones/transacciones','TransaccionesController@transacciones');
+    /*   Transacciones    */
+
     Route::get('limpiar_cache', function () {
         Artisan::call(
             'cache:clear');
