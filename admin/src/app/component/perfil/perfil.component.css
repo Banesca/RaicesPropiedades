@@ -1,3 +1,15 @@
 small{
     color: red;
 }
+
+hr{
+    border-top: 1px solid #777;
+}
+
+.alert{
+    width: 100%;
+}
+
+.div-btn{
+    float: right;
+}

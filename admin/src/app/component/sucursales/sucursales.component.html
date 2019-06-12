@@ -1,68 +1,52 @@
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <h3 class="py-5 text-center font-weight-bold">Mail a Suscriptores</h3>
-          <button
-          (click)="nuevo()"
-          type="button"
-          class="btn btn-primary"
-          class="btn btn-success my-4"
-          [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
-        >
-          <i class="fa fa-plus"></i>
-         Nuevo
-         </button>
-        </div>
+      <h3 class="py-5 text-center font-weight-bold">Sucursales</h3>
+      <button (click)="nuevo()" type="button" class="btn btn-primary" class="btn btn-success my-4"
+        *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar">
+        <i class="fa fa-plus"></i>
+        Nuevo
+      </button>
     </div>
+  </div>
 
 
-<!-- listado de Sucursales -->
-<div  *ngIf="mFormaEstado == enCRUD.Eliminar">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead class="thead-dark">
+  <!-- listado de Sucursales -->
+  <div *ngIf="mFormaEstado == enCRUD.Eliminar">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead class="thead-dark">
 
-            <th>Nombre</th>
-            <th>Numero de Contacto</th>
-            <th>Email</th>
-            <th>Dirección</th>
-            <th>Acción</th>
-          <!--   <th></th> -->
-          </thead>
-          <tbody>
-            <tr *ngFor="let sucursal of sucursalList; let i = index">
+              <th>Nombre</th>
+              <th>Número de Contacto</th>
+              <th>Email</th>
+              <th>Dirección</th>
+              <th>Acción</th>
+              <!--   <th></th> -->
+            </thead>
+            <tbody>
+              <tr *ngFor="let sucursal of sucursalList; let i = index">
 
-              <td>{{sucursal.nombreSucursal}}</td>
-              <td>{{sucursal.telefonoSucursal}}</td>
-              <td>{{sucursal.emailSucursal}}</td>
-              <td>{{sucursal.direccionSucursal}}</td>
-              <td>
-                <button
-                (click)="ver(sucursal)"
-                type="button"
-                class="btn mr-2 btn-info"
-              >
-              <i class="far fa-eye"></i>    
-                        </button>
-              <button
-                (click)="modificar(sucursal)"
-                type="button"
-                class="btn mr-2 btn-primary"
-              >
-              <i class="fas fa-pencil-alt"></i>
-              </button>
-              <button
-                (click)="eliminar(sucursal.idSucursal)"
-                type="button"
-                class="btn mr-2 btn-danger"
-              >
-                <i class="fa fa-trash"></i>
-              </button>
-            </td>
-             <!--  <td class="text-right">
+                <td>{{sucursal.nombreSucursal}}</td>
+                <td>{{sucursal.telefonoSucursal}}</td>
+                <td>{{sucursal.emailSucursal}}</td>
+                <td>{{sucursal.direccionSucursal}}</td>
+                <td>
+                  <!--
+                  <button (click)="ver(sucursal)" type="button" class="btn mr-2 btn-info">
+                    <i class="far fa-eye"></i>
+                  </button>
+                  -->
+                  <button (click)="modificar(sucursal)" type="button" class="btn mr-2 btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                  <button (click)="eliminar(sucursal.idSucursal)" type="button" class="btn mr-2 btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+                <!--  <td class="text-right">
                 <button (click)="modificar(sucursal)" type="button" class="btn btn-primary">
                   <i class="fa fa-pencil"></i>
                 </button>
@@ -71,94 +55,123 @@
                 </button>
               </td> -->
 
-            </tr>
-          </tbody>
-        </table>
-        <div
-        *ngIf="(sucursalList | keys).length === 0 && !mLoading"
-        class="alert alert-info"
-        role="alert"
-      >
-        <strong>No existen</strong> Sucursales que mostrar...
-      </div>
-      <div *ngIf="mLoading" class="alert alert-warning" role="alert">
-        <strong>Cargando</strong> por favor espere...
+              </tr>
+            </tbody>
+          </table>
+          <div *ngIf="(sucursalList | keys).length === 0 && !mLoading" class="alert alert-info" role="alert">
+            <strong>No existen</strong> Sucursales que mostrar...
+          </div>
+          <div *ngIf="mLoading" class="alert alert-warning" role="alert">
+            <strong>Cargando</strong> por favor espere...
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
+  <!--FINAL LISTA-->
+  <!--Formulario de CREAR Y ACTUALIZAR -->
 
-<div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
-  <div class="col-md-12">
-    <form [formGroup]="myForm">
-      <div class="form-group text-right">
-        <button
-          (click)="mFormaEstado = enCRUD.Eliminar"
-          type="button"
-          class="btn btn-primary"
-        >
-          <i class="fa fa-backward"></i>
-          Regresar
-        </button>
-
-        <button
-          (click)="nuevo()"
-          *ngIf="mFormaEstado == enCRUD.Actualizar"
-          style="margin: 5px"
-          class="btn btn-primary"
-        >
+  <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
+    <div class="col-md-12">
+      <form [formGroup]="myForm">
+        <div class="row">
+          <div class="col-md-9 text-center">
+              <h4 *ngIf="mFormaEstado == enCRUD.Crear">Nueva Sucursal</h4>
+              <h4 *ngIf="mFormaEstado == enCRUD.Actualizar">Actualizar Sucursal</h4>
+          </div>
+          <div class="col-md-3">
+            <!-- BOTONES CABECERA-->
+            <div class="form-group text-right">
+              <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
+                <i class="fa fa-backward"></i>
+                Regresar
+              </button>
+              <!--
+        <button (click)="nuevo()" *ngIf="mFormaEstado == enCRUD.Actualizar" style="margin: 5px"
+          class="btn btn-primary">
           <i class="fa fa-plus"></i>
           Nuevo
         </button>
+        -->
+              <button *ngIf="mFormaEstado == enCRUD.Crear" (click)="guardar()" [disabled]="!myForm.valid || progressBar"
+                style="margin: 5px" class="btn btn-primary">
+                <i class="fa fa-save"></i>
+                Guardar
+              </button>
+              <button *ngIf="mFormaEstado == enCRUD.Actualizar" (click)="actualizar(sucursalSelected.idSucursal)"
+                [disabled]="!myForm.valid || progressBar" style="margin: 5px" class="btn btn-primary">
+                <i class="fa fa-save"></i>
+                Modificar
+              </button>
+            </div>
+            <!--FIN BOTONES CABECERA-->
+          </div>
 
-        <button
-          *ngIf="mFormaEstado == enCRUD.Crear"
-          (click)="guardar()"
-          [disabled]="!myForm.valid"
-          style="margin: 5px"
-          class="btn btn-primary"
-        >
-          <i class="fa fa-save"></i>
-          Guardar
-        </button>
-        <button
-        *ngIf="mFormaEstado == enCRUD.Actualizar"
-        (click)="actualizar(sucursalSelected.idSucursal)"
-        [disabled]="!myForm.valid"
-        style="margin: 5px"
-        class="btn btn-primary"
-      >
-        <i class="fa fa-save"></i>
-         Modificar
-      </button>
-      </div>
-      <div class="form-group">
-        <label for="">Nombre Sucursal</label>
-        <input type="input" formControlName="nombreSucursal" class="form-control"
-          placeholder="Escriba El Nombre de la Sucursal">
-        <small class="errorText" *ngIf="myForm.get('nombreSucursal').invalid">Es requerido</small>
-      </div>
-      <div class="form-group">
-        <label for="">Número de Contacto</label>
-        <input type="input" formControlName="telefonoSucursal" class="form-control"
-          placeholder="Escriba El Nombre de la Sucursal">
-        <small class="errorText" *ngIf="myForm.get('telefonoSucursal').hasError('required')">Es requerido <br>
-        </small>
-        <small class="errorText" *ngIf="myForm.get('telefonoSucursal').hasError('pattern')">Sólo Dígitos </small>
-      </div>
-      <div class="form-group">
-        <label for="">Email</label>
-        <input type="input" formControlName="emailSucursal" class="form-control"
-          placeholder="Escriba El Nombre de la Sucursal">
-        <small class="errorText" *ngIf="myForm.get('emailSucursal').hasError('required')">Es requerido <br></small>
-        <small class="errorText" *ngIf="myForm.get('emailSucursal').hasError('email')">Debe ser email.</small>
-      </div>
-      <div class="form-group">
-        <label for="">Dirección</label>
-        <textarea formControlName="direccionSucursal" class="form-control" placeholder="Escriba La Dirección"></textarea>
-        <small class="errorText" *ngIf="myForm.get('direccionSucursal').invalid">Es requerido</small>
-      </div>
+        </div>
+        <div class="row" *ngIf="progressBar">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <!--INPUTS-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Nombre de la Sucursal *</label>
+              <input type="input" formControlName="nombreSucursal" class="form-control">
+            </div>
+            <div *ngIf="myForm.controls['nombreSucursal'].errors && !myForm.controls['nombreSucursal'].pristine"
+              class="alert alert-danger">
+              <span *ngIf="myForm.controls['nombreSucursal'].errors.required"> El Nombre de la Sucursal
+                no
+                puede estar vacío. <br></span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Número de Contacto *</label>
+              <input type="input" formControlName="telefonoSucursal" class="form-control">
+            </div>
+            <div *ngIf="myForm.controls['telefonoSucursal'].errors && !myForm.controls['telefonoSucursal'].pristine"
+              class="alert alert-danger">
+              <span *ngIf="myForm.controls['telefonoSucursal'].errors.required"> El Número de Contacto no
+                puede estar vacío. <br></span>
+              <span *ngIf="myForm.controls['telefonoSucursal'].errors.pattern"> El Número de Contacto debe ser sólo
+                números.<br></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Correo *</label>
+              <input type="input" formControlName="emailSucursal" class="form-control">
+            </div>
+            <div *ngIf="myForm.controls['emailSucursal'].errors && !myForm.controls['emailSucursal'].pristine"
+              class="alert alert-danger">
+              <span *ngIf="myForm.controls['emailSucursal'].errors.required"> El Correo no
+                puede estar vacío. <br></span>
+              <span *ngIf="myForm.controls['emailSucursal'].errors.pattern"> El formato
+                del
+                Correo es incorrecto.<br></span>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Dirección *</label>
+              <textarea formControlName="direccionSucursal" class="form-control"></textarea>
+            </div>
+            <div *ngIf="myForm.controls['direccionSucursal'].errors && !myForm.controls['direccionSucursal'].pristine"
+              class="alert alert-danger">
+              <span *ngIf="myForm.controls['direccionSucursal'].errors.required"> La Dirección de la Sucursal
+                no
+                puede estar vacía. <br></span>
+            </div>
+          </div>
+        </div>
+
+
+
+
         <!--
         <div
           *ngIf="mForma.controls['name'].errors?.password"
@@ -167,63 +180,39 @@
         >
           email es requerido
         </div>-->
-    </form>
+      </form>
+    </div>
   </div>
-</div>
 
   <div *ngIf="mFormaEstado == enCRUD.Leer" class="row animated fadeIn fast">
     <div class="col-md-12">
       <form>
         <div class="form-group text-right">
-          <button
-            (click)="mFormaEstado = enCRUD.Eliminar"
-            type="button"
-            class="btn btn-primary"
-          >
+          <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
             <i class="fa fa-backward"></i>
             Regresar
           </button>
         </div>
         <div class="form-group">
           <label for="">Nombre</label>
-          <input
-            class="form-control"
-            type="text"
-            [value]="sucursalSelected.nombreSucursal"
-            name="sucursalSelected.nombreSucursal"
-            readonly
-          />
+          <input class="form-control" type="text" [value]="sucursalSelected.nombreSucursal"
+            name="sucursalSelected.nombreSucursal" readonly />
         </div>
         <div class="form-group">
           <label for="">Telefono</label>
-          <input
-            class="form-control"
-            type="text"
-            [value]="sucursalSelected.nombreSucursal"
-            name="sucursalSelected.nombreSucursal"
-            readonly
-          />
+          <input class="form-control" type="text" [value]="sucursalSelected.nombreSucursal"
+            name="sucursalSelected.nombreSucursal" readonly />
         </div>
-  
+
         <div class="form-group">
           <label for="">Email</label>
-          <input
-            class="form-control"
-            type="text"
-            [value]="sucursalSelected.emailSucursal"
-            name="sucursalSelected.emailSucursal"
-            readonly
-          />
+          <input class="form-control" type="text" [value]="sucursalSelected.emailSucursal"
+            name="sucursalSelected.emailSucursal" readonly />
         </div>
         <div class="form-group">
           <label for="">Descripcion</label>
-          <textarea
-            class="form-control"
-            type="text"
-            [value]="sucursalSelected.direccionSucursal"
-            name="sucursalSelected.direccionSucursal"
-            readonly
-          ></textarea>
+          <textarea class="form-control" type="text" [value]="sucursalSelected.direccionSucursal"
+            name="sucursalSelected.direccionSucursal" readonly></textarea>
         </div>
       </form>
     </div>
