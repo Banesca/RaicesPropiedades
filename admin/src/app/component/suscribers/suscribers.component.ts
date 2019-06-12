@@ -46,7 +46,10 @@ export class SuscribersComponent implements OnInit {
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      email: ["", [Validators.required, Validators.email]],
+      id: [""],
+      titulo: ["", [Validators.required, Validators.minLength(5)]],
+      descripcion: ["", Validators.required],
+      estado: [""]
     });
   }
 
@@ -72,7 +75,7 @@ export class SuscribersComponent implements OnInit {
   eliminar(pKey: number) {
     this.mLoading = true;
     this._MailSuscribersService
-      .eliminarSuscripccion(pKey)
+      .eliminarCategoria(pKey)
       .then(data => {
         this.getAll();
         this.mLoading = false;
@@ -91,7 +94,7 @@ export class SuscribersComponent implements OnInit {
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }
-/*
+
   actualizar(pKey: number) {
     this.mCategoriasSelect = this.mForma.value as ISuscriber;
     this.mLoading = true;
@@ -114,7 +117,6 @@ export class SuscribersComponent implements OnInit {
       });
   }
 
-*/
   guardar() {
     this.mCategoriasSelect = this.mForma.controls["email"].value;
     this.mLoading = true;

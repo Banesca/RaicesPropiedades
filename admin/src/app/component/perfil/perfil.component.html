@@ -1,38 +1,115 @@
-<div class="container">
-  <div class="row">
-    <!--   <div class="col-md-4">
-          <div class="form-group">
-              <img src="{{img_perfil}}" class="img-fluid" alt="" width="100"> <br>    
-              <label for="">Editar Foto de Perfil </label> <br>
-              <input type="file" (change)="upImgPerfil($event)"> <br>
-              <button class="btn btn-primary" (click)="upgradeImgPerfil()">Cambiar foto de perfil</button>
-          </div>
-      </div> -->
-      <div [formGroup]="myForm" class="col-md-12" >
-            <div class="form-group">
-                <label for="">Nombre</label>
-                <input type="text" [(ngModel)]="form.name" formControlName="name" class="form-control">
-                <small *ngIf="myForm.get('name').invalid">Es requerido</small>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="py-5 text-center font-weight-bold">Perfil de Usuario</h3>
+        </div>
+    </div>
+    <div class="row" *ngIf="loading">
+        <div class="alert alert-warning" role="alert">
+            <span><strong>Cargando datos del usuario</strong> por favor espere...</span>
+        </div>
+    </div>
+
+    <div *ngIf="!loading">
+        <h4>Actualizar Datos</h4>
+        <hr>
+        <div [formGroup]="myForm">
+            <div class="row">
+                <!--   <div class="col-md-4">
+                      <div class="form-group">
+                          <img src="{{img_perfil}}" class="img-fluid" alt="" width="100"> <br>    
+                          <label for="">Editar Foto de Perfil </label> <br>
+                          <input type="file" (change)="upImgPerfil($event)"> <br>
+                          <button class="btn btn-primary" (click)="upgradeImgPerfil()">Cambiar foto de perfil</button>
+                      </div>
+                  </div> -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Nombre*</label>
+                        <input type="text" formControlName="name" class="form-control">
+                    </div>
+                    <div *ngIf="myForm.controls['name'].errors && !myForm.controls['name'].pristine"
+                        class="alert alert-danger">
+                        <span *ngIf="myForm.controls['name'].errors.required"> El Nombre
+                            no
+                            puede estar vacío. <br></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Correo Electrónico*</label>
+                        <input type="text" formControlName="email" class="form-control">
+                    </div>
+                    <div *ngIf="myForm.controls['email'].errors && !myForm.controls['email'].pristine"
+                        class="alert alert-danger">
+                        <span *ngIf="myForm.controls['email'].errors.required"> El Correo
+                            no
+                            puede estar vacío. <br></span>
+                        <span *ngIf="myForm.controls['email'].errors.pattern"> El formato
+                            del
+                            Correo es incorrecto.<br></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="">Correo Electronico</label>
-                <input type="text" [(ngModel)]="form.email" formControlName="email" class="form-control">
-                <small *ngIf="myForm.get('email').invalid">Es requerido</small><br>
-                <small *ngIf="myForm.get('email').invalid">Debe ser Email</small>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group div-btn">
+                        <button class="btn btn-primary" (click)="upgradeFormPerfil()"
+                            [disabled]="myForm.invalid || actualizando">Actualizar</button>
+                    </div>
+                </div>
+
             </div>
-            <div class="form-group">
-                <label for="">Contraseña</label>
-                <input  [(ngModel)]="form.password" type="password" formControlName="password" class="form-control"(keyup)="validPasswordConfirm()">
-              
-            </div> 
-            <div class="form-group">
-                    <label for="">Confirmar Contraseña</label>
-                    <input  [(ngModel)]="form.passwordConfirm" type="password" formControlName="passwordConfirm" (keyup)="validPasswordConfirm()" class="form-control">
-                    <small *ngIf="myForm.get('passwordConfirm').invalid">Contraseñas No Coinciden</small>
-                </div>        
-            <div class="form-group">
-              <button class="btn btn-primary" (click)="upgradeFormPerfil()" [disabled]="myForm.invalid">Actualizar</button>
-            </div> 
-      </div>
-  </div>
+            <div class="row" *ngIf="actualizando">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        </div>
+
+        <h4>Cambiar Contraseña</h4>
+        <hr>
+
+        <div [formGroup]="passForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Contraseña</label>
+                        <input type="password" formControlName="password" class="form-control">
+                    </div>
+                    <div *ngIf="passForm.controls['password'].errors && !passForm.controls['password'].pristine"
+                        class="alert alert-danger">
+                        <span *ngIf="passForm.controls['password'].errors.required"> La
+                            Clave no puede estar vacía. <br></span>
+                        <span *ngIf="passForm.controls['password'].errors.minlength"> La
+                            Clave debe tener mínimo 8 caracteres. <br></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Confirmar Contraseña</label>
+                        <input type="password" formControlName="passwordConfirm" class="form-control">
+                    </div>
+                    <div *ngIf="passForm.controls['passwordConfirm'].errors && !passForm.controls['passwordConfirm'].pristine"
+                        class="alert alert-danger">
+                        <span *ngIf="passForm.controls['passwordConfirm'].errors.required"><i
+                                class="ion-md-warning"></i> La
+                            Clave no puede estar vacía. <br></span>
+                        <span *ngIf="passForm.controls['passwordConfirm'].errors.mismatchedPasswords"><i
+                                class="ion-md-warning"></i> Las Contraseñas no coinciden.<br></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group div-btn">
+                        <button class="btn btn-primary" (click)="changePassword()" [disabled]="passForm.invalid || actualizandoPass">Cambiar
+                            Contraseña</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="actualizandoPass">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        </div>
+    </div>
 </div>

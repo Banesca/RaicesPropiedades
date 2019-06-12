@@ -15,7 +15,7 @@ export class MailSuscribersService {
     private _HttpClient: HttpClient) {
   }
 
-  allCategorias() { 
+  allCategorias() {
     return this._HttpClient
       .get(environment.apiHost + '/api/v1/ListarMensajesMailMasivos', {
         headers: getHeaders()
@@ -79,16 +79,6 @@ export class MailSuscribersService {
   eliminarCategoria(pKey: number) {
     return this._HttpClient
       .delete(environment.apiHost + '/api/v1/borrarSuscripcion' + '/' + pKey, { headers: getHeaders() })
-      .pipe(
-        map((data: any) => {
-          return data;
-        })
-      ).toPromise();
-  }
-
-  eliminarSuscripccion(pKey: number) {
-    return this._HttpClient
-      .post(environment.apiHost + '/api/v1/cancelarSus' + '/' + pKey, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;

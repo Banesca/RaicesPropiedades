@@ -110,16 +110,14 @@ class CreatePropiedadsTable extends Migration
             $table->text('EnEdificio')->nullable();
             $table->text('Estado')->nullable();
             $table->text('Expensas')->nullable();
-
-            $table->text('fk_Direccion_Barrio_Id')->nullable();
-            $table->text('fk_Direccion_Calle_Id')->nullable();
-            $table->text('fk_Direccion_Ciudad_Id')->nullable();
-            $table->text('fk_Direccion_Localidad_Id')->nullable();
-            $table->text('fk_Direccion_Pais_Id')->nullable();
-            $table->text('fk_Direccion_Partido_Id')->nullable();
-            $table->text('fk_Direccion_Provincia_Id')->nullable();
-            $table->text('fk_Direccion_SubBarrio_Id')->nullable();
-
+            $table->integer('fk_Direccion_Barrio_Id')->nullable();
+            $table->integer('fk_Direccion_Calle_Id')->nullable();
+            $table->integer('fk_Direccion_Ciudad_Id')->nullable();
+            $table->integer('fk_Direccion_Localidad_Id')->nullable();
+            $table->integer('fk_Direccion_Pais_Id')->nullable();
+            $table->integer('fk_Direccion_Partido_Id')->nullable();
+            $table->integer('fk_Direccion_Provincia_Id')->nullable();
+            $table->integer('fk_Direccion_SubBarrio_Id')->nullable();
             $table->integer('fk_Disposicion')->nullable();
             $table->integer('fk_Estado')->nullable();
             $table->integer('fk_Orientacion')->nullable();

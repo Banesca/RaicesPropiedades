@@ -72,6 +72,12 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::post('suscripcion/cancelarSuscripcionTocken/{tocken}','SuscripcionController@cancelarSuscripcionTocken');
     /*SUSCRIPCIONES*/
 
+    /*   Transacciones    */
+    /*   Agregada 11/6/2019    */
+    Route::post('transacciones/store','TransaccionesController@store');
+    Route::get('transacciones/categorias','TransaccionesController@listaCategorias');
+    /*   Transacciones    */
+
     Route::get('limpiar_cache', function () {
         Artisan::call(
             'cache:clear');
@@ -87,6 +93,44 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
         return response()->json('servidor iniciado puerto 8753');
 
     });
+
+    Route::get('getStatusDelUser','ReturnSeedController@get_StatusDelUserSeeder');
+    Route::get('getStatusSistema','ReturnSeedController@get_StatusSistemaSeeder');
+    Route::get('getTipoTechoIndustrial','ReturnSeedController@get_TipoTechoIndustrialseeder');
+    Route::get('getTipoMultimedia','ReturnSeedController@get_TipoMultimediaSeeder');
+    Route::get('getTipoAscensor','ReturnSeedController@get_TipoAscensorSeeder');
+    Route::get('getTipoCochera','ReturnSeedController@get_TipoCocheraSeeder');
+    Route::get('getTipoHotel','ReturnSeedController@get_TipoHotelSeeder');
+    Route::get('getOrientacion','ReturnSeedController@get_OrientacionSeeder');
+    Route::get('getDisposicion','ReturnSeedController@get_DisposicionSeeder');
+    Route::get('getTipoAcceso','ReturnSeedController@get_TipoAccesoSeeder');
+    Route::get('getTipoCalefaccion','ReturnSeedController@get_TipoCalefaccionSeeder');
+    Route::get('getTipoUnidadCasa','ReturnSeedController@get_TipoUnidadCasaSeeder');
+    Route::get('getMonedas','ReturnSeedController@get_MonedasSeeder');
+    Route::get('getTipoTecho','ReturnSeedController@get_TipoTechoSeeder');
+    Route::get('getTipoPorton','ReturnSeedController@get_TipoPortonSeeder');
+    Route::get('getModulosDelSistema','ReturnSeedController@get_ModulosDelSistemaSeeder');
+    Route::get('getTipoPendiente','ReturnSeedController@get_TipoPendienteSeeder');
+    Route::get('getEstadoPropiedad','ReturnSeedController@get_EstadoPropiedadSeeder');
+    Route::get('getTipoBaño','ReturnSeedController@get_TipoBañoSeeder');
+    Route::get('getTipoCobertura','ReturnSeedController@get_TipoCoberturaSeeder');
+    Route::get('getTipoFondoComercio','ReturnSeedController@get_TipoFondoComercioSeeder');
+    Route::get('getEstadoPublicacion','ReturnSeedController@get_EstadoPublicacionSeeder');
+    Route::get('getTipoPropiedad','ReturnSeedController@get_TipoPropiedadSeeder');
+    Route::get('getTipoCampp','ReturnSeedController@get_TipoCamppSeeder');
+    Route::get('getTipoOperacion','ReturnSeedController@get_TipoOperacionSeeder');
+    Route::get('getTipoFrente','ReturnSeedController@get_TipoFrenteSeeder');
+    Route::get('getTipoCoche','ReturnSeedController@get_TipoCocheSeeder');
+    Route::get('getTipoEdidificio','ReturnSeedController@get_TipoEdidificioSeeder');
+    Route::get('getUsersTable','ReturnSeedController@get_UsersTableSeeder');
+    Route::get('getTipoUnidadDepartamento','ReturnSeedController@get_TipoUnidadDepartamentoSeeder');
+    Route::get('getTipoCosta','ReturnSeedController@get_TipoCostaSeeder');
+    Route::get('getTipoVista','ReturnSeedController@get_TipoVistaSeeder');
+    Route::get('getTipoTerreno','ReturnSeedController@get_TipoTerrenoSeeder');
+    Route::get('getTipoBalcon','ReturnSeedController@get_TipoBalconSeeder');
+    Route::get('getTipoExpensas','ReturnSeedController@get_TipoExpensasSeeder');
+    Route::get('getTipoPiso','ReturnSeedController@get_TipoPisoSeeder');
+    Route::get('getTipoLocal','ReturnSeedController@get_TipoLocalSeeder');
 
 });
 

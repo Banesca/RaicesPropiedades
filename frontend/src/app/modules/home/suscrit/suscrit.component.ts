@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, HostListener, EventEmitter } from '@angular/core';
-import { Directive } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { ISuscripcion } from "src/app/servicios/interfaces.index";
 import { SuscripcionService } from "src/app/servicios/servicios.index";
 import {
@@ -21,7 +20,6 @@ import { NgbModalConfig, NgbModal, NgbModalRef  } from '@ng-bootstrap/ng-bootstr
 
 
 export class SuscritComponent implements OnInit {
-  capsOn;
   suscritForm: FormGroup;
   suscritFormEstado: string;
   mSuscripcion: ISuscripcion;
@@ -100,21 +98,5 @@ submittedClose() {
 
 }
 
-
-
-@Directive({ selector: '[capsLock]' })
-export class TrackCapsDirective {
-  @Output('capsLock') capsLock = new EventEmitter<Boolean>();
-
-  @HostListener('window:keydown', ['$event'])
-  onKeyDown(event: KeyboardEvent): void {
-    this.capsLock.emit(event.getModifierState && event.getModifierState('CapsLock'));
-  }
-  @HostListener('window:keyup', ['$event'])
-  onKeyUp(event: KeyboardEvent): void {
-    this.capsLock.emit(event.getModifierState && event.getModifierState('CapsLock'));
-  }
-
-}
 
 

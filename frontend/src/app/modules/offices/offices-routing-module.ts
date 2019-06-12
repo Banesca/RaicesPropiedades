@@ -4,7 +4,7 @@ import { OfficeComponent } from './office/office.component';
 
 
 const officesRoutes: Routes = [
-  { path: ':ruta', component: OfficeComponent },
+  { path: '', component: OfficeComponent },
 ];
 
 

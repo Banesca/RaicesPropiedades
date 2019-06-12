@@ -1,8 +1,8 @@
 <app-header-bottom>
   <div class="container title col-md-4 py-5 ml-5"> 
     <div class="col-sm-12">
-    <h1 class="font-weight-light text-uppercase">Sucursal
-      <span class="font-weight-extrabold">{{gSucursal.nombreSucursal}}</span></h1>
+      <h1 class="font-weight-light text-uppercase">Sucursal
+      <span class="font-weight-extrabold">OpenDoor</span></h1>
       <hr class="col-2 mx-0 my-1">
     </div>
   </div>
@@ -25,7 +25,7 @@
       </div>
     </div>
   <div class="container-fluid">
-  <div class="container  py-5 "> 
+    <div class="container  py-5 "> 
           <div class="col-sm-12 d-flex justify-content-center">
               <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase">Información <span class="font-weight-extrabold">de contacto</span></h3>
           </div>
@@ -34,19 +34,19 @@
               <div class="d-flex justify-content-center mt-4 mb-2">
               <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 11.svg" class="img-fluid" alt="">
             </div>
-              <h5 class="text-brown text-center font-weight-bold">{{gSucursal.direccionSucursal}}</h5>
+              <h5 class="text-brown text-center font-weight-bold">ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus similique pla</h5>
           </div>
             <div class="col-md-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
               <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 12.svg" class="img-fluid" alt="">
             </div>
-            <h5 class="text-brown text-center font-weight-bold">{{gSucursal.telefonoSucursal}}</h5>
+            <h5 class="text-brown text-center font-weight-bold">+58 4140719316</h5>
           </div>
             <div class="col-md-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
               <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 13.svg" class="img-fluid" alt="">
             </div>
-            <h5 class="text-brown text-center font-weight-bold">{{gSucursal.emailSucursal}}</h5>
+            <h5 class="text-brown text-center font-weight-bold">example@correo.com</h5>
           </div>  
           </div>
           </div>
@@ -54,53 +54,40 @@
   </div>
   <div class="container-fluid bg-light">
       <div class="container  py-5 "> 
-          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="col-sm-12 d-flex justify-content-center">
                 <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase">Formulario <span class="font-weight-extrabold">de contacto</span></h3>
             </div>
             <div class="row">
               <div class="col-sm-12 my-4 d-flex justify-content-center">
                   <div class="py-5 bg-white contact-container shadow col-lg-5 col-md-6 w-100 d-flex justify-content-center">
-                   
+                    <form>
                       <div class="">
                       <div class="group">      
-                        <input formControlName="nombres" type="text" required>
+                        <input type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Nombres</label>
-                        <div *ngIf="submitted && f.nombres.errors" type="alert" class="invalid-feedback">
-                            <div *ngIf="f.nombres.errors.required">Nombre y Apellido son Requerido</div>
-                        </div>
                       </div>
                       <div class="group">      
-                        <input formControlName="email" type="text" required>
+                        <input type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Email</label>
-                        <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback">
-                            <div *ngIf="f.email.errors.required">Email es Requerido</div>
-                        </div>
                       </div> 
                       <div class="group">      
-                          <input formControlName="telefono" type="text" required>
+                          <input type="text" required>
                           <span class="highlight"></span>
                           <span class="bar"></span>
                           <label>Teléfono</label>
-                          <div *ngIf="submitted && f.telefono.errors" type="alert" class="invalid-feedback">
-                              <div *ngIf="f.telefono.errors.required">El Teléfono Requerido</div>
-                          </div>
                         </div> 
                         <div class="group"> 
-                          <textarea formControlName="mensaje" name="" id="" cols="30" rows="3"></textarea>     
+                          <textarea name="" id="" cols="30" rows="3"></textarea>     
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>Mensaje</label>
-                            <div *ngIf="submitted && f.mensaje.errors" type="alert" class="invalid-feedback">
-                                <div *ngIf="f.mensaje.errors.required">El Mensaje es Requerido</div>
-                            </div>
                           </div>
                     </div> 
-                    
+                    </form>
               </div>
           </div>
           <div class="col-sm-12">
@@ -111,29 +98,6 @@
               </div>
              </div>
     </div>
-  </form>
-  <!--
-  <div *ngIf="mLoading" class="row">
-      <div class="col-lg-12 d-flex justify-content-center my-2">
-        <div class="spinner-border main-spinner m-5" role="status">
-          <span class="sr-only">Enviando...</span>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="successMensaje" class="row">
-        <div class="col-lg-12 my-2">
-          <h3 class="text-center mt-3 font-weight-bold">Mensaje Enviado!</h3>
-          <p class="mb-5 text-center font-weight-bold">Pronto nos contactaremos contigo</p>
-          <button (click)="submittedClose()"  class="btn brown-button btn-lg mx-auto btn-block col-lg-5" type="button" data-dismiss="modal" aria-label="Close">Volver</button>
-        </div>
-      </div>
-      <div *ngIf="errorMensaje" class="row">
-          <div class="col-lg-12 my-2">
-            <h3 class="text-center mt-3 font-weight-bold">Ocurrió un error al enviar el mensaje</h3>
-            <p class="mb-5 text-center font-weight-bold">Por favor intete nuevamente</p>
-            <button (click)="reintentar()"  class="btn brown-button btn-lg mx-auto btn-block col-lg-5">Volver</button>
-          </div>
-        </div>-->
   </div>
 </div>
   </section>
