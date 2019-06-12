@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "raices",
-		"_postman_id": "27f11766-eb69-9d9f-0fa1-c9ca5ad83b83",
+		"_postman_id": "210a2549-a951-3f98-0d68-37f85dc5a669",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -149,10 +149,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -280,10 +277,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -409,10 +403,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -509,10 +500,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -631,10 +619,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -762,26 +747,6 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "listar sucursal por id",
-					"request": {
-						"url": "http://127.0.0.1:8000/api/v1/sucursal/1",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							}
-						],
 						"body": {},
 						"description": ""
 					},
@@ -876,10 +841,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -924,10 +886,10 @@
 			"description": "",
 			"item": [
 				{
-					"name": "listar usuarios",
+					"name": "listar",
 					"request": {
-						"url": "http://127.0.0.1:8000/api/v1/suscripcion/add",
-						"method": "POST",
+						"url": "http://127.0.0.1:8000/api/v1/suscripcion/listarSuscripciones",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
@@ -935,10 +897,7 @@
 								"description": ""
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -956,8 +915,15 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": ""
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fk_idStatusSistema",
+									"value": "2",
+									"description": "1 activo, 2 inactivo",
+									"type": "text"
+								}
+							]
 						},
 						"description": ""
 					},
@@ -991,6 +957,530 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "seed",
+			"description": "",
+			"item": [
+			{
+					"name": "getStatusDelUser",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getStatusDelUser",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getStatusDelUser"
+					},
+					"response": []
+				},{
+					"name": "getStatusSistema",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getStatusSistema",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getStatusSistema"
+					},
+					"response": []
+				},{
+					"name": "getTipoTechoIndustrial",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoTechoIndustrial",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoTechoIndustrial"
+					},
+					"response": []
+				},{
+					"name": "getTipoMultimedia",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoMultimedia",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoMultimedia"
+					},
+					"response": []
+				},{
+					"name": "getTipoAscensor",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoAscensor",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoAscensor"
+					},
+					"response": []
+				},{
+					"name": "getTipoCochera",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoCochera",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoCochera"
+					},
+					"response": []
+				},{
+					"name": "getTipoHotel",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoHotel",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoHotel"
+					},
+					"response": []
+				},{
+					"name": "getOrientacion",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getOrientacion",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getOrientacion"
+					},
+					"response": []
+				},{
+					"name": "getDisposicion",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getDisposicion",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getDisposicion"
+					},
+					"response": []
+				},{
+					"name": "getTipoAcceso",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoAcceso",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoAcceso"
+					},
+					"response": []
+				},{
+					"name": "getTipoCalefaccion",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoCalefaccion",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoCalefaccion"
+					},
+					"response": []
+				},{
+					"name": "getTipoUnidadCasa",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoUnidadCasa",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoUnidadCasa"
+					},
+					"response": []
+				},{
+					"name": "getMonedas",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getMonedas",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getMonedas"
+					},
+					"response": []
+				},{
+					"name": "getTipoTecho",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoTecho",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoTecho"
+					},
+					"response": []
+				},{
+					"name": "getTipoPorton",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoPorton",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoPorton"
+					},
+					"response": []
+				},{
+					"name": "getModulosDelSistema",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getModulosDelSistema",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getModulosDelSistema"
+					},
+					"response": []
+				},{
+					"name": "getTipoPendiente",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoPendiente",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoPendiente"
+					},
+					"response": []
+				},{
+					"name": "getEstadoPropiedad",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getEstadoPropiedad",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getEstadoPropiedad"
+					},
+					"response": []
+				},{
+					"name": "getTipoBaño",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoBaño",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoBaño"
+					},
+					"response": []
+				},{
+					"name": "getTipoCobertura",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoCobertura",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoCobertura"
+					},
+					"response": []
+				},{
+					"name": "getTipoFondoComercio",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoFondoComercio",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoFondoComercio"
+					},
+					"response": []
+				},{
+					"name": "getEstadoPublicacion",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getEstadoPublicacion",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getEstadoPublicacion"
+					},
+					"response": []
+				},{
+					"name": "getTipoPropiedad",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoPropiedad",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoPropiedad"
+					},
+					"response": []
+				},{
+					"name": "getTipoCampp",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoCampp",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoCampp"
+					},
+					"response": []
+				},{
+					"name": "getTipoOperacion",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoOperacion",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoOperacion"
+					},
+					"response": []
+				},{
+					"name": "getTipoFrente",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoFrente",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoFrente"
+					},
+					"response": []
+				},{
+					"name": "getTipoCoche",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoCoche",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoCoche"
+					},
+					"response": []
+				},{
+					"name": "getTipoEdidificio",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoEdidificio",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoEdidificio"
+					},
+					"response": []
+				},{
+					"name": "getUsersTable",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getUsersTable",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getUsersTable"
+					},
+					"response": []
+				},{
+					"name": "getTipoUnidadDepartamento",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoUnidadDepartamento",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoUnidadDepartamento"
+					},
+					"response": []
+				},{
+					"name": "getTipoCosta",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoCosta",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoCosta"
+					},
+					"response": []
+				},{
+					"name": "getTipoVista",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoVista",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoVista"
+					},
+					"response": []
+				},{
+					"name": "getTipoTerreno",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoTerreno",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoTerreno"
+					},
+					"response": []
+				},{
+					"name": "getTipoBalcon",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoBalcon",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoBalcon"
+					},
+					"response": []
+				},{
+					"name": "getTipoExpensas",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoExpensas",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoExpensas"
+					},
+					"response": []
+				},{
+					"name": "getTipoPiso",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoPiso",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoPiso"
+					},
+					"response": []
+				},{
+					"name": "getTipoLocal",
+					"request": {
+						"url": "http://127.0.0.1:8000/api/v1/getTipoLocal",
+						"method": "GET",
+						"header": [
+							
+						],
+						"body": {
+							
+						},
+						"description": "getTipoLocal"
+					},
+					"response": []
+				}]
 		},
 		{
 			"name": "login",
