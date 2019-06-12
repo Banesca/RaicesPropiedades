@@ -10,6 +10,7 @@ function endLoad(btn) {
     $('#newDIV').hide();
 }
 
+
 function cancelar(token) {
     var btn = $("#bcancelar");
     starLoad(btn);

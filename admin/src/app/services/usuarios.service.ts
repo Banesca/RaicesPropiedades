@@ -24,6 +24,7 @@ export class UsuariosService {
           'Accept':  'application/json',
           'Access-Control-Allow-Origin': '*',
           'Authorization': 'Bearer '+ localStorage.getItem('access_token'),
+          'content-type': 'multipart/form-data',
       }),
       observe: 'response'  
   };

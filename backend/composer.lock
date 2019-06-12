@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1e8a788ab822bc5fdeefc38783c7be5",
+    "content-hash": "26cc8699fbbb6aac065c4547ac4dc8f4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1290,7 +1290,6 @@
         },
         {
             "name": "laravel/framework",
-
             "version": "v5.7.28",
             "source": {
                 "type": "git",
@@ -1433,7 +1432,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-02-19T14:37:47+00:00"
+            "time": "2019-02-26T15:41:34+00:00"
         },
         {
             "name": "laravel/nexmo-notification-channel",
