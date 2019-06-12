@@ -37,7 +37,7 @@ export class PerfilComponent implements OnInit {
     });
 
     this.passForm = this.fb.group({
-      password: ["", Validators.compose([Validators.required, /*Validators.pattern('^(?=.*\\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[*#!/$-]).*$'),*/ Validators.minLength(6)])],
+      password: ["", Validators.compose([Validators.required, Validators.minLength(6)])],
       passwordConfirm: ["", Validators.compose([Validators.required])]
     },
       { validator: this.matchingPasswords('password', 'passwordConfirm') });
@@ -122,8 +122,7 @@ export class PerfilComponent implements OnInit {
     this.form.name = this.myForm.controls['name'].value;
     this.form.email = this.myForm.controls['email'].value;
     this.form.fk_idPerfil = this.myForm.controls['fk_idPerfil'].value;
-    //this.form.password =  this.passForm.controls['password'].value;
-    //this.form.passwordConfirm =  this.passForm.controls['passwordConfirm'].value;
+    this.form.password =  this.passForm.controls['password'].value;
 
     this.userService.editUser(this.form, this.form.id).subscribe(
       resp => {
