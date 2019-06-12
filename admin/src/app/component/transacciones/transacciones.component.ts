@@ -12,11 +12,11 @@ import { AlertsService } from '../../services/alerts.service';
 
 
 @Component({
-    selector: 'app-galeria-home',
-    templateUrl: './galeria-home.component.html',
-    styleUrls: ['./galeria-home.component.css']
-  })
-  export class GaleriaHomeComponent implements OnInit {
+  selector: 'app-transacciones',
+  templateUrl: './transacciones.component.html',
+  styleUrls: ['./transacciones.component.css']
+})
+export class TransaccionesComponent implements OnInit {
   mCategorias: IMailSuscriber[];
   mCategoriasSelect: IMailSuscriber;
   mLoading: boolean;
@@ -44,10 +44,12 @@ import { AlertsService } from '../../services/alerts.service';
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      id: [""],
-      titulo: ["", [Validators.required, Validators.minLength(5)]],
+      contacto: ["", Validators.required],
+      telefono: ["", Validators.required],
+      categoria: ["", Validators.required],
+      titulo: ["", Validators.required],
       descripcion: ["", Validators.required],
-      estado: [""]
+      fotos: [""],
     });
   }
 
@@ -81,11 +83,6 @@ import { AlertsService } from '../../services/alerts.service';
       });
   }
 
-  nuevo() {
-    this.mForma.reset();
-    this.mFormaEstado = enCRUD.Crear;
-  }
-
   ver(pCategoria: IMailSuscriber) {
     console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
@@ -96,12 +93,12 @@ import { AlertsService } from '../../services/alerts.service';
     this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
     this.mLoading = true;
     this._MailSuscribersService
-      .actualizarCategoria(this.mCategoriasSelect, pKey,)
+      .actualizarCategoria(this.mCategoriasSelect, pKey)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Sucursal Actualizada Correctamente.')
+        this._AlertsService.msg('OK', 'EXITO!', 'Transacción Actualizada Correctamente.')
       })
       .catch(err => {
         // Parsear Object errors a Array de errores para poder mapearlos
@@ -114,18 +111,5 @@ import { AlertsService } from '../../services/alerts.service';
       });
   }
 
-
-  guardar() {
-    this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
-    this.mLoading = true;
-    this._MailSuscribersService
-      .nuevaCategoria(this.mCategoriasSelect)
-      .then(data => {
-        this.mFormaEstado = enCRUD.Eliminar;
-        this.getAll();
-        this.mLoading = false;
-      })
-      .catch(error => {
-      });
-  }
 }
+
