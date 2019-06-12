@@ -15,6 +15,7 @@ class Transacciones extends Model
         'telefono',
         'fk_tipoPropiedad',
         'titulo',
+        'descripcion',
     ];
 
     protected $hidden = [

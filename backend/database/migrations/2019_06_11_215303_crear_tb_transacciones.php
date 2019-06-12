@@ -19,6 +19,7 @@ class CrearTbTransacciones extends Migration
             $table->string('telefono')->nullable();
             $table->integer('fk_tipoPropiedad')->unsigned()->nullable();
             $table->string('titulo')->nullable();
+            $table->string('descripcion')->nullable();
             $table->timestamps();
         });
     }
