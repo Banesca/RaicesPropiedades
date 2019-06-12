@@ -9,7 +9,7 @@ use App\ConfigFooter;
 // use App\PerfilCliente;
 // use App\Suscripcion;
 use App\Transacciones;
-use App\CategoriaTransacciones;
+use App\TipoPropiedad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -26,6 +26,18 @@ class TransaccionesController extends Controller {
         $response = [
             'msj'   => 'Prueba',
             'data' => $transaccion,
+        ];
+
+        return response()->json($response, 200);
+
+    }
+
+    public function listaCategorias() {
+
+        $categoria = TipoPropiedad::all();
+        $response = [
+            'msj'   => 'Categorias',
+            'data' => $categoria,
         ];
 
         return response()->json($response, 200);

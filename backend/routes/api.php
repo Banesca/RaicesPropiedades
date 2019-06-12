@@ -75,6 +75,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     /*   Transacciones    */
     /*   Agregada 11/6/2019    */
     Route::get('transacciones/transacciones','TransaccionesController@transacciones');
+    Route::get('transacciones/categorias','TransaccionesController@listaCategorias');
     /*   Transacciones    */
 
     Route::get('limpiar_cache', function () {

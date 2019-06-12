@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TipoPropiedad extends Model {
-    use SoftDeletes;
+    //use SoftDeletes;
     protected $table      = 'tb_tipo_propiedades';
     protected $primaryKey = 'idTipoPropiedad';
 
