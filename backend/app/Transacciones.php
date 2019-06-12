@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\TipoPropiedad;
 use Illuminate\Database\Eloquent\Model;
 
 class Transacciones extends Model
@@ -22,5 +22,14 @@ class Transacciones extends Model
         'created_at',
         'updated_at',
     ];
+
+    
+    public function tipoPropiedad()
+    {
+        return $this->belongsTo('App\TipoPropiedad', 'fk_tipoPropiedad');
+    }
+
+
+
 
 }

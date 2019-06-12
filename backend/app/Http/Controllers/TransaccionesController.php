@@ -46,10 +46,12 @@ class TransaccionesController extends Controller {
 
         try {
 
+
             $transaccion = new Transacciones($request->all());
-         
+       
             $transaccion->save();
-          
+            
+           $transaccion->tipoPropiedad;
             DB::commit();
             $response = [
                 'msj'  => 'Transacción Creada Exitosamente',
@@ -66,14 +68,9 @@ class TransaccionesController extends Controller {
                 'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
             ], 500);
         }
-
-
-
-
-        
-    
         
     }
+
 
     public function listaCategorias() {
 
