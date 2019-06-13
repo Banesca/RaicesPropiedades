@@ -42,7 +42,7 @@ class GaleriaController extends Controller {
         }else{
             $response = [
                 'msj'        => 'Galeria',
-                'suculsales' => $galeria,
+                'Galeria' => $galeria,
             ];
         }
        
