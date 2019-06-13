@@ -34,6 +34,7 @@ Route::group([ 'prefix' => 'auth' ], function() {
         Route::post('sucursal/add', 'SucursalController@store');
         Route::post('sucursal/edit/{idSucursal}', 'SucursalController@update');
         Route::delete('sucursal/borrar/{idSucursal}', 'SucursalController@destroy');
+        
     });
 });
 
@@ -77,6 +78,12 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::post('transacciones/store','TransaccionesController@store');
     Route::get('transacciones/categorias','TransaccionesController@listaCategorias');
     /*   Transacciones    */
+
+    /* Galeria */
+    /*   Agregada 12/6/2019    */
+    Route::get('galeria/galeria','GaleriaController@listaGaleria');
+    Route::get('galeria/{id}', 'GaleriaController@listarGaleriaPorId');
+    /* Galeria */
 
     Route::get('limpiar_cache', function () {
         Artisan::call(
