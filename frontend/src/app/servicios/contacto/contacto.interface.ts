@@ -1,3 +1,8 @@
+export interface IContactoRs {
+    msj: string;
+    data: IContacto[];
+  }
+
 export interface IContacto {
     nombre_apellido: string;
     telefono: string;

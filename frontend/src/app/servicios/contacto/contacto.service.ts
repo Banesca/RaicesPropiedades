@@ -39,8 +39,8 @@ export class ContactoService {
     return this._HttpClient.get(this.mUrl + this.mService, {
       headers: getHeaders()
     }).pipe(
-      map((data: IContacto) => {
-        return data;
+      map((res: IContacto) => {
+        return res;
       })).toPromise();
   }
 
