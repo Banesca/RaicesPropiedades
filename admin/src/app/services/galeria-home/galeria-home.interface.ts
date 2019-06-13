@@ -1,6 +1,6 @@
  export interface IGaleriaRs {
     msj: string;
-    galerias: IGaleria[];
+    data: IGaleria[];
   }
   
   export interface IGaleria {

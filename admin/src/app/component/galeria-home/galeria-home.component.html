@@ -34,7 +34,7 @@
                 *ngFor="let categoria of mCategorias; let i = index"
                 (dblclick)="modificar(categoria)"
               >
-              <td  class="d-flex justify-content-center">{{categoria.idSuscripcionUser}}</td>
+              <td  class="d-flex justify-content-center">{{i + 1}}</td>
               <td>{{categoria.titulo}}</td>
               <td>{{categoria.descripcion}}</td>
               <td>
@@ -53,7 +53,7 @@
                 <i class="fas fa-pencil-alt"></i>
                 </button>
                 <button
-                  (click)="eliminar(categoria.idSuscripcionUser)"
+                  (click)="eliminar(categoria)"
                   type="button"
                   class="btn mr-2 btn-danger"
                 >
@@ -103,7 +103,7 @@
   
           <button
             *ngIf="mFormaEstado == enCRUD.Actualizar"
-            (click)="actualizar(mCategoriasSelect.idSuscripcionUser)"
+            (click)="actualizar(mCategoriasSelect)"
             [disabled]="!vForma.valid"
             style="margin: 5px"
             class="btn btn-primary"

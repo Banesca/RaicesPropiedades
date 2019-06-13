@@ -1,13 +1,13 @@
 import { enCRUD } from "./../../misc/enums";
-import { MailSuscribers } from './../../services/interfaces.index'
+//import { Galeria } from './../../services/interfaces.index'
 import {
   FormGroup,
   FormBuilder,
   Validators
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { IMailSuscriber } from './../../services/mail-suscribers/mail-suscriber.interface'
-import { MailSuscribersService } from './../../services/mail-suscribers/mail-suscribers.service'
+import { IGaleria } from './../../services/galeria-home/galeria-home.interface'
+import { GaleriaHomeService } from './../../services/galeria-home/galeria-home.service'
 import { AlertsService } from '../../services/alerts.service';
 
 
@@ -17,8 +17,8 @@ import { AlertsService } from '../../services/alerts.service';
     styleUrls: ['./galeria-home.component.css']
   })
   export class GaleriaHomeComponent implements OnInit {
-  mCategorias: IMailSuscriber[];
-  mCategoriasSelect: IMailSuscriber;
+  mCategorias: IGaleria[];
+  mCategoriasSelect: IGaleria;
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
@@ -29,11 +29,11 @@ import { AlertsService } from '../../services/alerts.service';
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _MailSuscribersService: MailSuscribersService,
+    private _GaleriaHomeService: GaleriaHomeService,
     private _AlertsService: AlertsService
   ) {
     this.mCategorias = [];
-    this.mCategoriasSelect = MailSuscribers.empy();
+ //   this.mCategoriasSelect = MailSuscribers.empy();
     this.mForma = this.generarFormulario();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
@@ -53,10 +53,10 @@ import { AlertsService } from '../../services/alerts.service';
 
   getAll() {
     this.mLoading = true;
-    this._MailSuscribersService
-      .allCategorias()
-      .then(data => {
-        this.mCategorias = data.suscripcion;
+    this._GaleriaHomeService
+      .allGalerias()
+      .then(res => {
+        this.mCategorias = res.data;
         this.mLoading = false;
       })
       .catch(error => {
@@ -64,14 +64,14 @@ import { AlertsService } from '../../services/alerts.service';
       });
   }
 
-  modificar(pCategoria: IMailSuscriber) {
+  modificar(pCategoria: IGaleria) {
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
   }
 
   eliminar(pKey: number) {
     this.mLoading = true;
-    this._MailSuscribersService
+    this._GaleriaHomeService
       .eliminarCategoria(pKey)
       .then(data => {
         this.getAll();
@@ -86,16 +86,16 @@ import { AlertsService } from '../../services/alerts.service';
     this.mFormaEstado = enCRUD.Crear;
   }
 
-  ver(pCategoria: IMailSuscriber) {
+  ver(pCategoria: IGaleria) {
     console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }
 
   actualizar(pKey: number) {
-    this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
+    this.mCategoriasSelect = this.mForma.value as IGaleria;
     this.mLoading = true;
-    this._MailSuscribersService
+    this._GaleriaHomeService
       .actualizarCategoria(this.mCategoriasSelect, pKey,)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
@@ -116,9 +116,9 @@ import { AlertsService } from '../../services/alerts.service';
 
 
   guardar() {
-    this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
+    this.mCategoriasSelect = this.mForma.value as IGaleria;
     this.mLoading = true;
-    this._MailSuscribersService
+    this._GaleriaHomeService
       .nuevaCategoria(this.mCategoriasSelect)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
