@@ -36,15 +36,10 @@ MIT
 MIT
 
 @angular/fire/auth
-<<<<<<< HEAD
-
-@angular/fire/firestore
-=======
 MIT
 
 @angular/fire/firestore
 MIT
->>>>>>> origin/breiddy
 
 @angular/forms
 MIT

@@ -1,5 +1,5 @@
 {
-  "UrlAPI": "http://raicesonline.com.ar/backend/public",
+  "UrlAPI": "http://127.0.0.1:8000",
   "timeOut": 1000
   }
   

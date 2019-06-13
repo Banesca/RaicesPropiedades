@@ -10,56 +10,55 @@
             <div class="col-sm-12">
               <label for="exampleFormControlSelect1" class="text-uppercase">Contacto</label>
               <div class="form-group mb-3">
-                  <input formControlName="nombres" type="text" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }" class="form-control form-control-lg" placeholder="Nombre y Apellido"
+                  <input formControlName="nombre_apellido" type="text" [ngClass]="{ 'is-invalid': submitted && f.nombre_apellido.errors }" class="form-control form-control-lg" placeholder="Nombre y Apellido"
                   aria-describedby="basic-addon1">
-                  <div *ngIf="submitted && f.nombres.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="f.nombres.errors.required">Nombre y Apellido son Requerido</div>
+                  <div *ngIf="submitted && f.nombre_apellido.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="f.nombre_apellido.errors.required">Nombre y Apellido son Requerido</div>
                   </div>
               </div>
             </div>
             <div class="col-sm-12">
               <label for="exampleFormControlSelect1" class="text-uppercase">Teléfono</label>
               <div class="form-group mb-3">
-                <input formControlName="apellidos" type="number" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" class="form-control form-control-lg" placeholder="Teléfono / Celular"
+                <input formControlName="telefono" type="text" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" class="form-control form-control-lg" placeholder="Teléfono / Celular"
                   aria-describedby="basic-addon1">
-                  <div *ngIf="submitted && f.apellidos.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="f.apellidos.errors.required">El Teléfono es Requerido</div>
+                  <div *ngIf="submitted && f.telefono.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="f.telefono.errors.required">El Teléfono es Requerido</div>
                   </div>
               </div>
             </div>
             <div class="col-sm-12">
               <label for="exampleFormControlSelect1" class="text-uppercase">Categoría</label>
               <div class="form-group mb-3">
-                <input formControlName="email" type="text" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control form-control-lg" placeholder="Categoría"
+                <input formControlName="fk_tipoPropiedad" type="number" [ngClass]="{ 'is-invalid': submitted && f.fk_tipoPropiedad.errors }" class="form-control form-control-lg" placeholder="Categoría"
                   aria-describedby="basic-addon1">
-                  <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="f.email.errors.required">El Email es Requerido</div>
-                      <div *ngIf="f.email.errors.email">Por favor ingrese un Email válido</div>
+                  <div *ngIf="submitted && f.fk_tipoPropiedad.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="f.fk_tipoPropiedad.errors.required">El fk_tipoPropiedad es Requerido</div>
                   </div>
               </div>
             </div>
             <div class="col-sm-12">
               <label for="exampleFormControlSelect1" class="text-uppercase">Título</label>
               <div class="form-group mb-3">
-                <input formControlName="tema" type="text" [ngClass]="{ 'is-invalid': submitted && f.tema.errors }" class="form-control form-control-lg" placeholder="Título"
+                <input formControlName="titulo" type="text" [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" class="form-control form-control-lg" placeholder="Título"
                   aria-describedby="basic-addon1">
-                  <div *ngIf="submitted && f.tema.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="f.tema.errors.required">El Título es Requerido</div>
+                  <div *ngIf="submitted && f.titulo.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="f.titulo.errors.required">El Título es Requerido</div>
                   </div>
               </div>
             </div>
           </div>
           <label for="exampleFormControlSelect1" class="text-uppercase">Descripción</label>
           <div class="form-group mb-3">
-            <textarea formControlName="mensaje" name="" [ngClass]="{ 'is-invalid': submitted && f.mensaje.errors }" cols="20" rows="3" placeholder="Descripción"
+            <textarea formControlName="descripcion" name="" [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }" cols="20" rows="3" placeholder="Descripción"
               class="form-control form-control-lg"></textarea>
-              <div *ngIf="submitted && f.mensaje.errors" type="alert" class="invalid-feedback">
-                  <div *ngIf="f.mensaje.errors.required">La Descripción es Requerida</div>
+              <div *ngIf="submitted && f.descripcion.errors" type="alert" class="invalid-feedback">
+                  <div *ngIf="f.descripcion.errors.required">La Descripción es Requerida</div>
               </div>
           </div>
           <label for="exampleFormControlSelect1" class="text-uppercase">Abjuntar Fotos</label>
           <div class="form-group mb-5 d-sm-flex">
-            <input formControlName="tema" type="text" [ngClass]="{ 'is-invalid': submitted && f.tema.errors }" class="form-control form-control-lg" placeholder="file1.jpg">
+            <input type="text" [ngClass]="{ 'is-invalid': submitted && f.tema.errors }" class="form-control form-control-lg" placeholder="file1.jpg">
             <button class="btn font-weight-bold btn-lg btn-block col-sm-5 text-uppercase mx-auto brown-button">Agregar</button> 
           </div>
           <button class="btn font-weight-bold btn-lg btn-block col-lg-5 text-uppercase mx-auto brown-button">Enviar</button> 

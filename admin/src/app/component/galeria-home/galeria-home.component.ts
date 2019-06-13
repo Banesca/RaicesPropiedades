@@ -12,7 +12,6 @@ import { AlertsService } from '../../services/alerts.service';
 
 
 @Component({
-<<<<<<< HEAD
     selector: 'app-galeria-home',
     templateUrl: './galeria-home.component.html',
     styleUrls: ['./galeria-home.component.css']
@@ -130,27 +129,3 @@ import { AlertsService } from '../../services/alerts.service';
       });
   }
 }
-=======
-  selector: 'app-galeria-home',
-  templateUrl: './galeria-home.component.html',
-  styleUrls: ['./galeria-home.component.css']
-})
-export class GaleriaHomeComponent implements OnInit {
-    myForm: FormGroup;
-    
-    constructor(
-        private _alertService: AlertsService,
-        private fb: FormBuilder
-    ) {
-        this.myForm = fb.group({
-            titulo: ['',Validators.required],
-            descripcion: ['',Validators.required],
-        })
-
-
-    }
-
-    ngOnInit() {
-     }
-}
->>>>>>> origin/breiddy
