@@ -2,7 +2,7 @@ import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { IMailSuscriber, IMailSuscriberRs, ISuscriberRs, ISuscriber } from '../mail-suscribers/mail-suscriber.interface'
+import { IGaleriaRs, IGaleria} from '../galeria-home/galeria-home.interface'
 import { getHeaders } from '../../misc/Headers';
 
 @Injectable({
@@ -15,20 +15,20 @@ export class GaleriaHomeService {
     private _HttpClient: HttpClient) {
   } 
 
-  allCategorias() { 
+  allGalerias() { 
     return this._HttpClient
-      .get(environment.apiHost + '/api/v1/ListarMensajesMailMasivos', {
+      .get(environment.apiHost + '/api/v1/galeria/galeria', {
         headers: getHeaders()
       })
       .pipe(
-        map((data: IMailSuscriberRs) => {
-          return data;
+        map((res: IGaleriaRs) => {
+          return res;
         })
       )
       .toPromise();
   }
 
-  nuevaCategoria(pCategoria: IMailSuscriber) {
+  nuevaCategoria(pCategoria: IGaleria) {
     const lCategoria = JSON.stringify(pCategoria);
     return this._HttpClient
       .post(environment.apiHost + '/api/v1/enviarMailMasivos', lCategoria, { headers: getHeaders() })
@@ -39,7 +39,7 @@ export class GaleriaHomeService {
       )
       .toPromise();
   }
-  actualizarCategoria(pCategoria: IMailSuscriber, pKey: number) {
+  actualizarCategoria(pCategoria: IGaleria, pKey: number) {
     const lCategoria = JSON.stringify(pCategoria);
     return this._HttpClient
       .put(environment.apiHost + '/api/v1/editarSuscripcion/' + pKey + '/' , lCategoria, {

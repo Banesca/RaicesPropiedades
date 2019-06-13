@@ -2,25 +2,11 @@
   <div class="row">
     <div class="col-md-12">
       <h3 class="py-5 text-center font-weight-bold">Sucursales</h3>
-<<<<<<< HEAD
-          <button
-          (click)="nuevo()"
-          type="button"
-          class="btn btn-primary"
-          class="btn btn-success my-4"
-          [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
-        >
-          <i class="fa fa-plus"></i>
-         Nuevo
-         </button>
-        </div>
-=======
       <button (click)="nuevo()" type="button" class="btn btn-primary" class="btn btn-success my-4"
         *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar">
         <i class="fa fa-plus"></i>
         Nuevo
       </button>
->>>>>>> origin/breiddy
     </div>
   </div>
 
