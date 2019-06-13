@@ -18,9 +18,10 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class TransactionModalComponent implements OnInit {
   @Input() name;
 
+  mContacto: IContacto;
+  mCategorias: IContacto[];
   contactForm: FormGroup;
   contactFormEstado: string;
-  mContacto: IContacto;
   successMensaje = false;
   submitted = false;
   errorMensaje = false;
@@ -34,7 +35,7 @@ export class TransactionModalComponent implements OnInit {
      private _ContactoService: ContactoService,
 
     ) {     
-    /*  this.contactForm = this.generarFormulario();*/
+      this.getAll();
     }
 
   ngOnInit() {
@@ -75,6 +76,19 @@ export class TransactionModalComponent implements OnInit {
 
           this.mContacto = this.contactForm.value as IContacto;
           this.guardar();
+      }
+
+      getAll() {
+        this._ContactoService
+          .All()
+            .then(res => {
+            this.mCategorias = res.data;
+            console.log(this.mCategorias);
+    
+          })
+          .catch(error => {
+            console.log(this.mCategorias);
+          });
       }
 
   guardar() {

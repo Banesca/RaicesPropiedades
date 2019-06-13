@@ -1,6 +1,6 @@
 
 import { ConfigService } from './../config/config.service';
-import { IContacto } from './contacto.interface';
+import { IContacto, IContactoRs } from './contacto.interface';
 import { getHeaders } from '../../misc/Headers';
 
 import { Injectable } from '@angular/core';
@@ -36,10 +36,10 @@ export class ContactoService {
    * @returns Coleccion de datos de tipo IContacto
    */
   All() {
-    return this._HttpClient.get(this.mUrl + this.mService, {
+    return this._HttpClient.get(this.mUrl + this.mService + '/categorias', {
       headers: getHeaders()
     }).pipe(
-      map((res: IContacto) => {
+      map((res: IContactoRs) => {
         return res;
       })).toPromise();
   }

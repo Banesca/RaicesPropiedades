@@ -33,7 +33,7 @@
                 <input formControlName="fk_tipoPropiedad" type="number" [ngClass]="{ 'is-invalid': submitted && f.fk_tipoPropiedad.errors }" class="form-control form-control-lg" placeholder="Categoría"
                   aria-describedby="basic-addon1">
                   <div *ngIf="submitted && f.fk_tipoPropiedad.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="f.fk_tipoPropiedad.errors.required">El fk_tipoPropiedad es Requerido</div>
+                      <div *ngIf="f.fk_tipoPropiedad.errors.required">La categoría de la propiedades es Requerida</div>
                   </div>
               </div>
             </div>
@@ -58,7 +58,7 @@
           </div>
           <label for="exampleFormControlSelect1" class="text-uppercase">Abjuntar Fotos</label>
           <div class="form-group mb-5 d-sm-flex">
-            <input type="text" [ngClass]="{ 'is-invalid': submitted && f.tema.errors }" class="form-control form-control-lg" placeholder="file1.jpg">
+            <input type="text" class="form-control form-control-lg" placeholder="file1.jpg">
             <button class="btn font-weight-bold btn-lg btn-block col-sm-5 text-uppercase mx-auto brown-button">Agregar</button> 
           </div>
           <button class="btn font-weight-bold btn-lg btn-block col-lg-5 text-uppercase mx-auto brown-button">Enviar</button> 
