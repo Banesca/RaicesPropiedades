@@ -9,6 +9,8 @@ import {
   ContactoService,
   ImagenService,
   SuscripcionService,
+    ConfiguracionGeneralService,
+  SucursalesService,
   ConfigService,
   UrlGuard
 } from './servicios.index';
@@ -33,9 +35,11 @@ export function configProviderFactoryStatic(pConfig: ConfigService) {
     },
     ArticuloService,
     CategoriaService,
-      ContactoService,
+    ContactoService,
     ImagenService,
     SuscripcionService,
+    ConfiguracionGeneralService,
+    SucursalesService,
     UrlGuard,
     AuthService
   ]
