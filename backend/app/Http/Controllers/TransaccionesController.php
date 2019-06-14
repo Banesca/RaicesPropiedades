@@ -55,10 +55,10 @@ class TransaccionesController extends Controller {
             DB::commit();
             $response = [
                 'msj'  => 'Transacción Creada Exitosamente',
-                'user' => $transaccion,
+                'data' => $transaccion,
             ];
 
-            return response()->json($response, 201);
+            return response()->json($response, 200);
         } catch (\Exception $e) {
 
             DB::rollback();

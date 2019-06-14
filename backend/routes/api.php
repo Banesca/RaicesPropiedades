@@ -81,8 +81,11 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
 
     /* Galeria */
     /*   Agregada 12/6/2019    */
+    Route::post('galeria/store','GaleriaController@store');
     Route::get('galeria/galeria','GaleriaController@listaGaleria');
     Route::get('galeria/{id}', 'GaleriaController@listarGaleriaPorId');
+    Route::post('galeria/edit/{idGaleria}', 'GaleriaController@update');
+    Route::delete('galeria/eliminar/{idGaleria}', 'GaleriaController@destroy');
     /* Galeria */
 
     Route::get('limpiar_cache', function () {

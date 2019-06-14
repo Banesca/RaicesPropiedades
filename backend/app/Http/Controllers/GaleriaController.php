@@ -15,6 +15,48 @@ use Illuminate\Support\Facades\Storage;
 class GaleriaController extends Controller {
 
     /*Creado por Breiddy Monterrey*/
+    public function store(Request $request) {
+       
+        $this->validate($request, [
+            'titulo'      => 'required|min:2',
+            'descripcion'      => 'required|min:2',
+            'fk_publicaciones'      => 'required|min:1',
+    
+        ], [
+            'titulo.required'                 => 'El título es requerido',
+            'titulo.min'                      => 'El título no puede tener menos de 2 caracteres',
+            'descripcion.required'            => 'El descripción teléfono es requerido',
+            'descripcion.min'                 => 'El descripción de teléfono no puede tener menos de 2 caracteres',
+            'fk_publicaciones.required'       => 'La publicacion es requerida',
+            'fk_publicaciones.min'            => 'La publicacion no puede tener menos de 2 caracteres',           
+        ]);
+
+        try {
+
+
+            $galeria = new Galeria($request->all());
+       
+            $galeria->save();
+            
+          // $galeria->tipoPropiedad;
+            DB::commit();
+            $response = [
+                'msj'  => 'Galeria Creada Exitosamente',
+                'data' => $galeria,
+            ];
+
+            return response()->json($response, 200);
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            Log::error('Ha ocurrido un error en TransaccionesController: '.$e->getMessage().', Linea: '.$e->getLine());
+
+            return response()->json([
+                'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
+            ], 500);
+        }
+        
+    }
    
     public function listaGaleria() {
 
@@ -47,6 +89,66 @@ class GaleriaController extends Controller {
         }
        
         return response()->json($response, 200);
+    }
+
+    public function update(Request $request, $idGaleria) {
+        DB::beginTransaction();
+        try {
+        
+            $galeria = Galeria::findOrFail($idGaleria);
+            $galeria->fill($request->all());
+
+            $galeria->save();
+        
+            $response = [
+                'msj'      => 'Galeria actualizada exitosamente',
+                'data' => $galeria,
+            ];
+
+            return response()->json($response, 200);
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            Log::error('Ha ocurrido un error en GaleriaController: '.$e->getMessage().', Linea: '.$e->getLine());
+
+            return response()->json([
+                'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
+            ], 500);
+        }
+    }
+
+    public function destroy($idGaleria) {
+
+        DB::beginTransaction();
+
+        try {
+            $galeria = Galeria::find($idGaleria);
+
+            if (is_null($galeria)) {
+
+                $response = [
+                    'message' => 'Galeria no existe',
+                ];
+
+                return response()->json($response, 401);
+            }
+
+            $galeria->delete();
+            $response = [
+                'message'  => 'Galeria eliminada correctamente',
+            ];
+
+            DB::commit();
+
+            return response()->json($response, 200);
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Ha ocurrido un error en SucursalController: '.$e->getMessage().', Linea: '.$e->getLine());
+
+            return response()->json([
+                'message' => 'Ha ocurrido un error al tratar de eliminar los datos.',
+            ], 500);
+        }
     }
 
 }
