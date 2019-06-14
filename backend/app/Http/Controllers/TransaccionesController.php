@@ -84,6 +84,81 @@ class TransaccionesController extends Controller {
 
     }
 
+    public function listaTransacciones() {
+     
+        $Transaccion = Transacciones::all();
+        foreach($Transaccion as $Transacciones){
+            $Transacciones->tipoPropiedad;
+        }
+      
+        $response = [
+            'msj'   => 'Transacciones',
+            'data' => $Transaccion,
+        ];
+
+        return response()->json($response, 200);
+
+    }
+
+    public function update(Request $request, $idTransaccion) {
+        DB::beginTransaction();
+        try {
+        
+            $Transaccion = Transacciones::findOrFail($idTransaccion);
+            $Transaccion->fill($request->all());
+
+            $Transaccion->save();
+            $Transaccion->tipoPropiedad;
+            $response = [
+                'msj'      => 'Transacción actualizada exitosamente',
+                'data' => $Transaccion,
+            ];
+
+            return response()->json($response, 200);
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            Log::error('Ha ocurrido un error en GaleriaController: '.$e->getMessage().', Linea: '.$e->getLine());
+
+            return response()->json([
+                'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
+            ], 500);
+        }
+    }
+
+    public function destroy($idTransaccion) {
+
+        DB::beginTransaction();
+
+        try {
+            $Transaccion = Transacciones::find($idTransaccion);
+
+            if (is_null($Transaccion)) {
+
+                $response = [
+                    'message' => 'Galeria no existe',
+                ];
+
+                return response()->json($response, 401);
+            }
+
+            $Transaccion->delete();
+            $response = [
+                'message'  => 'Galeria eliminada correctamente',
+            ];
+
+            DB::commit();
+
+            return response()->json($response, 200);
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Ha ocurrido un error en SucursalController: '.$e->getMessage().', Linea: '.$e->getLine());
+
+            return response()->json([
+                'message' => 'Ha ocurrido un error al tratar de eliminar los datos.',
+            ], 500);
+        }
+    }
 
 
 }
