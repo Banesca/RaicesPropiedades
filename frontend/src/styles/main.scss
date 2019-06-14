@@ -53,6 +53,7 @@ a {
 	}
 }
 
+
 .nav-item{
 	&:hover{
 		.link-nav {
@@ -183,6 +184,10 @@ a {
 	color: $yellow_main_color;
 }
 
+.gray-text {
+	color: $gray_main_color;
+}
+
 .main-spinner {
 	color: $yellow_main_color;
 }
@@ -267,7 +272,7 @@ footer {
 
 // Font-Sizes
 .transaction-modal {
-	textarea::-webkit-input-placeholder,input::-webkit-input-placeholder {
+	select,textarea::-webkit-input-placeholder,input::-webkit-input-placeholder {
 		color: $gray_main_color;
 		font-weight: 400;
 		font-size: 1rem;

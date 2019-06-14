@@ -1,5 +1,5 @@
 import { Component,Input, OnInit } from '@angular/core';
-import { IContacto } from "src/app/servicios/interfaces.index";
+import { IContacto, ICategoria } from "src/app/servicios/interfaces.index";
 import { ContactoService } from "src/app/servicios/servicios.index";
 import {
   NgForm,
@@ -18,9 +18,10 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class TransactionModalComponent implements OnInit {
   @Input() name;
 
+  mContacto: IContacto;
+  mCategorias: ICategoria[];
   contactForm: FormGroup;
   contactFormEstado: string;
-  mContacto: IContacto;
   successMensaje = false;
   submitted = false;
   errorMensaje = false;
@@ -34,18 +35,16 @@ export class TransactionModalComponent implements OnInit {
      private _ContactoService: ContactoService,
 
     ) {     
-    /*  this.contactForm = this.generarFormulario();*/
+      this.getAll();
     }
 
   ngOnInit() {
     this.contactForm = this._formBuilder.group({
-      id: '',
-      nombres: ["", Validators.required],
-      apellidos: ["", Validators.required],
-      email: ["",[Validators.required, Validators.email]],
-      tema: ["", Validators.required],
-      mensaje:["", Validators.required,],
-      created_at:''
+      nombre_apellido: ["", Validators.required],
+      telefono: ["", Validators.required],
+      fk_tipoPropiedad: ["", Validators.required],
+      titulo: ["", Validators.required],
+      descripcion: ["", Validators.required]
   });
   }
 
@@ -79,9 +78,23 @@ export class TransactionModalComponent implements OnInit {
           this.guardar();
       }
 
+      getAll() {
+        this._ContactoService
+          .All()
+            .then(res => {
+            this.mCategorias = res.data;
+            console.log(this.mCategorias);
+    
+          })
+          .catch(error => {
+            console.log(this.mCategorias);
+          });
+      }
+
   guardar() {
   this.mLoading = true;
   this.hideForm = true;
+  console.log(this.mContacto)
   this._ContactoService
     .New(this.mContacto)
     .then(data => {

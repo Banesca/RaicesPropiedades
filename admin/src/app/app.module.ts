@@ -56,6 +56,7 @@ import { UsuariosComponent } from './component/usuarios/usuarios.component';
 import { SucursalesComponent } from './component/sucursales/sucursales.component';
 import { SuscribersComponent } from './component/suscribers/suscribers.component';
 import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.component';
+import { TransaccionesComponent } from './component/transacciones/transacciones.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.comp
     UsuariosComponent,
     SucursalesComponent,
     SuscribersComponent,
-    GaleriaHomeComponent,  
+    GaleriaHomeComponent,
+    TransaccionesComponent,  
 
   ],
   imports: [

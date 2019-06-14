@@ -39,8 +39,7 @@ private mUrl: string;
   * @returns Item de dato de Tipo Isuscripcion
   */
  New(pSuscripcion: ISuscripcion) {
-    const lSuscripcion = JSON.stringify(pSuscripcion);
-    return this._HttpClient.post(this.mUrl + this.mService, lSuscripcion, {
+    return this._HttpClient.post(this.mUrl + this.mService, pSuscripcion, {
       headers: getHeaders()
     }).pipe(
       map((data: any) => {

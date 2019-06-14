@@ -1,6 +1,7 @@
 
 import { ConfigService } from './../config/config.service';
 import { IContacto } from './contacto.interface';
+import { ICategoriaRs } from '../categoria/categoria.interface';
 import { getHeaders } from '../../misc/Headers';
 
 import { Injectable } from '@angular/core';
@@ -13,7 +14,7 @@ import { map } from 'rxjs/operators';
 /** Class Contacto CRUD por medio de un servicio web */
 export class ContactoService {
   /** Nombre de recurso ha obtener en la API */
-  private mService = 'contactos';
+  private mService = '/api/v1/transacciones';
   /** Url obtenida del servicio de configuracion */
   private mUrl: string;
 
@@ -36,11 +37,11 @@ export class ContactoService {
    * @returns Coleccion de datos de tipo IContacto
    */
   All() {
-    return this._HttpClient.get(this.mUrl + this.mService, {
+    return this._HttpClient.get(this.mUrl + this.mService + '/categorias', {
       headers: getHeaders()
     }).pipe(
-      map((data: IContacto) => {
-        return data;
+      map((res: ICategoriaRs) => {
+        return res;
       })).toPromise();
   }
 
@@ -50,8 +51,7 @@ export class ContactoService {
   * @returns Item de dato de Tipo IContacto
   */
   New(pContacto: IContacto) {
-    const lContacto = JSON.stringify(pContacto);
-    return this._HttpClient.post(this.mUrl + this.mService, lContacto, {
+    return this._HttpClient.post(this.mUrl + this.mService + '/store/', pContacto, {
       headers: getHeaders()
     }).pipe(
       map((data: any) => {

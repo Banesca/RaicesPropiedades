@@ -1,24 +1,25 @@
+export interface IContactoRs {
+    msj: string;
+    data: IContacto[];
+  }
+
 export interface IContacto {
-    id?: string;
-    nombres?: string;
-    apellidos?: string;
-    email?: string;
-    tema: string;
-    mensaje: string;
-    created_at:string;
+    nombre_apellido: string;
+    telefono: string;
+    fk_tipoPropiedad: number;
+    titulo: string;
+    descripcion: string;
 }
 
 
 export class CContacto{
     static empy() {
         return {
-            id: '',
-            nombres: '',
-            apellidos: '',
-            email: '',
-            tema: '',
-            mensaje:'',
-            created_at:''
+        nombre_apellido: '',
+        telefono: '',
+        fk_tipoPropiedad: null,
+        titulo: '',
+        descripcion: ''
         } as IContacto
     }
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { SuscritComponent } from './suscrit/suscrit.component';
+import { SuscritComponent, TrackCapsDirective } from './suscrit/suscrit.component';
 import { ContactComponent } from './contact/contact.component';
 import { ServicesComponent } from './services/services.component';
 
@@ -10,7 +10,8 @@ import { ServicesComponent } from './services/services.component';
   declarations: [ 
     SuscritComponent,
     ContactComponent,
-    ServicesComponent
+    ServicesComponent,
+    TrackCapsDirective
   ],
   imports: [
     CommonModule,

@@ -7,3 +7,5 @@ export { ArticuloService } from './articulo/articulo.service';
 export { ConfigService } from './config/config.service';
 export { UrlGuard } from './guards/url.guard';
 export { AuthService } from './auth/auth.service';
+export { SucursalesService } from './sucursales/sucursales.service';
+export { ConfiguracionGeneralService } from './configuracion-general/configuracion-general.service';

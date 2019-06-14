@@ -19,7 +19,7 @@ export class LayoutComponent implements OnInit  {
     private _ActivatedRoute: ActivatedRoute, ) {
     this.gArticulo;
     this._ActivatedRoute.params.subscribe(param => {
-      this.mId = param['ruta'];
+      this.mId = param['id'];
     });
   }
 

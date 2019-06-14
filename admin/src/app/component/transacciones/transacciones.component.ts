@@ -1,24 +1,24 @@
 import { enCRUD } from "./../../misc/enums";
-//import { Galeria } from './../../services/interfaces.index'
+import { MailSuscribers } from './../../services/interfaces.index'
 import {
   FormGroup,
   FormBuilder,
   Validators
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { IGaleria } from './../../services/galeria-home/galeria-home.interface'
-import { GaleriaHomeService } from './../../services/galeria-home/galeria-home.service'
+import { IMailSuscriber } from './../../services/mail-suscribers/mail-suscriber.interface'
+import { MailSuscribersService } from './../../services/mail-suscribers/mail-suscribers.service'
 import { AlertsService } from '../../services/alerts.service';
 
 
 @Component({
-    selector: 'app-galeria-home',
-    templateUrl: './galeria-home.component.html',
-    styleUrls: ['./galeria-home.component.css']
-  })
-  export class GaleriaHomeComponent implements OnInit {
-  mCategorias: IGaleria[];
-  mCategoriasSelect: IGaleria;
+  selector: 'app-transacciones',
+  templateUrl: './transacciones.component.html',
+  styleUrls: ['./transacciones.component.css']
+})
+export class TransaccionesComponent implements OnInit {
+  mCategorias: IMailSuscriber[];
+  mCategoriasSelect: IMailSuscriber;
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
@@ -29,11 +29,11 @@ import { AlertsService } from '../../services/alerts.service';
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _GaleriaHomeService: GaleriaHomeService,
+    private _MailSuscribersService: MailSuscribersService,
     private _AlertsService: AlertsService
   ) {
     this.mCategorias = [];
- //   this.mCategoriasSelect = MailSuscribers.empy();
+    this.mCategoriasSelect = MailSuscribers.empy();
     this.mForma = this.generarFormulario();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
@@ -44,21 +44,21 @@ import { AlertsService } from '../../services/alerts.service';
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      id: [""],
-      titulo: ["", [Validators.required, Validators.minLength(5)]],
+      contacto: ["", Validators.required],
+      telefono: ["", Validators.required],
+      categoria: ["", Validators.required],
+      titulo: ["", Validators.required],
       descripcion: ["", Validators.required],
-      estado: [""]
+      fotos: [""],
     });
   }
 
-  // desactivar cors chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
-
   getAll() {
     this.mLoading = true;
-    this._GaleriaHomeService
-      .allGalerias()
-      .then(res => {
-        this.mCategorias = res.data;
+    this._MailSuscribersService
+      .allCategorias()
+      .then(data => {
+        this.mCategorias = data.suscripcion;
         this.mLoading = false;
       })
       .catch(error => {
@@ -66,14 +66,14 @@ import { AlertsService } from '../../services/alerts.service';
       });
   }
 
-  modificar(pCategoria: IGaleria) {
+  modificar(pCategoria: IMailSuscriber) {
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
   }
 
   eliminar(pKey: number) {
     this.mLoading = true;
-    this._GaleriaHomeService
+    this._MailSuscribersService
       .eliminarCategoria(pKey)
       .then(data => {
         this.getAll();
@@ -83,27 +83,22 @@ import { AlertsService } from '../../services/alerts.service';
       });
   }
 
-  nuevo() {
-    this.mForma.reset();
-    this.mFormaEstado = enCRUD.Crear;
-  }
-
-  ver(pCategoria: IGaleria) {
+  ver(pCategoria: IMailSuscriber) {
     console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }
 
   actualizar(pKey: number) {
-    this.mCategoriasSelect = this.mForma.value as IGaleria;
+    this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
     this.mLoading = true;
-    this._GaleriaHomeService
-      .actualizarCategoria(this.mCategoriasSelect, pKey,)
+    this._MailSuscribersService
+      .actualizarCategoria(this.mCategoriasSelect, pKey)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Sucursal Actualizada Correctamente.')
+        this._AlertsService.msg('OK', 'EXITO!', 'Transacción Actualizada Correctamente.')
       })
       .catch(err => {
         // Parsear Object errors a Array de errores para poder mapearlos
@@ -116,18 +111,5 @@ import { AlertsService } from '../../services/alerts.service';
       });
   }
 
-
-  guardar() {
-    this.mCategoriasSelect = this.mForma.value as IGaleria;
-    this.mLoading = true;
-    this._GaleriaHomeService
-      .nuevaCategoria(this.mCategoriasSelect)
-      .then(data => {
-        this.mFormaEstado = enCRUD.Eliminar;
-        this.getAll();
-        this.mLoading = false;
-      })
-      .catch(error => {
-      });
-  }
 }
+
