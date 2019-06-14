@@ -1,26 +1,20 @@
 
 export interface ICategoriaRs {
-    count: number;
-    result: ICategoria[];
+    msj: string;
+    data: ICategoria[];
   }
 
 export interface ICategoria {
-    id?: string;
-    nombre?: string;
+    idTipoPropiedad: number;
     descripcion?: string;
-    estado?: string;
-    created_at: string;
 }
 
 
 export class CCategoria {
     static empy() {
         return {
-            id: '',
-            nombre: '',
+            idTipoPropiedad: null,
             descripcion: '',
-            estado: '',
-            created_at: ''
         } as ICategoria
     }
 }

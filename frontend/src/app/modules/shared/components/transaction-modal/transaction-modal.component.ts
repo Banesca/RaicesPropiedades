@@ -1,5 +1,5 @@
 import { Component,Input, OnInit } from '@angular/core';
-import { IContacto } from "src/app/servicios/interfaces.index";
+import { IContacto, ICategoria } from "src/app/servicios/interfaces.index";
 import { ContactoService } from "src/app/servicios/servicios.index";
 import {
   NgForm,
@@ -19,7 +19,7 @@ export class TransactionModalComponent implements OnInit {
   @Input() name;
 
   mContacto: IContacto;
-  mCategorias: IContacto[];
+  mCategorias: ICategoria[];
   contactForm: FormGroup;
   contactFormEstado: string;
   successMensaje = false;

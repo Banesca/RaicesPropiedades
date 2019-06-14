@@ -51,6 +51,8 @@ import { AlertsService } from '../../services/alerts.service';
     });
   }
 
+  // desactivar cors chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+
   getAll() {
     this.mLoading = true;
     this._GaleriaHomeService
