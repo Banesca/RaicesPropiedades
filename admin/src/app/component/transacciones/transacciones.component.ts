@@ -1,13 +1,12 @@
 import { enCRUD } from "./../../misc/enums";
-import { MailSuscribers } from './../../services/interfaces.index'
 import {
   FormGroup,
   FormBuilder,
   Validators
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { IMailSuscriber } from './../../services/mail-suscribers/mail-suscriber.interface'
-import { MailSuscribersService } from './../../services/mail-suscribers/mail-suscribers.service'
+import { ITransacciones } from './../../services/transacciones/transacciones.interface'
+import { TransaccionesService } from './../../services/transacciones/transacciones.service'
 import { AlertsService } from '../../services/alerts.service';
 
 
@@ -17,8 +16,8 @@ import { AlertsService } from '../../services/alerts.service';
   styleUrls: ['./transacciones.component.css']
 })
 export class TransaccionesComponent implements OnInit {
-  mCategorias: IMailSuscriber[];
-  mCategoriasSelect: IMailSuscriber;
+  mCategorias: ITransacciones[];
+  mCategoriasSelect: ITransacciones;
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
@@ -29,11 +28,10 @@ export class TransaccionesComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _MailSuscribersService: MailSuscribersService,
+    private _TransaccionesService: TransaccionesService,
     private _AlertsService: AlertsService
   ) {
     this.mCategorias = [];
-    this.mCategoriasSelect = MailSuscribers.empy();
     this.mForma = this.generarFormulario();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
@@ -55,10 +53,11 @@ export class TransaccionesComponent implements OnInit {
 
   getAll() {
     this.mLoading = true;
-    this._MailSuscribersService
-      .allCategorias()
-      .then(data => {
-        this.mCategorias = data.suscripcion;
+    this._TransaccionesService
+      .All()
+      .then(res => {
+        console.log(res)
+        this.mCategorias = res.data;
         this.mLoading = false;
       })
       .catch(error => {
@@ -66,14 +65,14 @@ export class TransaccionesComponent implements OnInit {
       });
   }
 
-  modificar(pCategoria: IMailSuscriber) {
+  modificar(pCategoria: ITransacciones) {
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
   }
 
   eliminar(pKey: number) {
     this.mLoading = true;
-    this._MailSuscribersService
+    this._TransaccionesService
       .eliminarCategoria(pKey)
       .then(data => {
         this.getAll();
@@ -83,16 +82,16 @@ export class TransaccionesComponent implements OnInit {
       });
   }
 
-  ver(pCategoria: IMailSuscriber) {
+  ver(pCategoria: ITransacciones) {
     console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }
 
   actualizar(pKey: number) {
-    this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
+    this.mCategoriasSelect = this.mForma.value as ITransacciones;
     this.mLoading = true;
-    this._MailSuscribersService
+    this._TransaccionesService
       .actualizarCategoria(this.mCategoriasSelect, pKey)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;

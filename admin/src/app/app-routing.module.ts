@@ -11,6 +11,7 @@ import { MailSuscribersComponent } from './component/mail-suscribers/mail-suscri
 import { ConfigColorComponent } from './component/config-color/config-color.component';
 
 import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
+import { TransaccionesComponent } from './component/transacciones/transacciones.component';
 
 
 import { RegistroComponent } from './component/registro/registro.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: 'config-footer', component: ConfigFooterComponent, canActivate: [AuthGuard] },
       { path: 'sucursales', component: SucursalesComponent, canActivate: [AuthGuard] },
       { path: 'suscribers', component: SuscribersComponent, canActivate: [AuthGuard] },
+      { path: 'transacciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
       { path: 'config-color', component: ConfigColorComponent, canActivate: [AuthGuard] },
       
     ]

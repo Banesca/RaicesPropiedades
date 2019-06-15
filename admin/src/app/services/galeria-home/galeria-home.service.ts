@@ -9,7 +9,7 @@ import { getHeaders } from '../../misc/Headers';
   providedIn: 'root'
 })
 export class GaleriaHomeService {
-  private mService = 'categorias';
+  private mService = '/api/v1/galeria';
   private mUrl: string;
   constructor(
     private _HttpClient: HttpClient) {
@@ -17,7 +17,7 @@ export class GaleriaHomeService {
 
   allGalerias() { 
     return this._HttpClient
-      .get(environment.apiHost + '/api/v1/galeria/galeria', {
+      .get(environment.apiHost + this.mService + '/galeria', {
         headers: getHeaders()
       })
       .pipe(
@@ -29,9 +29,8 @@ export class GaleriaHomeService {
   }
 
   nuevaCategoria(pCategoria: IGaleria) {
-    const lCategoria = JSON.stringify(pCategoria);
     return this._HttpClient
-      .post(environment.apiHost + '/api/v1/enviarMailMasivos', lCategoria, { headers: getHeaders() })
+      .post(environment.apiHost + this.mService + '/store', pCategoria, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;
@@ -40,9 +39,9 @@ export class GaleriaHomeService {
       .toPromise();
   }
   actualizarCategoria(pCategoria: IGaleria, pKey: number) {
-    const lCategoria = JSON.stringify(pCategoria);
+    console.log(pKey)
     return this._HttpClient
-      .put(environment.apiHost + '/api/v1/editarSuscripcion/' + pKey + '/' , lCategoria, {
+      .post(environment.apiHost +  this.mService + '/edit/' + pKey + '/', pCategoria, {
         headers: getHeaders()
       })
       .pipe(
@@ -54,7 +53,7 @@ export class GaleriaHomeService {
 
   eliminarCategoria(pKey: number) {
     return this._HttpClient
-      .delete(environment.apiHost + '/api/v1/borrarSuscripcion' + '/' + pKey, { headers: getHeaders() })
+      .delete(environment.apiHost + this.mService + '/eliminar/' + pKey, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;

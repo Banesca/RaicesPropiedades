@@ -44,10 +44,9 @@ import { AlertsService } from '../../services/alerts.service';
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      id: [""],
       titulo: ["", [Validators.required, Validators.minLength(5)]],
       descripcion: ["", Validators.required],
-      estado: [""]
+      fk_publicaciones: ["", Validators.required]
     });
   }
 
@@ -58,6 +57,7 @@ import { AlertsService } from '../../services/alerts.service';
     this._GaleriaHomeService
       .allGalerias()
       .then(res => {
+        
         this.mCategorias = res.data;
         this.mLoading = false;
       })
@@ -98,7 +98,7 @@ import { AlertsService } from '../../services/alerts.service';
     this.mCategoriasSelect = this.mForma.value as IGaleria;
     this.mLoading = true;
     this._GaleriaHomeService
-      .actualizarCategoria(this.mCategoriasSelect, pKey,)
+      .actualizarCategoria(this.mCategoriasSelect, pKey)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();

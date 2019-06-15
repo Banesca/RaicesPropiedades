@@ -1,17 +1,7 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="py-5 text-center font-weight-bold">Mails a Suscriptores</h3>
-            <button
-            (click)="nuevo()"
-            type="button"
-            class="btn btn-primary"
-            class="btn btn-success my-4"
-            [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
-          >
-            <i class="fa fa-plus"></i>
-           Nuevo
-           </button>
+        <h3 class="py-5 text-center font-weight-bold">Transacciones</h3>>
           </div>
       </div>
 
@@ -24,9 +14,10 @@
           <table class="table table-striped">
             <thead class="thead-dark ">
               <th class="d-flex justify-content-center">#</th>
+              <th>Contacto</th>
+              <th>Teléfono</th>
               <th>Título</th>
               <th>Descripción</th>
-              <th>Acción</th>
               <th></th>
             </thead>
             <tbody>
@@ -34,7 +25,9 @@
                 *ngFor="let categoria of mCategorias; let i = index"
                 (dblclick)="modificar(categoria)"
               >
-              <td  class="d-flex justify-content-center">{{categoria.idSuscripcionUser}}</td>
+              <td  class="d-flex justify-content-center">{{i + 1}}</td>
+              <td>{{categoria.contacto}}</td>
+              <td>{{categoria.telefono}}</td>
               <td>{{categoria.titulo}}</td>
               <td>{{categoria.descripcion}}</td>
               <td>
@@ -53,7 +46,7 @@
                 <i class="fas fa-pencil-alt"></i>
                 </button>
                 <button
-                  (click)="eliminar(categoria.idSuscripcionUser)"
+                  (click)="eliminar(categoria.idTransacciones)"
                   type="button"
                   class="btn mr-2 btn-danger"
                 >
