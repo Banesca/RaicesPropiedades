@@ -80,6 +80,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::get('transacciones/listar','TransaccionesController@listaTransacciones');
     Route::post('transacciones/edit/{idTransaccion}', 'TransaccionesController@update');
     Route::delete('transacciones/eliminar/{idTransaccion}', 'TransaccionesController@destroy');
+    Route::get('transacciones/{idTransaccion}', 'TransaccionesController@listarTransaccionesPorId');
     /*   Transacciones    */
 
     /* Galeria */

@@ -160,5 +160,27 @@ class TransaccionesController extends Controller {
         }
     }
 
+    public function listarTransaccionesPorId($idTransaccion){
+
+        $Transaccion = Transacciones::find($idTransaccion);
+        $Transaccion->tipoPropiedad;
+        if($Transaccion==null){
+            
+            $response = [
+                'message'        => 'No existe la transacción',
+            ];
+
+          
+        }else{
+            $response = [
+                'msj'        => 'transacción',
+                'data' => $Transaccion,
+            ];
+        }
+       
+        return response()->json($response, 200);
+
+    }
+
 
 }
