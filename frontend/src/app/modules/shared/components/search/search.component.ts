@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IComentario } from "../../../../servicios/interfaces.index";
-import { ComentarioService } from "../../../../servicios/servicios.index";
+
 
 @Component({
   selector: 'app-search',
@@ -9,27 +8,14 @@ import { ComentarioService } from "../../../../servicios/servicios.index";
 })
 
 export class SearchComponent implements OnInit {
-  mComentario: IComentario[];
 
-  constructor(private _ComentariosService: ComentarioService) { 
+  constructor() { 
 
-    this.mComentario;
-    this.getAll();
+
   }
 
   ngOnInit() {
   }
 
-  getAll() {
-    this._ComentariosService
-      .All()
-      .then(data => {
-        this.mComentario = data.result;
-        console.log(this.mComentario);
-      })
-      .catch(error => {
-        console.log(this.mComentario);
-      });
-  }
 
 }
