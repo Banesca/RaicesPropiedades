@@ -23,6 +23,7 @@ class CreateFicha2sTable extends Migration
             $table->string('imagen6')->nullable();
             $table->string('imagen7')->nullable();
             $table->string('imagen_para_galeria')->nullable();
+            $table->integer('fk_ficha1')->unsigned();
             $table->timestamps();
             $table->softDeletes();
         });
