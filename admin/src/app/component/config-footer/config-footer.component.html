@@ -42,7 +42,7 @@
             <input type="input" formControlName="url_twitter" class="form-control" placeholder="Escriba La Url De Facebook">
             <small *ngIf="myForm.get('url_twitter').invalid" >Es requerido</small>
       </div>
-      <div class="card col-6 mt-4 emails-cont ">
+      <div class="card col-lg-6 mt-4 emails-cont ">
             <div class="card-body" *ngIf="mailList.length">
                         <table class="table table-striped">
                                     <thead>
@@ -56,7 +56,13 @@
                                       <tr  *ngFor="let mail of mailList" >
                                     
                                         <td>{{mail.email}}</td>
-                                        <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+                                        <td> <button
+                                          (click)="eliminar(mail.idMail)"
+                                          type="button"
+                                          class="btn mr-2 btn-danger"
+                                        >
+                                          <i class="fa fa-trash"></i>
+                                        </button></td>
                                       </tr>
                                       
                                     </tbody>

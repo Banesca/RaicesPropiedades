@@ -5,9 +5,12 @@ import {
   Validators
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { ITransacciones } from './../../services/transacciones/transacciones.interface'
+import { ITransacciones, Transacciones } from './../../services/transacciones/transacciones.interface'
 import { TransaccionesService } from './../../services/transacciones/transacciones.service'
 import { AlertsService } from '../../services/alerts.service';
+import { ICategoria } from "src/app/services/categoria/categoria.interface";
+import { CategoriaService } from "src/app/services/categoria/categoria.service";
+
 
 
 @Component({
@@ -17,10 +20,12 @@ import { AlertsService } from '../../services/alerts.service';
 })
 export class TransaccionesComponent implements OnInit {
   mCategorias: ITransacciones[];
+  mCategoriasList: ICategoria[];
   mCategoriasSelect: ITransacciones;
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
+  mId: number;
 
   mForma: FormGroup;
   mFormaEstado: string;
@@ -29,12 +34,15 @@ export class TransaccionesComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _TransaccionesService: TransaccionesService,
+    private _CategoriasService: CategoriaService,
     private _AlertsService: AlertsService
   ) {
     this.mCategorias = [];
     this.mForma = this.generarFormulario();
+    this.mCategoriasSelect = Transacciones.empy();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
+    this.getCategoria() 
   }
 
   ngOnInit() {}
@@ -42,12 +50,11 @@ export class TransaccionesComponent implements OnInit {
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      contacto: ["", Validators.required],
+      nombre_apellido: ["", Validators.required],
       telefono: ["", Validators.required],
-      categoria: ["", Validators.required],
+      fk_tipoPropiedad: ["", Validators.required],
       titulo: ["", Validators.required],
-      descripcion: ["", Validators.required],
-      fotos: [""],
+      descripcion: ["", Validators.required]
     });
   }
 
@@ -58,6 +65,21 @@ export class TransaccionesComponent implements OnInit {
       .then(res => {
         console.log(res)
         this.mCategorias = res.data;
+        this.mLoading = false;
+      })
+      .catch(error => {
+        console.log(error)
+      });
+  }
+
+  getCategoria() {
+    this.mLoading = true;
+    this._CategoriasService
+      .allCategories()
+      .then(res => {
+        console.log(res)
+        this.mCategoriasList = res.data;
+        console.log(this.mCategoriasList)
         this.mLoading = false;
       })
       .catch(error => {

@@ -85,6 +85,17 @@ export class ConfigFooterComponent implements OnInit {
         this.addMail=true;
     }
 
+    eliminar(pKey: any) {
+        this._confgFooterService
+          .eliminarCategoria(pKey)
+          .then(data => {
+           this.getMails();
+          })
+          .catch(error => {
+          });
+      }
+    
+
 
 
 

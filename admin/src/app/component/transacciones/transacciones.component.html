@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="py-5 text-center font-weight-bold">Transacciones</h3>>
+        <h3 class="py-5 text-center font-weight-bold">Transacciones</h3>
           </div>
       </div>
 
@@ -14,7 +14,7 @@
           <table class="table table-striped">
             <thead class="thead-dark ">
               <th class="d-flex justify-content-center">#</th>
-              <th>Contacto</th>
+              <th>nombre_apellido</th>
               <th>Teléfono</th>
               <th>Título</th>
               <th>Descripción</th>
@@ -26,7 +26,7 @@
                 (dblclick)="modificar(categoria)"
               >
               <td  class="d-flex justify-content-center">{{i + 1}}</td>
-              <td>{{categoria.contacto}}</td>
+              <td>{{categoria.nombre_apellido}}</td>
               <td>{{categoria.telefono}}</td>
               <td>{{categoria.titulo}}</td>
               <td>{{categoria.descripcion}}</td>
@@ -84,19 +84,8 @@
             Regresar
           </button>
           <button
-          *ngIf="mFormaEstado == enCRUD.Crear"
-          (click)="guardar()"
-          [disabled]="!vForma.valid"
-          style="margin: 5px"
-          class="btn btn-primary"
-        >
-          <i class="fa fa-save"></i>
-          Guardar
-        </button>
-  
-          <button
             *ngIf="mFormaEstado == enCRUD.Actualizar"
-            (click)="actualizar(mCategoriasSelect.idSuscripcionUser)"
+            (click)="actualizar(mCategoriasSelect.idTransacciones)"
             [disabled]="!vForma.valid"
             style="margin: 5px"
             class="btn btn-primary"
@@ -105,6 +94,53 @@
             Modificar
           </button>
         </div>
+        <div class="form-group">
+          <label for="">Contacto</label>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="nombre_apellido"
+            placeholder="nombre_apellido"
+          />
+          <div
+            *ngIf="mForma.controls['nombre_apellido'].errors?.required"
+            class="alert alert-danger"
+            role="alert"
+          >
+            Contacto es requerido
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Teléfono</label>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="telefono"
+            placeholder="Teléfono"
+          />
+          <div
+            *ngIf="mForma.controls['telefono'].errors?.required"
+            class="alert alert-danger"
+            role="alert"
+          >
+            Teléfono es requerido
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Categoría</label>
+        <select  formControlName="fk_tipoPropiedad" class="form-control form-control-lg">
+          <option value="">Seleciona Una Categoría</option>
+          <option  *ngFor="let categorias of mCategoriasList" type="number" [value]="categorias.idTipoPropiedad">{{categorias.descripcion}}</option>
+          </select>
+      <div
+        *ngIf="mForma.controls['telefono'].errors?.required"
+        class="alert alert-danger"
+        role="alert"
+      >
+        Teléfono es requerido
+      </div>
+    </div>
+
         <div class="form-group">
           <label for="">Título</label>
           <input
@@ -120,13 +156,6 @@
           >
             Título es requerido
           </div>
-          <div
-            *ngIf="mForma.controls['titulo'].errors?.minlength"
-            class="alert alert-danger"
-            role="alert"
-          >
-            Mínimo de 5 caracteres
-          </div>
         </div>
   
         <div class="form-group">
@@ -136,6 +165,13 @@
             type="text"
             formControlName="descripcion"
           ></textarea>
+          <div
+          *ngIf="mForma.controls['descripcion'].errors?.required"
+          class="alert alert-danger"
+          role="alert"
+        >
+          Descripción es requerida
+        </div>
         </div>
       </form>
     </div>
@@ -153,6 +189,26 @@
               <i class="fa fa-backward"></i>
               Regresar
             </button>
+          </div>
+          <div class="form-group">
+            <label for="">Contacto</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="mCategoriasSelect.nombre_apellido"
+              name="mCategoriasSelect.nombre_apellido"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Teléfono</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="mCategoriasSelect.telefono"
+              name="mCategoriasSelect.telefono"
+              readonly
+            />
           </div>
           <div class="form-group">
             <label for="">Título</label>
