@@ -57,6 +57,8 @@ import { SucursalesComponent } from './component/sucursales/sucursales.component
 import { SuscribersComponent } from './component/suscribers/suscribers.component';
 import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.component';
 import { TransaccionesComponent } from './component/transacciones/transacciones.component';
+import { ModulosComponent } from './component/modulos/modulos.component';
+
 import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
 
 @NgModule({
@@ -94,6 +96,7 @@ import { PublicacionesFacebookComponent } from './component/publicaciones-facebo
     GaleriaHomeComponent,
     TransaccionesComponent,
     PublicacionesFacebookComponent,  
+    ModulosComponent
 
   ],
   imports: [
