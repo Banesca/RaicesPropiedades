@@ -19,6 +19,7 @@ class Ficha2 extends Model {
         'imagen6',
         'imagen7',
         'imagen_para_galeria',
+        'fk_ficha1',
     ];
 
     protected $hidden = [

@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder {
         $this->call(StatusDelUserSeeder::class);
         $this->call(StatusSistemaSeeder::class);
         $this->call(TipoTechoIndustrialseeder::class);
-        $this->call(TipoMultimediaSeeder::class);
+       // $this->call(TipoMultimediaSeeder::class);
         $this->call(TipoAscensorSeeder::class);
         $this->call(TipoCocheraSeeder::class);
         $this->call(TipoHotelSeeder::class);
