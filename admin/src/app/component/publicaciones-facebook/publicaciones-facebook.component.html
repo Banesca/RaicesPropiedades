@@ -1,3 +1,208 @@
-<p>
-  publicaciones-facebook works!
-</p>
+<div class="card text-center">
+  <div *ngIf="!user" class="card text-center">
+    <h4 class="card-header">
+      Iniciar Sesión para Continuar
+    </h4>
+      <button class="btn mx-auto btn-lg my-5 col-lg-4 btn-block btn-facebook mx-1" (click)="signInWithFB()">Iniciar Sesión con Facebook</button>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="user">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="py-5 text-center font-weight-bold">Publicaciones en Facebook</h3>
+          <button
+          (click)="nuevo()"
+          type="button"
+          class="btn btn-primary"
+          class="btn btn-success my-4"
+          [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
+        >
+          <i class="fa fa-plus"></i>
+         Nuevo
+         </button>
+         <button class="btn btn-danger" (click)="signOut()">Cerrar Sesión</button>
+        </div>
+    </div>
+
+
+
+<div *ngIf="mFormaEstado == enCRUD.Eliminar">
+  <div class="row animated fadeIn fast">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead class="thead-dark ">
+            <th class="d-flex justify-content-center">#</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Acción</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let categoria of mCategorias; let i = index"
+              (dblclick)="modificar(categoria)"
+            >
+            <td  class="d-flex justify-content-center">{{categoria.idSuscripcionUser}}</td>
+            <td>{{categoria.titulo}}</td>
+            <td>{{categoria.descripcion}}</td>
+            <td>
+                <button
+                (click)="ver(categoria)"
+                type="button"
+                class="btn mr-2 btn-info"
+              >
+              <i class="far fa-eye"></i>    
+                        </button>
+              <button
+                (click)="modificar(categoria)"
+                type="button"
+                class="btn mr-2 btn-primary"
+              >
+              <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button
+                (click)="eliminar(categoria.idSuscripcionUser)"
+                type="button"
+                class="btn mr-2 btn-danger"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+        <div
+          *ngIf="(mCategorias | keys).length === 0 && !mLoading"
+          class="alert alert-info"
+          role="alert"
+        >
+          <strong>No existen</strong> Mails que mostrar...
+        </div>
+        <div *ngIf="mLoading" class="alert alert-warning" role="alert">
+          <strong>Cargando</strong> por favor espere...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
+  <div class="col-md-12">
+    <form [formGroup]="mForma" #vForma="ngForm">
+      <div class="form-group text-right">
+        <button
+          (click)="mFormaEstado = enCRUD.Eliminar"
+          type="button"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-backward"></i>
+          Regresar
+        </button>
+
+        <button
+          (click)="nuevo()"
+          *ngIf="mFormaEstado == enCRUD.Actualizar"
+          style="margin: 5px"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-plus"></i>
+          Nuevo
+        </button>
+        <button
+        *ngIf="mFormaEstado == enCRUD.Crear"
+        (click)="guardar()"
+        [disabled]="!vForma.valid"
+        style="margin: 5px"
+        class="btn btn-primary"
+      >
+        <i class="fa fa-save"></i>
+        Guardar
+      </button>
+
+        <button
+          *ngIf="mFormaEstado == enCRUD.Actualizar"
+          (click)="actualizar(mCategoriasSelect.idSuscripcionUser)"
+          [disabled]="!vForma.valid"
+          style="margin: 5px"
+          class="btn btn-primary"
+        >
+          <i class="fa fa-save"></i>
+          Modificar
+        </button>
+      </div>
+      <div class="form-group">
+        <label for="">Título</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="titulo"
+          placeholder="Título del Mail"
+        />
+        <div
+          *ngIf="mForma.controls['titulo'].errors?.required"
+          class="alert alert-danger"
+          role="alert"
+        >
+          Título es requerido
+        </div>
+        <div
+          *ngIf="mForma.controls['titulo'].errors?.minlength"
+          class="alert alert-danger"
+          role="alert"
+        >
+          Mínimo de 5 caracteres
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="">Descripción</label>
+        <textarea
+          class="form-control"
+          type="text"
+          formControlName="descripcion"
+        ></textarea>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="mFormaEstado == enCRUD.Leer" class="row animated fadeIn fast">
+    <div class="col-md-12">
+      <form>
+        <div class="form-group text-right">
+          <button
+            (click)="mFormaEstado = enCRUD.Eliminar"
+            type="button"
+            class="btn btn-primary"
+          >
+            <i class="fa fa-backward"></i>
+            Regresar
+          </button>
+        </div>
+        <div class="form-group">
+          <label for="">Título</label>
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="mCategoriasSelect.titulo"
+            name="mCategoriasSelect.titulo"
+            readonly
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="">Descripción</label>
+          <textarea
+            class="form-control"
+            type="text"
+            [(ngModel)]="mCategoriasSelect.descripcion"
+            name="mCategoriasSelect.descripcion"
+            readonly
+          ></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

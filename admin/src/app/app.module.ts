@@ -3,6 +3,10 @@ import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//Social Login
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { FacebookLoginProvider } from "angularx-social-login";
+
 // import {MatProgressSpinnerModule} from '@angular/material';
 // import { UserIdleModule } from 'angular-user-idle';
 
@@ -59,6 +63,17 @@ import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.comp
 import { TransaccionesComponent } from './component/transacciones/transacciones.component';
 import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
 
+let config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("Facebook-App-Id")
+  }
+]);
+ 
+export function provideConfig() {
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,9 +122,16 @@ import { PublicacionesFacebookComponent } from './component/publicaciones-facebo
     NgxDatatableModule,
     MaterialUiModule,
     GooglePlaceModule,
-    NgSelectModule
+    NgSelectModule,
+    SocialLoginModule
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
