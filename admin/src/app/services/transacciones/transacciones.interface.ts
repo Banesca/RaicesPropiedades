@@ -1,26 +1,26 @@
 export interface ITransaccionesRs {
     msj: string;
-    galerias: ITransacciones[];
+    data: ITransacciones[];
   }
   
   export interface ITransacciones {
-    contacto: string;
+    idTransacciones: number;
+    nombre_apellido: string;
     telefono: string;
-    categoria: string;
+    fk_tipoPropiedad: string;
     titulo: string;
     descripcion: string;
-    fotos: string;
   }
 
   export class Transacciones {
     static empy() {
       return {
-        contacto: '',
+        idTransacciones: null,
+        nombre_apellido: '',
         telefono: '',
-        categoria: '',
+        fk_tipoPropiedad: '',
         titulo: '',
-        descripcion: '',
-        fotos: '',
+        descripcion: '', 
       } as ITransacciones;
     }
   }
