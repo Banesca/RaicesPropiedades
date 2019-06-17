@@ -105,7 +105,6 @@ class Propiedad extends Model
         'EnEdificio',
         'Estado',
         'Expensas',
-
         'fk_Direccion_Barrio_Id',
         'fk_Direccion_Calle_Id',
         'fk_Direccion_Ciudad_Id',
@@ -114,7 +113,6 @@ class Propiedad extends Model
         'fk_Direccion_Partido_Id',
         'fk_Direccion_Provincia_Id',
         'fk_Direccion_SubBarrio_Id',
-
         'fk_Disposicion',
         'fk_Estado',
         'fk_Orientacion',
@@ -284,6 +282,7 @@ class Propiedad extends Model
         'Vidriera',
         'Vivienda',
         'Zonificacion',
+        'fk_ficha2',
     ];
 
     protected $hidden = [

@@ -287,6 +287,7 @@ class CreatePropiedadsTable extends Migration
             $table->text('Vidriera')->nullable();
             $table->text('Vivienda')->nullable();
             $table->text('Zonificacion')->nullable();
+            $table->integer('fk_ficha2')->unsigned()->nullable();
             $table->timestamps();
         });
     }

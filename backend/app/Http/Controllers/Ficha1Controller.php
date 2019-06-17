@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class Ficha1Controller extends Controller {
+
     public function add(Request $request) {
 
         $this->validate($request, [
@@ -25,7 +26,6 @@ class Ficha1Controller extends Controller {
             'esUnaNovedad.required'           => 'El Campo es requerido',
             'apareceEnGaleriaInicia.required' => 'El Campo es requerido',
             'fk_estado_publicacion.required'  => 'El Campo es requerido',
-
         ]);
 
         DB::beginTransaction();
