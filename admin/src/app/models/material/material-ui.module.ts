@@ -1,5 +1,5 @@
 // https://v6.material.angular.io/components/categories
-import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatProgressBarModule, MatFormFieldModule, MatInputModule, MatTooltipModule, MatBadgeModule, MatRadioModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatProgressBarModule, MatFormFieldModule, MatInputModule, MatTooltipModule, MatBadgeModule, MatRadioModule, MatSelectModule, MatSlideToggleModule, MatStepperModule, MatIconModule} from '@angular/material';
  import { NgModule } from '@angular/core';
 
  @NgModule({
@@ -12,7 +12,11 @@ import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatProgres
        MatInputModule,
        MatTooltipModule,
        MatBadgeModule,
-       MatRadioModule    
+       MatRadioModule,
+       MatSelectModule,
+       MatSlideToggleModule,    
+       MatStepperModule,
+       MatIconModule
      ],
    exports: [
        MatButtonModule, 
@@ -23,7 +27,11 @@ import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatProgres
        MatInputModule,
        MatTooltipModule,
        MatBadgeModule,
-       MatRadioModule
+       MatRadioModule,
+       MatSelectModule,
+       MatSlideToggleModule,    
+       MatStepperModule,
+       MatIconModule
      ]
  })
  export class MaterialUiModule { }
