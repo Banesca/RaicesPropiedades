@@ -3,12 +3,15 @@ import {
   NgForm,
   FormGroup,
   FormBuilder,
-  Validators
+  Validators,
+  FormArray
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { IUsuarios } from './../../services/usuarios/usuarios-interface'
 import { _UsuariosService } from './../../services/usuarios/_usuarios-service'
 import { AlertsService } from '../../services/alerts.service';
+import { IModulos, Modulos } from './../../services/modulos/modulos.interface'
+import { ModulosService } from './../../services/modulos/modulos.service'
 
 
 @Component({
@@ -25,16 +28,19 @@ export class UsuariosComponent implements OnInit {
   mNuevo = false;
   id: number;
   searchResult: any [] = [];
-
+  mModulos: IModulos[];
   mForma: FormGroup;
+  mFormM: FormGroup;
   filterForm: FormGroup;
   mFormaEstado: string;
   enCRUD = enCRUD;
-
+  modulo = new FormArray([]);
+  
   constructor(
     private _formBuilder: FormBuilder,
     private _usuarios: _UsuariosService,
-    private _AlertsService: AlertsService
+    private _AlertsService: AlertsService,
+    private _ModuloService: ModulosService,
   ) {
     this.mCategorias = [];
     this.mFormaEstado = enCRUD.Eliminar;
@@ -44,6 +50,9 @@ export class UsuariosComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       password_confirmation: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
+    }),
+    this.mFormM = this._formBuilder.group({
+      modulo: [''],
     }),
     this.filterForm = this._formBuilder.group({
       search: [''],
@@ -72,6 +81,25 @@ export class UsuariosComponent implements OnInit {
   modificar(categoria) {
     this.mFormaEstado = enCRUD.Actualizar;
     this.id = categoria.id;
+  }
+
+  modulos(idUsuario) {
+    this.mFormaEstado = enCRUD.Asignar;
+    this._ModuloService
+    .All()
+     .then(res => {
+       console.log(res);
+      this.mModulos = res.modulos;
+       this.mLoading = false;
+     })
+     .catch(error => {
+       console.log(error)
+     });
+    this.id = idUsuario.id;
+  }
+
+  asignarModulo(){
+    console.log(this.mFormM.value);
   }
 
   eliminar(pKey: number) {

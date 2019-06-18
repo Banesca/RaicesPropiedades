@@ -3,19 +3,17 @@
     <div class="col-md-12">
       <h3 class="py-5 text-center font-weight-bold">Usuarios</h3>
       <div class="d-flex col-md-12 justify-content-between"
-        *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar">
+        *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar  &&  mFormaEstado != enCRUD.Asignar">
         <button (click)="nuevo()" type="button" class="btn btn-success col-md-1 my-4">
           <i class="fa fa-plus"></i>
           Nuevo
         </button>
         <form [formGroup]="filterForm" class="col-md-9 d-flex align-items-center"
-          *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar">
+          *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar  &&  mFormaEstado != enCRUD.Asignar">
           <div class="form-group col-md-10 mb-0">
 
             <input type="text" placeholder="Buscar por nombre ,  usuario , email" formControlName="search"
               class="form-control">
-
-
 
           </div>
           <button type="button" class="btn btn-success ml-2" (click)="filtrar()" [disabled]=" mLoading">
@@ -23,8 +21,6 @@
           </button>
         </form>
       </div>
-
-
 
       <div class="col-md-12">
         <div *ngIf="mFormaEstado == enCRUD.Eliminar">
@@ -50,6 +46,9 @@
                         </button>
                         <button (click)="modificar(categoria)" type="button" class="btn mr-2 btn-primary">
                           <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button (click)="modulos(categoria.id)" type="button" class="btn mr-2 btn-info">
+                          <i class="fa fa-cogs"></i>
                         </button>
                         <button (click)="eliminar(categoria.id)" type="button" class="btn mr-2 btn-danger">
                           <i class="fa fa-trash"></i>
@@ -153,6 +152,44 @@
             </form>
           </div>
         </div>
+
+        <!-- Asignar modulos -->
+        <div *ngIf="mFormaEstado == enCRUD.Asignar"
+          class="row animated fadeIn fast">
+          <div class="row">
+              <div class="col-md-4">
+                <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
+                  <i class="fa fa-backward"></i>
+                  Regresar
+                </button>
+              </div>
+              <div class="col-md-4">
+                <button (click)="asignarModulo()" *ngIf="mFormaEstado == enCRUD.Asignar" 
+                    class="btn btn-primary">
+                    <i class="fa fa-plus"></i>
+                    Asiganar Módulos
+                  </button>
+                </div>
+          </div>
+        </div>
+          <div *ngIf="mFormaEstado == enCRUD.Asignar">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                  <h3 class="py-5 text-center font-weight-bold">Asiganar Módulos</h3>
+                  <form [formGroup]="mFormM" #vFormM="ngForm">
+                    <div *ngFor="let modulo of mModulos; let i = index">
+                        <div class="form-group">
+                            <input type="checkbox" class="form-check-input" [value]="modulo.idModulo" formControlName="modulo">
+                            <label class="form-check-label" for="exampleCheck1" > &nbsp;&nbsp;&nbsp;&nbsp;{{modulo.modulo}}</label>
+                          </div>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

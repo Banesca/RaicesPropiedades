@@ -16,6 +16,7 @@ export enum enCRUD {
   Leer = '2',
   Actualizar = '3',
   Eliminar = '4',
+  Asignar= '5'
 }
 
 export enum enRsCode {

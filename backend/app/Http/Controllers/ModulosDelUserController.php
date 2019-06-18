@@ -30,7 +30,7 @@ class ModulosDelUserController extends Controller {
 
             return response()->json($response, 404);
         }
-
+    
         $mo_l = Modulo::find($request->fk_idModulo);
         if (is_null($mo_l)) {
 
