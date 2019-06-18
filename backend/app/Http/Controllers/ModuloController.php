@@ -11,7 +11,7 @@ class ModuloController extends Controller {
 
     public function store(Request $request) {
         $this->validate($request, [
-            'modulo'      => 'required|unique:tb_modulos,modulo,'.$request->idM.',idM,deleted_at,NULL',
+            'modulo'      => 'required|unique:tb_modulos,modulo,'.$request->idModulo.',idModulo,deleted_at,NULL',
             'url'         => 'required',
             'iconomodulo' => 'required',
         ], [

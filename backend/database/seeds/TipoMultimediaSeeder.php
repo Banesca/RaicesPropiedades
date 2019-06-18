@@ -2,19 +2,18 @@
 
 use Illuminate\Database\Seeder;
 
-class TipoMultimediaSeeder extends Seeder
-{
+class TipoMultimediaSeeder extends Seeder {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         $as = [
+            'Foto',
             'Video',
-            'Foto_360',
-            'Video_360',
+            'Foto 360',
+            'Video 360',
             'Tour',
             'Adjunto',
         ];
