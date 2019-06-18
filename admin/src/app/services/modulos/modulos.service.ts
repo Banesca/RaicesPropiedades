@@ -5,6 +5,10 @@ import { map } from 'rxjs/operators';
 import { IModulos, IModulosRs } from './modulos.interface'
 import { getHeaders } from '../../misc/Headers';
 
+/*
+  Creado Por Breiddy Monterrey 17/6/2019
+*/
+
 @Injectable({
   providedIn: 'root'
 })

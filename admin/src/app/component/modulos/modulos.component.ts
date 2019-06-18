@@ -5,14 +5,12 @@ import {
   Validators
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { ITransacciones, Transacciones } from './../../services/transacciones/transacciones.interface'
 import { ModulosService } from './../../services/modulos/modulos.service'
 import { AlertsService } from '../../services/alerts.service';
-import { ICategoria } from "src/app/services/categoria/categoria.interface";
-import { CategoriaService } from "src/app/services/categoria/categoria.service";
 import { IModulos, Modulos } from './../../services/modulos/modulos.interface'
-
-
+/*
+  Creado Por Breiddy Monterrey 17/6/2019
+*/
 
 @Component({
   selector: 'app-modulos',
@@ -21,8 +19,6 @@ import { IModulos, Modulos } from './../../services/modulos/modulos.interface'
 })
 export class ModulosComponent implements OnInit {
   mModulos: IModulos[];
-  mCategoriasList: ICategoria[];
-  mCategoriasSelect: ITransacciones;
   mModulosSelect: IModulos;
   mLoading: boolean;
   mMostrarForma = false;
@@ -36,16 +32,13 @@ export class ModulosComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _ModuloService: ModulosService,
-    private _CategoriasService: CategoriaService,
     private _AlertsService: AlertsService
   ) {
     this.mModulos = [];
     this.mForma = this.generarFormulario();
-    this.mCategoriasSelect = Transacciones.empy();
     this.mModulosSelect = Modulos.empy();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
-    this.getCategoria() 
   }
 
   ngOnInit() {}
@@ -70,7 +63,6 @@ export class ModulosComponent implements OnInit {
     this._ModuloService
       .All()
        .then(res => {
-        //console.log(res);
         this.mModulos = res.modulos;
          this.mLoading = false;
        })
@@ -79,22 +71,7 @@ export class ModulosComponent implements OnInit {
        });
   }
 
-  getCategoria() {
-    this.mLoading = true;
-    this._CategoriasService
-      .allCategories()
-      .then(res => {
-       // console.log(res)
-        this.mCategoriasList = res.data;
-        //console.log(this.mCategoriasList)
-        this.mLoading = false;
-      })
-      .catch(error => {
-        console.log(error)
-      });
-  }
-
-   modificar(pModulo: IModulos) {
+  modificar(pModulo: IModulos) {
     
      this.mModulosSelect = pModulo;
      this.mFormaEstado = enCRUD.Actualizar;
@@ -113,7 +90,6 @@ export class ModulosComponent implements OnInit {
    }
 
    ver(pModulo: IModulos) {
-     //console.log(pModulo);
      this.mModulosSelect = pModulo;
      this.mFormaEstado = enCRUD.Leer;
    }
