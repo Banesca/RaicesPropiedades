@@ -1,9 +1,11 @@
 <div class="card text-center">
   <div *ngIf="!user" class="card text-center">
-    <h4 class="card-header">
+    <h4 class="card-header mt-0 py-4">
       Iniciar Sesión para Continuar
     </h4>
-      <button class="btn mx-auto btn-lg my-5 col-lg-4 btn-block btn-facebook mx-1" (click)="signInWithFB()">Iniciar Sesión con Facebook</button>
+    <div class="mx-5 d-flex justify-content-center">
+      <button class="btn mx-auto btn-lg my-5 col-lg-4 btn-block btn-facebook" (click)="signInWithFB()">Iniciar Sesión con Facebook</button>
+    </div>
   </div>
 </div>
 

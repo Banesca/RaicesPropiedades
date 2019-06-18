@@ -9,9 +9,12 @@
 </app-header-bottom>
 <app-search></app-search>
 <section>
-  <div class="bg-light">
+  <div class="sec2">
+    
+  </div>
+  <div class="bg-light sec2">
       <div class="container-fluid d-flex align-items-center">
-        <div class="container col-lg-4 col-md-6 py-5 ml-lg-5"> 
+        <div class="container col-lg-4 col-md-6 py-5 ml-lg-5" style="z-index: 3;"> 
           <div class="col-sm-12">
               <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase">Desde 1990</h3>
             </div>
@@ -24,25 +27,25 @@
     </div>
       </div>
     </div>
-  <div class="container-fluid">
+  <div class="container-fluid sec1 section-component">
   <div class="container  py-5 "> 
           <div class="col-sm-12 d-flex justify-content-center">
               <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase">Información <span class="font-weight-extrabold">de contacto</span></h3>
           </div>
           <div class="row">
-            <div class="col-md-4 flex-column">
+            <div class="col-md-4 flex-column" style="z-index: 3;">
               <div class="d-flex justify-content-center mt-4 mb-2">
               <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 11.svg" class="img-fluid" alt="">
             </div>
               <h5 class="text-brown text-center font-weight-bold">{{gSucursal.direccionSucursal}}</h5>
           </div>
-            <div class="col-md-4 flex-column">
+            <div class="col-md-4 flex-column" style="z-index: 3;">
               <div class="d-flex justify-content-center mt-4 mb-2">
               <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 12.svg" class="img-fluid" alt="">
             </div>
             <h5 class="text-brown text-center font-weight-bold">{{gSucursal.telefonoSucursal}}</h5>
           </div>
-            <div class="col-md-4 flex-column">
+            <div class="col-md-4 flex-column" style="z-index: 3;">
               <div class="d-flex justify-content-center mt-4 mb-2">
               <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 13.svg" class="img-fluid" alt="">
             </div>
@@ -52,7 +55,7 @@
           </div>
           
   </div>
-  <div class="container-fluid bg-light">
+  <div class="container-fluid bg-light sec2 section-component">
       <div class="container  py-5 "> 
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="col-sm-12 d-flex justify-content-center">
@@ -103,7 +106,7 @@
                     
               </div>
           </div>
-          <div class="col-sm-12">
+          <div class="col-sm-12" style="z-index: 2;">
               <div class="d-flex justify-content-center">
                  <button class="btn shadow btn-block brown-button text-uppercase font-weight-bold col-lg-4"
                  >Enviar
