@@ -40,4 +40,9 @@ class Aviso extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function TipoMultimedia()
+    {
+        return $this->belongsTo('App\TipoMultimedia', 'fk_TipoMultimedia_Id');
+    }
 }
