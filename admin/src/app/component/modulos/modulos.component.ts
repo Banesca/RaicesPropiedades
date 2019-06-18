@@ -94,8 +94,8 @@ export class ModulosComponent implements OnInit {
       });
   }
 
-   modificar(pCategoria: ITransacciones) {
-     this.mCategoriasSelect = pCategoria;
+   modificar(pModulo: IModulos) {
+     this.mModulosSelect = pModulo;
      this.mFormaEstado = enCRUD.Actualizar;
    }
 
@@ -117,27 +117,43 @@ export class ModulosComponent implements OnInit {
      this.mFormaEstado = enCRUD.Leer;
    }
 
-  //  actualizar(pKey: number) {
-  //    this.mCategoriasSelect = this.mForma.value as ITransacciones;
-  //    this.mLoading = true;
-  //   this._ModuloService
-  //      .actualizarCategoria(this.mCategoriasSelect, pKey)
-  //      .then(data => {
-  //       this.mFormaEstado = enCRUD.Eliminar;
-  //        this.getAll();
-  //        this.mLoading = false;
-  //        this._AlertsService.msg('OK', 'EXITO!', 'Transacción Actualizada Correctamente.')
-  //      })
-  //      .catch(err => {
-  //        // Parsear Object errors a Array de errores para poder mapearlos
-  //        const mapped = Object.keys(err.error.errors).map(key => ({ type: key, value: err.error.errors[key] }));
-  //        // Notificando Errores
-  //        mapped ? mapped.map(e => { this._AlertsService.msg('ERR', 'ERROR', e.value) }) :
-  //          err.error.message ? this._AlertsService.msg('ERR', 'ERROR', err.error.message) :
-  //            this._AlertsService.msg('ERR', 'ERROR', 'Error al Guardar.')
 
-  //      });
-  //  }
+   guardar() {
+    this.mModulosSelect = this.mForma.value as IModulos;
+    this.mLoading = true;
+     this._ModuloService
+       .nuevoModulo(this.mModulosSelect)
+       .then(data => {
+         this.mFormaEstado = enCRUD.Eliminar;
+         this.getAll();
+         this.mLoading = false;
+         this._AlertsService.msg('OK', 'EXITO!', 'Módulo Creado Correctamente.')
+       })
+       .catch(error => {
+       });
+  }
+
+    actualizar(pKey: number) {
+      this.mModulosSelect = this.mForma.value as IModulos;
+      this.mLoading = true;
+      this._ModuloService
+        .actualizarModulos(this.mModulosSelect, pKey)
+        .then(data => {
+         this.mFormaEstado = enCRUD.Eliminar;
+          this.getAll();
+          this.mLoading = false;
+          this._AlertsService.msg('OK', 'EXITO!', 'Módulo Actualizado Correctamente.')
+        })
+       .catch(err => {
+          // Parsear Object errors a Array de errores para poder mapearlos
+          const mapped = Object.keys(err.error.errors).map(key => ({ type: key, value: err.error.errors[key] }));
+          // Notificando Errores
+          mapped ? mapped.map(e => { this._AlertsService.msg('ERR', 'ERROR', e.value) }) :
+            err.error.message ? this._AlertsService.msg('ERR', 'ERROR', err.error.message) :
+              this._AlertsService.msg('ERR', 'ERROR', 'Error al Guardar.')
+
+        });
+    }
 
 }
 

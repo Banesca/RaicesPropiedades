@@ -9,7 +9,8 @@ import { getHeaders } from '../../misc/Headers';
   providedIn: 'root'
 })
 export class ModulosService {
-  private mService = '/api/v1/modulo';
+  private mService = '/api/auth/modulo';
+  private mServiceL = '/api/v1/modulo';
   private mUrl: string;
   constructor(
     private _HttpClient: HttpClient) {
@@ -17,7 +18,7 @@ export class ModulosService {
 
   All() { 
     return this._HttpClient
-      .post(environment.apiHost + this.mService + '/listar', {
+      .post(environment.apiHost + this.mServiceL + '/listar', {
         headers: getHeaders()
       })
       .pipe(
@@ -28,10 +29,21 @@ export class ModulosService {
       .toPromise();
   }
 
-  actualizarCategoria(pCategoria: IModulos, pKey: number) {
-    console.log(pCategoria)
+  nuevoModulo(pModulo: IModulos) {
     return this._HttpClient
-      .post(environment.apiHost +  this.mService + '/edit/' + pKey + '/', pCategoria, {
+      .post(environment.apiHost + this.mService + '/agregar', pModulo, { headers: getHeaders() })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+
+  actualizarModulos(pModulo: IModulos, pKey: number) {
+    console.log(pModulo)
+    return this._HttpClient
+      .post(environment.apiHost +  this.mService + '/editar/' + pKey + '/', pModulo, {
         headers: getHeaders()
       })
       .pipe(
