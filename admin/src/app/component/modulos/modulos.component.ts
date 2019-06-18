@@ -70,7 +70,7 @@ export class ModulosComponent implements OnInit {
     this._ModuloService
       .All()
        .then(res => {
-        console.log(res);
+        //console.log(res);
         this.mModulos = res.modulos;
          this.mLoading = false;
        })
@@ -84,9 +84,9 @@ export class ModulosComponent implements OnInit {
     this._CategoriasService
       .allCategories()
       .then(res => {
-        console.log(res)
+       // console.log(res)
         this.mCategoriasList = res.data;
-        console.log(this.mCategoriasList)
+        //console.log(this.mCategoriasList)
         this.mLoading = false;
       })
       .catch(error => {
@@ -95,6 +95,7 @@ export class ModulosComponent implements OnInit {
   }
 
    modificar(pModulo: IModulos) {
+    
      this.mModulosSelect = pModulo;
      this.mFormaEstado = enCRUD.Actualizar;
    }
@@ -102,7 +103,7 @@ export class ModulosComponent implements OnInit {
   eliminar(pKey: number) {
     this.mLoading = true;
      this._ModuloService
-     .eliminarCategoria(pKey)
+     .eliminarModulos(pKey)
       .then(data => {
          this.getAll();
          this.mLoading = false;
@@ -134,6 +135,7 @@ export class ModulosComponent implements OnInit {
   }
 
     actualizar(pKey: number) {
+     
       this.mModulosSelect = this.mForma.value as IModulos;
       this.mLoading = true;
       this._ModuloService

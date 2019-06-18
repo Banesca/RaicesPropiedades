@@ -53,9 +53,9 @@ export class ModulosService {
       ).toPromise();
   }
 
-  eliminarCategoria(pKey: number) {
+  eliminarModulos(pKey: number) {
     return this._HttpClient
-      .delete(environment.apiHost + this.mService + '/eliminar/' + pKey, { headers: getHeaders() })
+      .delete(environment.apiHost + this.mService + '/borrar/' + pKey, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;

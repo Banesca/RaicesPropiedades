@@ -38,7 +38,7 @@
               <td>{{modulo.modulo}}</td>
               <td>{{modulo.url}}</td>
               <td>{{modulo.descripcion}}</td>
-              <td>{{modulo.iconomodulo}}</td>
+              <td> <i [class]="modulo.iconomodulo"></i> {{modulo.iconomodulo}}</td>
               <td>
                   <button
                   (click)="ver(modulo)"
@@ -94,13 +94,13 @@
           </button>
            <button
             *ngIf="mFormaEstado == enCRUD.Actualizar"
-            (click)="actualizar(mModulosSelect.idModulos)"
+            (click)="actualizar(mModulosSelect)"
             [disabled]="!vForma.valid"
             style="margin: 5px"
             class="btn btn-primary"
           >
             <i class="fa fa-save"></i>
-            Modificar
+            Modificar 
           </button>  
           <button
           *ngIf="mFormaEstado == enCRUD.Crear"
