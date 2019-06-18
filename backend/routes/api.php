@@ -129,6 +129,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::post('addFicha1','Ficha1Controller@add');
     Route::post('addFicha2','Ficha2Controller@add');
     Route::post('addFicha3','Ficha3Controller@add');
+    Route::get('sincronice','SincroniceArgenController@add');
 
 });
 
