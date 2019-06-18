@@ -21,6 +21,7 @@ Route::group([ 'prefix' => 'auth' ], function() {
 
         Route::post('modulo/agregar', 'ModuloController@store');
         Route::post('modulo/editar/{idM}', 'ModuloController@update');
+        Route::get('modulo/ver/{idM}', 'ModuloController@listarModuloPorId');
         Route::delete('modulo/borrar/{idM}', 'ModuloController@destroy');
         Route::post('usuario/asignarModulo', 'ModulosDelUserController@asignarModuloAUser');
         Route::delete('usuario/EliminarAsignacionModulo/{idModuloUser}', 'ModulosDelUserController@eliminarAsignacion');

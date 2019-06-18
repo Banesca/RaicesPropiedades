@@ -23,6 +23,7 @@ export class ModulosComponent implements OnInit {
   mModulos: IModulos[];
   mCategoriasList: ICategoria[];
   mCategoriasSelect: ITransacciones;
+  mModulosSelect: IModulos;
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
@@ -41,6 +42,7 @@ export class ModulosComponent implements OnInit {
     this.mModulos = [];
     this.mForma = this.generarFormulario();
     this.mCategoriasSelect = Transacciones.empy();
+    this.mModulosSelect = Modulos.empy();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
     this.getCategoria() 
@@ -54,9 +56,13 @@ export class ModulosComponent implements OnInit {
        modulo: ["", Validators.required],
        descripcion: ["", Validators.required],
        url: ["", Validators.required],
-       titulo: ["", Validators.required],
        iconomodulo: ["", Validators.required]
      });
+  }
+
+  nuevo() {
+    this.mForma.reset();
+    this.mFormaEstado = enCRUD.Crear;
   }
 
   getAll() {
@@ -105,9 +111,9 @@ export class ModulosComponent implements OnInit {
        });
    }
 
-   ver(pCategoria: ITransacciones) {
-     console.log(pCategoria);
-     this.mCategoriasSelect = pCategoria;
+   ver(pModulo: IModulos) {
+     //console.log(pModulo);
+     this.mModulosSelect = pModulo;
      this.mFormaEstado = enCRUD.Leer;
    }
 

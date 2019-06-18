@@ -138,4 +138,25 @@ class ModuloController extends Controller {
         return response()->json($response, 200);
     }
 
+    public function listarModuloPorId($id){
+        
+        $modulo = Modulo::find($id);
+        
+        if($modulo==null){
+            
+            $response = [
+                'message'        => 'No existe módulo',
+            ];
+
+          
+        }else{
+            $response = [
+                'msj'        => 'modulo',
+                'modulos' => $modulo,
+            ];
+        }
+       
+        return response()->json($response, 200);
+    }
+
 }
