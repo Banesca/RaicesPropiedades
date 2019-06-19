@@ -24,6 +24,8 @@ import { SuscribersComponent } from './component/suscribers/suscribers.component
 import { AuthGuard } from './services/auth.guard';
 import { SucursalesComponent } from './component/sucursales/sucursales.component';
 import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.component';
+import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
+
 
 
 const routes: Routes = [
@@ -37,6 +39,7 @@ const routes: Routes = [
       { path: 'gestionar-usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
       { path: 'galeria-home', component: GaleriaHomeComponent, canActivate: [AuthGuard] },
       { path: 'gestionar-publicaciones', component: GestionPublicacionesComponent, canActivate: [AuthGuard] },
+      { path: 'publicaciones-facebook', component: PublicacionesFacebookComponent, canActivate: [AuthGuard] },
       { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [AuthGuard] },
       { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
       { path: 'config-footer', component: ConfigFooterComponent, canActivate: [AuthGuard] },
