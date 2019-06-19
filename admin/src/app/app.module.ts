@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Social Login
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
-import { FacebookLoginProvider } from "angularx-social-login";
+import { FacebookLoginProvider, LoginOpt } from "angularx-social-login";
 
 // import {MatProgressSpinnerModule} from '@angular/material';
 // import { UserIdleModule } from 'angular-user-idle';
@@ -63,10 +63,16 @@ import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.comp
 import { TransaccionesComponent } from './component/transacciones/transacciones.component';
 import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
 
+const fbLoginOptions: LoginOpt = {
+  scope: 'publish_pages,pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
+  return_scopes: true,
+  enable_profile_selector: true
+}; 
+
 let config = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("Facebook-App-Id")
+    provider: new FacebookLoginProvider("443972602847954", fbLoginOptions)
   }
 ]);
  
