@@ -39,6 +39,17 @@ export class _UsuariosService {
       .toPromise();
   }
 
+  asignar(asignar){
+    return this._HttpClient
+    .post(environment.apiHost + '/api/auth/usuario/asignarModulo', asignar, { headers: getHeaders() })
+    .pipe(
+      map((data: any) => {
+        return data;
+      })
+    )
+    .toPromise();
+  }
+
   actualizarCategoria(Categoria: any, pKey: number) {
     return this._HttpClient
       .post(environment.apiHost +  '/api/auth/editarUser/' + pKey + '/', Categoria, {

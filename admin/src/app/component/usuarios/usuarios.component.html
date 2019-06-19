@@ -153,38 +153,39 @@
           </div>
         </div>
 
-        <!-- Asignar modulos -->
-        <div *ngIf="mFormaEstado == enCRUD.Asignar"
-          class="row animated fadeIn fast">
-          <div class="row">
-              <div class="col-md-4">
-                <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
+        <!-- Botones Asignar modulos -->
+        <div *ngIf="mFormaEstado == enCRUD.Asignar  && id>0"class="row animated fadeIn fast" >
+          <div class="col-md-12">
+            <form>
+              <div class="form-group text-right">
+                <button (click)="regresar()" type="button" class="btn btn-primary">
                   <i class="fa fa-backward"></i>
-                  Regresar
+                    Regresar
+                </button>
+                  &nbsp;
+                <button (click)="asignarModulo(id)" *ngIf="mFormaEstado == enCRUD.Asignar" 
+                  class="btn btn-primary">
+                  <i class="fa fa-plus"></i>
+                  Asiganar Módulos
                 </button>
               </div>
-              <div class="col-md-4">
-                <button (click)="asignarModulo()" *ngIf="mFormaEstado == enCRUD.Asignar" 
-                    class="btn btn-primary">
-                    <i class="fa fa-plus"></i>
-                    Asiganar Módulos
-                  </button>
-                </div>
+            </form>
           </div>
         </div>
-          <div *ngIf="mFormaEstado == enCRUD.Asignar">
+        <!-- Asignar modulos -->
+          <div *ngIf="mFormaEstado == enCRUD.Asignar && id>0">
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
                   <h3 class="py-5 text-center font-weight-bold">Asiganar Módulos</h3>
                   <form [formGroup]="mFormM" #vFormM="ngForm">
-                    <div *ngFor="let modulo of mModulos; let i = index">
                         <div class="form-group">
-                            <input type="checkbox" class="form-check-input" value="modulo.idModulo" formControlName="modulo">
-                            <!-- <input type="checkbox" class="form-check-input" [value]="modulo.idModulo" formControlName="modulo"> -->
-                            <label class="form-check-label" for="exampleCheck1" > &nbsp;&nbsp;&nbsp;&nbsp;{{modulo.modulo}}</label>
-                          </div>
-                    </div>
+                          <select multiple name="modulo" formControlName="modulo" class="tamano">
+                            <option *ngFor="let modulo of mModulos; let i= index" [ngValue]="modulo">
+                                {{ modulo.modulo }}
+                            </option> 
+                        </select> 
+                      </div>
                   </form>
               </div>
             </div>

@@ -12,6 +12,7 @@ import { _UsuariosService } from './../../services/usuarios/_usuarios-service'
 import { AlertsService } from '../../services/alerts.service';
 import { IModulos, Modulos } from './../../services/modulos/modulos.interface'
 import { ModulosService } from './../../services/modulos/modulos.service'
+import { count } from "rxjs/operators";
 
 
 @Component({
@@ -35,7 +36,8 @@ export class UsuariosComponent implements OnInit {
   mFormaEstado: string;
   enCRUD = enCRUD;
   modulo = new FormArray([]);
-  
+  asignar
+
   constructor(
     private _formBuilder: FormBuilder,
     private _usuarios: _UsuariosService,
@@ -52,7 +54,7 @@ export class UsuariosComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]]
     }),
     this.mFormM = this._formBuilder.group({
-      modulo: [''],
+      modulo: ['', Validators.required],
     }),
     this.filterForm = this._formBuilder.group({
       search: [''],
@@ -84,25 +86,60 @@ export class UsuariosComponent implements OnInit {
   }
 
   modulos(idUsuario) {
+    this.id = idUsuario;
     this.mFormaEstado = enCRUD.Asignar;
     this._ModuloService
     .All()
      .then(res => {
-       console.log(res);
+       //console.log(res);
       this.mModulos = res.modulos;
        this.mLoading = false;
      })
      .catch(error => {
        console.log(error)
      });
-    this.id = idUsuario.id;
-  }
-
-  asignarModulo(){
   
-    console.log(this.mFormM.value)
   }
 
+  // asignar modulos a usuarios
+  asignarModulo(idUsuario){
+    //console.log('id usuario:'+ idUsuario);
+    if(this.mFormM.value.modulo.length>0){
+      this.mFormM.value.modulo.forEach(modulo => {
+                
+        this.asignar = {
+          'fk_idUser': idUsuario,
+          'fk_idModulo': modulo.idModulo
+        };
+        this._usuarios
+       .asignar(this.asignar)
+       .then(data => {
+         console.log(data.msj);
+          this.mFormaEstado = enCRUD.Eliminar;
+          this.getAll();
+          this.mLoading = false;
+          if(data.msj==='El Usuario ya tiene el modulo asignado'){
+            this._AlertsService.msg('ERR', 'Módulo', 'El Usuario ya tiene el modulo asignado');
+          }else{
+            this._AlertsService.msg('OK', 'EXITO!', data.msj)
+          }
+       })
+       .catch(error => {
+       });
+      });
+    }else{
+      this._AlertsService.msg('ERR', 'Módulo', 'Debe Selecionar minimo un módulo');
+    }
+    
+  }
+
+  regresar (){
+    this.mFormM = this._formBuilder.group({
+      modulo: ['', Validators.required],
+    });
+    this.mFormaEstado = enCRUD.Eliminar 
+  }
+  
   eliminar(pKey: number) {
     this.mLoading = true;
     this._usuarios

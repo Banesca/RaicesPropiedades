@@ -21,14 +21,15 @@ class ModulosDelUserController extends Controller {
             'fk_idModulo.required' => 'El campo es requerido',
         ]);
 
-        $mo = ModulosDelUser::where('fk_idUser', $request->fk_idUser)->where('fk_idUser', $request->fk_idModulo)->get();
+        $mo = ModulosDelUser::where('fk_idUser', $request->fk_idUser)->where('fk_idModulo', $request->fk_idModulo)->get();
+       
         if (count($mo) > 0) {
 
             $response = [
                 'msj' => 'El Usuario ya tiene el modulo asignado',
             ];
 
-            return response()->json($response, 404);
+            return response()->json($response, 200);
         }
     
         $mo_l = Modulo::find($request->fk_idModulo);
@@ -38,7 +39,7 @@ class ModulosDelUserController extends Controller {
                 'msj' => 'El módulo que intenta asignar no existe',
             ];
 
-            return response()->json($response, 404);
+            return response()->json($response, 200);
         }
 
         $mo_g = new ModulosDelUser($request->all());
