@@ -180,7 +180,8 @@
                   <form [formGroup]="mFormM" #vFormM="ngForm">
                     <div *ngFor="let modulo of mModulos; let i = index">
                         <div class="form-group">
-                            <input type="checkbox" class="form-check-input" [value]="modulo.idModulo" formControlName="modulo">
+                            <input type="checkbox" class="form-check-input" value="modulo.idModulo" formControlName="modulo">
+                            <!-- <input type="checkbox" class="form-check-input" [value]="modulo.idModulo" formControlName="modulo"> -->
                             <label class="form-check-label" for="exampleCheck1" > &nbsp;&nbsp;&nbsp;&nbsp;{{modulo.modulo}}</label>
                           </div>
                     </div>

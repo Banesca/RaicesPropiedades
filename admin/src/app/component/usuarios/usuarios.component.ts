@@ -99,7 +99,8 @@ export class UsuariosComponent implements OnInit {
   }
 
   asignarModulo(){
-    console.log(this.mFormM.value);
+  
+    console.log(this.mFormM.value)
   }
 
   eliminar(pKey: number) {
