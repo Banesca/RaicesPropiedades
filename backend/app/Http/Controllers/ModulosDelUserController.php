@@ -131,7 +131,7 @@ class ModulosDelUserController extends Controller {
             if (count($mod)==0) {
 
                 $response = [
-                    'msj' => 'No existe la módulos asignados a este usuario.',
+                    'msj' => 'No existen módulos asignados para este usuario.',
                 ];
 
                 return response()->json($response, 200);

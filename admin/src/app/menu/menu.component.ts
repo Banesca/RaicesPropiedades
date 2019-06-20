@@ -47,8 +47,9 @@ export class MenuComponent implements OnInit {
     this._ModuloService
     .moduloUsuario()
      .then(res => {
-       //onsole.log(res);
+       //console.log(res);
       this.mModulos = res.modulos;
+      //console.log( this.mModulos);
        //this.mLoading = false;
      })
      .catch(error => {
