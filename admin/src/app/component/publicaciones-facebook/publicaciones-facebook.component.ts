@@ -11,6 +11,7 @@ import {
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { PublicacionesFacebookService } from './../../services/publicaciones-facebook/publicaciones-facebook.service'
+import { IFacebookPost } from './../../services/publicaciones-facebook/publicaciones-facebook.interface'
 import { AlertsService } from '../../services/alerts.service';
 
 
@@ -24,6 +25,7 @@ export class PublicacionesFacebookComponent implements OnInit {
   mMostrarForma = false;
   mNuevo = false;
   user: SocialUser;
+  postList: IFacebookPost[];
 
   mForma: FormGroup;
   mFormaEstado: string;
@@ -36,11 +38,13 @@ export class PublicacionesFacebookComponent implements OnInit {
     private authService: AuthService
   ) {
     this.mFormaEstado = enCRUD.Eliminar;
+    this.getPost();
   }
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
+      this.getPost();
     });
   }
 
@@ -51,6 +55,33 @@ export class PublicacionesFacebookComponent implements OnInit {
  
   signOut(): void {
     this.authService.signOut();
+  }
+
+  getPost() {
+    this.mLoading = true;
+    this._PublicacionesFacebookService
+      .getAll()
+      .then(res => {
+        this.postList = res.data;
+        this.mLoading = false;
+      })
+      .catch(error => {
+       
+      });
+
+  }
+
+  eliminar(id: number) {
+    this.mLoading = true;
+    this._PublicacionesFacebookService
+      .eliminarCategoria(id)
+      .then(data => {
+        this.getPost();
+        this.mLoading = false;
+      })
+      .catch(error => {
+        this.mLoading = false;
+      });
   }
 
   guardar() {

@@ -25,7 +25,7 @@
        Nuevo
        </button>
        <div class="d-flex align-items-center">
-         <label>Bienvenido {{user.firtsName}}</label>
+         <label>Bienvenido {{user.firstName}}</label>
         <button class="btn btn-danger ml-4" (click)="signOut()">Cerrar Sesión</button>
        </div>
       </div>
@@ -33,7 +33,7 @@
     </div>
 
 
-<!--
+
 <div *ngIf="mFormaEstado == enCRUD.Eliminar">
   <div class="row animated fadeIn fast">
     <div class="col-md-12">
@@ -41,36 +41,35 @@
         <table class="table table-striped">
           <thead class="thead-dark ">
             <th class="d-flex justify-content-center">#</th>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Acción</th>
+            <th>Mensaje</th>
+            <th>Fecha</th>
             <th></th>
           </thead>
           <tbody>
             <tr
-              *ngFor="let categoria of mCategorias; let i = index"
-              (dblclick)="modificar(categoria)"
+              *ngFor="let post of postList; let i = index"
+              (dblclick)="modificar(post)"
             >
-            <td  class="d-flex justify-content-center">{{categoria.idSuscripcionUser}}</td>
-            <td>{{categoria.titulo}}</td>
-            <td>{{categoria.descripcion}}</td>
+            <td  class="d-flex justify-content-center">{{i + 1}}</td>
+            <td>{{post.message}}</td>
+            <td>{{post.created_time | date:'dd-MM-yyyy' }}</td>
             <td>
                 <button
-                (click)="ver(categoria)"
+                (click)="ver(post)"
                 type="button"
                 class="btn mr-2 btn-info"
               >
               <i class="far fa-eye"></i>    
                         </button>
               <button
-                (click)="modificar(categoria)"
+                (click)="modificar(post)"
                 type="button"
                 class="btn mr-2 btn-primary"
               >
               <i class="fas fa-pencil-alt"></i>
               </button>
               <button
-                (click)="eliminar(categoria.idSuscripcionUser)"
+                (click)="eliminar(post.id)"
                 type="button"
                 class="btn mr-2 btn-danger"
               >
@@ -81,7 +80,7 @@
           </tbody>
         </table>
         <div
-          *ngIf="(mCategorias | keys).length === 0 && !mLoading"
+          *ngIf="(postList | keys).length === 0 && !mLoading"
           class="alert alert-info"
           role="alert"
         >
@@ -94,7 +93,7 @@
     </div>
   </div>
 </div>
-
+<!----
 <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
   <div class="col-md-12">
     <form [formGroup]="mForma" #vForma="ngForm">
@@ -130,7 +129,7 @@
 
         <button
           *ngIf="mFormaEstado == enCRUD.Actualizar"
-          (click)="actualizar(mCategoriasSelect.idSuscripcionUser)"
+          (click)="actualizar(postListSelect.idSuscripcionUser)"
           [disabled]="!vForma.valid"
           style="margin: 5px"
           class="btn btn-primary"
@@ -193,8 +192,8 @@
           <input
             class="form-control"
             type="text"
-            [(ngModel)]="mCategoriasSelect.titulo"
-            name="mCategoriasSelect.titulo"
+            [(ngModel)]="postListSelect.titulo"
+            name="postListSelect.titulo"
             readonly
           />
         </div>
@@ -204,8 +203,8 @@
           <textarea
             class="form-control"
             type="text"
-            [(ngModel)]="mCategoriasSelect.descripcion"
-            name="mCategoriasSelect.descripcion"
+            [(ngModel)]="postListSelect.descripcion"
+            name="postListSelect.descripcion"
             readonly
           ></textarea>
         </div>
