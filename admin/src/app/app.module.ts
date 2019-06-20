@@ -3,6 +3,10 @@ import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//Social Login
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { FacebookLoginProvider, LoginOpt } from "angularx-social-login";
+
 // import {MatProgressSpinnerModule} from '@angular/material';
 // import { UserIdleModule } from 'angular-user-idle';
 
@@ -61,6 +65,23 @@ import { ModulosComponent } from './component/modulos/modulos.component';
 
 import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
 
+const fbLoginOptions: LoginOpt = {
+  scope: 'publish_pages,pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
+  return_scopes: true,
+  enable_profile_selector: true
+}; 
+
+let config = new AuthServiceConfig([
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("443972602847954", fbLoginOptions)
+  }
+]);
+ 
+export function provideConfig() {
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,9 +131,16 @@ import { PublicacionesFacebookComponent } from './component/publicaciones-facebo
     NgxDatatableModule,
     MaterialUiModule,
     GooglePlaceModule,
-    NgSelectModule
+    NgSelectModule,
+    SocialLoginModule
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
