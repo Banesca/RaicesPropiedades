@@ -115,4 +115,44 @@ class ModulosDelUserController extends Controller {
         return response()->json($response, 202);
     }
 
+    /*
+     * Creado por Breiddy Monterrey  
+     * 20-06-2019
+     */
+    public function UsuarioModulos($idUsuario){
+
+        DB::beginTransaction();
+
+        try {
+            $mod = ModulosDelUser::where('fk_idUser', $idUsuario)->get();
+            foreach($mod as $modulo){
+                $modulo->modulo;
+            }
+            if (count($mod)==0) {
+
+                $response = [
+                    'msj' => 'No existe la módulos asignados a este usuario.',
+                ];
+
+                return response()->json($response, 200);
+            }
+           
+            $response = [
+                'msj'  => 'Módulos usuario.',
+                'modulos' => $mod
+            ];
+
+            DB::commit();
+
+            return response()->json($response, 200);
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Ha ocurrido un error en ModulosDelUserController: '.$e->getMessage().', Linea: '.$e->getLine());
+
+            return response()->json([
+                'message' => 'Ha ocurrido un error al tratar de eliminar los datos.',
+            ], 500);
+        }
+    }
+
 }

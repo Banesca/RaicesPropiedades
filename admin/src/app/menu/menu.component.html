@@ -20,7 +20,14 @@
           </a>
   
         </li> -->
-      <li class="treeview">
+        <li class="treeview" *ngFor="let modulo of mModulos; let i= index">
+           <a [routerLink]="modulo.modulo.url"> 
+            <i [class]="modulo.modulo.iconomodulo"></i> <span> {{modulo.modulo.modulo}}</span> 
+  
+          </a> 
+        </li>
+
+      <!-- <li class="treeview">
         <a routerLink="/gestionar-usuarios">
           <i class="fa fa-users"></i> <span>Gestión de Usuarios</span>
 
@@ -85,7 +92,7 @@
       
               </a>
       
-            </li>
+            </li> -->
 
 
 

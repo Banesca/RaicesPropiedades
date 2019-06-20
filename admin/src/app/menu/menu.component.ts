@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertsService } from '../services/alerts.service';
 import { AuthGuard } from '../services/auth.guard';
+import { IModulos, Modulos } from '../services/modulos/modulos.interface';
+import { ModulosService } from '../services/modulos/modulos.service';
 
 import { Router} from '@angular/router'
 declare var $
@@ -13,10 +15,12 @@ export class MenuComponent implements OnInit {
   
   dataUser:any ={ userName: localStorage.getItem('userName'), userEmail:localStorage.getItem('userEmail') } 
    hideUser:boolean=false;
+   mModulos: IModulos[];
   constructor(
     private alertS: AlertsService,
     private route:Router,
-    private auth:AuthGuard
+    private auth:AuthGuard,
+    private _ModuloService: ModulosService,
   ) { }
 
   ngOnInit() {
@@ -39,6 +43,17 @@ export class MenuComponent implements OnInit {
         this.alertS.sourceToggleMenu.next(false);
       }
     })
+
+    this._ModuloService
+    .moduloUsuario()
+     .then(res => {
+       //onsole.log(res);
+      this.mModulos = res.modulos;
+       //this.mLoading = false;
+     })
+     .catch(error => {
+       console.log(error)
+     });
   }
  toggle(){
 

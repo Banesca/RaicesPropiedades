@@ -33,6 +33,20 @@ export class ModulosService {
       .toPromise();
   }
 
+  moduloUsuario() { 
+   
+    return this._HttpClient
+      .get(environment.apiHost + '/api/auth/usuario' + '/modulo'+'/'+1, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((res: IModulosRs) => {
+          return res;
+        })
+      )
+      .toPromise();
+  }
+
   nuevoModulo(pModulo: IModulos) {
     return this._HttpClient
       .post(environment.apiHost + this.mService + '/agregar', pModulo, { headers: getHeaders() })
