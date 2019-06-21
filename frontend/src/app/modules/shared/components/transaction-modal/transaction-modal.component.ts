@@ -8,7 +8,7 @@ import {
   FormBuilder,
   Validators
 } from "@angular/forms";
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModalRef  } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-transaction-modal',
@@ -28,6 +28,8 @@ export class TransactionModalComponent implements OnInit {
   hideForm = false;
   mLoading = false;
   closeResult: string;
+  private modalRef: NgbModalRef;
+
 
   constructor(
     public activeModal: NgbActiveModal,
