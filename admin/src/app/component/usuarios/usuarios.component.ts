@@ -98,6 +98,8 @@ export class UsuariosComponent implements OnInit {
      .catch(error => {
        console.log(error)
      });
+
+     
   
   }
 
@@ -127,6 +129,7 @@ export class UsuariosComponent implements OnInit {
        .catch(error => {
        });
       });
+
     }else{
       this._AlertsService.msg('ERR', 'Módulo', 'Debe Selecionar minimo un módulo');
     }

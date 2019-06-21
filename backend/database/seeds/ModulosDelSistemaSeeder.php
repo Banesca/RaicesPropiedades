@@ -11,66 +11,83 @@ class ModulosDelSistemaSeeder extends Seeder {
     public function run() {
         \App\Modulo::create([
             'idModulo'         => 1,
-            'modulo'      => 'Usuarios',
-            'descripcion' => 'Gestion se Usuarios',
-            'url'         => 'www.google.co.ve',
-            'iconomodulo' => '',
+            'modulo'      => 'Gestión se Usuarios',
+            'descripcion' => 'Gestión se Usuarios',
+            'url'         => '/gestionar-usuarios',
+            'iconomodulo' => 'fa fa-users',
         ]);
 
         \App\Modulo::create([
             'idModulo'         => 2,
-            'modulo'      => 'Publicaciones',
-            'descripcion' => 'Gestion de Publicaciones',
-            'url'         => 'www.google.co.ve',
-            'iconomodulo' => '',
+            'modulo'      => 'Gestión de Módulos',
+            'descripcion' => 'Gestión de Módulos',
+            'url'         => '/modulos',
+            'iconomodulo' => 'fa fa-cogs',
         ]);
 
         \App\Modulo::create([
             'idModulo'         => 3,
-            'modulo'      => 'Sucursales',
-            'descripcion' => 'Gestion de Sucursales',
-            'url'         => 'www.google.co.ve',
-            'iconomodulo' => '',
+            'modulo'      => 'Galería Home',
+            'descripcion' => 'Galería Home',
+            'url'         => '/galeria-home',
+            'iconomodulo' => 'fa fa-users',
         ]);
 
         \App\Modulo::create([
             'idModulo'         => 4,
-            'modulo'      => 'Editar Perfil',
-            'descripcion' => 'Gestion del Perfil',
-            'url'         => 'www.google.co.ve',
-            'iconomodulo' => '',
+            'modulo'      => 'Sucursales',
+            'descripcion' => 'Gestion de Sucursales',
+            'url'         => '/sucursales',
+            'iconomodulo' => 'fas fa-building',
         ]);
 
         \App\Modulo::create([
             'idModulo'         => 5,
-            'modulo'      => 'Config General',
-            'descripcion' => 'Gestion Config General',
-            'url'         => 'www.google.co.ve',
-            'iconomodulo' => '',
+            'modulo'      => 'Suscriptores',
+            'descripcion' => 'Suscriptores',
+            'url'         => '/suscribers',
+            'iconomodulo' => 'fas fa-send',
         ]);
 
         \App\Modulo::create([
             'idModulo'         => 6,
-            'modulo'      => 'Envio de Email',
-            'descripcion' => 'Gestion del Email',
-            'url'         => 'www.google.co.ve',
-            'iconomodulo' => '',
+            'modulo'      => 'Mails a Suscriptores',
+            'descripcion' => 'Mails a Suscriptores',
+            'url'         => '/mail-suscribers',
+            'iconomodulo' => 'fas fa-envelope-o',
         ]);
 
         \App\Modulo::create([
             'idModulo'         => 7,
-            'modulo'      => 'Galeria del Home',
-            'descripcion' => 'Gestion de Galeria del Home',
-            'url'         => 'www.google.co.ve',
-            'iconomodulo' => '',
+            'modulo'      => 'Gestión de Publicaciones',
+            'descripcion' => 'Gestión de Publicaciones',
+            'url'         => '/gestionar-publicaciones',
+            'iconomodulo' => 'fas fa-building',
         ]);
 
         \App\Modulo::create([
             'idModulo'         => 8,
-            'modulo'      => 'Tasacion',
-            'descripcion' => 'Gestion de Tasación',
-            'url'         => 'www.google.co.ve',
-            'iconomodulo' => '',
+            'modulo'      => 'Publicaciones en Facebook',
+            'descripcion' => 'Publicaciones en Facebook',
+            'url'         => '/publicaciones-facebook',
+            'iconomodulo' => 'fas fa-send',
+        ]);
+
+        \App\Modulo::create([
+            'idModulo'         => 9,
+            'modulo'      => 'Tasaciones',
+            'descripcion' => 'Tasaciones',
+            'url'         => '/transacciones',
+            'iconomodulo' => 'fas fa-building',
+        ]);
+
+        \App\Modulo::create([
+            'idModulo'         => 10,
+            'modulo'      => 'Configuración General',
+            'descripcion' => 'Configuración General',
+            'url'         => '/config-footer',
+            'iconomodulo' => 'fas fa-tools',
         ]);
     }
+   
 }
