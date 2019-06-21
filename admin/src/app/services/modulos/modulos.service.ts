@@ -33,10 +33,10 @@ export class ModulosService {
       .toPromise();
   }
 
-  moduloUsuario() { 
+  moduloUsuario(idUsuario) { 
    
     return this._HttpClient
-      .get(environment.apiHost + '/api/auth/usuario' + '/modulo'+'/'+1, {
+      .get(environment.apiHost + '/api/auth/usuario' + '/modulo'+'/'+idUsuario, {
         headers: getHeaders()
       })
       .pipe(
@@ -45,6 +45,16 @@ export class ModulosService {
         })
       )
       .toPromise();
+  }
+
+  eliminarCategoria(pKey: number) {
+    return this._HttpClient
+      .delete(environment.apiHost +  '/api/auth/borrarUser/' + pKey, { headers: getHeaders() })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      ).toPromise();
   }
 
   nuevoModulo(pModulo: IModulos) {

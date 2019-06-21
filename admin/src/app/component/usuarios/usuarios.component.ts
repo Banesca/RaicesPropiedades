@@ -99,8 +99,6 @@ export class UsuariosComponent implements OnInit {
        console.log(error)
      });
 
-     
-  
   }
 
   // asignar modulos a usuarios

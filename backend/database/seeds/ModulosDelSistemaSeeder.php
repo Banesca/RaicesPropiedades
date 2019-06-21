@@ -54,7 +54,7 @@ class ModulosDelSistemaSeeder extends Seeder {
             'modulo'      => 'Mails a Suscriptores',
             'descripcion' => 'Mails a Suscriptores',
             'url'         => '/mail-suscribers',
-            'iconomodulo' => 'fas fa-envelope-o',
+            'iconomodulo' => 'fas fa-envelope',
         ]);
 
         \App\Modulo::create([
@@ -88,6 +88,14 @@ class ModulosDelSistemaSeeder extends Seeder {
             'url'         => '/config-footer',
             'iconomodulo' => 'fas fa-tools',
         ]);
+
+        // Se asigana el mogulo gentionde usuario al admin
+        \App\ModulosDelUser::create([
+            'idModuloUser'         => 1,
+            'fk_idUser'      => '1',
+            'fk_idModulo' => '1',
+        ]);
+       
     }
    
 }

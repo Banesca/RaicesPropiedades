@@ -38,8 +38,9 @@ export class AuthbackendComponent implements OnInit {
         this.loginService._getAuthUser(resp.access_token).subscribe(
           
           (resp:any) => {
-            console.warn(resp);
+            //console.warn(resp);
             // Guardamos en local, la informacion que reutilizamos 
+            localStorage.setItem('id',resp.id);
             localStorage.setItem('userName',resp.name);
             localStorage.setItem('userEmail',resp.email);
             if(resp.img_perfil){

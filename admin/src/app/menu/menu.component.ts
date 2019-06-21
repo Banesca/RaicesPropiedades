@@ -47,7 +47,7 @@ export class MenuComponent implements OnInit {
     })
 
     this._ModuloService
-    .moduloUsuario()
+    .moduloUsuario(localStorage.getItem('id'))
      .then(res => {
        //console.log(res);
       this.mModulos = res.modulos;
@@ -59,6 +59,7 @@ export class MenuComponent implements OnInit {
      .catch(error => {
        console.log(error)
      });
+
   }
  toggle(){
 
