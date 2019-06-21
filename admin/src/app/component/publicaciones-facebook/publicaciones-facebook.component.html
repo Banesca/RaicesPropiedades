@@ -15,7 +15,7 @@
       <h3 class="py-5 text-center font-weight-bold">Publicaciones en Facebook</h3>
       <div class="d-flex justify-content-between">
         <button
-        (click)="guardar()"
+        (click)="nuevo()"
         type="button"
         class="btn btn-primary"
         class="btn btn-success my-4"
@@ -93,7 +93,7 @@
     </div>
   </div>
 </div>
-<!----
+
 <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
   <div class="col-md-12">
     <form [formGroup]="mForma" #vForma="ngForm">
@@ -129,7 +129,7 @@
 
         <button
           *ngIf="mFormaEstado == enCRUD.Actualizar"
-          (click)="actualizar(postListSelect.idSuscripcionUser)"
+          (click)="actualizar(mPostSelect.id)"
           [disabled]="!vForma.valid"
           style="margin: 5px"
           class="btn btn-primary"
@@ -139,36 +139,20 @@
         </button>
       </div>
       <div class="form-group">
-        <label for="">Título</label>
+        <label for="">Mensaje</label>
         <input
           class="form-control"
           type="text"
-          formControlName="titulo"
+          formControlName="message"
           placeholder="Título del Mail"
         />
         <div
-          *ngIf="mForma.controls['titulo'].errors?.required"
+          *ngIf="mForma.controls['message'].errors?.required"
           class="alert alert-danger"
           role="alert"
         >
-          Título es requerido
+        El Mensaje es requerido
         </div>
-        <div
-          *ngIf="mForma.controls['titulo'].errors?.minlength"
-          class="alert alert-danger"
-          role="alert"
-        >
-          Mínimo de 5 caracteres
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="">Descripción</label>
-        <textarea
-          class="form-control"
-          type="text"
-          formControlName="descripcion"
-        ></textarea>
       </div>
     </form>
   </div>
@@ -188,25 +172,25 @@
           </button>
         </div>
         <div class="form-group">
-          <label for="">Título</label>
+          <label for="">Mensaje</label>
           <input
             class="form-control"
             type="text"
-            [(ngModel)]="postListSelect.titulo"
-            name="postListSelect.titulo"
+            [(ngModel)]="mPostSelect.message"
+            name="mPostSelect.titulo"
             readonly
           />
         </div>
 
         <div class="form-group">
-          <label for="">Descripción</label>
-          <textarea
+          <label for="">Fecha de Creación</label>
+          <input
             class="form-control"
             type="text"
-            [(ngModel)]="postListSelect.descripcion"
-            name="postListSelect.descripcion"
+            [(ngModel)]="mPostSelect.created_time"
+            name="mPostSelect.titulo"
             readonly
-          ></textarea>
+          />
         </div>
       </form>
     </div>

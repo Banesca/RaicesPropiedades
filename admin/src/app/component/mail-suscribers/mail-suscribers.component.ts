@@ -555,6 +555,7 @@ export class MailSuscribersComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
+        this._AlertsService.msg('OK', 'EXITO!', 'Post Publicado Correctamente.')
       })
       .catch(error => {
       });

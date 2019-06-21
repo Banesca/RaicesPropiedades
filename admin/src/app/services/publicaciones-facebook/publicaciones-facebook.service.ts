@@ -9,7 +9,7 @@ import { getHeaders } from '../../misc/Headers';
 })
 export class PublicacionesFacebookService {
   private mService = 'https://graph.facebook.com/';
-  private accesToken: string = "EAAGTym1IYtIBAGJUo0OFKvcP77LmR0xtYIqa3dmD5KlpSrLY0ALqtj5TN6bStLpRDG3TYCslD0bKiCDRbqJrlQcdm2CH5KrV1SZCaGx4Ne94mVkhykxGQv5i7VUtRiIT2Xu3fmOAefWGHXp7CrEYjxH3iLV85G8d1KTgPylhKZCJD9vabHc3vf7GdT8mwdSESSaZAVWowZDZD"
+  private accesToken: string = "EAAGTym1IYtIBAE3DidHhTC4aummBExZAKaPhVZBDBn3LwzpCSa6x9GtwXH3is8P2cuAHvSvSyGni36hHVT7kwTzY6ORUMArHUVaUmNOmaetsebb9xylxAoIN76M7FtuEB3dZAEoSIjq04tdSAkRRnCIO4O7ZAQl0eqGlyeaav6kSqdLd3QTdkPIYL9zOLNp4gPZAfllarXwZDZD"
   private appId= "866743800366542"
   constructor(
     private _HttpClient: HttpClient) {
@@ -26,9 +26,10 @@ export class PublicacionesFacebookService {
       .toPromise();
   }
 
-  nuevaCategoria() {
+  nuevaCategoria(pCategoria: IFacebookPost) {
+    console.log(pCategoria)
     return this._HttpClient
-      .post(this.mService + this.appId + '/feed',{ access_token: this.accesToken, 'message':'hello' }, { headers: getHeaders() })
+      .post(this.mService + this.appId + `/feed?access_token=${this.accesToken}`, pCategoria , { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;
@@ -36,6 +37,19 @@ export class PublicacionesFacebookService {
       )
       .toPromise();
   }
+
+    actualizarCategoria(pCategoria: IFacebookPost, id: number) {
+    console.log(pCategoria)
+    return this._HttpClient
+      .post(this.mService + id + `?access_token=${this.accesToken}`, pCategoria , { headers: getHeaders() })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+
   eliminarCategoria(id: number) {
     return this._HttpClient
       .delete(this.mService + id + `?access_token=${this.accesToken}`, { headers: getHeaders() })
@@ -46,4 +60,5 @@ export class PublicacionesFacebookService {
       )
       .toPromise();
   }
+
 }
