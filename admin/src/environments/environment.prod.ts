@@ -1,4 +1,4 @@
-export const ip = 'http://127.0.0.1:8000'
+export const ip = 'http://raicesonline.com.ar/backend/public'
 
 export const environment = {
   production: true,

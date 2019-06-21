@@ -28,5 +28,7 @@ class Ficha2 extends Model {
         'deleted_at',
     ];
 
-
+    public function ficha1() {
+        return $this->belongsTo('App\Ficha1', 'fk_ficha1')->with('estadoPublicacion','tipoPropiedad');
+    }
 }

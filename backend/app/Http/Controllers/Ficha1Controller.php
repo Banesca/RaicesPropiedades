@@ -33,11 +33,14 @@ class Ficha1Controller extends Controller {
         try {
 
             $ficha1 = new Ficha1($request->all());
-
             $ficha1->save();
+
+            $ficha1->estadoPublicacion;
+            $ficha1->tipoPropiedad;
+
             $response = [
                 'msj'  => 'Ficha 1 creada Exitosamente',
-                'user' => $ficha1,
+                'ficha1' => $ficha1,
             ];
             DB::commit();
 

@@ -289,6 +289,10 @@ class Propiedad extends Model
         'created_at',
         'updated_at',
     ];
+    
+    public function ficha2and1(){
+        return $this->belongsTo('App\Ficha2','fk_ficha2')->with('ficha1');
+    }
 
     public function TipoPropiedad()
     {

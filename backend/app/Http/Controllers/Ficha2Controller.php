@@ -6,6 +6,7 @@ use App\Ficha2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Image;
 
 class Ficha2Controller extends Controller {
@@ -25,33 +26,58 @@ class Ficha2Controller extends Controller {
 
         try {
 
+            $imgs = [
+                'imagen1',
+                'imagen2',
+                'imagen3',
+                'imagen4',
+                'imagen5',
+                'imagen6',
+                'imagen7',
+                'imagen_para_galeria',
+            ];
+
             $ficha2 = new Ficha2($request->all());
 
-            if (is_null($request->imagen_para_galeria)) {
-            } else {
-                $originalImage = $request->imagen_para_galeria;
+            foreach ($imgs as $img) {
+                if (is_null($request[$img])) {
+                } else {
+                    $originalImage = $request[$img];
 
-                $thumbnailImage = Image::make($originalImage);
+                    $thumbnailImage = Image::make($originalImage);
 
-                $thumbnailImage->fit(2048, 2048, function($constraint) {
-                    $constraint->aspectRatio();
-                });
+                    $thumbnailImage->fit(2048, 2048, function($constraint) {
+                        $constraint->aspectRatio();
+                    });
 
-                $nombre_publico = $originalImage->getClientOriginalName();
-                $extension      = $originalImage->getClientOriginalExtension();
+                    $nombre_publico = $originalImage->getClientOriginalName();
+                    $extension      = $originalImage->getClientOriginalExtension();
 
-                $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
-                $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
+                    $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
+                    $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
 
-                Storage::disk('local')->put('\\imagenFooter\\'.$nombre_interno, (string) $thumbnailImage->encode());
+                    Storage::disk('local')->put('\\ficha2\\'.$nombre_interno, (string) $thumbnailImage->encode());
 
-                $imagenes->imagen = $nombre_interno;
+                    $ficha2[$img] = $nombre_interno;
+                }
+
             }
+
 
             $ficha2->save();
             $response = [
-                'msj'  => 'Ficha 2 creada Exitosamente',
-                'user' => $ficha2,
+                'msj'    => 'Ficha 2 creada Exitosamente',
+                'ficha2' => [
+                    'imagen1'             => asset('storage\\ficha2\\'.@$ficha2->imagen1),
+                    'imagen2'             => asset('storage\\ficha2\\'.@$ficha2->imagen2),
+                    'imagen3'             => asset('storage\\ficha2\\'.@$ficha2->imagen3),
+                    'imagen4'             => asset('storage\\ficha2\\'.@$ficha2->imagen4),
+                    'imagen5'             => asset('storage\\ficha2\\'.@$ficha2->imagen5),
+                    'imagen6'             => asset('storage\\ficha2\\'.@$ficha2->imagen6),
+                    'imagen7'             => asset('storage\\ficha2\\'.@$ficha2->imagen7),
+                    'imagen_para_galeria' => asset('storage\\ficha2\\'.@$ficha2->imagen_para_galeria),
+                    'ficha1'              => $ficha2->ficha1,
+                ],
             ];
             DB::commit();
 
@@ -66,5 +92,6 @@ class Ficha2Controller extends Controller {
             ], 500);
         }
     }
+
 
 }
