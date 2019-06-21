@@ -5,7 +5,7 @@ export interface ISucursales{
 export interface ISucursal
 {   
     idSucursal: number;
-    nombreSucursal: string;
+    nombreSucursal?: string;
     telefonoSucursal: string;
     emailSucursal: string;
     direccionSucursal: string;

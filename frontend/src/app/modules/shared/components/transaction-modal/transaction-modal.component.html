@@ -2,7 +2,7 @@
     <div class="container position-relative font-weight-semibold">
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
         <div *ngIf="!hideForm" class="row">
-        <button type="button" class="position-absolute close-button text-white" (click)="onSave()">
+        <button type="button" class="position-absolute close-button text-white" (click)="activeModal.dismiss('Cross click')">
             <span>&times;</span>
           </button>
       <div class="col-lg-12">
@@ -78,7 +78,7 @@
       <div class="col-lg-12 my-2">
         <h3 class="text-center mt-3 font-weight-bold">Transacción Creada Exitosamente!</h3>
         <p class="mb-5 text-center font-weight-bold">Pronto nos contactaremos contigo</p>
-        <button (click)="submittedClose()"  class="btn brown-button btn-lg mx-auto btn-block col-lg-5" type="button" data-dismiss="modal" aria-label="Close">Volver</button>
+        <button (click)="submittedClose() ; activeModal.close('Close click')"  class="btn brown-button btn-lg mx-auto btn-block col-lg-5" type="button" data-dismiss="modal" aria-label="Close">Cerrar</button>
       </div>
     </div>
     <div *ngIf="errorMensaje" class="row">

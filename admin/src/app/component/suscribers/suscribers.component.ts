@@ -46,10 +46,7 @@ export class SuscribersComponent implements OnInit {
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      id: [""],
-      titulo: ["", [Validators.required, Validators.minLength(5)]],
-      descripcion: ["", Validators.required],
-      estado: [""]
+      email: ["", [Validators.required, Validators.email]]
     });
   }
 

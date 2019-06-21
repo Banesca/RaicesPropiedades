@@ -11,6 +11,7 @@ import {
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { PublicacionesFacebookService } from './../../services/publicaciones-facebook/publicaciones-facebook.service'
+import { IFacebookPost } from './../../services/publicaciones-facebook/publicaciones-facebook.interface'
 import { AlertsService } from '../../services/alerts.service';
 
 
@@ -24,6 +25,8 @@ export class PublicacionesFacebookComponent implements OnInit {
   mMostrarForma = false;
   mNuevo = false;
   user: SocialUser;
+  postList: IFacebookPost[];
+  mPostSelect: IFacebookPost;
 
   mForma: FormGroup;
   mFormaEstado: string;
@@ -36,11 +39,20 @@ export class PublicacionesFacebookComponent implements OnInit {
     private authService: AuthService
   ) {
     this.mFormaEstado = enCRUD.Eliminar;
+    this.mForma = this.generarFormulario();
   }
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
+      this.getPost();
+    });
+  }
+
+  generarFormulario() {
+    // Estructura de nuestro formulario
+    return this._formBuilder.group({
+      message: ["", Validators.required]
     });
   }
 
@@ -53,14 +65,83 @@ export class PublicacionesFacebookComponent implements OnInit {
     this.authService.signOut();
   }
 
-  guardar() {
+  getPost() {
+    this.mLoading = true;
     this._PublicacionesFacebookService
-      .nuevaCategoria()
-      .then(data => {
-        console.log(data)
+      .getAll()
+      .then(res => {
+        this.postList = res.data;
+        this.mLoading = false;
       })
       .catch(error => {
-        console.log(error)
+       
+      });
+
+  }
+
+  eliminar(id: number) {
+    this.mLoading = true;
+    this._PublicacionesFacebookService
+      .eliminarCategoria(id)
+      .then(data => {
+        this.getPost();
+        this.mLoading = false;
+      })
+      .catch(error => {
+        this.mLoading = false;
+      });
+  }
+
+  modificar(pCategoria: IFacebookPost) {
+    this.mPostSelect = pCategoria;
+    this.mFormaEstado = enCRUD.Actualizar;
+  }
+
+
+  nuevo() {
+    this.mForma.reset();
+    this.mFormaEstado = enCRUD.Crear;
+  }
+
+  ver(pCategoria: IFacebookPost) {
+    console.log(pCategoria);
+    this.mPostSelect = pCategoria;
+    this.mFormaEstado = enCRUD.Leer;
+  }
+
+  actualizar(id: number) {
+    this.mPostSelect = this.mForma.value as IFacebookPost;
+    this.mLoading = true;
+    this._PublicacionesFacebookService
+      .actualizarCategoria(this.mPostSelect, id,)
+      .then(data => {
+        this.mFormaEstado = enCRUD.Eliminar;
+        this.getPost();
+        this.mLoading = false;
+        this._AlertsService.msg('OK', 'EXITO!', 'Post Actualizado Correctamente.')
+      })
+      .catch(err => {
+        // Parsear Object errors a Array de errores para poder mapearlos
+        const mapped = Object.keys(err.error.errors).map(key => ({ type: key, value: err.error.errors[key] }));
+        // Notificando Errores
+        mapped ? mapped.map(e => { this._AlertsService.msg('ERR', 'ERROR', e.value) }) :
+          err.error.message ? this._AlertsService.msg('ERR', 'ERROR', err.error.message) :
+            this._AlertsService.msg('ERR', 'ERROR', 'Error al Guardar.')
+
+      });
+  }
+
+  guardar() {
+    this.mPostSelect = this.mForma.value as IFacebookPost;
+    this.mLoading = true;
+    this._PublicacionesFacebookService
+      .nuevaCategoria(this.mPostSelect)
+      .then(data => {
+        this.mFormaEstado = enCRUD.Eliminar;
+        this.getPost();
+        this.mLoading = false;
+      })
+      .catch(error => {
       });
   }
 }
