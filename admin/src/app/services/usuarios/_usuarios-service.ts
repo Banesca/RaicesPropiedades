@@ -17,7 +17,7 @@ export class _UsuariosService {
 
   allCategorias() {
     return this._HttpClient
-      .post(environment.apiHost + '/api/v1/listarUsers/', {
+      .post(environment.apiHost + '/api/v1/listarUsers', {
         headers: getHeaders()
       })
       .pipe(
@@ -30,7 +30,7 @@ export class _UsuariosService {
 
   nuevaCategoria(Categoria: any,) {
     return this._HttpClient
-      .post<any>(environment.apiHost + '/api/v1/crearUser/', Categoria, { headers: getHeaders() })
+      .post<any>(environment.apiHost + 'api/v1/crearUser', Categoria, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;
@@ -64,7 +64,7 @@ export class _UsuariosService {
 
   filtrarUsuarios(data:any) {
     return this._HttpClient
-      .post(environment.apiHost + '/api/v1/buscadorPersonas/', data, {
+      .post(environment.apiHost + '/api/v1/buscadorPersonas', data, {
         headers: getHeaders()
       })
       .pipe(
