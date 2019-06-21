@@ -16,6 +16,8 @@ export class MenuComponent implements OnInit {
   dataUser:any ={ userName: localStorage.getItem('userName'), userEmail:localStorage.getItem('userEmail') } 
    hideUser:boolean=false;
    mModulos: IModulos[];
+   modulosAsignados: any [] = [];
+
   constructor(
     private alertS: AlertsService,
     private route:Router,
@@ -49,8 +51,10 @@ export class MenuComponent implements OnInit {
      .then(res => {
        //console.log(res);
       this.mModulos = res.modulos;
-      //console.log( this.mModulos);
-       //this.mLoading = false;
+      this.mModulos.forEach(element => {
+        this.modulosAsignados.push(element.modulo);
+      });
+     
      })
      .catch(error => {
        console.log(error)
