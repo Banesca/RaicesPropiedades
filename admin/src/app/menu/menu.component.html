@@ -22,7 +22,7 @@
 
     <ul class="sidebar-menu" data-widget="tree">
  
-        <li class="treeview" *ngFor="let modulo of modulosAsignados; let i= index">
+        <li class="treeview" *ngFor="let modulo of modulosAsignados  let i= index">
            <a routerLink="{{modulo.url}}"> 
             <i [class]="modulo.iconomodulo"></i> <span> {{modulo.modulo}}</span> 
           </a> 

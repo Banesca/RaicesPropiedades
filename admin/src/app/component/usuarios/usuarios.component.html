@@ -180,11 +180,12 @@
                   <h3 class="py-5 text-center font-weight-bold">Asiganar Módulos</h3>
                   <form [formGroup]="mFormM" #vFormM="ngForm">
                         <div class="form-group">
-                            <label for="">Módulos pora asignar</label>
+                          <label for="">Módulos para asignar</label>
                           <select multiple name="modulo" formControlName="modulo" class="tamano">
                             <option *ngFor="let modulo of mModulos; let i= index" [ngValue]="modulo">
                                 {{ modulo.modulo }}
                             </option> 
+
                         </select> 
                       </div>
                   </form>
@@ -192,7 +193,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

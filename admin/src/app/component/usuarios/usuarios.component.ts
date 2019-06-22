@@ -30,6 +30,7 @@ export class UsuariosComponent implements OnInit {
   id: number;
   searchResult: any [] = [];
   mModulos: IModulos[];
+  mModulosA:IModulos[];
   mForma: FormGroup;
   mFormM: FormGroup;
   filterForm: FormGroup;
@@ -37,6 +38,7 @@ export class UsuariosComponent implements OnInit {
   enCRUD = enCRUD;
   modulo = new FormArray([]);
   asignar
+  modulosAsignados: any [] = [];
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -89,6 +91,7 @@ export class UsuariosComponent implements OnInit {
     this.id = idUsuario;
     this.mFormaEstado = enCRUD.Asignar;
     this._ModuloService
+
     .All()
      .then(res => {
        //console.log(res);
