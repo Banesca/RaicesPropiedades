@@ -11,4 +11,9 @@ class Ficha123Controller extends Controller {
 
         return response()->json($ficha123);
     }
+    public function listarTodo() {
+        $ficha123 = Ficha123::with('ficha1', 'ficha2', 'ficha3')->get();
+
+        return response()->json($ficha123);
+    }
 }
