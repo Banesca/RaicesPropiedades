@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "raices",
-		"_postman_id": "210a2549-a951-3f98-0d68-37f85dc5a669",
+		"_postman_id": "bfeecc89-4f11-37e1-ac69-424dfadb635e",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -149,7 +149,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -277,7 +280,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -403,7 +409,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -500,7 +509,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -619,7 +631,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -747,7 +762,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -841,7 +859,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -897,7 +918,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -962,525 +986,733 @@
 			"name": "seed",
 			"description": "",
 			"item": [
-			{
+				{
 					"name": "getStatusDelUser",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getStatusDelUser",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getStatusDelUser"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getStatusSistema",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getStatusSistema",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getStatusSistema"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoTechoIndustrial",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoTechoIndustrial",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoTechoIndustrial"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoMultimedia",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoMultimedia",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoMultimedia"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoAscensor",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoAscensor",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoAscensor"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoCochera",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoCochera",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoCochera"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoHotel",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoHotel",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoHotel"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getOrientacion",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getOrientacion",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getOrientacion"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getDisposicion",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getDisposicion",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getDisposicion"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoAcceso",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoAcceso",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoAcceso"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoCalefaccion",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoCalefaccion",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoCalefaccion"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoUnidadCasa",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoUnidadCasa",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoUnidadCasa"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getMonedas",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getMonedas",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getMonedas"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoTecho",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoTecho",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoTecho"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoPorton",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoPorton",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoPorton"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getModulosDelSistema",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getModulosDelSistema",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getModulosDelSistema"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoPendiente",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoPendiente",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoPendiente"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getEstadoPropiedad",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getEstadoPropiedad",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getEstadoPropiedad"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoBaño",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoBaño",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoBaño"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoCobertura",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoCobertura",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoCobertura"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoFondoComercio",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoFondoComercio",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoFondoComercio"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getEstadoPublicacion",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getEstadoPublicacion",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getEstadoPublicacion"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoPropiedad",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoPropiedad",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoPropiedad"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoCampp",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoCampp",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoCampp"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoOperacion",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoOperacion",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoOperacion"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoFrente",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoFrente",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoFrente"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoCoche",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoCoche",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoCoche"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoEdidificio",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoEdidificio",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoEdidificio"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getUsersTable",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getUsersTable",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getUsersTable"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoUnidadDepartamento",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoUnidadDepartamento",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoUnidadDepartamento"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoCosta",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoCosta",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoCosta"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoVista",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoVista",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoVista"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoTerreno",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoTerreno",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoTerreno"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoBalcon",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoBalcon",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoBalcon"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoExpensas",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoExpensas",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoExpensas"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoPiso",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoPiso",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoPiso"
 					},
 					"response": []
-				},{
+				},
+				{
 					"name": "getTipoLocal",
 					"request": {
 						"url": "http://127.0.0.1:8000/api/v1/getTipoLocal",
 						"method": "GET",
-						"header": [
-							
-						],
+						"header": [],
 						"body": {
-							
+							"mode": "raw",
+							"raw": ""
 						},
 						"description": "getTipoLocal"
 					},
 					"response": []
-				}]
+				}
+			]
+		},
+		{
+			"name": "publicaciones",
+			"description": "",
+			"item": [
+				{
+					"name": "addFicha1",
+					"request": {
+						"url": "localhost:8000/api/v1/addFicha1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "descipcion",
+									"value": "hola",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "fk_tipoPropiedad",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "esUnaPropiedad",
+									"value": "si",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "esUnaNovedad",
+									"value": "no",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "apareceEnGaleriaInicia",
+									"value": "si",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "fk_estado_publicacion",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "addFicha2",
+					"request": {
+						"url": "localhost:8000/api/v1/addFicha2",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imagen1",
+									"type": "file",
+									"description": "",
+									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg"
+								},
+								{
+									"key": "imagen2",
+									"type": "file",
+									"description": "",
+									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg"
+								},
+								{
+									"key": "imagen3",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen4",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen5",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen6",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen7",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen_para_galeria",
+									"type": "file",
+									"description": "",
+									"src": "37705217-1923924547905103-7927614913713799168-njpg-1560511076-761.png"
+								},
+								{
+									"key": "fk_ficha1",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "addFicha3",
+					"request": {
+						"url": "localhost:8000/api/v1/addFicha3",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"fk_idTipoPropiedad\":1,\n\"Agricultura\":1,\n\"AltoEntrada\":1,\n\"Altura\":1,\n\"AlturaTecho\":1,\n\"Ambientes_Altillo\":1,\n\"Ambientes_AnteCocina\":1,\n\"Ambientes_Antesala\":1,\n\"Ambientes_Archivo\":1,\n\"Ambientes_Azotea\":1,\n\"Ambientes_Balcon\":1,\n\"Ambientes_Bano\":1,\n\"Ambientes_Bar\":1,\n\"Ambientes_Baulera\":1,\n\"Ambientes_Biblioteca\":1,\n\"Ambientes_Bodega\":1,\n\"Ambientes_Circulacion\":1,\n\"Ambientes_Cochera\":1,\n\"Ambientes_Cocina\":1,\n\"Ambientes_CocinaComedor\":1,\n\"Ambientes_CocinaKitchinette\":1,\n\"Ambientes_Comedor\":1,\n\"Ambientes_ComedorDiario\":1,\n\"Ambientes_CuartoDeHerramientas\":1,\n\"Ambientes_CuartoDePlanchar\":1,\n\"Ambientes_Dependencia\":1,\n\"Ambientes_DependenciaDeServicio\":1,\n\"Ambientes_Deposito\":1,\n\"Ambientes_Dormitorio\":1,\n\"Ambientes_Entrepiso\":1,\n\"Ambientes_Escritorio\":1,\n\"Ambientes_Estudio\":1,\n\"Ambientes_FamilyRoom\":1,\n\"Ambientes_Galeria\":1,\n\"Ambientes_Galpon\":1,\n\"Ambientes_Garage\":1,\n\"Ambientes_Hall\":1,\n\"Ambientes_Jardin\":1,\n\"Ambientes_Lavadero\":1,\n\"Ambientes_Living\":1,\n\"Ambientes_LivingComedor\":1,\n\"Ambientes_Local\":1,\n\"Ambientes_Oficina\":1,\n\"Ambientes_Palier\":1,\n\"Ambientes_Patio\":1,\n\"Ambientes_Playroom\":1,\n\"Ambientes_Quincho\":1,\n\"Ambientes_Recepcion\":1,\n\"Ambientes_Sala\":1,\n\"Ambientes_Sotano\":1,\n\"Ambientes_Suite\":1,\n\"Ambientes_Terraza\":1,\n\"Ambientes_Toilette\":1,\n\"Ambientes_Vestibulo\":1,\n\"Ambientes_Vestidor\":1,\n\"Ambientes_Vestuario\":1,\n\"Ancho\":1,\n\"AnchoEntrada\":1,\n\"Antiguedad\":1,\n\"AntiguedadComercio\":1,\n\"AptoCredito\":1,\n\"AptoProfesional\":1,\n\"Baulera\":1,\n\"CantidadAmbientes\":1,\n\"CantidadBanos\":1,\n\"CantidadCocheras\":1,\n\"CantidadColumnas\":1,\n\"CantidadCubiertos\":1,\n\"CantidadDormitorios\":1,\n\"CantidadEstrellas\":1,\n\"CantidadHabitaciones\":1,\n\"CantidadHectareas\":1,\n\"CantidadNaves\":1,\n\"CantidadOficinas\":1,\n\"CantidadPersonal\":1,\n\"CantidadPisos\":1,\n\"CantidadPlantas\":1,\n\"CantidadPlazas\":1,\n\"CasaCaseros\":1,\n\"CasaPrincipal\":1,\n\"CocheraOptativa\":1,\n\"cupada\":1,\n\"Demolicion\":1,\n\"DepartamentosPorPiso\":1,\n\"Direccion_Coordenadas_Latitud\":1,\n\"Direccion_Coordenadas_Longitud\":1,\n\"Direccion_Departamento\":1,\n\"Direccion_Nombrecalle\":1,\n\"Direccion_Numero\":1,\n\"Direccion_Piso\":1,\n\"Disponibilidad\":1,\n\"DistanciaPavimento\":1,\n\"EnEdificio\":1,\n\"Estado\":1,\n\"Expensas\":1,\n\"fk_Direccion_Barrio_Id\":1,\n\"fk_Direccion_Calle_Id\":1,\n\"fk_Direccion_Ciudad_Id\":1,\n\"fk_Direccion_Localidad_Id\":1,\n\"fk_Direccion_Pais_Id\":1,\n\"fk_Direccion_Partido_Id\":1,\n\"fk_Direccion_Provincia_Id\":1,\n\"fk_Direccion_SubBarrio_Id\":1,\n\"fk_Disposicion\":1,\n\"fk_Estado\":1,\n\"fk_Orientacion\":1,\n\"fk_TipoAcceso\":1,\n\"fk_TipoAscensor\":1,\n\"fk_TipoBalcon\":1,\n\"fk_TipoBano\":1,\n\"fk_TipoCalefaccion\":1,\n\"fk_TipoCampo\":1,\n\"fk_TipoCobertura\":1,\n\"fk_TipoCoche\":1,\n\"fk_TipoCochera\":1,\n\"fk_TipoCosta\":1,\n\"fk_TipoEdificio\":1,\n\"fk_TipoExpensas\":1,\n\"fk_TipoFondoComercio\":1,\n\"fk_TipoFrente\":1,\n\"fk_TipoHotel\":1,\n\"fk_TipoLocal\":1,\n\"fk_TipoPendiente\":1,\n\"fk_TipoPiso\":1,\n\"fk_TipoPorton\":1,\n\"fk_TipoTecho\":1,\n\"fk_TipoTechoIndustrial\":1,\n\"fk_TipoTerreno\":1,\n\"fk_TipoUnidad\":1,\n\"fk_TipoVista\":1,\n\"FondoIrregular\":1,\n\"FOT\":1,\n\"FrenteIrregular\":1,\n\"GaleriaShopping\":1,\n\"Ganaderia\":1,\n\"GeneradorPropio\":1,\n\"Generales_PermiteMascotas\":1,\n\"Generales_SeguroCaucion\":1,\n\"HabitacionesPorPiso\":1,\n\"Instalaciones_AguaCaliente\":1,\n\"Instalaciones_AguaCalienteCentral\":1,\n\"Instalaciones_AguaCloaca\":1,\n\"Instalaciones_AguaCorriente\":1,\n\"Instalaciones_Aguadas\":1,\n\"Instalaciones_AguaPozo\":1,\n\"Instalaciones_AireAcondicionadoCentral\":1,\n\"Instalaciones_AireAcondicionadoIndividual\":1,\n\"Instalaciones_AireCaliente\":1,\n\"Instalaciones_AlambradoPerimetral\":1,\n\"Instalaciones_Alambrados\":1,\n\"Instalaciones_Amoblado\":1,\n\"Instalaciones_Arboleda\":1,\n\"Instalaciones_ArtefactosDeCocina\":1,\n\"Instalaciones_Ascensor\":1,\n\"Instalaciones_AscensoresDeServicio\":1,\n\"Instalaciones_AscensoresPrincipales\":1,\n\"Instalaciones_Balanza\":1,\n\"Instalaciones_Bebedero\":1,\n\"Instalaciones_Bombeador\":1,\n\"Instalaciones_Boxes\":1,\n\"Instalaciones_Bretes\":1,\n\"Instalaciones_Cable\":1,\n\"Instalaciones_CajaFuerte\":1,\n\"Instalaciones_Caldera\":1,\n\"Instalaciones_Calefaccion\":1,\n\"Instalaciones_CanchaDeBasquet\":1,\n\"Instalaciones_CanchaDeFutbol\":1,\n\"Instalaciones_CanchaDeHockey\":1,\n\"Instalaciones_CanchaDePaddle\":1,\n\"Instalaciones_CanchaDePaleta\":1,\n\"Instalaciones_CanchaDeSquash\":1,\n\"Instalaciones_CanchaDeTenis\":1,\n\"Instalaciones_CanchaDeVoley\":1,\n\"Instalaciones_CanchaFutbol\":1,\n\"Instalaciones_CanchaTenis\":1,\n\"Instalaciones_Corral\":1,\n\"Instalaciones_Desayunador\":1,\n\"Instalaciones_Electricidad\":1,\n\"Instalaciones_EspacioParaVehiculo\":1,\n\"Instalaciones_Estacada\":1,\n\"Instalaciones_ExtractorDeAire\":1,\n\"Instalaciones_Forestacion\":1,\n\"Instalaciones_Fosas\":1,\n\"Instalaciones_FuerzaMotriz\":1,\n\"Instalaciones_GasEnvasado\":1,\n\"Instalaciones_GasIndustrial\":1,\n\"Instalaciones_GasNatural\":1,\n\"Instalaciones_Gimnasio\":1,\n\"Instalaciones_Grua\":1,\n\"Instalaciones_GrupoElectrogeno\":1,\n\"Instalaciones_Haras\":1,\n\"Instalaciones_Hidromasaje\":1,\n\"Instalaciones_HogarALena\":1,\n\"Instalaciones_InstalacionParrilla\":1,\n\"Instalaciones_JuegosParaChicos\":1,\n\"Instalaciones_Laundry\":1,\n\"Instalaciones_LosaRadiante\":1,\n\"Instalaciones_LuzElectrica\":1,\n\"Instalaciones_Mangas\":1,\n\"Instalaciones_Molino\":1,\n\"Instalaciones_Montacarga\":1,\n\"Instalaciones_Motores\":1,\n\"Instalaciones_MovilidadReducida\":1,\n\"Instalaciones_MueblesDeCocina\":1,\n\"Instalaciones_Pavimento\":1,\n\"Instalaciones_Pileta\":1,\n\"Instalaciones_Porton\":1,\n\"Instalaciones_Potrero\":1,\n\"Instalaciones_Radiadores\":1,\n\"Instalaciones_SalonDeFiestas\":1,\n\"Instalaciones_Sauna\":1,\n\"Instalaciones_Solarium\":1,\n\"Instalaciones_Tambo\":1,\n\"Instalaciones_TanqueDeAgua\":1,\n\"Instalaciones_TanqueDeIncendio\":1,\n\"Instalaciones_Telefono\":1,\n\"Instalaciones_Termotanque\":1,\n\"Instalaciones_TratamientoEfluentes\":1,\n\"Instalaciones_Vivienda\":1,\n\"Largo\":1,\n\"LateralDerechoIrregular\":1,\n\"LateralIzquierdoIrregular\":1,\n\"Local\":1,\n\"LongitudFondo\":1,\n\"LongitudFrente\":1,\n\"MedidaLinealDerecha\":1,\n\"MedidaLinealIzquierda\":1,\n\"MetrosDeLaEsquina\":1,\n\"MontoExpensas\":1,\n\"Ocupada\":1,\n\"PropiedadOcupada\":1,\n\"RecaudacionMensual\":1,\n\"Reciclado\":1,\n\"ReferenciaCercana\":1,\n\"RentabilidadAnual\":1,\n\"Servicios_ABL\":1,\n\"Servicios_AguaCorriente\":1,\n\"Servicios_Bar\":1,\n\"Servicios_Calefaccion\":1,\n\"Servicios_Cocina\":1,\n\"Servicios_Conmutador\":1,\n\"Servicios_Electricidad\":1,\n\"Servicios_GasEnvasado\":1,\n\"Servicios_GasNatural\":1,\n\"Servicios_Internet\":1,\n\"Servicios_Lavanderia\":1,\n\"Servicios_Limpieza\":1,\n\"Servicios_Refrigeracion\":1,\n\"Servicios_Rentas\":1,\n\"Servicios_RopaCama\":1,\n\"Servicios_Seguridad\":1,\n\"Servicios_Telefono\":1,\n\"Servicios_Toallas\":1,\n\"Servicios_Videocable\":1,\n\"Servicios_Vigilancia\":1,\n\"SuperficieConstruible\":1,\n\"SuperficieCubierta\":1,\n\"SuperficieCubiertaCasa\":1,\n\"SuperficieDeposito\":1,\n\"SuperficieDescubierta\":1,\n\"SuperficieLocal\":1,\n\"SuperficieOficina\":1,\n\"SuperficiePlanta\":1,\n\"SuperficiePlaya\":1,\n\"SuperficieTerreno\":1,\n\"SuperficieTotal\":1,\n\"TerrenoPropio\":1,\n\"UltimaActividad\":1,\n\"VentaMercaderia\":1,\n\"Vidriera\":1,\n\"Vivienda\":1,\n\"Zonificacion\":1,\n\"fk_ficha2\":1\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar propidad por id",
+					"request": {
+						"url": "localhost:8000/api/v1/listarPropiedades/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"fk_idTipoPropiedad\":1,\n\"Agricultura\":1,\n\"AltoEntrada\":1,\n\"Altura\":1,\n\"AlturaTecho\":1,\n\"Ambientes_Altillo\":1,\n\"Ambientes_AnteCocina\":1,\n\"Ambientes_Antesala\":1,\n\"Ambientes_Archivo\":1,\n\"Ambientes_Azotea\":1,\n\"Ambientes_Balcon\":1,\n\"Ambientes_Bano\":1,\n\"Ambientes_Bar\":1,\n\"Ambientes_Baulera\":1,\n\"Ambientes_Biblioteca\":1,\n\"Ambientes_Bodega\":1,\n\"Ambientes_Circulacion\":1,\n\"Ambientes_Cochera\":1,\n\"Ambientes_Cocina\":1,\n\"Ambientes_CocinaComedor\":1,\n\"Ambientes_CocinaKitchinette\":1,\n\"Ambientes_Comedor\":1,\n\"Ambientes_ComedorDiario\":1,\n\"Ambientes_CuartoDeHerramientas\":1,\n\"Ambientes_CuartoDePlanchar\":1,\n\"Ambientes_Dependencia\":1,\n\"Ambientes_DependenciaDeServicio\":1,\n\"Ambientes_Deposito\":1,\n\"Ambientes_Dormitorio\":1,\n\"Ambientes_Entrepiso\":1,\n\"Ambientes_Escritorio\":1,\n\"Ambientes_Estudio\":1,\n\"Ambientes_FamilyRoom\":1,\n\"Ambientes_Galeria\":1,\n\"Ambientes_Galpon\":1,\n\"Ambientes_Garage\":1,\n\"Ambientes_Hall\":1,\n\"Ambientes_Jardin\":1,\n\"Ambientes_Lavadero\":1,\n\"Ambientes_Living\":1,\n\"Ambientes_LivingComedor\":1,\n\"Ambientes_Local\":1,\n\"Ambientes_Oficina\":1,\n\"Ambientes_Palier\":1,\n\"Ambientes_Patio\":1,\n\"Ambientes_Playroom\":1,\n\"Ambientes_Quincho\":1,\n\"Ambientes_Recepcion\":1,\n\"Ambientes_Sala\":1,\n\"Ambientes_Sotano\":1,\n\"Ambientes_Suite\":1,\n\"Ambientes_Terraza\":1,\n\"Ambientes_Toilette\":1,\n\"Ambientes_Vestibulo\":1,\n\"Ambientes_Vestidor\":1,\n\"Ambientes_Vestuario\":1,\n\"Ancho\":1,\n\"AnchoEntrada\":1,\n\"Antiguedad\":1,\n\"AntiguedadComercio\":1,\n\"AptoCredito\":1,\n\"AptoProfesional\":1,\n\"Baulera\":1,\n\"CantidadAmbientes\":1,\n\"CantidadBanos\":1,\n\"CantidadCocheras\":1,\n\"CantidadColumnas\":1,\n\"CantidadCubiertos\":1,\n\"CantidadDormitorios\":1,\n\"CantidadEstrellas\":1,\n\"CantidadHabitaciones\":1,\n\"CantidadHectareas\":1,\n\"CantidadNaves\":1,\n\"CantidadOficinas\":1,\n\"CantidadPersonal\":1,\n\"CantidadPisos\":1,\n\"CantidadPlantas\":1,\n\"CantidadPlazas\":1,\n\"CasaCaseros\":1,\n\"CasaPrincipal\":1,\n\"CocheraOptativa\":1,\n\"cupada\":1,\n\"Demolicion\":1,\n\"DepartamentosPorPiso\":1,\n\"Direccion_Coordenadas_Latitud\":1,\n\"Direccion_Coordenadas_Longitud\":1,\n\"Direccion_Departamento\":1,\n\"Direccion_Nombrecalle\":1,\n\"Direccion_Numero\":1,\n\"Direccion_Piso\":1,\n\"Disponibilidad\":1,\n\"DistanciaPavimento\":1,\n\"EnEdificio\":1,\n\"Estado\":1,\n\"Expensas\":1,\n\"fk_Direccion_Barrio_Id\":1,\n\"fk_Direccion_Calle_Id\":1,\n\"fk_Direccion_Ciudad_Id\":1,\n\"fk_Direccion_Localidad_Id\":1,\n\"fk_Direccion_Pais_Id\":1,\n\"fk_Direccion_Partido_Id\":1,\n\"fk_Direccion_Provincia_Id\":1,\n\"fk_Direccion_SubBarrio_Id\":1,\n\"fk_Disposicion\":1,\n\"fk_Estado\":1,\n\"fk_Orientacion\":1,\n\"fk_TipoAcceso\":1,\n\"fk_TipoAscensor\":1,\n\"fk_TipoBalcon\":1,\n\"fk_TipoBano\":1,\n\"fk_TipoCalefaccion\":1,\n\"fk_TipoCampo\":1,\n\"fk_TipoCobertura\":1,\n\"fk_TipoCoche\":1,\n\"fk_TipoCochera\":1,\n\"fk_TipoCosta\":1,\n\"fk_TipoEdificio\":1,\n\"fk_TipoExpensas\":1,\n\"fk_TipoFondoComercio\":1,\n\"fk_TipoFrente\":1,\n\"fk_TipoHotel\":1,\n\"fk_TipoLocal\":1,\n\"fk_TipoPendiente\":1,\n\"fk_TipoPiso\":1,\n\"fk_TipoPorton\":1,\n\"fk_TipoTecho\":1,\n\"fk_TipoTechoIndustrial\":1,\n\"fk_TipoTerreno\":1,\n\"fk_TipoUnidad\":1,\n\"fk_TipoVista\":1,\n\"FondoIrregular\":1,\n\"FOT\":1,\n\"FrenteIrregular\":1,\n\"GaleriaShopping\":1,\n\"Ganaderia\":1,\n\"GeneradorPropio\":1,\n\"Generales_PermiteMascotas\":1,\n\"Generales_SeguroCaucion\":1,\n\"HabitacionesPorPiso\":1,\n\"Instalaciones_AguaCaliente\":1,\n\"Instalaciones_AguaCalienteCentral\":1,\n\"Instalaciones_AguaCloaca\":1,\n\"Instalaciones_AguaCorriente\":1,\n\"Instalaciones_Aguadas\":1,\n\"Instalaciones_AguaPozo\":1,\n\"Instalaciones_AireAcondicionadoCentral\":1,\n\"Instalaciones_AireAcondicionadoIndividual\":1,\n\"Instalaciones_AireCaliente\":1,\n\"Instalaciones_AlambradoPerimetral\":1,\n\"Instalaciones_Alambrados\":1,\n\"Instalaciones_Amoblado\":1,\n\"Instalaciones_Arboleda\":1,\n\"Instalaciones_ArtefactosDeCocina\":1,\n\"Instalaciones_Ascensor\":1,\n\"Instalaciones_AscensoresDeServicio\":1,\n\"Instalaciones_AscensoresPrincipales\":1,\n\"Instalaciones_Balanza\":1,\n\"Instalaciones_Bebedero\":1,\n\"Instalaciones_Bombeador\":1,\n\"Instalaciones_Boxes\":1,\n\"Instalaciones_Bretes\":1,\n\"Instalaciones_Cable\":1,\n\"Instalaciones_CajaFuerte\":1,\n\"Instalaciones_Caldera\":1,\n\"Instalaciones_Calefaccion\":1,\n\"Instalaciones_CanchaDeBasquet\":1,\n\"Instalaciones_CanchaDeFutbol\":1,\n\"Instalaciones_CanchaDeHockey\":1,\n\"Instalaciones_CanchaDePaddle\":1,\n\"Instalaciones_CanchaDePaleta\":1,\n\"Instalaciones_CanchaDeSquash\":1,\n\"Instalaciones_CanchaDeTenis\":1,\n\"Instalaciones_CanchaDeVoley\":1,\n\"Instalaciones_CanchaFutbol\":1,\n\"Instalaciones_CanchaTenis\":1,\n\"Instalaciones_Corral\":1,\n\"Instalaciones_Desayunador\":1,\n\"Instalaciones_Electricidad\":1,\n\"Instalaciones_EspacioParaVehiculo\":1,\n\"Instalaciones_Estacada\":1,\n\"Instalaciones_ExtractorDeAire\":1,\n\"Instalaciones_Forestacion\":1,\n\"Instalaciones_Fosas\":1,\n\"Instalaciones_FuerzaMotriz\":1,\n\"Instalaciones_GasEnvasado\":1,\n\"Instalaciones_GasIndustrial\":1,\n\"Instalaciones_GasNatural\":1,\n\"Instalaciones_Gimnasio\":1,\n\"Instalaciones_Grua\":1,\n\"Instalaciones_GrupoElectrogeno\":1,\n\"Instalaciones_Haras\":1,\n\"Instalaciones_Hidromasaje\":1,\n\"Instalaciones_HogarALena\":1,\n\"Instalaciones_InstalacionParrilla\":1,\n\"Instalaciones_JuegosParaChicos\":1,\n\"Instalaciones_Laundry\":1,\n\"Instalaciones_LosaRadiante\":1,\n\"Instalaciones_LuzElectrica\":1,\n\"Instalaciones_Mangas\":1,\n\"Instalaciones_Molino\":1,\n\"Instalaciones_Montacarga\":1,\n\"Instalaciones_Motores\":1,\n\"Instalaciones_MovilidadReducida\":1,\n\"Instalaciones_MueblesDeCocina\":1,\n\"Instalaciones_Pavimento\":1,\n\"Instalaciones_Pileta\":1,\n\"Instalaciones_Porton\":1,\n\"Instalaciones_Potrero\":1,\n\"Instalaciones_Radiadores\":1,\n\"Instalaciones_SalonDeFiestas\":1,\n\"Instalaciones_Sauna\":1,\n\"Instalaciones_Solarium\":1,\n\"Instalaciones_Tambo\":1,\n\"Instalaciones_TanqueDeAgua\":1,\n\"Instalaciones_TanqueDeIncendio\":1,\n\"Instalaciones_Telefono\":1,\n\"Instalaciones_Termotanque\":1,\n\"Instalaciones_TratamientoEfluentes\":1,\n\"Instalaciones_Vivienda\":1,\n\"Largo\":1,\n\"LateralDerechoIrregular\":1,\n\"LateralIzquierdoIrregular\":1,\n\"Local\":1,\n\"LongitudFondo\":1,\n\"LongitudFrente\":1,\n\"MedidaLinealDerecha\":1,\n\"MedidaLinealIzquierda\":1,\n\"MetrosDeLaEsquina\":1,\n\"MontoExpensas\":1,\n\"Ocupada\":1,\n\"PropiedadOcupada\":1,\n\"RecaudacionMensual\":1,\n\"Reciclado\":1,\n\"ReferenciaCercana\":1,\n\"RentabilidadAnual\":1,\n\"Servicios_ABL\":1,\n\"Servicios_AguaCorriente\":1,\n\"Servicios_Bar\":1,\n\"Servicios_Calefaccion\":1,\n\"Servicios_Cocina\":1,\n\"Servicios_Conmutador\":1,\n\"Servicios_Electricidad\":1,\n\"Servicios_GasEnvasado\":1,\n\"Servicios_GasNatural\":1,\n\"Servicios_Internet\":1,\n\"Servicios_Lavanderia\":1,\n\"Servicios_Limpieza\":1,\n\"Servicios_Refrigeracion\":1,\n\"Servicios_Rentas\":1,\n\"Servicios_RopaCama\":1,\n\"Servicios_Seguridad\":1,\n\"Servicios_Telefono\":1,\n\"Servicios_Toallas\":1,\n\"Servicios_Videocable\":1,\n\"Servicios_Vigilancia\":1,\n\"SuperficieConstruible\":1,\n\"SuperficieCubierta\":1,\n\"SuperficieCubiertaCasa\":1,\n\"SuperficieDeposito\":1,\n\"SuperficieDescubierta\":1,\n\"SuperficieLocal\":1,\n\"SuperficieOficina\":1,\n\"SuperficiePlanta\":1,\n\"SuperficiePlaya\":1,\n\"SuperficieTerreno\":1,\n\"SuperficieTotal\":1,\n\"TerrenoPropio\":1,\n\"UltimaActividad\":1,\n\"VentaMercaderia\":1,\n\"Vidriera\":1,\n\"Vivienda\":1,\n\"Zonificacion\":1,\n\"fk_ficha2\":1\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar todas las propidades",
+					"request": {
+						"url": "localhost:8000/api/v1/listarPropiedades",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"fk_idTipoPropiedad\":1,\n\"Agricultura\":1,\n\"AltoEntrada\":1,\n\"Altura\":1,\n\"AlturaTecho\":1,\n\"Ambientes_Altillo\":1,\n\"Ambientes_AnteCocina\":1,\n\"Ambientes_Antesala\":1,\n\"Ambientes_Archivo\":1,\n\"Ambientes_Azotea\":1,\n\"Ambientes_Balcon\":1,\n\"Ambientes_Bano\":1,\n\"Ambientes_Bar\":1,\n\"Ambientes_Baulera\":1,\n\"Ambientes_Biblioteca\":1,\n\"Ambientes_Bodega\":1,\n\"Ambientes_Circulacion\":1,\n\"Ambientes_Cochera\":1,\n\"Ambientes_Cocina\":1,\n\"Ambientes_CocinaComedor\":1,\n\"Ambientes_CocinaKitchinette\":1,\n\"Ambientes_Comedor\":1,\n\"Ambientes_ComedorDiario\":1,\n\"Ambientes_CuartoDeHerramientas\":1,\n\"Ambientes_CuartoDePlanchar\":1,\n\"Ambientes_Dependencia\":1,\n\"Ambientes_DependenciaDeServicio\":1,\n\"Ambientes_Deposito\":1,\n\"Ambientes_Dormitorio\":1,\n\"Ambientes_Entrepiso\":1,\n\"Ambientes_Escritorio\":1,\n\"Ambientes_Estudio\":1,\n\"Ambientes_FamilyRoom\":1,\n\"Ambientes_Galeria\":1,\n\"Ambientes_Galpon\":1,\n\"Ambientes_Garage\":1,\n\"Ambientes_Hall\":1,\n\"Ambientes_Jardin\":1,\n\"Ambientes_Lavadero\":1,\n\"Ambientes_Living\":1,\n\"Ambientes_LivingComedor\":1,\n\"Ambientes_Local\":1,\n\"Ambientes_Oficina\":1,\n\"Ambientes_Palier\":1,\n\"Ambientes_Patio\":1,\n\"Ambientes_Playroom\":1,\n\"Ambientes_Quincho\":1,\n\"Ambientes_Recepcion\":1,\n\"Ambientes_Sala\":1,\n\"Ambientes_Sotano\":1,\n\"Ambientes_Suite\":1,\n\"Ambientes_Terraza\":1,\n\"Ambientes_Toilette\":1,\n\"Ambientes_Vestibulo\":1,\n\"Ambientes_Vestidor\":1,\n\"Ambientes_Vestuario\":1,\n\"Ancho\":1,\n\"AnchoEntrada\":1,\n\"Antiguedad\":1,\n\"AntiguedadComercio\":1,\n\"AptoCredito\":1,\n\"AptoProfesional\":1,\n\"Baulera\":1,\n\"CantidadAmbientes\":1,\n\"CantidadBanos\":1,\n\"CantidadCocheras\":1,\n\"CantidadColumnas\":1,\n\"CantidadCubiertos\":1,\n\"CantidadDormitorios\":1,\n\"CantidadEstrellas\":1,\n\"CantidadHabitaciones\":1,\n\"CantidadHectareas\":1,\n\"CantidadNaves\":1,\n\"CantidadOficinas\":1,\n\"CantidadPersonal\":1,\n\"CantidadPisos\":1,\n\"CantidadPlantas\":1,\n\"CantidadPlazas\":1,\n\"CasaCaseros\":1,\n\"CasaPrincipal\":1,\n\"CocheraOptativa\":1,\n\"cupada\":1,\n\"Demolicion\":1,\n\"DepartamentosPorPiso\":1,\n\"Direccion_Coordenadas_Latitud\":1,\n\"Direccion_Coordenadas_Longitud\":1,\n\"Direccion_Departamento\":1,\n\"Direccion_Nombrecalle\":1,\n\"Direccion_Numero\":1,\n\"Direccion_Piso\":1,\n\"Disponibilidad\":1,\n\"DistanciaPavimento\":1,\n\"EnEdificio\":1,\n\"Estado\":1,\n\"Expensas\":1,\n\"fk_Direccion_Barrio_Id\":1,\n\"fk_Direccion_Calle_Id\":1,\n\"fk_Direccion_Ciudad_Id\":1,\n\"fk_Direccion_Localidad_Id\":1,\n\"fk_Direccion_Pais_Id\":1,\n\"fk_Direccion_Partido_Id\":1,\n\"fk_Direccion_Provincia_Id\":1,\n\"fk_Direccion_SubBarrio_Id\":1,\n\"fk_Disposicion\":1,\n\"fk_Estado\":1,\n\"fk_Orientacion\":1,\n\"fk_TipoAcceso\":1,\n\"fk_TipoAscensor\":1,\n\"fk_TipoBalcon\":1,\n\"fk_TipoBano\":1,\n\"fk_TipoCalefaccion\":1,\n\"fk_TipoCampo\":1,\n\"fk_TipoCobertura\":1,\n\"fk_TipoCoche\":1,\n\"fk_TipoCochera\":1,\n\"fk_TipoCosta\":1,\n\"fk_TipoEdificio\":1,\n\"fk_TipoExpensas\":1,\n\"fk_TipoFondoComercio\":1,\n\"fk_TipoFrente\":1,\n\"fk_TipoHotel\":1,\n\"fk_TipoLocal\":1,\n\"fk_TipoPendiente\":1,\n\"fk_TipoPiso\":1,\n\"fk_TipoPorton\":1,\n\"fk_TipoTecho\":1,\n\"fk_TipoTechoIndustrial\":1,\n\"fk_TipoTerreno\":1,\n\"fk_TipoUnidad\":1,\n\"fk_TipoVista\":1,\n\"FondoIrregular\":1,\n\"FOT\":1,\n\"FrenteIrregular\":1,\n\"GaleriaShopping\":1,\n\"Ganaderia\":1,\n\"GeneradorPropio\":1,\n\"Generales_PermiteMascotas\":1,\n\"Generales_SeguroCaucion\":1,\n\"HabitacionesPorPiso\":1,\n\"Instalaciones_AguaCaliente\":1,\n\"Instalaciones_AguaCalienteCentral\":1,\n\"Instalaciones_AguaCloaca\":1,\n\"Instalaciones_AguaCorriente\":1,\n\"Instalaciones_Aguadas\":1,\n\"Instalaciones_AguaPozo\":1,\n\"Instalaciones_AireAcondicionadoCentral\":1,\n\"Instalaciones_AireAcondicionadoIndividual\":1,\n\"Instalaciones_AireCaliente\":1,\n\"Instalaciones_AlambradoPerimetral\":1,\n\"Instalaciones_Alambrados\":1,\n\"Instalaciones_Amoblado\":1,\n\"Instalaciones_Arboleda\":1,\n\"Instalaciones_ArtefactosDeCocina\":1,\n\"Instalaciones_Ascensor\":1,\n\"Instalaciones_AscensoresDeServicio\":1,\n\"Instalaciones_AscensoresPrincipales\":1,\n\"Instalaciones_Balanza\":1,\n\"Instalaciones_Bebedero\":1,\n\"Instalaciones_Bombeador\":1,\n\"Instalaciones_Boxes\":1,\n\"Instalaciones_Bretes\":1,\n\"Instalaciones_Cable\":1,\n\"Instalaciones_CajaFuerte\":1,\n\"Instalaciones_Caldera\":1,\n\"Instalaciones_Calefaccion\":1,\n\"Instalaciones_CanchaDeBasquet\":1,\n\"Instalaciones_CanchaDeFutbol\":1,\n\"Instalaciones_CanchaDeHockey\":1,\n\"Instalaciones_CanchaDePaddle\":1,\n\"Instalaciones_CanchaDePaleta\":1,\n\"Instalaciones_CanchaDeSquash\":1,\n\"Instalaciones_CanchaDeTenis\":1,\n\"Instalaciones_CanchaDeVoley\":1,\n\"Instalaciones_CanchaFutbol\":1,\n\"Instalaciones_CanchaTenis\":1,\n\"Instalaciones_Corral\":1,\n\"Instalaciones_Desayunador\":1,\n\"Instalaciones_Electricidad\":1,\n\"Instalaciones_EspacioParaVehiculo\":1,\n\"Instalaciones_Estacada\":1,\n\"Instalaciones_ExtractorDeAire\":1,\n\"Instalaciones_Forestacion\":1,\n\"Instalaciones_Fosas\":1,\n\"Instalaciones_FuerzaMotriz\":1,\n\"Instalaciones_GasEnvasado\":1,\n\"Instalaciones_GasIndustrial\":1,\n\"Instalaciones_GasNatural\":1,\n\"Instalaciones_Gimnasio\":1,\n\"Instalaciones_Grua\":1,\n\"Instalaciones_GrupoElectrogeno\":1,\n\"Instalaciones_Haras\":1,\n\"Instalaciones_Hidromasaje\":1,\n\"Instalaciones_HogarALena\":1,\n\"Instalaciones_InstalacionParrilla\":1,\n\"Instalaciones_JuegosParaChicos\":1,\n\"Instalaciones_Laundry\":1,\n\"Instalaciones_LosaRadiante\":1,\n\"Instalaciones_LuzElectrica\":1,\n\"Instalaciones_Mangas\":1,\n\"Instalaciones_Molino\":1,\n\"Instalaciones_Montacarga\":1,\n\"Instalaciones_Motores\":1,\n\"Instalaciones_MovilidadReducida\":1,\n\"Instalaciones_MueblesDeCocina\":1,\n\"Instalaciones_Pavimento\":1,\n\"Instalaciones_Pileta\":1,\n\"Instalaciones_Porton\":1,\n\"Instalaciones_Potrero\":1,\n\"Instalaciones_Radiadores\":1,\n\"Instalaciones_SalonDeFiestas\":1,\n\"Instalaciones_Sauna\":1,\n\"Instalaciones_Solarium\":1,\n\"Instalaciones_Tambo\":1,\n\"Instalaciones_TanqueDeAgua\":1,\n\"Instalaciones_TanqueDeIncendio\":1,\n\"Instalaciones_Telefono\":1,\n\"Instalaciones_Termotanque\":1,\n\"Instalaciones_TratamientoEfluentes\":1,\n\"Instalaciones_Vivienda\":1,\n\"Largo\":1,\n\"LateralDerechoIrregular\":1,\n\"LateralIzquierdoIrregular\":1,\n\"Local\":1,\n\"LongitudFondo\":1,\n\"LongitudFrente\":1,\n\"MedidaLinealDerecha\":1,\n\"MedidaLinealIzquierda\":1,\n\"MetrosDeLaEsquina\":1,\n\"MontoExpensas\":1,\n\"Ocupada\":1,\n\"PropiedadOcupada\":1,\n\"RecaudacionMensual\":1,\n\"Reciclado\":1,\n\"ReferenciaCercana\":1,\n\"RentabilidadAnual\":1,\n\"Servicios_ABL\":1,\n\"Servicios_AguaCorriente\":1,\n\"Servicios_Bar\":1,\n\"Servicios_Calefaccion\":1,\n\"Servicios_Cocina\":1,\n\"Servicios_Conmutador\":1,\n\"Servicios_Electricidad\":1,\n\"Servicios_GasEnvasado\":1,\n\"Servicios_GasNatural\":1,\n\"Servicios_Internet\":1,\n\"Servicios_Lavanderia\":1,\n\"Servicios_Limpieza\":1,\n\"Servicios_Refrigeracion\":1,\n\"Servicios_Rentas\":1,\n\"Servicios_RopaCama\":1,\n\"Servicios_Seguridad\":1,\n\"Servicios_Telefono\":1,\n\"Servicios_Toallas\":1,\n\"Servicios_Videocable\":1,\n\"Servicios_Vigilancia\":1,\n\"SuperficieConstruible\":1,\n\"SuperficieCubierta\":1,\n\"SuperficieCubiertaCasa\":1,\n\"SuperficieDeposito\":1,\n\"SuperficieDescubierta\":1,\n\"SuperficieLocal\":1,\n\"SuperficieOficina\":1,\n\"SuperficiePlanta\":1,\n\"SuperficiePlaya\":1,\n\"SuperficieTerreno\":1,\n\"SuperficieTotal\":1,\n\"TerrenoPropio\":1,\n\"UltimaActividad\":1,\n\"VentaMercaderia\":1,\n\"Vidriera\":1,\n\"Vivienda\":1,\n\"Zonificacion\":1,\n\"fk_ficha2\":1\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "login",
