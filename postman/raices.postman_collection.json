@@ -1673,7 +1673,7 @@
 					"response": []
 				},
 				{
-					"name": "listar propidad por id",
+					"name": "listar propiedad por id",
 					"request": {
 						"url": "localhost:8000/api/v1/listarPropiedades/1",
 						"method": "GET",
@@ -1693,7 +1693,7 @@
 					"response": []
 				},
 				{
-					"name": "listar todas las propidades",
+					"name": "listar todas las propiedades",
 					"request": {
 						"url": "localhost:8000/api/v1/listarPropiedades",
 						"method": "GET",
