@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Ficha123;
 use App\Propiedad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class Ficha3Controller extends Controller {
+
     public function add(Request $request) {
 
         $this->validate($request, [
@@ -23,11 +25,12 @@ class Ficha3Controller extends Controller {
             $propiedad = new Propiedad($request->all());
 
             $propiedad->save();
-            /*$propiedad->each(function ($propiedad){
-                $propiedad->ficha2and1->
-            });*/
+
+            $ficha123 = Ficha123::where('fk_idFicha2', $request->fk_ficha2)->first();
+            $ficha123->update([ 'fk_idFicha3' => $propiedad->idPropiedad ]);
+
             $response = [
-                'msj'    => 'Propiedad creada Exitosamente',
+                'msj'    => 'Propiedad Nº: '.$ficha123->idFichas.' creada Exitosamente',
                 'ficha3' => $propiedad,
                 'ficha2' => [
                     'imagen1'             => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen1),
@@ -39,9 +42,10 @@ class Ficha3Controller extends Controller {
                     'imagen7'             => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen7),
                     'imagen_para_galeria' => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen_para_galeria),
 
-                ]
+                ],
             ];
             DB::commit();
+
 
             return response()->json($response, 201);
         } catch (\Exception $e) {

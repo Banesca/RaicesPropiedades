@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ficha1;
+use App\Ficha123;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -39,10 +40,13 @@ class Ficha1Controller extends Controller {
             $ficha1->tipoPropiedad;
 
             $response = [
-                'msj'  => 'Ficha 1 creada Exitosamente',
+                'msj'    => 'Ficha 1 creada Exitosamente',
                 'ficha1' => $ficha1,
             ];
             DB::commit();
+
+            $ficha123=new Ficha123([ 'fk_idFicha1' => $ficha1->idFicha1 ]);
+            $ficha123->save();
 
             return response()->json($response, 201);
         } catch (\Exception $e) {

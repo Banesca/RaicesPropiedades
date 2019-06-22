@@ -14,7 +14,11 @@ class CreateFicha123sTable extends Migration
     public function up()
     {
         Schema::create('ficha123s', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('idFichas');
+            $table->integer('fk_idFicha1')->unsigned()->nullable();
+            $table->integer('fk_idFicha2')->unsigned()->nullable();
+            $table->integer('fk_idFicha3')->unsigned()->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

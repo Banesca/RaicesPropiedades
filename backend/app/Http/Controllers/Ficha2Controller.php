@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ficha123;
 use App\Ficha2;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -80,6 +81,9 @@ class Ficha2Controller extends Controller {
                 ],
             ];
             DB::commit();
+
+            $ficha123 = Ficha123::where('fk_idFicha1', $request->fk_ficha1)->first();
+            $ficha123->update([ 'fk_idFicha2' => $ficha2->idFicha2 ]);
 
             return response()->json($response, 201);
         } catch (\Exception $e) {

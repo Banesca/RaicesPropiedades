@@ -426,7 +426,7 @@ class Propiedad extends Model
 
     public function TipoUnidad()
     {
-        return $this->belongsTo('App\TipoUnidad', 'fk_TipoUnidad');
+        return $this->belongsTo('App\TipoUnidadCasa', 'fk_TipoUnidad');
     }
 
     public function TipoVista()
