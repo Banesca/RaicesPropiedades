@@ -77,7 +77,7 @@ class Ficha2Controller extends Controller {
                     'imagen6'             => asset('storage\\ficha2\\'.@$ficha2->imagen6),
                     'imagen7'             => asset('storage\\ficha2\\'.@$ficha2->imagen7),
                     'imagen_para_galeria' => asset('storage\\ficha2\\'.@$ficha2->imagen_para_galeria),
-                    'ficha1'              => $ficha2->ficha1,
+                    'idFicha2'              => $ficha2->idFicha2,
                 ],
             ];
             DB::commit();
