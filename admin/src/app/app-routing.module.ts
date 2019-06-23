@@ -45,7 +45,7 @@ const routes: Routes = [
       { path: 'config-footer', component: ConfigFooterComponent, canActivate: [AuthGuard] },
       { path: 'sucursales', component: SucursalesComponent, canActivate: [AuthGuard] },
       { path: 'suscribers', component: SuscribersComponent, canActivate: [AuthGuard] },
-      { path: 'transacciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
+      { path: 'tasaciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
       { path: 'modulos', component: ModulosComponent, canActivate: [AuthGuard] },
       { path: 'config-color', component: ConfigColorComponent, canActivate: [AuthGuard] },
       
