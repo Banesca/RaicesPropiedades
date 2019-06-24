@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -10,6 +9,8 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+use Illuminate\Support\Str;
+use Faker\Generator as Faker;
 
 Route::group([ 'prefix' => 'auth' ], function() {
 
@@ -153,6 +154,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::get('sincronice','SincroniceArgenController@add');
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
     Route::get('listarPropiedades','Ficha123Controller@listarTodo');
+
 
 
 });
