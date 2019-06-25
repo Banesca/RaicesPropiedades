@@ -20,13 +20,14 @@
             <div class="col-sm-12">
               <label for="exampleFormControlSelect1" class="text-uppercase">Teléfono</label>
               <div class="form-group mb-3">
-                <input formControlName="telefono" type="text" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" class="form-control form-control-lg" placeholder="Teléfono / Celular"
+                <input formControlName="telefono" type="tel" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" class="form-control form-control-lg" minlength="12" maxlength="14" placeholder="Teléfono / Celular"
                   aria-describedby="basic-addon1">
                   <div *ngIf="submitted && f.telefono.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="f.telefono.errors.minlength">Ingrese un número de teléfono válido</div>
                       <div *ngIf="f.telefono.errors.required">El Teléfono es Requerido</div>
                   </div>
+                </div>
               </div>
-            </div>
             <div class="col-sm-12">
               <label for="exampleFormControlSelect1" class="text-uppercase">Categoría</label>
               <div class="form-group mb-3">
@@ -45,6 +46,7 @@
                 <input formControlName="titulo" type="text" [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" class="form-control form-control-lg" placeholder="Título"
                   aria-describedby="basic-addon1">
                   <div *ngIf="submitted && f.titulo.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="f.titulo.hasError('pattern')">El título debe tambien contener letras</div>
                       <div *ngIf="f.titulo.errors.required">El Título es Requerido</div>
                   </div>
               </div>

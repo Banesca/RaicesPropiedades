@@ -11,6 +11,7 @@ const articleRoutes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(articleRoutes)],
+  
   exports: [RouterModule]
 })
 export class ArticleRoutingModule { }

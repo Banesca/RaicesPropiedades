@@ -57,14 +57,13 @@
   </div>
   <div class="container-fluid bg-light sec2 section-component">
       <div class="container  py-5 "> 
-          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="col-sm-12 d-flex justify-content-center">
                 <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase">Formulario <span class="font-weight-extrabold">de contacto</span></h3>
             </div>
             <div class="row">
               <div class="col-sm-12 my-4 d-flex justify-content-center">
                   <div class="py-5 bg-white contact-container shadow col-lg-5 col-md-6 w-100 d-flex justify-content-center">
-                   
+                    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                       <div class="">
                       <div class="group">      
                         <input formControlName="nombres" type="text" required>
@@ -103,18 +102,18 @@
                             </div>
                           </div>
                     </div> 
-                    
+                    <div class="col-sm-12" style="z-index: 2;">
+                      <div class="d-flex justify-content-center">
+                         <button class="btn shadow btn-block brown-button text-uppercase font-weight-bold col-lg-4"
+                         >Enviar
+                       </button>
+                      </div>
+                     </div>
+                  </form>
               </div>
           </div>
-          <div class="col-sm-12" style="z-index: 2;">
-              <div class="d-flex justify-content-center">
-                 <button class="btn shadow btn-block brown-button text-uppercase font-weight-bold col-lg-4"
-                 >Enviar
-               </button>
-              </div>
-             </div>
+        
     </div>
-  </form>
   <!--
   <div *ngIf="mLoading" class="row">
       <div class="col-lg-12 d-flex justify-content-center my-2">

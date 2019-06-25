@@ -45,7 +45,7 @@ export class TransactionModalComponent implements OnInit {
       nombre_apellido: ["", Validators.required],
       telefono: ["", Validators.required],
       fk_tipoPropiedad: ["", Validators.required],
-      titulo: ["", Validators.required],
+      titulo: ["",[Validators.required, Validators.pattern(/[a-z]/)]],
       descripcion: ["", Validators.required]
   });
   }
