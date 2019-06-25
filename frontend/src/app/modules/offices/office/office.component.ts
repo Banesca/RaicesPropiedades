@@ -42,8 +42,7 @@ export class OfficeComponent implements OnInit {
       nombres: ["", Validators.required],
       email: ["",[Validators.required, Validators.email]],
       telefono: ["", Validators.required],
-      mensaje:["", Validators.required,],
-      created_at:''
+      mensaje:["", Validators.required,]
   });
   }
 

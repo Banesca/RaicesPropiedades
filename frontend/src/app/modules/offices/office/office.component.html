@@ -62,7 +62,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12 my-4 d-flex justify-content-center">
-                  <div class="py-5 bg-white contact-container shadow col-lg-5 col-md-6 w-100 d-flex justify-content-center">
+                  <div class="py-5 bg-white contact-container shadow col-lg-5 col-md-6 w-100 d-flex justify-content-center" style="z-index: 3;">
                     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                       <div class="">
                       <div class="group">      
@@ -70,7 +70,7 @@
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Nombres</label>
-                        <div *ngIf="submitted && f.nombres.errors" type="alert" class="invalid-feedback">
+                        <div *ngIf="submitted && f.nombres.errors" type="alert" class="invalid-feedback d-block">
                             <div *ngIf="f.nombres.errors.required">Nombre y Apellido son Requerido</div>
                         </div>
                       </div>
@@ -79,7 +79,7 @@
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Email</label>
-                        <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback">
+                        <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback d-block">
                             <div *ngIf="f.email.errors.required">Email es Requerido</div>
                         </div>
                       </div> 
@@ -88,7 +88,7 @@
                           <span class="highlight"></span>
                           <span class="bar"></span>
                           <label>Teléfono</label>
-                          <div *ngIf="submitted && f.telefono.errors" type="alert" class="invalid-feedback">
+                          <div *ngIf="submitted && f.telefono.errors" type="alert" class="invalid-feedback d-block">
                               <div *ngIf="f.telefono.errors.required">El Teléfono Requerido</div>
                           </div>
                         </div> 
@@ -97,7 +97,7 @@
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>Mensaje</label>
-                            <div *ngIf="submitted && f.mensaje.errors" type="alert" class="invalid-feedback">
+                            <div *ngIf="submitted && f.mensaje.errors" type="alert" class="invalid-feedback d-block">
                                 <div *ngIf="f.mensaje.errors.required">El Mensaje es Requerido</div>
                             </div>
                           </div>
