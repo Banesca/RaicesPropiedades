@@ -6,6 +6,10 @@ export interface ITransaccionesRs {
   export interface ITransacciones {
     idTransacciones: number;
     nombre_apellido: string;
+    tipo_propiedad?: {
+      descripcion: string;
+      idTipoPropiedad: number;
+    }
     telefono: string;
     fk_tipoPropiedad: string;
     titulo: string;

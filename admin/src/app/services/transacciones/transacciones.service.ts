@@ -31,7 +31,7 @@ export class TransaccionesService {
   actualizarCategoria(pCategoria: ITransacciones, pKey: number) {
     console.log(pCategoria)
     return this._HttpClient
-      .post(environment.apiHost +  this.mService + '/edit/' + pKey + '/', pCategoria, {
+      .post(environment.apiHost +  this.mService + '/edit/' + pKey , pCategoria, {
         headers: getHeaders()
       })
       .pipe(

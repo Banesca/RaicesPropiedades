@@ -44,7 +44,7 @@ import { AlertsService } from '../../services/alerts.service';
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      titulo: ["", [Validators.required, Validators.minLength(5)]],
+      titulo: ["", [Validators.required, Validators.minLength(3)]],
       descripcion: ["", Validators.required],
       fk_publicaciones: ["", Validators.required]
     });
@@ -62,7 +62,7 @@ import { AlertsService } from '../../services/alerts.service';
         this.mLoading = false;
       })
       .catch(error => {
-        console.log(error)
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al cargar los datos.')
       });
   }
 
@@ -78,8 +78,10 @@ import { AlertsService } from '../../services/alerts.service';
       .then(data => {
         this.getAll();
         this.mLoading = false;
+        this._AlertsService.msg('OK', 'EXITO!', 'Galería eliminada Correctamente.')
       })
-      .catch(error => {
+      .catch(err => {
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al eliminar la galería.')
       });
   }
 
@@ -97,22 +99,17 @@ import { AlertsService } from '../../services/alerts.service';
   actualizar(pKey: number) {
     this.mCategoriasSelect = this.mForma.value as IGaleria;
     this.mLoading = true;
+    console.log(this.mCategoriasSelect)
     this._GaleriaHomeService
       .actualizarCategoria(this.mCategoriasSelect, pKey)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Sucursal Actualizada Correctamente.')
+        this._AlertsService.msg('OK', 'EXITO!', 'Galería Actualizada Correctamente.')
       })
       .catch(err => {
-        // Parsear Object errors a Array de errores para poder mapearlos
-        const mapped = Object.keys(err.error.errors).map(key => ({ type: key, value: err.error.errors[key] }));
-        // Notificando Errores
-        mapped ? mapped.map(e => { this._AlertsService.msg('ERR', 'ERROR', e.value) }) :
-          err.error.message ? this._AlertsService.msg('ERR', 'ERROR', err.error.message) :
-            this._AlertsService.msg('ERR', 'ERROR', 'Error al Guardar.')
-
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al Actualizar la galería.')
       });
   }
 
@@ -124,10 +121,13 @@ import { AlertsService } from '../../services/alerts.service';
       .nuevaCategoria(this.mCategoriasSelect)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
+        
         this.getAll();
         this.mLoading = false;
+        this._AlertsService.msg('OK', 'EXITO!', 'Galería creada Correctamente.')
       })
-      .catch(error => {
+      .catch(err => {
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al crear la galería.')
       });
   }
 }

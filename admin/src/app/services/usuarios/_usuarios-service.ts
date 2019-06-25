@@ -30,7 +30,7 @@ export class _UsuariosService {
 
   nuevaCategoria(Categoria: any,) {
     return this._HttpClient
-      .post<any>(environment.apiHost + 'api/v1/crearUser', Categoria, { headers: getHeaders() })
+      .post<any>(environment.apiHost + '/api/v1/crearUser', Categoria, { headers: getHeaders() })
       .pipe(
         map((data: any) => {
           return data;
@@ -41,7 +41,7 @@ export class _UsuariosService {
 
   actualizarCategoria(Categoria: any, pKey: number) {
     return this._HttpClient
-      .post(environment.apiHost +  '/api/auth/editarUser/' + pKey + '/', Categoria, {
+      .post(environment.apiHost +  '/api/auth/editarUser/' + pKey, Categoria, {
         headers: getHeaders()
       })
       .pipe(

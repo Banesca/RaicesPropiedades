@@ -7,7 +7,7 @@
             type="button"
             class="btn btn-primary"
             class="btn btn-success my-4"
-            [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
+            [disabled]="mFormaEstado == enCRUD.Crear"
           >
             <i class="fa fa-plus"></i>
            Nuevo
@@ -32,7 +32,6 @@
             <tbody>
               <tr
                 *ngFor="let categoria of mCategorias; let i = index"
-                (dblclick)="modificar(categoria)"
               >
               <td  class="d-flex justify-content-center">{{categoria.idSuscripcionUser}}</td>
               <td>{{categoria.titulo}}</td>
@@ -45,20 +44,6 @@
                 >
                 <i class="far fa-eye"></i>    
                           </button>
-                <button
-                  (click)="modificar(categoria)"
-                  type="button"
-                  class="btn mr-2 btn-primary"
-                >
-                <i class="fas fa-pencil-alt"></i>
-                </button>
-                <button
-                  (click)="eliminar(categoria.idSuscripcionUser)"
-                  type="button"
-                  class="btn mr-2 btn-danger"
-                >
-                  <i class="fa fa-trash"></i>
-                </button>
               </td>
               </tr>
             </tbody>
@@ -78,7 +63,7 @@
     </div>
   </div>
   
-  <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
+  <div *ngIf="mFormaEstado == enCRUD.Crear" class="row animated fadeIn fast">
     <div class="col-md-12">
       <form [formGroup]="mForma" #vForma="ngForm">
         <div class="form-group text-right">
@@ -110,17 +95,6 @@
           <i class="fa fa-save"></i>
           Guardar
         </button>
-  
-          <button
-            *ngIf="mFormaEstado == enCRUD.Actualizar"
-            (click)="actualizar(mCategoriasSelect.idSuscripcionUser)"
-            [disabled]="!vForma.valid"
-            style="margin: 5px"
-            class="btn btn-primary"
-          >
-            <i class="fa fa-save"></i>
-            Modificar
-          </button>
         </div>
         <div class="form-group">
           <label for="">Título</label>
@@ -153,6 +127,13 @@
             type="text"
             formControlName="descripcion"
           ></textarea>
+          <div
+          *ngIf="mForma.controls['descripcion'].errors?.required"
+          class="alert alert-danger"
+          role="alert"
+        >
+          El Descripción es requerido
+        </div>
         </div>
       </form>
     </div>

@@ -60,7 +60,8 @@ export class SuscribersComponent implements OnInit {
         console.log(this.mCategorias)
       })
       .catch(error => {
-        console.log(error)
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al cargar los datos.')
+
       });
   }
 
@@ -69,17 +70,6 @@ export class SuscribersComponent implements OnInit {
     this.mFormaEstado = enCRUD.Actualizar;
   }
 
-  eliminar(pKey: number) {
-    this.mLoading = true;
-    this._MailSuscribersService
-      .eliminarCategoria(pKey)
-      .then(data => {
-        this.getAll();
-        this.mLoading = false;
-      })
-      .catch(error => {
-      });
-  }
 
   nuevo() {
     this.mForma.reset();
@@ -90,28 +80,6 @@ export class SuscribersComponent implements OnInit {
     console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
-  }
-
-  actualizar(pKey: number) {
-    this.mCategoriasSelect = this.mForma.value as ISuscriber;
-    this.mLoading = true;
-    this._MailSuscribersService
-      .actualizarCategoria(this.mCategoriasSelect, pKey,)
-      .then(data => {
-        this.mFormaEstado = enCRUD.Eliminar;
-        this.getAll();
-        this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Sucursal Actualizada Correctamente.')
-      })
-      .catch(err => {
-        // Parsear Object errors a Array de errores para poder mapearlos
-        const mapped = Object.keys(err.error.errors).map(key => ({ type: key, value: err.error.errors[key] }));
-        // Notificando Errores
-        mapped ? mapped.map(e => { this._AlertsService.msg('ERR', 'ERROR', e.value) }) :
-          err.error.message ? this._AlertsService.msg('ERR', 'ERROR', err.error.message) :
-            this._AlertsService.msg('ERR', 'ERROR', 'Error al Guardar.')
-
-      });
   }
 
   guardar() {

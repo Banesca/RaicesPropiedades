@@ -99,8 +99,11 @@ export class TransaccionesComponent implements OnInit {
       .then(data => {
         this.getAll();
         this.mLoading = false;
+        this._AlertsService.msg('OK', 'EXITO!', 'Tasación Eliminada Correctamente.')
       })
       .catch(error => {
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al Eliminar la tasación.')
+
       });
   }
 
@@ -119,7 +122,7 @@ export class TransaccionesComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Transacción Actualizada Correctamente.')
+        this._AlertsService.msg('OK', 'EXITO!', 'Tasación Actualizada Correctamente.')
       })
       .catch(err => {
         // Parsear Object errors a Array de errores para poder mapearlos
@@ -127,7 +130,7 @@ export class TransaccionesComponent implements OnInit {
         // Notificando Errores
         mapped ? mapped.map(e => { this._AlertsService.msg('ERR', 'ERROR', e.value) }) :
           err.error.message ? this._AlertsService.msg('ERR', 'ERROR', err.error.message) :
-            this._AlertsService.msg('ERR', 'ERROR', 'Error al Guardar.')
+            this._AlertsService.msg('ERR', 'ERROR', 'Error al Actualizar.')
 
       });
   }

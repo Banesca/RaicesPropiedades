@@ -31,11 +31,11 @@ export class UsuariosService {
    }
 
   listaUsuarios(){
-    return this.http.post(environment.apiHost + '/api/v1/listarUsers/',httpOptions);
+    return this.http.post(environment.apiHost + '/api/v1/listarUsers',httpOptions);
   }
 
   _addUser(data){
-    return this.http.post<any>(environment.apiHost + '/api/v1/crearUser/',data,httpOptions);
+    return this.http.post<any>(environment.apiHost + '/api/v1/crearUser',data,httpOptions);
   }
 
   editUser(data,id){

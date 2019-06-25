@@ -99,13 +99,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Nombres</label>
-                    <input class="form-control" type="text" formControlName="name" placeholder="Nombre" />
+                    <input class="form-control" [(ngModel)]="mCategoriasSelect.name" type="text" formControlName="name" placeholder="Nombre" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Email</label>
-                    <input class="form-control" type="email" formControlName="email" placeholder="Email" />
+                    <input class="form-control" [(ngModel)]="mCategoriasSelect.email" type="email" formControlName="email" placeholder="Email" />
                   </div>
                 </div>
               </div>
@@ -114,13 +114,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Password</label>
-                    <input class="form-control" type="password" formControlName="password" placeholder="Password" />
+                    <input class="form-control" type="password" [(ngModel)]="mCategoriasSelect.password"  formControlName="password" placeholder="Password" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Confirmar Password</label>
-                    <input class="form-control" type="password" formControlName="password_confirmation"
+                    <input class="form-control" type="password" [(ngModel)]="mCategoriasSelect.password_confirmation"  formControlName="password_confirmation"
                       placeholder="Confirmar Password" />
                   </div>
                 </div>

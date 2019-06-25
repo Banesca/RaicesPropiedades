@@ -74,13 +74,15 @@ export class UsuariosComponent implements OnInit {
       })
       .catch(error => {
         console.log(error)
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al cargar los datos');
       });
   }
 
 
-  modificar(categoria) {
+  modificar(pCategoria: IUsuarios) {
+    this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
-    this.id = categoria.id;
+    this.id = pCategoria.id;
   }
 
   modulos(idUsuario) {
@@ -111,8 +113,10 @@ export class UsuariosComponent implements OnInit {
         this.getAll();
         console.log(pKey)
         this.mLoading = false;
+        this._AlertsService.msg('OK', 'EXITO!', 'Usuario eliminado correctamente');
       })
       .catch(error => {
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al eliminar el usuario');
       });
   }
 
@@ -138,9 +142,10 @@ export class UsuariosComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
+        this._AlertsService.msg('OK', 'EXITO!', 'Usuario creado correctamente');
       })
       .catch(error => {
-        console.log(this.mCategoriasSelect)
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al crear el usuario');
       });
   }
 
@@ -171,8 +176,10 @@ export class UsuariosComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
+        this._AlertsService.msg('OK', 'EXITO!', 'Usuario actualizado correctamente');
       })
       .catch(error => {
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al actualizar el usuario');
       });
   }
 }
