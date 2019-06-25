@@ -6,8 +6,9 @@ import {Observable} from'rxjs'
 import { map } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({
-   // 'Content-Type':  'application/json',
-   'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization': 'Bearer ' + localStorage.getItem('access_token')
   })
 };
 
