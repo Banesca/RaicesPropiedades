@@ -138,10 +138,11 @@
         </div>
         <div class="form-group">
           <label for="">Publicación</label>
-          <select  formControlName="fk_publicaciones" class="form-control form-control-lg">
-              <option
-              type="number" value="1">Galería</option>
-            </select>
+          <select  formControlName="fk_tipoPropiedad"  class="form-control form-control-lg">
+            <option value="">Seleciona Una Categoría</option>
+            <option
+            type="number" value="1">Galería</option>
+          </select>
           <div
             *ngIf="mForma.controls['fk_publicaciones'].errors?.required"
             class="alert alert-danger"

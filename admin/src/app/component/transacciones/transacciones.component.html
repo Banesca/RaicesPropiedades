@@ -18,6 +18,7 @@
               <th>Teléfono</th>
               <th>Título</th>
               <th>Descripción</th>
+              <th>Categoría</th>
               <th></th>
             </thead>
             <tbody>
@@ -30,6 +31,7 @@
               <td>{{categoria.telefono}}</td>
               <td>{{categoria.titulo}}</td>
               <td>{{categoria.descripcion}}</td>
+              <td>{{categoria.tipo_propiedad.descripcion}}</td>
               <td>
                   <button
                   (click)="ver(categoria)"
@@ -133,12 +135,12 @@
           <label for="">Categoría</label>
         <select  formControlName="fk_tipoPropiedad" class="form-control form-control-lg">
             <option
-            type="number" [ngValue]="categorias.tipo_propiedad.idTipoPropiedad">{{mCategoriasSelect.tipo_propiedad.descripcion}}</option>
+            type="number" [ngValue]="">Seleccione una Categoría</option>
           <option  *ngFor="let categorias of mCategoriasList"
           type="number" [ngValue]="categorias.idTipoPropiedad">{{categorias.descripcion}}</option>
           </select>
       <div
-        *ngIf="mForma.controls['telefono'].errors?.required"
+        *ngIf="mForma.controls['fk_tipoPropiedad'].errors?.required"
         class="alert alert-danger"
         role="alert"
       >
