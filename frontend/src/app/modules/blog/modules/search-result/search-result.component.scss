@@ -1,0 +1,33 @@
+.sec2{
+	width:100%;
+	position: relative;
+}
+
+.section-component {
+    padding-bottom: 8rem !important;
+    padding-top: 3rem !important;
+}
+
+.sec2:before{
+	content: '';
+	width: 50%;
+	height: 150px;
+	position: absolute;
+	left: 0;
+    background: #ffffff;
+    z-index: 1;
+	bottom:-48px;
+	transform: skewY(5deg);
+}
+
+.sec2:after{
+	content: '';
+	width: 50%;
+	height:150px;
+    position: absolute;
+    z-index: 1;
+	right: 0;
+	background: #ffffff;
+	bottom:-48px;
+	transform: skewY(-5deg);
+}
