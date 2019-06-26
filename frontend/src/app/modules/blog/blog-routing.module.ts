@@ -8,6 +8,9 @@ const blogRoutes: Routes = [
   { path: 'detail',
   loadChildren: './modules/article/article.module#ArticleModule'
 },
+{ path: 'result',
+  loadChildren: './modules/search-result/search-result.module#SearchResultModule'
+},
 ];
 
 
