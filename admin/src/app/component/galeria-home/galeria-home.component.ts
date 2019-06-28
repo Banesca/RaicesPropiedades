@@ -78,7 +78,7 @@ import { AlertsService } from '../../services/alerts.service';
       .then(data => {
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Galería eliminada Correctamente.')
+        this._AlertsService.msg('OK', '!EXITO!', 'Galería eliminada Correctamente.')
       })
       .catch(err => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al eliminar la galería.')
@@ -106,7 +106,7 @@ import { AlertsService } from '../../services/alerts.service';
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Galería Actualizada Correctamente.')
+        this._AlertsService.msg('OK', '!EXITO!', 'Galería Actualizada Correctamente.')
       })
       .catch(err => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al Actualizar la galería.')
@@ -124,7 +124,7 @@ import { AlertsService } from '../../services/alerts.service';
         
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Galería creada Correctamente.')
+        this._AlertsService.msg('OK', '!EXITO!', 'Galería creada Correctamente.')
       })
       .catch(err => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al crear la galería.')

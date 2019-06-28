@@ -12,7 +12,7 @@
           *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar  &&  mFormaEstado != enCRUD.Asignar">
           <div class="form-group col-md-10 mb-0">
 
-            <input type="text" placeholder="Buscar por nombre ,  usuario , email" formControlName="search"
+            <input type="text" placeholder="Buscar por nombre, usuario o mail" formControlName="search"
               class="form-control">
 
           </div>
@@ -37,7 +37,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let categoria of mCategorias; let i = index" (dblclick)="modificar(categoria)">
-                      <td>{{categoria.id}}</td>
+                      <td>{{i + 1}}</td>
                       <td>{{categoria.name}}</td>
                       <td>{{categoria.email}}</td>
                       <td>

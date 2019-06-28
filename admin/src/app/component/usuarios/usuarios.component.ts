@@ -7,7 +7,7 @@ import {
   FormArray
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { IUsuarios } from './../../services/usuarios/usuarios-interface'
+import { IUsuarios, Usuarios } from './../../services/usuarios/usuarios-interface'
 import { _UsuariosService } from './../../services/usuarios/_usuarios-service'
 import { AlertsService } from '../../services/alerts.service';
 import { IModulos, Modulos } from './../../services/modulos/modulos.interface'
@@ -44,6 +44,7 @@ export class UsuariosComponent implements OnInit {
   ) {
     this.mCategorias = [];
     this.mFormaEstado = enCRUD.Eliminar;
+    this.mCategoriasSelect = Usuarios.empy();
     this.getAll();
     this.mForma = this._formBuilder.group({
       name: ['', Validators.required],
@@ -113,7 +114,7 @@ export class UsuariosComponent implements OnInit {
         this.getAll();
         console.log(pKey)
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Usuario eliminado correctamente');
+        this._AlertsService.msg('OK', '!EXITO!', 'Usuario eliminado correctamente');
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al eliminar el usuario');
@@ -121,7 +122,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   nuevo() {
-    this.mForma.reset();
+    this.mCategoriasSelect = Usuarios.empy();
     this.mFormaEstado = enCRUD.Crear;
   }
 
@@ -142,7 +143,7 @@ export class UsuariosComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Usuario creado correctamente');
+        this._AlertsService.msg('OK', '!EXITO!', 'Usuario creado correctamente');
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al crear el usuario');
@@ -176,7 +177,7 @@ export class UsuariosComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Usuario actualizado correctamente');
+        this._AlertsService.msg('OK', '!EXITO!', 'Usuario actualizado correctamente');
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al actualizar el usuario');

@@ -99,7 +99,7 @@ export class TransaccionesComponent implements OnInit {
       .then(data => {
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Tasación Eliminada Correctamente.')
+        this._AlertsService.msg('OK', '!EXITO!', 'Tasación Eliminada Correctamente.')
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al Eliminar la tasación.')
@@ -122,7 +122,7 @@ export class TransaccionesComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', 'EXITO!', 'Tasación Actualizada Correctamente.')
+        this._AlertsService.msg('OK', '!EXITO!', 'Tasación Actualizada Correctamente.')
       })
       .catch(err => {
         // Parsear Object errors a Array de errores para poder mapearlos
