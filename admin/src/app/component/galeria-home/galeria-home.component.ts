@@ -6,9 +6,10 @@ import {
   Validators
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { IGaleria } from './../../services/galeria-home/galeria-home.interface'
+import { IGaleria, Galeria } from './../../services/galeria-home/galeria-home.interface'
 import { GaleriaHomeService } from './../../services/galeria-home/galeria-home.service'
 import { AlertsService } from '../../services/alerts.service';
+import { PublicacionesService } from "./../../services/publicaciones/publicaciones.service";
 
 
 @Component({
@@ -18,6 +19,7 @@ import { AlertsService } from '../../services/alerts.service';
   })
   export class GaleriaHomeComponent implements OnInit {
   mCategorias: IGaleria[];
+  mPublicaciones: any;
   mCategoriasSelect: IGaleria;
   mLoading: boolean;
   mMostrarForma = false;
@@ -30,13 +32,16 @@ import { AlertsService } from '../../services/alerts.service';
   constructor(
     private _formBuilder: FormBuilder,
     private _GaleriaHomeService: GaleriaHomeService,
-    private _AlertsService: AlertsService
+    private _AlertsService: AlertsService,
+    private _PublicacionesService: PublicacionesService
   ) {
     this.mCategorias = [];
  //   this.mCategoriasSelect = MailSuscribers.empy();
     this.mForma = this.generarFormulario();
+    
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
+    this.getPublicaciones();
   }
 
   ngOnInit() {}
@@ -52,6 +57,18 @@ import { AlertsService } from '../../services/alerts.service';
 
   // desactivar cors chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
 
+  getPublicaciones() {
+    this._PublicacionesService
+      .All()
+        .then(data => {
+        this.mPublicaciones = data;
+        console.log(this.mPublicaciones);
+
+      })
+      .catch(error => {
+        console.log(this.mPublicaciones);
+      });
+  }
   getAll() {
     this.mLoading = true;
     this._GaleriaHomeService
@@ -69,6 +86,7 @@ import { AlertsService } from '../../services/alerts.service';
   modificar(pCategoria: IGaleria) {
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
+
   }
 
   eliminar(pKey: number) {
@@ -86,7 +104,6 @@ import { AlertsService } from '../../services/alerts.service';
   }
 
   nuevo() {
-    this.mForma.reset();
     this.mFormaEstado = enCRUD.Crear;
   }
 
@@ -104,6 +121,7 @@ import { AlertsService } from '../../services/alerts.service';
       .actualizarCategoria(this.mCategoriasSelect, pKey)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
+        this.mCategoriasSelect = Galeria.empy();
         this.getAll();
         this.mLoading = false;
         this._AlertsService.msg('OK', '!EXITO!', 'Galería Actualizada Correctamente.')
@@ -121,7 +139,7 @@ import { AlertsService } from '../../services/alerts.service';
       .nuevaCategoria(this.mCategoriasSelect)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
-        
+        this.mCategoriasSelect = Galeria.empy();
         this.getAll();
         this.mLoading = false;
         this._AlertsService.msg('OK', '!EXITO!', 'Galería creada Correctamente.')

@@ -1,15 +1,15 @@
 <ngb-carousel >
-    <ng-template ngbSlide>
+    <ng-template *ngFor="let galeria of mCategorias" ngbSlide>
       <img src="../../../../../assets/images/BANNER-2" class="carousel-image" alt="Random slide">
       <div class="carousel-caption d-flex align-items-center">
         
           <div class="position-relative text-white align-items-center w-100 d-flex justify-contend-between">  
               <div class="container title col-md-8 col-lg-6 col-12 py-5 d-flex flex-column align-items-start"> 
                   <div class="col-sm-12 text-md-left">
-                    <h1 class="font-weight-light text-uppercase">Nombre de
-                    <span class="font-weight-extrabold">la propiedad</span></h1>
+                    <h1 class="font-weight-light text-uppercase font-weight-extrabold">Nombre de
+                    {{galeria.titulo}}</h1>
                   </div>
-                  <p class="col-sm-12 text-md-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem aperiam obcaecati quas repellat quisquam consectetur explicabo dignissimos.</p>
+                  <p class="col-sm-12 text-md-left">{{galeria.descripcion}}</p>
                     <button class="col-md-6 mx-3 btn white-button text-white">Ver Más</button>
               </div>    
               <div class="container d-flex justify-content-end mr-5 ">

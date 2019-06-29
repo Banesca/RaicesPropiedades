@@ -5,4 +5,5 @@ export * from  './contacto/contacto.interface';
 export * from './imagen/imagen.interface';
 export * from  './suscripcion/suscripcion.interface';
 export * from  './sucursales/sucursales.interface';
+export * from  './galeria-home/galeria-home.interface';
 export * from  './configuracion-general/configuracion-general.interface';
