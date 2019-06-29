@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import {
-  AuthService,
+  PublicacionesService,
   ArticuloService,
   CategoriaService,
   ContactoService,
@@ -41,7 +41,7 @@ export function configProviderFactoryStatic(pConfig: ConfigService) {
     ConfiguracionGeneralService,
     SucursalesService,
     UrlGuard,
-    AuthService
+    PublicacionesService
   ]
 })
 export class ServiciosModule { }

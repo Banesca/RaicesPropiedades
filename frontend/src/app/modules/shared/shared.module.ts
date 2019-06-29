@@ -1,6 +1,5 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SendCommentModule } from './components/send-comment/send-comment.module';
 import { registerLocaleData } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -63,7 +62,6 @@ registerLocaleData(localeEn, 'en')
   ],
   imports: [
     CommonModule,
-    SendCommentModule,
     RouterModule,
     NgbModule,
     FormsModule,
