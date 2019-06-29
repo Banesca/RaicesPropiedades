@@ -8,6 +8,7 @@ import { PublicacionesService } from "src/app/servicios/servicios.index";
 })
 export class SearchBlogComponent implements OnInit {
   @Input() name;
+  public baseUrl: string = 'detail/'
 
   mContacto: any[];
   mCategorias: any;

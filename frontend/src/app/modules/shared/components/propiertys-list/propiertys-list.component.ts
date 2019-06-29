@@ -1,18 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
+import { PublicacionesService } from "src/app/servicios/servicios.index";
 
 @Component({
   selector: 'app-propiertys-list',
   templateUrl: './propiertys-list.component.html',
   styleUrls: ['./propiertys-list.component.scss']
 })
-export class PropiertysListComponent implements OnInit {
+  export class PropiertysListComponent implements OnInit {
+  @Input() name;
+  public baseUrl: string = '../buscador/detail/'
 
-  public baseUrl: string = '../buscador/detail/1'
+  mContacto: any[];
+  mCategorias: any;
+  mLoading = false;
 
+  constructor(
+     private _PublicacionesService: PublicacionesService,
 
-  constructor() { }
+    ) {     
+      this.getAll();
+    }
 
   ngOnInit() {
-  }
 
+  }
+      getAll() {
+        this._PublicacionesService
+          .All()
+            .then(data => {
+            this.mCategorias = data;
+            console.log(this.mCategorias);
+    
+          })
+          .catch(error => {
+            console.log(this.mCategorias);
+          });
+      }
 }
+
+
+
+
+

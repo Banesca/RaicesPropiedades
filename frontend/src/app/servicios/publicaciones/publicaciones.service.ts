@@ -42,12 +42,11 @@ export class PublicacionesService {
       })).toPromise();
   }
 
-  getSucursal(pKey: string) {
-    const url = `${this.mUrl + this.mService}`;
-    return this._HttpClient.get(url + pKey, {
+  getPublicacion(pKey: string) {
+    return this._HttpClient.get(this.mUrl + this.mService + 'listarPropiedades/' + pKey, {
       headers: getHeaders()
     }).pipe(
-      map((data: any) => {
+      map((data) => {
         return data;
       })).toPromise();
   }

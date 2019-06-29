@@ -1,4 +1,22 @@
-<app-propiertys-carousel></app-propiertys-carousel>
+<ngb-carousel>
+  <ng-template ngbSlide>
+    <img [src]="gPropiedades.ficha2.imagen_para_galeria" class="carousel-image" alt="Random slide">
+    <div class="carousel-caption">
+              <h1 class="font-weight-light text-uppercase text-left">{{gPropiedades.ficha1.descipcion}}</h1>
+              <hr class="col-1 mx-0 mt-1 mb-4" style="border-bottom: 2px solid white;">
+              <h1 class="font-weight-extrabold text-uppercase text-left">2500$</h1>
+              <div class="container d-none d-md-block d-md-flex py-4 justify-content-center galery-image">
+                <img *ngIf="gPropiedades.ficha2.imagen1.length > 2" [src]="gPropiedades.ficha2.imagen1" alt="">
+                <img *ngIf="gPropiedades.ficha2.imagen2.length > 2" [src]="gPropiedades.ficha2.imagen2" alt="">
+                <img *ngIf="gPropiedades.ficha2.imagen3.length > 2" [src]="gPropiedades.ficha2.imagen3" alt="">
+                <img *ngIf="gPropiedades.ficha2.imagen4.length > 2" [src]="gPropiedades.ficha2.imagen4" alt="">
+                <img *ngIf="gPropiedades.ficha2.imagen5.length > 2" [src]="gPropiedades.ficha2.imagen5" alt="">
+                <img *ngIf="gPropiedades.ficha2.imagen6.length > 2" [src]="gPropiedades.ficha2.imagen6" alt="">
+                <img *ngIf="gPropiedades.ficha2.imagen7.length > 2" [src]="gPropiedades.ficha2.imagen7" alt="">
+              </div>
+    </div>
+  </ng-template>
+</ngb-carousel>
 <app-search></app-search>
 <section>
         <div class="container-fluid sec2 section-container">
@@ -10,44 +28,46 @@
                             </div>
                             <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">420MT2</h4>
                         </div>
-                        <div class="container d-flex col-lg-8" >
-                            <div class="col-md-2 flex-column">
+                        <div class="container d-flex justify-content-center col-lg-8" >
+                          <div class="row">
+                            <div class="col-md-2 col-4 flex-column">
                                 <div class="d-flex justify-content-center mt-4 mb-2">
-                                <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 18.svg" class="img-fluid" alt="">
+                                <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 18.svg" class="" alt="">
                               </div>
                                 <h6 class="gray-icon-text text-center font-weight-bold">
                                   Casa</h6>
                             </div>
-                              <div class="col-md-2 flex-column">
+                              <div class="col-md-2 col-4 flex-column">
                                 <div class="d-flex justify-content-center mt-4 mb-2">
-                                <img style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 8.svg" class="img-fluid" alt="">
+                                <img style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 8.svg" class="" alt="">
                               </div>
                               <h6 class="gray-icon-text text-center font-weight-bold">Alquiler</h6>
                             </div>  
-                            <div class="col-md-2 flex-column">
+                            <div class="col-md-2 col-4 flex-column">
                               <div class="d-flex justify-content-center mt-4 mb-2">
-                              <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 20.svg" class="img-fluid" alt="">
+                              <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 20.svg" class="" alt="">
                             </div>
                             <h6 class="gray-icon-text text-center font-weight-bold">5</h6>
                           </div>
-                          <div class="col-md-2 flex-column">
+                          <div class="col-md-2 col-4 flex-column">
                             <div class="d-flex justify-content-center mt-4 mb-2">
-                            <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 9.svg" class="img-fluid" alt="">
+                            <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 9.svg" class="" alt="">
                           </div>
                             <h6 class="gray-icon-text text-center font-weight-bold">
                              3</h6>
                         </div>
-                          <div class="col-md-2 flex-column">
+                          <div class="col-md-2 col-4 flex-column">
                             <div class="d-flex justify-content-center mt-4 mb-2">
-                            <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 17.svg" class="img-fluid" alt="">
+                            <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 17.svg" class="" alt="">
                           </div>
                           <h6 class="gray-icon-text text-center font-weight-bold">2</h6>
                         </div>  
-                        <div class="col-md-2 flex-column">
+                        <div class="col-md-2 col-4 flex-column">
                           <div class="d-flex justify-content-center mt-4 mb-2">
-                          <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 21.svg" class="img-fluid" alt="">
+                          <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 21.svg" class="" alt="">
                         </div>
                         <h6 class="gray-icon-text text-center font-weight-bold">10 Años</h6>
+                      </div>
                       </div>
                         </div>
                         <div class="container py-5">

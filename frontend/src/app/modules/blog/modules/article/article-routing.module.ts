@@ -4,7 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 
 
 const articleRoutes: Routes = [
-  { path: ':id', component: LayoutComponent },
+  { path: ':ruta', component: LayoutComponent },
 ];
 
 

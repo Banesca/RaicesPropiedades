@@ -38,6 +38,10 @@ router-outlet ~ * {
 	height: 100vh;
 }
 
+.carousel-image {
+	width: -webkit-fill-available;
+ }
+
 a {
 	text-decoration: none;
 	&:hover {

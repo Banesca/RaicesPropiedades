@@ -22,11 +22,19 @@
               <span class="nav-underline">Oportunidades</span>
             </a>
           </li>
-            <li class="nav-item">
-            <a routerLink="/" class="link-nav text-center" (click)="status = !status">
-              <span class="nav-underline">Sucursales</span>
-            </a>
-          </li>
+          <li ngbDropdown class="nav-item">
+              <a [routerLinkActive]="['active-route']" ngbDropdown class="link-nav text-center">
+                <span ngbDropdownToggle class="nav-underline  brown-text">
+                     Sucursales
+                      <div ngbDropdownMenu class="m-0 p-0 brown-text" aria-labelledby="dropdownBasic1">
+                        <ng-container *ngFor="let sucursal of mCategoria">
+                        <button class="text-uppercase"   [routerLink]="[baseUrl,sucursal.idSucursal]" ngbDropdownItem>{{sucursal.nombreSucursal}}</button>
+                        <div class="dropdown-divider m-0 p-0 m-0 p-0"></div>
+                      </ng-container>
+                      </div>
+                  </span>
+              </a>
+            </li>
               <li>
                   <a (click)="openModal()" (click)="status = !status" class="link-nav text-center">
                     <span class="nav-underline yellow-text" style="cursor: pointer;">Transacción Sin Costo</span>

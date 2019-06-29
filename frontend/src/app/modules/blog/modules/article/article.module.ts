@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout/layout.component';
 import { ArticleRoutingModule } from './article-routing.module';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -11,6 +12,8 @@ import { SharedModule } from 'src/app/modules/shared/shared.module';
     CommonModule,
     ArticleRoutingModule,
     SharedModule,
+    NgbModule
+    
   ]
 })
 export class ArticleModule { }

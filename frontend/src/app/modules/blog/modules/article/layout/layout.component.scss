@@ -95,3 +95,15 @@ hr {
 .gray-icon-text {
     color: #BFC0C4;
 }
+
+.galery-image {
+    img {
+        width: 142px;
+        height: auto;
+        @media(max-width: 992px ){
+        width: 100px;
+        }
+    }
+}
+
+

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticuloService } from "../../../../../servicios/servicios.index";
+import { PublicacionesService } from "src/app/servicios/servicios.index";
 import { ActivatedRoute } from '@angular/router';
-import { IArticulo } from 'src/app/servicios/interfaces.index';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -10,38 +10,45 @@ import { IArticulo } from 'src/app/servicios/interfaces.index';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit  {
-  gArticulo: IArticulo;
+  gPropiedades: any;
   status: boolean;
   mId: string;
+  mLoading = false;
 
 
-  constructor(private _ArticuloService: ArticuloService,
-    private _ActivatedRoute: ActivatedRoute, ) {
-    this.gArticulo;
+  constructor(private _PublicacionesService: PublicacionesService, config: NgbCarouselConfig,
+    private _ActivatedRoute: ActivatedRoute ) {
+    this.gPropiedades;
     this._ActivatedRoute.params.subscribe(param => {
-      this.mId = param['id'];
+      this.mId = param['ruta'];
     });
+    this.GetPublicacionUrl()
+    config.interval = 10000;
+    config.wrap = false;
+    config.keyboard = false;
+    config.pauseOnHover = false;
+    config.showNavigationIndicators = false;
   }
 
   ngOnInit() {
-    this.GetArticleUrl();
   }
 
-  GetArticleUrl() {
-    this._ArticuloService.getArticle(this.mId).then(data => {
-      this.gArticulo = data;
-      console.log(this.gArticulo)
+
+
+  GetPublicacionUrl() {
+    this._PublicacionesService.getPublicacion(this.mId).then
+    (data => {
+      console.log(data)
+      this.gPropiedades = data;
+      console.log(this.gPropiedades)
+      console.log(this.mId)
     })
 
     
       .catch(error => {
-        console.log(this.gArticulo);
+        console.log(this.gPropiedades);
         console.log(this.mId)
       });
   }
-
-
-
-
 
 }
