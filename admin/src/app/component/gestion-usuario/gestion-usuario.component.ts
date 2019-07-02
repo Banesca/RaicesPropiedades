@@ -260,28 +260,7 @@ export class GestionUsuarioComponent implements OnInit {
       }
     )
   }
-  verMayorista(user){
-    
-    this.datoMayorista=null;
-    if(!user.id){
-      this.alertService.msg('ERR','No se encontro id del usuario');
-      return;
-    }
-    this.inPromiseMayorista=true;
-    this.UsuariosService.getMayorista(user.id).subscribe(resp=>{
-      this.inPromiseMayorista=false;
-      if(resp){
-        this.datoMayorista = resp.body.datos;
-        debugger;
-      }else{
-        this.alertService.msg('ERR','Error al buscar datos Mayorista');
-      }
-    },error=>{
-      this.inPromiseMayorista=false;
-      this.alertService.msg('ERR','Error al buscar datos Mayorista');
 
-    })
-  }
   set(user) {
     this.userPerfil = null;
     this.userId = null;

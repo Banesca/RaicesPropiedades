@@ -38,7 +38,7 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
     this.mCategorias = [];
  //   this.mCategoriasSelect = MailSuscribers.empy();
     this.mForma = this.generarFormulario();
-    
+    this.mCategoriasSelect = Galeria.empy();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
     this.getPublicaciones();
