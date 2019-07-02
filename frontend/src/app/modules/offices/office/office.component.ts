@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SucursalesService, ContactoService } from "src/app/servicios/servicios.index";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, Event, NavigationStart } from '@angular/router';
 import { ISucursal, IContacto } from 'src/app/servicios/interfaces.index';
 import {
   NgForm,
@@ -28,16 +28,21 @@ export class OfficeComponent implements OnInit {
   mLoading = false;
 
 
-  constructor(private _SucursalesService: SucursalesService, private _ContactoService: ContactoService,
+  constructor(private router: Router, private _SucursalesService: SucursalesService, private _ContactoService: ContactoService,
     private _ActivatedRoute: ActivatedRoute, private _formBuilder: FormBuilder ) {
-    this.gSucursal;
     this._ActivatedRoute.params.subscribe(param => {
       this.mId = param['ruta'];
     });
+
+    router.events.subscribe( (event: Event) => {
+
+      if (event instanceof NavigationStart) {
+        this.GetSucursalUrl();
+      }
+  });
   }
 
   ngOnInit() {
-    this.GetSucursalUrl();
     this.contactForm = this._formBuilder.group({
       nombres: ["", Validators.required],
       email: ["",[Validators.required, Validators.email]],

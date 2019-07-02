@@ -3,9 +3,9 @@
     <div [formGroup]="myForm" class="col-12">
       <div class="form-group">
         
-        <input type="input" formControlName="correo" class="form-control" placeholder="Escriba El Correo">
-        <small *ngIf="myForm.get('correo').invalid" >Es requerido</small><br>
-        <small *ngIf="myForm.get('correo').invalid" >Debe ser correo electronico</small>
+        <input type="input" formControlName="email" class="form-control" placeholder="Escriba El Correo">
+        <small *ngIf="myForm.get('email').invalid" >Es requerido</small><br>
+        <small *ngIf="myForm.get('email').invalid" >Debe ser correo electronico</small>
       </div>
     </div>
   </div>

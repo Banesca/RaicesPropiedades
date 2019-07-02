@@ -4,13 +4,8 @@ import { ConfigFooter } from '../models/config-footer';
 import { environment } from '../../environments/environment';
 import {Observable} from'rxjs'
 import { map } from 'rxjs/operators';
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-  })
-};
+import { getHeaders } from '../misc/Headers';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,23 +19,33 @@ export class ConfgFooterService {
     ) { }
 
   _getConfigFooter(){
-    return this.http.get(`${environment.apiHost}/api/v1/config/get`,httpOptions);
+    return this.http.get(`${environment.apiHost}/api/v1/config/get`,{
+        headers: getHeaders()
+      });
   }
 
   _upgradeConfigFooter(data:any){
-    return this.http.post(`${environment.apiHost}/api/auth/config/agregarActualizar`,data,httpOptions);
+    return this.http.post(`${environment.apiHost}/api/auth/config/agregarActualizar`,data,{
+        headers: getHeaders()
+      });
   }
   _getMails(){
-    return this.http.get(`${environment.apiHost}/api/v1/listar/mails`,httpOptions);
+    return this.http.get(`${environment.apiHost}/api/v1/listar/mails`,{
+        headers: getHeaders()
+      });
   }
-  _addMail(data:any){
-    return this.http.post(`${environment.apiHost}/api/auth/addMail`,data,httpOptions);
+  _addMail(val:any){
+    return this.http.post(`${environment.apiHost}/api/auth/addMail`, val,{
+        headers: getHeaders()
+      });
   }
 
   
   eliminarCategoria(pKey: any) {
     return this.http
-      .delete(environment.apiHost + '/api/auth/borrarMail/' + pKey, httpOptions)
+      .delete(environment.apiHost + '/api/auth/borrarMail/' + pKey, {
+        headers: getHeaders()
+      })
       .pipe(
         map((data: any) => {
           return data;

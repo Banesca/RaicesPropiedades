@@ -10,6 +10,7 @@ import { AlertsService } from 'src/app/services/alerts.service';
 })
 export class MailsComponent implements OnInit {
   @Output() addMail = new EventEmitter();
+  val;
 
   myForm: FormGroup;
   constructor(
@@ -18,18 +19,16 @@ export class MailsComponent implements OnInit {
     private as: AlertsService
   ) {
     this.myForm = fb.group({
-      correo: ['',[Validators.required, Validators.pattern(new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))]]
+      email: ['',[Validators.required, Validators.pattern(new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))]]
     })
   }
 
   ngOnInit() {
   }
   add() {
-    const data: FormData = new FormData();
-    const val= this.myForm.value;
-    data.append('email',val.correo)
-    this.configFooterService._addMail(data).subscribe(resp => {
-      
+    this.val =  this.myForm.value;
+    this.configFooterService._addMail(this.val).subscribe(resp => {
+
 
       if (resp) {
         this.as.msg('OK', '!EXITO!', 'Email Agregado')
