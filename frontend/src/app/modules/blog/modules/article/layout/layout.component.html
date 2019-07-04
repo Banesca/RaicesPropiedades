@@ -1,6 +1,6 @@
 <ngb-carousel>
-  <ng-template ngbSlide>
-    <img [src]="gPropiedades.ficha2.imagen_para_galeria" class="carousel-image" alt="Random slide">
+  <ng-template ngbSlide *ngFor="let image of images">
+    <img [src]="image" class="carousel-image" alt="Random slide">
     <div class="carousel-caption">
               <h1 class="font-weight-light text-uppercase text-left">{{gPropiedades.ficha1.descipcion}}</h1>
               <hr class="col-1 mx-0 mt-1 mb-4" style="border-bottom: 2px solid white;">

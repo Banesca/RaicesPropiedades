@@ -20,7 +20,7 @@
             <div class="col-sm-12">
               <label for="exampleFormControlSelect1" class="text-uppercase">Teléfono</label>
               <div class="form-group mb-3">
-                <input formControlName="telefono" type="tel" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" class="form-control form-control-lg" minlength="12" maxlength="14" placeholder="Teléfono / Celular"
+                <input formControlName="telefono" type="tel" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" class="form-control form-control-lg" minlength="9" maxlength="14" placeholder="Teléfono / Celular"
                   aria-describedby="basic-addon1">
                   <div *ngIf="submitted && f.telefono.errors" type="alert" class="invalid-feedback">
                       <div *ngIf="f.telefono.errors.minlength">Ingrese un número de teléfono válido</div>
@@ -60,7 +60,7 @@
                   <div *ngIf="f.descripcion.errors.required">La Descripción es Requerida</div>
               </div>
           </div>
-          <label for="exampleFormControlSelect1" class="text-uppercase">Abjuntar Fotos</label>
+          <label for="exampleFormControlSelect1" class="text-uppercase">Adjuntar Fotos</label>
           <div class="form-group mb-5 d-sm-flex">
             <input type="text" class="form-control form-control-lg" placeholder="file1.jpg">
             <button class="btn font-weight-bold btn-lg btn-block col-sm-5 text-uppercase mx-auto brown-button">Agregar</button> 

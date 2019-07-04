@@ -61,7 +61,7 @@
                 <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase">Formulario <span class="font-weight-extrabold">de contacto</span></h3>
             </div>
             <div class="row">
-              <div class="col-sm-12 my-4 d-flex justify-content-center">
+              <div class="col-sm-12 mx-0 px-0 my-4 d-flex justify-content-center">
                   <div class="py-5 bg-white contact-container shadow col-lg-5 col-md-6 w-100 d-flex justify-content-center" style="z-index: 3;">
                     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                       <div class="">
@@ -93,10 +93,10 @@
                           </div>
                         </div> 
                         <div class="group"> 
-                          <textarea formControlName="mensaje" name="" id="" cols="30" rows="3"></textarea>     
+                          <textarea formControlName="mensaje" name="" id="" cols="30" rows="2"></textarea>     
                             <span class="highlight"></span>
                             <span class="bar"></span>
-                            <label>Mensaje</label>
+                            <label class="mb-3">Mensaje</label>
                             <div *ngIf="submitted && f.mensaje.errors" type="alert" class="invalid-feedback d-block">
                                 <div *ngIf="f.mensaje.errors.required">El Mensaje es Requerido</div>
                             </div>

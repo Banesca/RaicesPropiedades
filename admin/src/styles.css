@@ -15,3 +15,7 @@
 .ngx-datatable .datatable-footer .datatable-pager .pager li a {
     color: black !important;
 }
+
+.table thead th {
+    border-bottom: 0px;
+}

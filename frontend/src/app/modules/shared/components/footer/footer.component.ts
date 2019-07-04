@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IConfigG } from "src/app/servicios/interfaces.index";
-import { ConfiguracionGeneralService } from "src/app/servicios/servicios.index";
+import { IConfigG, ISucursal } from "src/app/servicios/interfaces.index";
+import { ConfiguracionGeneralService, SucursalesService } from "src/app/servicios/servicios.index";
 
 @Component({
   selector: 'app-footer',
@@ -9,8 +9,11 @@ import { ConfiguracionGeneralService } from "src/app/servicios/servicios.index";
 })
 export class FooterComponent {
   mCategoria = {configGeneral:{}} as IConfigG;
+  mSucusales: ISucursal[];
+  public baseUrl: string = 'sucursales'
+
   
-  constructor(private _ConfiguracionGeneral: ConfiguracionGeneralService) { 
+  constructor(private _ConfiguracionGeneral: ConfiguracionGeneralService,private _SucusalesService: SucursalesService) { 
 
     this.mCategoria;
     this.getAll();
@@ -28,6 +31,17 @@ export class FooterComponent {
       })
       .catch(error => {
         console.log(this.mCategoria);
+      });
+  }
+
+  getAllSucusales() {
+    this._SucusalesService
+      .All()
+      .then(data => {
+        this.mSucusales = data.suculsales;
+      })
+      .catch(error => {
+     
       });
   }
 

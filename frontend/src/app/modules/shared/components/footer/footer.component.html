@@ -2,7 +2,7 @@
 <footer class="sec2">
 <div class="container section-container pb-3 d-md-flex justify-content-between font-weight-semibold">
   <div class="col-lg-4 my-5 my-md-1 mx-0 mx-md-3"><h5 class="font-weight-bold">NOSOTROS</h5>
-  <p class="my-3">{{mCategoria.configGeneral.quienesSomos}}</p>
+  <p class="my-3">{{mCategoria.configGeneral?.quienesSomos}}</p>
   </div>
   <div class="col-lg-4 my-5 my-md-1 mx-0 mx-md-3"><h5 class="font-weight-bold">LINKS</h5>
   <ul class="p-0">
@@ -12,24 +12,47 @@
     <div class="dropdown-divider"></div>
     <li> <img src="../../../../../assets/images/icons/Recurso 26.svg" class="mr-2 footer-icons" alt=""><a class="text-white" routerLink="/oportunidades">OPORTUNIDADES</a></li>
     <div class="dropdown-divider"></div>
-    <li> <img src="../../../../../assets/images/icons/Recurso 26.svg" class="mr-2 footer-icons" alt=""><a class="text-white" routerLink="/sucursales">SUCURSALES</a></li>
+    <li> <img src="../../../../../assets/images/icons/Recurso 26.svg" class="mr-2 footer-icons" alt=""><a [routerLinkActive]="['active-route']" ngbDropdown class="">
+      <span ngbDropdownToggle class="text-white">
+           Sucursales
+            <div ngbDropdownMenu class="m-0 p-0 brown-text" aria-labelledby="dropdownBasic1">
+              <ng-container *ngFor="let sucursal of mSucusales">
+              <button class="text-uppercase" [routerLinkActive]="'active'" [routerLink]="[baseUrl,sucursal.idSucursal]" ngbDropdownItem>{{sucursal.nombreSucursal}}</button>
+              <div class="dropdown-divider m-0 p-0 m-0 p-0"></div>
+            </ng-container>
+            </div>
+        </span>
+    </a></li>
+    <li ngbDropdown class="nav-item">
+      <a [routerLinkActive]="['active-route']" ngbDropdown class="link-nav text-center">
+        <span ngbDropdownToggle class="nav-underline  brown-text">
+             Sucursales
+              <div ngbDropdownMenu class="m-0 p-0 brown-text" aria-labelledby="dropdownBasic1">
+                <ng-container *ngFor="let sucursal of mCategoria">
+                <button class="text-uppercase" [routerLinkActive]="'active'" [routerLink]="[baseUrl,sucursal.idSucursal]" ngbDropdownItem>{{sucursal.nombreSucursal}}</button>
+                <div class="dropdown-divider m-0 p-0 m-0 p-0"></div>
+              </ng-container>
+              </div>
+          </span>
+      </a>
+    </li>
   </ul>
   </div>
   <div class="col-lg-4 my-5 my-md-1 mx-0 mx-md-3"><h5 class="font-weight-bold">CONTACTO</h5>
   <ul class="p-0">
-    <li class="my-3 d-flex align-items-center"><div><img src="../../../../../assets/images/icons/Recurso 28.svg" class="mr-2 footer-contact-icons" alt=""></div><span>{{mCategoria.configGeneral.direccion}}</span></li>
-    <li class="my-3 d-flex"><img src="../../../../../assets/images/icons/Recurso 29.svg" class="mr-2 footer-contact-icons" alt="">{{mCategoria.configGeneral.celular1}}</li>
-    <li class="my-3 d-flex"><img src="../../../../../assets/images/icons/Recurso 29.svg" class="mr-2 footer-contact-icons" alt="">{{mCategoria.configGeneral.celular2}}</li>
-    <li class="my-3 d-flex"><img src="../../../../../assets/images/icons/Recurso 27.svg" class="mr-2 footer-contact-icons" alt="">{{mCategoria.configGeneral.correo}}</li>
+    <li class="my-3 d-flex align-items-center"><div><img src="../../../../../assets/images/icons/Recurso 28.svg" class="mr-2 footer-contact-icons" alt=""></div><span>{{mCategoria.configGeneral?.direccion}}</span></li>
+    <li class="my-3 d-flex"><img src="../../../../../assets/images/icons/Recurso 29.svg" class="mr-2 footer-contact-icons" alt="">{{mCategoria.configGeneral?.celular1}}</li>
+    <li class="my-3 d-flex"><img src="../../../../../assets/images/icons/Recurso 29.svg" class="mr-2 footer-contact-icons" alt="">{{mCategoria.configGeneral?.celular2}}</li>
+    <li class="my-3 d-flex"><img src="../../../../../assets/images/icons/Recurso 27.svg" class="mr-2 footer-contact-icons" alt="">{{mCategoria.configGeneral?.correo}}</li>
   </ul>
   </div>
 </div>
 <div class="divider container py-3 d-flex align-items-center justify-content-center">
   <hr class="col-4 d-none d-md-block">
           <ul class="nav col-md-3 d-flex justify-content-around">
-              <li class="facebook my-2"><a [href]="mCategoria.configGeneral.url_face" data-toggle="tooltip" target="_blank" title="Facebook"><img class="social-icon" src="../../../../../assets/images/icons/Recurso 5.svg"></a></li>
-              <li class="twitter my-2"><a [href]="mCategoria.configGeneral.url_twitter" data-toggle="tooltip" target="_blank" title="Twitter"></a><img class="social-icon" src="../../../../../assets/images/icons/Recurso 4.svg"></li>
-              <li class="instagram my-2"><a [href]="mCategoria.configGeneral.url_intagram" data-toggle="tooltip" target="_blank" title="Instagram"><img class="social-icon" src="../../../../../assets/images/icons/Recurso 3.svg"></a></li>
+              <li class="facebook my-2"><a [href]="mCategoria.configGeneral?.url_face" data-toggle="tooltip" target="_blank" title="Facebook"><img class="social-icon" src="../../../../../assets/images/icons/Recurso 5.svg"></a></li>
+              <li class="twitter my-2"><a [href]="mCategoria.configGeneral?.url_twitter" data-toggle="tooltip" target="_blank" title="Twitter"></a><img class="social-icon" src="../../../../../assets/images/icons/Recurso 4.svg"></li>
+              <li class="instagram my-2"><a [href]="mCategoria.configGeneral?.url_intagram" data-toggle="tooltip" target="_blank" title="Instagram"><img class="social-icon" src="../../../../../assets/images/icons/Recurso 3.svg"></a></li>
              </ul>
   <hr class="col-4 d-none d-md-block">
   </div>
