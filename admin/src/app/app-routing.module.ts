@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { RandomGuard } from './guards/random.guard';
 
 import { AuthbackendComponent } from './component/authbackend/authbackend.component';
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
@@ -21,7 +23,6 @@ import { PrincipalComponent } from './component/layout/principal/principal.compo
 import { SuscribersComponent } from './component/suscribers/suscribers.component';
 
 
-import { AuthGuard } from './services/auth.guard';
 import { SucursalesComponent } from './component/sucursales/sucursales.component';
 import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.component';
 import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
@@ -32,22 +33,23 @@ const routes: Routes = [
   {
     path: '',
     component: PrincipalComponent,
-    canLoad: [],
+    canActivate: [RandomGuard],
+    canLoad: [RandomGuard],
     children: [
       {path: '', redirectTo: 'perfil', pathMatch: 'full' },
      
-      { path: 'gestionar-usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
-      { path: 'galeria-home', component: GaleriaHomeComponent, canActivate: [AuthGuard] },
-      { path: 'gestionar-publicaciones', component: GestionPublicacionesComponent, canActivate: [AuthGuard] },
-      { path: 'publicaciones-facebook', component: PublicacionesFacebookComponent, canActivate: [AuthGuard] },
-      { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [AuthGuard] },
-      { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
-      { path: 'config-footer', component: ConfigFooterComponent, canActivate: [AuthGuard] },
-      { path: 'sucursales', component: SucursalesComponent, canActivate: [AuthGuard] },
-      { path: 'suscribers', component: SuscribersComponent, canActivate: [AuthGuard] },
-      { path: 'tasaciones', component: TransaccionesComponent, canActivate: [AuthGuard] },
-      { path: 'modulos', component: ModulosComponent, canActivate: [AuthGuard] },
-      { path: 'config-color', component: ConfigColorComponent, canActivate: [AuthGuard] },
+      { path: 'gestionar-usuarios', component: UsuariosComponent, canActivate: [RandomGuard] },
+      { path: 'galeria-home', component: GaleriaHomeComponent, canActivate: [RandomGuard] },
+      { path: 'gestionar-publicaciones', component: GestionPublicacionesComponent, canActivate: [RandomGuard] },
+      { path: 'publicaciones-facebook', component: PublicacionesFacebookComponent, canActivate: [RandomGuard] },
+      { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [RandomGuard] },
+      { path: 'perfil', component: PerfilComponent, canActivate: [RandomGuard] },
+      { path: 'config-footer', component: ConfigFooterComponent, canActivate: [RandomGuard] },
+      { path: 'sucursales', component: SucursalesComponent, canActivate: [RandomGuard] },
+      { path: 'suscribers', component: SuscribersComponent, canActivate: [RandomGuard] },
+      { path: 'tasaciones', component: TransaccionesComponent, canActivate: [RandomGuard] },
+      { path: 'modulos', component: ModulosComponent, canActivate: [RandomGuard] },
+      { path: 'config-color', component: ConfigColorComponent, canActivate: [RandomGuard] },
       
     ]
   }, 
@@ -55,6 +57,7 @@ const routes: Routes = [
   {
     path: '',
     component: PageComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'registro', component: RegistroComponent },
       { path: 'login', component: AuthbackendComponent }

@@ -22,6 +22,14 @@ export class LoginService {
     private http: HttpClient,
     
     ) {  }
+    
+    isLoggedIn() {
+      return !!this.getJwtToken();
+    }
+
+    getJwtToken() {
+      return localStorage.getItem('access_token');
+    }
 
   ingresarLogin(data:any){
     return this.http.post(environment.apiHost + '/api/v1/login',data,httpOptions);
