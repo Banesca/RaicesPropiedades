@@ -104,7 +104,7 @@ export class ModulosComponent implements OnInit {
          this.mFormaEstado = enCRUD.Eliminar;
          this.getAll();
          this.mLoading = false;
-         this._AlertsService.msg('OK', '!EXITO!', 'Módulo Creado Correctamente.')
+         this._AlertsService.msg('OK', '!ÉXITO!', 'Módulo Creado Correctamente.')
        })
        .catch(error => {
        });
@@ -120,7 +120,7 @@ export class ModulosComponent implements OnInit {
          this.mFormaEstado = enCRUD.Eliminar;
           this.getAll();
           this.mLoading = false;
-          this._AlertsService.msg('OK', '!EXITO!', 'Módulo Actualizado Correctamente.')
+          this._AlertsService.msg('OK', '!ÉXITO!', 'Módulo Actualizado Correctamente.')
         })
        .catch(err => {
           // Parsear Object errors a Array de errores para poder mapearlos

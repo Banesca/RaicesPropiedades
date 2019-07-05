@@ -132,6 +132,7 @@ export class SucursalesComponent implements OnInit {
   }
 
   eliminar(pKey: number) {
+    if(confirm('Está seguro de que quiere eliminar esta sucursal?')){
     this._sucursalService
       .eliminarCategoria(pKey)
       .then(data => {
@@ -142,6 +143,7 @@ export class SucursalesComponent implements OnInit {
         this._as.msg('ERR', 'Eliminar Sucursal', 'Error al Eliminar Sucursal.')
       });
   }
+}
 
 
 }

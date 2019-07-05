@@ -88,7 +88,7 @@ export class MailSuscribersComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!EXITO!', 'Mail Enviado Correctamente.')
+        this._AlertsService.msg('OK', '!ÉXITO!', 'Mail Enviado Correctamente.')
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Hubo un problema al envíar el Mail.')

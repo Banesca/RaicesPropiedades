@@ -107,18 +107,20 @@ export class UsuariosComponent implements OnInit {
   }
 
   eliminar(pKey: number) {
-    this.mLoading = true;
-    this._usuarios
-      .eliminarCategoria(pKey)
-      .then(data => {
-        this.getAll();
-        console.log(pKey)
-        this.mLoading = false;
-        this._AlertsService.msg('OK', '!EXITO!', 'Usuario eliminado correctamente');
-      })
-      .catch(error => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Error al eliminar el usuario');
-      });
+    if(confirm('Está seguro de que quiere eliminar este usurio?')){
+      this.mLoading = true;
+      this._usuarios
+        .eliminarCategoria(pKey)
+        .then(data => {
+          this.getAll();
+          console.log(pKey)
+          this.mLoading = false;
+          this._AlertsService.msg('OK', '!EXITO!', 'Usuario eliminado correctamente');
+        })
+        .catch(error => {
+          this._AlertsService.msg('ERR', 'ERROR', 'Error al eliminar el usuario');
+        });
+    }
   }
 
   nuevo() {

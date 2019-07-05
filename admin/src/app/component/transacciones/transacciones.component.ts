@@ -93,19 +93,21 @@ export class TransaccionesComponent implements OnInit {
   }
 
   eliminar(pKey: number) {
-    this.mLoading = true;
+    if(confirm('Está seguro de que quiere eliminar esta tasación?')){
+      this.mLoading = true;
     this._TransaccionesService
       .eliminarCategoria(pKey)
       .then(data => {
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!EXITO!', 'Tasación Eliminada Correctamente.')
+        this._AlertsService.msg('OK', '!ÉXITO!', 'Tasación Eliminada Correctamente.')
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al Eliminar la tasación.')
 
       });
   }
+}
 
   ver(pCategoria: ITransacciones) {
     console.log(pCategoria);
@@ -122,7 +124,7 @@ export class TransaccionesComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!EXITO!', 'Tasación Actualizada Correctamente.')
+        this._AlertsService.msg('OK', '!ÉXITO!', 'Tasación Actualizada Correctamente.')
       })
       .catch(err => {
         // Parsear Object errors a Array de errores para poder mapearlos

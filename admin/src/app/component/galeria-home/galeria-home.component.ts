@@ -90,18 +90,20 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
   }
 
   eliminar(pKey: number) {
+    if(confirm('Está seguro de que quiere eliminar esta galería?')){
     this.mLoading = true;
     this._GaleriaHomeService
       .eliminarCategoria(pKey)
       .then(data => {
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!EXITO!', 'Galería eliminada Correctamente.')
+        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería eliminada Correctamente.')
       })
       .catch(err => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al eliminar la galería.')
       });
   }
+}
 
   nuevo() {
     this.mFormaEstado = enCRUD.Crear;
@@ -124,7 +126,7 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
         this.mCategoriasSelect = Galeria.empy();
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!EXITO!', 'Galería Actualizada Correctamente.')
+        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería Actualizada Correctamente.')
       })
       .catch(err => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al Actualizar la galería.')
@@ -142,7 +144,7 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
         this.mCategoriasSelect = Galeria.empy();
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!EXITO!', 'Galería creada Correctamente.')
+        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería creada Correctamente.')
       })
       .catch(err => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al crear la galería.')
