@@ -31,7 +31,7 @@ export class MailsComponent implements OnInit {
 
 
       if (resp) {
-        this.as.msg('OK', '!EXITO!', 'Email Agregado')
+        this.as.msg('OK', '!ÉXITO!', 'Email Agregado')
         this.addMail.emit(false);
       } else {
         this.as.msg('ERR', 'ERROR', 'error al añadir email')
