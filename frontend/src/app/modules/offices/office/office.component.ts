@@ -33,7 +33,7 @@ export class OfficeComponent implements OnInit {
     this._ActivatedRoute.params.subscribe(param => {
       this.mId = param['ruta'];
     });
-
+    this.GetSucursalUrl();
     router.events.subscribe( (event: Event) => {
 
       if (event instanceof NavigationStart) {
