@@ -5,5 +5,6 @@ export interface IFacebookPostRs {
   export interface IFacebookPost {
     id: number;
     message: string;
+    link: string;
     created_time: string;
   }

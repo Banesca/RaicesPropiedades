@@ -52,7 +52,8 @@ export class PublicacionesFacebookComponent implements OnInit {
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      message: ["", Validators.required]
+      message: ["", Validators.required],
+      link: ["", Validators.required]
     });
   }
 
