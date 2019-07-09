@@ -21,11 +21,10 @@
                 <div class="col-lg-6 py-3 mt-auto px-1">
           <label class="col font-weight-extrabold">Edificación:</label>
           <div ngbDropdown class="d-inline-block">
-            <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Casa</button>
+            <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="tipo.descripcion" ngbDropdownToggle>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem>Action - 1</button>
-              <button ngbDropdownItem>Another Action</button>
-              <button ngbDropdownItem>Something else is here</button>
+              <input type="button" *ngFor="let tipoPropiedades of mTipoPropiedad"
+             ngbDropdownItem (click)="setTipo(tipoPropiedades)" [value]="tipoPropiedades.descripcion">
             </div>
           </div>
         </div>
@@ -33,25 +32,24 @@
           <div class="col-lg-7 align-items-center d-md-flex px-0">
               <div class="col-md-4 py-1 col-12 px-1">
                   <label class="col  font-weight-extrabold">Moneda:</label>
-                    <div ngbDropdown class="d-inline-block">
-                      <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Dolares</button>
-                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem>Action - 1</button>
-                        <button ngbDropdownItem>Another Action</button>
-                        <button ngbDropdownItem>Something else is here</button>
-                      </div>
+                  <div ngbDropdown class="d-inline-block">
+                    <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="moneda.moneda" ngbDropdownToggle>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <input type="button" *ngFor="let moneda of mMonedas"
+                     ngbDropdownItem (click)="setMoneda(moneda)" [value]="moneda.moneda">
                     </div>
+                  </div>
                   </div>
                   <div class="col-md-4 py-1 col-12 px-1">
                       <label class="col font-weight-extrabold">Monto Máximo:</label>
-                        <div ngbDropdown class="d-inline-block">
-                          <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Indistinto</button>
-                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button ngbDropdownItem>Action - 1</button>
-                            <button ngbDropdownItem>Another Action</button>
-                            <button ngbDropdownItem>Something else is here</button>
-                          </div>
+                      <div ngbDropdown class="d-inline-block">
+                        <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Indistinto</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                          <button ngbDropdownItem>Action - 1</button>
+                          <button ngbDropdownItem>Another Action</button>
+                          <button ngbDropdownItem>Something else is here</button>
                         </div>
+                      </div>
                       </div>
               <div class="col-md-4 py-1  col-12 px-1">
                 <label class="col font-weight-extrabold">Monto Mínimo:</label>
@@ -113,7 +111,7 @@
   </div>
   </div>
   <div class="col-sm-12 text-white d-flex justify-content-center py-5">
-      <button routerLink="/buscador" class="btn brown-button btn-lg text-uppercase font-weight-bold">Buscar información</button>
+      <button (click)="searchFilter()" class="btn brown-button btn-lg text-uppercase font-weight-bold">Buscar información</button>
   </div>
   <ng-content select="img"></ng-content> 
 </div>
