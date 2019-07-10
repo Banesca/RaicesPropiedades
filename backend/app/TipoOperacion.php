@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TipoOperacion extends Model
 {
-    use SoftDeletes;
+
     protected $table      = 'tb_tipo_operacions';
     protected $primaryKey = 'idTipoOperaion';
 
