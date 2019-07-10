@@ -1,34 +1,32 @@
-export interface IArticuloRs {
-    count: number;
-    result: IArticulo[];
-  }
+export interface IMonedas {
+    idMonedas: number;
+    moneda: string;
+}
 
-export interface IArticulo {
-    id?: string;
-    nombre: string;
-    titulo: string;
-    body: string;
-    imagen: string;
-    descripcion: string;
-    categoria?: string;
-    estado: string;
-    created_at:string;
+export interface ITipoPropiedad {
+    idTipoPropiedad:  number;
+    descripcion:  string;
 }
 
 
+export interface IOrientacion {
+    idOrientacion: number;
+    descripcion:  string;
+}
 
-export class CArticulo {
+export class Monedas {
     static empy() {
         return {
-            id: '',
-            nombre: '',
-            titulo: '',
-            body: '',
-            imagen:'',
-            descripcion: '',
-            cateogira:"",
-            estado: '',
-            created_at:''
-        } as IArticulo
+            idMonedas: null,
+            moneda: 'Seleccione'
+        } as IMonedas
+    }
+}
+export class TipoPropiedad {
+    static empy() {
+        return {
+            idTipoPropiedad: null,
+            descripcion: 'Seleccione'
+        } as ITipoPropiedad
     }
 }

@@ -1,5 +1,6 @@
 import { Component,Input, OnInit } from '@angular/core';
 import { PublicacionesService } from "src/app/servicios/servicios.index";
+import { ArticuloService } from "src/app/servicios/servicios.index";
 
 @Component({
   selector: 'app-search-blog',
@@ -13,16 +14,17 @@ export class SearchBlogComponent implements OnInit {
   mContacto: any[];
   mCategorias: any;
   mLoading = false;
+  filter;
 
   constructor(
      private _PublicacionesService: PublicacionesService,
+     public _ArticuloService: ArticuloService
 
     ) {     
       this.getAll();
     }
 
   ngOnInit() {
-
   }
       getAll() {
         this._PublicacionesService
