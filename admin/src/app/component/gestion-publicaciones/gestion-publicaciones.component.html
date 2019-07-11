@@ -1,218 +1,220 @@
 <div class="container" style="max-width: 100%;">
-  <div class="row">
-    <div class="col-md-12">
-      <h3 class="py-5 text-center font-weight-bold">Publicaciones</h3>
-      <button (click)="nuevo()" type="button" class="btn btn-primary" class="btn btn-success my-4"
-        *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar">
-        <i class="fa fa-plus"></i>
-        Nueva
-      </button>
-    </div>
-  </div>
-
-
-  <div *ngIf="mFormaEstado == enCRUD.Eliminar">
-    <div class="row">
+   <div class="row">
       <div class="col-md-12">
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead class="thead-dark">
-              <th>#</th>
-              <th>Titulo</th>
-              <th>Descripcion</th>
-              <th>Tipo</th>
-              <th>Oportunidad</th>
-              <th>Novedad</th>
-              <th>Estado</th>
-            </thead>
-            <tbody>
-              <tr *ngFor="let categoria of mCategorias; let i = index" (dblclick)="modificar(categoria)">
-                <td class="text-right">
-                  <button (click)="ver(categoria)" type="button" class="btn btn-secondary">
-                    <i class="fa fa-eye"></i>
-                  </button>
-                  <button (click)="modificar(categoria)" type="button" class="btn btn-primary">
-                    <i class="fa fa-pencil"></i>
-                  </button>
-                  <button (click)="eliminar(categoria.id)" type="button" class="btn btn-danger">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </td>
-                <td>{{categoria.titulo}}</td>
-                <td>{{categoria.descripcion}}</td>
-                <td>{{categoria.tipo}}</td>
-                <td>{{categoria.oportunidad}}</td>
-                <td>{{categoria.novedad}}</td>
-                <td>{{categoria.estado}}</td>
-              </tr>
-            </tbody>
-          </table>
-          <div *ngIf="(mCategorias | keys).length === 0 && !mLoading" class="alert alert-info" role="alert">
-            <strong>No existen</strong> Publicaciones que mostrar...
-          </div>
-          <div *ngIf="mLoading" class="alert alert-warning" role="alert">
-            <strong>Cargando</strong> por favor espere...
-          </div>
-        </div>
+         <h3 class="py-5 text-center font-weight-bold">Publicaciones</h3>
+         <button (click)="nuevo()" type="button" class="btn btn-primary" class="btn btn-success my-4"
+            *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar">
+            <i class="fa fa-plus"></i>
+            Nueva
+         </button>
       </div>
-    </div>
-  </div>
+   </div>
 
-  <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row">
-    <div class="col-md-12">
-      <mat-horizontal-stepper [linear]="isLinear" #stepper>
-        <ng-template matStepperIcon="edit">
-          <i class="fa fa-check"></i>
-        </ng-template>
-        <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Datos Generales</ng-template>
-            <div class="row">
-              <div class="col-md-9">
-                <mat-form-field class="maxWidth">
-                  <mat-label>Título *</mat-label>
-                  <input matInput formControlName="titulo">
-                  <mat-error
-                    *ngIf="firstFormGroup.controls['titulo'].errors && firstFormGroup.controls['titulo'].errors.required">
-                    El título no puede estar vacío.
-                  </mat-error>
-                  <mat-error
-                    *ngIf="firstFormGroup.controls['titulo'].errors && firstFormGroup.controls['titulo'].errors.minlength">
-                    El título debe tener mínimo 5 caracteres.
-                  </mat-error>
-                </mat-form-field>
-              </div>
-              <div class="col-md-3">
-                <mat-form-field class="maxWidth">
-                  <mat-label>Estado *</mat-label>
-                  <mat-select formControlName="estado">
-                    <mat-option *ngFor="let item of mEstados" [value]="item.value" placeholder="Seleccione">
-                      {{item.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                  <mat-error
-                    *ngIf="firstFormGroup.controls['estado'].errors && firstFormGroup.controls['estado'].errors.required">
-                    El estado no puede estar vacío.
-                  </mat-error>
-                </mat-form-field>
-              </div>
+
+   <div *ngIf="mFormaEstado == enCRUD.Eliminar">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="table-responsive">
+               <table class="table table-striped">
+                  <thead class="thead-dark">
+                     <th>#</th>
+                     <th>Titulo</th>
+                     <th>Descripcion</th>
+                     <th>Tipo</th>
+                     <th>Oportunidad</th>
+                     <th>Novedad</th>
+                     <th>Estado</th>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let categoria of mCategorias; let i = index" (dblclick)="modificar(categoria)">
+                        <td class="text-right">
+                           <button (click)="ver(categoria)" type="button" class="btn btn-secondary">
+                              <i class="fa fa-eye"></i>
+                           </button>
+                           <button (click)="modificar(categoria)" type="button" class="btn btn-primary">
+                              <i class="fa fa-pencil"></i>
+                           </button>
+                           <button (click)="eliminar(categoria.id)" type="button" class="btn btn-danger">
+                              <i class="fa fa-trash"></i>
+                           </button>
+                        </td>
+                        <td>{{categoria.titulo}}</td>
+                        <td>{{categoria.descripcion}}</td>
+                        <td>{{categoria.tipo}}</td>
+                        <td>{{categoria.oportunidad}}</td>
+                        <td>{{categoria.novedad}}</td>
+                        <td>{{categoria.estado}}</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <div *ngIf="(mCategorias | keys).length === 0 && !mLoading" class="alert alert-info" role="alert">
+                  <strong>No existen</strong> Publicaciones que mostrar...
+               </div>
+               <div *ngIf="mLoading" class="alert alert-warning" role="alert">
+                  <strong>Cargando</strong> por favor espere...
+               </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <mat-form-field class="maxWidth">
-                  <mat-label>Descripción *</mat-label>
-                  <textarea matInput formControlName="descripcion"></textarea>
-                  <mat-error
-                    *ngIf="firstFormGroup.controls['descripcion'].errors && firstFormGroup.controls['descripcion'].errors.required">
-                    La descripción no puede estar vacía.
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <mat-form-field class="maxWidth">
-                  <mat-label>Tipo de Propiedad *</mat-label>
-                  <mat-select formControlName="tipoDePropiedad">
-                    <mat-option *ngFor="let item of mTiposDePropiedades" [value]="item.value" placeholder="Seleccione">
-                      {{item.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                  <mat-error
-                    *ngIf="firstFormGroup.controls['tipoDePropiedad'].errors && firstFormGroup.controls['tipoDePropiedad'].errors.required">
-                    El tipo de propiedad no puede estar vacío.
-                  </mat-error>
-                </mat-form-field>
-              </div>
-              <div class="col-md-4">
-                <mat-form-field class="maxWidth">
-                  <mat-label>Tipo de Publicación *</mat-label>
-                  <mat-select formControlName="tipoDePublicacion">
-                    <mat-option *ngFor="let item of mTiposDePublicaciones" [value]="item.value"
-                      placeholder="Seleccione">
-                      {{item.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                  <mat-error
-                    *ngIf="firstFormGroup.controls['tipoDePublicacion'].errors && firstFormGroup.controls['tipoDePublicacion'].errors.required">
-                    El tipo de publicación no puede estar vacío.
-                  </mat-error>
-                </mat-form-field>
-              </div>
-              <div class="col-md-4" style="display: grid !important">
-                <div style="margin: auto">
-                  <label id="adio-group-label">Aparece en galería *</label>
-                  <mat-radio-group aria-labelledby="radio-group-label" class="radio-group"
-                    formControlName="apareceEnLaGaleria" (change)="print()">
-                    <mat-radio-button class="radio-button" [value]="true" color="primary">
-                      Si
-                    </mat-radio-button>
-                    <mat-radio-button class="radio-button" [value]="false" color="primary">
-                      No
-                    </mat-radio-button>
-                  </mat-radio-group>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="form-group text-right">
-                <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
+         </div>
+      </div>
+   </div>
+
+   <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row">
+      <div class="col-md-12">
+         <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <ng-template matStepperIcon="edit">
+               <i class="fa fa-check"></i>
+            </ng-template>
+            <mat-step [stepControl]="firstFormGroup">
+               <form [formGroup]="firstFormGroup">
+                  <ng-template matStepLabel>Datos Generales</ng-template>
+                  <div class="row">
+                     <div class="col-md-9">
+                        <mat-form-field class="maxWidth">
+                           <mat-label>Título *</mat-label>
+                           <input matInput formControlName="titulo">
+                           <mat-error
+                              *ngIf="firstFormGroup.controls['titulo'].errors && firstFormGroup.controls['titulo'].errors.required">
+                              El título no puede estar vacío.
+                           </mat-error>
+                           <mat-error
+                              *ngIf="firstFormGroup.controls['titulo'].errors && firstFormGroup.controls['titulo'].errors.minlength">
+                              El título debe tener mínimo 5 caracteres.
+                           </mat-error>
+                        </mat-form-field>
+                     </div>
+                     <div class="col-md-3">
+                        <mat-form-field class="maxWidth">
+                           <mat-label>Estado *</mat-label>
+                           <mat-select formControlName="estado">
+                              <mat-option *ngFor="let item of mEstados" [value]="item.value" placeholder="Seleccione">
+                                 {{item.viewValue}}
+                              </mat-option>
+                           </mat-select>
+                           <mat-error
+                              *ngIf="firstFormGroup.controls['estado'].errors && firstFormGroup.controls['estado'].errors.required">
+                              El estado no puede estar vacío.
+                           </mat-error>
+                        </mat-form-field>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <mat-form-field class="maxWidth">
+                           <mat-label>Descripción *</mat-label>
+                           <textarea matInput formControlName="descripcion"></textarea>
+                           <mat-error
+                              *ngIf="firstFormGroup.controls['descripcion'].errors && firstFormGroup.controls['descripcion'].errors.required">
+                              La descripción no puede estar vacía.
+                           </mat-error>
+                        </mat-form-field>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-4">
+                        <mat-form-field class="maxWidth">
+                           <mat-label>Tipo de Propiedad *</mat-label>
+                           <mat-select formControlName="tipoDePropiedad">
+                              <mat-option *ngFor="let item of mTiposDePropiedades" [value]="item.value"
+                                 placeholder="Seleccione">
+                                 {{item.viewValue}}
+                              </mat-option>
+                           </mat-select>
+                           <mat-error
+                              *ngIf="firstFormGroup.controls['tipoDePropiedad'].errors && firstFormGroup.controls['tipoDePropiedad'].errors.required">
+                              El tipo de propiedad no puede estar vacío.
+                           </mat-error>
+                        </mat-form-field>
+                     </div>
+                     <div class="col-md-4">
+                        <mat-form-field class="maxWidth">
+                           <mat-label>Tipo de Publicación *</mat-label>
+                           <mat-select formControlName="tipoDePublicacion">
+                              <mat-option *ngFor="let item of mTiposDePublicaciones" [value]="item.value"
+                                 placeholder="Seleccione">
+                                 {{item.viewValue}}
+                              </mat-option>
+                           </mat-select>
+                           <mat-error
+                              *ngIf="firstFormGroup.controls['tipoDePublicacion'].errors && firstFormGroup.controls['tipoDePublicacion'].errors.required">
+                              El tipo de publicación no puede estar vacío.
+                           </mat-error>
+                        </mat-form-field>
+                     </div>
+                     <div class="col-md-4" style="display: grid !important">
+                        <div style="margin: auto">
+                           <label id="adio-group-label">Aparece en galería *</label>
+                           <mat-radio-group aria-labelledby="radio-group-label" class="radio-group"
+                              formControlName="apareceEnLaGaleria" (change)="print()">
+                              <mat-radio-button class="radio-button" [value]="true" color="primary">
+                                 Si
+                              </mat-radio-button>
+                              <mat-radio-button class="radio-button" [value]="false" color="primary">
+                                 No
+                              </mat-radio-button>
+                           </mat-radio-group>
+                        </div>
+                     </div>
+                  </div>
+                  <div>
+                     <div class="form-group text-right">
+                        <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
+                           <i class="fa fa-backward"></i>
+                           Regresar
+                        </button>
+                        <button [disabled]="!firstFormGroup.valid " style="margin: 5px" class="btn btn-primary"
+                           matStepperNext>
+                           <i class="fa fa-forward"></i>
+                           Siguiente
+                        </button>
+                     </div>
+                  </div>
+               </form>
+            </mat-step>
+
+            <mat-step [stepControl]="secondFormGroup">
+               <form [formGroup]="secondFormGroup">
+                  <ng-template matStepLabel>Imágenes</ng-template>
+
+                  <div>
+                     <button mat-button matStepperPrevious>Back</button>
+                     <button mat-button matStepperNext>Next</button>
+                  </div>
+               </form>
+            </mat-step>
+
+            <mat-step>
+               <ng-template matStepLabel>Done</ng-template>
+               You are now done.
+               <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button (click)="stepper.reset()">Reset</button>
+               </div>
+            </mat-step>
+         </mat-horizontal-stepper>
+      </div>
+   </div>
+
+   <div *ngIf="mFormaEstado == enCRUD.Leer" class="row">
+      <div class="col-md-12">
+         <form>
+            <div class="form-group text-right">
+               <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
                   <i class="fa fa-backward"></i>
                   Regresar
-                </button>
-                <button [disabled]="!firstFormGroup.valid " style="margin: 5px" class="btn btn-primary" matStepperNext>
-                  <i class="fa fa-forward"></i>
-                  Siguiente
-                </button>
-              </div>
+               </button>
             </div>
-          </form>
-        </mat-step>
-
-        <mat-step [stepControl]="secondFormGroup">
-          <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Imágenes</ng-template>
-
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+            <div class="form-group">
+               <label for="">titulo</label>
+               <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.titulo"
+                  name="mCategoriasSelect.titulo" readonly />
             </div>
-          </form>
-        </mat-step>
 
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          You are now done.
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-          </div>
-        </mat-step>
-      </mat-horizontal-stepper>
-    </div>
-  </div>
-
-  <div *ngIf="mFormaEstado == enCRUD.Leer" class="row">
-    <div class="col-md-12">
-      <form>
-        <div class="form-group text-right">
-          <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
-            <i class="fa fa-backward"></i>
-            Regresar
-          </button>
-        </div>
-        <div class="form-group">
-          <label for="">titulo</label>
-          <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.titulo" name="mCategoriasSelect.titulo"
-            readonly />
-        </div>
-
-        <div class="form-group">
-          <label for="">Descripcion</label>
-          <textarea class="form-control" type="text" [(ngModel)]="mCategoriasSelect.descripcion"
-            name="mCategoriasSelect.descripcion" readonly></textarea>
-        </div>
-      </form>
-    </div>
-  </div>
+            <div class="form-group">
+               <label for="">Descripcion</label>
+               <textarea class="form-control" type="text" [(ngModel)]="mCategoriasSelect.descripcion"
+                  name="mCategoriasSelect.descripcion" readonly></textarea>
+            </div>
+         </form>
+      </div>
+   </div>
 </div>

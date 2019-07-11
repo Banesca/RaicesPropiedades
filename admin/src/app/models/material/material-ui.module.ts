@@ -1,37 +1,38 @@
 // https://v6.material.angular.io/components/categories
-import {MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatProgressBarModule, MatFormFieldModule, MatInputModule, MatTooltipModule, MatBadgeModule, MatRadioModule, MatSelectModule, MatSlideToggleModule, MatStepperModule, MatIconModule} from '@angular/material';
- import { NgModule } from '@angular/core';
+import { MatButtonModule, MatCheckboxModule, MatProgressSpinnerModule, MatProgressBarModule, MatFormFieldModule, MatInputModule, MatTooltipModule, MatBadgeModule, MatRadioModule, MatSelectModule, MatSlideToggleModule, MatStepperModule, MatIconModule, MatCardModule } from '@angular/material';
+import { NgModule } from '@angular/core';
 
- @NgModule({
+@NgModule({
    imports: [
-       MatButtonModule, 
+      MatButtonModule,
       MatCheckboxModule,
-       MatProgressSpinnerModule,
-       MatProgressBarModule,
-       MatFormFieldModule,
-       MatInputModule,
-       MatTooltipModule,
-       MatBadgeModule,
-       MatRadioModule,
-       MatSelectModule,
-       MatSlideToggleModule,    
-       MatStepperModule,
-       MatIconModule
-     ],
+      MatProgressSpinnerModule,
+      MatProgressBarModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatTooltipModule,
+      MatBadgeModule,
+      MatRadioModule,
+      MatSelectModule,
+      MatSlideToggleModule,
+      MatStepperModule,
+      MatIconModule
+   ],
    exports: [
-       MatButtonModule, 
-       MatCheckboxModule,
-       MatProgressSpinnerModule,
-       MatProgressBarModule,
-       MatFormFieldModule,
-       MatInputModule,
-       MatTooltipModule,
-       MatBadgeModule,
-       MatRadioModule,
-       MatSelectModule,
-       MatSlideToggleModule,    
-       MatStepperModule,
-       MatIconModule
-     ]
- })
- export class MaterialUiModule { }
+      MatButtonModule,
+      MatCheckboxModule,
+      MatProgressSpinnerModule,
+      MatProgressBarModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatTooltipModule,
+      MatBadgeModule,
+      MatRadioModule,
+      MatSelectModule,
+      MatSlideToggleModule,
+      MatStepperModule,
+      MatIconModule,
+      MatCardModule
+   ]
+})
+export class MaterialUiModule { }

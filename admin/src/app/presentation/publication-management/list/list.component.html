@@ -1,0 +1,67 @@
+<div class="row">
+   
+   <div class="col-12">
+      <mat-card class="example-card">
+            <mat-progress-bar *ngIf="loading" class="card-progress-bar" mode="indeterminate"></mat-progress-bar>
+         <mat-card-header>
+            <div class="row">
+               <div class="col-md-10">
+                  <!-- filtros aqui -->
+               </div>
+
+               <div class="col-md-2 text-right">
+                  <button [routerLink]="['/gestionar-publicaciones/form']" mat-raised-button color="success">
+                     <i class="fa fa-plus"></i>
+                     Nueva
+                  </button>
+               </div>
+            </div>
+         </mat-card-header>
+         <mat-card-content>
+            <div class="table-responsive">
+               <table class="table table-striped">
+                  <thead class="thead-dark">
+                     <th>#</th>
+                     <th>Titulo</th>
+                     <th>Descripcion</th>
+                     <th>Tipo</th>
+                     <th>Oportunidad</th>
+                     <th>Novedad</th>
+                     <th>Estado</th>
+                     <th></th>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let item of data; let i = index">
+                        <td scope="row">{{i+1}}</td>
+                        <td>{{item.titulo}}</td>
+                        <td>{{item.descripcion}}</td>
+                        <td>{{item.tipo}}</td>
+                        <td>{{item.oportunidad}}</td>
+                        <td>{{item.novedad}}</td>
+                        <td>{{item.estado}}</td>
+                        <td class="text-right">
+                           <button (click)="show(item)" type="button" class="btn btn-secondary">
+                              <i class="fa fa-eye"></i>
+                           </button>
+                           <button [routerLink]="['/gestionar-publicaciones/form', item.id]" type="button" class="btn btn-primary">
+                              <i class="fa fa-pencil"></i>
+                           </button>
+                           <button (click)="delete(item.id)" type="button" class="btn btn-danger">
+                              <i class="fa fa-trash"></i>
+                           </button>
+                        </td>
+                     </tr>
+                     <tr *ngIf="data.length == 0">
+                        <td colspan="7" class="text-center">
+                           <strong>No existen</strong> publicaciones que mostrar...
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+              
+            </div>
+         </mat-card-content>
+      </mat-card>
+   </div>
+
+</div>
