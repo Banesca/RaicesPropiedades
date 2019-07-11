@@ -9,8 +9,10 @@
     span {
         font-size: 2.5rem;
     }
+    &:focus {
+        outline: 0px;
+    }
 }
-
     
 input[type='number'] {
     -moz-appearance:textfield;

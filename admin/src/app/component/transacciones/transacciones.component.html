@@ -24,7 +24,6 @@
             <tbody>
               <tr
                 *ngFor="let categoria of mCategorias; let i = index"
-                (dblclick)="modificar(categoria)"
               >
               <td  class="d-flex justify-content-center">{{i + 1}}</td>
               <td>{{categoria.nombre_apellido}}</td>
@@ -40,13 +39,14 @@
                 >
                 <i class="far fa-eye"></i>    
                           </button>
+                          <!--
                 <button
                   (click)="modificar(categoria)"
                   type="button"
                   class="btn mr-2 btn-primary"
                 >
                 <i class="fas fa-pencil-alt"></i>
-                </button>
+                </button>-->
                 <button
                   (click)="eliminar(categoria.idTransacciones)"
                   type="button"

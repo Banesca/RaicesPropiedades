@@ -38,7 +38,7 @@
       </button></div>
       <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback text-center">
           <h6 *ngIf="f.email.errors.required">El Email es Requerido</h6>
-          <h6 *ngIf="f.email.errors.email">Por favor ingrese un Email válido</h6>
+          <h6 *ngIf="f.email.errors.email">Colocal email que cumpla con las siguientes características: testing@gmail.com</h6>
       </div>
       <div *ngIf="capsOn" type="alert" class="invalid-feedback text-center">
           <h6>Bloq Mayús activado</h6>
