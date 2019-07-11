@@ -1,265 +1,264 @@
 <!-- Modal nuevo -->
 <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="newUserModalLabel">Nuevo Usuario</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="newUser">
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" class="form-control" formControlName="name">
-          </div>
-    
-      
-          <div class="form-group">
-            <label>Correo Electronico</label>
-            <input type="email" class="form-control" formControlName="email">
-            <p *ngIf="!newUser.get('email').valid" class="text-danger">El email es inválido</p>
-          </div>
-          <div class="form-group">
-            <label>Contraseña</label>
-            <input type="password" class="form-control" formControlName="password">
-          </div>
-          <div class="form-group">
-            <label>Confirmar Contraseña</label>
-            <input type="password" class="form-control" formControlName="password_confirmation">
-          </div>
-      
-        </form>
-      </div>
-      <div class="modal-footer">
-        <mat-spinner *ngIf='inPromise' diameter="30" style="margin: 0 auto"></mat-spinner>
-        <div *ngIf='!inPromise'>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-success" (click)="addUser()" [disabled]="newUser.invalid || inPromise">
-            Guardar
-          </button>
+   aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="newUserModalLabel">Nuevo Usuario</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form [formGroup]="newUser">
+               <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control" formControlName="name">
+               </div>
 
-        </div>
+
+               <div class="form-group">
+                  <label>Correo Electronico</label>
+                  <input type="email" class="form-control" formControlName="email">
+                  <p *ngIf="!newUser.get('email').valid" class="text-danger">El email es inválido</p>
+               </div>
+               <div class="form-group">
+                  <label>Contraseña</label>
+                  <input type="password" class="form-control" formControlName="password">
+               </div>
+               <div class="form-group">
+                  <label>Confirmar Contraseña</label>
+                  <input type="password" class="form-control" formControlName="password_confirmation">
+               </div>
+
+            </form>
+         </div>
+         <div class="modal-footer">
+            <mat-spinner *ngIf='inPromise' diameter="30" style="margin: 0 auto"></mat-spinner>
+            <div *ngIf='!inPromise'>
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+               <button type="button" class="btn btn-success" (click)="addUser()"
+                  [disabled]="newUser.invalid || inPromise">
+                  Guardar
+               </button>
+
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>
 
 <!-- Modal Edit -->
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar {{editUser.get('name').value}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="editUser">
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" class="form-control" formControlName="name">
-          </div>
-          <div class="form-group">
-            <label>Apellido</label>
-            <input type="text" class="form-control" formControlName="apellido">
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control" formControlName="email">
-            <p *ngIf="!editUser.get('email').valid" class="text-danger">El email es inválido</p>
-          </div>
-          <!-- <div class="form-group">
+   aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar {{editUser.get('name').value}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form [formGroup]="editUser">
+               <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control" formControlName="name">
+               </div>
+               <div class="form-group">
+                  <label>Apellido</label>
+                  <input type="text" class="form-control" formControlName="apellido">
+               </div>
+               <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control" formControlName="email">
+                  <p *ngIf="!editUser.get('email').valid" class="text-danger">El email es inválido</p>
+               </div>
+               <!-- <div class="form-group">
               <label>Nombre de Usuario</label>
               <input type="text" class="form-control" formControlName="userName">
               <p *ngIf="!editUser.get('userName').valid" class="text-danger">Debe contener entre 4-32 carácteres, sin espacios y solo caracteres '_' '-' '.'</p>
             </div> -->
-          <div class="form-group">
-            <label>Tipo de Perfil</label>
-            <select class="form-control" formControlName="fk_idPerfil">
-              <option *ngFor="let lis of list_rol" value="{{lis.idPerfil}}">{{lis.nombre}}</option>
-            </select>
-          </div>
-          <!-- <div class="form-group">
+               <div class="form-group">
+                  <label>Tipo de Perfil</label>
+                  <select class="form-control" formControlName="fk_idPerfil">
+                     <option *ngFor="let lis of list_rol" value="{{lis.idPerfil}}">{{lis.nombre}}</option>
+                  </select>
+               </div>
+               <!-- <div class="form-group">
               <label for="imgPerfil">Imagen del Perfil:</label>
               <input #imageEdit type="file" (change)="onFileChange($event)" >
             </div> -->
-        </form>
+            </form>
+         </div>
+         <div class="modal-footer">
+            <mat-spinner *ngIf='inPromise' diameter="30" style="margin: 0 auto"></mat-spinner>
+            <div *ngIf='!inPromise'>
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+               <button type="button" class="btn btn-success" (click)="upgradeUser()"
+                  [disabled]="editUser.invalid || inPromise">
+                  Guardar Cambios
+               </button>
+            </div>
+         </div>
       </div>
-      <div class="modal-footer">
-        <mat-spinner *ngIf='inPromise' diameter="30" style="margin: 0 auto"></mat-spinner>
-        <div *ngIf='!inPromise'>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-success" (click)="upgradeUser()"
-            [disabled]="editUser.invalid || inPromise">
-            Guardar Cambios
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+   </div>
 </div>
 
 <!-- Eliminar Usuario -->
 <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteUserModalLabel">Eliminar Usuario {{editUser.get('name').value}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+   aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="deleteUserModalLabel">Eliminar Usuario {{editUser.get('name').value}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <h3 class="text-center">¿Esta seguro de desea eliminar el usuario?</h3>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">no</button>
+            <button type="button" class="btn btn-success" (click)="deleteUser()">Si</button>
+         </div>
       </div>
-      <div class="modal-body">
-        <h3 class="text-center">¿Esta seguro de desea eliminar el usuario?</h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">no</button>
-        <button type="button" class="btn btn-success" (click)="deleteUser()">Si</button>
-      </div>
-    </div>
-  </div>
+   </div>
 </div>
 
 <!-- Modal imagen -->
 <div class="modal fade" id="imagen" tabindex="-1" role="dialog" aria-labelledby="eliminarModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-white" id="eliminarModal">Ver imagen</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title text-white" id="eliminarModal">Ver imagen</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div style="width: 100%; text-align: center">
+               <img *ngIf="imageUrl" [src]="imageUrl" width="300" alt="">
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+         </div>
       </div>
-      <div class="modal-body">
-        <div style="width: 100%; text-align: center">
-          <img *ngIf="imageUrl" [src]="imageUrl" width="300" alt="">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
+   </div>
 </div>
 
 <div class="container" style="max-width: 100%;">
-  <div class="row">
-    <div class="col-md-12">
-      <h4 class="p-2">Gestión de Usuarios </h4>
-      <div [formGroup]="filterForm">
-        <div class="form-group mx-auto" style="width: 100%; display: flex;">
+   <div class="row">
+      <div class="col-md-12">
+         <h4 class="p-2">Gestión de Usuarios </h4>
+         <div [formGroup]="filterForm">
+            <div class="form-group mx-auto" style="width: 100%; display: flex;">
 
-          <input type="text" placeholder="Buscar por nombre ,  usuario , email" formControlName="filtro"
-            class="form-control" style="width: 80%;">
+               <input type="text" placeholder="Buscar por nombre ,  usuario , email" formControlName="filtro"
+                  class="form-control" style="width: 80%;">
 
-   
-          <button type="button" class="btn btn-success" style="margin-left:10px; " (click)="filtrar()"
-            [disabled]=" inPromise">
-            Buscar
-          </button>
-          <button class="btn btn-success btn-sm ml-4" data-toggle="modal" data-target="#newUserModal"
-            style="margin-left:10px;"> Agregar Usuario</button>
-        </div>
+
+               <button type="button" class="btn btn-success" style="margin-left:10px; " (click)="filtrar()"
+                  [disabled]=" inPromise">
+                  Buscar
+               </button>
+               <button class="btn btn-success btn-sm ml-4" data-toggle="modal" data-target="#newUserModal"
+                  style="margin-left:10px;"> Agregar Usuario</button>
+            </div>
+
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-12">
+         <table class="table table-striped" *ngIf="!inPromise">
+            <thead>
+               <tr>
+                  <th scope="col">Nombre <i class="fa fa-sort" aria-hidden="true" (click)="ordenar('nombre')"></i></th>
+                  <th scope="col">Email<i class="fa fa-sort" aria-hidden="true" (click)="ordenar('email')"></i></th>
+                  <th scope="col">Status</th>
+
+               </tr>
+            </thead>
+            <tbody>
+               <!--  <p *ngIf="listUsers && !listUsers.lenght" class="mx-auto">lista vacia</p> -->
+               <tr *ngFor="let user of listUsers">
+                  <th scope="row">{{user.name}}</th>
+                  <td>{{user.email}}</td>
+                  <td>{{user.status_user.descripcion}}</td>
+
+               </tr>
+            </tbody>
+
+
+
+         </table>
+         <mat-spinner *ngIf="inPromise" [diameter]="50" style="margin: 0 auto;"></mat-spinner>
 
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table table-striped" *ngIf="!inPromise">
-        <thead>
-          <tr>
-            <th scope="col">Nombre <i class="fa fa-sort" aria-hidden="true" (click)="ordenar('nombre')"></i></th>
-            <th scope="col">Email<i class="fa fa-sort" aria-hidden="true" (click)="ordenar('email')"></i></th>
-            <th scope="col">Status</th>
-         
-          </tr>
-        </thead>
-        <tbody>
-          <!--  <p *ngIf="listUsers && !listUsers.lenght" class="mx-auto">lista vacia</p> -->
-          <tr *ngFor="let user of listUsers">
-            <th scope="row">{{user.name}}</th>
-            <td>{{user.email}}</td>
-            <td>{{user.status_user.descripcion}}</td>
-         
-          </tr>
-        </tbody>
-
-
-
-      </table>
-      <mat-spinner *ngIf="inPromise" [diameter]="50" style="margin: 0 auto;"></mat-spinner>
-
-    </div>
-  </div>
+   </div>
 </div>
 
 <!-- Modal imagen -->
 <div class="modal fade" id="gestionPerfil" tabindex="-1" role="dialog" aria-labelledby="eliminarModal"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-white" id="eliminarModal">Ver Perfil</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <button data-toggle="modal" data-dismiss="modal" data-target="#viewPerfil"
-          class="btn btn-primary boton-gestion">Datos Personales</button>
-        <button data-toggle="modal" data-dismiss="modal" data-target="#viewDomicilio"
-          class="btn btn-primary boton-gestion">Domicilios</button>
-        <button data-toggle="modal" data-dismiss="modal" data-target="#viewPersonasA"
-          class="btn btn-primary boton-gestion">Personas Autorizadas</button>
+   aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title text-white" id="eliminarModal">Ver Perfil</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <button data-toggle="modal" data-dismiss="modal" data-target="#viewPerfil"
+               class="btn btn-primary boton-gestion">Datos Personales</button>
+            <button data-toggle="modal" data-dismiss="modal" data-target="#viewDomicilio"
+               class="btn btn-primary boton-gestion">Domicilios</button>
+            <button data-toggle="modal" data-dismiss="modal" data-target="#viewPersonasA"
+               class="btn btn-primary boton-gestion">Personas Autorizadas</button>
 
-        <button data-toggle="modal" data-dismiss="modal" data-target="#viewFacturacion"
-          class="btn btn-primary boton-gestion">Facturacion</button>
+            <button data-toggle="modal" data-dismiss="modal" data-target="#viewFacturacion"
+               class="btn btn-primary boton-gestion">Facturacion</button>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
+   </div>
 </div>
 <div class="modal fade" id="verMayorista" tabindex="-1" role="dialog" aria-labelledby="eliminarModal"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-white" id="eliminarModal">Datos Mayorista</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-center">
-          <mat-spinner *ngIf="inPromiseMayorista" [diameter]="50" style="margin: 0 auto;"></mat-spinner>
+   aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title text-white" id="eliminarModal">Datos Mayorista</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body text-center">
+            <mat-spinner *ngIf="inPromiseMayorista" [diameter]="50" style="margin: 0 auto;"></mat-spinner>
 
-        <div *ngIf="datoMayorista && !inPromiseMayorista">
-            <h5 class="texto">Nombre Del Local:</h5>
-            <p>{{datoMayorista[0].NOMBRE_LOCAL_MAYORISTA}}</p>
-            <h5 class="texto">Domicilio Del Local:</h5>
-            <p>{{datoMayorista[0].DOMICILIO_LOCAL_MAYORISTA}}</p>
-            <h5 class="texto">Telefono Del Local:</h5>
-            <p>{{datoMayorista[0].TELEFONO_LOCAL_MAYORISTA}}</p>
-            
-        </div>
-        <div *ngIf="!datoMayorista && !inPromiseMayorista">
-        <p>Este Perfil no posee datos mayorista</p>
-            
-        </div>
+            <div *ngIf="datoMayorista && !inPromiseMayorista">
+               <h5 class="texto">Nombre Del Local:</h5>
+               <p>{{datoMayorista[0].NOMBRE_LOCAL_MAYORISTA}}</p>
+               <h5 class="texto">Domicilio Del Local:</h5>
+               <p>{{datoMayorista[0].DOMICILIO_LOCAL_MAYORISTA}}</p>
+               <h5 class="texto">Telefono Del Local:</h5>
+               <p>{{datoMayorista[0].TELEFONO_LOCAL_MAYORISTA}}</p>
+
+            </div>
+            <div *ngIf="!datoMayorista && !inPromiseMayorista">
+               <p>Este Perfil no posee datos mayorista</p>
+
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
+   </div>
 </div>
-
-

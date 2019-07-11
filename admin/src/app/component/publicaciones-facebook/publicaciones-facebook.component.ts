@@ -63,6 +63,8 @@ export class PublicacionesFacebookComponent implements OnInit {
  
   signOut(): void {
     this.authService.signOut();
+    localStorage.clear();
+    window.location.href = "/"
   }
 
   getPost() {
