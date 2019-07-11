@@ -9,7 +9,7 @@ import { getHeaders } from '../../misc/Headers';
 })
 export class PublicacionesFacebookService {
   private mService = 'https://graph.facebook.com/';
-  private accesToken: string = "EAAGTym1IYtIBAE3DidHhTC4aummBExZAKaPhVZBDBn3LwzpCSa6x9GtwXH3is8P2cuAHvSvSyGni36hHVT7kwTzY6ORUMArHUVaUmNOmaetsebb9xylxAoIN76M7FtuEB3dZAEoSIjq04tdSAkRRnCIO4O7ZAQl0eqGlyeaav6kSqdLd3QTdkPIYL9zOLNp4gPZAfllarXwZDZD"
+  private accesToken: string = "EAAGTym1IYtIBAKdPYdEFOZAZC3ww6cDNjbeosAVm67zXBcZAxyYjzIHSGwDHKKNkAiS6Lbdj4xo17ppq7Skazm7CGDv6QzIhIEYTim2NSIbKe5VhhhZAuUi99BZCsiZBPDJWZCVCW17OQZAqTIpOMBOZAtZAwILzWOgNtg1L67QEvL1AZDZD"
   private appId= "866743800366542"
   constructor(
     private _HttpClient: HttpClient) {

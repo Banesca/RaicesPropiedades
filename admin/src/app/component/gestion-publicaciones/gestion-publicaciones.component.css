@@ -1,0 +1,16 @@
+.maxWidth {
+  width: 100% !important;
+}
+
+textarea {
+  height: 50px;
+}
+
+.radio-group {
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radio-button {
+  margin: 5px;
+}

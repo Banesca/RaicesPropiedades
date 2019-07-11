@@ -52,6 +52,7 @@
             >
             <td  class="d-flex justify-content-center">{{i + 1}}</td>
             <td>{{post.message}}</td>
+            <td>{{post.link}}</td>
             <td>{{post.created_time | date:'dd-MM-yyyy' }}</td>
             <td>
                 <button
@@ -154,6 +155,22 @@
         El Mensaje es requerido
         </div>
       </div>
+      <div class="form-group">
+        <label for="">Enlace</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="link"
+          placeholder="Enlace"
+        />
+        <div
+          *ngIf="mForma.controls['link'].errors?.required"
+          class="alert alert-danger"
+          role="alert"
+        >
+        El Enlace es requerido
+        </div>
+      </div>
     </form>
   </div>
 </div>
@@ -181,7 +198,16 @@
             readonly
           />
         </div>
-
+        <div class="form-group">
+          <label for="">Enlace</label>
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="mPostSelect.link"
+            name="mPostSelect.link"
+            readonly
+          />
+        </div>
         <div class="form-group">
           <label for="">Fecha de Creación</label>
           <input
@@ -195,5 +221,4 @@
       </form>
     </div>
   </div>
-  -->
 </div>

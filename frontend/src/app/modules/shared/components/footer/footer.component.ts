@@ -13,10 +13,11 @@ export class FooterComponent {
   public baseUrl: string = 'sucursales'
 
   
-  constructor(private _ConfiguracionGeneral: ConfiguracionGeneralService,private _SucusalesService: SucursalesService) { 
+  constructor(private _ConfiguracionGeneral: ConfiguracionGeneralService,private _SucursalesService: SucursalesService) { 
 
     this.mCategoria;
     this.getAll();
+    this.getAllSucusales()
   }
 
   ngOnInit() {
@@ -35,15 +36,15 @@ export class FooterComponent {
   }
 
   getAllSucusales() {
-    this._SucusalesService
+    this._SucursalesService
       .All()
       .then(data => {
         this.mSucusales = data.suculsales;
+        console.log(this.mCategoria);
       })
       .catch(error => {
-     
+        console.log(this.mCategoria);
       });
   }
-
 
 }

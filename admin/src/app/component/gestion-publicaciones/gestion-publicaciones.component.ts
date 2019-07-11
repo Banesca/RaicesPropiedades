@@ -4,7 +4,8 @@ import {
   NgForm,
   FormGroup,
   FormBuilder,
-  Validators
+  Validators,
+  FormControl
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { IGestionPublicaciones } from './../../services/gestion-publicaciones/gestion-publicaciones.interface'
@@ -19,13 +20,23 @@ declare var $;
   styleUrls: ['./gestion-publicaciones.component.css']
 })
 export class GestionPublicacionesComponent implements OnInit {
-  mCategorias: IGestionPublicaciones[];
+  isLinear = true;
+
+  mTiposDePublicaciones: any[];
+  mTiposDePropiedades: any[];
+
   mCategoriasSelect: IGestionPublicaciones;
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
+  mEstados: any[] = [];
 
-  mForma: FormGroup;
+  isApareceEnLaGaleria = false;
+
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+
   mFormaEstado: string;
   enCRUD = enCRUD;
 
@@ -34,39 +45,61 @@ export class GestionPublicacionesComponent implements OnInit {
     private _GestionPublicacionesService: GestionPublicacionesService,
     private _AlertsService: AlertsService
   ) {
-    this.mCategorias = [];
+    this.mEstados = [];
+    this.mTiposDePropiedades = [];
+    this.mTiposDePublicaciones = [];
+
+    // Inicializamos los combobox que utilizaremos
+
+    this.mEstados = [{ value: 1, viewValue: "Activa" }, { value: 0, viewValue: "Inactiva" }];
+    this.mTiposDePropiedades = [{ value: 1, viewValue: "Tipo 1" }, { value: 2, viewValue: "Tipo 2" }];
+    this.mTiposDePublicaciones = [{ value: 1, viewValue: "Publicacion 1" }, { value: 2, viewValue: "Publicacion 2" }];
     this.mCategoriasSelect = GestionPublicaciones.empy();
-    this.mForma = this.generarFormulario();
+
+
+
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
   }
 
-  ngOnInit() {}
-
-  generarFormulario() {
-    // Estructura de nuestro formulario
-    return this._formBuilder.group({
-      id: [""],
-      titulo: ["", [Validators.required, Validators.minLength(5)]],
-      descripcion: ["", Validators.required],
-      estado: [""]
+  ngOnInit() {
+    //Inicializamos los 3 form groups para el steeper
+    this.firstFormGroup = this._formBuilder.group({
+      titulo: [null, [Validators.required, Validators.minLength(5)]],
+      estado: [null, Validators.required],
+      descripcion: [null, Validators.required],
+      tipoDePropiedad: [null, Validators.required],
+      tipoDePublicacion: [null, Validators.required],
+      apareceEnLaGaleria: [true, Validators.required]
     });
+
+
+    this.secondFormGroup = this._formBuilder.group({
+
+    });
+
+    this.thirdFormGroup = this._formBuilder.group({
+
+    });
+
   }
+
 
   getAll() {
     this.mLoading = true;
+    /*
     this._GestionPublicacionesService
       .allCategorias()
       .then(data => {
-        this.mCategorias = data.result;
+        this.mTipoDePublicacion = data.result;
         this.mLoading = false;
       })
       .catch(error => {
-      });
+      });*/
   }
 
   modificar(pCategoria: IGestionPublicaciones) {
-    this.mForma.setValue(pCategoria);
+    //  this.mForma.setValue(pCategoria);
     this.mFormaEstado = enCRUD.Actualizar;
   }
 
@@ -83,7 +116,9 @@ export class GestionPublicacionesComponent implements OnInit {
   }
 
   nuevo() {
-    this.mForma.reset();
+    this.firstFormGroup.reset();
+    this.secondFormGroup.reset();
+    this.thirdFormGroup.reset();
     this.mFormaEstado = enCRUD.Crear;
   }
 
@@ -94,12 +129,13 @@ export class GestionPublicacionesComponent implements OnInit {
   }
 
   accion() {
+    /*
     this.mCategoriasSelect = this.mForma.value as IGestionPublicaciones;
     if (this.mFormaEstado === enCRUD.Crear) {
       this.guardar();
     } else if (this.mFormaEstado === enCRUD.Actualizar) {
       this.actualizar();
-    }
+    }*/
   }
 
   guardar() {
@@ -126,5 +162,11 @@ export class GestionPublicacionesComponent implements OnInit {
       })
       .catch(error => {
       });
+  }
+
+  print() {
+    console.log(
+      this.firstFormGroup.controls['apareceEnLaGaleria'].value
+    );
   }
 }

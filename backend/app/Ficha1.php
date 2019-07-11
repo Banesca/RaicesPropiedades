@@ -15,6 +15,7 @@ class Ficha1 extends Model {
         'fk_tipoPropiedad',
         'esUnaPropiedad',
         'esUnaNovedad',
+        'esUnaOportunidad',
         'apareceEnGaleriaInicia',
         'fk_estado_publicacion',
     ];

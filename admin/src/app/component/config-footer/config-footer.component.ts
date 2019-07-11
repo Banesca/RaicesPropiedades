@@ -20,7 +20,15 @@ export class ConfigFooterComponent implements OnInit {
         private _alertService: AlertsService,
         private fb: FormBuilder
     ) {
-        this.myForm = fb.group({
+
+
+
+    }
+
+    ngOnInit() {
+        this.getConfigFooter();
+        this.getMails();
+        this.myForm = this.fb.group({
             quienesSomos: ['',Validators.required],
             direccion: ['',Validators.required],
             celular1: ['',Validators.required],
@@ -30,14 +38,7 @@ export class ConfigFooterComponent implements OnInit {
             url_intagram: ['',Validators.required],
             url_twitter: ['',Validators.required]
 
-        })
-
-
-    }
-
-    ngOnInit() {
-        this.getConfigFooter();
-        this.getMails()
+        });
     }
 
     getConfigFooter() {
@@ -102,18 +103,10 @@ export class ConfigFooterComponent implements OnInit {
     upgradeCondigFooter() {
         console.log(this.myForm.value);
         const val = this.myForm.value
-        const data: FormData = new FormData
+ 
+        console.log(val);
 
-        data.append('quienesSomos', val.quienesSomos);
-        data.append('direccion', val.direccion);
-        data.append('celular1', val.celular1);
-        data.append('celular2', val.celular2);
-        data.append('correo', val.correo);
-        data.append('url_face', val.url_face);
-        data.append('url_intagram', val.url_intagram);
-        data.append('url_twitter', val.url_twitter);
-
-        this._confgFooterService._upgradeConfigFooter(data).subscribe(
+        this._confgFooterService._upgradeConfigFooter(val).subscribe(
             (resp: any) => {
 
                  this.getConfigFooter();

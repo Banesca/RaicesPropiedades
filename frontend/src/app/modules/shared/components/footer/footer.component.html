@@ -14,7 +14,7 @@
     <div class="dropdown-divider"></div>
     <li> <img src="../../../../../assets/images/icons/Recurso 26.svg" class="mr-2 footer-icons" alt=""><a [routerLinkActive]="['active-route']" ngbDropdown class="">
       <span ngbDropdownToggle class="text-white">
-           Sucursales
+           SUCURSALES
             <div ngbDropdownMenu class="m-0 p-0 brown-text" aria-labelledby="dropdownBasic1">
               <ng-container *ngFor="let sucursal of mSucusales">
               <button class="text-uppercase" [routerLinkActive]="'active'" [routerLink]="[baseUrl,sucursal.idSucursal]" ngbDropdownItem>{{sucursal.nombreSucursal}}</button>
@@ -23,19 +23,6 @@
             </div>
         </span>
     </a></li>
-    <li ngbDropdown class="nav-item">
-      <a [routerLinkActive]="['active-route']" ngbDropdown class="link-nav text-center">
-        <span ngbDropdownToggle class="nav-underline  brown-text">
-             Sucursales
-              <div ngbDropdownMenu class="m-0 p-0 brown-text" aria-labelledby="dropdownBasic1">
-                <ng-container *ngFor="let sucursal of mCategoria">
-                <button class="text-uppercase" [routerLinkActive]="'active'" [routerLink]="[baseUrl,sucursal.idSucursal]" ngbDropdownItem>{{sucursal.nombreSucursal}}</button>
-                <div class="dropdown-divider m-0 p-0 m-0 p-0"></div>
-              </ng-container>
-              </div>
-          </span>
-      </a>
-    </li>
   </ul>
   </div>
   <div class="col-lg-4 my-5 my-md-1 mx-0 mx-md-3"><h5 class="font-weight-bold">CONTACTO</h5>
