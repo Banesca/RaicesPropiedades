@@ -100,7 +100,7 @@
         <div class = "opciones">
             <select name = "motivoDeCancelacion" class = "opciones" required>
                 <option value = "No me interesa">No me interesa</option>
-                <option value = "Recibo demaciados mails">Recibo demaciados mails</option>
+                <option value = "Recibo demasiados mails">Recibo demasiados mails</option>
                 <option value = "Otros">Otros</option>
             </select>
         </div>

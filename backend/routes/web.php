@@ -59,7 +59,7 @@ Route::get('formCancelarSuscripcion/{tocken}', function($e) {
 });
 
 Route::get('irtienda',function(){
-    return Redirect::to('http://depocentral.dyndns.org/frontend');
+    return Redirect::to('http://raicesonline.com.ar/front/');
 });
 
 Route::get('hola',function(){

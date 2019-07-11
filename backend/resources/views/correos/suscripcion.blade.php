@@ -41,28 +41,10 @@
             </div>
             <div class="cuerpo-descripcion">
                 <h1 class="pb-5" style="color:#E97604; "> Si desea cancelar la suscripcion siga el siguiente link</h1>
-                http://depocentral.dyndns.org:8753/api/v1/cancelarSuscripcionTocken/{{ $sus->tocken }}
+                http://localhost/argentina/RaicesPropiedades/backend/public/formCancelarSuscripcion/{{ $sus->tocken }}
             </div>
         </div>
     </div>
-    {{-- <div class = "row">
-        <div class = "col-md-12 cuerpo" style = "background-image: url({{ asset('img/cuerpo-email/HEADER.png') }}); height: 664px;">
-            <h1>Hola Gracias por registrarte con nosotros</h1>
-        </div>
-    </div>
-
-
-    <div class = "row justify-content-center" style = "padding-bottom: 2%">
-        <div class = "col-md-10">
-            <div class = "titulo">
-                <h2 class = "pb-5" style = "color:#E97604; "> Sigue el link para activar la cuenta</h2>
-            </div>
-            <div class = "cuerpo-descripcion">
-                http://depocentral.dyndns.org:8753/{{ $token }}
-            </div>
-        </div>
-    </div>
-     --}}
 
     <div class="row">
         <div class="col-md-12 cuerpo" style="background-image: url({{ asset('img/cuerpo-email/FOOTER.png') }}); height: 494px;">

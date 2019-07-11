@@ -23,7 +23,7 @@ function cancelar(token) {
     starLoad(btn);
     var data = new $("#idForm").serializeArray();
     $.ajax({
-        url: ruta + "/api/v1/cancelarSuscripcionTocken/" + token,
+        url: ruta + "/api/v1/suscripcion/cancelarSuscripcionTocken/" + token,
         headers: {
             'X-CSRF-TOKEN': $('#_token').val()
         },
@@ -34,11 +34,11 @@ function cancelar(token) {
             endLoad(btn);
             swal({
                 title: 'Confirmado',
-                text: "Se ha cancelado la suscripcion de manera correcta",
+                text: "Se ha cancelado la suscripción de manera correcta",
                 type: 'success',
                 //showCancelButton: true,
                 confirmButtonColor: '#463ddd',
-                confirmButtonText: 'Ok, Ir a la tienda',
+                confirmButtonText: 'Ok, Ir a la página principal',
                 //cancelButtonText: 'No, cancalar',
                 showLoaderOnConfirm: true,
                 preConfirm: function () {

@@ -23,6 +23,13 @@ class Suscripcion extends Model {
         'fk_idStatusSistema',
     ];
 
+    public function generateToken() {
+        $this->tocken = str_random(60);
+        $this->save();
+
+        return $this->tocken;
+    }
+
 
     public function status() {
         return $this->belongsTo('App\StatusUser', 'fk_idStatusSistema')->select('descripcion');

@@ -32,6 +32,7 @@ class SuscripcionMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->view('correos.suscripcion');
+        return $this->view('correos.suscripcion')
+            ->subject('Gracias por Suscribirte');
     }
 }

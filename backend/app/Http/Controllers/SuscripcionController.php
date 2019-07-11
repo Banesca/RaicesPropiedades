@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SuscripcionMail;
 use App\Suscripcion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class SuscripcionController extends Controller {
 
@@ -24,11 +26,12 @@ class SuscripcionController extends Controller {
 
             $sus                     = new Suscripcion($request->all());
             $sus->fk_idStatusSistema = 1;
+            $sus->generateToken();
 
             $sus->save();
             $sus->status;
 
-            // Mail::to($request->email)->send(new SuscripcionMail($sus));
+            Mail::to($request->email)->send(new SuscripcionMail($sus));
 
             $response = [
                 'msj'         => 'Suscripción Creada Satisfactoriamente',
