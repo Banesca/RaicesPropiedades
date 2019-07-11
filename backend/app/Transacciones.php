@@ -3,9 +3,12 @@
 namespace App;
 use App\TipoPropiedad;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transacciones extends Model
 {
+
+    use SoftDeletes;
 
     protected $table      = 'tb_transacciones';
     protected $primaryKey = 'idTransacciones';
@@ -16,6 +19,9 @@ class Transacciones extends Model
         'fk_tipoPropiedad',
         'titulo',
         'descripcion',
+        'email',
+        'imagen_1',
+        'imagen_2',
     ];
 
     protected $hidden = [
