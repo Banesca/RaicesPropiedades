@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SuscritComponent, TrackCapsDirective } from './suscrit/suscrit.component';
@@ -16,6 +17,7 @@ import { ServicesComponent } from './services/services.component';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule
   ],
   exports:[
