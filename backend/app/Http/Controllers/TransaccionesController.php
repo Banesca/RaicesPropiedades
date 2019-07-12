@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
-// use Image;
+use Image;
 
 class TransaccionesController extends Controller {
 
@@ -33,8 +33,6 @@ class TransaccionesController extends Controller {
             'email'            => 'required|email|min:2',
             'imagen_1'         => 'image|required|mimes:jpeg,png,jpg,gif,svg',
             'imagen_2'         => 'image|required|mimes:jpeg,png,jpg,gif,svg',
-
-
         ], [
             'nombre_apellido.required'  => 'El nombre es requerido',
             'nombre_apellido.min'       => 'El Nombre no puede tener menos de 2 caracteres',
@@ -103,8 +101,8 @@ class TransaccionesController extends Controller {
             $response = [
                 'msj'  => 'Transacción Creada Exitosamente',
                 'data' => $transaccion,
-                'imagen_1' => @asset('storage\\imagenTasaciones\\'.$imagenes->imagen_1),
-                'imagen_2' => @asset('storage\\imagenTasaciones\\'.$imagenes->imagen_2),
+                'imagen_1' => @asset('storage\\imagenTasaciones\\'.$transaccion->imagen_1),
+                'imagen_2' => @asset('storage\\imagenTasaciones\\'.$transaccion->imagen_2),
             ];
 
             return response()->json($response, 200);
