@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,7 +23,7 @@ import { SetingComponent } from './seting/seting.component';
 import { NavUnoComponent } from './component/nav-uno/nav-uno.component';
 import { NavDosComponent } from './component/nav-dos/nav-dos.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -64,86 +64,89 @@ import { TransaccionesComponent } from './component/transacciones/transacciones.
 import { ModulosComponent } from './component/modulos/modulos.component';
 
 import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
+import { ErrorInterceptor } from './services/error-interceptor.service';
 
 const fbLoginOptions: LoginOpt = {
-  scope: 'publish_pages,pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
-  return_scopes: true,
-  enable_profile_selector: true
-}; 
+   scope: 'publish_pages,pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
+   return_scopes: true,
+   enable_profile_selector: true
+};
 
 let config = new AuthServiceConfig([
-  {
-    id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("443972602847954", fbLoginOptions)
-  }
+   {
+      id: FacebookLoginProvider.PROVIDER_ID,
+      provider: new FacebookLoginProvider("443972602847954", fbLoginOptions)
+   }
 ]);
- 
+
 export function provideConfig() {
-  return config;
+   return config;
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    MenuComponent,
-    SetingComponent,
-    FooterComponent,
-    NavUnoComponent,
-    NavDosComponent,
-    KeysPipe,
-    NotificationappComponent,
-    AuthbackendComponent,
-    GestionUsuarioComponent,
-    ForgetComponent,
-    GestionPublicacionesComponent,
-    SuscripcionComponent,
-    
-    SuscripcionComponent,
- 
-    PerfilComponent,
-    ConfigFooterComponent,
+   declarations: [
+      AppComponent,
+      HeaderComponent,
+      MenuComponent,
+      SetingComponent,
+      FooterComponent,
+      NavUnoComponent,
+      NavDosComponent,
+      KeysPipe,
+      NotificationappComponent,
+      AuthbackendComponent,
+      GestionUsuarioComponent,
+      ForgetComponent,
+      GestionPublicacionesComponent,
+      SuscripcionComponent,
 
-    ConfigColorComponent,
+      SuscripcionComponent,
 
-    RegistroComponent,
-    PageComponent,
-    PrincipalComponent,
-    MailsComponent,
-    MailSuscribersComponent,
-    UsuariosComponent,
-    SucursalesComponent,
-    SuscribersComponent,
-    GaleriaHomeComponent,
-    TransaccionesComponent,
-    PublicacionesFacebookComponent,  
-    ModulosComponent
+      PerfilComponent,
+      ConfigFooterComponent,
 
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    NgxDatatableModule,
-    MaterialUiModule,
-    GooglePlaceModule,
-    NgSelectModule,
-    SocialLoginModule
-  ],
-  providers: [
-    AuthGuard,
-    {
-      provide: AuthServiceConfig,
-      useFactory: provideConfig
-    }
-  ],
-  bootstrap: [AppComponent],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
+      ConfigColorComponent,
+
+      RegistroComponent,
+      PageComponent,
+      PrincipalComponent,
+      MailsComponent,
+      MailSuscribersComponent,
+      UsuariosComponent,
+      SucursalesComponent,
+      SuscribersComponent,
+      GaleriaHomeComponent,
+      TransaccionesComponent,
+      PublicacionesFacebookComponent,
+      ModulosComponent
+
+   ],
+   imports: [
+      BrowserModule,
+      BrowserAnimationsModule,
+      AppRoutingModule,
+      HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule,
+      BrowserAnimationsModule,
+      ToastrModule.forRoot(),
+      NgxDatatableModule,
+      MaterialUiModule,
+      GooglePlaceModule,
+      NgSelectModule,
+      SocialLoginModule
+   ],
+   providers: [
+      AuthGuard,
+      {
+         provide: AuthServiceConfig,
+         useFactory: provideConfig
+      },
+      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+   ],
+   bootstrap: [AppComponent],
+   schemas: [
+      CUSTOM_ELEMENTS_SCHEMA
+   ],
 })
 export class AppModule { }

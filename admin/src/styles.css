@@ -1,21 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
 @import '~@swimlane/ngx-datatable/release/index.css';
 @import '~@swimlane/ngx-datatable/release/themes/bootstrap.css';
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
 @import '~ngx-toastr/toastr.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
+
 .pac-container {
-    z-index: 10000 !important;
+    z-index: 10000!important
 }
 
-.font-light{ font-family: 'Open Sans', sans-serif; font-weight: 300; }
-.font-bold{ font-family: 'Open Sans', sans-serif; font-weight: 700 }
-.txt-blanco{ color: #ffffff }
+.font-light {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300
+}
+
+.font-bold {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700
+}
+
+.txt-blanco {
+    color: #fff
+}
+
 .ngx-datatable .datatable-footer .datatable-pager .pager li a {
-    color: black !important;
+    color: #000!important
 }
 
 .table thead th {
-    border-bottom: 0px;
+    border-bottom: 0
+}
+
+.table .thead-dark th {
+    color: #fff;
+    background-color: #32383e;
+    border-color: #32383e
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0)
+}
+
+.mat-card-header{
+   margin-bottom: 1rem;
+}
+.mat-card-header .row{
+   width: 100%
+}
+
+.mat-raised-button.mat-success {
+   background-color: #3fb55d;
+   color: #fff;
+}
+
+.card-progress-bar{
+   position: absolute !important;
+    top: 0;
+    left: 0;
+}
+
+.example-container .mat-form-field{
+   width: 100% !important;
+}
+
+label {
+   font-weight: lighter;
+}
+
+.mat-radio-button {
+   margin-right: 15px !important;
 }

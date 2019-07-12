@@ -1,0 +1,1163 @@
+<div class="row">
+
+
+   <div class="col-12">
+      <mat-card class="example-card">
+         <mat-progress-bar *ngIf="loading" class="card-progress-bar" mode="indeterminate"></mat-progress-bar>
+         <mat-card-content>
+
+            <mat-horizontal-stepper [linear]="false" #stepper>
+               <mat-step [stepControl]="formOne">
+                  <ng-template matStepLabel>Datos generales</ng-template>
+                  <form [formGroup]="formOne">
+
+
+                     <div class="row">
+                        <div class="col-md-9">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input matInput placeholder="Título">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-3">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <mat-select placeholder="Estado">
+                                       <mat-option value="">Seleccione</mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <textarea matInput placeholder="Descripción"></textarea>
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-5">
+
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <mat-select placeholder="Tipo de priopiedad">
+                                       <mat-option value="">Seleccione</mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <mat-select placeholder="Tipo de publicación">
+                                       <mat-option value="">Seleccione</mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-3">
+                           <div class="form-group">
+                              <label for="">Aparecera en la galería</label>
+                              <div class="example-container">
+                                 <mat-radio-group>
+                                    <mat-radio-button value="1" selected>USD</mat-radio-button>
+                                    <mat-radio-button value="2">$</mat-radio-button>
+                                 </mat-radio-group>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-6 text-right">
+                           <button mat-raised-button onclick="window.history.back()">Cancelar</button>
+                        </div>
+                        <div class="col-6 text-left">
+                           <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+                        </div>
+                     </div>
+                  </form>
+               </mat-step>
+               <mat-step [stepControl]="formTwo">
+                  <ng-template matStepLabel>Imagenes</ng-template>
+
+                  <div class="row">
+                     <div class="col-sm-3" *ngFor="let item of [1,2,3,4,5,6,7]">
+                        <mat-card class="example-card" style="margin-bottom: 1rem">
+
+                           <img mat-card-image
+                              src="https://www.lainformacion.com/files/article_default_content/uploads/2019/01/23/5c488b63a2cf5.jpeg"
+                              alt="Photo of a Shiba Inu">
+
+                           <mat-card-actions style="overflow: hidden">
+                              <input type="file">
+                           </mat-card-actions>
+                        </mat-card>
+                     </div>
+                  </div>
+
+
+                  <div class="row">
+                     <div class="col-4 text-right">
+                        <button mat-raised-button onclick="window.history.back()">Cancelar</button>
+                     </div>
+                     <div class="col-4 text-center">
+                        <button mat-raised-button matStepperPrevious>Regrsar</button>
+                     </div>
+                     <div class="col-4 text-left">
+                        <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+                     </div>
+                  </div>
+               </mat-step>
+               <mat-step [stepControl]="formThree">
+                  <ng-template matStepLabel>Datos de propiedades</ng-template>
+
+                  <fieldset>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <legend>Datos básicos</legend>
+
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-6">
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <div class="example-container">
+                                       <mat-form-field>
+                                          <mat-select placeholder="Tipo de unidad">
+                                             <mat-option value="">Seleccione</mat-option>
+                                          </mat-select>
+                                          <mat-error>
+                                             Este valor es
+                                             <strong>requerido</strong>
+                                          </mat-error>
+
+                                       </mat-form-field>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <div class="example-container">
+                                       <mat-form-field>
+                                          <mat-select placeholder="Tipo de operación">
+                                             <mat-option value="">Seleccione</mat-option>
+                                          </mat-select>
+                                          <mat-error>
+                                             Este valor es
+                                             <strong>requerido</strong>
+                                          </mat-error>
+
+                                       </mat-form-field>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-6">
+                           <div class="row">
+
+                              <div class="col-md-4">
+                                 <div class="form-group">
+                                    <div class="example-container">
+                                       <mat-form-field>
+                                          <input matInput placeholder="Precio">
+                                          <mat-error>
+                                             Este valor es
+                                             <strong>requerido</strong>
+                                          </mat-error>
+                                       </mat-form-field>
+                                    </div>
+                                 </div>
+                                 <mat-checkbox>No publicar precio internet</mat-checkbox>
+                              </div>
+
+
+                              <div class="col-md-4">
+                                 <div class="form-group">
+                                    <div class="example-container" style="margin-top: 20px">
+                                       <mat-radio-group>
+                                          <mat-radio-button value="1" selected>USD</mat-radio-button>
+                                          <mat-radio-button value="2">$</mat-radio-button>
+                                       </mat-radio-group>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="col-md-4">
+                                 <div class="form-group">
+                                    <div class="example-container">
+                                       <mat-form-field>
+                                          <mat-select placeholder="Estado">
+                                             <mat-option value="">Seleccione</mat-option>
+                                          </mat-select>
+                                          <mat-error>
+                                             Este valor es
+                                             <strong>requerido</strong>
+                                          </mat-error>
+
+                                       </mat-form-field>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-12">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input matInput placeholder="Título">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+
+
+
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <legend>Compartir comisión</legend>
+
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <div class="example-container" style="margin-top: 20px">
+                                 <mat-radio-group>
+                                    <mat-radio-button value="1" selected>Compartir 50%</mat-radio-button>
+                                    <mat-radio-button value="2">Compartir 30%</mat-radio-button>
+                                    <mat-radio-button value="3">No compartir</mat-radio-button>
+                                 </mat-radio-group>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <legend>Ubicación</legend>
+
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-3">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <mat-select placeholder="País">
+                                       <mat-option value="">Seleccione</mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-3">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <mat-select placeholder="Provincia">
+                                       <mat-option value="">Seleccione</mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <mat-select placeholder="Partido">
+                                       <mat-option value="">Seleccione</mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-3">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <mat-select placeholder="Localidad">
+                                       <mat-option value="">Seleccione</mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-3">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <mat-select placeholder="Barrio">
+                                       <mat-option value="">Seleccione</mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-3">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <mat-select placeholder="Sub-barrio">
+                                       <mat-option value="">Seleccione</mat-option>
+                                    </mat-select>
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-6">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Calle">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-6">
+                           <div class="row">
+                              <div class="col-md-3">
+                                 <div class="form-group">
+                                    <div class="example-container">
+                                       <mat-form-field>
+                                          <input type="text" matInput placeholder="Altura">
+                                          <mat-error>
+                                             Este valor es
+                                             <strong>requerido</strong>
+                                          </mat-error>
+
+                                       </mat-form-field>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="col-md-3">
+                                 <div class="form-group">
+                                    <div class="example-container">
+                                       <mat-form-field>
+                                          <input type="text" matInput placeholder="Piso">
+                                          <mat-error>
+                                             Este valor es
+                                             <strong>requerido</strong>
+                                          </mat-error>
+
+                                       </mat-form-field>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="col-md-3">
+                                 <div class="form-group">
+                                    <div class="example-container">
+                                       <mat-form-field>
+                                          <input type="text" matInput placeholder="Dto">
+                                          <mat-error>
+                                             Este valor es
+                                             <strong>requerido</strong>
+                                          </mat-error>
+
+                                       </mat-form-field>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="col-md-3">
+                                 <div class="form-group">
+                                    <div class="example-container">
+                                       <mat-form-field>
+                                          <input type="text" matInput placeholder="CP">
+                                          <mat-error>
+                                             Este valor es
+                                             <strong>requerido</strong>
+                                          </mat-error>
+
+                                       </mat-form-field>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <legend>Características</legend>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Antiguedad">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                              <mat-checkbox>A estrenar</mat-checkbox>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Cant. Ambientes">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Cant. Baños">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="C. Dormitorios">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="M. Dormitorios">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Cant. Toillets">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+
+                     <div class="row">
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Long. Frente">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Long. Fondo">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Estado prop.">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Tipo de techo">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Tipo de vista">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="T. de pendiente">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Dependencia</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <legend>Medidas de ambientes</legend>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Hall</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Hall">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Living</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Living">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Comedor</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Comedor">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Escritorio</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Escritorio">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Playroom</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Playroom">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Cocina</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Cocina">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Comedor D.</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Comedor D.">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Balcón</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Balcón">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Terraza</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Terraza">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Lavadero</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Lavadero">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Patio</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Patio">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Quincho</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Quincho">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Pileta</mat-checkbox>
+
+                                 <mat-form-field>
+                                    <input type="text" matInput placeholder="Pileta">
+                                    <mat-error>
+                                       Este valor es
+                                       <strong>requerido</strong>
+                                    </mat-error>
+
+                                 </mat-form-field>
+                              </div>
+                           </div>
+                        </div>
+
+
+                     </div>
+                  </fieldset>
+
+
+                  <fieldset>
+                     <div class="row">
+                        <div class="col-md-12 ">
+                           <legend>Ambientes de la casa</legend>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Altillo</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Ante cocina</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Antesala</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Azotea</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Baño</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Bar</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Baulera</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Biblieoteca</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Bodega</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>C. herramientas</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>C. de plachar</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Depend. servicio</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Dormitorio</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Galpón</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Garage</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Jardin frente</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Jardin fondo</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Fondo libre</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Local</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Oficina</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Palier</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Sala</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Sótano</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Suite</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Vestíbulo</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Vestidor</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2">
+                           <div class="form-group">
+                              <div class="example-container">
+                                 <mat-checkbox>Vestuario</mat-checkbox>
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+
+                     <div class="row">
+                        <div class="col-4 text-right">
+                           <button mat-raised-button onclick="window.history.back()">Cancelar</button>
+                        </div>
+                        <div class="col-4 text-center">
+                           <button mat-raised-button matStepperPrevious>Regrsar</button>
+                        </div>
+                        <div class="col-4 text-left">
+                           <button mat-raised-button color="primary" matStepperNext>Publicar</button>
+                        </div>
+                     </div>
+                  </fieldset>
+               </mat-step>
+               <!-- <mat-step [stepControl]="formThree">
+                  <ng-template matStepLabel>Publicar</ng-template>
+               </mat-step> -->
+               <!-- <mat-step>
+                  <ng-template matStepLabel>Done</ng-template>
+                  You are now done.
+                  <div>
+                     <button mat-button matStepperPrevious>Back</button>
+                     <button mat-button (click)="stepper.reset()">Reset</button>
+                  </div>
+               </mat-step> -->
+            </mat-horizontal-stepper>
+         </mat-card-content>
+      </mat-card>
+   </div>
+
+</div>
