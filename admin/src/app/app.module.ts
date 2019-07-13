@@ -64,7 +64,7 @@ import { TransaccionesComponent } from './component/transacciones/transacciones.
 import { ModulosComponent } from './component/modulos/modulos.component';
 
 import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
-import { ErrorInterceptor } from './services/error-interceptor.service';
+import { ErrorInterceptor } from './services/interceptors';
 
 const fbLoginOptions: LoginOpt = {
    scope: 'publish_pages,pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',

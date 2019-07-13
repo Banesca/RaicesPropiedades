@@ -57,6 +57,7 @@ export class AuthbackendComponent implements OnInit {
       },
       error => {
           //console.log(error.error.message);
+          console.log(error);
         this.inPromise = false;
         this.alerService.msg("ERR", error.error.message);
       }

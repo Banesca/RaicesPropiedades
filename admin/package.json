@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --ssl true",
+    "start:local": "ng serve -c local -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
