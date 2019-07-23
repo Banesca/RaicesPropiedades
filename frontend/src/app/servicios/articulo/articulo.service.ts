@@ -61,5 +61,15 @@ export class ArticuloService {
         return data;
       })).toPromise();
   }
+
+
+  getTipoOperacion() {
+    return this._HttpClient.get(this.mUrl + this.mService + 'getTipoOperacion', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any) => {
+       return data
+      })).toPromise();
+  }
   
 }
