@@ -16,8 +16,7 @@ export class ArticuloService {
   private mService = '/api/v1/';
   /** Url obtenida del servicio de configuracion */
   private mUrl: string;
-  filter = [
-  ]
+  filter = []
   /**
   * Create a point.
   * @parametro HttpClient - Cliente http para realizar peticiones.

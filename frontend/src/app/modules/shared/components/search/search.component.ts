@@ -9,6 +9,8 @@ import {
   TipoOperaion,
   TOperaion
 } from "src/app/servicios/interfaces.index";
+
+import { provincias, montos, unknown } from "./mockData";
 import { Router } from "@angular/router";
 
 @Component({
@@ -23,7 +25,14 @@ export class SearchComponent implements OnInit {
   tipo: ITipoPropiedad;
   moneda: IMonedas;
   tipoOperation: TipoOperaion[];
-  operation:TipoOperaion
+  operation: TipoOperaion;
+  arrayProvinces: any = provincias;
+  selectedProvince: any;
+  selectedCiudad: any;
+  montos: number[] = montos;
+  selectedMinimo: Number | string;
+  selectedMaximo: Number | string;
+  _unknowns: string[] = unknown;
 
   constructor(
     private _ArticuloService: ArticuloService,
@@ -33,6 +42,10 @@ export class SearchComponent implements OnInit {
     this.moneda = Monedas.empy();
     this.tipo = TipoPropiedad.empy();
     this.operation = TOperaion.empy();
+    this.selectedProvince = { descripcion: "Seleccione" };
+    this.selectedCiudad = { descripcion: "Seleccione" };
+    this.selectedMinimo = "Indistinto";
+    this.selectedMaximo = "Indistinto";
   }
 
   ngOnInit() {}
@@ -99,12 +112,49 @@ export class SearchComponent implements OnInit {
     this.operation = value;
   }
 
+  setProvince = (value: any): void => {
+    this.selectedProvince = value;
+  };
+
+  setCiudad = (data: any): void => {
+    this.selectedCiudad = data;
+  };
+
+  setMnimo = (data: number): void => {
+    this.selectedMinimo = data;
+  };
+
+  setMaximo = (data: number): void => {
+    this.selectedMaximo = data;
+  };
+
+  setUnknown = (data: string): void => {};
+
   // ------------------------
 
   searchFilter() {
     this._ArticuloService.filter = [];
-    this._ArticuloService.filter.push(this.tipo, this.moneda);
-    this.router.navigate(["buscador"]);
-    console.log(this._ArticuloService.filter);
+    if (this.tipo.descripcion !== "Seleccione") {
+      console.log("entro aca");
+      this._ArticuloService.filter.push(this.tipo);
+    }
+
+    if (this.moneda.moneda !== "Seleccione") {
+      this._ArticuloService.filter.push(this.moneda);
+    }
+
+    if (this.operation.descripcion !== "Seleccione") {
+      this._ArticuloService.filter.push(this.operation);
+    }
+
+    if (this.selectedMinimo !== "Indistinto") {
+      this._ArticuloService.filter.push({ montoMinimo: this.selectedMinimo });
+    }
+
+    if (this.selectedMaximo !== "Indistinto") {
+      this._ArticuloService.filter.push({ montoMaximo: this.selectedMaximo });
+    }
+
+    console.log("asdasdasdasdasd", this._ArticuloService.filter);
   }
 }

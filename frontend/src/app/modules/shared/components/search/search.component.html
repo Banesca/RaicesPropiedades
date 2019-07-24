@@ -77,34 +77,42 @@
           <div class="col-md-4 py-1 col-12 px-1">
             <label class="col font-weight-extrabold">Monto Máximo:</label>
             <div ngbDropdown class="d-inline-block">
-              <button
+              <input
+                type="button"
                 class="btn search-dropdown btn-block"
                 id="dropdownBasic1"
+                [value]="selectedMaximo"
                 ngbDropdownToggle
-              >
-                Indistinto
-              </button>
+              />
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Action - 1</button>
-                <button ngbDropdownItem>Another Action</button>
-                <button ngbDropdownItem>Something else is here</button>
+                <input
+                  type="button"
+                  *ngFor="let monto of montos"
+                  ngbDropdownItem
+                  (click)="setMaximo(monto)"
+                  [value]="monto"
+                />
               </div>
             </div>
           </div>
           <div class="col-md-4 py-1  col-12 px-1">
             <label class="col font-weight-extrabold">Monto Mínimo:</label>
             <div ngbDropdown class="d-inline-block">
-              <button
+              <input
+                type="button"
                 class="btn search-dropdown btn-block"
                 id="dropdownBasic1"
+                [value]="selectedMinimo"
                 ngbDropdownToggle
-              >
-                Indistinto
-              </button>
+              />
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Action - 1</button>
-                <button ngbDropdownItem>Another Action</button>
-                <button ngbDropdownItem>Something else is here</button>
+                <input
+                  type="button"
+                  *ngFor="let monto of montos"
+                  ngbDropdownItem
+                  (click)="setMnimo(monto)"
+                  [value]="monto"
+                />
               </div>
             </div>
           </div>
@@ -116,49 +124,41 @@
       <div class="row">
         <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block">
-            <button
+            <input
+              type="button"
               class="btn search-dropdown btn-block"
               id="dropdownBasic1"
+              [value]="selectedProvince.descripcion"
               ngbDropdownToggle
-            >
-              Norte Gran BS.
-            </button>
+            />
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem>Action - 1</button>
-              <button ngbDropdownItem>Another Action</button>
-              <button ngbDropdownItem>Something else is here</button>
+              <input
+                type="button"
+                *ngFor="let array of arrayProvinces"
+                ngbDropdownItem
+                (click)="setProvince(array)"
+                [value]="array.descripcion"
+              />
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block">
-            <button
+            <input
+              type="button"
               class="btn search-dropdown btn-block"
               id="dropdownBasic1"
+              [value]="selectedCiudad.descripcion"
               ngbDropdownToggle
-            >
-              Pdo. Pilar
-            </button>
+            />
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem>Action - 1</button>
-              <button ngbDropdownItem>Another Action</button>
-              <button ngbDropdownItem>Something else is here</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
-          <div ngbDropdown class="d-inline-block">
-            <button
-              class="btn search-dropdown btn-block"
-              id="dropdownBasic1"
-              ngbDropdownToggle
-            >
-              Countries/B Cerrado
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem>Action - 1</button>
-              <button ngbDropdownItem>Another Action</button>
-              <button ngbDropdownItem>Something else is here</button>
+              <input
+                type="button"
+                *ngFor="let ciudad of selectedProvince.ciudades"
+                ngbDropdownItem
+                (click)="setCiudad(ciudad)"
+                [value]="ciudad.descripcion"
+              />
             </div>
           </div>
         </div>
@@ -172,9 +172,33 @@
               Indistinto
             </button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem>Action - 1</button>
-              <button ngbDropdownItem>Another Action</button>
-              <button ngbDropdownItem>Something else is here</button>
+              <input
+                type="button"
+                *ngFor="let _unknown of _unknowns"
+                ngbDropdownItem
+                (click)="setUnknown(_unknown)"
+                [value]="_unknown"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+          <div ngbDropdown class="d-inline-block">
+            <button
+              class="btn search-dropdown btn-block"
+              id="dropdownBasic1"
+              ngbDropdownToggle
+            >
+              Indistinto
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <input
+                type="button"
+                *ngFor="let _unknown of _unknowns"
+                ngbDropdownItem
+                (click)="setUnknown(_unknown)"
+                [value]="_unknown"
+              />
             </div>
           </div>
         </div>
