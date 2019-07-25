@@ -63,7 +63,6 @@ export class TransaccionesComponent implements OnInit {
     this._TransaccionesService
       .All()
       .then(res => {
-        console.log(res)
         this.mCategorias = res.data;
         this.mLoading = false;
       })
@@ -77,9 +76,7 @@ export class TransaccionesComponent implements OnInit {
     this._CategoriasService
       .allCategories()
       .then(res => {
-        console.log(res)
         this.mCategoriasList = res.data;
-        console.log(this.mCategoriasList)
         this.mLoading = false;
       })
       .catch(error => {
@@ -107,10 +104,27 @@ export class TransaccionesComponent implements OnInit {
 
       });
   }
+  
+}
+confirmar(pKey: number) {
+    if(confirm('Está seguro de que quiere confirmar esta tasación?')){
+      this.mLoading = true;
+      this._TransaccionesService
+      .confirmarCategoria(pKey)
+      .then(data => {
+        this.mLoading = false;
+        this.getAll();
+        this._AlertsService.msg('OK', '!ÉXITO!', 'tasacion confirmada');
+      })
+      .catch(error => {
+        this._AlertsService.msg('ERR', 'ERROR', 'Error al Eliminar la tasación.')
+
+      });
+  }
+  
 }
 
   ver(pCategoria: ITransacciones) {
-    console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }

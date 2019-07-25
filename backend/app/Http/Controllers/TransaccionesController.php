@@ -9,6 +9,7 @@ use App\ConfigFooter;
 // use App\Perfil;
 // use App\PerfilCliente;
 // use App\Suscripcion;
+use App\Mail\ConfirmTasacion;
 use App\Transacciones;
 use App\TipoPropiedad;
 use Illuminate\Http\Request;
@@ -24,15 +25,16 @@ class TransaccionesController extends Controller {
 
     /*Creado por Breiddy Monterrey*/
     public function store(Request $request) {
-
+        
+            
         $this->validate($request, [
             'nombre_apellido'  => 'required|min:2',
             'telefono'         => 'required|min:2',
             'fk_tipoPropiedad' => 'required|min:1',
             'titulo'           => 'required|min:2',
             'email'            => 'required|email|min:2',
-            'imagen_1'         => 'image|required|mimes:jpeg,png,jpg,gif,svg',
-            'imagen_2'         => 'image|required|mimes:jpeg,png,jpg,gif,svg',
+            'imagen_1'         => 'required',//image|required|mimes:jpeg,png,jpg,gif,svg
+            'imagen_2'         => 'required',
         ], [
             'nombre_apellido.required'  => 'El nombre es requerido',
             'nombre_apellido.min'       => 'El Nombre no puede tener menos de 2 caracteres',
@@ -42,58 +44,44 @@ class TransaccionesController extends Controller {
             'fk_tipoPropiedad.min'      => 'La categoría no puede tener menos de 2 caracteres',
             'titulo.required'           => 'El título es requerido',
             'titulo.min'                => 'El título no puede tener menos de 2 caracteres',
-            'descripcion.required'      => 'La descripción es requerida',
-            'descripcion.min'           => 'El título no puede tener menos de 2 caracteres',
             'email.required'            => 'El correo es  requerido',
             'email.min'                 => 'El correo no puede tener menos de 2 caracteres',
-            'imagen_1.image'            => 'La Imagen es requerida',
             'imagen_1.required'         => 'La Imagen es requerida',
-            'imagen_1.mimes'            => 'Solo jpeg,png,jpg,gif,svg son soportados',
-            'imagen_2.image'            => 'La Imagen es requerida',
+            // 'imagen_1.mimes'            => 'Solo jpeg,png,jpg,gif,svg son soportados',
             'imagen_2.required'         => 'La Imagen es requerida',
-            'imagen_2.mimes'            => 'Solo jpeg,png,jpg,gif,svg son soportados',
-        ]);
-
-        try {
-
+            // 'imagen_2.mimes'            => 'Solo jpeg,png,jpg,gif,svg son soportados',
+            ]);
+            try {
+                
+                
 
             $transaccion = new Transacciones($request->all());
+            $save_path='/uploads/tasaciones/';
+            if (!file_exists(public_path($save_path))) {
+                mkdir(public_path($save_path), 666, true);
+            }
 
             if (is_null($request->imagen_1)) {
             } else {
-                $originalImage = $request->imagen_1;
-
-                $thumbnailImage = Image::make($originalImage);
-
-                $nombre_publico = $originalImage->getClientOriginalName();
-                $extension      = $originalImage->getClientOriginalExtension();
-
-                $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
-                $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
-
-                Storage::disk('local')->put('\\imagenTasaciones\\'.$nombre_interno, (string) $thumbnailImage->encode());
-
-                $transaccion->imagen_1 = $nombre_interno;
+                $image = $request->imagen_1;
+                $imageInfo = explode(";base64,", $image);
+                $imgExt = str_replace('data:image/', '', $imageInfo[0]);      
+                $image = str_replace(' ', '+', $imageInfo[1]);
+                $imageName = time().".".$imgExt;
+                Storage::disk('local')->put('\\imagenTasaciones\\'.$imageName, base64_decode($image));
+                $transaccion->imagen_1 = $imageName;
             }
-
             if (is_null($request->imagen_2)) {
             } else {
-                $originalImage = $request->imagen_2;
-
-                $thumbnailImage = Image::make($originalImage);
-
-                $nombre_publico = $originalImage->getClientOriginalName();
-                $extension      = $originalImage->getClientOriginalExtension();
-
-                $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
-                $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
-
-                Storage::disk('local')->put('\\imagenTasaciones\\'.$nombre_interno, (string) $thumbnailImage->encode());
-
-                $transaccion->imagen_2 = $nombre_interno;
+                $image = $request->imagen_2;
+                $imageInfo = explode(";base64,", $image);
+                $imgExt = str_replace('data:image/', '', $imageInfo[0]);      
+                $image = str_replace(' ', '+', $imageInfo[1]);
+                $imageName = (time()+1).".".$imgExt;
+                Storage::disk('local')->put('\\imagenTasaciones\\'.$imageName, base64_decode($image));
+                $transaccion->imagen_2 = $imageName;
             }
-
-
+            
             $transaccion->save();
 
             $transaccion->tipoPropiedad;
@@ -136,6 +124,12 @@ class TransaccionesController extends Controller {
         $Transaccion = Transacciones::all();
         foreach ($Transaccion as $Transacciones) {
             $Transacciones->tipoPropiedad;
+            if (!is_null($Transacciones->imagen_1)) {
+                $Transacciones->imagen_1=url('storage/imagenTasaciones/'.$Transacciones->imagen_1);
+            }
+            if (!is_null($Transacciones->imagen_2)) {
+                $Transacciones->imagen_2=url('storage/imagenTasaciones/'.$Transacciones->imagen_2);
+            }
         }
 
         $response = [
@@ -189,7 +183,15 @@ class TransaccionesController extends Controller {
                 return response()->json($response, 401);
             }
 
+            if (!is_null($Transaccion->imagen_1)) {
+                Storage::delete('\\imagenTasaciones\\'.$Transaccion->imagen_1);
+            }
+            if (!is_null($Transaccion->imagen_2)) {
+                Storage::delete('\\imagenTasaciones\\'.$Transaccion->imagen_2);
+            }
+
             $Transaccion->delete();
+            
             $response = [
                 'message' => 'Galeria eliminada correctamente',
             ];
@@ -228,6 +230,24 @@ class TransaccionesController extends Controller {
         return response()->json($response, 200);
 
     }
+    public function confirmarTransaccion($idTransaccion) {
+        $Transaccion = Transacciones::find($idTransaccion);
+        
+        if ($Transaccion == null) {
+            $response = [
+                'message' => 'No existe la transacción',
+            ];
+        } else {
+            $Transaccion->status="confirmada";
+            Mail::to($Transaccion->email)->send(new ConfirmTasacion($Transaccion));
+            $Transaccion->update();
+            $response = [
+                'msj'  => 'transacción',
+                'data' => $Transaccion,
+            ];
+        }
 
+        return response()->json($response, 200);
+    }
 
 }

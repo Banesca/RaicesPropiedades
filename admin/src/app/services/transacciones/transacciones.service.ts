@@ -29,7 +29,6 @@ export class TransaccionesService {
   }
 
   actualizarCategoria(pCategoria: ITransacciones, pKey: number) {
-    console.log(pCategoria)
     return this._HttpClient
       .post(environment.apiHost +  this.mService + '/edit/' + pKey , pCategoria, {
         headers: getHeaders()
@@ -44,6 +43,18 @@ export class TransaccionesService {
   eliminarCategoria(pKey: number) {
     return this._HttpClient
       .delete(environment.apiHost + this.mService + '/eliminar/' + pKey, { headers: getHeaders() })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      ).toPromise();
+  }
+
+  confirmarCategoria(pKey: number) {
+    return this._HttpClient
+      .get(environment.apiHost + this.mService + '/confirmar/' + pKey, {
+        headers: getHeaders()
+      })
       .pipe(
         map((data: any) => {
           return data;
