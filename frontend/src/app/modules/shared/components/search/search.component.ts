@@ -9,6 +9,7 @@ import {
   TipoOperaion,
   TOperaion
 } from "src/app/servicios/interfaces.index";
+import { Observable, of } from "rxjs";
 
 import { provincias, montos, unknown } from "./mockData";
 import { Router } from "@angular/router";
@@ -133,28 +134,30 @@ export class SearchComponent implements OnInit {
   // ------------------------
 
   searchFilter() {
-    this._ArticuloService.filter = [];
+    const array: any[]  = [];
     if (this.tipo.descripcion !== "Seleccione") {
       console.log("entro aca");
-      this._ArticuloService.filter.push(this.tipo);
+      array.push(this.tipo.descripcion);
     }
 
     if (this.moneda.moneda !== "Seleccione") {
-      this._ArticuloService.filter.push(this.moneda);
+      array.push(this.moneda.moneda);
     }
 
     if (this.operation.descripcion !== "Seleccione") {
-      this._ArticuloService.filter.push(this.operation);
+      array.push(this.operation.descripcion);
     }
 
     if (this.selectedMinimo !== "Indistinto") {
-      this._ArticuloService.filter.push({ montoMinimo: this.selectedMinimo });
+      array.push({ montoMinimo: this.selectedMinimo });
     }
 
     if (this.selectedMaximo !== "Indistinto") {
-      this._ArticuloService.filter.push({ montoMaximo: this.selectedMaximo });
+      array.push({ montoMaximo: this.selectedMaximo });
     }
 
-    console.log("asdasdasdasdasd", this._ArticuloService.filter);
+    this._ArticuloService.search.next(true)
+    this._ArticuloService.filter.next(array)
+
   }
 }

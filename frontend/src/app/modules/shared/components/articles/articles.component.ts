@@ -1,17 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit  } from '@angular/core';
+import {ArticuloService} from '../../../../servicios/servicios.index'
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss']
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesComponent implements OnInit  {
 
-  constructor() { 
 
+  public articulos :number[] = [1,2,3,4,5,6,7,8,9]
+  public filtro : any
+  public filtro2 = ['Alquiler' , 'casas' , 'dolares', 'Pdo Pillar', 'Norte GranB Area' , 'country B Cerrado']
+
+  constructor(articulosService: ArticuloService) { 
+    articulosService.filter.subscribe(filterData=>{
+      this.filtro = filterData
+    })
   }
 
   ngOnInit() {
+
   }
 
+
+  verifyStringOrObject=(data: any) =>{
+    let dato :string;
+    if(typeof data === 'object'){
+      Object.keys(data).map( key =>{
+        dato = data[key].toString()
+      })
+    }
+     
+   return typeof data === 'object' ? dato : data
+  }
 }
