@@ -155,6 +155,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
     Route::get('listarPropiedades','Ficha123Controller@listarTodo');
 
+    Route::post('addContactanos','Contac');
+
     Route::post('buscadorGeneral');
 
     //Route::post('buscadorGeneral','Buscador');
