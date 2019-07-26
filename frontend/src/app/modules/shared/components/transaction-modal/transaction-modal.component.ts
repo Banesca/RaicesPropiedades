@@ -96,7 +96,6 @@ export class TransactionModalComponent implements OnInit {
   guardar() {
     this.mLoading = true;
     this.hideForm = true;
-    console.log(this.mContacto);
     this._ContactoService
       .New(this.mContacto)
       .then(data => {
