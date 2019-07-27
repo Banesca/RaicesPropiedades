@@ -1715,6 +1715,74 @@
 			]
 		},
 		{
+			"name": "contáctanos",
+			"description": "",
+			"item": [
+				{
+					"name": "add ",
+					"request": {
+						"url": "http://localhost/argentina/RaicesPropiedades/backend/public/api/v1/addContactanos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "as@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "ale",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "telefono",
+									"value": "04125555",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "mensaje",
+									"value": "holaasdas a  dasd ",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar",
+					"request": {
+						"url": "http://localhost/argentina/RaicesPropiedades/backend/public/api/v1/listarContactanos",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "login",
 			"request": {
 				"url": "http://127.0.0.1:8000/api/v1/login",
@@ -1740,6 +1808,75 @@
 							"value": "123456789",
 							"description": "",
 							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "nueva tasaccion",
+			"request": {
+				"url": "localhost:8000/api/v1/transacciones/store",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre_apellido",
+							"value": "hola",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "telefono",
+							"value": "0424555",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "fk_tipoPropiedad",
+							"value": "1",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "titulo",
+							"value": "14545",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "descripcion",
+							"value": "454554",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "email",
+							"value": "a@gmail.com",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "imagen_1",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "imagen_2",
+							"value": "",
+							"type": "file",
+							"description": ""
 						}
 					]
 				},
