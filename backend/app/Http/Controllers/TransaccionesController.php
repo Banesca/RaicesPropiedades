@@ -56,7 +56,6 @@ class TransaccionesController extends Controller {
 
         try {
 
-
             $transaccion = new Transacciones($request->all());
 
             if (is_null($request->imagen_1)) {

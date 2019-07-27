@@ -155,6 +155,11 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
     Route::get('listarPropiedades','Ficha123Controller@listarTodo');
 
+    Route::post('addContactanos','ContactoController@add');
+    Route::get('listarContactanos','ContactoController@listar');
+
+    Route::get('ubicaciones','BuscadorDePropiedadesController@direcciones');
+
     //Route::post('buscadorGeneral','Buscador');
 
 

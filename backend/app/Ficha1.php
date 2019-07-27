@@ -33,5 +33,4 @@ class Ficha1 extends Model {
     public function tipoPropiedad() {
         return $this->belongsTo('App\TipoPropiedad', 'fk_tipoPropiedad');
     }
-
 }
