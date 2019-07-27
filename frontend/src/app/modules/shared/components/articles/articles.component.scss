@@ -108,8 +108,10 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
   }
+
+  // seccion de filtrado
 
   &-filteritems {
     padding: 0px 10px;
@@ -121,6 +123,50 @@
     &:nth-child(2) {
       width: 71%;
       text-align: right;
+    }
+  }
+
+  &-relevante {
+    width: 100%;
+    text-align: right;
+    padding-bottom: 40px;
+
+    .title {
+      font-size: 13px;
+      font-weight: bold;
+      border-bottom: 1px solid;
+      padding-bottom: 9px;
+      color: #00000091;
+    }
+
+    .textContent {
+      font-size: 14px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      font-weight: bold;
+      padding-top: 15px
+    }
+
+    .textContent2{
+      padding-top: 15px;
+      font-size: 14px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      flex-direction: column;
+      font-weight: bold;
+    }
+
+    .icon {
+      font-size: 39px;
+      /* height: 15px; */
+      display: flex;
+      align-items: flex-end;
+      /* position: relative; */
+      /* top: 8px; */
+      color: #e4b405;
+      font-weight: normal;
     }
   }
 }

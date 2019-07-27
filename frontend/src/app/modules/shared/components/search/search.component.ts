@@ -34,6 +34,16 @@ export class SearchComponent implements OnInit {
   selectedMinimo: Number | string;
   selectedMaximo: Number | string;
   _unknowns: string[] = unknown;
+  selectedLocalidad: any;
+  selectedBarrio: any;
+  //ubication
+
+  ubicaciones: any;
+  partidos: any;
+  localidades: any;
+  barrios: any;
+
+  //
 
   constructor(
     private _ArticuloService: ArticuloService,
@@ -43,8 +53,10 @@ export class SearchComponent implements OnInit {
     this.moneda = Monedas.empy();
     this.tipo = TipoPropiedad.empy();
     this.operation = TOperaion.empy();
-    this.selectedProvince = { descripcion: "Seleccione" };
-    this.selectedCiudad = { descripcion: "Seleccione" };
+    this.selectedProvince = { descripcion: "Indistinto" };
+    this.selectedCiudad = { descripcion: "Indistinto" };
+    this.selectedLocalidad = { descripcion: "Indistinto" };
+    this.selectedBarrio = { descripcion: "Indistinto" };
     this.selectedMinimo = "Indistinto";
     this.selectedMaximo = "Indistinto";
   }
@@ -56,6 +68,7 @@ export class SearchComponent implements OnInit {
     this.gOrientacion();
     this.gTipoPropiedad();
     this.gTipoOperacion();
+    this.getUbication();
   }
 
   gMonedas() {
@@ -73,7 +86,13 @@ export class SearchComponent implements OnInit {
   gOrientacion() {
     this._ArticuloService.getOrientacion().then(data => {
       this.mOrientacion = data;
-      console.log("hola", this.mOrientacion);
+    });
+  }
+
+  getUbication() {
+    this._ArticuloService.getUbication().then(ubication => {
+      console.log(ubication);
+      this.ubicaciones = ubication;
     });
   }
 
@@ -115,10 +134,12 @@ export class SearchComponent implements OnInit {
 
   setProvince = (value: any): void => {
     this.selectedProvince = value;
+    this.partidos = value.partidos;
   };
 
   setCiudad = (data: any): void => {
     this.selectedCiudad = data;
+    this.localidades = data.localidades;
   };
 
   setMnimo = (data: number): void => {
@@ -129,12 +150,19 @@ export class SearchComponent implements OnInit {
     this.selectedMaximo = data;
   };
 
-  setUnknown = (data: string): void => {};
+  setLocalidad = (data: any): void => {
+    this.selectedLocalidad = data;
+    this.barrios = data.barrios;
+  };
+
+  setBarrio = (data: any) => {
+    this.selectedBarrio = data;
+  };
 
   // ------------------------
 
   searchFilter() {
-    const array: any[]  = [];
+    const array: any[] = [];
     if (this.tipo.descripcion !== "Seleccione") {
       console.log("entro aca");
       array.push(this.tipo.descripcion);
@@ -156,8 +184,7 @@ export class SearchComponent implements OnInit {
       array.push({ montoMaximo: this.selectedMaximo });
     }
 
-    this._ArticuloService.search.next(true)
-    this._ArticuloService.filter.next(array)
-
+    this._ArticuloService.search.next(true);
+    this._ArticuloService.filter.next(array);
   }
 }

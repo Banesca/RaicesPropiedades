@@ -11,6 +11,7 @@ export class ArticlesComponent implements OnInit  {
   public articulos :number[] = [1,2,3,4,5,6,7,8,9]
   public filtro : any
   public filtro2 = ['Alquiler' , 'casas' , 'dolares', 'Pdo Pillar', 'Norte GranB Area' , 'country B Cerrado']
+  public recomendation = [1,2,3,4]
 
   constructor(articulosService: ArticuloService) { 
     articulosService.filter.subscribe(filterData=>{

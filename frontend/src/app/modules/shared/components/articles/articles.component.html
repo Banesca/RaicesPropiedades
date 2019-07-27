@@ -8,12 +8,68 @@
   <div class="articulos-content">
     <div class="articulos-filter">
       <div class="articulos-filterTitle">60 resultados</div>
+
       <div class="articulos-filterSections">
         <div *ngFor="let item of filtro2" class="articulos-filteritems">
           {{ item }}
         </div>
       </div>
+      <div class="articulos-relevante">
+        <div class="title">
+          Ordenar por Publicaciones
+        </div>
+        <div class="textContent">
+          mas relevantes
+          <i class="material-icons icon">
+            keyboard_arrow_down
+          </i>
+        </div>
+      </div>
+
+      <div class="articulos-relevante">
+        <div class="title">
+          Zonas
+        </div>
+        <div class="textContent2">
+          <div *ngFor="let item of recomendation">
+            Countries B Cerrado(15)
+          </div>
+        </div>
+      </div>
+
+      <div class="articulos-relevante">
+        <div class="title">
+          Precio
+        </div>
+        <div class="textContent2">
+          <div *ngFor="let item of recomendation">
+            Countries B Cerrado(15)
+          </div>
+        </div>
+
+        <div class="textContent">
+          maximos
+          <i class="material-icons icon">
+            keyboard_arrow_down
+          </i>
+          minimo
+          <i class="material-icons icon">
+            keyboard_arrow_down
+          </i>
+        </div>
+      </div>
+
+      <div class="articulos-relevante">
+        <div class="title">
+          Mas Especificaciones
+        </div>
+        <div class="textContent">
+          alberca(10)
+        </div>
+      </div>
     </div>
+
+    <!-- inmuebles -->
     <div class="articulos-article">
       <div class="articulos-card" *ngFor="let item of articulos">
         <div class="articulos-image">

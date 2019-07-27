@@ -4,7 +4,7 @@ import { getHeaders } from "../../misc/Headers";
 
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, of, BehaviorSubject , Subject } from "rxjs";
+import { Observable, of, BehaviorSubject, Subject } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Injectable({
@@ -16,9 +16,8 @@ export class ArticuloService {
   private mService = "/api/v1/";
   /** Url obtenida del servicio de configuracion */
   private mUrl: string;
-  public filter: BehaviorSubject<any[]> = new BehaviorSubject([])
-  ;
-  public search: BehaviorSubject<boolean> = new BehaviorSubject(true)
+  public filter: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  public search: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
   /**
    * Create a point.
@@ -30,7 +29,6 @@ export class ArticuloService {
     private _ConfigService: ConfigService
   ) {
     this.mUrl = this._ConfigService.mCfgStatic.UrlAPI;
-
   }
 
   /**
@@ -88,5 +86,17 @@ export class ArticuloService {
         })
       )
       .toPromise();
+  }
+
+  getUbication() {
+    return this._HttpClient
+      .get(this.mUrl + this.mService + "ubicaciones", {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      ).toPromise()
   }
 }
