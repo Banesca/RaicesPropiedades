@@ -22,4 +22,8 @@ class Localidad extends Model
     {
         return $this->belongsTo('App\Partido', 'fk_idPartido');
     }
+    public function barrios()
+    {
+        return $this->hasMany('App\Barrio', 'fk_idLocalidad','idLocalidad');
+    }
 }

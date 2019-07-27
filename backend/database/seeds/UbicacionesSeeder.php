@@ -9,32 +9,31 @@ class UbicacionesSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        for ($i = 1; $i < 20; $i++) {
+        for ($region = 1; $region <3; $region++) {
             \App\Region::create([
-
-                'descripcion' => "Region_".$i,
+                'descripcion' => "Region_".$region,
             ]);
-            for ($u = 1; $u < 15; $u++) {
+            for ($partido = 1; $partido < 3; $partido++) {
                 \App\Partido::create([
-
-                    'descripcion' => "Partido_".$u,
-                    'fk_idRegion' => $i,
+                    'descripcion' => "Partido_".$partido."_".$region,
+                    'fk_idRegion' => $region,
                 ]);
-                for ($h = 1; $h < 10; $h++) {
+                for ($localidad = 1; $localidad < 3; $localidad++) {
                     \App\Localidad::create([
-
-                        'descripcion'  => "Localidad_".$h,
-                        'fk_idPartido' => $u,
+                        'descripcion'  => "Localidad_".$localidad."_".$partido,
+                        'fk_idPartido' => $partido+$localidad-1,
                     ]);
-                    for ($k = 1; $k < 3; $k++) {
+                    for ($barrio = 1; $barrio < 3; $barrio++) {
                         \App\Barrio::create([
-
-                            'descripcion'    => "Barrio_".$k,
-                            'fk_idLocalidad' => $h,
+                            'descripcion'    => "Barrio_".$barrio."_".$localidad,
+                            'fk_idLocalidad' => $localidad+$barrio-1,
                         ]);
+
                     }
                 }
+
             }
         }
     }
+
 }

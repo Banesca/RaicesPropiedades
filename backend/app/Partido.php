@@ -22,4 +22,8 @@ class Partido extends Model
     {
         return $this->belongsTo('App\Region', 'fk_idRegion');
     }
+    public function localidades()
+    {
+        return $this->hasMany('App\Localidad', 'fk_idPartido','idPartido');
+    }
 }

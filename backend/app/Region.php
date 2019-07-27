@@ -16,5 +16,9 @@ class Region extends Model
         'created_at',
         'updated_at',
     ];
+    public function partidos()
+    {
+        return $this->hasMany('App\Partido', 'fk_idRegion','idRegion');
+    }
 
 }
