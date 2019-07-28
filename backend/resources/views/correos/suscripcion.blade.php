@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gracias por Suscribirse</title>
+    <title>{!! $sus->titulo !!}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
         @font-face {
@@ -37,11 +37,10 @@
     <div class="row">
         <div class="col-md-10">
             <div class="titulo">
-                <h2 class="pb-5" style="color:#E97604; "> Hola! {{$sus->email}} Se ha suscrito correctamente.</h2>
+                <h2 class="pb-5" style="color:#E97604; "> Hola! {{$email}}</h2>
             </div>
             <div class="cuerpo-descripcion">
-                <h1 class="pb-5" style="color:#E97604; "> Si desea cancelar la suscripcion siga el siguiente link</h1>
-                http://localhost/argentina/RaicesPropiedades/backend/public/formCancelarSuscripcion/{{ $sus->tocken }}
+                <h1 class="pb-5" style="color:#E97604; ">{!! $sus->descripcion !!}</h1>
             </div>
         </div>
     </div>

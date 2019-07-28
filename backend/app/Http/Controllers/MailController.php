@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail;
+use App\Mail_;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -19,7 +19,7 @@ class MailController extends Controller {
             'email.required' => 'El Email es requerido',
         ]);
 
-        $mailN = new Mail($request->all());
+        $mailN = new Mail_($request->all());
         $mailN->save();
 
         $response = [
@@ -44,14 +44,14 @@ class MailController extends Controller {
         DB::beginTransaction();
 
         try {
-            $mail = Mail::findOrFail($idMail);
+            $mail = Mail_::findOrFail($idMail);
             $mail->fill($request->all());
 
             $mail->save();
             DB::commit();
 
             $response = [
-                'Mails' => Mail::all(),
+                'Mails' => Mail_::all(),
             ];
 
             return response()->json($response, 200);
@@ -71,7 +71,7 @@ class MailController extends Controller {
         DB::beginTransaction();
 
         try {
-            $mail = Mail::find($idMail);
+            $mail = Mail_::find($idMail);
 
             if (is_null($mail)) {
 
@@ -104,7 +104,7 @@ class MailController extends Controller {
 
         $response = [
             'msj'   => 'Lista de Mails',
-            'mails' => Mail::all(),
+            'mails' => Mail_::all(),
         ];
 
         return response()->json($response, 200);
