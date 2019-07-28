@@ -44,7 +44,7 @@ export class OfficeComponent implements OnInit {
 
   ngOnInit() {
     this.contactForm = this._formBuilder.group({
-      nombres: ["", Validators.required],
+      nombre: ["", Validators.required],
       email: ["",[Validators.required, Validators.email]],
       telefono: ["", Validators.required],
       mensaje:["", Validators.required,]
@@ -80,17 +80,20 @@ export class OfficeComponent implements OnInit {
       });
   }
 
-  guardar() {
+  guardar() {    
     this.mLoading = true;
     this.hideForm = true;
     this._ContactoService
-      .New(this.mContacto)
+      //.New(this.mContacto)
+      .NewContact(this.mContacto)
       .then(data => {
+        console.log(data);
         this.successMensaje = true;
         this.mLoading = false;
         this.contactForm.reset();
       })
       .catch(error => {
+        console.log(error);
           this.errorMensaje = true;
           this.mLoading = false;
       });

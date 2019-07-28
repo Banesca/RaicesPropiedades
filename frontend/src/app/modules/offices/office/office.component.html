@@ -66,12 +66,12 @@
                     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                       <div class="">
                       <div class="group">      
-                        <input formControlName="nombres" type="text" required>
+                        <input formControlName="nombre" type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Nombres</label>
-                        <div *ngIf="submitted && f.nombres.errors" type="alert" class="invalid-feedback d-block">
-                            <div *ngIf="f.nombres.errors.required">Nombre y Apellido son Requerido</div>
+                        <div *ngIf="submitted && f.nombre.errors" type="alert" class="invalid-feedback d-block">
+                            <div *ngIf="f.nombre.errors.required">Nombre y Apellido son Requerido</div>
                         </div>
                       </div>
                       <div class="group">      
