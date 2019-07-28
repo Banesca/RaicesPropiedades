@@ -160,9 +160,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
 
     Route::get('ubicaciones','BuscadorDePropiedadesController@direcciones');
 
-    //Route::post('buscadorGeneral','Buscador');
-
-
+    Route::post('buscadorGeneral','BuscadorDePropiedadesController@buscarGeneral');
 
 });
 
