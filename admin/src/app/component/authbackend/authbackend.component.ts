@@ -24,7 +24,6 @@ export class AuthbackendComponent implements OnInit {
 
   ngOnInit() {
   }
-
   ingresarLogin(){
     this.inPromise = true;
     this.loginService.ingresarLogin(this.form).subscribe(
@@ -56,10 +55,10 @@ export class AuthbackendComponent implements OnInit {
         )
       },
       error => {
-          //console.log(error.error.message);
+          // console.log(error.error.message);
           console.log(error);
         this.inPromise = false;
-        this.alerService.msg("ERR", error.error.message);
+        // this.alerService.msg("ERR", error.error.message);
       }
     )
   }

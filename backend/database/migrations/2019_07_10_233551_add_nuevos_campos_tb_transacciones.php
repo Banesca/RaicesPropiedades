@@ -17,6 +17,7 @@ class AddNuevosCamposTbTransacciones extends Migration
             $table->string('email')->nullable();
             $table->string('imagen_1')->nullable();
             $table->string('imagen_2')->nullable();
+            $table->enum('status' ,["pendiente","confirmada"])->default("pendiente");
             $table->softDeletes();
         });
 

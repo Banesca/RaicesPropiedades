@@ -39,8 +39,8 @@ Route::group([ 'prefix' => 'auth' ], function() {
         
     });
 });
-
-Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
+//  
+Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     Route::post('login', 'API\AuthController@login'); //logear
     Route::post('crearUser', 'UserController@store');
@@ -83,6 +83,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'cors' ], function() {
     Route::post('transacciones/edit/{idTransaccion}', 'TransaccionesController@update');
     Route::delete('transacciones/eliminar/{idTransaccion}', 'TransaccionesController@destroy');
     Route::get('transacciones/{idTransaccion}', 'TransaccionesController@listarTransaccionesPorId');
+    Route::get('transacciones/confirmar/{idTransaccion}', 'TransaccionesController@confirmarTransaccion');
     /*   Transacciones    */
 
     /* Galeria */

@@ -1,246 +1,181 @@
 <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
-        <h3 class="py-5 text-center font-weight-bold">Tasaciones</h3>
-          </div>
-      </div>
+        <div class="col-md-12">
+            <h3 class="py-5 text-center font-weight-bold">Tasaciones</h3>
+        </div>
+    </div>
 
 
-  
-<div *ngIf="mFormaEstado == enCRUD.Eliminar">
-    <div class="row animated fadeIn fast">
-      <div class="col-md-12">
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead class="thead-dark ">
-              <th class="d-flex justify-content-center">#</th>
-              <th>Nombres</th>
-              <th>Teléfono</th>
-              <th>Título</th>
-              <th>Descripción</th>
-              <th>Categoría</th>
-              <th></th>
-            </thead>
-            <tbody>
-              <tr
-                *ngFor="let categoria of mCategorias; let i = index"
-              >
-              <td  class="d-flex justify-content-center">{{i + 1}}</td>
-              <td>{{categoria.nombre_apellido}}</td>
-              <td>{{categoria.telefono}}</td>
-              <td>{{categoria.titulo}}</td>
-              <td>{{categoria.descripcion}}</td>
-              <td>{{categoria.tipo_propiedad.descripcion}}</td>
-              <td>
-                  <button
-                  (click)="ver(categoria)"
-                  type="button"
-                  class="btn mr-2 btn-info"
-                >
-                <i class="far fa-eye"></i>    
-                          </button>
-                          <!--
+
+    <div *ngIf="mFormaEstado == enCRUD.Eliminar">
+        <div class="row animated fadeIn fast">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-dark ">
+                            <th class="d-flex justify-content-center">#</th>
+                            <th>Nombres</th>
+                            <th>Teléfono</th>
+                            <th>Título</th>
+                            <th>Descripción</th>
+                            <th>Categoría</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let categoria of mCategorias; let i = index">
+                                <td class="d-flex justify-content-center">{{i + 1}}</td>
+                                <td>{{categoria.nombre_apellido}}</td>
+                                <td>{{categoria.telefono}}</td>
+                                <td>{{categoria.titulo}}</td>
+                                <td>{{categoria.descripcion}}</td>
+                                <td>{{categoria.tipo_propiedad.descripcion}}</td>
+                                <td>
+                                    <button (click)="ver(categoria)" type="button" class="btn mr-2 btn-info">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                    <!--
                 <button
                   (click)="modificar(categoria)"
                   type="button"
                   class="btn mr-2 btn-primary"
                 >
                 <i class="fas fa-pencil-alt"></i>
-                </button>-->
-                <button
-                  (click)="eliminar(categoria.idTransacciones)"
-                  type="button"
-                  class="btn mr-2 btn-danger"
-                >
-                  <i class="fa fa-trash"></i>
-                </button>
-              </td>
-              </tr>
-            </tbody>
-          </table>
-          <div
-            *ngIf="(mCategorias | keys).length === 0 && !mLoading"
-            class="alert alert-info"
-            role="alert"
-          >
-            <strong>No existen</strong> Mails que mostrar...
-          </div>
-          <div *ngIf="mLoading" class="alert alert-warning" role="alert">
-            <strong>Cargando</strong> por favor espere...
-          </div>
+                </button>-->                                    
+                                    <button (click)="eliminar(categoria.idTransacciones)" type="button" class="btn mr-2 btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                    <button *ngIf="(categoria.status==='pendiente')" (click)="confirmar(categoria.idTransacciones)" type="button" class="btn mr-2 btn-success">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="(mCategorias | keys).length === 0 && !mLoading" class="alert alert-info" role="alert">
+                        <strong>No existen</strong> Mails que mostrar...
+                    </div>
+                    <div *ngIf="mLoading" class="alert alert-warning" role="alert">
+                        <strong>Cargando</strong> por favor espere...
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  
-  <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
-    <div class="col-md-12">
-      <form [formGroup]="mForma" #vForma="ngForm">
-        <div class="form-group text-right">
-          <button
-            (click)="mFormaEstado = enCRUD.Eliminar"
-            type="button"
-            class="btn btn-primary"
-          >
-            <i class="fa fa-backward"></i>
-            Regresar
-          </button>
-          <button
-            *ngIf="mFormaEstado == enCRUD.Actualizar"
-            (click)="actualizar(mCategoriasSelect.idTransacciones)"
-            [disabled]="!vForma.valid"
-            style="margin: 5px"
-            class="btn btn-primary"
-          >
-            <i class="fa fa-save"></i>
-            Modificar
-          </button>
-        </div>
-        <div class="form-group">
-          <label for="">Contacto</label>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="nombre_apellido"
-            placeholder="nombre_apellido"
-            [(ngModel)]="mCategoriasSelect.nombre_apellido"
-          />
-          <div
-            *ngIf="mForma.controls['nombre_apellido'].errors?.required"
-            class="alert alert-danger"
-            role="alert"
-          >
-            Contacto es requerido
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="">Teléfono</label>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="telefono"
-            placeholder="Teléfono"
-            [(ngModel)]="mCategoriasSelect.nombre_apellido"
-          />
-          <div
-            *ngIf="mForma.controls['telefono'].errors?.required"
-            class="alert alert-danger"
-            role="alert"
-          >
-            Teléfono es requerido
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="">Categoría</label>
-        <select  formControlName="fk_tipoPropiedad" class="form-control form-control-lg">
-            <option
-            type="number" [ngValue]="">Seleccione una Categoría</option>
-          <option  *ngFor="let categorias of mCategoriasList"
-          type="number" [ngValue]="categorias.idTipoPropiedad">{{categorias.descripcion}}</option>
-          </select>
-      <div
-        *ngIf="mForma.controls['fk_tipoPropiedad'].errors?.required"
-        class="alert alert-danger"
-        role="alert"
-      >
-        Categoría es requerida
-      </div>
     </div>
 
-        <div class="form-group">
-          <label for="">Título</label>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="titulo"
-            placeholder="Título del Mail"
-            [(ngModel)]="mCategoriasSelect.titulo"
-          />
-          <div
-            *ngIf="mForma.controls['titulo'].errors?.required"
-            class="alert alert-danger"
-            role="alert"
-          >
-            Título es requerido
-          </div>
+    <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
+        <div class="col-md-12">
+            <form [formGroup]="mForma" #vForma="ngForm">
+                <div class="form-group text-right">
+                    <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
+                        <i class="fa fa-backward"></i>
+                        Regresar
+                    </button>
+                    <button *ngIf="mFormaEstado == enCRUD.Actualizar" (click)="actualizar(mCategoriasSelect.idTransacciones)"
+                        [disabled]="!vForma.valid" style="margin: 5px" class="btn btn-primary">
+                        <i class="fa fa-save"></i>
+                        Modificar
+                    </button>
+                </div>
+                <div class="form-group">
+                    <label for="">Contacto</label>
+                    <input class="form-control" type="text" formControlName="nombre_apellido" placeholder="nombre_apellido"
+                        [(ngModel)]="mCategoriasSelect.nombre_apellido" />
+                    <div *ngIf="mForma.controls['nombre_apellido'].errors?.required" class="alert alert-danger" role="alert">
+                        Contacto es requerido
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Teléfono</label>
+                    <input class="form-control" type="text" formControlName="telefono" placeholder="Teléfono"
+                        [(ngModel)]="mCategoriasSelect.nombre_apellido" />
+                    <div *ngIf="mForma.controls['telefono'].errors?.required" class="alert alert-danger" role="alert">
+                        Teléfono es requerido
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Categoría</label>
+                    <select formControlName="fk_tipoPropiedad" class="form-control form-control-lg">
+                        <option type="number" [ngValue]="">Seleccione una Categoría</option>
+                        <option *ngFor="let categorias of mCategoriasList" type="number" [ngValue]="categorias.idTipoPropiedad">{{categorias.descripcion}}</option>
+                    </select>
+                    <div *ngIf="mForma.controls['fk_tipoPropiedad'].errors?.required" class="alert alert-danger" role="alert">
+                        Categoría es requerida
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Título</label>
+                    <input class="form-control" type="text" formControlName="titulo" placeholder="Título del Mail"
+                        [(ngModel)]="mCategoriasSelect.titulo" />
+                    <div *ngIf="mForma.controls['titulo'].errors?.required" class="alert alert-danger" role="alert">
+                        Título es requerido
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Descripción</label>
+                    <textarea class="form-control" type="text" [(ngModel)]="mCategoriasSelect.descripcion"
+                        formControlName="descripcion"></textarea>
+                    <div *ngIf="mForma.controls['descripcion'].errors?.required" class="alert alert-danger" role="alert">
+                        Descripción es requerida
+                    </div>
+                </div>
+            </form>
         </div>
-  
-        <div class="form-group">
-          <label for="">Descripción</label>
-          <textarea
-            class="form-control"
-            type="text"
-            [(ngModel)]="mCategoriasSelect.descripcion"
-            formControlName="descripcion"
-          ></textarea>
-          <div
-          *ngIf="mForma.controls['descripcion'].errors?.required"
-          class="alert alert-danger"
-          role="alert"
-        >
-          Descripción es requerida
-        </div>
-        </div>
-      </form>
     </div>
-  </div>
-  
-  <div *ngIf="mFormaEstado == enCRUD.Leer" class="row animated fadeIn fast">
-      <div class="col-md-12">
-        <form>
-          <div class="form-group text-right">
-            <button
-              (click)="mFormaEstado = enCRUD.Eliminar"
-              type="button"
-              class="btn btn-primary"
-            >
-              <i class="fa fa-backward"></i>
-              Regresar
-            </button>
-          </div>
-          <div class="form-group">
-            <label for="">Contacto</label>
-            <input
-              class="form-control"
-              type="text"
-              [(ngModel)]="mCategoriasSelect.nombre_apellido"
-              name="mCategoriasSelect.nombre_apellido"
-              readonly
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Teléfono</label>
-            <input
-              class="form-control"
-              type="text"
-              [(ngModel)]="mCategoriasSelect.telefono"
-              name="mCategoriasSelect.telefono"
-              readonly
-            />
-          </div>
-          <div class="form-group">
-            <label for="">Título</label>
-            <input
-              class="form-control"
-              type="text"
-              [(ngModel)]="mCategoriasSelect.titulo"
-              name="mCategoriasSelect.titulo"
-              readonly
-            />
-          </div>
-  
-          <div class="form-group">
-            <label for="">Descripción</label>
-            <textarea
-              class="form-control"
-              type="text"
-              [(ngModel)]="mCategoriasSelect.descripcion"
-              name="mCategoriasSelect.descripcion"
-              readonly
-            ></textarea>
-          </div>
-        </form>
-      </div>
+
+    <div *ngIf="mFormaEstado == enCRUD.Leer" class="row animated fadeIn fast">
+        <div class="col-md-12">
+            <form>
+                <div class="form-group text-right">
+                    <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
+                        <i class="fa fa-backward"></i>
+                        Regresar
+                    </button>
+                </div>
+                <div class="">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Contacto</label>
+                            <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.nombre_apellido"
+                                name="mCategoriasSelect.nombre_apellido" readonly />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Teléfono</label>
+                            <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.telefono" name="mCategoriasSelect.telefono"
+                                readonly />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Título</label>
+                            <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.titulo" name="mCategoriasSelect.titulo"
+                                readonly />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Descripción</label>
+                            <textarea class="form-control" type="text" [(ngModel)]="mCategoriasSelect.descripcion" name="mCategoriasSelect.descripcion"
+                                readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="col-md-6">
+                        <img src="{{ mCategoriasSelect.imagen_1 }}" alt="" style="width:100%;">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ mCategoriasSelect.imagen_2 }}" alt="" style="width:100%;">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
+</div>
