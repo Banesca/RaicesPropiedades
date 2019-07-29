@@ -24,3 +24,4 @@ backend/public/robots.txt
 backend/public/storage/
 .idea/workspace.xml
 .idea/workspace.xml
+!/backend/app/Mail/MailsMasivos.php

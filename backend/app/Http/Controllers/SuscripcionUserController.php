@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailsMasivos;
 use App\Mail\SuscripcionMail;
 use App\Mail_;
 use App\Suscripcion;
@@ -33,7 +34,7 @@ class SuscripcionUserController extends Controller {
             $TodosCorreos=Suscripcion::get();
 
             foreach ($TodosCorreos as $correo){
-                Mail::to($correo->email)->send(new SuscripcionMail($sus,$correo->email));
+                Mail::to($correo->email)->send(new MailsMasivos($sus,$correo->email));
             }
 
 
