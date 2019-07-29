@@ -30,3 +30,20 @@ export class TipoPropiedad {
         } as ITipoPropiedad
     }
 }
+
+
+
+export interface TipoOperaion {
+    idTipoOperaion: number; 
+    descripcion: string ;
+} 
+
+
+export class TOperaion {
+    static empy() {
+        return {
+            idTipoOperaion: null,
+            descripcion: 'Seleccione'
+        } as TipoOperaion
+    }
+}

@@ -1,118 +1,217 @@
 <div>
-<div class="bg-yellow sec2 pt-4 section-container">
-<div class="col-sm-12 text-white" style="z-index: 2;">
-        <h3 class="font-weight-extrabold text-center text-uppercase">Buscador</h3>
-        <h5 class="font-weight-light text-center">Escuentra el inmueble ideal para tí</h5>
-    </div>  
+  <div class="bg-yellow sec2 pt-4 section-container">
+    <div class="col-sm-12 text-white" style="z-index: 2;">
+      <h3 class="font-weight-extrabold text-center text-uppercase">Buscador</h3>
+      <h5 class="font-weight-light text-center">
+        Escuentra el inmueble ideal para tí
+      </h5>
+    </div>
     <div class="container px-5">
       <div class="row mt-4">
-          <div class="col-lg-5 d-flex  px-0">
-              <div class="col-lg-6 py-3 px-1">
-                <label class="col font-weight-extrabold">Tipo de Operación:</label>
-                  <div ngbDropdown class="d-inline-block">
-                    <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Alquiler</button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                      <button ngbDropdownItem>Action - 1</button>
-                      <button ngbDropdownItem>Another Action</button>
-                      <button ngbDropdownItem>Something else is here</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 py-3 mt-auto px-1">
-          <label class="col font-weight-extrabold">Edificación:</label>
-          <div ngbDropdown class="d-inline-block">
-            <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="tipo.descripcion" ngbDropdownToggle>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <input type="button" *ngFor="let tipoPropiedades of mTipoPropiedad"
-             ngbDropdownItem (click)="setTipo(tipoPropiedades)" [value]="tipoPropiedades.descripcion">
+        <div class="col-lg-5 d-flex  px-0">
+          <div class="col-lg-6 py-3 mt-auto px-1">
+            <label class="col font-weight-extrabold">Tipo Operacion:</label>
+            <div ngbDropdown class="d-inline-block">
+              <input
+                type="button"
+                class="btn search-dropdown btn-block"
+                id="dropdownBasic1"
+                [value]="operation.descripcion"
+                ngbDropdownToggle
+              />
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <input
+                  type="button"
+                  *ngFor="let tipo of tipoOperation"
+                  ngbDropdownItem
+                  (click)="setTipoOperation(tipo)"
+                  [value]="tipo.descripcion"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 py-3 mt-auto px-1">
+            <label class="col font-weight-extrabold">Edificación:</label>
+            <div ngbDropdown class="d-inline-block">
+              <input
+                type="button"
+                class="btn search-dropdown btn-block"
+                id="dropdownBasic1"
+                [value]="tipo.descripcion"
+                ngbDropdownToggle
+              />
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <input
+                  type="button"
+                  *ngFor="let tipoPropiedades of mTipoPropiedad"
+                  ngbDropdownItem
+                  (click)="setTipo(tipoPropiedades)"
+                  [value]="tipoPropiedades.descripcion"
+                />
+              </div>
             </div>
           </div>
         </div>
-                </div>
-          <div class="col-lg-7 align-items-center d-md-flex px-0">
-              <div class="col-md-4 py-1 col-12 px-1">
-                  <label class="col  font-weight-extrabold">Moneda:</label>
-                  <div ngbDropdown class="d-inline-block">
-                    <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="moneda.moneda" ngbDropdownToggle>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                      <input type="button" *ngFor="let moneda of mMonedas"
-                     ngbDropdownItem (click)="setMoneda(moneda)" [value]="moneda.moneda">
-                    </div>
-                  </div>
-                  </div>
-                  <div class="col-md-4 py-1 col-12 px-1">
-                      <label class="col font-weight-extrabold">Monto Máximo:</label>
-                      <div ngbDropdown class="d-inline-block">
-                        <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Indistinto</button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                          <button ngbDropdownItem>Action - 1</button>
-                          <button ngbDropdownItem>Another Action</button>
-                          <button ngbDropdownItem>Something else is here</button>
-                        </div>
-                      </div>
-                      </div>
-              <div class="col-md-4 py-1  col-12 px-1">
-                <label class="col font-weight-extrabold">Monto Mínimo:</label>
-                  <div ngbDropdown class="d-inline-block">
-                    <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Indistinto</button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                      <button ngbDropdownItem>Action - 1</button>
-                      <button ngbDropdownItem>Another Action</button>
-                      <button ngbDropdownItem>Something else is here</button>
-                    </div>
-                  </div>
-                </div>
+        <div class="col-lg-7 align-items-center d-md-flex px-0">
+          <div class="col-md-4 py-1 col-12 px-1">
+            <label class="col  font-weight-extrabold">Moneda:</label>
+            <div ngbDropdown class="d-inline-block">
+              <input
+                type="button"
+                class="btn search-dropdown btn-block"
+                id="dropdownBasic1"
+                [value]="moneda.moneda"
+                ngbDropdownToggle
+              />
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <input
+                  type="button"
+                  *ngFor="let moneda of mMonedas"
+                  ngbDropdownItem
+                  (click)="setMoneda(moneda)"
+                  [value]="moneda.moneda"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 py-1 col-12 px-1">
+            <label class="col font-weight-extrabold">Monto Máximo:</label>
+            <div ngbDropdown class="d-inline-block">
+              <input
+                type="button"
+                class="btn search-dropdown btn-block"
+                id="dropdownBasic1"
+                [value]="selectedMaximo"
+                ngbDropdownToggle
+              />
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <input
+                  type="button"
+                  *ngFor="let monto of montos"
+                  ngbDropdownItem
+                  (click)="setMaximo(monto)"
+                  [value]="monto"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 py-1  col-12 px-1">
+            <label class="col font-weight-extrabold">Monto Mínimo:</label>
+            <div ngbDropdown class="d-inline-block">
+              <input
+                type="button"
+                class="btn search-dropdown btn-block"
+                id="dropdownBasic1"
+                [value]="selectedMinimo"
+                ngbDropdownToggle
+              />
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <input
+                  type="button"
+                  *ngFor="let monto of montos"
+                  ngbDropdownItem
+                  (click)="setMnimo(monto)"
+                  [value]="monto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row mt-3">
-      <label class="col font-weight-extrabold">Buscar en:</label>
+      <div class="row mt-3">
+        <label class="col font-weight-extrabold">Buscar en:</label>
       </div>
       <div class="row">
-      <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Norte Gran BS.</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem>Action - 1</button>
-            <button ngbDropdownItem>Another Action</button>
-            <button ngbDropdownItem>Something else is here</button>
+        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+          <div ngbDropdown class="d-inline-block">
+            <input
+              type="button"
+              class="btn search-dropdown btn-block"
+              id="dropdownBasic1"
+              [value]="selectedProvince.descripcion"
+              ngbDropdownToggle
+            />
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <input
+                type="button"
+                *ngFor="let ubication of ubicaciones"
+                ngbDropdownItem
+                (click)="setProvince(ubication)"
+                [value]="ubication.descripcion"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+          <div ngbDropdown class="d-inline-block">
+            <input
+              type="button"
+              class="btn search-dropdown btn-block"
+              id="dropdownBasic1"
+              [value]="selectedCiudad.descripcion"
+              ngbDropdownToggle
+            />
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <input
+                type="button"
+                *ngFor="let partido of partidos"
+                ngbDropdownItem
+                (click)="setCiudad(partido)"
+                [value]="partido.descripcion"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+          <div ngbDropdown class="d-inline-block">
+            <input
+              type="button"
+              class="btn search-dropdown btn-block"
+              id="dropdownBasic1"
+              [value]="selectedLocalidad.descripcion"
+              ngbDropdownToggle
+            />
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <input
+                type="button"
+                *ngFor="let localidad of localidades"
+                ngbDropdownItem
+                (click)="setLocalidad(localidad)"
+                [value]="localidad.descripcion"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+          <div ngbDropdown class="d-inline-block">
+            <input
+              type="button"
+              class="btn search-dropdown btn-block"
+              id="dropdownBasic1"
+              [value]="selectedBarrio.descripcion"
+              ngbDropdownToggle
+            />
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <input
+                type="button"
+                *ngFor="let barrio of barrios"
+                ngbDropdownItem
+                (click)="setBarrio(barrio)"
+                [value]="barrio.descripcion"
+              />
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Pdo. Pilar</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem>Action - 1</button>
-            <button ngbDropdownItem>Another Action</button>
-            <button ngbDropdownItem>Something else is here</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Countries/B Cerrado</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem>Action - 1</button>
-            <button ngbDropdownItem>Another Action</button>
-            <button ngbDropdownItem>Something else is here</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn search-dropdown btn-block" id="dropdownBasic1" ngbDropdownToggle>Indistinto</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem>Action - 1</button>
-            <button ngbDropdownItem>Another Action</button>
-            <button ngbDropdownItem>Something else is here</button>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="col-sm-12 text-white d-flex justify-content-center py-5">
+      <button
+        (click)="searchFilter()"
+        class="btn brown-button btn-lg text-uppercase font-weight-bold"
+      >
+        Buscar información
+      </button>
+    </div>
+    <ng-content select="img"></ng-content>
   </div>
-  </div>
-  <div class="col-sm-12 text-white d-flex justify-content-center py-5">
-      <button (click)="searchFilter()" class="btn brown-button btn-lg text-uppercase font-weight-bold">Buscar información</button>
-  </div>
-  <ng-content select="img"></ng-content> 
-</div>
 </div>

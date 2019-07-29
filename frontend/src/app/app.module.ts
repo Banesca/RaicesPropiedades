@@ -17,6 +17,9 @@ import { ArticleModule } from './modules/blog/modules/article/article.module';
 import { AboutComponent } from './page/about/about.component';
 import { PropiertysComponent } from './page/propiertys/propiertys.component';
 
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,10 +27,11 @@ import { PropiertysComponent } from './page/propiertys/propiertys.component';
     NopagefoundComponent,
     AboutComponent,
     PropiertysComponent,
-    SearchPipe
+    SearchPipe,
   ],
   imports: [
-   
+    MatCardModule,
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     CommonModule,
@@ -36,8 +40,7 @@ import { PropiertysComponent } from './page/propiertys/propiertys.component';
     ArticleModule,
     ServiciosModule,
     NgbModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

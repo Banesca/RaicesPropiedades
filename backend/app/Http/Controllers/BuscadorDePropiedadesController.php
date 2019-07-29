@@ -21,9 +21,7 @@ class BuscadorDePropiedadesController extends Controller {
                    ! is_null($idTipoPropiedad) ? $query->where('fk_tipoPropiedad', $idTipoPropiedad) : '';
                    ! is_null($idMonedas) ? $query->where('fk_idMonedas', $idMonedas) : '';
                })
-
-
-
+            
         ->get();
 
         return response()->json($resultadoUnico, 200);

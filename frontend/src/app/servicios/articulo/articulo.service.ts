@@ -1,28 +1,29 @@
+import { ConfigService } from "./../config/config.service";
+import { IMonedas, ITipoPropiedad, IOrientacion } from "./articulo.interface";
+import { getHeaders } from "../../misc/Headers";
 
-import { ConfigService } from './../config/config.service';
-import { IMonedas, ITipoPropiedad, IOrientacion } from './articulo.interface';
-import { getHeaders } from '../../misc/Headers';
-
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable, of, BehaviorSubject, Subject } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 /** Class Articulo CRUD por medio de un servicio web */
 export class ArticuloService {
   /** Nombre de recurso ha obtener en la API */
-  private mService = '/api/v1/';
+  private mService = "/api/v1/";
   /** Url obtenida del servicio de configuracion */
   private mUrl: string;
-  filter = [
-  ]
+  public filter: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  public search: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
   /**
-  * Create a point.
-  * @parametro HttpClient - Cliente http para realizar peticiones.
-  * @parametro ConfigService - Configuracion de Url dinamicas
-  */
+   * Create a point.
+   * @parametro HttpClient - Cliente http para realizar peticiones.
+   * @parametro ConfigService - Configuracion de Url dinamicas
+   */
   constructor(
     private _HttpClient: HttpClient,
     private _ConfigService: ConfigService
@@ -36,30 +37,66 @@ export class ArticuloService {
    * @returns Coleccion de datos de tipo IArticulo
    */
   getMonedas() {
-    return this._HttpClient.get(this.mUrl + this.mService + 'getMonedas', {
-      headers: getHeaders()
-    }).pipe(
-      map((data: IMonedas) => {
-        return data;
-      })).toPromise();
+    return this._HttpClient
+      .get(this.mUrl + this.mService + "getMonedas", {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: IMonedas) => {
+          return data;
+        })
+      )
+      .toPromise();
   }
 
   getTipoPropiedad() {
-    return this._HttpClient.get(this.mUrl + this.mService + 'getTipoPropiedad', {
-      headers: getHeaders()
-    }).pipe(
-      map((data: ITipoPropiedad) => {
-        return data;
-      })).toPromise();
+    return this._HttpClient
+      .get(this.mUrl + this.mService + "getTipoPropiedad", {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: ITipoPropiedad) => {
+          return data;
+        })
+      )
+      .toPromise();
   }
 
   getOrientacion() {
-    return this._HttpClient.get(this.mUrl + this.mService + 'getOrientacion', {
-      headers: getHeaders()
-    }).pipe(
-      map((data: IOrientacion) => {
-        return data;
-      })).toPromise();
+    return this._HttpClient
+      .get(this.mUrl + this.mService + "getOrientacion", {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: IOrientacion) => {
+          return data;
+        })
+      )
+      .toPromise();
   }
-  
+
+  getTipoOperacion() {
+    return this._HttpClient
+      .get(this.mUrl + this.mService + "getTipoOperacion", {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+
+  getUbication() {
+    return this._HttpClient
+      .get(this.mUrl + this.mService + "ubicaciones", {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      ).toPromise()
+  }
 }

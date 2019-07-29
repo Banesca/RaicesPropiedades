@@ -17,11 +17,16 @@ import { BlogPaginationComponent } from './components/blog-pagination/blog-pagin
 import { PropiertysListComponent } from './components/propiertys-list/propiertys-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
+
 import localePy from '@angular/common/locales/es-PY';
 import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/en';
 import { TransactionModalComponent } from './components/transaction-modal/transaction-modal.component';
 import { PropiertysCarouselComponent } from './components/propiertys-carousel/propiertys-carousel.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+
+
 
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
@@ -44,7 +49,6 @@ registerLocaleData(localeEn, 'en')
     BlogPaginationComponent,
     TransactionModalComponent,
     PropiertysListComponent,
-    
   ],
   exports: [
     PropiertysCarouselComponent,
@@ -65,7 +69,10 @@ registerLocaleData(localeEn, 'en')
     RouterModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatIconModule
+ 
   ],
   entryComponents: [TransactionModalComponent],
   providers: [ { provide: LOCALE_ID, useValue: 'es' } ],
