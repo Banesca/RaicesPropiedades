@@ -24,7 +24,7 @@ class MailController extends Controller {
 
         $response = [
             'msj'   => 'Mail creado exitosamente',
-            'mails' => Mail::all(),
+            'mails' => Mail_::all(),
         ];
 
         return response()->json($response, 201);

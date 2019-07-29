@@ -56,31 +56,40 @@ class TransaccionesController extends Controller {
                 
 
             $transaccion = new Transacciones($request->all());
-            $save_path='/uploads/tasaciones/';
-            if (!file_exists(public_path($save_path))) {
-                mkdir(public_path($save_path), 666, true);
-            }
 
-            if (is_null($request->imagen_1)) {
-            } else {
-                $image = $request->imagen_1;
-                $imageInfo = explode(";base64,", $image);
-                $imgExt = str_replace('data:image/', '', $imageInfo[0]);      
-                $image = str_replace(' ', '+', $imageInfo[1]);
-                $imageName = time().".".$imgExt;
-                Storage::disk('local')->put('\\imagenTasaciones\\'.$imageName, base64_decode($image));
-                $transaccion->imagen_1 = $imageName;
-            }
-            if (is_null($request->imagen_2)) {
-            } else {
-                $image = $request->imagen_2;
-                $imageInfo = explode(";base64,", $image);
-                $imgExt = str_replace('data:image/', '', $imageInfo[0]);      
-                $image = str_replace(' ', '+', $imageInfo[1]);
-                $imageName = (time()+1).".".$imgExt;
-                Storage::disk('local')->put('\\imagenTasaciones\\'.$imageName, base64_decode($image));
-                $transaccion->imagen_2 = $imageName;
-            }
+                if (is_null($request->imagen_1)) {
+                } else {
+                    $originalImage = $request->imagen_1;
+
+                    $thumbnailImage = Image::make($originalImage);
+
+                    $nombre_publico = $originalImage->getClientOriginalName();
+                    $extension      = $originalImage->getClientOriginalExtension();
+
+                    $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
+                    $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
+
+                    Storage::disk('local')->put('\\imagenTasaciones\\'.$nombre_interno, (string) $thumbnailImage->encode());
+
+                    $transaccion->imagen_1 = $nombre_interno;
+                }
+
+                if (is_null($request->imagen_2)) {
+                } else {
+                    $originalImage = $request->imagen_2;
+
+                    $thumbnailImage = Image::make($originalImage);
+
+                    $nombre_publico = $originalImage->getClientOriginalName();
+                    $extension      = $originalImage->getClientOriginalExtension();
+
+                    $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
+                    $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
+
+                    Storage::disk('local')->put('\\imagenTasaciones\\'.$nombre_interno, (string) $thumbnailImage->encode());
+
+                    $transaccion->imagen_2 = $nombre_interno;
+                }
             
             $transaccion->save();
 
