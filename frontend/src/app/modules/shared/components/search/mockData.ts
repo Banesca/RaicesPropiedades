@@ -18,6 +18,6 @@ export const provincias = [
   }
 ];
 
-export const montos: number[] = [100, 200, 500, 1000, 1000, 15000];
+export const montos: number[] = [100, 200, 500, 1000, 10000, 15000];
 
 export const unknown: string[] = ["Indistinto"];

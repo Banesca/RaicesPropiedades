@@ -17,7 +17,7 @@ export class ArticuloService {
   /** Url obtenida del servicio de configuracion */
   private mUrl: string;
   public filter: BehaviorSubject<any[]> = new BehaviorSubject([]);
-  public search: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  public search: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   /**
    * Create a point.
