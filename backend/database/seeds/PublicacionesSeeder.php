@@ -24,6 +24,15 @@ class PublicacionesSeeder extends Seeder {
                 'esUnaNovedad'           => rand(0, 1),
                 'apareceEnGaleriaInicia' => rand(0, 1),
                 'fk_estado_publicacion'  => rand(1, 3),
+                'fk_idTipoOperaion'      => rand(1, 4),
+
+                'precio'             => rand(100, 8000),
+                'fk_idMonedas'       => rand(1, 3),
+                'comision'           => '30%',
+                'titulo'             => rand(1, 4),
+                'tipo_publicacion'   => rand(1, 4),
+                'aparece_en_galeria' => rand(0, 1),
+
             ]);
             $ficha1->save();
 

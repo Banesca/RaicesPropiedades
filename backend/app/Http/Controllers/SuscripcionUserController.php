@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SuscripcionMail;
+use App\Mail_;
+use App\Suscripcion;
 use App\SuscripcionUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +30,12 @@ class SuscripcionUserController extends Controller {
 
             $sus->save();
 
-            //sus::to($request->esus)->send(new Suscripcionsus($sus));
+            $TodosCorreos=Suscripcion::get();
+
+            foreach ($TodosCorreos as $correo){
+                Mail::to($correo->email)->send(new SuscripcionMail($sus,$correo->email));
+            }
+
 
             $response = [
                 'msj'             => 'Suscripción Creada Satisfactoriamente',

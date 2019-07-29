@@ -18,6 +18,13 @@ class Ficha1 extends Model {
         'esUnaOportunidad',
         'apareceEnGaleriaInicia',
         'fk_estado_publicacion',
+        'fk_idTipoOperaion',
+        'precio',
+        'fk_idMonedas',
+        'comision',
+        'titulo',
+        'tipo_publicacion',
+        'aparece_en_galeria',
     ];
 
     protected $hidden = [
@@ -32,5 +39,11 @@ class Ficha1 extends Model {
 
     public function tipoPropiedad() {
         return $this->belongsTo('App\TipoPropiedad', 'fk_tipoPropiedad');
+    }
+    public function tipoOpeacion() {
+        return $this->belongsTo('App\TipoOperacion', 'fk_idTipoOperaion');
+    }
+    public function tipoMoneda() {
+        return $this->belongsTo('App\Moneda', 'fk_idMonedas');
     }
 }

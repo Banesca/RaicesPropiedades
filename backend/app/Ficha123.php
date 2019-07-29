@@ -24,7 +24,7 @@ class Ficha123 extends Model
 
 
     public function ficha1() {
-        return $this->belongsTo('App\Ficha1', 'fk_idFicha1')->with('estadoPublicacion','tipoPropiedad');
+        return $this->belongsTo('App\Ficha1', 'fk_idFicha1')->with('estadoPublicacion','tipoPropiedad','tipoOpeacion','tipoMoneda');
     }
     public function ficha2() {
         return $this->belongsTo('App\Ficha2', 'fk_idFicha2');
