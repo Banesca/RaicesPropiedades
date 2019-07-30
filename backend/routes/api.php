@@ -148,9 +148,11 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::get('getTipoExpensas','ReturnSeedController@get_TipoExpensasSeeder');
     Route::get('getTipoPiso','ReturnSeedController@get_TipoPisoSeeder');
     Route::get('getTipoLocal','ReturnSeedController@get_TipoLocalSeeder');
+
     Route::post('addFicha1','Ficha1Controller@add');
     Route::post('addFicha2','Ficha2Controller@add');
     Route::post('addFicha3','Ficha3Controller@add');
+
     Route::get('sincronice','SincroniceArgenController@add');
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
     Route::get('listarPropiedades','Ficha123Controller@listarTodo');
