@@ -24,7 +24,7 @@ class cors
         ];
         if($request->getMethod() == "OPTIONS") {
             // The client-side application can set only headers allowed in Access-Control-Allow-Headers
-            return Response::make('OK', 200, $headers);
+            return \Illuminate\Http\Response::make('OK', 200, $headers);
         }
 
         $response = $next($request);

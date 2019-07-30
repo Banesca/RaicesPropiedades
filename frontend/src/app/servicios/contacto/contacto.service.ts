@@ -69,7 +69,7 @@ export class ContactoService {
   NewContact(pContacto: IContacto) {
     return this._HttpClient
       .post(
-        this.mUrl + '/api/v1/addContactanos/',
+        this.mUrl + '/api/v1/addContactanos',
         pContacto,
         {
           headers: getHeaders()

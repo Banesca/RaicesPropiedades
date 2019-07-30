@@ -15,7 +15,7 @@ class BuscadorDePropiedadesController extends Controller {
         $idTipoPropiedad = @$request->idTipoPropiedad;
         $idMonedas       = @$request->idMonedas;
 
-        $resultadoUnico = Ficha123::with('ficha1','ficha2')
+        $resultadoUnico = Ficha123::with('ficha1','ficha2','ficha3')
             ->whereHas('ficha1', function($query) use ($idTipoOperaion,$idTipoPropiedad,$idMonedas) {
                    ! is_null($idTipoOperaion) ? $query->where('fk_idTipoOperaion', $idTipoOperaion) : '';
                    ! is_null($idTipoPropiedad) ? $query->where('fk_tipoPropiedad', $idTipoPropiedad) : '';

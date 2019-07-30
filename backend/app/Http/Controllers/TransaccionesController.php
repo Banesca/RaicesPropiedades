@@ -20,13 +20,14 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 use Image;
+use function response;
 
 class TransaccionesController extends Controller {
 
     /*Creado por Breiddy Monterrey*/
     public function store(Request $request) {
-        
-            
+
+
         $this->validate($request, [
             'nombre_apellido'  => 'required|min:2',
             'telefono'         => 'required|min:2',
