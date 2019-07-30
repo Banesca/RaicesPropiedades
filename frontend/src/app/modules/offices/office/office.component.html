@@ -72,6 +72,9 @@
                         <label>Nombres</label>
                         <div *ngIf="submitted && f.nombre.errors" type="alert" class="invalid-feedback d-block">
                             <div *ngIf="f.nombre.errors.required">Nombre y Apellido son Requerido</div>
+                            <div *ngIf="f.nombre.errors.pattern">Nombre y Apellido no válido</div>
+                            <div *ngIf="f.nombre.errors.pattern">Debe ingresar caracteres alfabéticos</div>
+                            <div *ngIf="f.nombre.errors.minlength">Debe ingresar al menos 6 caracteres alfabéticos</div>                            
                         </div>
                       </div>
                       <div class="group">      
@@ -81,6 +84,7 @@
                         <label>Email</label>
                         <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback d-block">
                             <div *ngIf="f.email.errors.required">Email es Requerido</div>
+                            <div *ngIf="f.telefono.errors.pattern">Email no válido.</div>
                         </div>
                       </div> 
                       <div class="group">      
@@ -90,6 +94,7 @@
                           <label>Teléfono</label>
                           <div *ngIf="submitted && f.telefono.errors" type="alert" class="invalid-feedback d-block">
                               <div *ngIf="f.telefono.errors.required">El Teléfono Requerido</div>
+                              <div *ngIf="f.telefono.errors.pattern">Número teléfonico no válido.</div>                              
                           </div>
                         </div> 
                         <div class="group"> 
@@ -110,6 +115,7 @@
                       </div>
                      </div>
                   </form>
+                  
               </div>
           </div>
         
@@ -121,15 +127,16 @@
           <span class="sr-only">Enviando...</span>
         </div>
       </div>
-    </div>
-    <div *ngIf="successMensaje" class="row">
-        <div class="col-lg-12 my-2">
-          <h3 class="text-center mt-3 font-weight-bold">Mensaje Enviado!</h3>
-          <p class="mb-5 text-center font-weight-bold">Pronto nos contactaremos contigo</p>
-          <button (click)="submittedClose()"  class="btn brown-button btn-lg mx-auto btn-block col-lg-5" type="button" data-dismiss="modal" aria-label="Close">Volver</button>
-        </div>
+    </div>-->
+    <div  *ngIf="successMensaje" class="row">
+      <div class="col-lg-12 my-2">
+        <h3 class="text-center mt-3 font-weight-bold">Información de contacto registrada</h3>
+        <p class="mb-5 text-center font-weight-bold">Pronto nos contactaremos contigo</p>
+        <button (click)="submittedClose()" class="mb-5 btn brown-button btn-lg mx-auto btn-block col-lg-5" type="button"
+          data-dismiss="modal" aria-label="Close">Volver</button>
       </div>
-      <div *ngIf="errorMensaje" class="row">
+    </div>
+      <!--<div *ngIf="errorMensaje" class="row">
           <div class="col-lg-12 my-2">
             <h3 class="text-center mt-3 font-weight-bold">Ocurrió un error al enviar el mensaje</h3>
             <p class="mb-5 text-center font-weight-bold">Por favor intete nuevamente</p>

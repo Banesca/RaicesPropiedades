@@ -44,11 +44,24 @@ export class OfficeComponent implements OnInit {
 
   ngOnInit() {
     this.contactForm = this._formBuilder.group({
-      nombre: ["", Validators.required],
-      email: ["",[Validators.required, Validators.email]],
-      telefono: ["", Validators.required],
-      mensaje:["", Validators.required,]
-  });
+      nombre: ["", [Validators.required, Validators.pattern("[a-zA-Z]*"), Validators.minLength(6)]],
+      email: [
+        "",
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")
+        ]
+      ],
+      telefono: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern("^[0-9]{10,12}$") //this is for the letters (both uppercase and lowercase) and numbers validation
+        ]
+      ],
+      mensaje: ["", Validators.required]
+    });
   }
 
 
