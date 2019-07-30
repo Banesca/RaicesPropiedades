@@ -54,8 +54,10 @@ export class ContactoService {
    * @returns Item de dato de Tipo IContacto
    */
   New(pContacto: IContacto) {
+    console.log('New');
+    console.log(pContacto);
     return this._HttpClient
-      .post(this.mUrl + this.mService + "/store", pContacto, {
+      .post<any>(this.mUrl + this.mService + "/store", pContacto, {
         headers: getHeaders()
       })
       .pipe(

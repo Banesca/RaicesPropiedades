@@ -51,21 +51,6 @@ export class TransactionModalComponent implements OnInit {
     });
   }
 
-  /*
-  generarFormulario() {
-    // Estructura de nuestro formulario
-    return this._formBuilder.group({
-      id: '',
-      nombres: ["", Validators.required],
-      apellidos: ["", Validators.required],
-      email: ["",[Validators.required, Validators.email]],
-      tema: ["", Validators.required],
-      mensaje:["", Validators.required,],
-      created_at:''
-    });
-  }
-  */
-
   get f() {
     return this.contactForm.controls;
   }
@@ -86,23 +71,23 @@ export class TransactionModalComponent implements OnInit {
       .All()
       .then(res => {
         this.mCategorias = res.data;
-        console.log(this.mCategorias);
       })
       .catch(error => {
-        console.log(this.mCategorias);
+        console.log(error);
       });
   }
 
   guardar() {
     this.mLoading = true;
     this.hideForm = true;
+    console.log(this.mContacto);
     this._ContactoService
       .New(this.mContacto)
       .then(data => {
         console.log(data);
         this.successMensaje = true;
         this.mLoading = false;
-        this.contactForm.reset();
+        // this.contactForm.reset();
       })
       .catch(error => {
         console.log(error);
@@ -129,10 +114,14 @@ export class TransactionModalComponent implements OnInit {
       reader.onload = () => {
         
         if (image === "imagen_1"){
-          this.contactForm.get("imagen_1").patchValue(reader.result);
+          this.contactForm
+            .get("imagen_1")
+            .patchValue(reader.result);
         }
         if (image === "imagen_2") {
-            this.contactForm.get("imagen_2").patchValue(reader.result);
+          this.contactForm
+            .get("imagen_2")
+            .patchValue(reader.result);
         }
 
         // need to run CD since file load runs outside of zone

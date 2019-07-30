@@ -76,6 +76,7 @@
           </div>
           <label for="exampleFormControlSelect1" class="text-uppercase">Adjuntar Fotos</label>
           <div class="form-group mb-3">
+            <!--  -->
             <input type="file" (change)="onFileChange($event,'imagen_1')" class="form-control form-control-lg" placeholder="file1.jpg">
             <div *ngIf="submitted && f.imagen_1.errors" type="alert" class="invalid-feedback d-block">
               <div *ngIf="f.imagen_1.errors.required">Las imagenes son Requerida</div>

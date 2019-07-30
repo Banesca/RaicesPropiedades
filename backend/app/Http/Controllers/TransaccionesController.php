@@ -55,18 +55,23 @@ class TransaccionesController extends Controller {
             try {
                 
                 
-
             $transaccion = new Transacciones($request->all());
 
                 if (is_null($request->imagen_1)) {
                 } else {
-                    $originalImage = $request->imagen_1;
-
+                    if(gettype($request->imagen_1)==="string"){
+                        $data = explode(',', $request->imagen_1);
+                        $originalImage = imagecreatefromstring(base64_decode($data[1]));    
+                        $nombre_publico = time();
+                        $extension      = explode(';',substr($data[0],11))[0];
+                    }else{
+                        $originalImage=$request->imagen_1;
+                        $nombre_publico = $originalImage->getClientOriginalName();
+                        $extension      = $originalImage->getClientOriginalExtension();
+                    }
                     $thumbnailImage = Image::make($originalImage);
 
-                    $nombre_publico = $originalImage->getClientOriginalName();
-                    $extension      = $originalImage->getClientOriginalExtension();
-
+                    
                     $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
                     $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
 
@@ -77,12 +82,17 @@ class TransaccionesController extends Controller {
 
                 if (is_null($request->imagen_2)) {
                 } else {
-                    $originalImage = $request->imagen_2;
-
-                    $thumbnailImage = Image::make($originalImage);
-
-                    $nombre_publico = $originalImage->getClientOriginalName();
-                    $extension      = $originalImage->getClientOriginalExtension();
+                    if(gettype($request->imagen_2)==="string"){
+                        $data = explode(',', $request->imagen_2);
+                        $originalImage = imagecreatefromstring(base64_decode($data[1]));    
+                        $nombre_publico = time()+1;
+                        $extension      = explode(';',substr($data[0],11))[0];
+                    }else{
+                        $originalImage = $request->imagen_2;
+                        $nombre_publico = $originalImage->getClientOriginalName();
+                        $extension      = $originalImage->getClientOriginalExtension();
+                    }
+                    $thumbnailImage = Image::make($originalImage);                    
 
                     $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
                     $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
@@ -110,7 +120,7 @@ class TransaccionesController extends Controller {
             Log::error('Ha ocurrido un error en TransaccionesController: '.$e->getMessage().', Linea: '.$e->getLine());
 
             return response()->json([
-                'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
+                'message' => 'Ha ocurrido un error al tratar de guardar los datos.'
             ], 500);
         }
 
