@@ -162,6 +162,11 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     Route::post('buscadorGeneral','BuscadorDePropiedadesController@buscarGeneral');
 
+    Route::get('/storage', function () {
+        return Artisan::call('storage:link');
+        //return response()->json('Storage publicada');
+    });
+
 });
 
 
