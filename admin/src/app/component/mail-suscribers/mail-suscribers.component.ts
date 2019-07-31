@@ -29,6 +29,10 @@ export class MailSuscribersComponent implements OnInit {
   mFormaEstado: string;
   enCRUD = enCRUD;
 
+  color = 'primary';
+  mode = 'determinate';
+  value = 50;
+
   constructor(
     private _formBuilder: FormBuilder,
     private _MailSuscribersService: MailSuscribersService,

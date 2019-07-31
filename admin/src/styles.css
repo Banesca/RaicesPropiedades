@@ -70,3 +70,5 @@ label {
 .mat-radio-button {
    margin-right: 15px !important;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

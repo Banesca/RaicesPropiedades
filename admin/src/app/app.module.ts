@@ -47,7 +47,7 @@ import { PageComponent } from './component/layout/page/page.component';
 import { PrincipalComponent } from './component/layout/principal/principal.component';
 import { AuthGuard } from './services/auth.guard';
 import { MaterialUiModule } from './models/material/material-ui.module';
-
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -63,8 +63,16 @@ import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.comp
 import { TransaccionesComponent } from './component/transacciones/transacciones.component';
 import { ModulosComponent } from './component/modulos/modulos.component';
 
+
+//material ui
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
+//
+
+
 import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
 import { ErrorInterceptor } from './services/interceptors';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 const fbLoginOptions: LoginOpt = {
    scope: 'publish_pages,pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
@@ -118,7 +126,8 @@ export function provideConfig() {
       GaleriaHomeComponent,
       TransaccionesComponent,
       PublicacionesFacebookComponent,
-      ModulosComponent
+      ModulosComponent,
+      ConfirmComponent
 
    ],
    imports: [
@@ -134,7 +143,10 @@ export function provideConfig() {
       MaterialUiModule,
       GooglePlaceModule,
       NgSelectModule,
-      SocialLoginModule
+      SocialLoginModule,
+      MatDialogModule,
+      MatCardModule,
+      MatProgressSpinnerModule
    ],
    providers: [
       AuthGuard,
@@ -145,6 +157,7 @@ export function provideConfig() {
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
    ],
    bootstrap: [AppComponent],
+   entryComponents:[ConfirmComponent],
    schemas: [
       CUSTOM_ELEMENTS_SCHEMA
    ],

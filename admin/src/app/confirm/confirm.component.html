@@ -1,0 +1,15 @@
+<div class="confirm-container">
+  <div>
+    <h2 mat-dialog-title>{{ data.title }}</h2>
+  </div>
+  <div class="confirm-body">
+    <mat-dialog-content>{{ data.info }}</mat-dialog-content>
+  </div>
+  <div>
+    <mat-dialog-actions class="cofirm-footer">
+      <button mat-button [mat-dialog-close]="false">No</button>
+      <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+      <button mat-button [mat-dialog-close]="true">Yes</button>
+    </mat-dialog-actions>
+  </div>
+</div>

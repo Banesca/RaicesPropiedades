@@ -1,0 +1,16 @@
+.confirm-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.confirm-body{
+    flex:1;
+    padding: 10px;
+}
+
+
+.cofirm-footer{
+    display: flex;
+    justify-content: flex-end;
+}
