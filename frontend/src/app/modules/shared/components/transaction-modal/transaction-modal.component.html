@@ -14,6 +14,7 @@
                   aria-describedby="basic-addon1">
                   <div *ngIf="submitted && f.nombre_apellido.errors" type="alert" class="invalid-feedback">
                       <div *ngIf="f.nombre_apellido.errors.required">Nombre y Apellido son Requerido</div>
+                      <div *ngIf="f.nombre_apellido.errors.pattern">Debe ingresar caracteres alfabéticos</div>
                   </div>
               </div>
             </div>

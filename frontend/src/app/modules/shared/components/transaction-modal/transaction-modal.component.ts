@@ -41,9 +41,9 @@ export class TransactionModalComponent implements OnInit {
 
   ngOnInit() {
     this.contactForm = this._formBuilder.group({
-      nombre_apellido: ["", Validators.required],
+      nombre_apellido: ["",[Validators.required,Validators.pattern("[a-zA-Z]*")]],
       email: ["", [Validators.required, Validators.email]],
-      telefono: ["", [Validators.required, Validators.pattern(/[^.,]/)]],
+      telefono: ["", [Validators.required, Validators.pattern("^[0-9]{10,12}$")]],
       fk_tipoPropiedad: ["", Validators.required],
       titulo: ["", [Validators.required, Validators.pattern(/[a-z]/)]],
       descripcion: ["", Validators.required],
