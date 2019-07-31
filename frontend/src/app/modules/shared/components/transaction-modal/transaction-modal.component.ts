@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, OnInit } from '@angular/core';
+import { Component, Input, ElementRef, OnInit } from "@angular/core";
 import { IContacto, ICategoria } from "src/app/servicios/interfaces.index";
 import { ContactoService } from "src/app/servicios/servicios.index";
 import {
@@ -8,7 +8,7 @@ import {
   FormBuilder,
   Validators
 } from "@angular/forms";
-import { NgbActiveModal, NgbModalRef  } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-transaction-modal",
@@ -17,7 +17,7 @@ import { NgbActiveModal, NgbModalRef  } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TransactionModalComponent implements OnInit {
   @Input() name;
-  
+
   mContacto: IContacto;
   mCategorias: ICategoria[];
   contactForm: FormGroup;
@@ -41,9 +41,15 @@ export class TransactionModalComponent implements OnInit {
 
   ngOnInit() {
     this.contactForm = this._formBuilder.group({
-      nombre_apellido: ["",[Validators.required,Validators.pattern("[a-zA-Z]*")]],
+      nombre_apellido: [
+        "",
+        [Validators.required, Validators.pattern("[a-zA-Z]*")]
+      ],
       email: ["", [Validators.required, Validators.email]],
-      telefono: ["", [Validators.required, Validators.pattern("^[0-9]{10,12}$")]],
+      telefono: [
+        "",
+        [Validators.required, Validators.pattern("^[0-9]{10,12}$")]
+      ],
       fk_tipoPropiedad: ["", Validators.required],
       titulo: ["", [Validators.required, Validators.pattern(/[a-z]/)]],
       descripcion: ["", Validators.required],
@@ -58,11 +64,9 @@ export class TransactionModalComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.contactForm);
     if (this.contactForm.invalid) {
       return;
     }
-
     this.mContacto = this.contactForm.value as IContacto;
     this.guardar();
   }
@@ -77,13 +81,29 @@ export class TransactionModalComponent implements OnInit {
         console.log(error);
       });
   }
-
+  getFormData() {
+    const formData = new FormData();
+    formData.append("nombre_apellido", this.mContacto.nombre_apellido);
+    formData.append("email", this.mContacto.email);
+    formData.append("telefono", this.mContacto.telefono);
+    formData.append(
+      "fk_tipoPropiedad",
+      this.contactForm.get("fk_tipoPropiedad").value
+    );
+    formData.append("titulo", this.mContacto.titulo);
+    formData.append("descripcion", this.mContacto.descripcion);
+    formData.append("imagen_1", this.contactForm.get("imagen_1").value);
+    formData.append("imagen_2", this.contactForm.get("imagen_2").value);
+    return formData;
+  }
   guardar() {
     this.mLoading = true;
     this.hideForm = true;
-    console.log(this.mContacto);
+
+    const form = this.getFormData();
+    // registar tasacion
     this._ContactoService
-      .New(this.mContacto)
+      .New(form)
       .then(data => {
         this.successMensaje = true;
         this.mLoading = false;
@@ -106,32 +126,17 @@ export class TransactionModalComponent implements OnInit {
     this.submitted = false;
   }
   onFileChange(event, image) {
-    const reader = new FileReader();
-    
     if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        
-        if (image === "imagen_1"){
-          this.contactForm
-            .get("imagen_1")
-            .patchValue(reader.result);
-          this.files++;
-        }
-        if (image === "imagen_2") {
-          this.contactForm
-            .get("imagen_2")
-            .patchValue(reader.result);
-          this.files++;
-        }
 
-        // need to run CD since file load runs outside of zone
-        // this.cd.markForCheck();
-      };
+      if (image === "imagen_1") {
+        this.contactForm.get("imagen_1").setValue(file);
+        this.files++;
+      }
+      if (image === "imagen_2") {
+        this.contactForm.get("imagen_2").setValue(file);
+        this.files++;
+      }
     }
   }
 }
-
-
-

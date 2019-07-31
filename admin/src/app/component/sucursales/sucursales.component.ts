@@ -102,7 +102,6 @@ export class SucursalesComponent implements OnInit {
     this.sucursalSelected.emailSucursal = this.myForm.controls['emailSucursal'].value;
     this.sucursalSelected.direccionSucursal = this.myForm.controls['direccionSucursal'].value;
     this.progressBar = true;
-    console.log(this.sucursalSelected);
 
     this._sucursalService
       .actualizarCategoria(this.sucursalSelected, this.sucursalSelected.idSucursal)

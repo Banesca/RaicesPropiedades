@@ -123,7 +123,6 @@ export class GestionPublicacionesComponent implements OnInit {
   }
 
   ver(pCategoria: IGestionPublicaciones) {
-    console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }

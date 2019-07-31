@@ -28,12 +28,10 @@ import { PublicacionesService } from "src/app/servicios/servicios.index";
         this._PublicacionesService
           .All()
             .then(data => {
-            this.mCategorias = data;
-            console.log(this.mCategorias);
-    
+            this.mCategorias = data;    
           })
           .catch(error => {
-            console.log(this.mCategorias);
+            console.log(error);
           });
       }
 }

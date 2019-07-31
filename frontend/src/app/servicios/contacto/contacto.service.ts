@@ -1,12 +1,11 @@
+import { ConfigService } from "./../config/config.service";
+import { IContacto } from "./contacto.interface";
+import { ICategoriaRs } from "../categoria/categoria.interface";
+import { getHeaders } from "../../misc/Headers";
 
-import { ConfigService } from './../config/config.service';
-import { IContacto } from './contacto.interface';
-import { ICategoriaRs } from '../categoria/categoria.interface';
-import { getHeaders } from '../../misc/Headers';
-
-import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
@@ -53,13 +52,9 @@ export class ContactoService {
    * @IContacto Recibe un objeto del tipo IContacto como parametro
    * @returns Item de dato de Tipo IContacto
    */
-  New(pContacto: IContacto) {
-    console.log('New');
-    console.log(pContacto);
+  New(pContacto) {
     return this._HttpClient
-      .post<any>(this.mUrl + this.mService + "/store", pContacto, {
-        headers: getHeaders()
-      })
+      .post(this.mUrl + this.mService + "/store", pContacto)
       .pipe(
         map((data: any) => {
           return data;
@@ -67,16 +62,11 @@ export class ContactoService {
       )
       .toPromise();
   }
-
   NewContact(pContacto: IContacto) {
     return this._HttpClient
-      .post(
-        this.mUrl + '/api/v1/addContactanos',
-        pContacto,
-        {
-          headers: getHeaders()
-        }
-      )
+      .post(this.mUrl + "/api/v1/addContactanos", pContacto, {
+        headers: getHeaders()
+      })
       .pipe(
         map((data: any) => {
           return data;

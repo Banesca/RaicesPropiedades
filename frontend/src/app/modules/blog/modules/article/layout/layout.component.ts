@@ -41,10 +41,7 @@ export class LayoutComponent implements OnInit  {
   GetPublicacionUrl() {
     this._PublicacionesService.getPublicacion(this.mId).then
     (data => {
-      console.log(data)
       this.gPropiedades = data;
-      console.log(this.gPropiedades)
-      console.log(this.mId)
       this.images = [
         /*
       this.gPropiedades.ficha2.imagen1,
@@ -60,8 +57,7 @@ export class LayoutComponent implements OnInit  {
 
     
       .catch(error => {
-        console.log(this.gPropiedades);
-        console.log(this.mId)
+        console.log(error);
       });
   }
 

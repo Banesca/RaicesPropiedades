@@ -76,7 +76,6 @@ export class SearchComponent implements OnInit {
       .getMonedas()
       .then(data => {
         this.mMonedas = data;
-        console.log("monedas", this.mMonedas);
       })
       .catch(error => {
         console.log(error);
@@ -91,7 +90,6 @@ export class SearchComponent implements OnInit {
 
   getUbication() {
     this._ArticuloService.getUbication().then(ubication => {
-      console.log(ubication);
       this.ubicaciones = ubication;
     });
   }
@@ -101,7 +99,6 @@ export class SearchComponent implements OnInit {
       .getTipoPropiedad()
       .then(data => {
         this.mTipoPropiedad = data;
-        console.log(this.mTipoPropiedad);
       })
       .catch(error => {
         console.log(error);
@@ -164,7 +161,6 @@ export class SearchComponent implements OnInit {
   searchFilter() {
     const array: any[] = [];
     if (this.tipo.descripcion !== "Seleccione") {
-      console.log("entro aca");
       array.push(this.tipo.descripcion);
     }
 

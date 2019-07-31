@@ -26,10 +26,9 @@ export class AboutComponent implements OnInit {
       .All()
       .then(data => {
         this.mCategoria = data;
-        console.log(this.mCategoria.configGeneral.celular1);
       })
       .catch(error => {
-        console.log(this.mCategoria);
+        console.log(error);
       });
   }
 }

@@ -10,8 +10,8 @@ export interface IContacto {
     fk_tipoPropiedad: number;
     titulo: string;
     descripcion: string;
-    imagen_1: string;
-    imagen_2: string;
+    imagen_1: object;
+    imagen_2: object;
 }
 
 
@@ -24,8 +24,8 @@ export class CContacto{
             fk_tipoPropiedad: null,
             titulo: '',
             descripcion: '',
-            imagen_1: '',
-            imagen_2: ''
+            imagen_1: null,
+            imagen_2: null
         } as IContacto
     }
 }

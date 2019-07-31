@@ -118,7 +118,6 @@ export class NotificationappComponent implements OnInit {
 
   }
   set(row:any){
-    console.log(row);
    /*  this.cuponToUpdate = row; */
      this.editNotificacionForm.patchValue({
       titulo: row.titleNotification,
@@ -147,7 +146,6 @@ export class NotificationappComponent implements OnInit {
       descriptionNotification: value.descripcion,
       fk_idSecctionApp: value.seccionApp
     }).subscribe(resp => {
-      console.log(resp);
       if(resp.ok ){
         this.inPromise = false;
         $('#modificarNoti').modal('hide');

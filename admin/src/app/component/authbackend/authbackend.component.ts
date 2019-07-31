@@ -68,7 +68,6 @@ export class AuthbackendComponent implements OnInit {
   }
   
   changevalue() {
-    console.log("me han dado click");
     this.bandera = !this.bandera;
   }
 }

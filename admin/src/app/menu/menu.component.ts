@@ -32,8 +32,6 @@ export class MenuComponent implements OnInit {
     })
    
     this.alertS.toggleMenu.subscribe(val=>{
-      console.log(val);
-
       if(val){
         this.hideUser = this.hideUser?false:true;
         this.alertS.sourceToggleMenu.next(false);

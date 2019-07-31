@@ -45,7 +45,6 @@ export class ConfigFooterComponent implements OnInit {
         this._confgFooterService._getConfigFooter().subscribe(
             (resp: any) => {
                 if (resp) {
-                    console.log(resp);
                      this.myForm.setValue({
                         quienesSomos: resp.configGeneral.quienesSomos,
                         direccion: resp.configGeneral.direccion,
@@ -69,7 +68,6 @@ export class ConfigFooterComponent implements OnInit {
         this._confgFooterService._getMails().subscribe(
             (resp: any) => {
                 if (resp) {
-                    console.log(resp);
                     this.mailList= resp.mails;
                 }else{
                     this._alertService.msg('ERR','Error','Error al gargar datos')
@@ -101,10 +99,8 @@ export class ConfigFooterComponent implements OnInit {
 
 
     upgradeCondigFooter() {
-        console.log(this.myForm.value);
         const val = this.myForm.value
  
-        console.log(val);
 
         this._confgFooterService._upgradeConfigFooter(val).subscribe(
             (resp: any) => {

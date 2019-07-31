@@ -107,7 +107,6 @@ export class PublicacionesFacebookComponent implements OnInit {
   }
 
   ver(pCategoria: IFacebookPost) {
-    console.log(pCategoria);
     this.mPostSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }

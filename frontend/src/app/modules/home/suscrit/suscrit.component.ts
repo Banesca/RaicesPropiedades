@@ -77,7 +77,6 @@ export class SuscritComponent implements OnInit {
   guardar() {
     this.mLoading = true;
     this.hideModal = false;
-    console.log(this.mSuscripcion)
     this._SuscripcionService
     .New(this.mSuscripcion)
     .then(data => {

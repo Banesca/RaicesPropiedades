@@ -74,7 +74,6 @@ export class MailSuscribersComponent implements OnInit {
   }
 
   ver(pCategoria: IMailSuscriber) {
-    console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }

@@ -28,10 +28,9 @@ export class FooterComponent {
       .All()
       .then(data => {
         this.mCategoria = data;
-        console.log(this.mCategoria.configGeneral.celular1);
       })
       .catch(error => {
-        console.log(this.mCategoria);
+        console.log(error);
       });
   }
 
@@ -40,10 +39,9 @@ export class FooterComponent {
       .All()
       .then(data => {
         this.mSucusales = data.suculsales;
-        console.log(this.mCategoria);
       })
       .catch(error => {
-        console.log(this.mCategoria);
+        console.log(error);
       });
   }
 

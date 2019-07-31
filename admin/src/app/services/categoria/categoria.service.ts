@@ -22,7 +22,6 @@ export class CategoriaService {
       })
       .pipe(
         map((res: ICategoriaRs) => {
-          console.log(res)
           return res;
         })
       )

@@ -28,10 +28,9 @@ export class HeaderComponent {
       .All()
       .then(data => {
         this.mCategoria = data.suculsales;
-        console.log(this.mCategoria);
       })
       .catch(error => {
-        console.log(this.mCategoria);
+        console.log(error);
       });
   }
 

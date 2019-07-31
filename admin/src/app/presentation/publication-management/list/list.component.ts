@@ -22,11 +22,9 @@ export class ListComponent implements OnInit {
       // Es necesario crear todos los servicios para las publicaciones
       this._gestionPublicacionService.all().subscribe(
          res => {
-            this.loading = false
-            console.log(res)
+            this.loading = false;
          }, error => {
-            this.loading = false
-
+            this.loading = false;
          });
 
    }

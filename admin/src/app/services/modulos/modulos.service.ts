@@ -45,7 +45,6 @@ export class ModulosService {
   }
 
   actualizarModulos(pModulo: IModulos, pKey: number) {
-    console.log(pModulo)
     return this._HttpClient
       .post(environment.apiHost +  this.mService + '/editar/' + pKey + '/', pModulo, {
         headers: getHeaders()

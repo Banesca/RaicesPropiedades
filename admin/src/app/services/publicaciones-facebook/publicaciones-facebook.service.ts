@@ -27,7 +27,6 @@ export class PublicacionesFacebookService {
   }
 
   nuevaCategoria(pCategoria: IFacebookPost) {
-    console.log(pCategoria)
     return this._HttpClient
       .post(this.mService + this.appId + `/feed?access_token=${this.accesToken}`, pCategoria , { headers: getHeaders() })
       .pipe(
@@ -39,7 +38,6 @@ export class PublicacionesFacebookService {
   }
 
     actualizarCategoria(pCategoria: IFacebookPost, id: number) {
-    console.log(pCategoria)
     return this._HttpClient
       .post(this.mService + id + `?access_token=${this.accesToken}`, pCategoria , { headers: getHeaders() })
       .pipe(

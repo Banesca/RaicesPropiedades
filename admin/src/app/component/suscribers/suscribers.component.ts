@@ -57,7 +57,6 @@ export class SuscribersComponent implements OnInit {
       .then(data => {
         this.mCategorias = data.suscripcion;
         this.mLoading = false;
-        console.log(this.mCategorias)
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al cargar los datos.')
@@ -77,7 +76,6 @@ export class SuscribersComponent implements OnInit {
   }
 
   ver(pCategoria: ISuscriber) {
-    console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }
@@ -90,12 +88,10 @@ export class SuscribersComponent implements OnInit {
       .then(data => {
           this.mCategorias = data.suscripcion;
         this.mLoading = false;
-        console.log(this.mCategoriasSelect,  this.mCategorias)
       })
       .catch(error => {
         this.mLoading = false;
         console.log(error)
-        console.log(this.mCategoriasSelect)
       });
   }
 }

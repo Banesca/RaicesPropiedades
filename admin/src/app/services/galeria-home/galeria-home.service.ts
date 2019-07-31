@@ -39,7 +39,6 @@ export class GaleriaHomeService {
       .toPromise();
   }
   actualizarCategoria(pCategoria: IGaleria, pKey: number) {
-    console.log(pKey)
     return this._HttpClient
       .post(environment.apiHost +  this.mService + '/edit/' + pKey , { pCategoria,
         headers: getHeaders()

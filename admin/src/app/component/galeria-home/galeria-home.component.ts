@@ -62,11 +62,10 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
       .All()
         .then(data => {
         this.mPublicaciones = data;
-        console.log(this.mPublicaciones);
 
       })
       .catch(error => {
-        console.log(this.mPublicaciones);
+        console.log(error);
       });
   }
   getAll() {
@@ -110,7 +109,6 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
   }
 
   ver(pCategoria: IGaleria) {
-    console.log(pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Leer;
   }
@@ -118,7 +116,6 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
   actualizar(pKey: number) {
     this.mCategoriasSelect = this.mForma.value as IGaleria;
     this.mLoading = true;
-    console.log(this.mCategoriasSelect)
     this._GaleriaHomeService
       .actualizarCategoria(this.mCategoriasSelect, pKey)
       .then(data => {
