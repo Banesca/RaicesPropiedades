@@ -90,14 +90,14 @@ export class TransaccionesComponent implements OnInit {
   }
 
   eliminar(pKey: number) {
-    if(confirm('Está seguro de que quiere eliminar esta tasación?')){
+    if(confirm('¿Está seguro de que quiere eliminar esta tasación?')){
       this.mLoading = true;
     this._TransaccionesService
       .eliminarCategoria(pKey)
       .then(data => {
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Tasación Eliminada Correctamente.')
+        this._AlertsService.msg('OK', '¡ÉXITO!', 'Tasación eliminada correctamente.')
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al Eliminar la tasación.')
@@ -107,14 +107,14 @@ export class TransaccionesComponent implements OnInit {
   
 }
 confirmar(pKey: number) {
-    if(confirm('Está seguro de que quiere confirmar esta tasación?')){
+    if(confirm('¿Está seguro de que quiere confirmar esta tasación?')){
       this.mLoading = true;
       this._TransaccionesService
       .confirmarCategoria(pKey)
       .then(data => {
         this.mLoading = false;
         this.getAll();
-        this._AlertsService.msg('OK', '!ÉXITO!', 'tasacion confirmada');
+        this._AlertsService.msg('OK', '¡ÉXITO!', 'Tasación confirmada');
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Error al Eliminar la tasación.')
@@ -138,7 +138,7 @@ confirmar(pKey: number) {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Tasación Actualizada Correctamente.')
+        this._AlertsService.msg('OK', '¡ÉXITO!', 'Tasación actualizada correctamente.')
       })
       .catch(err => {
         // Parsear Object errors a Array de errores para poder mapearlos

@@ -35,7 +35,6 @@ export class SucursalesComponent implements OnInit {
   ngOnInit() {
     this.mFormaEstado = enCRUD.Eliminar;
     this.getSucursalList();
-
   }
 
   getSucursalList() {

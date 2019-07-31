@@ -26,6 +26,7 @@ export class TransactionModalComponent implements OnInit {
   submitted = false;
   errorMensaje = false;
   hideForm = false;
+  files = 0;
   mLoading = false;
   closeResult: string;
   private modalRef: NgbModalRef;
@@ -84,10 +85,9 @@ export class TransactionModalComponent implements OnInit {
     this._ContactoService
       .New(this.mContacto)
       .then(data => {
-        console.log(data);
         this.successMensaje = true;
         this.mLoading = false;
-        // this.contactForm.reset();
+        this.contactForm.reset();
       })
       .catch(error => {
         console.log(error);
@@ -117,11 +117,13 @@ export class TransactionModalComponent implements OnInit {
           this.contactForm
             .get("imagen_1")
             .patchValue(reader.result);
+          this.files++;
         }
         if (image === "imagen_2") {
           this.contactForm
             .get("imagen_2")
             .patchValue(reader.result);
+          this.files++;
         }
 
         // need to run CD since file load runs outside of zone

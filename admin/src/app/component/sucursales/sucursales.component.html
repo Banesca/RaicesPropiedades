@@ -1,7 +1,15 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <h3 class="py-5 text-center font-weight-bold">Sucursales</h3>
+      <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Eliminar">
+        Sucursales
+      </h3>
+      <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Crear">
+        Nueva Sucursal
+      </h3>
+      <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Actualizar">
+        Actualizar Sucursal
+      </h3>
       <button (click)="nuevo()" type="button" class="btn btn-primary" class="btn btn-success my-4"
         *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar">
         <i class="fa fa-plus"></i>
@@ -74,15 +82,11 @@
   <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
     <div class="col-md-12">
       <form [formGroup]="myForm">
-        <div class="row">
-          <div class="col-md-9 text-center">
-              <h4 *ngIf="mFormaEstado == enCRUD.Crear">Nueva Sucursal</h4>
-              <h4 *ngIf="mFormaEstado == enCRUD.Actualizar">Actualizar Sucursal</h4>
-          </div>
-          <div class="col-md-3">
+        <div class="row m-2">
             <!-- BOTONES CABECERA-->
-            <div class="form-group text-right">
-              <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
+            <div class="col-md-12">
+              <div class="pull-right">
+              <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary m-2">
                 <i class="fa fa-backward"></i>
                 Regresar
               </button>
@@ -94,18 +98,18 @@
         </button>
         -->
               <button *ngIf="mFormaEstado == enCRUD.Crear" (click)="guardar()" [disabled]="!myForm.valid || progressBar"
-                style="margin: 5px" class="btn btn-primary">
+                style="" class="btn btn-primary m-2">
                 <i class="fa fa-save"></i>
                 Guardar
               </button>
               <button *ngIf="mFormaEstado == enCRUD.Actualizar" (click)="actualizar(sucursalSelected.idSucursal)"
-                [disabled]="!myForm.valid || progressBar" style="margin: 5px" class="btn btn-primary">
+                [disabled]="!myForm.valid || progressBar" style="" class="btn btn-primary m-2">
                 <i class="fa fa-save"></i>
                 Modificar
               </button>
             </div>
+            </div>
             <!--FIN BOTONES CABECERA-->
-          </div>
 
         </div>
         <div class="row" *ngIf="progressBar">
@@ -116,7 +120,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="">Nombre de la Sucursal *</label>
+              <label for="">Nombre de la Sucursal <span style="color:red;font-weight:bold;">*</span></label>
               <input type="input" formControlName="nombreSucursal" class="form-control">
             </div>
             <div *ngIf="myForm.controls['nombreSucursal'].errors && !myForm.controls['nombreSucursal'].pristine"
@@ -128,7 +132,7 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label for="">Número de Contacto *</label>
+              <label for="">Número de Contacto <span style="color:red;font-weight:bold;">*</span></label>
               <input type="input" formControlName="telefonoSucursal" class="form-control">
             </div>
             <div *ngIf="myForm.controls['telefonoSucursal'].errors && !myForm.controls['telefonoSucursal'].pristine"
@@ -143,7 +147,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label for="">Correo *</label>
+              <label for="">Correo <span style="color:red;font-weight:bold;">*</span></label>
               <input type="input" formControlName="emailSucursal" class="form-control">
             </div>
             <div *ngIf="myForm.controls['emailSucursal'].errors && !myForm.controls['emailSucursal'].pristine"
@@ -157,7 +161,7 @@
           </div>
           <div class="col-md-12">
             <div class="form-group">
-              <label for="">Dirección *</label>
+              <label for="">Dirección <span style="color:red;font-weight:bold;">*</span></label>
               <textarea formControlName="direccionSucursal" class="form-control"></textarea>
             </div>
             <div *ngIf="myForm.controls['direccionSucursal'].errors && !myForm.controls['direccionSucursal'].pristine"
@@ -210,7 +214,7 @@
             name="sucursalSelected.emailSucursal" readonly />
         </div>
         <div class="form-group">
-          <label for="">Descripcion</label>
+          <label for="">Descripción</label>
           <textarea class="form-control" type="text" [value]="sucursalSelected.direccionSucursal"
             name="sucursalSelected.direccionSucursal" readonly></textarea>
         </div>
