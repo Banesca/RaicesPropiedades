@@ -10,6 +10,8 @@ import { Component, OnInit } from "@angular/core";
 import { IMailSuscriber } from './../../services/mail-suscribers/mail-suscriber.interface'
 import { MailSuscribersService } from './../../services/mail-suscribers/mail-suscribers.service'
 import { AlertsService } from '../../services/alerts.service';
+import { ConfirmService } from "src/app/services/confirm.service";
+
 
 
 @Component({
@@ -36,7 +38,8 @@ export class MailSuscribersComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _MailSuscribersService: MailSuscribersService,
-    private _AlertsService: AlertsService
+    private _AlertsService: AlertsService,
+    private loadin: ConfirmService
   ) {
     this.mCategorias = [];
     this.mCategoriasSelect = MailSuscribers.empy();
@@ -84,6 +87,7 @@ export class MailSuscribersComponent implements OnInit {
   }
 
   guardar() {
+    this.loadin.openSpiner()
     this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
     this.mLoading = true;
     this._MailSuscribersService
@@ -92,10 +96,12 @@ export class MailSuscribersComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
+        this.loadin.closeSpinner()
         this._AlertsService.msg('OK', '!ÉXITO!', 'Mail Enviado Correctamente.')
       })
       .catch(error => {
+        this.loadin.closeSpinner()
         this._AlertsService.msg('ERR', 'ERROR', 'Hubo un problema al envíar el Mail.')
       });
-  }
+   }
 }

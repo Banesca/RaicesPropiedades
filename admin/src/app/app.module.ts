@@ -73,6 +73,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
 import { ErrorInterceptor } from './services/interceptors';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { SpinnerComponent } from './component/spinner/spinner.component';
 
 const fbLoginOptions: LoginOpt = {
    scope: 'publish_pages,pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
@@ -83,7 +84,7 @@ const fbLoginOptions: LoginOpt = {
 let config = new AuthServiceConfig([
    {
       id: FacebookLoginProvider.PROVIDER_ID,
-      provider: new FacebookLoginProvider("443972602847954", fbLoginOptions)
+      provider: new FacebookLoginProvider("874902096219663")
    }
 ]);
 
@@ -127,7 +128,8 @@ export function provideConfig() {
       TransaccionesComponent,
       PublicacionesFacebookComponent,
       ModulosComponent,
-      ConfirmComponent
+      ConfirmComponent,
+      SpinnerComponent
 
    ],
    imports: [
@@ -157,7 +159,7 @@ export function provideConfig() {
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
    ],
    bootstrap: [AppComponent],
-   entryComponents:[ConfirmComponent],
+   entryComponents:[ConfirmComponent, SpinnerComponent],
    schemas: [
       CUSTOM_ELEMENTS_SCHEMA
    ],

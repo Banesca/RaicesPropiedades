@@ -1,22 +1,20 @@
 import { enCRUD } from "./../../misc/enums";
-import {
-  FormGroup,
-  FormBuilder,
-  Validators
-} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { ITransacciones, Transacciones } from './../../services/transacciones/transacciones.interface'
-import { TransaccionesService } from './../../services/transacciones/transacciones.service'
-import { AlertsService } from '../../services/alerts.service';
+import {
+  ITransacciones,
+  Transacciones
+} from "./../../services/transacciones/transacciones.interface";
+import { TransaccionesService } from "./../../services/transacciones/transacciones.service";
+import { AlertsService } from "../../services/alerts.service";
 import { ICategoria } from "src/app/services/categoria/categoria.interface";
 import { CategoriaService } from "src/app/services/categoria/categoria.service";
-
-
+import { ConfirmService } from "src/app/services/confirm.service";
 
 @Component({
-  selector: 'app-transacciones',
-  templateUrl: './transacciones.component.html',
-  styleUrls: ['./transacciones.component.css']
+  selector: "app-transacciones",
+  templateUrl: "./transacciones.component.html",
+  styleUrls: ["./transacciones.component.css"]
 })
 export class TransaccionesComponent implements OnInit {
   mCategorias: ITransacciones[];
@@ -35,14 +33,15 @@ export class TransaccionesComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _TransaccionesService: TransaccionesService,
     private _CategoriasService: CategoriaService,
-    private _AlertsService: AlertsService
+    private _AlertsService: AlertsService,
+    private confirm: ConfirmService
   ) {
     this.mCategorias = [];
     this.mForma = this.generarFormulario();
     this.mCategoriasSelect = Transacciones.empy();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
-    this.getCategoria() 
+    this.getCategoria();
   }
 
   ngOnInit() {}
@@ -67,7 +66,7 @@ export class TransaccionesComponent implements OnInit {
         this.mLoading = false;
       })
       .catch(error => {
-        console.log(error)
+        console.log(error);
       });
   }
 
@@ -80,7 +79,7 @@ export class TransaccionesComponent implements OnInit {
         this.mLoading = false;
       })
       .catch(error => {
-        console.log(error)
+        console.log(error);
       });
   }
 
@@ -90,39 +89,66 @@ export class TransaccionesComponent implements OnInit {
   }
 
   eliminar(pKey: number) {
-    if(confirm('Está seguro de que quiere eliminar esta tasación?')){
-      this.mLoading = true;
-    this._TransaccionesService
-      .eliminarCategoria(pKey)
-      .then(data => {
-        this.getAll();
-        this.mLoading = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Tasación Eliminada Correctamente.')
-      })
-      .catch(error => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Error al Eliminar la tasación.')
-
+    const obj = {
+      title: "Tasaciones",
+      info: "Está seguro de que quiere eliminar esta tasación? "
+    };
+    this.confirm
+      .openConfirmDialog(obj)
+      .afterClosed()
+      .subscribe(res => {
+        if (res) {
+          this.mLoading = true;
+          this._TransaccionesService
+            .eliminarCategoria(pKey)
+            .then(data => {
+              this.getAll();
+              this.mLoading = false;
+              this._AlertsService.msg(
+                "OK",
+                "!ÉXITO!",
+                "Tasación Eliminada Correctamente."
+              );
+            })
+            .catch(error => {
+              this._AlertsService.msg(
+                "ERR",
+                "ERROR",
+                "Error al Eliminar la tasación."
+              );
+            });
+        }
       });
   }
-  
-}
-confirmar(pKey: number) {
-    if(confirm('Está seguro de que quiere confirmar esta tasación?')){
-      this.mLoading = true;
-      this._TransaccionesService
-      .confirmarCategoria(pKey)
-      .then(data => {
-        this.mLoading = false;
-        this.getAll();
-        this._AlertsService.msg('OK', '!ÉXITO!', 'tasacion confirmada');
+  confirmar(pKey: number) {
+    const obj = {
+      title: "Tasaciones",
+      info: "Está seguro de que quiere confirmar esta tasación? "
+    };
+    
+    this.confirm
+      .openConfirmDialog(obj)
+      .afterClosed()
+      .subscribe(res => { 
+        if (res) {
+          this.mLoading = true;
+          this._TransaccionesService
+            .confirmarCategoria(pKey)
+            .then(data => {
+              this.mLoading = false;
+              this.getAll();
+              this._AlertsService.msg("OK", "!ÉXITO!", "tasacion confirmada");
+            })
+            .catch(error => {
+              this._AlertsService.msg(
+                "ERR",
+                "ERROR",
+                "Error al Eliminar la tasación."
+              );
+            });
+        }
       })
-      .catch(error => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Error al Eliminar la tasación.')
-
-      });
   }
-  
-}
 
   ver(pCategoria: ITransacciones) {
     this.mCategoriasSelect = pCategoria;
@@ -138,18 +164,26 @@ confirmar(pKey: number) {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Tasación Actualizada Correctamente.')
+        this._AlertsService.msg(
+          "OK",
+          "!ÉXITO!",
+          "Tasación Actualizada Correctamente."
+        );
       })
       .catch(err => {
         // Parsear Object errors a Array de errores para poder mapearlos
-        const mapped = Object.keys(err.error.errors).map(key => ({ type: key, value: err.error.errors[key] }));
+        const mapped = Object.keys(err.error.errors).map(key => ({
+          type: key,
+          value: err.error.errors[key]
+        }));
         // Notificando Errores
-        mapped ? mapped.map(e => { this._AlertsService.msg('ERR', 'ERROR', e.value) }) :
-          err.error.message ? this._AlertsService.msg('ERR', 'ERROR', err.error.message) :
-            this._AlertsService.msg('ERR', 'ERROR', 'Error al Actualizar.')
-
+        mapped
+          ? mapped.map(e => {
+              this._AlertsService.msg("ERR", "ERROR", e.value);
+            })
+          : err.error.message
+          ? this._AlertsService.msg("ERR", "ERROR", err.error.message)
+          : this._AlertsService.msg("ERR", "ERROR", "Error al Actualizar.");
       });
   }
-
 }
-

@@ -1,8 +1,5 @@
-import { AuthService } from "angularx-social-login";
-import { FacebookLoginProvider } from "angularx-social-login";
+import { AuthService , FacebookLoginProvider, SocialUser} from "angularx-social-login";
 import { enCRUD } from "./../../misc/enums";
-import { SocialUser } from 'angularx-social-login';
-
 import {
   NgForm,
   FormGroup,
