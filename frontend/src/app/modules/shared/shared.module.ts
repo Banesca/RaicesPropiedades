@@ -15,16 +15,17 @@ import { BlogHeaderComponent } from './components/blog-header/blog-header.compon
 import { SearchComponent } from './components/search/search.component';
 import { BlogPaginationComponent } from './components/blog-pagination/blog-pagination.component';
 import { PropiertysListComponent } from './components/propiertys-list/propiertys-list.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { PropiertysCarouselComponent } from './components/propiertys-carousel/propiertys-carousel.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import localePy from '@angular/common/locales/es-PY';
 import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/en';
 import { TransactionModalComponent } from './components/transaction-modal/transaction-modal.component';
-import { PropiertysCarouselComponent } from './components/propiertys-carousel/propiertys-carousel.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import { PropiertysGridComponent } from './components/propiertys-grid/propiertys-grid.component';
 
 
 
@@ -49,6 +50,7 @@ registerLocaleData(localeEn, 'en')
     BlogPaginationComponent,
     TransactionModalComponent,
     PropiertysListComponent,
+    PropiertysGridComponent
   ],
   exports: [
     PropiertysCarouselComponent,
@@ -62,7 +64,8 @@ registerLocaleData(localeEn, 'en')
     BlogPaginationComponent,
     HeaderComponent,
     TransactionModalComponent,
-    PropiertysListComponent
+    PropiertysListComponent,
+    PropiertysGridComponent
   ],
   imports: [
     CommonModule,
@@ -72,9 +75,8 @@ registerLocaleData(localeEn, 'en')
     ReactiveFormsModule,
     MatCardModule,
     MatIconModule
- 
   ],
   entryComponents: [TransactionModalComponent],
-  providers: [ { provide: LOCALE_ID, useValue: 'es' } ],
+  providers: [{ provide: LOCALE_ID, useValue: "es" }]
 })
-export class SharedModule { }
+export class SharedModule {}

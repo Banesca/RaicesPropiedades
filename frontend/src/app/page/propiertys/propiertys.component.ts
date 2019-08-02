@@ -14,15 +14,10 @@ export class PropiertysComponent implements OnInit {
   mCategorias: any;
   mLoading = false;
 
-  constructor(
-     private _PublicacionesService: PublicacionesService,
-
-    ) {     
-      this.getAll();
-    }
+  constructor(private _PublicacionesService: PublicacionesService) {}
 
   ngOnInit() {
-
+    this.getAll();
   }
       getAll() {
         this._PublicacionesService
