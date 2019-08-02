@@ -12,7 +12,6 @@ class Ficha1Controller extends Controller
 {
     public function add(Request $request)
     {
-
         $this->validate($request, [
             'descipcion'             => 'required',
             'fk_tipoPropiedad'       => 'required',
@@ -28,7 +27,6 @@ class Ficha1Controller extends Controller
             'titulo'                 => 'required',
             'tipo_publicacion'       => 'required',
             'aparece_en_galeria'     => 'required',
-
         ], [
             'descipcion.required'             => 'El Campo es requerido',
             'fk_tipoPropiedad.required'       => 'El Campo es requerido',

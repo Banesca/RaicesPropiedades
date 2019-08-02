@@ -7,16 +7,18 @@ use App\Propiedad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 class Ficha3Controller extends Controller {
 
     public function add(Request $request) {
 
-        $this->validate($request, [
+        /*$this->validate($request, [
             'fk_ficha2' => 'required',
         ], [
             'fk_ficha2.required' => 'El Campo es requerido',
-        ]);
+        ]);*/
 
         DB::beginTransaction();
 
@@ -24,24 +26,92 @@ class Ficha3Controller extends Controller {
 
             $propiedad = new Propiedad($request->all());
 
-            $propiedad->save();
+            $imgs = [
+                'imagen1',
+                'imagen2',
+                'imagen3',
+                'imagen4',
+                'imagen5',
+                'imagen6',
+                'imagen7',
+                'imagen_para_galeria',
+            ];
 
-            $ficha123 = Ficha123::where('fk_idFicha2', $request->fk_ficha2)->first();
-            $ficha123->update([ 'fk_idFicha3' => $propiedad->idPropiedad ]);
+
+            foreach ($imgs as $img) {
+                if (is_null($request[$img])) {
+                } else {
+                    $originalImage = $request[$img];
+
+                    $thumbnailImage = Image::make($originalImage);
+
+                    $thumbnailImage->fit(2048, 2048, function($constraint) {
+                        $constraint->aspectRatio();
+                    });
+
+                    $nombre_publico = $originalImage->getClientOriginalName();
+                    $extension      = $originalImage->getClientOriginalExtension();
+
+                    $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
+                    $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
+
+                    Storage::disk('local')->put('\\ficha2\\'.$nombre_interno, (string) $thumbnailImage->encode());
+
+                    $propiedad[$img] = $nombre_interno;
+                }
+
+            }
+
+            $propiedad->save();
+            @$propiedad->TipoPropiedad;
+            @$propiedad->Disposicion;
+            @$propiedad->Estado;
+            @$propiedad->Orientacion;
+            @$propiedad->TipoAcceso;
+            @$propiedad->TipoAscensor;
+            @$propiedad->TipoBalcon;
+            @$propiedad->TipoBano;
+            @$propiedad->TipoCalefaccion;
+            @$propiedad->TipoCampo;
+            @$propiedad->TipoCobertura;
+            @$propiedad->TipoCoche;
+            @$propiedad->TipoCochera;
+            @$propiedad->TipoCosta;
+            @$propiedad->TipoEdificio;
+            @$propiedad->TipoExpensas;
+            @$propiedad->TipoFondoComercio;
+            @$propiedad->TipoFrente;
+            @$propiedad->TipoHotel;
+            @$propiedad->TipoLocal;
+            @$propiedad->TipoPendiente;
+            @$propiedad->TipoPiso;
+            @$propiedad->TipoPorton;
+            @$propiedad->TipoTecho;
+            @$propiedad->TipoTechoIndustrial;
+            @$propiedad->TipoTerreno;
+            @$propiedad->TipoUnidad;
+            @$propiedad->TipoVista;
+            @$propiedad->estadoPublicacion;
+            @$propiedad->tipoOpeacion;
+            @$propiedad->tipoMoneda;
+
+            //$ficha123 = Ficha123::where('fk_idFicha2', $request->fk_ficha2)->first();
+            // $ficha123->update([ 'fk_idFicha3' => $propiedad->idPropiedad ]);
 
             $response = [
-                'msj'    => 'Propiedad Nº: '.$ficha123->idFichas.' creada Exitosamente',
-                'ficha3' => $propiedad,
-                'ficha2' => [
-                    'imagen1'             => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen1),
-                    'imagen2'             => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen2),
-                    'imagen3'             => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen3),
-                    'imagen4'             => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen4),
-                    'imagen5'             => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen5),
-                    'imagen6'             => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen6),
-                    'imagen7'             => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen7),
-                    'imagen_para_galeria' => asset('storage\\ficha2\\'.@$propiedad->ficha2and1->imagen_para_galeria),
-
+                'msj'             => 'Creada Exitosamente',
+                'imagenes'        => [
+                    'imagen1'             => asset('storage\\ficha2\\'.@$propiedad->imagen1),
+                    'imagen2'             => asset('storage\\ficha2\\'.@$propiedad->imagen2),
+                    'imagen3'             => asset('storage\\ficha2\\'.@$propiedad->imagen3),
+                    'imagen4'             => asset('storage\\ficha2\\'.@$propiedad->imagen4),
+                    'imagen5'             => asset('storage\\ficha2\\'.@$propiedad->imagen5),
+                    'imagen6'             => asset('storage\\ficha2\\'.@$propiedad->imagen6),
+                    'imagen7'             => asset('storage\\ficha2\\'.@$propiedad->imagen7),
+                    'imagen_para_galeria' => asset('storage\\ficha2\\'.@$propiedad->imagen_para_galeria),
+                ],
+                'datos_propiedad' => [
+                    $propiedad,
                 ],
             ];
             DB::commit();
