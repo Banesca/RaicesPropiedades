@@ -1,20 +1,17 @@
 <?php
 
-use App\Ficha1;
-use App\Ficha123;
-use App\Ficha2;
 use App\Propiedad;
 use Illuminate\Database\Seeder;
 
-use Faker\Generator as Faker;
-
-class PublicacionesSeeder extends Seeder {
+class PublicacionesSeeder extends Seeder
+{
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
 
         for ($i = 0; $i < 10; $i++) {
 
@@ -291,20 +288,23 @@ class PublicacionesSeeder extends Seeder {
                 'Vidriera'                                  => rand(0, 1),
                 'Vivienda'                                  => rand(0, 1),
                 'Zonificacion'                              => rand(0, 1),
-                'descipcion'                                => 'Hola'.$i,
+                'descipcion'                                => 'Hola' . $i,
                 'fk_tipoPropiedad'                          => $i,
                 'esUnaPropiedad'                            => rand(0, 1),
                 'esUnaNovedad'                              => rand(0, 1),
                 'apareceEnGaleriaInicia'                    => rand(0, 1),
                 'fk_estado_publicacion'                     => rand(1, 3),
                 'fk_idTipoOperaion'                         => rand(1, 4),
-
-                'precio'             => rand(100, 8000),
-                'fk_idMonedas'       => rand(1, 3),
-                'comision'           => '30%',
-                'titulo'             => rand(1, 4),
-                'tipo_publicacion'   => rand(1, 4),
-                'aparece_en_galeria' => rand(0, 1),
+                'a_estrenar'                                => 0,
+                'no_publicar_precio_inter'                  => 0,
+                'informacion_adicional'                     => "Nota adicional de ejemplo",
+                'esUnaOportunidad'                          => 0,
+                'precio'                                    => rand(100, 8000),
+                'fk_idMonedas'                              => rand(1, 3),
+                'comision'                                  => '30%',
+                'titulo'                                    => rand(1, 4),
+                'tipo_publicacion'                          => rand(1, 4),
+                'aparece_en_galeria'                        => rand(0, 1),
 
                 'imagen1'             => 'http://placeimg.com/640/480/arch',
                 'imagen2'             => 'http://placeimg.com/640/480/arch',
@@ -314,6 +314,7 @@ class PublicacionesSeeder extends Seeder {
                 'imagen6'             => 'http://placeimg.com/640/480/arch',
                 'imagen7'             => 'http://placeimg.com/640/480/arch',
                 'imagen_para_galeria' => 'http://placeimg.com/640/480/arch',
+
             ]);
             $ficha3->save();
         }
