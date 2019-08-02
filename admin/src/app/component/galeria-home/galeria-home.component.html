@@ -1,23 +1,30 @@
 <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngIf="mFormaEstado != enCRUD.Crear">
         <h3 class="py-5 text-center font-weight-bold">Galería Home</h3>
-            <button
-            (click)="nuevo()"
-            type="button"
-            class="btn btn-primary"
-            class="btn btn-success my-4"
-            [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
-          >
-            <i class="fa fa-plus"></i>
-           Nuevo
-           </button>
-          </div>
       </div>
+      <div *ngIf="mFormaEstado == enCRUD.Crear">
+        <h3 class="py-5 text-center font-weight-bold">Nueva Galería Home</h3>
+      </div>
+    </div>
+  </div>
 
-
-  
-<div *ngIf="mFormaEstado == enCRUD.Eliminar">
+  <div *ngIf="mFormaEstado == enCRUD.Eliminar">
+    <button
+      (click)="nuevo()"
+      type="button"
+      class="btn btn-primary"
+      class="btn btn-success my-4"
+      [disabled]="
+        mFormaEstado == enCRUD.Crear || mFormaEstado == enCRUD.Actualizar
+      "
+    >
+      <i class="fa fa-plus"></i>
+      Nuevo
+    </button>
+  </div>
+  <div *ngIf="mFormaEstado == enCRUD.Eliminar">
     <div class="row animated fadeIn fast">
       <div class="col-md-12">
         <div class="table-responsive">
@@ -34,32 +41,32 @@
                 *ngFor="let categoria of mCategorias; let i = index"
                 (dblclick)="modificar(categoria)"
               >
-              <td  class="d-flex justify-content-center">{{i + 1}}</td>
-              <td>{{categoria.titulo}}</td>
-              <td>{{categoria.descripcion}}</td>
-              <td>
+                <td class="d-flex justify-content-center">{{ i + 1 }}</td>
+                <td>{{ categoria.titulo }}</td>
+                <td>{{ categoria.descripcion }}</td>
+                <td>
                   <button
-                  (click)="ver(categoria)"
-                  type="button"
-                  class="btn mr-2 btn-info"
-                >
-                <i class="far fa-eye"></i>    
-                          </button>
-                <button
-                  (click)="modificar(categoria)"
-                  type="button"
-                  class="btn mr-2 btn-primary"
-                >
-                <i class="fas fa-pencil-alt"></i>
-                </button>
-                <button
-                  (click)="eliminar(categoria.idGaleria)"
-                  type="button"
-                  class="btn mr-2 btn-danger"
-                >
-                  <i class="fa fa-trash"></i>
-                </button>
-              </td>
+                    (click)="ver(categoria)"
+                    type="button"
+                    class="btn mr-2 btn-info"
+                  >
+                    <i class="far fa-eye"></i>
+                  </button>
+                  <button
+                    (click)="modificar(categoria)"
+                    type="button"
+                    class="btn mr-2 btn-primary"
+                  >
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                  <button
+                    (click)="eliminar(categoria.idGaleria)"
+                    type="button"
+                    class="btn mr-2 btn-danger"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -77,8 +84,11 @@
       </div>
     </div>
   </div>
-  
-  <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
+
+  <div
+    *ngIf="mFormaEstado == enCRUD.Crear || mFormaEstado == enCRUD.Actualizar"
+    class="row animated fadeIn fast"
+  >
     <div class="col-md-12">
       <form [formGroup]="mForma" #vForma="ngForm">
         <div class="form-group text-right">
@@ -91,16 +101,16 @@
             Regresar
           </button>
           <button
-          *ngIf="mFormaEstado == enCRUD.Crear"
-          (click)="guardar()"
-          [disabled]="!vForma.valid"
-          style="margin: 5px"
-          class="btn btn-primary"
-        >
-          <i class="fa fa-save"></i>
-          Guardar
-        </button>
-  
+            *ngIf="mFormaEstado == enCRUD.Crear"
+            (click)="guardar()"
+            [disabled]="!vForma.valid"
+            style="margin: 5px"
+            class="btn btn-primary"
+          >
+            <i class="fa fa-save"></i>
+            Guardar
+          </button>
+
           <button
             *ngIf="mFormaEstado == enCRUD.Actualizar"
             (click)="actualizar(mCategoriasSelect.idGaleria)"
@@ -128,6 +138,7 @@
           >
             Título es requerido
           </div>
+
           <div
             *ngIf="mForma.controls['titulo'].errors?.minlength"
             class="alert alert-danger"
@@ -135,13 +146,29 @@
           >
             Mínimo de 3 caracteres
           </div>
+
+          <div
+            *ngIf="mForma.controls['titulo'].errors?.pattern"
+            class="alert alert-danger"
+            role="alert"
+          >
+            titulo sin numeros ni caracteres especiales
+          </div>
         </div>
         <div class="form-group">
           <label for="">Publicación</label>
-          <select  formControlName="fk_publicaciones"  class="form-control form-control-lg">
+          <select
+            formControlName="fk_publicaciones"
+            id="select"
+            class="form-control select form-control-lg"
+          >
             <option value="">Seleciona Una Publicación</option>
-            <option *ngFor="let publicacion of mPublicaciones"
-            type="number" [value]="publicacion.idFichas">{{publicacion.ficha1.descipcion}}</option>
+            <option
+              *ngFor="let publicacion of mPublicaciones"
+              type="number"
+              [value]="publicacion.idFichas"
+              >{{ publicacion.ficha1.descipcion }}</option
+            >
           </select>
           <div
             *ngIf="mForma.controls['fk_publicaciones'].errors?.required"
@@ -151,62 +178,70 @@
             Tipo de publicación es requerido
           </div>
         </div>
-  
+
         <div class="form-group">
           <label for="">Descripción</label>
           <textarea
             class="form-control"
             type="text"
+            maxlength="160"
             formControlName="descripcion"
             [(ngModel)]="mCategoriasSelect.descripcion"
           ></textarea>
           <div
-          *ngIf="mForma.controls['descripcion'].errors?.required"
-          class="alert alert-danger"
-          role="alert"
-        >
-         Descripción es requerida
-        </div>
+            *ngIf="mForma.controls['descripcion'].errors?.required"
+            class="alert alert-danger"
+            role="alert"
+          >
+            Descripción es requerida
+          </div>
+          <div
+            *ngIf="!mForma.controls['descripcion'].errors?.required"
+            class="caracterDescription"
+          >
+            {{ mCategoriasSelect.descripcion.length }}/160
+          </div>
         </div>
       </form>
     </div>
   </div>
-  
+
   <div *ngIf="mFormaEstado == enCRUD.Leer" class="row animated fadeIn fast">
-      <div class="col-md-12">
-        <form>
-          <div class="form-group text-right">
-            <button
-              (click)="mFormaEstado = enCRUD.Eliminar"
-              type="button"
-              class="btn btn-primary"
-            >
-              <i class="fa fa-backward"></i>
-              Regresar
-            </button>
-          </div>
-          <div class="form-group">
-            <label for="">Título</label>
-            <input
-              class="form-control"
-              type="text"
-              [(ngModel)]="mCategoriasSelect.titulo"
-              name="mCategoriasSelect.titulo"
-              readonly
-            />
-          </div>
-  
-          <div class="form-group">
-            <label for="">Descripción</label>
-            <textarea
-              class="form-control"
-              type="text"
-              [(ngModel)]="mCategoriasSelect.descripcion"
-              name="mCategoriasSelect.descripcion"
-              readonly
-            ></textarea>
-          </div>
-        </form>
-      </div>
+    <div class="col-md-12">
+      <form>
+        <div class="form-group text-right">
+          <button
+            (click)="mFormaEstado = enCRUD.Eliminar"
+            type="button"
+            class="btn btn-primary"
+          >
+            <i class="fa fa-backward"></i>
+            Regresar
+          </button>
+        </div>
+        <div class="form-group">
+          <label for="">Título</label>
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="mCategoriasSelect.titulo"
+            name="mCategoriasSelect.titulo"
+            readonly
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="">Descripción</label>
+          <textarea
+            maxlength="160"
+            class="form-control"
+            type="text"
+            [(ngModel)]="mCategoriasSelect.descripcion"
+            name="mCategoriasSelect.descripcion"
+            readonly
+          ></textarea>
+        </div>
+      </form>
     </div>
   </div>
+</div>

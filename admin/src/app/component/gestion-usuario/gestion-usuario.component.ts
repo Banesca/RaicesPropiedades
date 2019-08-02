@@ -317,7 +317,7 @@ export class GestionUsuarioComponent implements OnInit {
       this.UsuariosService.upgradeUsers(user, values.id).subscribe(
          resp => {
             $("#updateModal").modal('hide');
-            this.alertService.msg("OK", "Éxito", "Se ha actualizo el registro");
+            this.alertService.msg("OK", "¡Éxito!", "Se ha actualizo el registro");
             this.listaUser();
             this.getRolPerfil();
             /*   if(this.imageEdit.nativeElement){

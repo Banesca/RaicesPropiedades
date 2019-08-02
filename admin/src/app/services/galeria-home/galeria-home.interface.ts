@@ -4,10 +4,10 @@
   }
   
   export interface IGaleria {
-    idGaleria: number;
+    idGaleria?: number;
     titulo: string;
     descripcion: string;
-    fk_publicaciones: number;
+    fk_publicaciones: number | string;
   }
 
   export class Galeria {
@@ -16,7 +16,7 @@
         idGaleria: null,
         titulo: '',
         descripcion: '',
-        fk_publicaciones: null
+        fk_publicaciones: ''
       } as IGaleria;
     }
   }

@@ -49,7 +49,14 @@ export class GaleriaHomeComponent implements OnInit {
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      titulo: ["", [Validators.required, Validators.minLength(3)]],
+      titulo: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern("^[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$")
+        ]
+      ],
       descripcion: ["", Validators.required],
       fk_publicaciones: ["", Validators.required]
     });
@@ -130,15 +137,19 @@ export class GaleriaHomeComponent implements OnInit {
   }
 
   actualizar(pKey: number) {
+    this.comfirm.openSpiner();
     this.mCategoriasSelect = this.mForma.value as IGaleria;
     this.mLoading = true;
     this._GaleriaHomeService
+
       .actualizarCategoria(this.mCategoriasSelect, pKey)
       .then(data => {
+        this.mCategoriasSelect = Galeria.empy();
         this.mFormaEstado = enCRUD.Eliminar;
         this.mCategoriasSelect = Galeria.empy();
         this.getAll();
         this.mLoading = false;
+        this.comfirm.closeSpinner();
         this._AlertsService.msg(
           "OK",
           "!ÉXITO!",
@@ -146,6 +157,7 @@ export class GaleriaHomeComponent implements OnInit {
         );
       })
       .catch(err => {
+        this.comfirm.closeSpinner();
         this._AlertsService.msg(
           "ERR",
           "ERROR",
@@ -157,21 +169,38 @@ export class GaleriaHomeComponent implements OnInit {
   guardar() {
     this.mCategoriasSelect = this.mForma.value as IGaleria;
     this.mLoading = true;
-    this._GaleriaHomeService
-      .nuevaCategoria(this.mCategoriasSelect)
-      .then(data => {
-        this.mFormaEstado = enCRUD.Eliminar;
-        this.mCategoriasSelect = Galeria.empy();
-        this.getAll();
-        this.mLoading = false;
-        this._AlertsService.msg(
-          "OK",
-          "!ÉXITO!",
-          "Galería creada Correctamente."
-        );
-      })
-      .catch(err => {
-        this._AlertsService.msg("ERR", "ERROR", "Error al crear la galería.");
-      });
+    const publicacion = this.mCategorias.findIndex(pub => {
+      console.log(pub.fk_publicaciones, this.mForma.value.fk_publicaciones);
+      return (
+        pub.fk_publicaciones === Number(this.mForma.value.fk_publicaciones)
+      );
+    });
+    if (publicacion === -1) {
+      this.comfirm.openSpiner();
+      this._GaleriaHomeService
+        .nuevaCategoria(this.mCategoriasSelect)
+        .then(data => {
+          this.comfirm.closeSpinner();
+          this.mFormaEstado = enCRUD.Eliminar;
+          this.getAll();
+          this.mForma.reset();
+          this.mLoading = false;
+          this._AlertsService.msg(
+            "OK",
+            "!ÉXITO!",
+            "Galería creada Correctamente."
+          );
+        })
+        .catch(err => {
+          this.comfirm.closeSpinner();
+          this._AlertsService.msg("ERR", "ERROR", "Error al crear la galería.");
+        });
+    } else {
+      this._AlertsService.msg(
+        "ERR",
+        "ERROR",
+        "Ya hay una publicacion con este orden por por favor seleccione otra"
+      );
+    }
   }
 }

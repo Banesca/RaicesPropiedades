@@ -1,243 +1,332 @@
 <div class="container-fluid">
-   <div class="row">
-      <div class="col-md-12">
-         <h3 class="py-5 text-center font-weight-bold">Usuarios</h3>
-         <div class="d-flex col-md-12 justify-content-between"
-            *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar  &&  mFormaEstado != enCRUD.Asignar">
-            <button (click)="nuevo()" type="button" class="btn btn-success col-md-1 my-4">
-               <i class="fa fa-plus"></i>
-               Nuevo
-            </button>
-            <form [formGroup]="filterForm" class="col-md-9 d-flex align-items-center"
-               *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar  &&  mFormaEstado != enCRUD.Asignar">
-               <div class="form-group col-md-10 mb-0">
-
-                  <input type="text" placeholder="Buscar por nombre, usuario o mail" formControlName="search"
-                     class="form-control">
-
-               </div>
-               <button type="button" class="btn btn-success ml-2" (click)="filtrar()" [disabled]=" mLoading">
-                  Buscar
-               </button>
-            </form>
-         </div>
-
-         <div class="col-md-12">
-            <div *ngIf="mFormaEstado == enCRUD.Eliminar">
-               <div class="row animated fadeIn fast">
-                  <div class="col-md-12">
-                     <div class="table-responsive">
-                        <table class="table table-striped">
-                           <thead class="thead-dark">
-                              <th>#</th>
-                              <th>Nombre</th>
-                              <th>Email</th>
-                              <th>Acción</th>
-                           </thead>
-                           <tbody>
-                              <tr *ngFor="let categoria of mCategorias; let i = index"
-                                 (dblclick)="modificar(categoria)">
-                                 <td>{{i + 1}}</td>
-                                 <td>{{categoria.name}}</td>
-                                 <td>{{categoria.email}}</td>
-                                 <td>
-                                    <button (click)="ver(categoria)" type="button" class="btn mr-2 btn-info">
-                                       <i class="far fa-eye"></i>
-                                    </button>
-                                    <button (click)="modificar(categoria)" type="button" class="btn mr-2 btn-primary">
-                                       <i class="fas fa-pencil-alt"></i>
-                                    </button>
-                                    <button (click)="modulos(categoria.id)" type="button" class="btn mr-2 btn-info">
-                                       <i class="fa fa-cogs"></i>
-                                    </button>
-                                    <button (click)="eliminar(categoria.id)" type="button" class="btn mr-2 btn-danger">
-                                       <i class="fa fa-trash"></i>
-                                    </button>
-                                 </td>
-                              </tr>
-                           </tbody>
-                        </table>
-                        <div *ngIf="(mCategorias | keys).length === 0 && !mLoading" class="alert alert-info"
-                           role="alert">
-                           <strong>No existen</strong> Mails que mostrar...
-                        </div>
-                        <div *ngIf="mLoading" class="alert alert-warning" role="alert">
-                           <strong>Cargando</strong> por favor espere...
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-            <div *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
-               class="row animated fadeIn fast">
-               <div class="col-md-12">
-                  <form [formGroup]="mForma" #vForma="ngForm">
-                     <div class="form-group text-right div-btn">
-                        <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
-                           <i class="fa fa-backward"></i>
-                           Regresar
-                        </button>
-
-                        <button (click)="nuevo()" *ngIf="mFormaEstado == enCRUD.Actualizar" style="margin: 5px"
-                           class="btn btn-primary">
-                           <i class="fa fa-plus"></i>
-                           Nuevo
-                        </button>
-                        <button *ngIf="mFormaEstado == enCRUD.Crear" (click)="guardar()" [disabled]="!vForma.valid"
-                           style="margin: 5px" class="btn btn-primary">
-                           <i class="fa fa-save"></i>
-                           Guardar
-                        </button>
-
-                        <button *ngIf="mFormaEstado == enCRUD.Actualizar" (click)="actualizar()"
-                           [disabled]="!vForma.valid" style="margin: 5px" class="btn btn-primary">
-                           <i class="fa fa-save"></i>
-                           Modificar
-                        </button>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label for="">Nombres</label>
-                              <input class="form-control" [(ngModel)]="mCategoriasSelect.name" type="text"
-                                 formControlName="name" placeholder="Nombre" />
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label for="">Email</label>
-                              <input class="form-control" [(ngModel)]="mCategoriasSelect.email" type="email"
-                                 formControlName="email" placeholder="Email" />
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="row">
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label for="">Password
-                                 ({{mCategoriasSelect.id?0:8}})</label>
-                              <input class="form-control" type="password" [(ngModel)]="mCategoriasSelect.password"
-                                 formControlName="password" placeholder="Password" [required]="requirePasssword"
-                                 [minLength]="requirePasssword ?8:0" [minlength]="requirePasssword ?8:0" />
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label for="">Confirmar Password</label>
-                              <input class="form-control" type="password"
-                                 [(ngModel)]="mCategoriasSelect.password_confirmation"
-                                 formControlName="password_confirmation" placeholder="Confirmar Password"
-                                 [required]="requirePasssword" [minLength]="requirePasssword ?8:0"
-                                 [minlength]="requirePasssword ?8:0" />
-                           </div>
-                        </div>
-                     </div>
-                  </form>
-               </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-            <div *ngIf="mFormaEstado == enCRUD.Leer" class="row animated fadeIn fast">
-               <div class="col-md-12">
-                  <form>
-                     <div class="form-group text-right">
-                        <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
-                           <i class="fa fa-backward"></i>
-                           Regresar
-                        </button>
-                     </div>
-                     <div class="form-group">
-                        <label for="">Nombre</label>
-                        <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.name"
-                           name="mCategoriasSelect.name" readonly />
-                     </div>
-
-                     <div class="form-group">
-                        <label for="">Email</label>
-                        <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.email"
-                           name="mCategoriasSelect.email" readonly />
-                     </div>
-                  </form>
-               </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- Asignar modulos -->
-            <div *ngIf="mFormaEstado == enCRUD.Asignar" class="row animated fadeIn fast">
-               <div class="row">
-                  <div class="col-md-4">
-                     <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
-                        <i class="fa fa-backward"></i>
-                        Regresar
-                     </button>
-                  </div>
-                  <div class="col-md-4">
-                     <button (click)="asignarModulo()" *ngIf="mFormaEstado == enCRUD.Asignar" class="btn btn-primary">
-                        <i class="fa fa-plus"></i>
-                        Asiganar Módulos
-                     </button>
-                  </div>
-               </div>
-            </div>
-
-
-            <!-- ASIGANCION DE MODULOS ] -->
-            <div *ngIf="mFormaEstado == enCRUD.Asignar">
-               <div class="row">
-                  <div class="col-md-12">
-                     <div class="form-group">
-                        <h3 class="py-5 text-center font-weight-bold">Asiganar Módulos</h3>
-                        <form [formGroup]="mFormM" #vFormM="ngForm">
-                           <div *ngFor="let modulo of mModulos; let i = index">
-                              <div class="form-group">
-                                 <input type="checkbox" class="form-check-input" value="modulo.idModulo"
-                                    formControlName="modulo">
-                                 <!-- <input type="checkbox" class="form-check-input" [value]="modulo.idModulo" formControlName="modulo"> -->
-                                 <label class="form-check-label" for="exampleCheck1">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;{{modulo.modulo}}</label>
-                              </div>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-
-
-
-         </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="py-5 text-center font-weight-bold">Usuarios</h3>
+      <div
+        class="d-flex col-md-12 justify-content-between"
+        *ngIf="
+          mFormaEstado != enCRUD.Crear &&
+          mFormaEstado != enCRUD.Actualizar &&
+          mFormaEstado != enCRUD.Asignar
+        "
+      >
+        <button
+          (click)="nuevo()"
+          type="button"
+          class="btn btn-success col-md-1 my-4"
+        >
+          <i class="fa fa-plus"></i>
+          Nuevo
+        </button>
+        <form
+          [formGroup]="filterForm"
+          class="col-md-9 d-flex align-items-center"
+          *ngIf="
+            mFormaEstado != enCRUD.Crear &&
+            mFormaEstado != enCRUD.Actualizar &&
+            mFormaEstado != enCRUD.Asignar
+          "
+        >
+          <div class="form-group col-md-10 mb-0">
+            <input
+              type="text"
+              placeholder="Buscar por nombre, usuario o mail"
+              formControlName="search"
+              class="form-control"
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-success ml-2"
+            (click)="filtrar()"
+            [disabled]="mLoading"
+          >
+            Buscar
+          </button>
+        </form>
       </div>
-   </div>
+
+      <div class="col-md-12">
+        <div *ngIf="mFormaEstado == enCRUD.Eliminar">
+          <div class="row animated fadeIn fast">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead class="thead-dark">
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Acción</th>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="let categoria of mCategorias; let i = index"
+                      (dblclick)="modificar(categoria)"
+                    >
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ categoria.name }}</td>
+                      <td>{{ categoria.email }}</td>
+                      <td>
+                        <button
+                          (click)="ver(categoria)"
+                          type="button"
+                          class="btn mr-2 btn-info"
+                        >
+                          <i class="far fa-eye"></i>
+                        </button>
+                        <button
+                          (click)="modificar(categoria)"
+                          type="button"
+                          class="btn mr-2 btn-primary"
+                        >
+                          <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button
+                          (click)="modulos(categoria.id)"
+                          type="button"
+                          class="btn mr-2 btn-info"
+                        >
+                          <i class="fa fa-cogs"></i>
+                        </button>
+                        <button
+                          (click)="eliminar(categoria.id)"
+                          type="button"
+                          class="btn mr-2 btn-danger"
+                        >
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div
+                  *ngIf="(mCategorias | keys).length === 0 && !mLoading"
+                  class="alert alert-info"
+                  role="alert"
+                >
+                  <strong>No existen</strong> Mails que mostrar...
+                </div>
+                <div *ngIf="mLoading" class="alert alert-warning" role="alert">
+                  <strong>Cargando</strong> por favor espere...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          *ngIf="
+            mFormaEstado == enCRUD.Crear || mFormaEstado == enCRUD.Actualizar
+          "
+          class="row animated fadeIn fast"
+        >
+          <div class="col-md-12">
+            <form [formGroup]="mForma" #vForma="ngForm">
+              <div class="form-group text-right div-btn">
+                <button
+                  (click)="mFormaEstado = enCRUD.Eliminar"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  <i class="fa fa-backward"></i>
+                  Regresar
+                </button>
+
+                <button
+                  (click)="nuevo()"
+                  *ngIf="mFormaEstado == enCRUD.Actualizar"
+                  style="margin: 5px"
+                  class="btn btn-primary"
+                >
+                  <i class="fa fa-plus"></i>
+                  Nuevo
+                </button>
+                <button
+                  *ngIf="mFormaEstado == enCRUD.Crear"
+                  (click)="guardar()"
+                  [disabled]="!vForma.valid"
+                  style="margin: 5px"
+                  class="btn btn-primary"
+                >
+                  <i class="fa fa-save"></i>
+                  Guardar
+                </button>
+
+                <button
+                  *ngIf="mFormaEstado == enCRUD.Actualizar"
+                  (click)="actualizar()"
+                  [disabled]="!vForma.valid"
+                  style="margin: 5px"
+                  class="btn btn-primary"
+                >
+                  <i class="fa fa-save"></i>
+                  Modificar
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Nombres</label>
+                    <input
+                      class="form-control"
+                      [(ngModel)]="mCategoriasSelect.name"
+                      type="text"
+                      formControlName="name"
+                      placeholder="Nombre"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Email</label>
+                    <input
+                      class="form-control"
+                      [(ngModel)]="mCategoriasSelect.email"
+                      type="email"
+                      formControlName="email"
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for=""
+                      >Password ({{ mCategoriasSelect.id ? 0 : 8 }})</label
+                    >
+                    <input
+                      class="form-control"
+                      type="password"
+                      [(ngModel)]="mCategoriasSelect.password"
+                      formControlName="password"
+                      placeholder="Password"
+                      [required]="requirePasssword"
+                      [minLength]="requirePasssword ? 8 : 0"
+                      [minlength]="requirePasssword ? 8 : 0"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Confirmar Password</label>
+                    <input
+                      class="form-control"
+                      type="password"
+                      [(ngModel)]="mCategoriasSelect.password_confirmation"
+                      formControlName="password_confirmation"
+                      placeholder="Confirmar Password"
+                      [required]="requirePasssword"
+                      [minLength]="requirePasssword ? 8 : 0"
+                      [minlength]="requirePasssword ? 8 : 0"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div
+          *ngIf="mFormaEstado == enCRUD.Leer"
+          class="row animated fadeIn fast"
+        >
+          <div class="col-md-12">
+            <form>
+              <div class="form-group text-right">
+                <button
+                  (click)="mFormaEstado = enCRUD.Eliminar"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  <i class="fa fa-backward"></i>
+                  Regresar
+                </button>
+              </div>
+              <div class="form-group">
+                <label for="">Nombre</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="mCategoriasSelect.name"
+                  name="mCategoriasSelect.name"
+                  readonly
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="">Email</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="mCategoriasSelect.email"
+                  name="mCategoriasSelect.email"
+                  readonly
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Asignar modulos -->
+        <div
+          *ngIf="mFormaEstado == enCRUD.Asignar"
+          class="row animated fadeIn fast"
+        >
+          <div class="row">
+            <div class="col-md-4">
+              <button
+                (click)="mFormaEstado = enCRUD.Eliminar"
+                type="button"
+                class="btn btn-primary"
+              >
+                <i class="fa fa-backward"></i>
+                Regresar
+              </button>
+            </div>
+            <div class="col-md-4">
+              <button
+                (click)="asignarModulo()"
+                *ngIf="mFormaEstado == enCRUD.Asignar"
+                class="btn btn-primary"
+              >
+                <i class="fa fa-plus"></i>
+                Asiganar Módulos
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ASIGANCION DE MODULOS ] -->
+        <div *ngIf="mFormaEstado == enCRUD.Asignar">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <h3 class="py-5 text-center font-weight-bold">
+                  Asiganar Módulos
+                </h3>
+                <form [formGroup]="mFormM" #vFormM="ngForm">
+                  <div *ngFor="let modulo of mModulos; let i = index">
+                    <div class="form-group">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        value="modulo.idModulo"
+                        formControlName="modulo"
+                      />
+                      <!-- <input type="checkbox" class="form-check-input" [value]="modulo.idModulo" formControlName="modulo"> -->
+                      <label class="form-check-label" for="exampleCheck1">
+                        &nbsp;&nbsp;&nbsp;&nbsp;{{ modulo.modulo }}</label
+                      >
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
