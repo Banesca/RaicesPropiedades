@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+/*NO SE USA*/
 class Ficha2 extends Model {
     use SoftDeletes;
     protected $table = 'tb_ficha2s';

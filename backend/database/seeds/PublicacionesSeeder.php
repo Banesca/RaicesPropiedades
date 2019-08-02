@@ -17,37 +17,6 @@ class PublicacionesSeeder extends Seeder {
     public function run() {
 
         for ($i = 0; $i < 10; $i++) {
-            $ficha1 = new Ficha1([
-                'descipcion'             => 'Hola'.$i,
-                'fk_tipoPropiedad'       => $i,
-                'esUnaPropiedad'         => rand(0, 1),
-                'esUnaNovedad'           => rand(0, 1),
-                'apareceEnGaleriaInicia' => rand(0, 1),
-                'fk_estado_publicacion'  => rand(1, 3),
-                'fk_idTipoOperaion'      => rand(1, 4),
-
-                'precio'             => rand(100, 8000),
-                'fk_idMonedas'       => rand(1, 3),
-                'comision'           => '30%',
-                'titulo'             => rand(1, 4),
-                'tipo_publicacion'   => rand(1, 4),
-                'aparece_en_galeria' => rand(0, 1),
-
-            ]);
-            $ficha1->save();
-
-            $ficha2 = new Ficha2([
-                'imagen1'             => 'http://placeimg.com/640/480/arch',
-                'imagen2'             => 'http://placeimg.com/640/480/arch',
-                'imagen3'             => 'http://placeimg.com/640/480/arch',
-                'imagen4'             => 'http://placeimg.com/640/480/arch',
-                'imagen5'             => 'http://placeimg.com/640/480/arch',
-                'imagen6'             => 'http://placeimg.com/640/480/arch',
-                'imagen7'             => 'http://placeimg.com/640/480/arch',
-                'imagen_para_galeria' => 'http://placeimg.com/640/480/arch',
-                'fk_ficha1'           => $ficha1->idFicha1,
-            ]);
-            $ficha2->save();
 
             $ficha3 = new Propiedad([
                 'fk_idTipoPropiedad'                        => rand(1, 13),
@@ -322,16 +291,31 @@ class PublicacionesSeeder extends Seeder {
                 'Vidriera'                                  => rand(0, 1),
                 'Vivienda'                                  => rand(0, 1),
                 'Zonificacion'                              => rand(0, 1),
-                'fk_ficha2'                                 => $ficha2->idFicha2,
+                'descipcion'                                => 'Hola'.$i,
+                'fk_tipoPropiedad'                          => $i,
+                'esUnaPropiedad'                            => rand(0, 1),
+                'esUnaNovedad'                              => rand(0, 1),
+                'apareceEnGaleriaInicia'                    => rand(0, 1),
+                'fk_estado_publicacion'                     => rand(1, 3),
+                'fk_idTipoOperaion'                         => rand(1, 4),
+
+                'precio'             => rand(100, 8000),
+                'fk_idMonedas'       => rand(1, 3),
+                'comision'           => '30%',
+                'titulo'             => rand(1, 4),
+                'tipo_publicacion'   => rand(1, 4),
+                'aparece_en_galeria' => rand(0, 1),
+
+                'imagen1'             => 'http://placeimg.com/640/480/arch',
+                'imagen2'             => 'http://placeimg.com/640/480/arch',
+                'imagen3'             => 'http://placeimg.com/640/480/arch',
+                'imagen4'             => 'http://placeimg.com/640/480/arch',
+                'imagen5'             => 'http://placeimg.com/640/480/arch',
+                'imagen6'             => 'http://placeimg.com/640/480/arch',
+                'imagen7'             => 'http://placeimg.com/640/480/arch',
+                'imagen_para_galeria' => 'http://placeimg.com/640/480/arch',
             ]);
             $ficha3->save();
-
-            $ficha123 = new Ficha123([
-                'fk_idFicha1' => $ficha1->idFicha1,
-                'fk_idFicha2' => $ficha2->idFicha2,
-                'fk_idFicha3' => $ficha3->idPropiedad,
-            ]);
-            $ficha123->save();
         }
     }
 }

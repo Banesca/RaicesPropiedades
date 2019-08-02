@@ -4,25 +4,25 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+/*NO SE USA*/
 class Ficha1 extends Model {
     use SoftDeletes;
     protected $table      = 'tb_ficha1';
     protected $primaryKey = 'idFicha1';
 
     protected $fillable = [
+        'titulo',
         'descipcion',
         'fk_tipoPropiedad',
-        'esUnaPropiedad',
-        'esUnaNovedad',
         'esUnaOportunidad',
+        'esUnaNovedad',
+        'esUnaPropiedad',
         'apareceEnGaleriaInicia',
         'fk_estado_publicacion',
         'fk_idTipoOperaion',
         'precio',
         'fk_idMonedas',
         'comision',
-        'titulo',
         'tipo_publicacion',
         'aparece_en_galeria',
     ];

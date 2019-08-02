@@ -12,7 +12,6 @@ class Ficha1Controller extends Controller
 {
     public function add(Request $request)
     {
-
         $this->validate($request, [
             'descipcion'             => 'required',
             'fk_tipoPropiedad'       => 'required',

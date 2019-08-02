@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Propiedad extends Model
-{
+class Propiedad extends Model {
     protected $table      = 'tb_propiedades';
     protected $primaryKey = 'idPropiedad';
 
@@ -283,154 +282,165 @@ class Propiedad extends Model
         'Vivienda',
         'Zonificacion',
         'fk_ficha2',
+
+        'a_estrenar',
+        'no_publicar_precio_inter',
+        'informacion_adicional',
+
+        'descipcion',
+        'fk_tipoPropiedad',
+        'esUnaPropiedad',
+        'esUnaNovedad',
+        'apareceEnGaleriaInicia',
+        'fk_estado_publicacion',
+        'esUnaOportunidad',
+        'fk_idTipoOperaion',
+        'precio',
+        'fk_idMonedas',
+        'comision',
+        'titulo',
+        'tipo_publicacion',
+        'aparece_en_galeria',
+        'imagen1',
+        'imagen2',
+        'imagen3',
+        'imagen4',
+        'imagen5',
+        'imagen6',
+        'imagen7',
+        'imagen_para_galeria',
+
     ];
 
     protected $hidden = [
         'created_at',
         'updated_at',
     ];
-    
-    public function ficha2and1(){
-        return $this->belongsTo('App\Ficha2','fk_ficha2')->with('ficha1');
-    }
 
-    public function TipoPropiedad()
-    {
+    /*public function ficha2and1() {
+        return $this->belongsTo('App\Ficha2', 'fk_ficha2')->with('ficha1');
+    }*/
+
+    public function TipoPropiedad() {
         return $this->belongsTo('App\TipoPropiedad', 'fk_idTipoPropiedad');
     }
 
-    public function Disposicion()
-    {
+    public function Disposicion() {
         return $this->belongsTo('App\Disposicion', 'fk_Disposicion');
     }
 
-    public function Estado()
-    {
+    public function Estado() {
         return $this->belongsTo('App\EstadoPropiedad', 'fk_Estado');
     }
 
-    public function Orientacion()
-    {
+    public function Orientacion() {
         return $this->belongsTo('App\Orientacion', 'fk_Orientacion');
     }
 
-    public function TipoAcceso()
-    {
+    public function TipoAcceso() {
         return $this->belongsTo('App\TipoAcceso', 'fk_TipoAcceso');
     }
 
-    public function TipoAscensor()
-    {
+    public function TipoAscensor() {
         return $this->belongsTo('App\TipoAscensor', 'fk_TipoAscensor');
     }
 
-    public function TipoBalcon()
-    {
+    public function TipoBalcon() {
         return $this->belongsTo('App\TipoBalcon', 'fk_TipoBalcon');
     }
 
-    public function TipoBano()
-    {
+    public function TipoBano() {
         return $this->belongsTo('App\TipoBaño', 'fk_TipoBano');
     }
 
-    public function TipoCalefaccion()
-    {
+    public function TipoCalefaccion() {
         return $this->belongsTo('App\TipoCalefaccion', 'fk_TipoCalefaccion');
     }
 
-    public function TipoCampo()
-    {
+    public function TipoCampo() {
         return $this->belongsTo('App\TipoCampo', 'fk_TipoCampo');
     }
 
-    public function TipoCobertura()
-    {
+    public function TipoCobertura() {
         return $this->belongsTo('App\TipoCobertura', 'fk_TipoCobertura');
     }
 
-    public function TipoCoche()
-    {
+    public function TipoCoche() {
         return $this->belongsTo('App\TipoCoche', 'fk_TipoCoche');
     }
 
-    public function TipoCochera()
-    {
+    public function TipoCochera() {
         return $this->belongsTo('App\TipoCochera', 'fk_TipoCochera');
     }
 
-    public function TipoCosta()
-    {
+    public function TipoCosta() {
         return $this->belongsTo('App\TipoCosta', 'fk_TipoCosta');
     }
 
-    public function TipoEdificio()
-    {
+    public function TipoEdificio() {
         return $this->belongsTo('App\TipoEdificio', 'fk_TipoEdificio');
     }
 
-    public function TipoExpensas()
-    {
+    public function TipoExpensas() {
         return $this->belongsTo('App\TipoExpensas', 'fk_TipoExpensas');
     }
 
-    public function TipoFondoComercio()
-    {
+    public function TipoFondoComercio() {
         return $this->belongsTo('App\TipoFondoComercio', 'fk_TipoFondoComercio');
     }
 
-    public function TipoFrente()
-    {
+    public function TipoFrente() {
         return $this->belongsTo('App\TipoFrente', 'fk_TipoFrente');
     }
 
-    public function TipoHotel()
-    {
+    public function TipoHotel() {
         return $this->belongsTo('App\TipoHotel', 'fk_TipoHotel');
     }
 
-    public function TipoLocal()
-    {
+    public function TipoLocal() {
         return $this->belongsTo('App\TipoLocal', 'fk_TipoLocal');
     }
 
-    public function TipoPendiente()
-    {
+    public function TipoPendiente() {
         return $this->belongsTo('App\TipoPendiente', 'fk_TipoPendiente');
     }
 
-    public function TipoPiso()
-    {
+    public function TipoPiso() {
         return $this->belongsTo('App\TipoPiso', 'fk_TipoPiso');
     }
 
-    public function TipoPorton()
-    {
+    public function TipoPorton() {
         return $this->belongsTo('App\TipoPorton', 'fk_TipoPorton');
     }
 
-    public function TipoTecho()
-    {
+    public function TipoTecho() {
         return $this->belongsTo('App\TipoTecho', 'fk_TipoTecho');
     }
 
-    public function TipoTechoIndustrial()
-    {
+    public function TipoTechoIndustrial() {
         return $this->belongsTo('App\TipoTechoIndustrial', 'fk_TipoTechoIndustrial');
     }
 
-    public function TipoTerreno()
-    {
+    public function TipoTerreno() {
         return $this->belongsTo('App\TipoTerreno', 'fk_TipoTerreno');
     }
 
-    public function TipoUnidad()
-    {
+    public function TipoUnidad() {
         return $this->belongsTo('App\TipoUnidadCasa', 'fk_TipoUnidad');
     }
 
-    public function TipoVista()
-    {
+    public function TipoVista() {
         return $this->belongsTo('App\TipoVista', 'fk_TipoVista');
+    }
+
+    public function estadoPublicacion() {
+        return $this->belongsTo('App\EstadoPublicacion', 'fk_estado_publicacion');
+    }
+
+    public function tipoOpeacion() {
+        return $this->belongsTo('App\TipoOperacion', 'fk_idTipoOperaion');
+    }
+    public function tipoMoneda() {
+        return $this->belongsTo('App\Moneda', 'fk_idMonedas');
     }
 }
