@@ -43,7 +43,7 @@ export class TransactionModalComponent implements OnInit {
     this.contactForm = this._formBuilder.group({
       nombre_apellido: [
         "",
-        [Validators.required, Validators.pattern("[a-zA-Z]*")]
+        [Validators.required, Validators.pattern("[ña-zA-Z _]*")]
       ],
       email: ["", [Validators.required, Validators.email]],
       telefono: [
@@ -51,7 +51,10 @@ export class TransactionModalComponent implements OnInit {
         [Validators.required, Validators.pattern("^[0-9]{10,12}$")]
       ],
       fk_tipoPropiedad: ["", Validators.required],
-      titulo: ["", [Validators.required, Validators.pattern(/[a-z]/)]],
+      titulo: [
+        "",
+        [Validators.required, Validators.pattern("[ña-zA-Z _]*")]
+      ],
       descripcion: ["", Validators.required],
       imagen_1: [null, Validators.required],
       imagen_2: [null, Validators.required]
