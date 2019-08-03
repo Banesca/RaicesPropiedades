@@ -24,7 +24,7 @@ export class MailSuscribersComponent implements OnInit {
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
-
+  submitted = false;
   mForma: FormGroup;
   mFormaEstado: string;
   enCRUD = enCRUD;
@@ -40,7 +40,9 @@ export class MailSuscribersComponent implements OnInit {
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
   }
-
+  get f() {
+    return this.mForma.controls;
+  }
   ngOnInit() {}
 
   generarFormulario() {
@@ -66,7 +68,15 @@ export class MailSuscribersComponent implements OnInit {
 
       });
   }
+onSubmit() {
+    this.submitted = true;
+    if (this.mForma.invalid) {
+      return;
+    }
 
+  this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
+    this.guardar();
+  }
 
   nuevo() {
     this.mForma.reset();
@@ -79,7 +89,6 @@ export class MailSuscribersComponent implements OnInit {
   }
 
   guardar() {
-    this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
     this.mLoading = true;
     this._MailSuscribersService
       .nuevaCategoria(this.mCategoriasSelect)
