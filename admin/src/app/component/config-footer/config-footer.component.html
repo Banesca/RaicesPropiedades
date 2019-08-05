@@ -1,46 +1,67 @@
 <div [formGroup]="myForm" class="row" style="padding: 20px;">
     
       <div class="form-group col-12">
-            <label for="">Quienes Somos?</label>
+            <label for="">¿Quiénes Somos?</label>
             <br>
             <textarea name="textarea" rows="10" cols="50" formControlName="quienesSomos">Escribe Quiénes Somos</textarea>
-            <small *ngIf="myForm.get('quienesSomos').invalid" >Es requerido</small>
+            <div *ngIf="submitted && f.quienesSomos.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="f.quienesSomos.errors.required" >Es requerido</div>
+                  <div *ngIf="f.quienesSomos.errors.minlength">Debe ingresar al menos 10 caracteres</div>
+            </div>
+            
       </div>
       <div class="col-12 mt-4" >
             <label for="">Dirección</label>
             <input type="input" formControlName="direccion" class="form-control" placeholder="Escriba La Dirección">
-            <small *ngIf="myForm.get('direccion').invalid" >Es requerido</small>
+            <div *ngIf="submitted && f.direccion.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="f.direccion.errors.required">Es requerido</div>
+                  <div *ngIf="f.direccion.errors.minlength">Debe ingresar al menos 10 caracteres</div>
+            </div>
       </div>
       <div class="col-6 mt-4" >
             <label for="">Celular 1</label>
-            <input type="input" formControlName="celular1" class="form-control" placeholder="Escriba El Numero de Celular">
-            <small *ngIf="myForm.get('celular1').invalid" >Es requerido</small>
+            <input type="text" oninput="this.value=this.value.replace(/[^\d+]/,'')" formControlName="celular1" class="form-control" placeholder="Escriba El Numero de Celular">
+            <div *ngIf="submitted && f.celular1.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="f.celular1.errors.required">Es requerido</div>
+                  <div *ngIf="f.celular1.errors.pattern">Debe ingresar un número válido</div>
+            </div>
       </div>
       <div class="col-6 mt-4" >
             <label for="">Celular 2</label>
-            <input type="input" formControlName="celular2" class="form-control" placeholder="Escriba El Numero de Celular">
-            <small *ngIf="myForm.get('celular2').invalid" >Es requerido</small>
+            <input type="text" oninput="this.value=this.value.replace(/[^\d+]/,'')" formControlName="celular2" class="form-control" placeholder="Escriba El Numero de Celular">
+            <div *ngIf="submitted && f.celular2.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="f.celular2.errors.required">Es requerido</div>
+                  <div *ngIf="f.celular2.errors.pattern">Debe ingresar un número válido</div>                  
+            </div>
       </div>
       <div class="col-6 mt-4" >
             <label for="">Correo</label>
             <input type="input" formControlName="correo" class="form-control" placeholder="Escriba El Numero de Celular">
-            <small *ngIf="myForm.get('correo').invalid" >Es requerido</small><br>
-            <small *ngIf="myForm.get('correo').invalid" >Debe ser correo electronico</small>
+            <div *ngIf="submitted && f.correo.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="f.correo.errors.required">Es requerido</div>
+                  <div *ngIf="f.correo.errors.pattern">Debe ingresar un correo electrónico válido</div>                  
+            </div>
       </div>
       <div class="col-6 mt-4" >
-            <label for="">Url De Facebook</label>
+            <label for="">URL De Facebook</label>
             <input type="input" formControlName="url_face" class="form-control" placeholder="Escriba La Url De Facebook">
-            <small *ngIf="myForm.get('url_face').invalid" >Es requerido</small>
+           <div *ngIf="submitted && f.url_face.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="f.url_face.errors.required">Es requerido</div>
+            </div>
       </div>
       <div class="col-6 mt-4" >
-            <label for="">Url De Instagram</label>
+            <label for="">URL De Instagram</label>
             <input type="input" formControlName="url_intagram" class="form-control" placeholder="Escriba La Url De Facebook">
-            <small *ngIf="myForm.get('url_intagram').invalid" >Es requerido</small>
+            <div *ngIf="submitted && f.url_intagram.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="f.url_intagram.errors.required">Es requerido</div>
+            </div>
       </div>
       <div class="col-6 mt-4" >
-            <label for="">Url De Twitter</label>
+            <label for="">URL De Twitter</label>
             <input type="input" formControlName="url_twitter" class="form-control" placeholder="Escriba La Url De Facebook">
-            <small *ngIf="myForm.get('url_twitter').invalid" >Es requerido</small>
+            <div *ngIf="submitted && f.url_twitter.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="f.url_twitter.errors.required">Es requerido</div>
+            </div>
       </div>
       <div class="card col-lg-6 col-12 mt-4 emails-cont ">
             <div class="card-body" *ngIf="mailList.length">
@@ -59,7 +80,7 @@
                                         <td> <button
                                           (click)="eliminar(mail.idMail)"
                                           type="button"
-                                          class="btn mr-2 btn-danger"
+                                          class="pull-right btn mr-2 btn-danger"
                                         >
                                           <i class="fa fa-trash"></i>
                                         </button></td>
@@ -78,7 +99,7 @@
             <app-mails *ngIf="addMail" (addMail)="addMailEvent($event)" ></app-mails>
       </div>
       <div class="col-12 mt-4 text-center">
-        <button class="btn btn-success" (click)="upgradeCondigFooter()">
+        <button class="btn btn-success" (click)="onSubmit()">
             Actualizar
         </button>
       </div>

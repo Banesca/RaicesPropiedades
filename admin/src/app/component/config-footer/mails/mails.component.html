@@ -4,17 +4,19 @@
       <div class="form-group">
         
         <input type="input" formControlName="email" class="form-control" placeholder="Escriba El Correo">
-        <small *ngIf="myForm.get('email').invalid" >Es requerido</small><br>
-        <small *ngIf="myForm.get('email').invalid" >Debe ser correo electronico</small>
+        <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback d-block">
+          <div *ngIf="f.email.errors.required">Es requerido</div>
+          <div *ngIf="f.email.errors.pattern">Debe ingresar un correo electrónico válido</div>          
+        </div>
       </div>
     </div>
   </div>
   <div class="row mb-4 px-4">
-    <div class="col-3 ml-auto text-center">
-      <button class="btn btn-danger" (click)="close()">Cancelar</button>
-    </div>
-    <div class="col-3 text-center">
-      <button class="btn btn-success"  (click)="add()">Añadir</button>
+    <div class="col-md-12">
+      <div class="pull-right">
+        <button class="btn btn-danger m-2" (click)="close()">Cancelar</button>
+        <button class="btn btn-success m-2"  (click)="onSubmit()">Añadir</button>
+      </div>
     </div>
   </div>
 

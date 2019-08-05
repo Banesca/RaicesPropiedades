@@ -89,7 +89,7 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
   }
 
   eliminar(pKey: number) {
-    if(confirm('Está seguro de que quiere eliminar esta galería?')){
+    if(confirm('¿Está seguro de que quiere eliminar esta galería?')){
     this.mLoading = true;
     this._GaleriaHomeService
       .eliminarCategoria(pKey)
