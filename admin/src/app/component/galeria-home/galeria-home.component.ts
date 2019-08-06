@@ -24,7 +24,7 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
-
+  submitted: boolean = false;
   mForma: FormGroup;
   mFormaEstado: string;
   enCRUD = enCRUD;
@@ -45,23 +45,33 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
   }
 
   ngOnInit() {}
-
+  get f() {
+    return this.mForma.controls;
+  }
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
       titulo: ["", [Validators.required, Validators.minLength(3)]],
-      descripcion: ["", Validators.required],
+      descripcion: ["", [Validators.required,Validators.minLength(10)]],
       fk_publicaciones: ["", Validators.required]
     });
   }
 
   // desactivar cors chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+  onSubmit() {
+    this.submitted = true;
+    if (this.mForma.invalid) {
+      return;
+    }
 
+    this.mCategoriasSelect = this.mForma.value as IGaleria;
+    this.guardar();
+  }
   getPublicaciones() {
     this._PublicacionesService
       .All()
         .then(data => {
-        this.mPublicaciones = data;
+          this.mPublicaciones = data;
 
       })
       .catch(error => {
@@ -132,7 +142,7 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
 
 
   guardar() {
-    this.mCategoriasSelect = this.mForma.value as IGaleria;
+    
     this.mLoading = true;
     this._GaleriaHomeService
       .nuevaCategoria(this.mCategoriasSelect)
@@ -140,6 +150,7 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
         this.mFormaEstado = enCRUD.Eliminar;
         this.mCategoriasSelect = Galeria.empy();
         this.getAll();
+        this.mForma.reset();
         this.mLoading = false;
         this._AlertsService.msg('OK', '!ÉXITO!', 'Galería creada Correctamente.')
       })

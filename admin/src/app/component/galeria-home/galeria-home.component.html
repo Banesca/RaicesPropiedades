@@ -1,13 +1,21 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="py-5 text-center font-weight-bold">Galería Home</h3>
+        <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Eliminar">
+          Galería Home
+        </h3>
+        <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Crear">
+          Nueva Galería Home
+        </h3>
+        <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Actualizar">
+          Actualizar Galería Home
+        </h3>
             <button
             (click)="nuevo()"
             type="button"
             class="btn btn-primary"
             class="btn btn-success my-4"
-            [disabled]="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar"
+            *ngIf="mFormaEstado != enCRUD.Crear && mFormaEstado != enCRUD.Actualizar"
           >
             <i class="fa fa-plus"></i>
            Nuevo
@@ -92,8 +100,7 @@
           </button>
           <button
           *ngIf="mFormaEstado == enCRUD.Crear"
-          (click)="guardar()"
-          [disabled]="!vForma.valid"
+          (click)="onSubmit()"
           style="margin: 5px"
           class="btn btn-primary"
         >
@@ -118,22 +125,12 @@
             class="form-control"
             type="text"
             formControlName="titulo"
-            placeholder="Título del Mail"
+            placeholder="Título"
             [(ngModel)]="mCategoriasSelect.titulo"
           />
-          <div
-            *ngIf="mForma.controls['titulo'].errors?.required"
-            class="alert alert-danger"
-            role="alert"
-          >
-            Título es requerido
-          </div>
-          <div
-            *ngIf="mForma.controls['titulo'].errors?.minlength"
-            class="alert alert-danger"
-            role="alert"
-          >
-            Mínimo de 3 caracteres
+          <div *ngIf="submitted && f.titulo.errors" type="alert" class="invalid-feedback d-block">
+            <div *ngIf="f.titulo.errors.required">El título es requerido</div>
+            <div *ngIf="f.titulo.errors.minlength">Mínimo de 3 caracteres</div>
           </div>
         </div>
         <div class="form-group">
@@ -143,12 +140,8 @@
             <option *ngFor="let publicacion of mPublicaciones"
             type="number" [value]="publicacion.idFichas">{{publicacion.ficha1.descipcion}}</option>
           </select>
-          <div
-            *ngIf="mForma.controls['fk_publicaciones'].errors?.required"
-            class="alert alert-danger"
-            role="alert"
-          >
-            Tipo de publicación es requerido
+          <div *ngIf="submitted && f.fk_publicaciones.errors" type="alert" class="invalid-feedback d-block">
+            <div *ngIf="f.fk_publicaciones.errors.required">Debe seleccionar una publicación</div>
           </div>
         </div>
   
@@ -158,15 +151,14 @@
             class="form-control"
             type="text"
             formControlName="descripcion"
+            placeholder="Descripción"
             [(ngModel)]="mCategoriasSelect.descripcion"
           ></textarea>
-          <div
-          *ngIf="mForma.controls['descripcion'].errors?.required"
-          class="alert alert-danger"
-          role="alert"
-        >
-         Descripción es requerida
-        </div>
+          <div *ngIf="submitted && f.descripcion.errors" type="alert" class="invalid-feedback d-block">
+            <div *ngIf="f.descripcion.errors.required">Descripción es requerida</div>
+            <div *ngIf="f.descripcion.errors.minlength">Mínimo de 10 caracteres</div>
+            
+          </div>
         </div>
       </form>
     </div>
