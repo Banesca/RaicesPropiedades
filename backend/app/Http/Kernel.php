@@ -20,8 +20,7 @@ class Kernel extends HttpKernel {
         \App\Http\Middleware\TrustProxies::class,
         //\Barryvdh\Cors\HandleCors::class,
         /*\App\Http\Middleware\Cors::class,*/
-        // \Barryvdh\Cors\HandleCors::class,
-        \App\Http\Middleware\Cors::class,
+        \Barryvdh\Cors\HandleCors::class,
     ];
 
     /**
@@ -42,8 +41,7 @@ class Kernel extends HttpKernel {
 
         'api' => [
             //'throttle:60,1',
-            // \Barryvdh\Cors\HandleCors::class,
-            \App\Http\Middleware\Cors::class,
+            \Barryvdh\Cors\HandleCors::class,
         ],
     ];
 
