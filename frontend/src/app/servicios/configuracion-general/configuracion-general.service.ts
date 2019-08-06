@@ -38,6 +38,7 @@ export class ConfiguracionGeneralService {
       headers: getHeaders()
     }).pipe(
       map((data: IConfigG) => {
+        console.log("Configuracion services data:  ", data);
         return data;
       })).toPromise();
   }
