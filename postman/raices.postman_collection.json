@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "raices",
-		"_postman_id": "bfeecc89-4f11-37e1-ac69-424dfadb635e",
+		"_postman_id": "20393e1f-8d0c-0013-f507-dea80f2cc9bc",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -1748,6 +1748,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1755,6 +1756,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1762,6 +1764,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1769,6 +1772,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1776,6 +1780,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1783,6 +1788,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1790,6 +1796,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1797,6 +1804,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -5300,9 +5308,26 @@
 					"response": []
 				},
 				{
+					"name": "Borrar una propiedad",
+					"request": {
+						"url": "localhost:8000/api/v1/deletePropiedad/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
 					"name": "listar propiedad por id",
 					"request": {
-						"url": "localhost:8000/api/v1/listarPropiedades/1",
+						"url": "localhost:8000/api/v1/listarPropiedades/6",
 						"method": "GET",
 						"header": [
 							{
@@ -5322,7 +5347,7 @@
 				{
 					"name": "listar todas las propiedades",
 					"request": {
-						"url": "localhost:8000/api/v1/listarPropiedades/1",
+						"url": "localhost:8000/api/v1/listarPropiedades",
 						"method": "GET",
 						"header": [
 							{
@@ -5441,7 +5466,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
