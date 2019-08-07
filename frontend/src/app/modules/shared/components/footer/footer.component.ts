@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IConfigG, ISucursal } from "src/app/servicios/interfaces.index";
 import { ConfiguracionGeneralService, SucursalesService } from "src/app/servicios/servicios.index";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TransactionModalComponent } from '../transaction-modal/transaction-modal.component';
+import { HeaderComponent } from '../header/header.component';
+
 
 @Component({
   selector: 'app-footer',
@@ -13,7 +17,7 @@ export class FooterComponent {
   public baseUrl: string = 'sucursales'
 
   
-  constructor(private _ConfiguracionGeneral: ConfiguracionGeneralService,private _SucursalesService: SucursalesService) { 
+  constructor(private _ConfiguracionGeneral: ConfiguracionGeneralService,private _SucursalesService: SucursalesService, private modalService: NgbModal) { 
 
     this.mCategoria;
     this.getAll();
@@ -28,9 +32,12 @@ export class FooterComponent {
       .All()
       .then(data => {
         this.mCategoria = data;
+        // console.log("mCategoria footer:  ",this.mCategoria);
       })
       .catch(error => {
+        console.log("Error en peticion de getAll");
         console.log(error);
+
       });
   }
 
@@ -43,6 +50,12 @@ export class FooterComponent {
       .catch(error => {
         console.log(error);
       });
+  }
+
+
+  openModal() {
+    const modalRef = this.modalService.open(TransactionModalComponent);
+    modalRef.componentInstance.name = 'World';
   }
 
 }
