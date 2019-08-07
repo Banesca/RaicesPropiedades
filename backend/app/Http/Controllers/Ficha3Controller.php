@@ -248,4 +248,22 @@ class Ficha3Controller extends Controller {
             ], 500);
         }
     }
+
+    public function delete($idPropiedad){
+        $propiedad = Propiedad::find($idPropiedad);
+        if (! is_null($propiedad)) {
+            $propiedad->update(['fk_estado_publicacion'=>3]);  //se cambia de estatus
+            $propiedad->delete(); //se le asiga la fehca de borrado
+            $response = [
+                'msj'             => 'Propiedad borrada Exitosamente',
+            ];
+            return response()->json($response, 201);
+        }else{
+            $response = [
+                'msj'             => 'No existe la propiedad',
+            ];
+            return response()->json($response, 200);
+        }
+
+    }
 }
