@@ -42,9 +42,23 @@ class Ficha123Controller extends Controller {
             'tipoOpeacion',
             'tipoMoneda')->find($idFichas);
 
+            $ficha123->imagenes   = [
+                'imagen1'             => asset('storage\\ficha2\\'.@$ficha123->imagen1),
+                'imagen2'             => asset('storage\\ficha2\\'.@$ficha123->imagen2),
+                'imagen3'             => asset('storage\\ficha2\\'.@$ficha123->imagen3),
+                'imagen4'             => asset('storage\\ficha2\\'.@$ficha123->imagen4),
+                'imagen5'             => asset('storage\\ficha2\\'.@$ficha123->imagen5),
+                'imagen6'             => asset('storage\\ficha2\\'.@$ficha123->imagen6),
+                'imagen7'             => asset('storage\\ficha2\\'.@$ficha123->imagen7),
+                'imagen_para_galeria' => asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria),
+            ];
+
+
+
         return response()->json($ficha123);
     }
     public function listarTodo() {
+
         $ficha123 = Propiedad::with(
             'TipoPropiedad',
                     'Disposicion',
@@ -78,6 +92,21 @@ class Ficha123Controller extends Controller {
                     'tipoOpeacion',
                     'tipoMoneda'
            )->get();
+        $ficha123->each(function($ficha123) {
+            $ficha123->imagenes   = [
+                'imagen1'             => asset('storage\\ficha2\\'.@$ficha123->imagen1),
+                'imagen2'             => asset('storage\\ficha2\\'.@$ficha123->imagen2),
+                'imagen3'             => asset('storage\\ficha2\\'.@$ficha123->imagen3),
+                'imagen4'             => asset('storage\\ficha2\\'.@$ficha123->imagen4),
+                'imagen5'             => asset('storage\\ficha2\\'.@$ficha123->imagen5),
+                'imagen6'             => asset('storage\\ficha2\\'.@$ficha123->imagen6),
+                'imagen7'             => asset('storage\\ficha2\\'.@$ficha123->imagen7),
+                'imagen_para_galeria' => asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria),
+            ];
+
+        });
+
+
 
         return response()->json($ficha123);
     }

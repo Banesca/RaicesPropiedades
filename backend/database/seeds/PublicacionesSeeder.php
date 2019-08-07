@@ -3,15 +3,13 @@
 use App\Propiedad;
 use Illuminate\Database\Seeder;
 
-class PublicacionesSeeder extends Seeder
-{
+class PublicacionesSeeder extends Seeder {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
 
         for ($i = 0; $i < 10; $i++) {
 
@@ -288,7 +286,7 @@ class PublicacionesSeeder extends Seeder
                 'Vidriera'                                  => rand(0, 1),
                 'Vivienda'                                  => rand(0, 1),
                 'Zonificacion'                              => rand(0, 1),
-                'descipcion'                                => 'Hola' . $i,
+                'descipcion'                                => 'Hola'.$i,
                 'fk_tipoPropiedad'                          => $i,
                 'esUnaPropiedad'                            => rand(0, 1),
                 'esUnaNovedad'                              => rand(0, 1),
@@ -305,6 +303,11 @@ class PublicacionesSeeder extends Seeder
                 'titulo'                                    => rand(1, 4),
                 'tipo_publicacion'                          => rand(1, 4),
                 'aparece_en_galeria'                        => rand(0, 1),
+
+                'a_estrenar'               => 0,
+                'no_publicar_precio_inter' => 0,
+                'informacion_adicional'    => 'Notas adicional',
+
 
                 'imagen1'             => 'http://placeimg.com/640/480/arch',
                 'imagen2'             => 'http://placeimg.com/640/480/arch',
