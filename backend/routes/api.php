@@ -152,6 +152,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     //Route::post('addFicha1','Ficha1Controller@add');
     //Route::post('addFicha2','Ficha2Controller@add');
     Route::post('addPropiedad','Ficha3Controller@add');
+    Route::post('editPropiedad/{idPropiedad}','Ficha3Controller@edit');
 
     Route::get('sincronice','SincroniceArgenController@add'); /*en construcción*/
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');

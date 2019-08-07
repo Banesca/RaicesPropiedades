@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
+
 class Ficha3Controller extends Controller {
 
     public function add(Request $request) {
@@ -118,6 +119,125 @@ class Ficha3Controller extends Controller {
 
 
             return response()->json($response, 201);
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            Log::error('Ha ocurrido un error en PropiedadController: '.$e->getMessage().', Linea: '.$e->getLine());
+
+            return response()->json([
+                'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
+            ], 500);
+        }
+    }
+
+    public function edit(Request $request, $idPropiedad) {
+
+        DB::beginTransaction();
+
+        try {
+
+            $propiedad = Propiedad::find($idPropiedad);
+            $propiedad->fill($request->all());
+
+            if (! is_null($propiedad)) {
+
+                $imgs = [
+                    'imagen1',
+                    'imagen2',
+                    'imagen3',
+                    'imagen4',
+                    'imagen5',
+                    'imagen6',
+                    'imagen7',
+                    'imagen_para_galeria',
+                ];
+
+
+                foreach ($imgs as $img) {
+                    if (is_null($request[$img])) {
+                    } else {
+                        $originalImage = $request[$img];
+
+                        $thumbnailImage = Image::make($originalImage);
+
+                        $thumbnailImage->fit(2048, 2048, function($constraint) {
+                            $constraint->aspectRatio();
+                        });
+
+                        $nombre_publico = $originalImage->getClientOriginalName();
+                        $extension      = $originalImage->getClientOriginalExtension();
+
+                        $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
+                        $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
+
+                        Storage::disk('local')->put('\\ficha2\\'.$nombre_interno, (string) $thumbnailImage->encode());
+
+                        $propiedad[$img] = $nombre_interno;
+                    }
+
+                }
+
+                $propiedad->save();
+                @$propiedad->TipoPropiedad;
+                @$propiedad->Disposicion;
+                @$propiedad->Estado;
+                @$propiedad->Orientacion;
+                @$propiedad->TipoAcceso;
+                @$propiedad->TipoAscensor;
+                @$propiedad->TipoBalcon;
+                @$propiedad->TipoBano;
+                @$propiedad->TipoCalefaccion;
+                @$propiedad->TipoCampo;
+                @$propiedad->TipoCobertura;
+                @$propiedad->TipoCoche;
+                @$propiedad->TipoCochera;
+                @$propiedad->TipoCosta;
+                @$propiedad->TipoEdificio;
+                @$propiedad->TipoExpensas;
+                @$propiedad->TipoFondoComercio;
+                @$propiedad->TipoFrente;
+                @$propiedad->TipoHotel;
+                @$propiedad->TipoLocal;
+                @$propiedad->TipoPendiente;
+                @$propiedad->TipoPiso;
+                @$propiedad->TipoPorton;
+                @$propiedad->TipoTecho;
+                @$propiedad->TipoTechoIndustrial;
+                @$propiedad->TipoTerreno;
+                @$propiedad->TipoUnidad;
+                @$propiedad->TipoVista;
+                @$propiedad->estadoPublicacion;
+                @$propiedad->tipoOpeacion;
+                @$propiedad->tipoMoneda;
+
+                $response = [
+                    'msj'             => 'Actualizada Exitosamente',
+                    'imagenes'        => [
+                        'imagen1'             => asset('storage\\ficha2\\'.@$propiedad->imagen1),
+                        'imagen2'             => asset('storage\\ficha2\\'.@$propiedad->imagen2),
+                        'imagen3'             => asset('storage\\ficha2\\'.@$propiedad->imagen3),
+                        'imagen4'             => asset('storage\\ficha2\\'.@$propiedad->imagen4),
+                        'imagen5'             => asset('storage\\ficha2\\'.@$propiedad->imagen5),
+                        'imagen6'             => asset('storage\\ficha2\\'.@$propiedad->imagen6),
+                        'imagen7'             => asset('storage\\ficha2\\'.@$propiedad->imagen7),
+                        'imagen_para_galeria' => asset('storage\\ficha2\\'.@$propiedad->imagen_para_galeria),
+                    ],
+                    'datos_propiedad' => [
+                        $propiedad,
+                    ],
+                ];
+                DB::commit();
+
+                return response()->json($response, 201);
+
+            } else {
+                $response = [
+                    'msj' => 'No existe dicha propiedad',
+                ];
+
+                return response()->json($response, 404);
+            }
+
         } catch (\Exception $e) {
 
             DB::rollback();
