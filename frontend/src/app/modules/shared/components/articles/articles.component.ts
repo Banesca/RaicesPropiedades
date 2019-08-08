@@ -21,6 +21,9 @@ export class ArticlesComponent implements OnInit  {
 
   ngOnInit() {
 
+    let resultsElement = document.getElementById('resultados-busqueda');
+    resultsElement.scrollIntoView();
+
   }
 
 
