@@ -74,10 +74,15 @@ class ConfigGeneralController extends Controller {
 
         $config = ConfigGeneral::first();
 
-        $response = [
-            'configGeneral' => $config,
-        ];
-
+        if(empty($config)){
+            $response = [
+                'configGeneral' => 'No existen registros',
+            ]; 
+        }else{
+            $response = [
+                'configGeneral' => $config,
+            ];
+        }
         return response()->json($response, 200);
     }
 }
