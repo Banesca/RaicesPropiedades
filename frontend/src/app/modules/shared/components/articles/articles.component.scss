@@ -168,5 +168,26 @@
       color: #e4b405;
       font-weight: normal;
     }
+
   }
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: 3fr 0.5fr;
+  grid-template-rows: 0.5fr;
+  grid-template-areas: "filters goHome";
+}
+
+.filters { 
+  grid-area: filters;
+  display: flex; 
+}
+
+.goHome { 
+  grid-area: goHome; 
+  cursor: pointer;
+}
+.goHome:hover{ 
+  color:#e4b405;
+}
+
