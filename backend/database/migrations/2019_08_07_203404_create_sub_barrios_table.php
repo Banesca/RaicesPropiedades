@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocalidadsTable extends Migration
+class CreateSubBarriosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateLocalidadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_localidads', function (Blueprint $table) {
-            $table->increments('idLocalidad');
-            $table->string('descripcion');
-            $table->integer('fk_idPartido')->unsigned()->nullable();
+        Schema::create('tb_sub_barrios', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre');
+            $table->integer('fk_barrio');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateLocalidadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_localidads');
+        Schema::dropIfExists('tb_sub_barrios');
     }
 }

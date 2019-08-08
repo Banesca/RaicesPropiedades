@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Partido extends Model
+class Partido_old extends Model
 {
-    protected $table      = 'tb_partidos';
+    protected $table      = 'tb_partidos_old';
     protected $primaryKey = 'idPartido';
 
     protected $fillable = [

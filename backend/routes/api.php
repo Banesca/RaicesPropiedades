@@ -86,6 +86,14 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::get('transacciones/confirmar/{idTransaccion}', 'TransaccionesController@confirmarTransaccion');
     /*   Transacciones    */
 
+    /* OBTENER  PAISES PARA EL BUSCADOR */
+    Route::get('paises/get','PaisesController@getPais');
+    Route::post('regiones/get','PaisesController@getRegiones');
+    Route::post('provincias/get','PaisesController@getProvincias');
+    Route::post('partidos/get','PaisesController@getPartidos');
+    Route::post('localidades/get','PaisesController@getLocalidades');
+    Route::post('barrios/get','PaisesController@getBarrios');
+    Route::post('subbarrios/get','PaisesController@getsubBarrios');
     /* Galeria */
     /*   Agregada 12/6/2019    */
     Route::post('galeria/store','GaleriaController@store');
