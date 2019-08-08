@@ -1,0 +1,13 @@
+.img-card {
+  min-height: 155px !important;
+  max-height: 155px !important;
+  margin-top: 2px !important;
+}
+
+.card-material {
+  margin-bottom: 1rem;
+}
+
+.card-subtitle {
+  text-align: center;
+}
