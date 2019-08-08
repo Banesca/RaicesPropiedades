@@ -1,6 +1,7 @@
     
 frontend/package-lock.json
 frontend/node_modules
+frontend/dist
 admin/package-lock.json
 registroRuta/src/assets/bower_components
 backend/etc
@@ -25,3 +26,4 @@ backend/public/storage/
 .idea/workspace.xml
 .idea/workspace.xml
 !/backend/app/Mail/MailsMasivos.php
+.phpintel/
