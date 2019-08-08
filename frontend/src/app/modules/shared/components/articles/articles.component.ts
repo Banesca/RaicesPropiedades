@@ -13,7 +13,7 @@ export class ArticlesComponent implements OnInit  {
   public filtro2 = ['Alquiler' , 'casas' , 'dolares', 'Pdo Pillar', 'Norte GranB Area' , 'country B Cerrado']
   public recomendation = [1,2,3,4]
 
-  constructor(articulosService: ArticuloService) { 
+  constructor(private articulosService: ArticuloService) { 
     articulosService.filter.subscribe(filterData=>{
       this.filtro = filterData
     })
@@ -36,5 +36,12 @@ export class ArticlesComponent implements OnInit  {
     }
      
    return typeof data === 'object' ? dato : data
+  }
+
+  goBack(){
+
+    this.articulosService.search.next(false);
+    window.scroll(0,0);
+    
   }
 }
