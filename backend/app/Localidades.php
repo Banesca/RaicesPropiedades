@@ -10,12 +10,20 @@ class Localidades extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id',
         'nombre',
-        'fk_partido'
+        'fk_region'
     ];
     protected $hidden   = [
         'created_at',
         'updated_at',
     ];
+
+    public function partido()
+    {
+        return $this->belongsTo('App\Partidos', 'fk_partido');
+    }
+    public function barrios()
+    {
+        return $this->hasMany('App\Barrios', 'fk_barrio','id');
+    }
 }

@@ -69,11 +69,11 @@ return [
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
-            'host' => env('DB_HOST_SQLSRV', 'dtisistemas4.dyndns.info'),
+            'host' => env('DB_HOST_SQLSRV', '127.0.0.1'),
             'port' => env('DB_PORT_SQLSRV', '1433'),
-            'database' => env('DB_DATABASE_SQLSRV', 'Synergy'),
-            'username' => env('DB_USERNAME_SQLSRV', 'depositocentral'),
-            'password' => env('DB_PASSWORD_SQLSRV', 'dep12341234'),
+            'database' => env('DB_DATABASE_SQLSRV', 'raices'),
+            'username' => env('DB_USERNAME_SQLSRV', 'root'),
+            'password' => env('DB_PASSWORD_SQLSRV', ''),
             'charset' => 'utf8',
             'prefix' => '',
         ],
