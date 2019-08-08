@@ -179,6 +179,8 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
         //return response()->json('Storage publicada');
     });
 
+    Route::get('prueba1','UserController@prueba');
+
 });
 
 

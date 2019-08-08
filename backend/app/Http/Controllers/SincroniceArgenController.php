@@ -8,6 +8,74 @@ use Illuminate\Http\Request;
 class SincroniceArgenController extends Controller {
     public function add(Request $request1) {
 
+
+        $curl = curl_init();
+
+        /*GENERADO LA CODIFICACION URL EN BASE A ARRAY*/
+        $contenido=http_build_query([
+            'usr' => 'integrador@argenprop.com',
+            'psd' => '123456',
+            'tipoPropiedad' => '1',
+            'aviso.EsWeb' => 'false',
+            'aviso.Titulo' => 'DEPARTAMENTO%20TEST',
+            'aviso.IdOrigen' => '575Y_90992AA4',
+            'aviso.SistemaOrigen.Id' => '103',
+            'aviso.TipoOperacion' => '1',
+            'aviso.Vendedor.IdOrigen' => '575Y_',
+            'aviso.Vendedor.SistemaOrigen.Id' => '10',
+            'aviso.Vendedor.Id' => '242566',
+            'aviso.InformacionAdicional' => 'Departamento%20de%20test.',
+            'propiedad.Direccion.Localidad.Id' => '2',
+            'propiedad.Direccion.Nombrecalle' => 'PIEDRAS',
+            'propiedad.Direccion.Numero' => '1745',
+            'propiedad.Direccion.Piso' => '1',
+            'propiedad.Direccion.Coordenadas.Latitud' => '-34%2C5840767',
+            'propiedad.Direccion.Coordenadas.Longitud' => '-58%2C4142833',
+            'propiedad.SuperficieCubierta' => '81',
+            'propiedad.Antiguedad' => '30',
+            'propiedad.Disposicion' => '3',
+            'propiedad.Orientacion' => '8',
+            'propiedad.TipoUnidad' => '3',
+            'propiedad.Estado' => '2',
+            'propiedad.CantidadBanos' => '1',
+            'propiedad.CantidadAmbientes' => '3',
+            'propiedad.CantidadDormitorios' => '2',
+            'propiedad.Ambientes.Balcon' => 'True',
+            'propiedad.Ambientes.Bano' => 'True',
+            'propiedad.Servicios.GasNatural' => 'True',
+            'propiedad.Servicios.AguaCorriente' => 'True',
+            'propiedad.Edificio.CantidadPisos' => '7',
+            'visibilidades%5B0%5D.MontoOperacion' => '150000',
+            'visibilidades%5B0%5D.Moneda.Id' => '2'
+        ]);
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://www.inmuebles.clarin.com/Publicaciones/PublicarIntranet?contentType=json",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $contenido,
+            CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                // "cache-control: no-cache",
+                "content-type: application/x-www-form-urlencoded",
+                // "postman-token: d0b4a2ae-696c-01aa-605b-6e16a8788770"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            echo $response;
+        }
+
         $request = new \HttpRequest();
         $request->setUrl('http://www.inmuebles.clarin.com/Publicaciones/PublicarIntranet');
         $request->setMethod(HTTP_METH_POST);
@@ -27,14 +95,14 @@ class SincroniceArgenController extends Controller {
         //departamento
         if ($request1->fk_idTipoPropiedad = 1) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'                              => $request1->,
-                'propiedad.Direccion.Provincia.Id'                         => $request1->,
-                'propiedad.Direccion.Partido.Id'                           => $request1->,
-                'propiedad.Direccion.Localidad.Id'                         => $request1->,
-                'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-                'propiedad.Direccion.Barrio.Id'                            => $request1->,
-                'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-                'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'                               => $request1->,
+                'propiedad.Direccion.Provincia.Id'                          => $request1->,
+                'propiedad.Direccion.Partido.Id'                            => $request1->,
+                'propiedad.Direccion.Localidad.Id'                          => $request1->,
+                'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+                'propiedad.Direccion.Barrio.Id'                             => $request1->,
+                'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+                'propiedad.Direccion.Calle.Id'                              => $request1->,
                 'propiedad.Direccion.Nombrecalle'                           => $request1->,
                 'propiedad.Direccion.Numero'                                => $request1->,
                 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -195,14 +263,14 @@ class SincroniceArgenController extends Controller {
         //'Departamento Tipo Casa
         if ($request1->fk_idTipoPropiedad = 2) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -363,14 +431,14 @@ class SincroniceArgenController extends Controller {
         //Casa
         if ($request1->fk_idTipoPropiedad = 3) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -531,14 +599,14 @@ class SincroniceArgenController extends Controller {
         //Quinta
         if ($request1->fk_idTipoPropiedad = 4) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -699,14 +767,14 @@ class SincroniceArgenController extends Controller {
         //Cochera
         if ($request1->fk_idTipoPropiedad = 5) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -867,14 +935,14 @@ class SincroniceArgenController extends Controller {
         //Local
         if ($request1->fk_idTipoPropiedad = 6) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -1035,14 +1103,14 @@ class SincroniceArgenController extends Controller {
         //Hotel
         if ($request1->fk_idTipoPropiedad = 7) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -1203,14 +1271,14 @@ class SincroniceArgenController extends Controller {
         //Terreno
         if ($request1->fk_idTipoPropiedad = 8) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -1371,14 +1439,14 @@ class SincroniceArgenController extends Controller {
         //Oficina
         if ($request1->fk_idTipoPropiedad = 9) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -1539,14 +1607,14 @@ class SincroniceArgenController extends Controller {
         //Campo
         if ($request1->fk_idTipoPropiedad = 10) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -1707,14 +1775,14 @@ class SincroniceArgenController extends Controller {
         //Fondo_de_Comercio
         if ($request1->fk_idTipoPropiedad = 11) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -1875,14 +1943,14 @@ class SincroniceArgenController extends Controller {
         //Galpón
         if ($request1->fk_idTipoPropiedad = 12) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,
@@ -2043,14 +2111,14 @@ class SincroniceArgenController extends Controller {
         //Negocio_Especial
         if ($request1->fk_idTipoPropiedad = 13) {
             $request->setPostFields([
-                'propiedad.Direccion.Pais.Id'              => $request1->,
-'propiedad.Direccion.Provincia.Id'                         => $request1->,
-'propiedad.Direccion.Partido.Id'                           => $request1->,
-'propiedad.Direccion.Localidad.Id'                         => $request1->,
-'propiedad.Direccion.Ciudad.Id'                            => $request1->,
-'propiedad.Direccion.Barrio.Id'                            => $request1->,
-'propiedad.Direccion.SubBarrio.Id'                         => $request1->,
-'propiedad.Direccion.Calle.Id'                             => $request1->,
+                'propiedad.Direccion.Pais.Id'               => $request1->,
+'propiedad.Direccion.Provincia.Id'                          => $request1->,
+'propiedad.Direccion.Partido.Id'                            => $request1->,
+'propiedad.Direccion.Localidad.Id'                          => $request1->,
+'propiedad.Direccion.Ciudad.Id'                             => $request1->,
+'propiedad.Direccion.Barrio.Id'                             => $request1->,
+'propiedad.Direccion.SubBarrio.Id'                          => $request1->,
+'propiedad.Direccion.Calle.Id'                              => $request1->,
 'propiedad.Direccion.Nombrecalle'                           => $request1->,
 'propiedad.Direccion.Numero'                                => $request1->,
 'propiedad.Direccion.Piso'                                  => $request1->,

@@ -19,6 +19,76 @@ use Image;
 
 class UserController extends Controller {
 
+    public function prueba() {
+
+        $curl = curl_init();
+
+/*GENERADO LA CODIFICACION URL EN BASE A ARRAY*/
+        $contenido=http_build_query([
+            'usr' => 'integrador@argenprop.com',
+            'psd' => '123456',
+            'tipoPropiedad' => '1',
+            'aviso.EsWeb' => 'false',
+            'aviso.Titulo' => 'DEPARTAMENTO%20TEST',
+            'aviso.IdOrigen' => '575Y_90992AA4',
+            'aviso.SistemaOrigen.Id' => '103',
+            'aviso.TipoOperacion' => '1',
+            'aviso.Vendedor.IdOrigen' => '575Y_',
+            'aviso.Vendedor.SistemaOrigen.Id' => '10',
+            'aviso.Vendedor.Id' => '242566',
+            'aviso.InformacionAdicional' => 'Departamento%20de%20test.',
+            'propiedad.Direccion.Localidad.Id' => '2',
+            'propiedad.Direccion.Nombrecalle' => 'PIEDRAS',
+            'propiedad.Direccion.Numero' => '1745',
+            'propiedad.Direccion.Piso' => '1',
+            'propiedad.Direccion.Coordenadas.Latitud' => '-34%2C5840767',
+            'propiedad.Direccion.Coordenadas.Longitud' => '-58%2C4142833',
+            'propiedad.SuperficieCubierta' => '81',
+            'propiedad.Antiguedad' => '30',
+            'propiedad.Disposicion' => '3',
+            'propiedad.Orientacion' => '8',
+            'propiedad.TipoUnidad' => '3',
+            'propiedad.Estado' => '2',
+            'propiedad.CantidadBanos' => '1',
+            'propiedad.CantidadAmbientes' => '3',
+            'propiedad.CantidadDormitorios' => '2',
+            'propiedad.Ambientes.Balcon' => 'True',
+            'propiedad.Ambientes.Bano' => 'True',
+            'propiedad.Servicios.GasNatural' => 'True',
+            'propiedad.Servicios.AguaCorriente' => 'True',
+            'propiedad.Edificio.CantidadPisos' => '7',
+            'visibilidades%5B0%5D.MontoOperacion' => '150000',
+            'visibilidades%5B0%5D.Moneda.Id' => '2'
+        ]);
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://www.inmuebles.clarin.com/Publicaciones/PublicarIntranet?contentType=json",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $contenido,
+            CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+               // "cache-control: no-cache",
+                "content-type: application/x-www-form-urlencoded",
+               // "postman-token: d0b4a2ae-696c-01aa-605b-6e16a8788770"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            echo $response;
+        }
+    }
+
     public function buscarPersonas(Request $request) {
 
         //$request->search
