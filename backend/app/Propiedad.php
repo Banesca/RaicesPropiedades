@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Propiedad extends Model {
     protected $table      = 'tb_propiedades';
     protected $primaryKey = 'idPropiedad';
 
+    use SoftDeletes;
     protected $fillable = [
         'fk_idTipoPropiedad',
         'Agricultura',
@@ -292,7 +294,7 @@ class Propiedad extends Model {
         'esUnaPropiedad',
         'esUnaNovedad',
         'apareceEnGaleriaInicia',
-        'fk_estado_publicacion',
+        'fk_estado_publicacion', //estatus de la publicacion 1 activa, 2 suspendida, 3 eliminada
         'esUnaOportunidad',
         'fk_idTipoOperaion',
         'precio',
