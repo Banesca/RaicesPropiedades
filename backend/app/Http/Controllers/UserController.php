@@ -57,8 +57,8 @@ class UserController extends Controller {
             'propiedad.Servicios.GasNatural' => 'True',
             'propiedad.Servicios.AguaCorriente' => 'True',
             'propiedad.Edificio.CantidadPisos' => '7',
-            'visibilidades%5B0%5D.MontoOperacion' => '150000',
-            'visibilidades%5B0%5D.Moneda.Id' => '2'
+            'visibilidades.MontoOperacion' => '150000',
+            'visibilidades.Moneda.Id' => '2'
         ]);
         curl_setopt_array($curl, array(
             CURLOPT_URL => "http://www.inmuebles.clarin.com/Publicaciones/PublicarIntranet?contentType=json",
