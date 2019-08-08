@@ -6,7 +6,7 @@
          <mat-progress-bar *ngIf="loading" class="card-progress-bar" mode="indeterminate"></mat-progress-bar>
          <mat-card-content>
 
-            <mat-horizontal-stepper [linear]="false" #stepper>
+            <mat-horizontal-stepper [linear]="true" #stepper>
                <mat-step [stepControl]="formOne">
                   <ng-template matStepLabel>Datos generales</ng-template>
                   <form [formGroup]="formOne">
@@ -1314,8 +1314,8 @@
                                  <button mat-raised-button matStepperPrevious
                                     style="margin-left: 10px; background-color: #262626; color: white">Regresar</button>
 
-                                 <button mat-raised-button color="primary" matStepperNext
-                                    style="margin-left: 10px;">Publicar</button>
+                                 <button mat-raised-button color="primary" matStepperNext style="margin-left: 10px;"
+                                    [disabled]="!formThree.valid">Publicar</button>
                               </div>
                            </div>
                         </div>
