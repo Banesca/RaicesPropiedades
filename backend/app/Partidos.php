@@ -10,7 +10,6 @@ class Partidos extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id',
         'nombre',
         'fk_provincia'
     ];
@@ -18,4 +17,13 @@ class Partidos extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function region()
+    {
+        return $this->belongsTo('App\Regiones', 'fk_region');
+    }
+    public function localidades()
+    {
+        return $this->hasMany('App\Localidad', 'fk_partido','id');
+    }
 }

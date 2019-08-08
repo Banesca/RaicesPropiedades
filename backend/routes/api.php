@@ -94,6 +94,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::post('localidades/get','PaisesController@getLocalidades');
     Route::post('barrios/get','PaisesController@getBarrios');
     Route::post('subbarrios/get','PaisesController@getsubBarrios');
+    Route::post('sincronizacion','PaisesController@sincService');
     /* Galeria */
     /*   Agregada 12/6/2019    */
     Route::post('galeria/store','GaleriaController@store');

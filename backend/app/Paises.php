@@ -10,7 +10,6 @@ class Paises extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id',
         'nombre',
     ];
     protected $hidden   = [

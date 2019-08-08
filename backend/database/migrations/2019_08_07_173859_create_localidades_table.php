@@ -16,7 +16,7 @@ class CreateLocalidadesTable extends Migration
         Schema::create('tb_localidades', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('fk_partido');
+            $table->integer('fk_region');
             $table->timestamps();
         });
     }

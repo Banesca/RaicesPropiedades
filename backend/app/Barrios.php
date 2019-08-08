@@ -10,7 +10,6 @@ class Barrios extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id',
         'nombre',
         'fk_localidad'
     ];
@@ -18,4 +17,9 @@ class Barrios extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function localidad()
+    {
+        return $this->belongsTo('App\Localidades', 'fk_localidad');
+    }
 }
