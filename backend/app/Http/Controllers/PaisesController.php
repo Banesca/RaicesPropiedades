@@ -267,7 +267,7 @@ class PaisesController extends Controller {
                             ]);
                         }
 
-                        $url = 'https://www.inmuebles.clarin.com/Regiones/FindChildrenByRegionBusquedaHome?contentType=json&idRegionBusqueda=1';
+                        $url = 'https://www.inmuebles.clarin.com/Regiones/FindChildrenByRegionBusquedaHome?contentType=json&idRegionBusqueda='.$region['Id'];
 
                         $ch = curl_init();
                         curl_setopt($ch, CURLOPT_URL, $url);
