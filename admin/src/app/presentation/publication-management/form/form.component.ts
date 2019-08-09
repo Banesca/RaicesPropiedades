@@ -3,6 +3,8 @@ import { GestionPublicacionesService } from 'src/app/services/gestion-publicacio
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertsService } from 'src/app/services/alerts.service';
+import { PublicacionesService } from 'src/app/services/publicaciones/publicaciones.service';
+import { IPublicacion } from 'src/app/services/publicaciones/publicaciones.interface';
 
 @Component({
    selector: 'app-form',
@@ -24,7 +26,6 @@ export class FormComponent implements OnInit {
    //Variables del 1er Step
    arrayEstadoPublicacion: any[] = [];
    arrayTipoDePropiedad: any[] = [];
-   arrayTipoDePublicacion: any[] = [];
 
    //Variables del 2do Step
    imageNotFound = 'assets/not-found-publicaciones.png';
@@ -52,7 +53,7 @@ export class FormComponent implements OnInit {
    arrayAmbientes: { label: string, selected: boolean }[] = [];
 
    constructor(
-      private _gestionPublicacionService: GestionPublicacionesService,
+      private service: PublicacionesService,
       private activatedRoute: ActivatedRoute,
       private router: Router,
       private fb: FormBuilder,
@@ -63,6 +64,16 @@ export class FormComponent implements OnInit {
       /**
        * Colocar toda la carga de select en esta parte
        */
+
+      this.service.getStatusSistema().then((resp: any) => {
+         this.arrayEstadoPublicacion = resp;
+      });
+
+      this.service.getTipoPropiedad().then((resp: any) => {
+         this.arrayTipoDePropiedad = resp;
+      });
+
+
       this.activatedRoute.params.subscribe(params => {
          this.id = params.id
          if (this.id) {
@@ -73,10 +84,6 @@ export class FormComponent implements OnInit {
          }
       })
 
-      this.arrayEstadoPublicacion = [{ value: 1, label: "Activo" }, { value: 0, label: "Inactivo" }];
-      this.arrayTipoDePropiedad = [{ value: 1, label: "Apartamento" }, { value: 0, label: "Casa" }];
-      this.arrayTipoDePublicacion = [{ value: 1, label: "Normal" }, { value: 0, label: "Otro" }];
-
       //cargamos los checks de las medidas y de los ambientes
       this.loadData();
    }
@@ -84,14 +91,12 @@ export class FormComponent implements OnInit {
    createForm() {
       this.formOne = this.fb.group({
          titulo: ['', Validators.required],
-         estado: [null, Validators.required],
-         descripcion: ['', Validators.required],
-         tipoDePropiedad: [null, Validators.required],
-         tipoDePublicacion: [null, Validators.required],
-         apareceEnGaleria: ["1", Validators.required],
-         esUnaOportunidad: ["1", Validators.required],
-         esUnaNovedad: ["1", Validators.required],
-         enviarArgenProd: ["1", Validators.required]
+         fk_estado_publicacion: [null, Validators.required],
+         descipcion: ['', Validators.required], //Descripcion --> se coloca descipcion por motivo de concordar con el error de backend
+         fk_tipoPropiedad: [null, Validators.required],
+         esUnaOportunidad: ["0", Validators.required],
+         esUnaNovedad: ["0", Validators.required],
+         aparece_en_galeria: ["1", Validators.required],
       })
       this.formTwo = this.fb.group({
          imageGalery: ['', Validators.required],
@@ -144,6 +149,21 @@ export class FormComponent implements OnInit {
 
    }
 
+   getDataForm() {
+      let data1 = this.formOne.value;
+      let obj: IPublicacion = {
+         titulo: data1.titulo,
+         fk_estado_publicacion: data1.fk_estado_publicacion,
+         descipcion: data1.descipcion,
+         fk_tipoPropiedad: data1.fk_tipoPropiedad,
+         esUnaOportunidad: +data1.esUnaOportunidad,
+         esUnaNovedad: +data1.esUnaNovedad,
+         aparece_en_galeria: +data1.aparece_en_galeria,
+      }
+
+      console.log(obj);
+      
+   }
    changeApareceEnGaleria() {
       if (this.formOne.value.apareceEnGaleria == '1') {
          this.formTwo.controls['imageGalery'].enable();
@@ -152,6 +172,7 @@ export class FormComponent implements OnInit {
       }
 
    }
+
    onFileChange(event, section?: string) {
       if (event.target.files && event.target.files.length) {
          const fileTo: File = event.target.files[0];
@@ -413,6 +434,6 @@ export class FormComponent implements OnInit {
    }
 
    show() { }
-   
+
    delete() { }
 }

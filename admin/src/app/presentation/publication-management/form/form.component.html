@@ -32,9 +32,9 @@
                            <div class="form-group">
                               <div class="example-container">
                                  <mat-form-field>
-                                    <mat-select placeholder="Estado" formControlName="estado">
-                                       <mat-option *ngFor="let item of arrayEstadoPublicacion" value="item.value">
-                                          {{item.label}}
+                                    <mat-select placeholder="Estado" formControlName="fk_estado_publicacion">
+                                       <mat-option *ngFor="let item of arrayEstadoPublicacion" [value]="item.idStatusSistema">
+                                          {{item.descripcion}}
                                        </mat-option>
                                     </mat-select>
                                     <mat-error>
@@ -53,7 +53,7 @@
                               <div class="example-container">
                                  <mat-form-field>
                                     <textarea matInput placeholder="Descripción"
-                                       formControlName="descripcion"></textarea>
+                                       formControlName="descipcion"></textarea>
                                     <mat-error>
                                        Este valor es
                                        <strong>requerido</strong>
@@ -66,33 +66,14 @@
                      </div>
 
                      <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-3">
 
                            <div class="form-group">
                               <div class="example-container">
                                  <mat-form-field>
-                                    <mat-select placeholder="Tipo de priopiedad" formControlName="tipoDePropiedad">
-                                       <mat-option *ngFor="let item of arrayTipoDePropiedad" value="item.value">
-                                          {{item.label}}
-                                       </mat-option>
-                                    </mat-select>
-                                    <mat-error>
-                                       Este valor es
-                                       <strong>requerido</strong>
-                                    </mat-error>
-
-                                 </mat-form-field>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-
-                           <div class="form-group">
-                              <div class="example-container">
-                                 <mat-form-field>
-                                    <mat-select placeholder="Tipo de publicación" formControlName="tipoDePublicacion">
-                                       <mat-option *ngFor="let item of arrayTipoDePublicacion" value="item.value">
-                                          {{item.label}}
+                                    <mat-select placeholder="Tipo de priopiedad" formControlName="fk_tipoPropiedad">
+                                       <mat-option *ngFor="let item of arrayTipoDePropiedad" [value]="item.idTipoPropiedad">
+                                          {{item.descripcion}}
                                        </mat-option>
                                     </mat-select>
                                     <mat-error>
@@ -107,12 +88,36 @@
 
                         <div class="col-md-3">
                            <div class="form-group">
+                              <label for="">Es una oportunidad</label>
+                              <div class="example-container">
+                                 <mat-radio-group formControlName="esUnaOportunidad">
+                                    <mat-radio-button value="1">Si</mat-radio-button>
+                                    <mat-radio-button value="0" selected> No</mat-radio-button>
+                                 </mat-radio-group>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-3">
+                           <div class="form-group">
+                              <label for="">Es una novedad</label>
+                              <div class="example-container">
+                                 <mat-radio-group formControlName="esUnaNovedad">
+                                    <mat-radio-button value="1">Si</mat-radio-button>
+                                    <mat-radio-button value="0" selected> No</mat-radio-button>
+                                 </mat-radio-group>
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-3">
+                           <div class="form-group">
                               <label for="">Aparecera en la galería</label>
                               <div class="example-container">
-                                 <mat-radio-group formControlName="apareceEnGaleria"
+                                 <mat-radio-group formControlName="aparece_en_galeria"
                                     (change)="changeApareceEnGaleria()">
                                     <mat-radio-button value="1" selected>Si</mat-radio-button>
-                                    <mat-radio-button value="2"> No</mat-radio-button>
+                                    <mat-radio-button value="0"> No</mat-radio-button>
                                  </mat-radio-group>
                               </div>
                            </div>
@@ -125,7 +130,7 @@
                               <button mat-raised-button onclick="window.history.back()"
                                  style="background-color: brown; color: white">Cancelar</button>
                               <button mat-raised-button color="primary" matStepperNext style="margin-left: 10px;"
-                                 [disabled]="!formOne.valid">Siguiente</button>
+                                 [disabled]="!formOne.valid" (click)="getDataForm()">Siguiente</button>
                            </div>
                         </div>
                      </div>

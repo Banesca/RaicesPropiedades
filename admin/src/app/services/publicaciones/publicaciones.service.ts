@@ -12,7 +12,7 @@ export class PublicacionesService {
   private mUrl: string;
   constructor(
     private _HttpClient: HttpClient) {
-  } 
+  }
 
   All() {
     return this._HttpClient.get(environment.apiHost + this.mService + 'listarPropiedades', {
@@ -20,7 +20,27 @@ export class PublicacionesService {
     }).pipe(
       map((data: any[]) => {
         return data;
-       
+
+      })).toPromise();
+  }
+
+  getStatusSistema() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getStatusSistema', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoPropiedad() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoPropiedad', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
       })).toPromise();
   }
 }
