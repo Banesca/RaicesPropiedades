@@ -1,9 +1,12 @@
 <div class="articulos-container">
-  <h3>RESULTADOS DE BUSQUEDA</h3>
-  <div class="articulos-infoFiltro">
-    <div *ngFor="let item of filtro" class="articulos-infotitle">
-      &nbsp; {{ verifyStringOrObject(item) }} &nbsp; /
+  <h3 id="resultados-busqueda">RESULTADOS DE BUSQUEDA</h3>
+  <div class="articulos-infoFiltro grid-container">
+    <div class="filters">
+      <div *ngFor="let item of filtro" class="articulos-infotitle">
+        &nbsp; {{ verifyStringOrObject(item) }} &nbsp; /
+      </div>
     </div>
+    <span (click)="goBack()" class="goHome">Volver al home</span>
   </div>
   <div class="articulos-content">
     <div class="articulos-filter">

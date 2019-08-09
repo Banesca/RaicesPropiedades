@@ -86,6 +86,15 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::get('transacciones/confirmar/{idTransaccion}', 'TransaccionesController@confirmarTransaccion');
     /*   Transacciones    */
 
+    /* OBTENER  PAISES PARA EL BUSCADOR */
+    Route::get('paises/get','PaisesController@getPais');
+    Route::get('regiones/get','PaisesController@getRegiones');
+    Route::get('provincias/get','PaisesController@getProvincias');
+    Route::post('partidos/get','PaisesController@getPartidos'); //idProvincia
+    Route::post('localidades/get','PaisesController@getLocalidades'); //idRegion
+    Route::post('barrios/get','PaisesController@getBarrios'); //idLocalidad
+    Route::post('subbarrios/get','PaisesController@getsubBarrios'); //idBarrio
+    Route::get('sincronizacion','PaisesController@sincService');
     /* Galeria */
     /*   Agregada 12/6/2019    */
     Route::post('galeria/store','GaleriaController@store');
@@ -152,6 +161,8 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     //Route::post('addFicha1','Ficha1Controller@add');
     //Route::post('addFicha2','Ficha2Controller@add');
     Route::post('addPropiedad','Ficha3Controller@add');
+    Route::post('editPropiedad/{idPropiedad}','Ficha3Controller@edit');
+    Route::delete('deletePropiedad/{idPropiedad}','Ficha3Controller@delete');
 
     Route::get('sincronice','SincroniceArgenController@add'); /*en construcción*/
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
@@ -168,6 +179,8 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
         return Artisan::call('storage:link');
         //return response()->json('Storage publicada');
     });
+
+    Route::get('prueba1','UserController@prueba');
 
 });
 

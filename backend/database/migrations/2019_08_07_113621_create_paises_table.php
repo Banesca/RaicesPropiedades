@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartidosTable extends Migration
+class CreatePaisesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreatePartidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_partidos', function (Blueprint $table) {
-            $table->increments('idPartido');
-            $table->string('descripcion');
-            $table->integer('fk_idRegion')->unsigned()->nullable();
+        Schema::create('tb_paises', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreatePartidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_partidos');
+        Schema::dropIfExists('tb_paises');
     }
 }

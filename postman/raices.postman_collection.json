@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "raices",
-		"_postman_id": "bfeecc89-4f11-37e1-ac69-424dfadb635e",
+		"_postman_id": "20393e1f-8d0c-0013-f507-dea80f2cc9bc",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -1748,6 +1748,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1755,6 +1756,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1762,6 +1764,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1769,6 +1772,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1776,6 +1780,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1783,6 +1788,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1790,6 +1796,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -1797,6 +1804,7 @@
 									"type": "file",
 									"description": "",
 									"src": "88723279-cartel-de-la-tarjeta-de-construcción-de-tienda-de-mascotas-de-dibujos-animados-tienda-de-animales-domésti.jpg",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -3512,9 +3520,1814 @@
 					"response": []
 				},
 				{
+					"name": "Editarpropiedad",
+					"request": {
+						"url": "localhost:8000/api/v1/editPropiedad/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imagen1",
+									"value": "",
+									"type": "file",
+									"description": ""
+								},
+								{
+									"key": "imagen2",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen3",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen4",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen5",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen6",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen7",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "imagen_para_galeria",
+									"value": "",
+									"type": "file",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "fk_tipoPropiedad",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "esUnaPropiedad",
+									"value": "si",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "esUnaNovedad",
+									"value": "no",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "apareceEnGaleriaInicia",
+									"value": "si",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_estado_publicacion",
+									"value": "1",
+									"type": "text",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "esUnaOportunidad",
+									"value": "si",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_idTipoOperaion",
+									"value": "1",
+									"type": "text",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "precio",
+									"value": "2000",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_idMonedas",
+									"value": "2",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "comision",
+									"value": "30%",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "tipo_publicacion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "aparece_en_galeria",
+									"value": "no",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "titulo",
+									"value": "propiedad nueva",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Agricultura",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "AltoEntrada",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Altura",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "AlturaTecho",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Altillo",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_AnteCocina",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Antesala",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Archivo",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Azotea",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Balcon",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Bano",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Bar",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Baulera",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Biblioteca",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Bodega",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Circulacion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Cochera",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Cocina",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_CocinaComedor",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_CocinaKitchinette",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Comedor",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_ComedorDiario",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_CuartoDeHerramientas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_CuartoDePlanchar",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Dependencia",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_DependenciaDeServicio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Deposito",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Dormitorio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Entrepiso",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Escritorio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Estudio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_FamilyRoom",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Galeria",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Galpon",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Garage",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Hall",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Jardin",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Lavadero",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Living",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_LivingComedor",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Local",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Oficina",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Palier",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Patio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Playroom",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Quincho",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Recepcion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Sala",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Sotano",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Suite",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Terraza",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Toilette",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Vestibulo",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Vestidor",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ambientes_Vestuario",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ancho",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "AnchoEntrada",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Antiguedad",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "AntiguedadComercio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "AptoCredito",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "AptoProfesional",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Baulera",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadAmbientes",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadBanos",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadCocheras",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadColumnas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadCubiertos",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadDormitorios",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadEstrellas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadHabitaciones",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadHectareas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadNaves",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadOficinas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadPersonal",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadPisos",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadPlantas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CantidadPlazas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CasaCaseros",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CasaPrincipal",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "CocheraOptativa",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "cupada",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Demolicion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "DepartamentosPorPiso",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Direccion_Coordenadas_Latitud",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Direccion_Coordenadas_Longitud",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Direccion_Departamento",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Direccion_Nombrecalle",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Direccion_Numero",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Direccion_Piso",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Disponibilidad",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "DistanciaPavimento",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "EnEdificio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Estado",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Expensas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Direccion_Barrio_Id",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Direccion_Calle_Id",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Direccion_Ciudad_Id",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Direccion_Localidad_Id",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Direccion_Pais_Id",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Direccion_Partido_Id",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Direccion_Provincia_Id",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Direccion_SubBarrio_Id",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Disposicion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Estado",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_Orientacion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoAcceso",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoAscensor",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoBalcon",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoBano",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoCalefaccion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoCampo",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoCobertura",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoCoche",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoCochera",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoCosta",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoEdificio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoExpensas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoFondoComercio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoFrente",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoHotel",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoLocal",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoPendiente",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoPiso",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoPorton",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoTecho",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoTechoIndustrial",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoTerreno",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoUnidad",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "fk_TipoVista",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "FondoIrregular",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "FOT",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "FrenteIrregular",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "GaleriaShopping",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ganaderia",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "GeneradorPropio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Generales_PermiteMascotas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Generales_SeguroCaucion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "HabitacionesPorPiso",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AguaCaliente",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AguaCalienteCentral",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AguaCloaca",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AguaCorriente",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Aguadas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AguaPozo",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AireAcondicionadoCentral",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AireAcondicionadoIndividual",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AireCaliente",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AlambradoPerimetral",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Alambrados",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Amoblado",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Arboleda",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_ArtefactosDeCocina",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Ascensor",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AscensoresDeServicio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_AscensoresPrincipales",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Balanza",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Bebedero",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Bombeador",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Boxes",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Bretes",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Cable",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CajaFuerte",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Caldera",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Calefaccion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CanchaDeBasquet",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CanchaDeFutbol",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CanchaDeHockey",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CanchaDePaddle",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CanchaDePaleta",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CanchaDeSquash",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CanchaDeTenis",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CanchaDeVoley",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CanchaFutbol",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_CanchaTenis",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Corral",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Desayunador",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Electricidad",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_EspacioParaVehiculo",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Estacada",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_ExtractorDeAire",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Forestacion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Fosas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_FuerzaMotriz",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_GasEnvasado",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_GasIndustrial",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_GasNatural",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Gimnasio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Grua",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_GrupoElectrogeno",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Haras",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Hidromasaje",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_HogarALena",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_InstalacionParrilla",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_JuegosParaChicos",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Laundry",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_LosaRadiante",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_LuzElectrica",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Mangas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Molino",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Montacarga",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Motores",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_MovilidadReducida",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_MueblesDeCocina",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Pavimento",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Pileta",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Porton",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Potrero",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Radiadores",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_SalonDeFiestas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Sauna",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Solarium",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Tambo",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_TanqueDeAgua",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_TanqueDeIncendio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Telefono",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Termotanque",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_TratamientoEfluentes",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Instalaciones_Vivienda",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Largo",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "LateralDerechoIrregular",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "LateralIzquierdoIrregular",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Local",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "LongitudFondo",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "LongitudFrente",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "MedidaLinealDerecha",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "MedidaLinealIzquierda",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "MetrosDeLaEsquina",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "MontoExpensas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Ocupada",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "PropiedadOcupada",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "RecaudacionMensual",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Reciclado",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "ReferenciaCercana",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "RentabilidadAnual",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_ABL",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_AguaCorriente",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Bar",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Calefaccion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Cocina",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Conmutador",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Electricidad",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_GasEnvasado",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_GasNatural",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Internet",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Lavanderia",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Limpieza",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Refrigeracion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Rentas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_RopaCama",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Seguridad",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Telefono",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Toallas",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Videocable",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Servicios_Vigilancia",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficieConstruible",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficieCubierta",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficieCubiertaCasa",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficieDeposito",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficieDescubierta",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficieLocal",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficieOficina",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficiePlanta",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficiePlaya",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficieTerreno",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "SuperficieTotal",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "TerrenoPropio",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "UltimaActividad",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "VentaMercaderia",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Vidriera",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Vivienda",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "Zonificacion",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar una propiedad",
+					"request": {
+						"url": "localhost:8000/api/v1/deletePropiedad/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
 					"name": "listar propiedad por id",
 					"request": {
-						"url": "localhost:8000/api/v1/listarPropiedades/1",
+						"url": "localhost:8000/api/v1/listarPropiedades/6",
 						"method": "GET",
 						"header": [
 							{
@@ -3534,7 +5347,7 @@
 				{
 					"name": "listar todas las propiedades",
 					"request": {
-						"url": "localhost:8000/api/v1/listarPropiedades/1",
+						"url": "localhost:8000/api/v1/listarPropiedades",
 						"method": "GET",
 						"header": [
 							{
@@ -3653,7 +5466,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
