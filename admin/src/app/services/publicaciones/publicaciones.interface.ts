@@ -9,15 +9,52 @@ export interface IPublicacion {
     aparece_en_galeria: number;
 
     //2do Step
-    imagen_para_galeria?:any;
-    imagen1:any;
-    imagen2?:any;
-    imagen3?:any;
-    imagen4?:any;
-    imagen5?:any;
-    imagen6?:any;
-    imagen7?:any;
-  
+    imagen_para_galeria?: any;
+    imagen1: any;
+    imagen2?: any;
+    imagen3?: any;
+    imagen4?: any;
+    imagen5?: any;
+    imagen6?: any;
+    imagen7?: any;
+
+
+
+    //3er Step
+    //Datos Generales
+    //Tipo de Unidad
+    fk_TipoUnidadDepartamento?: number;
+    fk_TipoUnidadCasa?: number;
+    fk_TipoCochera?: number;
+    fk_TipoLocal?: number;
+    fk_TipoHotel?: number;
+    fk_TipoTerreno?: number;
+    fk_TipoCampo?: number;
+    fk_TipoFondoComercio?: number;
+
+    fk_idTipoOperaion: number;
+    precio: number;
+    fk_idMonedas: number;
+    no_publicar_precio_inter: number;
+    /**
+     * Estado de Propiedad
+     */
+    fk_Estado: number;
+    //Comision
+    comision: string;
+    
+    //Ubicacion
+    fk_Direccion_Pais_Id: number;
+    fk_Direccion_Provincia_Id: number;
+    fk_Direccion_Partido_Id: number;
+    fk_Direccion_Localidad_Id: number;
+
+    fk_Direccion_Ciudad_Id?: number;
+    fk_Direccion_Barrio_Id?: number;
+    fk_Direccion_SubBarrio_Id?: number;
+    fk_Direccion_Calle_Id?: number;
+
+
 
     /*
     'fk_idTipoPropiedad',
@@ -115,14 +152,7 @@ export interface IPublicacion {
     'EnEdificio',
     'Estado',
     'Expensas',
-    'fk_Direccion_Barrio_Id',
-    'fk_Direccion_Calle_Id',
-    'fk_Direccion_Ciudad_Id',
-    'fk_Direccion_Localidad_Id',
-    'fk_Direccion_Pais_Id',
-    'fk_Direccion_Partido_Id',
-    'fk_Direccion_Provincia_Id',
-    'fk_Direccion_SubBarrio_Id',
+   
     'fk_Disposicion',
     'fk_Estado',
     'fk_Orientacion',
@@ -302,10 +332,7 @@ export interface IPublicacion {
 
     'apareceEnGaleriaInicia',
 
-    'fk_idTipoOperaion',
-    'precio',
     'fk_idMonedas',
-    'comision',
 
     'tipo_publicacion',
     

@@ -24,8 +24,8 @@ export class PublicacionesService {
       })).toPromise();
   }
 
-  getStatusSistema() {
-    return this._HttpClient.get(environment.apiHost + this.mService + 'getStatusSistema', {
+  getEstadoPublicacion() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getEstadoPublicacion', {
       headers: getHeaders()
     }).pipe(
       map((data: any[]) => {
@@ -43,4 +43,115 @@ export class PublicacionesService {
 
       })).toPromise();
   }
+
+  getTipoUnidadDepartamento() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoUnidadDepartamento', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoUnidadCasa() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoUnidadCasa', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoCochera() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoCochera', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoLocal() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoLocal', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoHotel() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoHotel', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoTerreno() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoTerreno', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoCampo() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoCampp', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoFondoComercio() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoFondoComercio', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoOperacion() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoOperacion', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getEstadoPropiedad() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getEstadoPropiedad', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getMonedas() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getMonedas', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
 }

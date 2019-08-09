@@ -41,13 +41,16 @@ export class FormComponent implements OnInit {
    //Variables del 3er Step
    arrayTipoDeUnidad: any[] = [];
    arrayTipoDeOperacion: any[] = [];
+   arrayMonedas: any[] = [];
    arrayEstadoDePropiedad: any[] = [];
    arrayPais: any[] = [];
    arrayProvincia: any[] = [];
    arrayPartido: any[] = [];
    arrayLocalidad: any[] = [];
+   arrayCiudad: any[] = [];
    arrayBarrio: any[] = [];
    arraySubBarrio: any[] = [];
+   arrayCalle: any[] = [];
 
    arrayMedidasDeAmbientes: { label: string, selected: boolean, medidas: any }[] = [];
    arrayAmbientes: { label: string, selected: boolean }[] = [];
@@ -65,12 +68,24 @@ export class FormComponent implements OnInit {
        * Colocar toda la carga de select en esta parte
        */
 
-      this.service.getStatusSistema().then((resp: any) => {
+      this.service.getEstadoPublicacion().then((resp: any) => {
          this.arrayEstadoPublicacion = resp;
       });
 
       this.service.getTipoPropiedad().then((resp: any) => {
          this.arrayTipoDePropiedad = resp;
+      });
+
+      this.service.getTipoOperacion().then((resp: any) => {
+         this.arrayTipoDeOperacion = resp;
+      });
+
+      this.service.getEstadoPropiedad().then((resp: any) => {
+         this.arrayEstadoDePropiedad = resp;
+      });
+
+      this.service.getMonedas().then((resp: any) => {
+         this.arrayMonedas = resp;
       });
 
 
@@ -111,21 +126,23 @@ export class FormComponent implements OnInit {
       this.formThree = this.fb.group({
          //Datos Basicos
          tipoDeUnidad: ['', Validators.required],
-         tipoDeOperacion: ['', Validators.required],
+         fk_idTipoOperaion: ['', Validators.required], // se coloca fk_idTipoOperaion para coincidir con el campo del backend
          precio: ['', Validators.required],
-         moneda: ["1", Validators.required],
-         publicarPrecioInternet: [false],
-         estadoDePropiedad: ['', Validators.required],
+         fk_idMonedas: ['', Validators.required],
+         no_publicar_precio_inter: [false],
+         fk_Estado: ['', Validators.required],
          //Compartir comision
-         compartirComision: ["1", Validators.required],
+         comision: ["50", Validators.required],
          //Ubicación
-         pais: ['', Validators.required],
-         provincia: ['', Validators.required],
-         partido: ['', Validators.required],
-         localidad: ['', Validators.required],
-         barrio: ['', Validators.required],
-         subBarrio: ['', Validators.required],
-         calle: ['', Validators.required],
+         fk_Direccion_Pais_Id: ['', Validators.required],
+         fk_Direccion_Provincia_Id: ['', Validators.required],
+         fk_Direccion_Partido_Id: ['', Validators.required],
+         fk_Direccion_Localidad_Id: ['', Validators.required],
+         fk_Direccion_Ciudad_Id: [''],
+         fk_Direccion_Barrio_Id: [''],
+         fk_Direccion_SubBarrio_Id: [''],
+         fk_Direccion_Calle_Id: [''],
+
          altura: ['', Validators.required],
          piso: ['', Validators.required],
          dto: ['', Validators.required],
@@ -150,8 +167,12 @@ export class FormComponent implements OnInit {
    }
 
    getDataForm() {
-      let data1 = this.formOne.value;
+      //Creamos el objeto que vamos a llenar totalmente vacio
       let obj: IPublicacion = {} as IPublicacion;
+
+      //Creamos un objeto con los valores del formulario 1
+      let data1 = this.formOne.value;
+
       //Asignamos los datos del 1er Step
       obj.titulo = data1.titulo;
       obj.fk_estado_publicacion = data1.fk_estado_publicacion;
@@ -171,17 +192,199 @@ export class FormComponent implements OnInit {
       this.image6 ? obj.imagen6 = this.image6 : null;
       this.image7 ? obj.imagen7 = this.image7 : null;
 
+      //Asignamos los datos del 3er Step
+      //Obetenemos el objeto del 3er formulario
+      let data3 = this.formThree.value;
+      //Obtenemos la data de Datos Generales
+      //Asignamos el tipo de unidad
+      switch (obj.fk_tipoPropiedad) {
+         //Asignamos el tipo de unidad segun el tipo de propiedad seleccionado
+         case 1: //Departamento
+            obj.fk_TipoUnidadDepartamento = data3.tipoDeUnidad;
+            break;
+         case 3: //Casa
+            obj.fk_TipoUnidadCasa = data3.tipoDeUnidad;
+            break;
+         case 4: //Quinta
+            obj.fk_TipoUnidadCasa = data3.tipoDeUnidad;
+            break;
+         case 5: //Cochera
+            obj.fk_TipoCochera = data3.tipoDeUnidad;
+            break;
+         case 6: //Local
+            obj.fk_TipoLocal = data3.tipoDeUnidad;
+            break;
+         case 7: //Hotel
+            obj.fk_TipoHotel = data3.tipoDeUnidad;
+            break;
+         case 8: //Terreno
+            obj.fk_TipoTerreno = data3.tipoDeUnidad;
+            break;
+         case 10: //Campo
+            obj.fk_TipoCampo = data3.tipoDeUnidad;
+            break;
+         case 11: //Fondo de Comercio
+            obj.fk_TipoFondoComercio = data3.tipoDeUnidad;
+            break;
 
+         case 2: //Departamento Tipo Casa
+         case 9: //Oficina
+         case 12: //Galpón
+         case 13: //Negocio Especial
+         default: //Cuando se ingrese algo desconocido
+            //No posee tipo de unidad
+            break;
+      }
+
+      obj.fk_idTipoOperaion = data3.fk_idTipoOperaion;
+      obj.precio = data3.precio;
+      obj.fk_idMonedas = data3.fk_idMonedas;
+      obj.no_publicar_precio_inter = data3.no_publicar_precio_inter ? 1 : 0;
+      obj.fk_Estado = data3.fk_Estado;
+
+      //Obtenemos la data de comision
+      obj.comision = data3.comision;
+
+      //Obtenemos la data de Ubicacion
+      obj.fk_Direccion_Pais_Id = data3.fk_Direccion_Pais_Id;
+      obj.fk_Direccion_Provincia_Id = data3.fk_Direccion_Provincia_Id;
+      obj.fk_Direccion_Partido_Id = data3.fk_Direccion_Partido_Id;
+      obj.fk_Direccion_Localidad_Id = data3.fk_Direccion_Localidad_Id;
+      obj.fk_Direccion_Ciudad_Id = data3.fk_Direccion_Ciudad_Id ? data3.fk_Direccion_Ciudad_Id : '';
+      obj.fk_Direccion_Barrio_Id = data3.fk_Direccion_Barrio_Id ? data3.fk_Direccion_Barrio_Id : '';
+      obj.fk_Direccion_SubBarrio_Id = data3.fk_Direccion_SubBarrio_Id ? data3.fk_Direccion_SubBarrio_Id : '';
+      obj.fk_Direccion_Calle_Id = data3.fk_Direccion_Calle_Id ? data3.fk_Direccion_Calle_Id : '';
 
       console.log(obj);
 
    }
+
    changeApareceEnGaleria() {
       if (this.formOne.value.aparece_en_galeria == '1') {
          this.formTwo.controls['imageGalery'].enable();
       } else {
          this.formTwo.controls['imageGalery'].disable();
       }
+
+   }
+
+   changeTipoPropiedad(event) {
+      //Validamos que tipo de propiedad se selecciona para cargar los tipos de unidad que se van a mostrar
+      //Segun la api de argen prod https://inmuebles.atlassian.net/wiki/spaces/PUB/pages/39813246/3.2.2.3+Objeto+Propiedad
+      switch (event.value) {
+         case 1: //Departamento
+            this.service.getTipoUnidadDepartamento().then((resp: any) => {
+               //parseamos el array a uno con valores en común para el select
+               let array = [];
+               for (let index = 0; index < resp.length; index++) {
+                  const element = resp[index];
+                  array.push({ id: element.idTipoUnidadDepartamento, descripcion: element.descripcion });
+               }
+               this.arrayTipoDeUnidad = array;
+            });
+            break;
+         case 3: //Casa
+            this.service.getTipoUnidadCasa().then((resp: any) => {
+               //parseamos el array a uno con valores en común para el select
+               let array = [];
+               for (let index = 0; index < resp.length; index++) {
+                  const element = resp[index];
+                  array.push({ id: element.idTipoUnidadCasa, descripcion: element.descripcion });
+               }
+               this.arrayTipoDeUnidad = array;
+            });
+            break;
+         case 4: //Quinta
+            this.service.getTipoUnidadCasa().then((resp: any) => {
+               //parseamos el array a uno con valores en común para el select
+               let array = [];
+               for (let index = 0; index < resp.length; index++) {
+                  const element = resp[index];
+                  array.push({ id: element.idTipoUnidadCasa, descripcion: element.descripcion });
+               }
+               this.arrayTipoDeUnidad = array;
+            });
+            break;
+         case 5: //Cochera
+            this.service.getTipoCochera().then((resp: any) => {
+               //parseamos el array a uno con valores en común para el select
+               let array = [];
+               for (let index = 0; index < resp.length; index++) {
+                  const element = resp[index];
+                  array.push({ id: element.idTipoCochera, descripcion: element.descripcion });
+               }
+               this.arrayTipoDeUnidad = array;
+            });
+            break;
+         case 6: //Local
+            this.service.getTipoLocal().then((resp: any) => {
+               //parseamos el array a uno con valores en común para el select
+               let array = [];
+               for (let index = 0; index < resp.length; index++) {
+                  const element = resp[index];
+                  array.push({ id: element.idTipoLocal, descripcion: element.descripcion });
+               }
+               this.arrayTipoDeUnidad = array;
+            });
+            break;
+         case 7: //Hotel
+            this.service.getTipoHotel().then((resp: any) => {
+               //parseamos el array a uno con valores en común para el select
+               let array = [];
+               for (let index = 0; index < resp.length; index++) {
+                  const element = resp[index];
+                  array.push({ id: element.idTipoHotel, descripcion: element.descripcion });
+               }
+               this.arrayTipoDeUnidad = array;
+            });
+            break;
+         case 8: //Terreno
+            this.service.getTipoTerreno().then((resp: any) => {
+               //parseamos el array a uno con valores en común para el select
+               let array = [];
+               for (let index = 0; index < resp.length; index++) {
+                  const element = resp[index];
+                  array.push({ id: element.idTipoTerreno, descripcion: element.descripcion });
+               }
+               this.arrayTipoDeUnidad = array;
+            });
+            break;
+
+         case 10: //Campo
+            this.service.getTipoCampo().then((resp: any) => {
+               //parseamos el array a uno con valores en común para el select
+               let array = [];
+               for (let index = 0; index < resp.length; index++) {
+                  const element = resp[index];
+                  array.push({ id: element.idTipoCampo, descripcion: element.descripcion });
+               }
+               this.arrayTipoDeUnidad = array;
+            });
+            break;
+         case 11: //Fondo de Comercio
+            this.service.getTipoFondoComercio().then((resp: any) => {
+               //parseamos el array a uno con valores en común para el select
+               let array = [];
+               for (let index = 0; index < resp.length; index++) {
+                  const element = resp[index];
+                  array.push({ id: element.idTipoFondoComercio, descripcion: element.descripcion });
+               }
+               this.arrayTipoDeUnidad = array;
+            });
+            break;
+
+         case 2: //Departamento Tipo Casa
+         case 9: //Oficina
+         case 12: //Galpón
+         case 13: //Negocio Especial
+         default: //Cuando se ingrese algo desconocido
+            //No posee tipo de unidad
+            this.arrayTipoDeUnidad = [{ id: 0, descripcion: "Otro" }]
+            break;
+
+      }
+      //Luego de cambiar el array eliminamos el posible valor seleccionado
+      this.formThree.controls['tipoDeUnidad'].setValue(null);
 
    }
 
