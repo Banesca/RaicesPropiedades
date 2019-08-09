@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Log;
 
 class PaisesController extends Controller {
 
-    public function getPais(Request $request) {
+    public function getPais() {
 
         DB::beginTransaction();
 
@@ -41,7 +41,7 @@ class PaisesController extends Controller {
 
     }
 
-    public function getRegiones(Request $request) {
+    public function getRegiones() {
 
         $idPais = 1;
         DB::beginTransaction();
@@ -68,7 +68,7 @@ class PaisesController extends Controller {
     }
 
 
-    public function getProvincias(Request $request) {
+    public function getProvincias() {
 
          $idPais = 1;
         DB::beginTransaction();
@@ -215,7 +215,7 @@ class PaisesController extends Controller {
 
 
     
-    public function sincService(Request $request) {
+    public function sincService() {
       
        
         DB::beginTransaction();

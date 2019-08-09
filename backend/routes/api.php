@@ -88,13 +88,13 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     /* OBTENER  PAISES PARA EL BUSCADOR */
     Route::get('paises/get','PaisesController@getPais');
-    Route::post('regiones/get','PaisesController@getRegiones');
-    Route::post('provincias/get','PaisesController@getProvincias');
-    Route::post('partidos/get','PaisesController@getPartidos');
-    Route::post('localidades/get','PaisesController@getLocalidades');
-    Route::post('barrios/get','PaisesController@getBarrios');
-    Route::post('subbarrios/get','PaisesController@getsubBarrios');
-    Route::post('sincronizacion','PaisesController@sincService');
+    Route::get('regiones/get','PaisesController@getRegiones');
+    Route::get('provincias/get','PaisesController@getProvincias');
+    Route::post('partidos/get','PaisesController@getPartidos'); //idProvincia
+    Route::post('localidades/get','PaisesController@getLocalidades'); //idRegion
+    Route::post('barrios/get','PaisesController@getBarrios'); //idLocalidad
+    Route::post('subbarrios/get','PaisesController@getsubBarrios'); //idBarrio
+    Route::get('sincronizacion','PaisesController@sincService');
     /* Galeria */
     /*   Agregada 12/6/2019    */
     Route::post('galeria/store','GaleriaController@store');
@@ -179,6 +179,8 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
         return Artisan::call('storage:link');
         //return response()->json('Storage publicada');
     });
+
+    Route::get('prueba1','UserController@prueba');
 
 });
 

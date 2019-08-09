@@ -6,7 +6,7 @@ import { FormComponent } from './form/form.component';
 import { PublicationManagementRoutingModule } from './publication-management-rounting.module';
 
 import { MaterialUiModule } from 'src/app/models/material/material-ui.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
    declarations: [
@@ -18,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       CommonModule,
       PublicationManagementRoutingModule,
       MaterialUiModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      FormsModule
    ],
    exports: [],
    providers: [],

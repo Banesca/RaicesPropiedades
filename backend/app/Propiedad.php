@@ -311,7 +311,6 @@ class Propiedad extends Model {
         'imagen6',
         'imagen7',
         'imagen_para_galeria',
-
     ];
 
     protected $hidden = [
