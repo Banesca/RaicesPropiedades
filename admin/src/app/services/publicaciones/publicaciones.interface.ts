@@ -1,4 +1,5 @@
 export interface IPublicacion {
+    //1er Step
     titulo: string;
     fk_estado_publicacion: number;
     descipcion: string;
@@ -6,6 +7,18 @@ export interface IPublicacion {
     esUnaOportunidad: number;
     esUnaNovedad: number;
     aparece_en_galeria: number;
+
+    //2do Step
+    imagen_para_galeria?:any;
+    imagen1:any;
+    imagen2?:any;
+    imagen3?:any;
+    imagen4?:any;
+    imagen5?:any;
+    imagen6?:any;
+    imagen7?:any;
+  
+
     /*
     'fk_idTipoPropiedad',
     'Agricultura',
@@ -296,12 +309,5 @@ export interface IPublicacion {
 
     'tipo_publicacion',
     
-    'imagen1',
-    'imagen2',
-    'imagen3',
-    'imagen4',
-    'imagen5',
-    'imagen6',
-    'imagen7',
-    'imagen_para_galeria',*/
+   */
 }

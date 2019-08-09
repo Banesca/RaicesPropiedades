@@ -130,7 +130,7 @@
                               <button mat-raised-button onclick="window.history.back()"
                                  style="background-color: brown; color: white">Cancelar</button>
                               <button mat-raised-button color="primary" matStepperNext style="margin-left: 10px;"
-                                 [disabled]="!formOne.valid" (click)="getDataForm()">Siguiente</button>
+                                 [disabled]="!formOne.valid">Siguiente</button>
                            </div>
                         </div>
                      </div>
@@ -141,7 +141,7 @@
 
                   <div class="row">
                      <!--Imagen para galeria-->
-                     <div class="col-sm-3" *ngIf="this.formOne.value.apareceEnGaleria == '1' ">
+                     <div class="col-sm-3" *ngIf="this.formOne.value.aparece_en_galeria == '1' ">
                         <mat-card class="card-material">
 
                            <img mat-card-image class="img-card"
@@ -289,7 +289,7 @@
                               style="margin-left: 10px; background-color: #262626; color: white">Regresar</button>
 
                            <button mat-raised-button color="primary" matStepperNext style="margin-left: 10px;"
-                              [disabled]="!formTwo.valid">Siguiente</button>
+                              [disabled]="!formTwo.valid" (click)="getDataForm()">Siguiente</button>
                         </div>
                      </div>
                   </div>

@@ -151,21 +151,33 @@ export class FormComponent implements OnInit {
 
    getDataForm() {
       let data1 = this.formOne.value;
-      let obj: IPublicacion = {
-         titulo: data1.titulo,
-         fk_estado_publicacion: data1.fk_estado_publicacion,
-         descipcion: data1.descipcion,
-         fk_tipoPropiedad: data1.fk_tipoPropiedad,
-         esUnaOportunidad: +data1.esUnaOportunidad,
-         esUnaNovedad: +data1.esUnaNovedad,
-         aparece_en_galeria: +data1.aparece_en_galeria,
-      }
+      let obj: IPublicacion = {} as IPublicacion;
+      //Asignamos los datos del 1er Step
+      obj.titulo = data1.titulo;
+      obj.fk_estado_publicacion = data1.fk_estado_publicacion;
+      obj.descipcion = data1.descipcion;
+      obj.fk_tipoPropiedad = data1.fk_tipoPropiedad;
+      obj.esUnaOportunidad = +data1.esUnaOportunidad;
+      obj.esUnaNovedad = +data1.esUnaNovedad;
+      obj.aparece_en_galeria = +data1.aparece_en_galeria;
+
+      //Asignamos los datos del 2do Step
+      this.imageGalery ? obj.imagen_para_galeria = this.imageGalery : null;
+      this.image1 ? obj.imagen1 = this.image1 : null;
+      this.image2 ? obj.imagen2 = this.image2 : null;
+      this.image3 ? obj.imagen3 = this.image3 : null;
+      this.image4 ? obj.imagen4 = this.image4 : null;
+      this.image5 ? obj.imagen5 = this.image5 : null;
+      this.image6 ? obj.imagen6 = this.image6 : null;
+      this.image7 ? obj.imagen7 = this.image7 : null;
+
+
 
       console.log(obj);
-      
+
    }
    changeApareceEnGaleria() {
-      if (this.formOne.value.apareceEnGaleria == '1') {
+      if (this.formOne.value.aparece_en_galeria == '1') {
          this.formTwo.controls['imageGalery'].enable();
       } else {
          this.formTwo.controls['imageGalery'].disable();
