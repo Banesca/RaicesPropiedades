@@ -46,6 +46,7 @@ export class FormComponent implements OnInit {
    arrayPais: any[] = [];
    arrayProvincia: any[] = [];
    arrayPartido: any[] = [];
+   arrayRegion: any[] = [];
    arrayLocalidad: any[] = [];
    arrayCiudad: any[] = [];
    arrayBarrio: any[] = [];
@@ -68,6 +69,23 @@ export class FormComponent implements OnInit {
        * Colocar toda la carga de select en esta parte
        */
 
+
+      this.activatedRoute.params.subscribe(params => {
+         this.id = params.id
+         if (this.id) {
+            // EN  CASO DE EDICION CARGA LOS DATOS DEL REGISTRO A EDITAR
+            this.createForm()
+         } else {
+            this.createForm()
+         }
+      })
+
+      //cargamos los checks de las medidas y de los ambientes
+      this.loadData();
+   }
+
+   loadSelects() {
+
       this.service.getEstadoPublicacion().then((resp: any) => {
          this.arrayEstadoPublicacion = resp;
       });
@@ -88,19 +106,19 @@ export class FormComponent implements OnInit {
          this.arrayMonedas = resp;
       });
 
+      this.service.getPaises().then((resp: any) => {
+         this.arrayPais = resp.Paises;
+      });
 
-      this.activatedRoute.params.subscribe(params => {
-         this.id = params.id
-         if (this.id) {
-            // EN  CASO DE EDICION CARGA LOS DATOS DEL REGISTRO A EDITAR
-            this.createForm()
-         } else {
-            this.createForm()
-         }
-      })
+      this.service.getProvincias().then((resp: any) => {
+         this.arrayProvincia = resp.Provincias;
+      });
 
-      //cargamos los checks de las medidas y de los ambientes
-      this.loadData();
+      this.service.getRegiones().then((resp: any) => {
+         this.arrayRegion = resp.Regiones;
+      });
+
+
    }
 
    createForm() {
@@ -134,20 +152,21 @@ export class FormComponent implements OnInit {
          //Compartir comision
          comision: ["50", Validators.required],
          //Ubicación
-         fk_Direccion_Pais_Id: ['', Validators.required],
+         //fk_Direccion_Pais_Id: ['', Validators.required],
          fk_Direccion_Provincia_Id: ['', Validators.required],
          fk_Direccion_Partido_Id: ['', Validators.required],
+         fk_Direccion_Region_Id: ['', Validators.required],
          fk_Direccion_Localidad_Id: ['', Validators.required],
          fk_Direccion_Ciudad_Id: [''],
          fk_Direccion_Barrio_Id: [''],
          fk_Direccion_SubBarrio_Id: [''],
-         fk_Direccion_Calle_Id: [''],
+         Direccion_Nombrecalle: [''],
+         Direccion_Numero: [''],
+         Direccion_Piso: [''],
+         Direccion_Departamento: [''],
+         //Caracteristicas
 
          altura: ['', Validators.required],
-         piso: ['', Validators.required],
-         dto: ['', Validators.required],
-         cp: ['', Validators.required],
-         //Caracteristicas
          antiguedad: ['', Validators.required],
          aEstrenar: [false],
          cantAmbientes: ['', Validators.required],
@@ -164,6 +183,7 @@ export class FormComponent implements OnInit {
          dependencia: [false]
       })
 
+      this.loadSelects();
    }
 
    getDataForm() {
@@ -246,14 +266,18 @@ export class FormComponent implements OnInit {
       obj.comision = data3.comision;
 
       //Obtenemos la data de Ubicacion
-      obj.fk_Direccion_Pais_Id = data3.fk_Direccion_Pais_Id;
+      obj.fk_Direccion_Pais_Id = 1; //Por Default Argentina
       obj.fk_Direccion_Provincia_Id = data3.fk_Direccion_Provincia_Id;
       obj.fk_Direccion_Partido_Id = data3.fk_Direccion_Partido_Id;
+      obj.fk_Direccion_Region_Id = data3.fk_Direccion_Region_Id;
       obj.fk_Direccion_Localidad_Id = data3.fk_Direccion_Localidad_Id;
       obj.fk_Direccion_Ciudad_Id = data3.fk_Direccion_Ciudad_Id ? data3.fk_Direccion_Ciudad_Id : '';
       obj.fk_Direccion_Barrio_Id = data3.fk_Direccion_Barrio_Id ? data3.fk_Direccion_Barrio_Id : '';
       obj.fk_Direccion_SubBarrio_Id = data3.fk_Direccion_SubBarrio_Id ? data3.fk_Direccion_SubBarrio_Id : '';
-      obj.fk_Direccion_Calle_Id = data3.fk_Direccion_Calle_Id ? data3.fk_Direccion_Calle_Id : '';
+      obj.Direccion_Nombrecalle = data3.Direccion_Nombrecalle ? data3.Direccion_Nombrecalle : '';
+      obj.Direccion_Numero = data3.Direccion_Numero ? data3.Direccion_Numero : '';
+      obj.Direccion_Piso = data3.Direccion_Piso ? data3.Direccion_Piso : '';
+      obj.Direccion_Departamento = data3.Direccion_Departamento ? data3.Direccion_Departamento : '';
 
       console.log(obj);
 
@@ -467,6 +491,23 @@ export class FormComponent implements OnInit {
       }
    }
 
+   reloadPartidos(event) {
+      this.formThree.controls['fk_Direccion_Partido_Id'].setValue('');
+      if (event.value >= 0) {
+         this.service.getPartidos(event.value).then((resp: any) => {
+            this.arrayPartido = resp.Partidos;
+         });
+      }
+   }
+
+   reloadLocalidades(event) {
+      this.formThree.controls['fk_Direccion_Localidad_Id'].setValue('');
+      if (event.value >= 0) {
+         this.service.getLocalidades(event.value).then((resp: any) => {
+            this.arrayLocalidad = resp.Localidades;
+         });
+      }
+   }
    loadData() {
       this.arrayMedidasDeAmbientes = [
          {

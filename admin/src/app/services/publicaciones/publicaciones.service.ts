@@ -154,4 +154,59 @@ export class PublicacionesService {
       })).toPromise();
   }
 
+  getPaises() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'paises/get', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getProvincias() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'provincias/get', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getPartidos(idProvincia: number) {
+    let data = {
+      idProvincia: idProvincia
+    }
+    return this._HttpClient.post(environment.apiHost + this.mService + 'partidos/get', data, {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getRegiones() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'regiones/get', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getLocalidades(idRegion: number) {
+    let data = {
+      idRegion: idRegion
+    }
+    return this._HttpClient.post(environment.apiHost + this.mService + 'localidades/get', data, {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
 }

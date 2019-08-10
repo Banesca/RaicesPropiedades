@@ -445,13 +445,14 @@
                         </div>
 
                         <div class="row">
+                           <!--
                            <div class="col-md-3">
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="País*" formControlName="fk_Direccion_Pais_Id">
-                                          <mat-option *ngFor="let item of arrayPais" value="item.value">
-                                             {{item.label}}
+                                          <mat-option *ngFor="let item of arrayPais" [value]="item.id">
+                                             {{item.nombre}}
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
@@ -463,14 +464,18 @@
                                  </div>
                               </div>
                            </div>
-
+                           -->
                            <div class="col-md-3">
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <mat-select placeholder="Provincia*" formControlName="fk_Direccion_Provincia_Id">
-                                          <mat-option *ngFor="let item of arrayProvincia" value="item.value">
-                                             {{item.label}}
+                                       <mat-select placeholder="Provincia*" formControlName="fk_Direccion_Provincia_Id"
+                                          (selectionChange)="reloadPartidos($event)">
+                                          <mat-option *ngFor="let item of arrayProvincia" [value]="item.id">
+                                             {{item.nombre}}
+                                          </mat-option>
+                                          <mat-option value='0'>
+                                             Otra
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
@@ -489,8 +494,34 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Partido*" formControlName="fk_Direccion_Partido_Id">
-                                          <mat-option *ngFor="let item of arrayPartido" value="item.value">
-                                             {{item.label}}
+                                          <mat-option *ngFor="let item of arrayPartido" [value]="item.id">
+                                             {{item.nombre}}
+                                          </mat-option>
+                                          <mat-option value='0'>
+                                             Otro
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Región*" formControlName="fk_Direccion_Region_Id"
+                                          (selectionChange)="reloadLocalidades($event)">
+                                          <mat-option *ngFor="let item of arrayRegion" [value]="item.id">
+                                             {{item.nombre}}
+                                          </mat-option>
+                                          <mat-option value='0'>
+                                             Otra
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
@@ -508,8 +539,12 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Localidad*" formControlName="fk_Direccion_Localidad_Id">
-                                          <mat-option *ngFor="let item of arrayLocalidad" value="item.value">
-                                             {{item.label}}
+
+                                          <mat-option *ngFor="let item of arrayLocalidad" [value]="item.id">
+                                             {{item.nombre}}
+                                          </mat-option>
+                                          <mat-option value='0'>
+                                             Otra
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
@@ -579,25 +614,6 @@
                               </div>
                            </div>
 
-                           <div class="col-md-3">
-                              <div class="form-group">
-                                 <div class="example-container">
-                                    <mat-form-field>
-                                       <mat-select placeholder="Calle" formControlName="fk_Direccion_Calle_Id">
-                                          <mat-option *ngFor="let item of arrayCalle" value="item.value">
-                                             {{item.label}}
-                                          </mat-option>
-                                       </mat-select>
-                                       <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
-                                       </mat-error>
-
-                                    </mat-form-field>
-                                 </div>
-                              </div>
-                           </div>
-
                         </div>
 
                         <div class="row">
@@ -606,7 +622,8 @@
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <input type="text" matInput placeholder="Altura">
+                                       <input type="text" formControlName="Direccion_Nombrecalle" matInput
+                                          placeholder="Nombre de Calle">
                                        <mat-error>
                                           Este valor es
                                           <strong>requerido</strong>
@@ -621,7 +638,8 @@
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <input type="text" matInput placeholder="Piso">
+                                       <input type="text" formControlName="Direccion_Numero" matInput
+                                          placeholder="Número">
                                        <mat-error>
                                           Este valor es
                                           <strong>requerido</strong>
@@ -636,7 +654,7 @@
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <input type="text" matInput placeholder="Dto">
+                                       <input type="text" formControlName="Direccion_Piso" matInput placeholder="Piso">
                                        <mat-error>
                                           Este valor es
                                           <strong>requerido</strong>
@@ -651,7 +669,8 @@
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <input type="text" matInput placeholder="CP">
+                                       <input type="text" matInput formControlName="Direccion_Departamento"
+                                          placeholder="Departamento">
                                        <mat-error>
                                           Este valor es
                                           <strong>requerido</strong>
@@ -672,6 +691,21 @@
                         </div>
 
                         <div class="row">
+                           <div class="col-md-2">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Altura">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                                 <mat-checkbox>A estrenar</mat-checkbox>
+                              </div>
+                           </div>
                            <div class="col-md-2">
                               <div class="form-group">
                                  <div class="example-container">

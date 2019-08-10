@@ -42,17 +42,21 @@ export interface IPublicacion {
     fk_Estado: number;
     //Comision
     comision: string;
-    
+
     //Ubicacion
     fk_Direccion_Pais_Id: number;
     fk_Direccion_Provincia_Id: number;
     fk_Direccion_Partido_Id: number;
+    fk_Direccion_Region_Id: number;
     fk_Direccion_Localidad_Id: number;
 
     fk_Direccion_Ciudad_Id?: number;
     fk_Direccion_Barrio_Id?: number;
     fk_Direccion_SubBarrio_Id?: number;
-    fk_Direccion_Calle_Id?: number;
+    Direccion_Nombrecalle?: string;
+    Direccion_Numero?: string;
+    Direccion_Piso?: string;
+    Direccion_Departamento?: string;
 
 
 
@@ -143,10 +147,10 @@ export interface IPublicacion {
     'DepartamentosPorPiso',
     'Direccion_Coordenadas_Latitud',
     'Direccion_Coordenadas_Longitud',
-    'Direccion_Departamento',
-    'Direccion_Nombrecalle',
-    'Direccion_Numero',
-    'Direccion_Piso',
+    '',
+    '',
+    '',
+    '',
     'Disponibilidad',
     'DistanciaPavimento',
     'EnEdificio',
