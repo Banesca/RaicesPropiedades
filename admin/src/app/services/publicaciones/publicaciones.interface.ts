@@ -21,27 +21,6 @@ export interface IPublicacion {
 
 
     //3er Step
-    //Datos Generales
-    //Tipo de Unidad
-    fk_TipoUnidadDepartamento?: number;
-    fk_TipoUnidadCasa?: number;
-    fk_TipoCochera?: number;
-    fk_TipoLocal?: number;
-    fk_TipoHotel?: number;
-    fk_TipoTerreno?: number;
-    fk_TipoCampo?: number;
-    fk_TipoFondoComercio?: number;
-
-    fk_idTipoOperaion: number;
-    precio: number;
-    fk_idMonedas: number;
-    no_publicar_precio_inter: number;
-    /**
-     * Estado de Propiedad
-     */
-    fk_Estado: number;
-    //Comision
-    comision: string;
 
     //Ubicacion
     fk_Direccion_Pais_Id: number;
@@ -57,222 +36,228 @@ export interface IPublicacion {
     Direccion_Numero?: string;
     Direccion_Piso?: string;
     Direccion_Departamento?: string;
+    Direccion_Coordenadas_Latitud?: number;
+    Direccion_Coordenadas_Longitud?: number;
+    fk_idTipoOperaion: number;
+    precio: number;
+    fk_idMonedas: number;
+    no_publicar_precio_inter: number;
+    /**
+     * Estado de Propiedad
+     */
+    fk_Estado: number;
+
+    //Datos Generales
+    //Tipo de Unidad
+    fk_TipoUnidadDepartamento?: number;
+    fk_TipoUnidadCasa?: number;
+    fk_TipoCochera?: number;
+    fk_TipoLocal?: number;
+    fk_TipoHotel?: number;
+    fk_TipoTerreno?: number;
+    fk_TipoCampo?: number;
+    fk_TipoFondoComercio?: number;
+
+    //Comision
+    comision: string;
+
+    //Características
+    Altura?: number;
+    Ancho?: number;
+    Agricultura?: boolean,
+    AltoEntrada?: number,
+    AlturaTecho?: number;
+    AnchoEntrada?: number;
+    Antiguedad?: number;
+    AntiguedadComercio?: number;
+    AptoCredito?: boolean;
+    AptoProfesional?: boolean;
+    CantidadAmbientes?: number;
+    CantidadBanos?: number;
+    CantidadCocheras?: number;
+    CantidadColumnas?: number;
+    CantidadCubiertos?: number;
+    CantidadDormitorios?: number;
+    CantidadEstrellas?: number;
+    CantidadHabitaciones?: number;
+    CantidadHectareas?: number;
+    CantidadNaves?: number;
+    CantidadOficinas?: number;
+    CantidadPersonal?: number;
+    CantidadPisos?: number;
+    CantidadPlantas?: number;
+    CantidadPlazas?: number;
+    CocheraOptativa?: boolean;
+    cupada?: boolean;
+    Demolicion?: boolean;
+    DepartamentosPorPiso?: number;
+    fk_Disposicion?: number;
 
 
+    //Ambientes
+    Ambientes_Altillo?: boolean;
+    Ambientes_AnteCocina?: boolean;
+    Ambientes_Antesala?: boolean;
+    Ambientes_Archivo?: boolean;
+    Ambientes_Azotea?: boolean;
+    Ambientes_Balcon?: boolean;
+    Ambientes_Bano?: boolean;
+    Ambientes_Bar?: boolean;
+    Ambientes_Baulera?: boolean;
+    Ambientes_Biblioteca?: boolean;
+    Ambientes_Bodega?: boolean;
+    Ambientes_Circulacion?: boolean;
+    Ambientes_Cochera?: boolean;
+    Ambientes_Cocina?: boolean;
+    Ambientes_CocinaComedor?: boolean;
+    Ambientes_CocinaKitchinette?: boolean;
+    Ambientes_Comedor?: boolean;
+    Ambientes_ComedorDiario?: boolean;
+    Ambientes_CuartoDeHerramientas?: boolean;
+    Ambientes_CuartoDePlanchar?: boolean;
+    Ambientes_Dependencia?: boolean;
+    Ambientes_DependenciaDeServicio?: boolean;
+    Ambientes_Deposito?: boolean;
+    Ambientes_Dormitorio?: boolean;
+    Ambientes_Entrepiso?: boolean;
+    Ambientes_Escritorio?: boolean;
+    Ambientes_Estudio?: boolean;
+    Ambientes_FamilyRoom?: boolean;
+    Ambientes_Galeria?: boolean;
+    Ambientes_Galpon?: boolean;
+    Ambientes_Garage?: boolean;
+    Ambientes_Hall?: boolean;
+    Ambientes_Jardin?: boolean;
+    Ambientes_Lavadero?: boolean;
+    Ambientes_Living?: boolean;
+    Ambientes_LivingComedor?: boolean;
+    Ambientes_Local?: boolean;
+    Ambientes_Oficina?: boolean;
+    Ambientes_Palier?: boolean;
+    Ambientes_Patio?: boolean;
+    Ambientes_Playroom?: boolean;
+    Ambientes_Quincho?: boolean;
+    Ambientes_Recepcion?: boolean;
+    Ambientes_Sala?: boolean;
+    Ambientes_Sotano?: boolean;
+    Ambientes_Suite?: boolean;
+    Ambientes_Terraza?: boolean;
+    Ambientes_Toilette?: boolean;
+    Ambientes_Vestibulo?: boolean;
+    Ambientes_Vestidor?: boolean;
+    Ambientes_Vestuario?: boolean;
 
+
+    //Instalaciones
+    Instalaciones_AguaCaliente?: boolean;
+    Instalaciones_AguaCalienteCentral?: boolean;
+    Instalaciones_AguaCloaca?: boolean;
+    Instalaciones_AguaCorriente?: boolean;
+    Instalaciones_Aguadas?: boolean;
+    Instalaciones_AguaPozo?: boolean;
+    Instalaciones_AireAcondicionadoCentral?: boolean;
+    Instalaciones_AireAcondicionadoIndividual?: boolean;
+    Instalaciones_AireCaliente?: boolean;
+    Instalaciones_AlambradoPerimetral?: boolean;
+    Instalaciones_Alambrados?: boolean;
+    Instalaciones_Amoblado?: boolean;
+    Instalaciones_Arboleda?: boolean;
+    Instalaciones_ArtefactosDeCocina?: boolean;
+    Instalaciones_Ascensor?: boolean;
+    Instalaciones_AscensoresDeServicio?: boolean;
+    Instalaciones_AscensoresPrincipales?: boolean;
+    Instalaciones_Balanza?: boolean;
+    Instalaciones_Bebedero?: boolean;
+    Instalaciones_Bombeador?: boolean;
+    Instalaciones_Boxes?: boolean;
+    Instalaciones_Bretes?: boolean;
+    Instalaciones_Cable?: boolean;
+    Instalaciones_CajaFuerte?: boolean;
+    Instalaciones_Caldera?: boolean;
+    Instalaciones_Calefaccion?: boolean;
+    Instalaciones_CanchaDeBasquet?: boolean;
+    Instalaciones_CanchaDeFutbol?: boolean;
+    Instalaciones_CanchaDeHockey?: boolean;
+    Instalaciones_CanchaDePaddle?: boolean;
+    Instalaciones_CanchaDePaleta?: boolean;
+    Instalaciones_CanchaDeSquash?: boolean;
+    Instalaciones_CanchaDeTenis?: boolean;
+    Instalaciones_CanchaDeVoley?: boolean;
+    Instalaciones_CanchaFutbol?: boolean;
+    Instalaciones_CanchaTenis?: boolean;
+    Instalaciones_Corral?: boolean;
+    Instalaciones_Desayunador?: boolean;
+    Instalaciones_Electricidad?: boolean;
+    Instalaciones_EspacioParaVehiculo?: boolean;
+    Instalaciones_Estacada?: boolean;
+    Instalaciones_ExtractorDeAire?: boolean;
+    Instalaciones_Forestacion?: boolean;
+    Instalaciones_Fosas?: boolean;
+    Instalaciones_FuerzaMotriz?: boolean;
+    Instalaciones_GasEnvasado?: boolean;
+    Instalaciones_GasIndustrial?: boolean;
+    Instalaciones_GasNatural?: boolean;
+    Instalaciones_Gimnasio?: boolean;
+    Instalaciones_Grua?: boolean;
+    Instalaciones_GrupoElectrogeno?: boolean;
+    Instalaciones_Haras?: boolean;
+    Instalaciones_Hidromasaje?: boolean;
+    Instalaciones_HogarALena?: boolean;
+    Instalaciones_InstalacionParrilla?: boolean;
+    Instalaciones_JuegosParaChicos?: boolean;
+    Instalaciones_Laundry?: boolean;
+    Instalaciones_LosaRadiante?: boolean;
+    Instalaciones_LuzElectrica?: boolean;
+    Instalaciones_Mangas?: boolean;
+    Instalaciones_Molino?: boolean;
+    Instalaciones_Montacarga?: boolean;
+    Instalaciones_Motores?: boolean;
+    Instalaciones_MovilidadReducida?: boolean;
+    Instalaciones_MueblesDeCocina?: boolean;
+    Instalaciones_Pavimento?: boolean;
+    Instalaciones_Pileta?: boolean;
+    Instalaciones_Porton?: boolean;
+    Instalaciones_Potrero?: boolean;
+    Instalaciones_Radiadores?: boolean;
+    Instalaciones_SalonDeFiestas?: boolean;
+    Instalaciones_Sauna?: boolean;
+    Instalaciones_Solarium?: boolean;
+    Instalaciones_Tambo?: boolean;
+    Instalaciones_TanqueDeAgua?: boolean;
+    Instalaciones_TanqueDeIncendio?: boolean;
+    Instalaciones_Telefono?: boolean;
+    Instalaciones_Termotanque?: boolean;
+    Instalaciones_TratamientoEfluentes?: boolean;
+    Instalaciones_Vivienda?: boolean;
+
+    //Servicios
+    Servicios_ABL?: boolean;
+    Servicios_AguaCorriente?: boolean;
+    Servicios_Bar?: boolean;
+    Servicios_Calefaccion?: boolean;
+    Servicios_Cocina?: boolean;
+    Servicios_Conmutador?: boolean;
+    Servicios_Electricidad?: boolean;
+    Servicios_GasEnvasado?: boolean;
+    Servicios_GasNatural?: boolean;
+    Servicios_Internet?: boolean;
+    Servicios_Lavanderia?: boolean;
+    Servicios_Limpieza?: boolean;
+    Servicios_Refrigeracion?: boolean;
+    Servicios_Rentas?: boolean;
+    Servicios_RopaCama?: boolean;
+    Servicios_Seguridad?: boolean;
+    Servicios_Telefono?: boolean;
+    Servicios_Toallas?: boolean;
+    Servicios_Videocable?: boolean;
+    Servicios_Vigilancia?: boolean;
     /*
-    'fk_idTipoPropiedad',
-    'Agricultura',
-    'AltoEntrada',
-    'Altura',
-    'AlturaTecho',
-    'Ambientes_Altillo',
-    'Ambientes_AnteCocina',
-    'Ambientes_Antesala',
-    'Ambientes_Archivo',
-    'Ambientes_Azotea',
-    'Ambientes_Balcon',
-    'Ambientes_Bano',
-    'Ambientes_Bar',
-    'Ambientes_Baulera',
-    'Ambientes_Biblioteca',
-    'Ambientes_Bodega',
-    'Ambientes_Circulacion',
-    'Ambientes_Cochera',
-    'Ambientes_Cocina',
-    'Ambientes_CocinaComedor',
-    'Ambientes_CocinaKitchinette',
-    'Ambientes_Comedor',
-    'Ambientes_ComedorDiario',
-    'Ambientes_CuartoDeHerramientas',
-    'Ambientes_CuartoDePlanchar',
-    'Ambientes_Dependencia',
-    'Ambientes_DependenciaDeServicio',
-    'Ambientes_Deposito',
-    'Ambientes_Dormitorio',
-    'Ambientes_Entrepiso',
-    'Ambientes_Escritorio',
-    'Ambientes_Estudio',
-    'Ambientes_FamilyRoom',
-    'Ambientes_Galeria',
-    'Ambientes_Galpon',
-    'Ambientes_Garage',
-    'Ambientes_Hall',
-    'Ambientes_Jardin',
-    'Ambientes_Lavadero',
-    'Ambientes_Living',
-    'Ambientes_LivingComedor',
-    'Ambientes_Local',
-    'Ambientes_Oficina',
-    'Ambientes_Palier',
-    'Ambientes_Patio',
-    'Ambientes_Playroom',
-    'Ambientes_Quincho',
-    'Ambientes_Recepcion',
-    'Ambientes_Sala',
-    'Ambientes_Sotano',
-    'Ambientes_Suite',
-    'Ambientes_Terraza',
-    'Ambientes_Toilette',
-    'Ambientes_Vestibulo',
-    'Ambientes_Vestidor',
-    'Ambientes_Vestuario',
-    'Ancho',
-    'AnchoEntrada',
-    'Antiguedad',
-    'AntiguedadComercio',
-    'AptoCredito',
-    'AptoProfesional',
-    'Baulera',
-    'CantidadAmbientes',
-    'CantidadBanos',
-    'CantidadCocheras',
-    'CantidadColumnas',
-    'CantidadCubiertos',
-    'CantidadDormitorios',
-    'CantidadEstrellas',
-    'CantidadHabitaciones',
-    'CantidadHectareas',
-    'CantidadNaves',
-    'CantidadOficinas',
-    'CantidadPersonal',
-    'CantidadPisos',
-    'CantidadPlantas',
-    'CantidadPlazas',
-    'CasaCaseros',
-    'CasaPrincipal',
-    'CocheraOptativa',
-    'cupada',
-    'Demolicion',
-    'DepartamentosPorPiso',
-    'Direccion_Coordenadas_Latitud',
-    'Direccion_Coordenadas_Longitud',
-    '',
-    '',
-    '',
-    '',
-    'Disponibilidad',
-    'DistanciaPavimento',
-    'EnEdificio',
-    'Estado',
-    'Expensas',
-   
-    'fk_Disposicion',
-    'fk_Estado',
-    'fk_Orientacion',
-    'fk_TipoAcceso',
-    'fk_TipoAscensor',
-    'fk_TipoBalcon',
-    'fk_TipoBano',
-    'fk_TipoCalefaccion',
-    'fk_TipoCampo',
-    'fk_TipoCobertura',
-    'fk_TipoCoche',
-    'fk_TipoCochera',
-    'fk_TipoCosta',
-    'fk_TipoEdificio',
-    'fk_TipoExpensas',
-    'fk_TipoFondoComercio',
-    'fk_TipoFrente',
-    'fk_TipoHotel',
-    'fk_TipoLocal',
-    'fk_TipoPendiente',
-    'fk_TipoPiso',
-    'fk_TipoPorton',
-    'fk_TipoTecho',
-    'fk_TipoTechoIndustrial',
-    'fk_TipoTerreno',
-    'fk_TipoUnidad',
-    'fk_TipoVista',
-    'FondoIrregular',
-    'FOT',
-    'FrenteIrregular',
-    'GaleriaShopping',
-    'Ganaderia',
-    'GeneradorPropio',
-    'Generales_PermiteMascotas',
-    'Generales_SeguroCaucion',
-    'HabitacionesPorPiso',
-    'Instalaciones_AguaCaliente',
-    'Instalaciones_AguaCalienteCentral',
-    'Instalaciones_AguaCloaca',
-    'Instalaciones_AguaCorriente',
-    'Instalaciones_Aguadas',
-    'Instalaciones_AguaPozo',
-    'Instalaciones_AireAcondicionadoCentral',
-    'Instalaciones_AireAcondicionadoIndividual',
-    'Instalaciones_AireCaliente',
-    'Instalaciones_AlambradoPerimetral',
-    'Instalaciones_Alambrados',
-    'Instalaciones_Amoblado',
-    'Instalaciones_Arboleda',
-    'Instalaciones_ArtefactosDeCocina',
-    'Instalaciones_Ascensor',
-    'Instalaciones_AscensoresDeServicio',
-    'Instalaciones_AscensoresPrincipales',
-    'Instalaciones_Balanza',
-    'Instalaciones_Bebedero',
-    'Instalaciones_Bombeador',
-    'Instalaciones_Boxes',
-    'Instalaciones_Bretes',
-    'Instalaciones_Cable',
-    'Instalaciones_CajaFuerte',
-    'Instalaciones_Caldera',
-    'Instalaciones_Calefaccion',
-    'Instalaciones_CanchaDeBasquet',
-    'Instalaciones_CanchaDeFutbol',
-    'Instalaciones_CanchaDeHockey',
-    'Instalaciones_CanchaDePaddle',
-    'Instalaciones_CanchaDePaleta',
-    'Instalaciones_CanchaDeSquash',
-    'Instalaciones_CanchaDeTenis',
-    'Instalaciones_CanchaDeVoley',
-    'Instalaciones_CanchaFutbol',
-    'Instalaciones_CanchaTenis',
-    'Instalaciones_Corral',
-    'Instalaciones_Desayunador',
-    'Instalaciones_Electricidad',
-    'Instalaciones_EspacioParaVehiculo',
-    'Instalaciones_Estacada',
-    'Instalaciones_ExtractorDeAire',
-    'Instalaciones_Forestacion',
-    'Instalaciones_Fosas',
-    'Instalaciones_FuerzaMotriz',
-    'Instalaciones_GasEnvasado',
-    'Instalaciones_GasIndustrial',
-    'Instalaciones_GasNatural',
-    'Instalaciones_Gimnasio',
-    'Instalaciones_Grua',
-    'Instalaciones_GrupoElectrogeno',
-    'Instalaciones_Haras',
-    'Instalaciones_Hidromasaje',
-    'Instalaciones_HogarALena',
-    'Instalaciones_InstalacionParrilla',
-    'Instalaciones_JuegosParaChicos',
-    'Instalaciones_Laundry',
-    'Instalaciones_LosaRadiante',
-    'Instalaciones_LuzElectrica',
-    'Instalaciones_Mangas',
-    'Instalaciones_Molino',
-    'Instalaciones_Montacarga',
-    'Instalaciones_Motores',
-    'Instalaciones_MovilidadReducida',
-    'Instalaciones_MueblesDeCocina',
-    'Instalaciones_Pavimento',
-    'Instalaciones_Pileta',
-    'Instalaciones_Porton',
-    'Instalaciones_Potrero',
-    'Instalaciones_Radiadores',
-    'Instalaciones_SalonDeFiestas',
-    'Instalaciones_Sauna',
-    'Instalaciones_Solarium',
-    'Instalaciones_Tambo',
-    'Instalaciones_TanqueDeAgua',
-    'Instalaciones_TanqueDeIncendio',
-    'Instalaciones_Telefono',
-    'Instalaciones_Termotanque',
-    'Instalaciones_TratamientoEfluentes',
-    'Instalaciones_Vivienda',
+    
+    
+    
+    
+
+    
     'Largo',
     'LateralDerechoIrregular',
     'LateralIzquierdoIrregular',
@@ -289,26 +274,7 @@ export interface IPublicacion {
     'Reciclado',
     'ReferenciaCercana',
     'RentabilidadAnual',
-    'Servicios_ABL',
-    'Servicios_AguaCorriente',
-    'Servicios_Bar',
-    'Servicios_Calefaccion',
-    'Servicios_Cocina',
-    'Servicios_Conmutador',
-    'Servicios_Electricidad',
-    'Servicios_GasEnvasado',
-    'Servicios_GasNatural',
-    'Servicios_Internet',
-    'Servicios_Lavanderia',
-    'Servicios_Limpieza',
-    'Servicios_Refrigeracion',
-    'Servicios_Rentas',
-    'Servicios_RopaCama',
-    'Servicios_Seguridad',
-    'Servicios_Telefono',
-    'Servicios_Toallas',
-    'Servicios_Videocable',
-    'Servicios_Vigilancia',
+   
     'SuperficieConstruible',
     'SuperficieCubierta',
     'SuperficieCubiertaCasa',
