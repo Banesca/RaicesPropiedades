@@ -292,7 +292,6 @@ class Propiedad extends Model {
         'informacion_adicional',
 
         'descipcion',
-        'fk_tipoPropiedad',
         'esUnaPropiedad',
         'esUnaNovedad',
         'apareceEnGaleriaInicia',
@@ -313,6 +312,25 @@ class Propiedad extends Model {
         'imagen6',
         'imagen7',
         'imagen_para_galeria',
+
+
+        'Edificio_Servicios_ABL',
+        'Edificio_Servicios_AguaCorriente',
+        'Edificio_Servicios_Bar',
+        'Edificio_Servicios_Calefaccion',
+        'Edificio_Servicios_Cocina',
+        'Edificio_Servicios_Conmutador',
+        'Edificio_Servicios_Electricidad',
+        'Edificio_Servicios_GasEnvasado',
+        'Edificio_Servicios_GasNatural',
+        'Edificio_Servicios_Internet',
+        'Edificio_Servicios_Lavanderia',
+        'Edificio_Servicios_Refrigeracion',
+        'Edificio_Servicios_Rentas',
+        'Edificio_Servicios_Seguridad',
+        'Edificio_Servicios_Telefono',
+        'Edificio_Servicios_Videocable',
+        'Edificio_Servicios_Vigilancia',
     ];
 
     protected $hidden = [
@@ -457,38 +475,37 @@ class Propiedad extends Model {
         return $this->belongsTo('App\Barrios', 'fk_Direccion_Barrio_Id');
     }
 
-     /*public function tipoCalle() {
-        return $this->belongsTo('App\Calle', 'fk_Direccion_Calle_Id');
-    }*/
+    /*public function tipoCalle() {
+       return $this->belongsTo('App\Calle', 'fk_Direccion_Calle_Id');
+   }*/
 
-     /*public function tipoCiudad() {
-        return $this->belongsTo('App\Moneda', 'fk_Direccion_Ciudad_Id');
-    }*/
+    /*public function tipoCiudad() {
+       return $this->belongsTo('App\Moneda', 'fk_Direccion_Ciudad_Id');
+   }*/
 
-     public function Localidad() {
+    public function Localidad() {
         return $this->belongsTo('App\Localidades', 'fk_Direccion_Localidad_Id');
     }
 
-     public function Pais() {
+    public function Pais() {
         return $this->belongsTo('App\Paises', 'fk_Direccion_Pais_Id');
     }
 
-     public function Partido() {
+    public function Partido() {
         return $this->belongsTo('App\Partidos', 'fk_Direccion_Partido_Id');
     }
 
-     public function Provincia() {
+    public function Provincia() {
         return $this->belongsTo('App\Provincias', 'fk_Direccion_Provincia_Id');
     }
 
-     public function SubBarrio() {
+    public function SubBarrio() {
         return $this->belongsTo('App\subBarrios', 'fk_Direccion_SubBarrio_Id');
     }
 
-     public function Region() {
+    public function Region() {
         return $this->belongsTo('App\Regiones', 'fk_Direccion_Region_Id');
     }
-
 
 
 }
