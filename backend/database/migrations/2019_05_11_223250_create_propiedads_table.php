@@ -143,7 +143,6 @@ class CreatePropiedadsTable extends Migration
             $table->integer('fk_TipoTecho')->nullable();
             $table->integer('fk_TipoTechoIndustrial')->nullable();
             $table->integer('fk_TipoTerreno')->nullable();
-            $table->integer('fk_TipoUnidad')->nullable();
             $table->integer('fk_TipoVista')->nullable();
             $table->text('FondoIrregular')->nullable();
             $table->text('FOT')->nullable();
@@ -288,6 +287,11 @@ class CreatePropiedadsTable extends Migration
             $table->text('Vivienda')->nullable();
             $table->text('Zonificacion')->nullable();
             $table->integer('fk_ficha2')->unsigned()->nullable();
+
+            $table->integer('fk_Direccion_Region_Id')->unsigned()->nullable();
+            $table->integer('fk_TipoUnidadCasa')->unsigned()->nullable();
+            $table->integer('fk_TipoUnidadDepartamento')->unsigned()->nullable();
+
             $table->timestamps();
         });
     }
