@@ -16,7 +16,7 @@ class GaleriaController extends Controller {
 
     /*Creado por Breiddy Monterrey*/
     public function store(Request $request) {
-       
+        // return response()->json(['request'=>$request->all(),'images'=>$request->images]);
         $this->validate($request, [
             'titulo'      => 'required|min:2',
             'descripcion'      => 'required|min:2',
@@ -92,6 +92,7 @@ class GaleriaController extends Controller {
     }
 
     public function update(Request $request, $idGaleria) {
+        //return response()->json(['request'=>$request->all(),'images'=>$request->images]);
         DB::beginTransaction();
         try {
         

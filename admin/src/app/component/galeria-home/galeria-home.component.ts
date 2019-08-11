@@ -1,33 +1,34 @@
 import { enCRUD } from "./../../misc/enums";
 //import { Galeria } from './../../services/interfaces.index'
-import {
-  FormGroup,
-  FormBuilder,
-  Validators
-} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { IGaleria, Galeria } from './../../services/galeria-home/galeria-home.interface'
-import { GaleriaHomeService } from './../../services/galeria-home/galeria-home.service'
-import { AlertsService } from '../../services/alerts.service';
+import {
+  IGaleria,
+  Galeria
+} from "./../../services/galeria-home/galeria-home.interface";
+import { GaleriaHomeService } from "./../../services/galeria-home/galeria-home.service";
+import { AlertsService } from "../../services/alerts.service";
 import { PublicacionesService } from "./../../services/publicaciones/publicaciones.service";
 
-
 @Component({
-    selector: 'app-galeria-home',
-    templateUrl: './galeria-home.component.html',
-    styleUrls: ['./galeria-home.component.css']
-  })
-  export class GaleriaHomeComponent implements OnInit {
+  selector: "app-galeria-home",
+  templateUrl: "./galeria-home.component.html",
+  styleUrls: ["./galeria-home.component.css"]
+})
+export class GaleriaHomeComponent implements OnInit {
   mCategorias: IGaleria[];
   mPublicaciones: any;
   mCategoriasSelect: IGaleria;
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
+  images: any = [];
+  length: number = 0;
   submitted: boolean = false;
   mForma: FormGroup;
   mFormaEstado: string;
   enCRUD = enCRUD;
+  formData = new FormData();
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -36,7 +37,7 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
     private _PublicacionesService: PublicacionesService
   ) {
     this.mCategorias = [];
- //   this.mCategoriasSelect = MailSuscribers.empy();
+    //   this.mCategoriasSelect = MailSuscribers.empy();
     this.mForma = this.generarFormulario();
     this.mCategoriasSelect = Galeria.empy();
     this.mFormaEstado = enCRUD.Eliminar;
@@ -52,8 +53,9 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
     // Estructura de nuestro formulario
     return this._formBuilder.group({
       titulo: ["", [Validators.required, Validators.minLength(3)]],
-      descripcion: ["", [Validators.required,Validators.minLength(10)]],
-      fk_publicaciones: ["", Validators.required]
+      descripcion: ["", [Validators.required, Validators.minLength(10)]],
+      fk_publicaciones: ["", Validators.required],
+      images: null
     });
   }
 
@@ -67,12 +69,23 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
     this.mCategoriasSelect = this.mForma.value as IGaleria;
     this.guardar();
   }
+  getFormData() {
+    this.formData.append("titulo", this.mCategoriasSelect.titulo);
+    this.formData.append("descripcion", this.mCategoriasSelect.descripcion);
+    this.formData.append(
+      "fk_publicaciones",
+      `${this.mCategoriasSelect.fk_publicaciones}`
+    );
+    for (let i = 0; i < this.length; i++) {
+      this.formData.append("images[" + i + "]", this.images[i]);
+    }
+    return this.formData;
+  }
   getPublicaciones() {
     this._PublicacionesService
       .All()
-        .then(data => {
-          this.mPublicaciones = data;
-
+      .then(data => {
+        this.mPublicaciones = data;
       })
       .catch(error => {
         console.log(error);
@@ -83,36 +96,43 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
     this._GaleriaHomeService
       .allGalerias()
       .then(res => {
-        
         this.mCategorias = res.data;
         this.mLoading = false;
       })
       .catch(error => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Error al cargar los datos.')
+        console.log(error);
+        this._AlertsService.msg("ERR", "ERROR", "Error al cargar los datos.");
       });
   }
 
   modificar(pCategoria: IGaleria) {
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
-
   }
 
   eliminar(pKey: number) {
-    if(confirm('¿Está seguro de que quiere eliminar esta galería?')){
-    this.mLoading = true;
-    this._GaleriaHomeService
-      .eliminarCategoria(pKey)
-      .then(data => {
-        this.getAll();
-        this.mLoading = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería eliminada Correctamente.')
-      })
-      .catch(err => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Error al eliminar la galería.')
-      });
+    if (confirm("¿Está seguro de que quiere eliminar esta galería?")) {
+      this.mLoading = true;
+      this._GaleriaHomeService
+        .eliminarCategoria(pKey)
+        .then(data => {
+          this.getAll();
+          this.mLoading = false;
+          this._AlertsService.msg(
+            "OK",
+            "!ÉXITO!",
+            "Galería eliminada Correctamente."
+          );
+        })
+        .catch(err => {
+          this._AlertsService.msg(
+            "ERR",
+            "ERROR",
+            "Error al eliminar la galería."
+          );
+        });
+    }
   }
-}
 
   nuevo() {
     this.mFormaEstado = enCRUD.Crear;
@@ -129,33 +149,68 @@ import { PublicacionesService } from "./../../services/publicaciones/publicacion
     this._GaleriaHomeService
       .actualizarCategoria(this.mCategoriasSelect, pKey)
       .then(data => {
-        this.mFormaEstado = enCRUD.Eliminar;
-        this.mCategoriasSelect = Galeria.empy();
-        this.getAll();
-        this.mLoading = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería Actualizada Correctamente.')
+        console.log(data);
+        // this.mFormaEstado = enCRUD.Eliminar;
+        // this.mCategoriasSelect = Galeria.empy();
+        // this.getAll();
+        // this.mLoading = false;
+        // this._AlertsService.msg('OK', '!ÉXITO!', 'Galería Actualizada Correctamente.')
       })
       .catch(err => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Error al Actualizar la galería.')
+        this._AlertsService.msg(
+          "ERR",
+          "ERROR",
+          "Error al Actualizar la galería."
+        );
       });
   }
 
-
   guardar() {
-    
     this.mLoading = true;
     this._GaleriaHomeService
-      .nuevaCategoria(this.mCategoriasSelect)
+      .nuevaCategoria(this.getFormData())
       .then(data => {
-        this.mFormaEstado = enCRUD.Eliminar;
-        this.mCategoriasSelect = Galeria.empy();
-        this.getAll();
-        this.mForma.reset();
-        this.mLoading = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería creada Correctamente.')
+        console.log(data);
+        // this.mFormaEstado = enCRUD.Eliminar;
+        // this.mCategoriasSelect = Galeria.empy();
+        // this.getAll();
+        // this.mForma.reset();
+        // this.mLoading = false;
+        // this._AlertsService.msg('OK', '!ÉXITO!', 'Galería creada Correctamente.')
       })
       .catch(err => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Error al crear la galería.')
+        this._AlertsService.msg("ERR", "ERROR", "Error al crear la galería.");
       });
+  }
+  handleFileSelect(evt) {
+    this.images = evt.target.files; // FileList object
+    this.length = evt.target.files.length;
+    for (let i = 0, f; (f = this.images[i]); i++) {
+      // Only process image files.
+      if (!f.type.match("image.*")) {
+        continue;
+      }
+
+      let reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          let span = document.createElement("span");
+          span.innerHTML = [
+            '<img class="thumb" style="height:150px;" src="',
+            e.target.result,
+            '" title="',
+            escape(theFile.name),
+            '"/>'
+          ].join("");
+          document.getElementById("list").insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
   }
 }
