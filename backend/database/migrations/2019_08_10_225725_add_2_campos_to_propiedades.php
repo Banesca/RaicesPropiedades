@@ -15,6 +15,7 @@ class Add2CamposToPropiedades extends Migration
     {
         Schema::table('tb_propiedades', function (Blueprint $table) {
             $table->string('Detalle')->nullable();
+            $table->string('TipoBien')->nullable();
         });
     }
 
@@ -26,6 +27,7 @@ class Add2CamposToPropiedades extends Migration
     public function down()
     {
         Schema::table('tb_propiedades', function (Blueprint $table) {
+            $table->dropColumn('Detalle');
             $table->dropColumn('TipoBien');
         });
     }
