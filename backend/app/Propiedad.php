@@ -331,6 +331,8 @@ class Propiedad extends Model {
         'Edificio_Servicios_Telefono',
         'Edificio_Servicios_Videocable',
         'Edificio_Servicios_Vigilancia',
+        'Detalle',
+        'TipoBien',
     ];
 
     protected $hidden = [
