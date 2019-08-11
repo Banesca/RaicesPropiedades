@@ -5,40 +5,37 @@ namespace App\Http\Controllers;
 use App\ConfigFooter;
 use App\Galeria;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage;
+
 // use Image;
 
-class GaleriaController extends Controller {
-
+class GaleriaController extends Controller
+{
     /*Creado por Breiddy Monterrey*/
     public function store(Request $request) {
         // return response()->json(['request'=>$request->all(),'images'=>$request->images]);
         $this->validate($request, [
-            'titulo'      => 'required|min:2',
+            'titulo'           => 'required|min:2',
             'descripcion'      => 'required|min:2',
-            'fk_publicaciones'      => 'required|min:1',
-    
+            'fk_publicaciones' => 'required|min:1',
+
         ], [
-            'titulo.required'                 => 'El título es requerido',
-            'titulo.min'                      => 'El título no puede tener menos de 2 caracteres',
-            'descripcion.required'            => 'El descripción teléfono es requerido',
-            'descripcion.min'                 => 'El descripción de teléfono no puede tener menos de 2 caracteres',
-            'fk_publicaciones.required'       => 'La publicacion es requerida',
-            'fk_publicaciones.min'            => 'La publicacion no puede tener menos de 2 caracteres',           
+            'titulo.required'           => 'El título es requerido',
+            'titulo.min'                => 'El título no puede tener menos de 2 caracteres',
+            'descripcion.required'      => 'El descripción teléfono es requerido',
+            'descripcion.min'           => 'El descripción de teléfono no puede tener menos de 2 caracteres',
+            'fk_publicaciones.required' => 'La publicacion es requerida',
+            'fk_publicaciones.min'      => 'La publicacion no puede tener menos de 2 caracteres',
         ]);
 
         try {
 
-
             $galeria = new Galeria($request->all());
-       
+
             $galeria->save();
-            
-          // $galeria->tipoPropiedad;
+
+            // $galeria->tipoPropiedad;
             DB::commit();
             $response = [
                 'msj'  => 'Galeria Creada Exitosamente',
@@ -49,45 +46,43 @@ class GaleriaController extends Controller {
         } catch (\Exception $e) {
 
             DB::rollback();
-            Log::error('Ha ocurrido un error en TransaccionesController: '.$e->getMessage().', Linea: '.$e->getLine());
+            Log::error('Ha ocurrido un error en TransaccionesController: ' . $e->getMessage() . ', Linea: ' . $e->getLine());
 
             return response()->json([
                 'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
             ], 500);
         }
-        
     }
-   
-    public function listaGaleria() {
 
-        $galeria = Galeria::all();
+    public function listaGaleria()
+    {
+
+        $galeria  = Galeria::all();
         $response = [
-            'msj'   => 'Galerias',
+            'msj'  => 'Galerias',
             'data' => $galeria,
         ];
 
         return response()->json($response, 200);
-
     }
 
-    public function listarGaleriaPorId($id){
-        
-        $galeria = Galeria::find($id);
-        
-        if($galeria==null){
-            
-            $response = [
-                'message'        => 'No existe galeria',
-            ];
+    public function listarGaleriaPorId($id)
+    {
 
-          
-        }else{
+        $galeria = Galeria::find($id);
+
+        if ($galeria == null) {
+
             $response = [
-                'msj'        => 'Galeria',
+                'message' => 'No existe galeria',
+            ];
+        } else {
+            $response = [
+                'msj'     => 'Galeria',
                 'Galeria' => $galeria,
             ];
         }
-       
+
         return response()->json($response, 200);
     }
 
@@ -95,14 +90,14 @@ class GaleriaController extends Controller {
         //return response()->json(['request'=>$request->all(),'images'=>$request->images]);
         DB::beginTransaction();
         try {
-        
+
             $galeria = Galeria::findOrFail($idGaleria);
             $galeria->fill($request->all());
 
             $galeria->save();
-        
+
             $response = [
-                'msj'      => 'Galeria actualizada exitosamente',
+                'msj'  => 'Galeria actualizada exitosamente',
                 'data' => $galeria,
             ];
 
@@ -110,7 +105,7 @@ class GaleriaController extends Controller {
         } catch (\Exception $e) {
             DB::rollback();
 
-            Log::error('Ha ocurrido un error en GaleriaController: '.$e->getMessage().', Linea: '.$e->getLine());
+            Log::error('Ha ocurrido un error en GaleriaController: ' . $e->getMessage() . ', Linea: ' . $e->getLine());
 
             return response()->json([
                 'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
@@ -118,7 +113,8 @@ class GaleriaController extends Controller {
         }
     }
 
-    public function destroy($idGaleria) {
+    public function destroy($idGaleria)
+    {
 
         DB::beginTransaction();
 
@@ -136,7 +132,7 @@ class GaleriaController extends Controller {
 
             $galeria->delete();
             $response = [
-                'message'  => 'Galeria eliminada correctamente',
+                'message' => 'Galeria eliminada correctamente',
             ];
 
             DB::commit();
@@ -144,12 +140,11 @@ class GaleriaController extends Controller {
             return response()->json($response, 200);
         } catch (\Exception $e) {
             DB::rollback();
-            Log::error('Ha ocurrido un error en SucursalController: '.$e->getMessage().', Linea: '.$e->getLine());
+            Log::error('Ha ocurrido un error en SucursalController: ' . $e->getMessage() . ', Linea: ' . $e->getLine());
 
             return response()->json([
                 'message' => 'Ha ocurrido un error al tratar de eliminar los datos.',
             ], 500);
         }
     }
-
 }

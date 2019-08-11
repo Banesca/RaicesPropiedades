@@ -8,6 +8,7 @@ backend/.env
 backend/.idea
 backend/.DS_Store
 backend/storage
+backend/node_modules
 
 backend/vendor
 .idea/

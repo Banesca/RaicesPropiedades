@@ -88,12 +88,13 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     /* OBTENER  PAISES PARA EL BUSCADOR */
     Route::get('paises/get','PaisesController@getPais');
-    Route::post('regiones/get','PaisesController@getRegiones');
-    Route::post('provincias/get','PaisesController@getProvincias');
-    Route::post('partidos/get','PaisesController@getPartidos');
-    Route::post('localidades/get','PaisesController@getLocalidades');
-    Route::post('barrios/get','PaisesController@getBarrios');
-    Route::post('subbarrios/get','PaisesController@getsubBarrios');
+    Route::get('regiones/get','PaisesController@getRegiones');
+    Route::get('provincias/get','PaisesController@getProvincias');
+    Route::post('partidos/get','PaisesController@getPartidos'); //idProvincia
+    Route::post('localidades/get','PaisesController@getLocalidades'); //idRegion
+    Route::post('barrios/get','PaisesController@getBarrios'); //idLocalidad
+    Route::post('subbarrios/get','PaisesController@getsubBarrios'); //idBarrio
+    Route::get('sincronizacion','PaisesController@sincService');
     /* Galeria */
     /*   Agregada 12/6/2019    */
     Route::post('galeria/store','GaleriaController@store');
@@ -163,7 +164,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::post('editPropiedad/{idPropiedad}','Ficha3Controller@edit');
     Route::delete('deletePropiedad/{idPropiedad}','Ficha3Controller@delete');
 
-    Route::get('sincronice','SincroniceArgenController@add'); /*en construcción*/
+    Route::post('sincronice','SincroniceArgenController@add'); /*en construcción*/
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
     Route::get('listarPropiedades','Ficha123Controller@listarTodo');
 

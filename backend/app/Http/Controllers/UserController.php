@@ -9,6 +9,7 @@ use App\Perfil;
 use App\PerfilCliente;
 use App\Suscripcion;
 use App\User;
+use App\Mail\NuevoRegistroMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -57,8 +58,8 @@ class UserController extends Controller {
             'propiedad.Servicios.GasNatural' => 'True',
             'propiedad.Servicios.AguaCorriente' => 'True',
             'propiedad.Edificio.CantidadPisos' => '7',
-            'visibilidades%5B0%5D.MontoOperacion' => '150000',
-            'visibilidades%5B0%5D.Moneda.Id' => '2'
+            'visibilidades.MontoOperacion' => '150000',
+            'visibilidades.Moneda.Id' => '2'
         ]);
         curl_setopt_array($curl, array(
             CURLOPT_URL => "http://www.inmuebles.clarin.com/Publicaciones/PublicarIntranet?contentType=json",
@@ -185,6 +186,9 @@ class UserController extends Controller {
                 'msj'  => 'Usuario Creado Exitosamente',
                 'user' => $usuario,
             ];
+
+            Mail::to($request->email)->send(new NuevoRegistroMail($usuario));
+
             DB::commit();
 
             return response()->json($response, 201);
@@ -254,6 +258,7 @@ class UserController extends Controller {
 
             if ($request->password != null && ! empty($request->password)) {
                 $user->password = bcrypt($request->password);
+                Mail::to($request->email)->send(new NuevoPasswordMail($usuario));
             } else {
                 $user->password = $pass_last;
             }
@@ -264,6 +269,10 @@ class UserController extends Controller {
             ];
 
             $user->save();
+
+            if ($request->password != null && ! empty($request->password)) {
+                Mail::to($request->email)->send(new NuevoPasswordMail($user));
+            }
             DB::commit();
 
             return response()->json($response, 200);

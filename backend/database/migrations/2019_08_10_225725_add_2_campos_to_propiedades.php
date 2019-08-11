@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocalidadesTable extends Migration
+class Add2CamposToPropiedades extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateLocalidadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_localidades', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre');
-            $table->integer('fk_region');
-            $table->timestamps();
+        Schema::table('tb_propiedades', function (Blueprint $table) {
+            $table->string('Detalle')->nullable();
         });
     }
 
@@ -28,6 +25,8 @@ class CreateLocalidadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_localidades');
+        Schema::table('tb_propiedades', function (Blueprint $table) {
+            $table->dropColumn('TipoBien');
+        });
     }
 }

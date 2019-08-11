@@ -143,7 +143,6 @@ class CreatePropiedadsTable extends Migration
             $table->integer('fk_TipoTecho')->nullable();
             $table->integer('fk_TipoTechoIndustrial')->nullable();
             $table->integer('fk_TipoTerreno')->nullable();
-            $table->integer('fk_TipoUnidad')->nullable();
             $table->integer('fk_TipoVista')->nullable();
             $table->text('FondoIrregular')->nullable();
             $table->text('FOT')->nullable();
@@ -288,6 +287,30 @@ class CreatePropiedadsTable extends Migration
             $table->text('Vivienda')->nullable();
             $table->text('Zonificacion')->nullable();
             $table->integer('fk_ficha2')->unsigned()->nullable();
+
+
+            $table->text('Edificio_Servicios_ABL')->nullable();
+            $table->text('Edificio_Servicios_AguaCorriente')->nullable();
+            $table->text('Edificio_Servicios_Bar')->nullable();
+            $table->text('Edificio_Servicios_Calefaccion')->nullable();
+            $table->text('Edificio_Servicios_Cocina')->nullable();
+            $table->text('Edificio_Servicios_Conmutador')->nullable();
+            $table->text('Edificio_Servicios_Electricidad')->nullable();
+            $table->text('Edificio_Servicios_GasEnvasado')->nullable();
+            $table->text('Edificio_Servicios_GasNatural')->nullable();
+            $table->text('Edificio_Servicios_Internet')->nullable();
+            $table->text('Edificio_Servicios_Lavanderia')->nullable();
+            $table->text('Edificio_Servicios_Refrigeracion')->nullable();
+            $table->text('Edificio_Servicios_Rentas')->nullable();
+            $table->text('Edificio_Servicios_Seguridad')->nullable();
+            $table->text('Edificio_Servicios_Telefono')->nullable();
+            $table->text('Edificio_Servicios_Videocable')->nullable();
+            $table->text('Edificio_Servicios_Vigilancia')->nullable();
+
+            $table->integer('fk_Direccion_Region_Id')->unsigned()->nullable();
+            $table->integer('fk_TipoUnidadCasa')->unsigned()->nullable();
+            $table->integer('fk_TipoUnidadDepartamento')->unsigned()->nullable();
+
             $table->timestamps();
         });
     }
