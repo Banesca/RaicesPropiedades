@@ -1,5 +1,30 @@
 import { isMedidas } from "../datosPorTipoPropiedad";
 
+
+export const caracteristicasDepartamento = {
+    AptoCredito: true,
+    LongitudFrente: true,
+    LongitudFondo: true,
+    SuperficieCubierta: true,
+    SuperficieDescubierta: true,
+    Antiguedad: true,
+    AptoProfesional: true,
+    CantidadCocheras: true,
+    CocheraOptativa: true,
+    fk_Disposicion: true,
+    Expensas: true,
+    fk_Orientacion: true,
+    PropiedadOcupada: true,
+    fk_TipoBalcon: true,
+    fk_TipoExpensas: true,
+    fk_TipoVista: true,
+    fk_TipoCosta: true,
+    CantidadBanos: true,
+    CantidadAmbientes: true,
+    CantidadDormitorios: true,
+    Generales_PermiteMascotas: true,
+    Generales_SeguroCaucion: true,
+}
 export const arrayAmbientesDepartamento = [
     { label: "Altillo", variableName: "Ambientes_Altillo", isMedidas: isMedidas("Altillo"), medidas: '', selected: false },
     { label: "Antesala", variableName: "Ambientes_Antesala", isMedidas: isMedidas("Antesala"), medidas: '', selected: false },
@@ -17,7 +42,7 @@ export const arrayAmbientesDepartamento = [
     { label: "Comedor Diario", variableName: "Ambientes_ComedorDiario", isMedidas: isMedidas("ComedorDiario"), medidas: '', selected: false },
     { label: "Cuarto De Planchar", variableName: "Ambientes_CuartoDePlanchar", isMedidas: isMedidas("CuartoDePlanchar"), medidas: '', selected: false },
     { label: "Dependencia", variableName: "Ambientes_Dependencia", isMedidas: isMedidas("Dependencia"), medidas: '', selected: false },
-    { label: "Dependencia De Servicio", variableName: "Ambientes_DependenciaDeServicio", isMedidas: isMedidas("DependenciaDeServicio"), medidas: '', selected: false },
+    { label: "Dep. De Servicio", variableName: "Ambientes_DependenciaDeServicio", isMedidas: isMedidas("DependenciaDeServicio"), medidas: '', selected: false },
     { label: "Dormitorio", variableName: "Ambientes_Dormitorio", isMedidas: isMedidas("Dormitorio"), medidas: '', selected: false },
     { label: "Entrepiso", variableName: "Ambientes_Entrepiso", isMedidas: isMedidas("Entrepiso"), medidas: '', selected: false },
     { label: "Escritorio", variableName: "Ambientes_Escritorio", isMedidas: isMedidas("Escritorio"), medidas: '', selected: false },
@@ -44,7 +69,7 @@ export const arrayInstalacionesDepartamento = [
     { label: "Agua Caliente", variableName: "Instalaciones_AguaCaliente", selected: false },
     { label: "Agua Caliente Central", variableName: "Instalaciones_AguaCalienteCentral", selected: false },
     { label: "Agua Corriente", variableName: "Instalaciones_AguaCorriente", selected: false },
-    { label: "Aire Acondicionado Individual", variableName: "Instalaciones_AireAcondicionadoIndividual", selected: false },
+    { label: "Aire Acond. Individual", variableName: "Instalaciones_AireAcondicionadoIndividual", selected: false },
     { label: "Amoblado", variableName: "Instalaciones_Amoblado", selected: false },
     { label: "Ascensor", variableName: "Instalaciones_Ascensor", selected: false },
     { label: "Ascensores De Servicio", variableName: "Instalaciones_AscensoresDeServicio", selected: false },
@@ -69,4 +94,44 @@ export const arrayInstalacionesDepartamento = [
     { label: "Solarium", variableName: "Instalaciones_Solarium", selected: false },
     { label: "Teléfono", variableName: "Instalaciones_Telefono", selected: false },
     { label: "Termotanque", variableName: "Instalaciones_Termotanque", selected: false },
+];
+
+
+export const arrayServiciosDepartamento = [
+    { label: "ABL", variableName: "Servicios_ABL", selected: false },
+    { label: "Agua Corriente", variableName: "Servicios_AguaCorriente", selected: false },
+    { label: "Calefaccion", variableName: "Servicios_Calefaccion", selected: false },
+    { label: "Electricidad", variableName: "Servicios_Electricidad", selected: false },
+    { label: "Gas Envasado", variableName: "Servicios_GasEnvasado", selected: false },
+    { label: "Gas Natural", variableName: "Servicios_GasNatural", selected: false },
+    { label: "Internet", variableName: "Servicios_Internet", selected: false },
+    { label: "Limpieza", variableName: "Servicios_Limpieza", selected: false },
+    { label: "Refrigeración", variableName: "Servicios_Refrigeracion", selected: false },
+    { label: "Rentas", variableName: "Servicios_Rentas", selected: false },
+    { label: "Ropa Cama", variableName: "Servicios_RopaCama", selected: false },
+    { label: "Seguridad", variableName: "Servicios_Seguridad", selected: false },
+    { label: "Teléfono", variableName: "Servicios_Telefono", selected: false },
+    { label: "Toallas", variableName: "Servicios_Toallas", selected: false },
+    { label: "Videocable", variableName: "Servicios_Videocable", selected: false },
+    { label: "Vigilancia", variableName: "Servicios_Vigilancia", selected: false },
+];
+
+export const arrayEdificioServiciosDepartamento = [
+    { label: "ABL", variableName: "Edificio_Servicios_ABL", selected: false },
+    { label: "Agua Corriente", variableName: "Edificio_Servicios_AguaCorriente", selected: false },
+    { label: "Bar", variableName: "Edificio_Servicios_Bar", selected: false },
+    { label: "Calefacción", variableName: "Edificio_Servicios_Calefaccion", selected: false },
+    { label: "Cocina", variableName: "Edificio_Servicios_Cocina", selected: false },
+    { label: "Conmutador", variableName: "Edificio_Servicios_Conmutador", selected: false },
+    { label: "Electricidad", variableName: "Edificio_Servicios_Electricidad", selected: false },
+    { label: "Gas Envasado", variableName: "Edificio_Servicios_GasEnvasado", selected: false },
+    { label: "Gas Natural", variableName: "Edificio_Servicios_GasNatural", selected: false },
+    { label: "Internet", variableName: "Edificio_Servicios_Internet", selected: false },
+    { label: "Lavandería", variableName: "Edificio_Servicios_Lavanderia", selected: false },
+    { label: "Refrigeración", variableName: "Edificio_Servicios_Refrigeracion", selected: false },
+    { label: "Rentas", variableName: "Edificio_Servicios_Rentas", selected: false },
+    { label: "Seguridad", variableName: "Edificio_Servicios_Seguridad", selected: false },
+    { label: "Teléfono", variableName: "Edificio_Servicios_Telefono", selected: false },
+    { label: "Videocable", variableName: "Edificio_Servicios_Videocable", selected: false },
+    { label: "Vigilancia", variableName: "Edificio_Servicios_Vigilancia", selected: false },
 ]

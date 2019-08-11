@@ -4,7 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertsService } from 'src/app/services/alerts.service';
 import { PublicacionesService } from 'src/app/services/publicaciones/publicaciones.service';
-import { IPublicacion } from 'src/app/services/publicaciones/publicaciones.interface';
+import { IPublicacion, VistaPublicaciones } from 'src/app/services/publicaciones/publicaciones.interface';
+import { DataByTipoPropiedad } from './datosPorTipoPropiedad';
 
 @Component({
    selector: 'app-form',
@@ -52,9 +53,30 @@ export class FormComponent implements OnInit {
    arrayBarrio: any[] = [];
    arraySubBarrio: any[] = [];
    arrayCalle: any[] = [];
+   arrayDisposicion: any[] = [];
+   arrayOrientacion: any[] = [];
+   arrayTipoBalcon: any[] = [];
+   arrayTipoExpensas: any[] = [];
+   arrayTipoVista: any[] = [];
+   arrayTipoCosta: any[] = [];
+
 
    arrayMedidasDeAmbientes: { label: string, selected: boolean, medidas: any }[] = [];
-   arrayAmbientes: { label: string, selected: boolean }[] = [];
+   arrayAmbientes: { label: string, variableName: string, isMedidas: boolean, medidas: string, selected: boolean }[] = [];
+
+   //Inicializamos la vista en blanco
+   vista: VistaPublicaciones = {
+      caracteristicas: {},
+      ambientes: [],
+      instalaciones: [],
+      servicios: [],
+      edificio: {
+         caracteristicas: [],
+         instalaciones: [],
+         servicios: []
+      }
+   }
+
 
    constructor(
       private service: PublicacionesService,
@@ -80,8 +102,6 @@ export class FormComponent implements OnInit {
          }
       })
 
-      //cargamos los checks de las medidas y de los ambientes
-      this.loadData();
    }
 
    loadSelects() {
@@ -118,6 +138,30 @@ export class FormComponent implements OnInit {
          this.arrayRegion = resp.Regiones;
       });
 
+      this.service.getDisposicion().then((resp: any) => {
+         this.arrayDisposicion = resp;
+      });
+
+      this.service.getOrientacion().then((resp: any) => {
+         this.arrayOrientacion = resp;
+      });
+
+      this.service.getTipoBalcon().then((resp: any) => {
+         this.arrayTipoBalcon = resp;
+      });
+
+      this.service.getTipoExpensas().then((resp: any) => {
+         this.arrayTipoExpensas = resp;
+      });
+
+      this.service.getTipoVista().then((resp: any) => {
+         this.arrayTipoVista = resp;
+      });
+
+      this.service.getTipoCosta().then((resp: any) => {
+         this.arrayTipoCosta = resp;
+      });
+
 
    }
 
@@ -149,8 +193,11 @@ export class FormComponent implements OnInit {
          fk_idMonedas: ['', Validators.required],
          no_publicar_precio_inter: [false],
          fk_Estado: ['', Validators.required],
+
          //Compartir comision
          comision: ["50", Validators.required],
+
+
          //Ubicación
          //fk_Direccion_Pais_Id: ['', Validators.required],
          fk_Direccion_Provincia_Id: ['', Validators.required],
@@ -164,23 +211,40 @@ export class FormComponent implements OnInit {
          Direccion_Numero: [''],
          Direccion_Piso: [''],
          Direccion_Departamento: [''],
-         //Caracteristicas
+         Direccion_Coordenadas_Latitud: [''],
+         Direccion_Coordenadas_Longitud: [''],
 
-         altura: ['', Validators.required],
-         antiguedad: ['', Validators.required],
-         aEstrenar: [false],
-         cantAmbientes: ['', Validators.required],
-         cantBanios: ['', Validators.required],
-         cDormitorios: ['', Validators.required],
-         mDormitorios: ['', Validators.required],
-         cantToillets: ['', Validators.required],
-         longFrente: ['', Validators.required],
-         longFondo: ['', Validators.required],
-         estadoProp: ['', Validators.required],
-         tipoDeTecho: ['', Validators.required],
-         tipoDeVista: ['', Validators.required],
-         tipoDePendiente: ['', Validators.required],
-         dependencia: [false]
+
+         //Caracteristicas
+         //Inputs
+         LongitudFrente: [''],
+         LongitudFondo: [''],
+         Antiguedad: [''],
+         SuperficieCubierta: [''],
+         SuperficieDescubierta: [''],
+         CantidadCocheras: [''],
+         Expensas: [''],
+         CantidadBanos: [''],
+         CantidadAmbientes: [''],
+         CantidadDormitorios: [''],
+
+         //Checks
+         AptoCredito: [false],
+         AptoProfesional: [false],
+         CocheraOptativa: [false],
+         PropiedadOcupada: [false],
+         Generales_PermiteMascotas: [false],
+         Generales_SeguroCaucion: [false],
+
+
+         //Selects
+         fk_Disposicion: [''],
+         fk_Orientacion: [''],
+         fk_TipoBalcon: [''],
+         fk_TipoExpensas: [''],
+         fk_TipoVista: [''],
+         fk_TipoCosta: [''],
+
       })
 
       this.loadSelects();
@@ -279,6 +343,58 @@ export class FormComponent implements OnInit {
       obj.Direccion_Piso = data3.Direccion_Piso ? data3.Direccion_Piso : '';
       obj.Direccion_Departamento = data3.Direccion_Departamento ? data3.Direccion_Departamento : '';
 
+      //Llenamos las caracteristicas
+      //Inputs
+      obj.LongitudFrente = data3.LongitudFrente ? data3.LongitudFrente : '';
+      obj.LongitudFondo = data3.LongitudFondo ? data3.LongitudFondo : '';
+      obj.Antiguedad = data3.Antiguedad ? data3.Antiguedad : '';
+      obj.SuperficieCubierta = data3.SuperficieCubierta ? data3.SuperficieCubierta : '';
+      obj.SuperficieDescubierta = data3.SuperficieDescubierta ? data3.SuperficieDescubierta : '';
+      obj.CantidadCocheras = data3.CantidadCocheras ? data3.CantidadCocheras : '';
+      obj.Expensas = data3.Expensas ? data3.Expensas : '';
+      obj.CantidadBanos = data3.CantidadBanos ? data3.CantidadBanos : '';
+      obj.CantidadAmbientes = data3.CantidadAmbientes ? data3.CantidadAmbientes : '';
+      obj.CantidadDormitorios = data3.CantidadDormitorios ? data3.CantidadDormitorios : '';
+
+      //Checks
+      obj.AptoCredito = data3.AptoCredito ? 1 : 0;
+      obj.AptoProfesional = data3.AptoProfesional ? 1 : 0;
+      obj.CocheraOptativa = data3.CocheraOptativa ? 1 : 0;
+      obj.PropiedadOcupada = data3.PropiedadOcupada ? 1 : 0;
+      obj.Generales_PermiteMascotas = data3.Generales_PermiteMascotas ? 1 : 0;
+      obj.Generales_SeguroCaucion = data3.Generales_SeguroCaucion ? 1 : 0;
+
+
+      //Selects
+      obj.fk_Disposicion = data3.fk_Disposicion ? data3.fk_Disposicion : '';
+      obj.fk_Orientacion = data3.fk_Orientacion ? data3.fk_Orientacion : '';
+      obj.fk_TipoBalcon = data3.fk_TipoBalcon ? data3.fk_TipoBalcon : '';
+      obj.fk_TipoExpensas = data3.fk_TipoExpensas ? data3.fk_TipoExpensas : '';
+      obj.fk_TipoVista = data3.fk_TipoVista ? data3.fk_TipoVista : '';
+      obj.fk_TipoCosta = data3.fk_TipoCosta ? data3.fk_TipoCosta : '';
+
+      //Obtenemos y llenamos los selects de Ambientes
+      this.vista.ambientes.forEach(element => {
+         obj[element.variableName] = element.selected ? 1 : 0;
+         element.isMedidas ? obj["Medidas_" + element.variableName] = element.medidas : null;
+      });
+
+      //Obtenemos y llenamos los selects de Instalaciones
+      this.vista.instalaciones.forEach(element => {
+         obj[element.variableName] = element.selected ? 1 : 0;
+      });
+
+      //Obtenemos y llenamos los selects de Servicios
+      this.vista.servicios.forEach(element => {
+         obj[element.variableName] = element.selected ? 1 : 0;
+      });
+
+      //Obtenemos y llenamos los selects de Edificios
+      //Servicios
+      this.vista.edificio.servicios.forEach(element => {
+         obj[element.variableName] = element.selected ? 1 : 0;
+      });
+      
       console.log(obj);
 
    }
@@ -306,6 +422,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Departamento;
             break;
          case 3: //Casa
             this.service.getTipoUnidadCasa().then((resp: any) => {
@@ -507,186 +624,6 @@ export class FormComponent implements OnInit {
             this.arrayLocalidad = resp.Localidades;
          });
       }
-   }
-   loadData() {
-      this.arrayMedidasDeAmbientes = [
-         {
-            label: "Hall",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Living",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Comedor",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Escritorio",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Playroom",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Cocina",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Comedor",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Balcón",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Terraza",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Lavandero",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Patio",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Quincho",
-            medidas: "",
-            selected: false
-         },
-         {
-            label: "Pileta",
-            medidas: "",
-            selected: false
-         },
-      ];
-
-      this.arrayAmbientes = [
-         {
-            label: "Altillo",
-            selected: false
-         },
-         {
-            label: "Ante cocina",
-            selected: false
-         },
-         {
-            label: "Antesala",
-            selected: false
-         },
-         {
-            label: "Azotea",
-            selected: false
-         },
-         {
-            label: "Baño",
-            selected: false
-         },
-         {
-            label: "Bar",
-            selected: false
-         },
-         {
-            label: "Baulera",
-            selected: false
-         },
-         {
-            label: "Biblioteca",
-            selected: false
-         },
-         {
-            label: "Bodega",
-            selected: false
-         },
-         {
-            label: "C. herramientas",
-            selected: false
-         },
-         {
-            label: "C. de planchar",
-            selected: false
-         },
-         {
-            label: "Depend. servicio",
-            selected: false
-         },
-         {
-            label: "Dormitorio",
-            selected: false
-         },
-         {
-            label: "Galpón",
-            selected: false
-         },
-         {
-            label: "Garage",
-            selected: false
-         },
-         {
-            label: "Jardín frente",
-            selected: false
-         },
-         {
-            label: "Jardín fondo",
-            selected: false
-         },
-         {
-            label: "Fondo libre",
-            selected: false
-         },
-         {
-            label: "Local",
-            selected: false
-         },
-         {
-            label: "Oficina",
-            selected: false
-         },
-         {
-            label: "Palier",
-            selected: false
-         },
-         {
-            label: "Sala",
-            selected: false
-         },
-         {
-            label: "Sótano",
-            selected: false
-         },
-         {
-            label: "Suite",
-            selected: false
-         },
-         {
-            label: "Vestíbulo",
-            selected: false
-         },
-         {
-            label: "Vestidor",
-            selected: false
-         },
-         {
-            label: "Vestuario",
-            selected: false
-         },
-      ]
    }
 
    show() { }

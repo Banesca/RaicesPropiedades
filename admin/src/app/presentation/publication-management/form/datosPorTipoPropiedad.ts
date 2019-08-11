@@ -1,13 +1,25 @@
-import { arrayAmbientesDepartamento, arrayInstalacionesDepartamento } from "./datosporTipoPropiedad/departamento.propiedad";
+import { arrayAmbientesDepartamento, arrayInstalacionesDepartamento, caracteristicasDepartamento, arrayServiciosDepartamento, arrayEdificioServiciosDepartamento } from "./datosporTipoPropiedad/departamento.propiedad";
+import { VistaPublicaciones } from "src/app/services/publicaciones/publicaciones.interface";
 
-export const DataByTipoPropiedad = {
-    Departamento: {
-        ambientes: arrayAmbientesDepartamento,
-        instalaciones: arrayInstalacionesDepartamento
+
+const dataDepartamento: VistaPublicaciones = {
+    caracteristicas: caracteristicasDepartamento,
+    ambientes: arrayAmbientesDepartamento,
+    instalaciones: arrayInstalacionesDepartamento,
+    servicios: arrayServiciosDepartamento,
+    edificio: {
+        caracteristicas: null,
+        servicios: arrayEdificioServiciosDepartamento,
+        instalaciones: null
     }
 }
 
+export const DataByTipoPropiedad = {
+    Departamento: dataDepartamento
+}
 
+/* Estos son los datos globales o generales de cada array... Los datos de cada tipo de propiedad en especifico estaran en un archivo con
+    el nombre del tipo de propiedad
 
 export const arrayAmbientesGlobal = [
     { label: "Altillo", variableName: "Ambientes_Altillo", isMedidas: isMedidas("Altillo"), medidas: '', selected: false },
@@ -146,9 +158,52 @@ export const arrayInstalacionesGlobal = [
     { label: "Termotanque", variableName: "Instalaciones_Termotanque", selected: false },
     { label: "Tratamiento Efluentes", variableName: "Instalaciones_TratamientoEfluentes", selected: false },
     { label: "Vivienda", variableName: "Instalaciones_Vivienda", selected: false },
+];
+
+export const arrayServiciosGlobal = [
+    //Servicios
+    { label: "ABL", variableName: "Servicios_ABL", selected: false },
+    { label: "Agua Corriente", variableName: "Servicios_AguaCorriente", selected: false },
+    { label: "Bar", variableName: "Servicios_Bar", selected: false },
+    { label: "Calefaccion", variableName: "Servicios_Calefaccion", selected: false },
+    { label: "Cocina", variableName: "Servicios_Cocina", selected: false },
+    { label: "Conmutador", variableName: "Servicios_Conmutador", selected: false },
+    { label: "Electricidad", variableName: "Servicios_Electricidad", selected: false },
+    { label: "Gas Envasado", variableName: "Servicios_GasEnvasado", selected: false },
+    { label: "Gas Natural", variableName: "Servicios_GasNatural", selected: false },
+    { label: "Internet", variableName: "Servicios_Internet", selected: false },
+    { label: "Lavandería", variableName: "Servicios_Lavanderia", selected: false },
+    { label: "Limpieza", variableName: "Servicios_Limpieza", selected: false },
+    { label: "Refrigeración", variableName: "Servicios_Refrigeracion", selected: false },
+    { label: "Rentas", variableName: "Servicios_Rentas", selected: false },
+    { label: "Ropa Cama", variableName: "Servicios_RopaCama", selected: false },
+    { label: "Seguridad", variableName: "Servicios_Seguridad", selected: false },
+    { label: "Teléfono", variableName: "Servicios_Telefono", selected: false },
+    { label: "Toallas", variableName: "Servicios_Toallas", selected: false },
+    { label: "Videocable", variableName: "Servicios_Videocable", selected: false },
+    { label: "Vigilancia", variableName: "Servicios_Vigilancia", selected: false },
 ]
 
-
+export const arrayEdificioServiciosGlobal = [
+    { label: "ABL", variableName: "Edificio_Servicios_ABL", selected: false },
+    { label: "Agua Corriente", variableName: "Edificio_Servicios_AguaCorriente", selected: false },
+    { label: "Bar", variableName: "Edificio_Servicios_Bar", selected: false },
+    { label: "Calefacción", variableName: "Edificio_Servicios_Calefaccion", selected: false },
+    { label: "Cocina", variableName: "Edificio_Servicios_Cocina", selected: false },
+    { label: "Conmutador", variableName: "Edificio_Servicios_Conmutador", selected: false },
+    { label: "Electricidad", variableName: "Edificio_Servicios_Electricidad", selected: false },
+    { label: "Gas Envasado", variableName: "Edificio_Servicios_GasEnvasado", selected: false },
+    { label: "Gas Natural", variableName: "Edificio_Servicios_GasNatural", selected: false },
+    { label: "Internet", variableName: "Edificio_Servicios_Internet", selected: false },
+    { label: "Lavandería", variableName: "Edificio_Servicios_Lavanderia", selected: false },
+    { label: "Refrigeración", variableName: "Edificio_Servicios_Refrigeracion", selected: false },
+    { label: "Rentas", variableName: "Edificio_Servicios_Rentas", selected: false },
+    { label: "Seguridad", variableName: "Edificio_Servicios_Seguridad", selected: false },
+    { label: "Teléfono", variableName: "Edificio_Servicios_Telefono", selected: false },
+    { label: "Videocable", variableName: "Edificio_Servicios_Videocable", selected: false },
+    { label: "Vigilancia", variableName: "Edificio_Servicios_Vigilancia", selected: false },
+]
+*/
 export function isMedidas(value: string): boolean {
     switch (value) {
         case 'Hall':
@@ -161,6 +216,11 @@ export function isMedidas(value: string): boolean {
         case 'Jardin':
         case 'Patio':
         case 'Balcon':
+        case 'Sotano':
+        case 'Oficina':
+        case 'Deposito':
+        case 'Archivo':
+        case 'Sala':
             return true;
         default:
             return false;

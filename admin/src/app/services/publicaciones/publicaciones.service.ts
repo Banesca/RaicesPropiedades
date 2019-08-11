@@ -209,4 +209,65 @@ export class PublicacionesService {
 
       })).toPromise();
   }
+
+  getDisposicion() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getDisposicion', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getOrientacion() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getOrientacion', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoBalcon() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoBalcon', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoExpensas() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoExpensas', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoVista() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoVista', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoCosta() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoCosta', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
 }
