@@ -324,6 +324,9 @@ class PublicacionesSeeder extends Seeder {
                 'Edificio_Servicios_Videocable'    => rand(0, 1),
                 'Edificio_Servicios_Vigilancia'    => rand(0, 1),
 
+                'Detalle'  => 'ninguno',
+                'TipoBien' => 'alguno',
+
                 'a_estrenar'               => 0,
                 'no_publicar_precio_inter' => 0,
                 'informacion_adicional'    => 'Notas adicional',
