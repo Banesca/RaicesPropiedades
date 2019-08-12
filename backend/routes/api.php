@@ -171,7 +171,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::post('addContactanos','ContactoController@add');
     Route::get('listarContactanos','ContactoController@listar');
 
-    Route::get('ubicaciones','BuscadorDePropiedadesController@direcciones');
+    //Route::get('ubicaciones','BuscadorDePropiedadesController@direcciones');
 
     Route::post('buscadorGeneral','BuscadorDePropiedadesController@buscarGeneral');
 
