@@ -10,6 +10,7 @@ class Provincias extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
+        'id',
         'nombre',
         'fk_pais'
     ];
