@@ -264,6 +264,23 @@ export class FormComponent implements OnInit {
          MetrosDeLaEsquina: [''],
          UltimaActividad: [''],
          GaleriaShopping: [''],
+         SuperficiePlaya: [''],
+         SuperficieDeposito: [''],
+         CantidadPisos: [''],
+         HabitacionesPorPiso: [''],
+         CantidadPersonal: [''],
+         RentabilidadAnual: [''],
+         CantidadHabitaciones: [''],
+         CantidadEstrellas: [''],
+         CantidadPlazas: [''],
+         CantidadCubiertos: [''],
+         SuperficieTotal: [''],
+         SuperficieConstruible: [''],
+         MedidaLinealDerecha: [''],
+         MedidaLinealIzquierda: [''],
+         FOT: [''],
+         Zonificacion: [''],
+
 
          //Checks
          AptoCredito: [false],
@@ -277,6 +294,11 @@ export class FormComponent implements OnInit {
          TerrenoPropio: [false],
          Vidriera: [false],
          EnEdificio: [false],
+         Demolicion: [false],
+         FondoIrregular: [false],
+         FrenteIrregular: [false],
+         LateralDerechoIrregular: [false],
+         LateralIzquierdoIrregular: [false],
 
 
          //Selects
@@ -412,6 +434,22 @@ export class FormComponent implements OnInit {
       obj.MetrosDeLaEsquina = data3.MetrosDeLaEsquina ? data3.MetrosDeLaEsquina : '';
       obj.UltimaActividad = data3.UltimaActividad ? data3.UltimaActividad : '';
       obj.GaleriaShopping = data3.GaleriaShopping ? data3.GaleriaShopping : '';
+      obj.SuperficiePlaya = data3.SuperficiePlaya ? data3.SuperficiePlaya : '';
+      obj.SuperficieDeposito = data3.SuperficieDeposito ? data3.SuperficieDeposito : '';
+      obj.CantidadPisos = data3.CantidadPisos ? data3.CantidadPisos : '';
+      obj.HabitacionesPorPiso = data3.HabitacionesPorPiso ? data3.HabitacionesPorPiso : '';
+      obj.CantidadPersonal = data3.CantidadPersonal ? data3.CantidadPersonal : '';
+      obj.RentabilidadAnual = data3.RentabilidadAnual ? data3.RentabilidadAnual : '';
+      obj.CantidadHabitaciones = data3.CantidadHabitaciones ? data3.CantidadHabitaciones : '';
+      obj.CantidadEstrellas = data3.CantidadEstrellas ? data3.CantidadEstrellas : '';
+      obj.CantidadPlazas = data3.CantidadPlazas ? data3.CantidadPlazas : '';
+      obj.CantidadCubiertos = data3.CantidadCubiertos ? data3.CantidadCubiertos : '';
+      obj.SuperficieTotal = data3.SuperficieTotal ? data3.SuperficieTotal : '';
+      obj.SuperficieConstruible = data3.SuperficieConstruible ? data3.SuperficieConstruible : '';
+      obj.MedidaLinealDerecha = data3.MedidaLinealDerecha ? data3.MedidaLinealDerecha : '';
+      obj.MedidaLinealIzquierda = data3.MedidaLinealIzquierda ? data3.MedidaLinealIzquierda : '';
+      obj.FOT = data3.FOT ? data3.FOT : '';
+      obj.Zonificacion = data3.Zonificacion ? data3.Zonificacion : '';
 
 
       //Checks
@@ -426,6 +464,11 @@ export class FormComponent implements OnInit {
       obj.TerrenoPropio = data3.TerrenoPropio ? 1 : 0;
       obj.Vidriera = data3.Vidriera ? 1 : 0;
       obj.EnEdificio = data3.EnEdificio ? 1 : 0;
+      obj.Demolicion = data3.Demolicion ? 1 : 0;
+      obj.FondoIrregular = data3.FondoIrregular ? 1 : 0;
+      obj.FrenteIrregular = data3.FrenteIrregular ? 1 : 0;
+      obj.LateralDerechoIrregular = data3.LateralDerechoIrregular ? 1 : 0;
+      obj.LateralIzquierdoIrregular = data3.LateralIzquierdoIrregular ? 1 : 0;
 
 
       //Selects

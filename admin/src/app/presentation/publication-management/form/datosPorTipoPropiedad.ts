@@ -5,6 +5,8 @@ import { caracteristicasCasa, arrayAmbientesCasa, arrayInstalacionesCasa, arrayS
 import { caracteristicasQuinta, arrayAmbientesQuinta, arrayInstalacionesQuinta, arrayServiciosQuinta } from "./datosporTipoPropiedad/quinta.propiedad";
 import { caracteristicasCochera } from "./datosporTipoPropiedad/cochera.propiedad";
 import { caracteristicasLocal, arrayAmbientesLocal, arrayInstalacionesLocal, arrayServiciosLocal } from "./datosporTipoPropiedad/local.propiedad";
+import { caracteristicasHotel, arrayAmbientesHotel, arrayInstalacionesHotel, arrayServiciosHotel } from "./datosporTipoPropiedad/hotel.propiedad";
+import { caracteristicasTerreno, arrayInstalacionesTerreno, arrayServiciosTerreno } from "./datosporTipoPropiedad/terreno.propiedad";
 
 
 const dataDepartamento: VistaPublicaciones = {
@@ -59,6 +61,22 @@ const dataLocal: VistaPublicaciones = {
     edificio: null
 }
 
+const dataHotel: VistaPublicaciones = {
+    caracteristicas: caracteristicasHotel,
+    ambientes: arrayAmbientesHotel,
+    instalaciones: arrayInstalacionesHotel,
+    servicios: arrayServiciosHotel,
+    edificio: null
+}
+
+const dataTerreno: VistaPublicaciones = {
+    caracteristicas: caracteristicasTerreno,
+    ambientes: null,
+    instalaciones: arrayInstalacionesTerreno,
+    servicios: arrayServiciosTerreno,
+    edificio: null
+}
+
 export const DataByTipoPropiedad = {
     Departamento: dataDepartamento,
     DepartamentoTipoCasa: dataDepartamentoTipoCasa,
@@ -66,8 +84,8 @@ export const DataByTipoPropiedad = {
     Quinta: dataQuinta,
     Cochera: dataCochera,
     Local: dataLocal,
-    Hotel: null,
-    Terreno: null,
+    Hotel: dataHotel,
+    Terreno: dataTerreno,
     Oficina: null,
     Campo: null,
     FondoComercio: null,

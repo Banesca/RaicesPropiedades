@@ -134,9 +134,18 @@ export interface IPublicacion {
     Vidriera?: number;
     MetrosDeLaEsquina?: number;
     EnEdificio?: number;
-    UltimaActividad: string;
-    GaleriaShopping: string;
-
+    UltimaActividad?: string;
+    GaleriaShopping?: string;
+    HabitacionesPorPiso?: number;
+    RentabilidadAnual?: number;
+    FondoIrregular?: number;
+    FrenteIrregular?: number;
+    LateralDerechoIrregular?: number;
+    LateralIzquierdoIrregular?: number;
+    MedidaLinealDerecha?: number;
+    MedidaLinealIzquierda?: number;
+    FOT?: number;
+    Zonificacion?: string;
 
     //Ambientes
     Ambientes_Altillo?: number;
