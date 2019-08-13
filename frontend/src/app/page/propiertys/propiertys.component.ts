@@ -8,7 +8,7 @@ import { PublicacionesService } from "src/app/servicios/servicios.index";
 })
 export class PropiertysComponent implements OnInit {
   @Input() name;
-  public baseUrl: string = '../buscador/detail/'
+  public baseUrl: string = '../buscador/detail/';
 
   mContacto: any[];
   mCategorias: any;

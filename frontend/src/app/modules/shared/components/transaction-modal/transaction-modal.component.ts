@@ -131,7 +131,6 @@ export class TransactionModalComponent implements OnInit {
   onFileChange(event, image) {
     if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
-
       if (image === "imagen_1") {
         this.contactForm.get("imagen_1").setValue(file);
         this.files++;
