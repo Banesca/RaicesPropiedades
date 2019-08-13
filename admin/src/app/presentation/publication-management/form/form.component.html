@@ -514,7 +514,8 @@
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <mat-select placeholder="Partido*" formControlName="fk_Direccion_Partido_Id">
+                                       <mat-select placeholder="Partido*" formControlName="fk_Direccion_Partido_Id"
+                                       (selectionChange)="reloadLocalidades($event)">
                                           <mat-option *ngFor="let item of arrayPartido" [value]="item.id">
                                              {{item.nombre}}
                                           </mat-option>
@@ -532,34 +533,13 @@
                               </div>
                            </div>
 
+                          
                            <div class="col-md-3">
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <mat-select placeholder="Región*" formControlName="fk_Direccion_Region_Id"
-                                          (selectionChange)="reloadLocalidades($event)">
-                                          <mat-option *ngFor="let item of arrayRegion" [value]="item.id">
-                                             {{item.nombre}}
-                                          </mat-option>
-                                          <mat-option value='0'>
-                                             Otra
-                                          </mat-option>
-                                       </mat-select>
-                                       <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
-                                       </mat-error>
-
-                                    </mat-form-field>
-                                 </div>
-                              </div>
-                           </div>
-
-                           <div class="col-md-3">
-                              <div class="form-group">
-                                 <div class="example-container">
-                                    <mat-form-field>
-                                       <mat-select placeholder="Localidad*" formControlName="fk_Direccion_Localidad_Id">
+                                       <mat-select placeholder="Localidad*" formControlName="fk_Direccion_Localidad_Id"
+                                       (selectionChange)="reloadBarrios($event)">
 
                                           <mat-option *ngFor="let item of arrayLocalidad" [value]="item.id">
                                              {{item.nombre}}
@@ -582,28 +562,10 @@
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <mat-select placeholder="Ciudad" formControlName="fk_Direccion_Ciudad_Id">
-                                          <mat-option *ngFor="let item of arrayCiudad" value="item.value">
-                                             {{item.label}}
-                                          </mat-option>
-                                       </mat-select>
-                                       <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
-                                       </mat-error>
-
-                                    </mat-form-field>
-                                 </div>
-                              </div>
-                           </div>
-
-                           <div class="col-md-3">
-                              <div class="form-group">
-                                 <div class="example-container">
-                                    <mat-form-field>
-                                       <mat-select placeholder="Barrio" formControlName="fk_Direccion_Barrio_Id">
-                                          <mat-option *ngFor="let item of arrayBarrio" value="item.value">
-                                             {{item.label}}
+                                       <mat-select placeholder="Barrio" formControlName="fk_Direccion_Barrio_Id"
+                                       (selectionChange)="reloadSubBarrios($event)">
+                                          <mat-option *ngFor="let item of arrayBarrio" [value]="item.id">
+                                             {{item.nombre}}
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
@@ -621,8 +583,8 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Sub-barrio" formControlName="fk_Direccion_SubBarrio_Id">
-                                          <mat-option *ngFor="let item of arraySubBarrio" value="item.value">
-                                             {{item.label}}
+                                          <mat-option *ngFor="let item of arraySubBarrio" [value]="item.id">
+                                             {{item.nombre}}
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>

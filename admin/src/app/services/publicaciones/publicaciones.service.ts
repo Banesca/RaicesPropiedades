@@ -176,7 +176,7 @@ export class PublicacionesService {
 
   getPartidos(idProvincia: number) {
     let data = {
-      idProvincia: idProvincia
+      fk_provincia: idProvincia
     }
     return this._HttpClient.post(environment.apiHost + this.mService + 'partidos/get', data, {
       headers: getHeaders()
@@ -187,8 +187,12 @@ export class PublicacionesService {
       })).toPromise();
   }
 
-  getRegiones() {
-    return this._HttpClient.get(environment.apiHost + this.mService + 'regiones/get', {
+
+  getLocalidades(idPartido: number) {
+    let data = {
+      fk_idPartido: idPartido
+    }
+    return this._HttpClient.post(environment.apiHost + this.mService + 'localidades/get', data, {
       headers: getHeaders()
     }).pipe(
       map((data: any[]) => {
@@ -197,11 +201,24 @@ export class PublicacionesService {
       })).toPromise();
   }
 
-  getLocalidades(idRegion: number) {
+  getBarrios(idLocalidad: number) {
     let data = {
-      idRegion: idRegion
+      idLocalidad: idLocalidad
     }
-    return this._HttpClient.post(environment.apiHost + this.mService + 'localidades/get', data, {
+    return this._HttpClient.post(environment.apiHost + this.mService + 'barrios/get', data, {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getSubBarrios(idBarrio: number) {
+    let data = {
+      idBarrio: idBarrio
+    }
+    return this._HttpClient.post(environment.apiHost + this.mService + 'subbarrios/get', data, {
       headers: getHeaders()
     }).pipe(
       map((data: any[]) => {

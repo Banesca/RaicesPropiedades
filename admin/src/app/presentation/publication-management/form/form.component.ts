@@ -47,7 +47,6 @@ export class FormComponent implements OnInit {
    arrayPais: any[] = [];
    arrayProvincia: any[] = [];
    arrayPartido: any[] = [];
-   arrayRegion: any[] = [];
    arrayLocalidad: any[] = [];
    arrayCiudad: any[] = [];
    arrayBarrio: any[] = [];
@@ -142,10 +141,6 @@ export class FormComponent implements OnInit {
 
       this.service.getProvincias().then((resp: any) => {
          this.arrayProvincia = resp.Provincias;
-      });
-
-      this.service.getRegiones().then((resp: any) => {
-         this.arrayRegion = resp.Regiones;
       });
 
       this.service.getDisposicion().then((resp: any) => {
@@ -857,6 +852,24 @@ export class FormComponent implements OnInit {
       if (event.value >= 0) {
          this.service.getLocalidades(event.value).then((resp: any) => {
             this.arrayLocalidad = resp.Localidades;
+         });
+      }
+   }
+
+   reloadBarrios(event) {
+      this.formThree.controls['fk_Direccion_Barrio_Id'].setValue('');
+      if (event.value >= 0) {
+         this.service.getBarrios(event.value).then((resp: any) => {
+            this.arrayBarrio = resp.Barrios;
+         });
+      }
+   }
+
+   reloadSubBarrios(event) {
+      this.formThree.controls['fk_Direccion_SubBarrio_Id'].setValue('');
+      if (event.value >= 0) {
+         this.service.getSubBarrios(event.value).then((resp: any) => {
+            this.arraySubBarrio = resp.SubBarrios;
          });
       }
    }
