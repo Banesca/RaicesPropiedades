@@ -10,12 +10,15 @@
         <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Actualizar">
           Actualizar Galería Home
         </h3>
+        <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Leer">
+          Detalles Galería Home
+        </h3>
             <button
             (click)="nuevo()"
             type="button"
             class="btn btn-primary"
             class="btn btn-success my-4"
-            *ngIf="mFormaEstado != enCRUD.Crear && mFormaEstado != enCRUD.Actualizar"
+            *ngIf="mFormaEstado != enCRUD.Crear && mFormaEstado != enCRUD.Actualizar && mFormaEstado != enCRUD.Leer"
           >
             <i class="fa fa-plus"></i>
            Nuevo
@@ -119,47 +122,67 @@
             Modificar
           </button>
         </div>
-        <div class="form-group">
-          <label for="">Título</label>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="titulo"
-            placeholder="Título"
-            [(ngModel)]="mCategoriasSelect.titulo"
-          />
-          <div *ngIf="submitted && f.titulo.errors" type="alert" class="invalid-feedback d-block">
-            <div *ngIf="f.titulo.errors.required">El título es requerido</div>
-            <div *ngIf="f.titulo.errors.minlength">Mínimo de 3 caracteres</div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Título</label>
+              <input class="form-control" type="text" formControlName="titulo" placeholder="Título" [(ngModel)]="mCategoriasSelect.titulo" />
+              <div *ngIf="submitted && f.titulo.errors" type="alert" class="invalid-feedback d-block">
+                <div *ngIf="f.titulo.errors.required">El título es requerido</div>
+                <div *ngIf="f.titulo.errors.minlength">Mínimo de 3 caracteres</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Publicación</label>
+              <select formControlName="fk_publicaciones" class="form-control form-control-lg">
+                <option value="">Seleciona Una Publicación</option>
+                <option *ngFor="let publicacion of mPublicaciones" type="number" [value]="publicacion.idPropiedad">{{publicacion.descipcion}}</option>
+              </select>
+              <div *ngIf="submitted && f.fk_publicaciones.errors" type="alert" class="invalid-feedback d-block">
+                <div *ngIf="f.fk_publicaciones.errors.required">Debe seleccionar una publicación</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="">Publicación</label>
-          <select  formControlName="fk_publicaciones"  class="form-control form-control-lg">
-            <option value="">Seleciona Una Publicación</option>
-            <option *ngFor="let publicacion of mPublicaciones"
-            type="number" [value]="publicacion.idFichas">{{publicacion.ficha1.descipcion}}</option>
-          </select>
-          <div *ngIf="submitted && f.fk_publicaciones.errors" type="alert" class="invalid-feedback d-block">
-            <div *ngIf="f.fk_publicaciones.errors.required">Debe seleccionar una publicación</div>
-          </div>
-        </div>
-  
-        <div class="form-group">
-          <label for="">Descripción</label>
-          <textarea
-            class="form-control"
-            type="text"
-            formControlName="descripcion"
-            placeholder="Descripción"
-            [(ngModel)]="mCategoriasSelect.descripcion"
-          ></textarea>
-          <div *ngIf="submitted && f.descripcion.errors" type="alert" class="invalid-feedback d-block">
-            <div *ngIf="f.descripcion.errors.required">Descripción es requerida</div>
-            <div *ngIf="f.descripcion.errors.minlength">Mínimo de 10 caracteres</div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Descripción</label>
+              <textarea class="form-control" type="text" formControlName="descripcion" placeholder="Descripción" [(ngModel)]="mCategoriasSelect.descripcion"></textarea>
+              <div *ngIf="submitted && f.descripcion.errors" type="alert" class="invalid-feedback d-block">
+                <div *ngIf="f.descripcion.errors.required">Descripción es requerida</div>
+                <div *ngIf="f.descripcion.errors.minlength">Mínimo de 10 caracteres</div>
             
+              </div>
+            </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Imagenes</label>
+              <div class="wrapper-dropzone">
+                <div class="drop">
+                  <div class="cont">
+                    <div class="browse">
+                      click here to browse
+                    </div>
+                  </div>
+                  <div>
+                    <output id="list"></output>
+                  </div>
+                  <div>
+                    <input id="files" multiple="true" name="files[]" type="file" (change)="handleFileSelect($event)"/>
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </form>
     </div>
   </div>

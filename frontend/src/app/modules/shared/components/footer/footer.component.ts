@@ -32,7 +32,7 @@ export class FooterComponent {
       .All()
       .then(data => {
         this.mCategoria = data;
-        // console.log("mCategoria footer:  ",this.mCategoria);
+        console.log("mCategoria footer:  ",this.mCategoria);
       })
       .catch(error => {
         console.log("Error en peticion de getAll");

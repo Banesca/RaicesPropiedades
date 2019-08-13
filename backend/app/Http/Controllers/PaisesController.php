@@ -124,13 +124,13 @@ class PaisesController extends Controller {
     }
 
     public function getLocalidades(Request $request) {
-        $request->validate([
+        $this->validate($request,[
             'fk_idPartido' => 'required',
 
         ]);
         $fk_idPartido = $request->fk_idPartido;
         DB::beginTransaction();
-
+        
         try {
 
             $Paises   = Localidades::where('fk_idPartido', '=', $fk_idPartido)->get();

@@ -1,5 +1,17 @@
 import { arrayAmbientesDepartamento, arrayInstalacionesDepartamento, caracteristicasDepartamento, arrayServiciosDepartamento, arrayEdificioServiciosDepartamento } from "./datosporTipoPropiedad/departamento.propiedad";
 import { VistaPublicaciones } from "src/app/services/publicaciones/publicaciones.interface";
+import { caracteristicasDepartamentoTipoCasa, arrayAmbientesDepartamentoTipoCasa, arrayInstalacionesDepartamentoTipoCasa, arrayServiciosDepartamentoTipoCasa } from "./datosporTipoPropiedad/departamentoTipoCasa.propiedad";
+import { caracteristicasCasa, arrayAmbientesCasa, arrayInstalacionesCasa, arrayServiciosCasa } from "./datosporTipoPropiedad/casa.propiedad";
+import { caracteristicasQuinta, arrayAmbientesQuinta, arrayInstalacionesQuinta, arrayServiciosQuinta } from "./datosporTipoPropiedad/quinta.propiedad";
+import { caracteristicasCochera } from "./datosporTipoPropiedad/cochera.propiedad";
+import { caracteristicasLocal, arrayAmbientesLocal, arrayInstalacionesLocal, arrayServiciosLocal } from "./datosporTipoPropiedad/local.propiedad";
+import { caracteristicasHotel, arrayAmbientesHotel, arrayInstalacionesHotel, arrayServiciosHotel } from "./datosporTipoPropiedad/hotel.propiedad";
+import { caracteristicasTerreno, arrayInstalacionesTerreno, arrayServiciosTerreno } from "./datosporTipoPropiedad/terreno.propiedad";
+import { caracteristicasOficina, arrayAmbientesOficina, arrayInstalacionesOficina, arrayServiciosOficina } from "./datosporTipoPropiedad/oficina.propiedad";
+import { caracteristicasCampo, arrayInstalacionesCampo, arrayServiciosCampo } from "./datosporTipoPropiedad/campo.propiedad";
+import { caracteristicasFondoComercio, arrayAmbientesFondoComercio, arrayServiciosFondoComercio } from "./datosporTipoPropiedad/fondoComercio.propiedad";
+import { caracteristicasGalpon, arrayInstalacionesGalpon, arrayServiciosGalpon } from "./datosporTipoPropiedad/galpon.propiedad";
+import { caracteristicasNegocioEspecial } from "./datosporTipoPropiedad/negocioEspecial.propiedad";
 
 
 const dataDepartamento: VistaPublicaciones = {
@@ -14,8 +26,116 @@ const dataDepartamento: VistaPublicaciones = {
     }
 }
 
+const dataDepartamentoTipoCasa: VistaPublicaciones = {
+    caracteristicas: caracteristicasDepartamentoTipoCasa,
+    ambientes: arrayAmbientesDepartamentoTipoCasa,
+    instalaciones: arrayInstalacionesDepartamentoTipoCasa,
+    servicios: arrayServiciosDepartamentoTipoCasa,
+    edificio: null
+}
+
+const dataCasa: VistaPublicaciones = {
+    caracteristicas: caracteristicasCasa,
+    ambientes: arrayAmbientesCasa,
+    instalaciones: arrayInstalacionesCasa,
+    servicios: arrayServiciosCasa,
+    edificio: null
+}
+
+const dataQuinta: VistaPublicaciones = {
+    caracteristicas: caracteristicasQuinta,
+    ambientes: arrayAmbientesQuinta,
+    instalaciones: arrayInstalacionesQuinta,
+    servicios: arrayServiciosQuinta,
+    edificio: null
+}
+
+const dataCochera: VistaPublicaciones = {
+    caracteristicas: caracteristicasCochera,
+    ambientes: null,
+    instalaciones: null,
+    servicios: null,
+    edificio: null
+}
+
+const dataLocal: VistaPublicaciones = {
+    caracteristicas: caracteristicasLocal,
+    ambientes: arrayAmbientesLocal,
+    instalaciones: arrayInstalacionesLocal,
+    servicios: arrayServiciosLocal,
+    edificio: null
+}
+
+const dataHotel: VistaPublicaciones = {
+    caracteristicas: caracteristicasHotel,
+    ambientes: arrayAmbientesHotel,
+    instalaciones: arrayInstalacionesHotel,
+    servicios: arrayServiciosHotel,
+    edificio: null
+}
+
+const dataTerreno: VistaPublicaciones = {
+    caracteristicas: caracteristicasTerreno,
+    ambientes: null,
+    instalaciones: arrayInstalacionesTerreno,
+    servicios: arrayServiciosTerreno,
+    edificio: null
+}
+
+const dataOficina: VistaPublicaciones = {
+    caracteristicas: caracteristicasOficina,
+    ambientes: arrayAmbientesOficina,
+    instalaciones: arrayInstalacionesOficina,
+    servicios: arrayServiciosOficina,
+    edificio: null
+}
+
+const dataCampo: VistaPublicaciones = {
+    caracteristicas: caracteristicasCampo,
+    ambientes: null,
+    instalaciones: arrayInstalacionesCampo,
+    servicios: arrayServiciosCampo,
+    edificio: null
+}
+
+const dataFondoComercio: VistaPublicaciones = {
+    caracteristicas: caracteristicasFondoComercio,
+    ambientes: arrayAmbientesFondoComercio,
+    instalaciones: null,
+    servicios: arrayServiciosFondoComercio,
+    edificio: null
+}
+
+const dataGalpon: VistaPublicaciones = {
+    caracteristicas: caracteristicasGalpon,
+    ambientes: null,
+    instalaciones: arrayInstalacionesGalpon,
+    servicios: arrayServiciosGalpon,
+    edificio: null
+}
+
+const dataNegocioEspecial: VistaPublicaciones = {
+    caracteristicas: caracteristicasNegocioEspecial,
+    ambientes: null,
+    instalaciones: null,
+    servicios: null,
+    edificio: null
+}
+
 export const DataByTipoPropiedad = {
-    Departamento: dataDepartamento
+    Departamento: dataDepartamento,
+    DepartamentoTipoCasa: dataDepartamentoTipoCasa,
+    Casa: dataCasa,
+    Quinta: dataQuinta,
+    Cochera: dataCochera,
+    Local: dataLocal,
+    Hotel: dataHotel,
+    Terreno: dataTerreno,
+    Oficina: dataOficina,
+    Campo: dataCampo,
+    FondoComercio: dataFondoComercio,
+    Galpon: dataGalpon,
+    NegocioEspecial: dataNegocioEspecial
 }
 
 /* Estos son los datos globales o generales de cada array... Los datos de cada tipo de propiedad en especifico estaran en un archivo con
