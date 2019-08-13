@@ -853,6 +853,21 @@
                               </div>
                            </div>
 
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadPlantas">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Plantas"
+                                          formControlName="CantidadPlantas">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
                            <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadBanos">
                               <div class="form-group">
                                  <div class="example-container">
@@ -907,7 +922,8 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Disposición" formControlName="fk_Disposicion">
-                                          <mat-option *ngFor="let item of arrayDisposicion" [value]="item.idDisposicion">
+                                          <mat-option *ngFor="let item of arrayDisposicion"
+                                             [value]="item.idDisposicion">
                                              {{item.descripcion}}
                                           </mat-option>
                                        </mat-select>
@@ -926,7 +942,8 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Orientación" formControlName="fk_Orientacion">
-                                          <mat-option *ngFor="let item of arrayOrientacion" [value]="item.idOrientacion">
+                                          <mat-option *ngFor="let item of arrayOrientacion"
+                                             [value]="item.idOrientacion">
                                              {{item.descripcion}}
                                           </mat-option>
                                        </mat-select>
@@ -964,7 +981,8 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Tipo Expensas" formControlName="fk_TipoExpensas">
-                                          <mat-option *ngFor="let item of arrayTipoExpensas" [value]=" item.idTipoExpensa">
+                                          <mat-option *ngFor="let item of arrayTipoExpensas"
+                                             [value]=" item.idTipoExpensa">
                                              {{item.descripcion}}
                                           </mat-option>
                                        </mat-select>
@@ -1003,6 +1021,25 @@
                                     <mat-form-field>
                                        <mat-select placeholder="Tipo Costa" formControlName="fk_TipoCosta">
                                           <mat-option *ngFor="let item of arrayTipoCosta" [value]=" item.idTipoCosta">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoTecho">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo Techo" formControlName="fk_TipoTecho">
+                                          <mat-option *ngFor="let item of arrayTipoTecho" [value]="item.idTipoTecho">
                                              {{item.descripcion}}
                                           </mat-option>
                                        </mat-select>
@@ -1212,7 +1249,8 @@
                                     style="background-color: brown; color: white">Cancelar</button>
 
                                  <button mat-raised-button matStepperPrevious
-                                    style="margin-left: 10px; background-color: #262626; color: white" (click)="getDataForm()">Regresar</button>
+                                    style="margin-left: 10px; background-color: #262626; color: white"
+                                    (click)="getDataForm()">Regresar</button>
 
                                  <button mat-raised-button color="primary" matStepperNext style="margin-left: 10px;"
                                     [disabled]="!formThree.valid">Publicar</button>

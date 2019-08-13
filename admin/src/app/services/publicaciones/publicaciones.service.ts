@@ -270,4 +270,14 @@ export class PublicacionesService {
       })).toPromise();
   }
 
+  getTipoTecho() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoTecho', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
 }

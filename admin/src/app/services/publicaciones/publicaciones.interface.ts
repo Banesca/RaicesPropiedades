@@ -54,6 +54,7 @@ export interface IPublicacion {
     fk_TipoCochera?: number;
     fk_TipoLocal?: number;
     fk_TipoHotel?: number;
+    fk_TipoTecho?: number;
     fk_TipoTerreno?: number;
     fk_TipoCampo?: number;
     fk_TipoFondoComercio?: number;

@@ -59,6 +59,7 @@ export class FormComponent implements OnInit {
    arrayTipoExpensas: any[] = [];
    arrayTipoVista: any[] = [];
    arrayTipoCosta: any[] = [];
+   arrayTipoTecho: any[] = [];
 
 
    arrayMedidasDeAmbientes: { label: string, selected: boolean, medidas: any }[] = [];
@@ -162,6 +163,9 @@ export class FormComponent implements OnInit {
          this.arrayTipoCosta = resp;
       });
 
+      this.service.getTipoTecho().then((resp: any) => {
+         this.arrayTipoTecho = resp;
+      });
 
    }
 
@@ -227,6 +231,7 @@ export class FormComponent implements OnInit {
          CantidadBanos: [''],
          CantidadAmbientes: [''],
          CantidadDormitorios: [''],
+         CantidadPlantas: [''],
 
          //Checks
          AptoCredito: [false],
@@ -244,6 +249,7 @@ export class FormComponent implements OnInit {
          fk_TipoExpensas: [''],
          fk_TipoVista: [''],
          fk_TipoCosta: [''],
+         fk_TipoTecho: [''],
 
       })
 
@@ -355,6 +361,7 @@ export class FormComponent implements OnInit {
       obj.CantidadBanos = data3.CantidadBanos ? data3.CantidadBanos : '';
       obj.CantidadAmbientes = data3.CantidadAmbientes ? data3.CantidadAmbientes : '';
       obj.CantidadDormitorios = data3.CantidadDormitorios ? data3.CantidadDormitorios : '';
+      obj.CantidadPlantas = data3.CantidadPlantas ? data3.CantidadPlantas : '';
 
       //Checks
       obj.AptoCredito = data3.AptoCredito ? 1 : 0;
@@ -372,6 +379,7 @@ export class FormComponent implements OnInit {
       obj.fk_TipoExpensas = data3.fk_TipoExpensas ? data3.fk_TipoExpensas : '';
       obj.fk_TipoVista = data3.fk_TipoVista ? data3.fk_TipoVista : '';
       obj.fk_TipoCosta = data3.fk_TipoCosta ? data3.fk_TipoCosta : '';
+      obj.fk_TipoTecho = data3.fk_TipoTecho? data3.fk_TipoTecho : '';
 
       //Obtenemos y llenamos los selects de Ambientes
       this.vista.ambientes.forEach(element => {
@@ -394,7 +402,7 @@ export class FormComponent implements OnInit {
       this.vista.edificio.servicios.forEach(element => {
          obj[element.variableName] = element.selected ? 1 : 0;
       });
-      
+
       console.log(obj);
 
    }
