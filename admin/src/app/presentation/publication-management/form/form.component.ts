@@ -67,6 +67,9 @@ export class FormComponent implements OnInit {
    arrayTipoAcceso: any[] = [];
    arrayTipoBano: any[] = [];
    arrayTipoAscensor: any[] = [];
+   arrayTipoTechoIndustrial: any[] = [];
+   arrayTipoPorton: any[] = [];
+   arrayTipoCalefaccion: any[] = [];
 
    arrayMedidasDeAmbientes: { label: string, selected: boolean, medidas: any }[] = [];
    arrayAmbientes: { label: string, variableName: string, isMedidas: boolean, medidas: string, selected: boolean }[] = [];
@@ -210,6 +213,18 @@ export class FormComponent implements OnInit {
          this.arrayTipoAscensor = resp;
       });
 
+      this.service.getTipoTechoIndustrial().then((resp: any) => {
+         this.arrayTipoTechoIndustrial = resp;
+      });
+
+      this.service.getTipoPorton().then((resp: any) => {
+         this.arrayTipoPorton = resp;
+      });
+
+      this.service.getTipoCalefaccion().then((resp: any) => {
+         this.arrayTipoCalefaccion = resp;
+      });
+
    }
 
    createForm() {
@@ -305,6 +320,18 @@ export class FormComponent implements OnInit {
          SuperficieCubiertaCasa: [''],
          CantidadHectareas: [''],
          DistanciaPavimento: [''],
+         SuperficieLocal: [''],
+         ReferenciaCercana: [''],
+         AntiguedadComercio: [''],
+         RecaudacionMensual: [''],
+         CantidadOficinas: [''],
+         AnchoEntrada: [''],
+         AltoEntrada: [''],
+         CantidadColumnas: [''],
+         CantidadNaves: [''],
+         AlturaTecho: [''],
+         Detalle: [''],
+         TipoBien: [''],
 
 
          //Checks
@@ -329,6 +356,9 @@ export class FormComponent implements OnInit {
          Agricultura: [false],
          CasaPrincipal: [false],
          CasaCaseros: [false],
+         Local: [false],
+         VentaMercaderia: [false],
+         GeneradorPropio: [false],
 
 
          //Selects
@@ -346,6 +376,9 @@ export class FormComponent implements OnInit {
          fk_TipoAcceso: [''],
          fk_TipoBano: [''],
          fk_TipoAscensor: [''],
+         fk_TipoTechoIndustrial: [''],
+         fk_TipoCalefaccion: [''],
+         fk_TipoPorton: [''],
 
       })
 
@@ -488,6 +521,18 @@ export class FormComponent implements OnInit {
       obj.SuperficieCubiertaCasa = data3.SuperficieCubiertaCasa ? data3.SuperficieCubiertaCasa : '';
       obj.CantidadHectareas = data3.CantidadHectareas ? data3.CantidadHectareas : '';
       obj.DistanciaPavimento = data3.DistanciaPavimento ? data3.DistanciaPavimento : '';
+      obj.SuperficieLocal = data3.SuperficieLocal ? data3.SuperficieLocal : '';
+      obj.ReferenciaCercana = data3.ReferenciaCercana ? data3.ReferenciaCercana : '';
+      obj.AntiguedadComercio = data3.AntiguedadComercio ? data3.AntiguedadComercio : '';
+      obj.CantidadOficinas = data3.CantidadOficinas ? data3.CantidadOficinas : '';
+      obj.RecaudacionMensual = data3.RecaudacionMensual ? data3.RecaudacionMensual : '';
+      obj.AnchoEntrada = data3.AnchoEntrada ? data3.AnchoEntrada : '';
+      obj.AltoEntrada = data3.AltoEntrada ? data3.AltoEntrada : '';
+      obj.CantidadColumnas = data3.CantidadColumnas ? data3.CantidadColumnas : '';
+      obj.CantidadNaves = data3.CantidadNaves ? data3.CantidadNaves : '';
+      obj.AlturaTecho = data3.AlturaTecho ? data3.AlturaTecho : '';
+      obj.Detalle = data3.Detalle ? data3.Detalle : '';
+      obj.TipoBien = data3.TipoBien ? data3.TipoBien : '';
 
 
       //Checks
@@ -512,6 +557,9 @@ export class FormComponent implements OnInit {
       obj.CasaPrincipal = data3.CasaPrincipal ? 1 : 0;
       obj.CasaCaseros = data3.CasaCaseros ? 1 : 0;
       obj.PropiedadOcupada = data3.PropiedadOcupada ? 1 : 0;
+      obj.Local = data3.Local ? 1 : 0;
+      obj.VentaMercaderia = data3.VentaMercaderia ? 1 : 0;
+      obj.GeneradorPropio = data3.GeneradorPropio ? 1 : 0;
 
 
       //Selects
@@ -528,6 +576,9 @@ export class FormComponent implements OnInit {
       obj.fk_TipoAcceso = data3.fk_TipoAcceso ? data3.fk_TipoAcceso : '';
       obj.fk_TipoBano = data3.fk_TipoBano ? data3.fk_TipoBano : '';
       obj.fk_TipoAscensor = data3.fk_TipoAscensor ? data3.fk_TipoAscensor : '';
+      obj.fk_TipoTechoIndustrial = data3.fk_TipoTechoIndustrial ? data3.fk_TipoTechoIndustrial : '';
+      obj.fk_TipoPorton = data3.fk_TipoPorton ? data3.fk_TipoPorton : '';
+      obj.fk_TipoCalefaccion = data3.fk_TipoCalefaccion ? data3.fk_TipoCalefaccion : '';
 
 
       //Obtenemos y llenamos los selects de Ambientes

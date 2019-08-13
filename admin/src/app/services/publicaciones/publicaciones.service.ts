@@ -350,5 +350,35 @@ export class PublicacionesService {
       })).toPromise();
   }
 
+  getTipoTechoIndustrial() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoTechoIndustrial', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoPorton() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoPorton', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoCalefaccion() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoCalefaccion', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
 
 }

@@ -9,6 +9,9 @@ import { caracteristicasHotel, arrayAmbientesHotel, arrayInstalacionesHotel, arr
 import { caracteristicasTerreno, arrayInstalacionesTerreno, arrayServiciosTerreno } from "./datosporTipoPropiedad/terreno.propiedad";
 import { caracteristicasOficina, arrayAmbientesOficina, arrayInstalacionesOficina, arrayServiciosOficina } from "./datosporTipoPropiedad/oficina.propiedad";
 import { caracteristicasCampo, arrayInstalacionesCampo, arrayServiciosCampo } from "./datosporTipoPropiedad/campo.propiedad";
+import { caracteristicasFondoComercio, arrayAmbientesFondoComercio, arrayServiciosFondoComercio } from "./datosporTipoPropiedad/fondoComercio.propiedad";
+import { caracteristicasGalpon, arrayInstalacionesGalpon, arrayServiciosGalpon } from "./datosporTipoPropiedad/galpon.propiedad";
+import { caracteristicasNegocioEspecial } from "./datosporTipoPropiedad/negocioEspecial.propiedad";
 
 
 const dataDepartamento: VistaPublicaciones = {
@@ -95,6 +98,30 @@ const dataCampo: VistaPublicaciones = {
     edificio: null
 }
 
+const dataFondoComercio: VistaPublicaciones = {
+    caracteristicas: caracteristicasFondoComercio,
+    ambientes: arrayAmbientesFondoComercio,
+    instalaciones: null,
+    servicios: arrayServiciosFondoComercio,
+    edificio: null
+}
+
+const dataGalpon: VistaPublicaciones = {
+    caracteristicas: caracteristicasGalpon,
+    ambientes: null,
+    instalaciones: arrayInstalacionesGalpon,
+    servicios: arrayServiciosGalpon,
+    edificio: null
+}
+
+const dataNegocioEspecial: VistaPublicaciones = {
+    caracteristicas: caracteristicasNegocioEspecial,
+    ambientes: null,
+    instalaciones: null,
+    servicios: null,
+    edificio: null
+}
+
 export const DataByTipoPropiedad = {
     Departamento: dataDepartamento,
     DepartamentoTipoCasa: dataDepartamentoTipoCasa,
@@ -106,9 +133,9 @@ export const DataByTipoPropiedad = {
     Terreno: dataTerreno,
     Oficina: dataOficina,
     Campo: dataCampo,
-    FondoComercio: null,
-    Galpon: null,
-    NegocioEspecial: null
+    FondoComercio: dataFondoComercio,
+    Galpon: dataGalpon,
+    NegocioEspecial: dataNegocioEspecial
 }
 
 /* Estos son los datos globales o generales de cada array... Los datos de cada tipo de propiedad en especifico estaran en un archivo con

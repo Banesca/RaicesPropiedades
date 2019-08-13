@@ -108,6 +108,10 @@ export interface IPublicacion {
     fk_TipoAcceso?: number;
     fk_TipoBano?: number;
     fk_TipoAscensor?: number;
+    fk_TipoTechoIndustrial?: number;
+    fk_TipoPorton?: number;
+    fk_TipoCalefaccion?: number;
+
 
     LongitudFondo?: number;
     LongitudFrente?: number;
@@ -153,6 +157,13 @@ export interface IPublicacion {
     CasaPrincipal?: number;
     CasaCaseros?: number;
     DistanciaPavimento?: number;
+    ReferenciaCercana?: string;
+    RecaudacionMensual?: number;
+    Local?: number;
+    VentaMercaderia?: number;
+    GeneradorPropio?: number;
+    Detalle?: string;
+    TipoBien?: string;
 
     //Ambientes
     Ambientes_Altillo?: number;

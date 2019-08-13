@@ -1,6 +1,3 @@
-import { isMedidas } from "../datosPorTipoPropiedad";
-
-
 export const caracteristicasTerreno = {
     SuperficieTotal: true,
     SuperficieConstruible: true,
