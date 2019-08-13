@@ -6,7 +6,7 @@
          <mat-progress-bar *ngIf="loading" class="card-progress-bar" mode="indeterminate"></mat-progress-bar>
          <mat-card-content>
 
-            <mat-horizontal-stepper [linear]="false" #stepper>
+            <mat-horizontal-stepper [linear]="true" #stepper>
                <mat-step [stepControl]="formOne">
                   <ng-template matStepLabel>Datos generales</ng-template>
                   <form [formGroup]="formOne">
