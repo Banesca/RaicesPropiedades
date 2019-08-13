@@ -280,4 +280,24 @@ export class PublicacionesService {
       })).toPromise();
   }
 
+  getTipoPiso() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoPiso', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoPendiente() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoPendiente', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
 }

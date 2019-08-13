@@ -60,6 +60,8 @@ export class FormComponent implements OnInit {
    arrayTipoVista: any[] = [];
    arrayTipoCosta: any[] = [];
    arrayTipoTecho: any[] = [];
+   arrayTipoPiso: any[] = [];
+   arrayTipoPendiente: any[] = [];
 
 
    arrayMedidasDeAmbientes: { label: string, selected: boolean, medidas: any }[] = [];
@@ -167,6 +169,14 @@ export class FormComponent implements OnInit {
          this.arrayTipoTecho = resp;
       });
 
+      this.service.getTipoPiso().then((resp: any) => {
+         this.arrayTipoPiso = resp;
+      });
+
+      this.service.getTipoPendiente().then((resp: any) => {
+         this.arrayTipoPendiente = resp;
+      });
+
    }
 
    createForm() {
@@ -232,6 +242,7 @@ export class FormComponent implements OnInit {
          CantidadAmbientes: [''],
          CantidadDormitorios: [''],
          CantidadPlantas: [''],
+         SuperficieTerreno: [''],
 
          //Checks
          AptoCredito: [false],
@@ -250,6 +261,8 @@ export class FormComponent implements OnInit {
          fk_TipoVista: [''],
          fk_TipoCosta: [''],
          fk_TipoTecho: [''],
+         fk_TipoPiso: [''],
+         fk_TipoPendiente: [''],
 
       })
 
@@ -362,6 +375,7 @@ export class FormComponent implements OnInit {
       obj.CantidadAmbientes = data3.CantidadAmbientes ? data3.CantidadAmbientes : '';
       obj.CantidadDormitorios = data3.CantidadDormitorios ? data3.CantidadDormitorios : '';
       obj.CantidadPlantas = data3.CantidadPlantas ? data3.CantidadPlantas : '';
+      obj.SuperficieTerreno = data3.SuperficieTerreno ? data3.SuperficieTerreno : '';
 
       //Checks
       obj.AptoCredito = data3.AptoCredito ? 1 : 0;
@@ -379,7 +393,9 @@ export class FormComponent implements OnInit {
       obj.fk_TipoExpensas = data3.fk_TipoExpensas ? data3.fk_TipoExpensas : '';
       obj.fk_TipoVista = data3.fk_TipoVista ? data3.fk_TipoVista : '';
       obj.fk_TipoCosta = data3.fk_TipoCosta ? data3.fk_TipoCosta : '';
-      obj.fk_TipoTecho = data3.fk_TipoTecho? data3.fk_TipoTecho : '';
+      obj.fk_TipoTecho = data3.fk_TipoTecho ? data3.fk_TipoTecho : '';
+      obj.fk_TipoPendiente = data3.fk_TipoPendiente ? data3.fk_TipoPendiente : '';
+
 
       //Obtenemos y llenamos los selects de Ambientes
       this.vista.ambientes.forEach(element => {
@@ -432,6 +448,9 @@ export class FormComponent implements OnInit {
             });
             this.vista = DataByTipoPropiedad.Departamento;
             break;
+         case 2: //Departamento Tipo Casa
+            this.vista = DataByTipoPropiedad.DepartamentoTipoCasa;
+            break;
          case 3: //Casa
             this.service.getTipoUnidadCasa().then((resp: any) => {
                //parseamos el array a uno con valores en común para el select
@@ -442,6 +461,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Casa;
             break;
          case 4: //Quinta
             this.service.getTipoUnidadCasa().then((resp: any) => {
@@ -522,7 +542,6 @@ export class FormComponent implements OnInit {
             });
             break;
 
-         case 2: //Departamento Tipo Casa
          case 9: //Oficina
          case 12: //Galpón
          case 13: //Negocio Especial

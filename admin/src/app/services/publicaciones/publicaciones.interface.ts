@@ -100,6 +100,8 @@ export interface IPublicacion {
     fk_TipoExpensas?: number;
     fk_TipoVista?: number;
     fk_TipoCosta?: number;
+    fk_TipoPiso?: number;
+    fk_TipoPendiente?: number;
 
     LongitudFondo?: number;
     LongitudFrente?: number;
