@@ -7,6 +7,8 @@ import { caracteristicasCochera } from "./datosporTipoPropiedad/cochera.propieda
 import { caracteristicasLocal, arrayAmbientesLocal, arrayInstalacionesLocal, arrayServiciosLocal } from "./datosporTipoPropiedad/local.propiedad";
 import { caracteristicasHotel, arrayAmbientesHotel, arrayInstalacionesHotel, arrayServiciosHotel } from "./datosporTipoPropiedad/hotel.propiedad";
 import { caracteristicasTerreno, arrayInstalacionesTerreno, arrayServiciosTerreno } from "./datosporTipoPropiedad/terreno.propiedad";
+import { caracteristicasOficina, arrayAmbientesOficina, arrayInstalacionesOficina, arrayServiciosOficina } from "./datosporTipoPropiedad/oficina.propiedad";
+import { caracteristicasCampo, arrayInstalacionesCampo, arrayServiciosCampo } from "./datosporTipoPropiedad/campo.propiedad";
 
 
 const dataDepartamento: VistaPublicaciones = {
@@ -77,6 +79,22 @@ const dataTerreno: VistaPublicaciones = {
     edificio: null
 }
 
+const dataOficina: VistaPublicaciones = {
+    caracteristicas: caracteristicasOficina,
+    ambientes: arrayAmbientesOficina,
+    instalaciones: arrayInstalacionesOficina,
+    servicios: arrayServiciosOficina,
+    edificio: null
+}
+
+const dataCampo: VistaPublicaciones = {
+    caracteristicas: caracteristicasCampo,
+    ambientes: null,
+    instalaciones: arrayInstalacionesCampo,
+    servicios: arrayServiciosCampo,
+    edificio: null
+}
+
 export const DataByTipoPropiedad = {
     Departamento: dataDepartamento,
     DepartamentoTipoCasa: dataDepartamentoTipoCasa,
@@ -86,8 +104,8 @@ export const DataByTipoPropiedad = {
     Local: dataLocal,
     Hotel: dataHotel,
     Terreno: dataTerreno,
-    Oficina: null,
-    Campo: null,
+    Oficina: dataOficina,
+    Campo: dataCampo,
     FondoComercio: null,
     Galpon: null,
     NegocioEspecial: null

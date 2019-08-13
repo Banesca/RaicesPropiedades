@@ -106,6 +106,8 @@ export interface IPublicacion {
     fk_TipoCobertura?: number;
     fk_TipoCoche?: number;
     fk_TipoAcceso?: number;
+    fk_TipoBano?: number;
+    fk_TipoAscensor?: number;
 
     LongitudFondo?: number;
     LongitudFrente?: number;
@@ -146,6 +148,11 @@ export interface IPublicacion {
     MedidaLinealIzquierda?: number;
     FOT?: number;
     Zonificacion?: string;
+    Reciclado?: number;
+    Ganaderia?: number;
+    CasaPrincipal?: number;
+    CasaCaseros?: number;
+    DistanciaPavimento?: number;
 
     //Ambientes
     Ambientes_Altillo?: number;

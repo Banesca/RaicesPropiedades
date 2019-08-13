@@ -65,6 +65,8 @@ export class FormComponent implements OnInit {
    arrayTipoCobertura: any[] = [];
    arrayTipoCoche: any[] = [];
    arrayTipoAcceso: any[] = [];
+   arrayTipoBano: any[] = [];
+   arrayTipoAscensor: any[] = [];
 
    arrayMedidasDeAmbientes: { label: string, selected: boolean, medidas: any }[] = [];
    arrayAmbientes: { label: string, variableName: string, isMedidas: boolean, medidas: string, selected: boolean }[] = [];
@@ -191,6 +193,23 @@ export class FormComponent implements OnInit {
          this.arrayTipoAcceso = resp;
       });
 
+      this.service.getTipoBano().then((resp: any) => {
+         let arrAux = []
+         for (let index = 0; index < resp.length; index++) {
+            const element = resp[index];
+            let o = {
+               idTipoBano: element.idTipoBaño,
+               descripcion: element.descripcion
+            }
+            arrAux.push(o);
+         }
+         this.arrayTipoBano = arrAux;
+      });
+
+      this.service.getTipoAscensor().then((resp: any) => {
+         this.arrayTipoAscensor = resp;
+      });
+
    }
 
    createForm() {
@@ -280,6 +299,12 @@ export class FormComponent implements OnInit {
          MedidaLinealIzquierda: [''],
          FOT: [''],
          Zonificacion: [''],
+         SuperficiePlanta: [''],
+         DepartamentosPorPiso: [''],
+         SuperficieOficina: [''],
+         SuperficieCubiertaCasa: [''],
+         CantidadHectareas: [''],
+         DistanciaPavimento: [''],
 
 
          //Checks
@@ -299,6 +324,11 @@ export class FormComponent implements OnInit {
          FrenteIrregular: [false],
          LateralDerechoIrregular: [false],
          LateralIzquierdoIrregular: [false],
+         Reciclado: [false],
+         Ganaderia: [false],
+         Agricultura: [false],
+         CasaPrincipal: [false],
+         CasaCaseros: [false],
 
 
          //Selects
@@ -314,6 +344,8 @@ export class FormComponent implements OnInit {
          fk_TipoCobertura: [''],
          fk_TipoCoche: [''],
          fk_TipoAcceso: [''],
+         fk_TipoBano: [''],
+         fk_TipoAscensor: [''],
 
       })
 
@@ -450,6 +482,12 @@ export class FormComponent implements OnInit {
       obj.MedidaLinealIzquierda = data3.MedidaLinealIzquierda ? data3.MedidaLinealIzquierda : '';
       obj.FOT = data3.FOT ? data3.FOT : '';
       obj.Zonificacion = data3.Zonificacion ? data3.Zonificacion : '';
+      obj.SuperficiePlanta = data3.SuperficiePlanta ? data3.SuperficiePlanta : '';
+      obj.DepartamentosPorPiso = data3.DepartamentosPorPiso ? data3.DepartamentosPorPiso : '';
+      obj.SuperficieOficina = data3.SuperficieOficina ? data3.SuperficieOficina : '';
+      obj.SuperficieCubiertaCasa = data3.SuperficieCubiertaCasa ? data3.SuperficieCubiertaCasa : '';
+      obj.CantidadHectareas = data3.CantidadHectareas ? data3.CantidadHectareas : '';
+      obj.DistanciaPavimento = data3.DistanciaPavimento ? data3.DistanciaPavimento : '';
 
 
       //Checks
@@ -469,6 +507,11 @@ export class FormComponent implements OnInit {
       obj.FrenteIrregular = data3.FrenteIrregular ? 1 : 0;
       obj.LateralDerechoIrregular = data3.LateralDerechoIrregular ? 1 : 0;
       obj.LateralIzquierdoIrregular = data3.LateralIzquierdoIrregular ? 1 : 0;
+      obj.Ganaderia = data3.Ganaderia ? 1 : 0;
+      obj.Agricultura = data3.Agricultura ? 1 : 0;
+      obj.CasaPrincipal = data3.CasaPrincipal ? 1 : 0;
+      obj.CasaCaseros = data3.CasaCaseros ? 1 : 0;
+      obj.PropiedadOcupada = data3.PropiedadOcupada ? 1 : 0;
 
 
       //Selects
@@ -483,6 +526,8 @@ export class FormComponent implements OnInit {
       obj.fk_TipoCobertura = data3.fk_TipoCobertura ? data3.fk_TipoCobertura : '';
       obj.fk_TipoCoche = data3.fk_TipoCoche ? data3.fk_TipoCoche : '';
       obj.fk_TipoAcceso = data3.fk_TipoAcceso ? data3.fk_TipoAcceso : '';
+      obj.fk_TipoBano = data3.fk_TipoBano ? data3.fk_TipoBano : '';
+      obj.fk_TipoAscensor = data3.fk_TipoAscensor ? data3.fk_TipoAscensor : '';
 
 
       //Obtenemos y llenamos los selects de Ambientes

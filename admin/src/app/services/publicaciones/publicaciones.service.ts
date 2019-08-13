@@ -330,5 +330,25 @@ export class PublicacionesService {
       })).toPromise();
   }
 
+  getTipoBano() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoBaño', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoAscensor() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoAscensor', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
 
 }
