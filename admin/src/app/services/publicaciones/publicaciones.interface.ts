@@ -128,6 +128,14 @@ export interface IPublicacion {
     Generales_SeguroCaucion?: number;
 
     Baulera?: number;
+    Vivienda?: number;
+    MontoExpensas?: number;
+    TerrenoPropio?: number;
+    Vidriera?: number;
+    MetrosDeLaEsquina?: number;
+    EnEdificio?: number;
+    UltimaActividad: string;
+    GaleriaShopping: string;
 
 
     //Ambientes

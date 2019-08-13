@@ -182,7 +182,7 @@ export class FormComponent implements OnInit {
       this.service.getTipoCobertura().then((resp: any) => {
          this.arrayTipoCobertura = resp;
       });
-      
+
       this.service.getTipoCoche().then((resp: any) => {
          this.arrayTipoCoche = resp;
       });
@@ -260,6 +260,10 @@ export class FormComponent implements OnInit {
          Largo: [''],
          Ancho: [''],
          Altura: [''],
+         MontoExpensas: [''],
+         MetrosDeLaEsquina: [''],
+         UltimaActividad: [''],
+         GaleriaShopping: [''],
 
          //Checks
          AptoCredito: [false],
@@ -269,6 +273,10 @@ export class FormComponent implements OnInit {
          Generales_PermiteMascotas: [false],
          Generales_SeguroCaucion: [false],
          Baulera: [false],
+         Vivienda: [false],
+         TerrenoPropio: [false],
+         Vidriera: [false],
+         EnEdificio: [false],
 
 
          //Selects
@@ -400,6 +408,10 @@ export class FormComponent implements OnInit {
       obj.Largo = data3.Largo ? data3.Largo : '';
       obj.Ancho = data3.Ancho ? data3.Ancho : '';
       obj.Altura = data3.Altura ? data3.Altura : '';
+      obj.MontoExpensas = data3.MontoExpensas ? data3.MontoExpensas : '';
+      obj.MetrosDeLaEsquina = data3.MetrosDeLaEsquina ? data3.MetrosDeLaEsquina : '';
+      obj.UltimaActividad = data3.UltimaActividad ? data3.UltimaActividad : '';
+      obj.GaleriaShopping = data3.GaleriaShopping ? data3.GaleriaShopping : '';
 
 
       //Checks
@@ -410,6 +422,10 @@ export class FormComponent implements OnInit {
       obj.Generales_PermiteMascotas = data3.Generales_PermiteMascotas ? 1 : 0;
       obj.Generales_SeguroCaucion = data3.Generales_SeguroCaucion ? 1 : 0;
       obj.Baulera = data3.Baulera ? 1 : 0;
+      obj.Vivienda = data3.Vivienda ? 1 : 0;
+      obj.TerrenoPropio = data3.TerrenoPropio ? 1 : 0;
+      obj.Vidriera = data3.Vidriera ? 1 : 0;
+      obj.EnEdificio = data3.EnEdificio ? 1 : 0;
 
 
       //Selects
@@ -421,7 +437,7 @@ export class FormComponent implements OnInit {
       obj.fk_TipoCosta = data3.fk_TipoCosta ? data3.fk_TipoCosta : '';
       obj.fk_TipoTecho = data3.fk_TipoTecho ? data3.fk_TipoTecho : '';
       obj.fk_TipoPendiente = data3.fk_TipoPendiente ? data3.fk_TipoPendiente : '';
-      obj.fk_TipoCobertura= data3.fk_TipoCobertura ? data3.fk_TipoCobertura : '';
+      obj.fk_TipoCobertura = data3.fk_TipoCobertura ? data3.fk_TipoCobertura : '';
       obj.fk_TipoCoche = data3.fk_TipoCoche ? data3.fk_TipoCoche : '';
       obj.fk_TipoAcceso = data3.fk_TipoAcceso ? data3.fk_TipoAcceso : '';
 
@@ -478,6 +494,9 @@ export class FormComponent implements OnInit {
             this.vista = DataByTipoPropiedad.Departamento;
             break;
          case 2: //Departamento Tipo Casa
+            let array2 = [];
+            array2.push({ id: '0', descripcion: "No Aplica" });
+            this.arrayTipoDeUnidad = array2;
             this.vista = DataByTipoPropiedad.DepartamentoTipoCasa;
             break;
          case 3: //Casa
@@ -526,6 +545,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Local;
             break;
          case 7: //Hotel
             this.service.getTipoHotel().then((resp: any) => {
@@ -537,6 +557,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Hotel;
             break;
          case 8: //Terreno
             this.service.getTipoTerreno().then((resp: any) => {
@@ -548,8 +569,14 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Terreno;
             break;
-
+         case 9: //Oficina
+            let array9 = [];
+            array9.push({ id: '0', descripcion: "No Aplica" });
+            this.arrayTipoDeUnidad = array9;
+            this.vista = DataByTipoPropiedad.Oficina;
+            break;
          case 10: //Campo
             this.service.getTipoCampo().then((resp: any) => {
                //parseamos el array a uno con valores en común para el select
@@ -560,6 +587,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Campo;
             break;
          case 11: //Fondo de Comercio
             this.service.getTipoFondoComercio().then((resp: any) => {
@@ -571,11 +599,21 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.FondoComercio;
             break;
 
-         case 9: //Oficina
          case 12: //Galpón
+            let array12 = [];
+            array12.push({ id: '0', descripcion: "No Aplica" });
+            this.arrayTipoDeUnidad = array12;
+            this.vista = DataByTipoPropiedad.Galpon;
+            break;
          case 13: //Negocio Especial
+            let array13 = [];
+            array13.push({ id: '0', descripcion: "No Aplica" });
+            this.arrayTipoDeUnidad = array13;
+            this.vista = DataByTipoPropiedad.NegocioEspecial;
+            break;
          default: //Cuando se ingrese algo desconocido
             //No posee tipo de unidad
             this.arrayTipoDeUnidad = [{ id: 0, descripcion: "Otro" }]
