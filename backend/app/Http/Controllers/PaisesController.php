@@ -526,7 +526,7 @@ class PaisesController extends Controller
                         Provincias::create([
                             'id'      => $provincias['Id'],
                             'nombre'  => $provincias['Nombre'],
-                            'fk_pais' => $pais['Id'],
+                            'fk_pais' => 1,
                         ]);
                     }
 
