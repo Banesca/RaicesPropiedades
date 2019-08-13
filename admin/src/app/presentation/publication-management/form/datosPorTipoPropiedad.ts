@@ -2,6 +2,7 @@ import { arrayAmbientesDepartamento, arrayInstalacionesDepartamento, caracterist
 import { VistaPublicaciones } from "src/app/services/publicaciones/publicaciones.interface";
 import { caracteristicasDepartamentoTipoCasa, arrayAmbientesDepartamentoTipoCasa, arrayInstalacionesDepartamentoTipoCasa, arrayServiciosDepartamentoTipoCasa } from "./datosporTipoPropiedad/departamentoTipoCasa.propiedad";
 import { caracteristicasCasa, arrayAmbientesCasa, arrayInstalacionesCasa, arrayServiciosCasa } from "./datosporTipoPropiedad/casa.propiedad";
+import { caracteristicasQuinta, arrayAmbientesQuinta, arrayInstalacionesQuinta, arrayServiciosQuinta } from "./datosporTipoPropiedad/quinta.propiedad";
 
 
 const dataDepartamento: VistaPublicaciones = {
@@ -32,10 +33,19 @@ const dataCasa: VistaPublicaciones = {
     edificio: null
 }
 
+const dataQuinta: VistaPublicaciones = {
+    caracteristicas: caracteristicasQuinta,
+    ambientes: arrayAmbientesQuinta,
+    instalaciones: arrayInstalacionesQuinta,
+    servicios: arrayServiciosQuinta,
+    edificio: null
+}
+
 export const DataByTipoPropiedad = {
     Departamento: dataDepartamento,
     DepartamentoTipoCasa: dataDepartamentoTipoCasa,
-    Casa: dataCasa
+    Casa: dataCasa,
+    Quinta: dataQuinta
 }
 
 /* Estos son los datos globales o generales de cada array... Los datos de cada tipo de propiedad en especifico estaran en un archivo con

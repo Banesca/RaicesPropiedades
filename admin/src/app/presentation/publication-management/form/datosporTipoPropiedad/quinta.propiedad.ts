@@ -1,7 +1,8 @@
 import { isMedidas } from "../datosPorTipoPropiedad";
 
 
-export const caracteristicasCasa = {
+export const caracteristicasQuinta = {
+    AptoCredito: true,
     LongitudFrente: true,
     LongitudFondo: true,
     SuperficieTerreno: true,
@@ -19,13 +20,10 @@ export const caracteristicasCasa = {
     fk_TipoCosta: true,
     fk_TipoVista: true,
     fk_TipoPendiente: true,
-    AptoCredito: true,
-    Generales_PermiteMascotas: true,
-    Generales_SeguroCaucion: true,
 }
 
 
-export const arrayAmbientesCasa = [
+export const arrayAmbientesQuinta = [
     { label: "Altillo", variableName: "Ambientes_Altillo", isMedidas: isMedidas("Altillo"), medidas: '', selected: false },
     { label: "Antecocina", variableName: "Ambientes_AnteCocina", isMedidas: isMedidas("Antecocina"), medidas: '', selected: false },
     { label: "Antesala", variableName: "Ambientes_Antesala", isMedidas: isMedidas("Antesala"), medidas: '', selected: false },
@@ -75,7 +73,7 @@ export const arrayAmbientesCasa = [
 ]
 
 
-export const arrayInstalacionesCasa = [
+export const arrayInstalacionesQuinta = [
     { label: "Agua Cloaca", variableName: "Instalaciones_AguaCloaca", selected: false },
     { label: "Agua Corriente", variableName: "Instalaciones_AguaCorriente", selected: false },
     { label: "Aire Acondicionado Central", variableName: "Instalaciones_AireAcondicionadoCentral", selected: false },
@@ -88,8 +86,6 @@ export const arrayInstalacionesCasa = [
     { label: "Caja Fuerte", variableName: "Instalaciones_CajaFuerte", selected: false },
     { label: "Caldera", variableName: "Instalaciones_Caldera", selected: false },
     { label: "Calefacción", variableName: "Instalaciones_Calefaccion", selected: false },
-    { label: "Cancha Futbol", variableName: "Instalaciones_CanchaFutbol", selected: false },
-    { label: "Cancha Tenis", variableName: "Instalaciones_CanchaTenis", selected: false },
     { label: "Desayunador", variableName: "Instalaciones_Desayunador", selected: false },
     { label: "Electricidad", variableName: "Instalaciones_Electricidad", selected: false },
     { label: "Espacio Para Vehículo", variableName: "Instalaciones_EspacioParaVehiculo", selected: false },
@@ -99,16 +95,22 @@ export const arrayInstalacionesCasa = [
     { label: "Hidromasaje", variableName: "Instalaciones_Hidromasaje", selected: false },
     { label: "Hogar A Leña", variableName: "Instalaciones_HogarALena", selected: false },
     { label: "Losa Radiante", variableName: "Instalaciones_LosaRadiante", selected: false },
-    { label: "Movilidad Reducida", variableName: "Instalaciones_MovilidadReducida", selected: false },
     { label: "Muebles De Cocina", variableName: "Instalaciones_MueblesDeCocina", selected: false },
-    { label: "Pavimento", variableName: "Instalaciones_Pavimento", selected: false },
     { label: "Pileta", variableName: "Instalaciones_Pileta", selected: false },
     { label: "Radiadores", variableName: "Instalaciones_Radiadores", selected: false },
     { label: "Termotanque", variableName: "Instalaciones_Termotanque", selected: false },
+    { label: "Cancha De Basquet", variableName: "Instalaciones_CanchaDeBasquet", selected: false },
+    { label: "Cancha De Futbol", variableName: "Instalaciones_CanchaDeFutbol", selected: false },
+    { label: "Cancha De Hockey", variableName: "Instalaciones_CanchaDeHockey", selected: false },
+    { label: "Cancha De Paddle", variableName: "Instalaciones_CanchaDePaddle", selected: false },
+    { label: "Cancha De Paleta", variableName: "Instalaciones_CanchaDePaleta", selected: false },
+    { label: "Cancha De Squash", variableName: "Instalaciones_CanchaDeSquash", selected: false },
+    { label: "Cancha De Tenis", variableName: "Instalaciones_CanchaDeTenis", selected: false },
+    { label: "Cancha De Voley", variableName: "Instalaciones_CanchaDeVoley", selected: false },
 ];
 
 
-export const arrayServiciosCasa = [
+export const arrayServiciosQuinta = [
     { label: "ABL", variableName: "Servicios_ABL", selected: false },
     { label: "Agua Corriente", variableName: "Servicios_AguaCorriente", selected: false },
     { label: "Calefaccion", variableName: "Servicios_Calefaccion", selected: false },
@@ -117,13 +119,12 @@ export const arrayServiciosCasa = [
     { label: "Gas Envasado", variableName: "Servicios_GasEnvasado", selected: false },
     { label: "Gas Natural", variableName: "Servicios_GasNatural", selected: false },
     { label: "Internet", variableName: "Servicios_Internet", selected: false },
+    { label: "Refrigeración", variableName: "Servicios_Refrigeracion", selected: false },
     { label: "Limpieza", variableName: "Servicios_Limpieza", selected: false },
     { label: "Refrigeración", variableName: "Servicios_Refrigeracion", selected: false },
     { label: "Rentas", variableName: "Servicios_Rentas", selected: false },
-    { label: "Ropa Cama", variableName: "Servicios_RopaCama", selected: false },
     { label: "Seguridad", variableName: "Servicios_Seguridad", selected: false },
     { label: "Teléfono", variableName: "Servicios_Telefono", selected: false },
-    { label: "Toallas", variableName: "Servicios_Toallas", selected: false },
     { label: "Videocable", variableName: "Servicios_Videocable", selected: false },
     { label: "Vigilancia", variableName: "Servicios_Vigilancia", selected: false },
 ];

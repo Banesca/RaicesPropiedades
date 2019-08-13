@@ -473,6 +473,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Quinta;
             break;
          case 5: //Cochera
             this.service.getTipoCochera().then((resp: any) => {
