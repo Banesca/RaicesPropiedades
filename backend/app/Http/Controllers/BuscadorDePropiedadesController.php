@@ -31,7 +31,6 @@ class BuscadorDePropiedadesController extends Controller {
 
     public function direcciones() {
         $E = Region::with('partidos.localidades.barrios')->get();
-
         return response()->json($E, 200);
     }
 }

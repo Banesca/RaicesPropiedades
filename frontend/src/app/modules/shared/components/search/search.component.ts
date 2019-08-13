@@ -28,20 +28,23 @@ export class SearchComponent implements OnInit {
   tipoOperation: TipoOperaion[];
   operation: TipoOperaion;
   arrayProvinces: any = provincias;
+
   selectedProvince: any;
-  selectedCiudad: any;
   montos: number[] = montos;
   selectedMinimo: Number | string;
   selectedMaximo: Number | string;
+  selectedPartido: any;
+  // selectedLocalidad: any;
   _unknowns: string[] = unknown;
-  selectedLocalidad: any;
-  selectedBarrio: any;
+  // selectedBarrio: any;
   //ubication
 
-  ubicaciones: any;
-  partidos: any;
-  localidades: any;
-  barrios: any;
+  // regiones: any=[];
+  provinces: any = [];
+  partidos: any = [];
+  // localidades: any=[];
+  // ubicaciones: any;
+  // barrios: any;
 
   //
 
@@ -53,10 +56,11 @@ export class SearchComponent implements OnInit {
     this.moneda = Monedas.empy();
     this.tipo = TipoPropiedad.empy();
     this.operation = TOperaion.empy();
-    this.selectedProvince = { descripcion: "Indistinto" };
-    this.selectedCiudad = { descripcion: "Indistinto" };
-    this.selectedLocalidad = { descripcion: "Indistinto" };
-    this.selectedBarrio = { descripcion: "Indistinto" };
+    this.selectedProvince = { nombre: "Indistinto" };
+    this.selectedPartido = { nombre: "Indistinto" };
+    // this.selectedRegion = { nombre: "Indistinto" };
+    // this.selectedLocalidad = { nombre: "Indistinto" };
+    // this.selectedBarrio = { nombre: "Indistinto" };
     this.selectedMinimo = "Indistinto";
     this.selectedMaximo = "Indistinto";
   }
@@ -68,7 +72,9 @@ export class SearchComponent implements OnInit {
     this.gOrientacion();
     this.gTipoPropiedad();
     this.gTipoOperacion();
-    this.getUbication();
+    this.getProvinces();
+    // this.getProvinces();
+    // this.getUbication();
   }
 
   gMonedas() {
@@ -83,15 +89,26 @@ export class SearchComponent implements OnInit {
   }
 
   gOrientacion() {
-    this._ArticuloService.getOrientacion().then(data => {
-      this.mOrientacion = data;
-    });
+    this._ArticuloService
+      .getOrientacion()
+      .then(data => {
+        this.mOrientacion = data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
-  getUbication() {
-    this._ArticuloService.getUbication().then(ubication => {
-      this.ubicaciones = ubication;
-    });
+  getProvinces() {
+    this._ArticuloService
+      .getProvinces()
+      .then(response => {
+        this.provinces = response.Provincias;
+        console.log("ubicaciones:", this.provinces);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   gTipoPropiedad() {
@@ -130,14 +147,35 @@ export class SearchComponent implements OnInit {
   }
 
   setProvince = (value: any): void => {
-    this.selectedProvince = value;
-    this.partidos = value.partidos;
+    this.selectedProvince.nombre = value.nombre;
+    console.log(value);
+    this._ArticuloService
+      .getPartidos({ idProvincia: value.id })
+      .then(response => {
+        this.selectedPartido.nombre = "Indistinto";
+        this.partidos = response.Partidos;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    // this.partidos = value.partidos;
   };
-
-  setCiudad = (data: any): void => {
-    this.selectedCiudad = data;
-    this.localidades = data.localidades;
+  
+  setPartido = (value: any): void => {
+    console.log("setPartido:",value);
+    this.selectedPartido.nombre = value.nombre;
   };
+  // setRegion = (data: any): void => {
+  //   this.selectedRegion = data;
+  //   this._ArticuloService
+  //     .getLocalidades({ idRegion: data.id})
+  //     .then(response => {
+  //       this.localidades = response.Localidades;
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // };
 
   setMnimo = (data: number): void => {
     this.selectedMinimo = data;
@@ -147,13 +185,13 @@ export class SearchComponent implements OnInit {
     this.selectedMaximo = data;
   };
 
-  setLocalidad = (data: any): void => {
-    this.selectedLocalidad = data;
-    this.barrios = data.barrios;
-  };
+  // setLocalidad = (data: any): void => {
+  //   this.selectedLocalidad = data;
+  //   // this.barrios = data.barrios;
+  // };
 
   setBarrio = (data: any) => {
-    this.selectedBarrio = data;
+    // this.selectedBarrio = data;
   };
 
   // ------------------------

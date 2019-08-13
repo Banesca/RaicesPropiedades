@@ -45,10 +45,13 @@
 <div class="divider container py-3 d-flex align-items-center justify-content-center">
   <hr class="col-4 d-none d-md-block">
           <ul class="nav col-md-3 d-flex justify-content-around">
-              <li class="facebook my-2"><a [href]="mCategoria.configGeneral?.url_face" data-toggle="tooltip" target="_blank" title="Facebook"><img class="social-icon" src="../../../../../assets/images/icons/Recurso 5.svg"></a></li>
-              <li class="twitter my-2"><a [href]="mCategoria.configGeneral?.url_twitter" data-toggle="tooltip" target="_blank" title="Twitter"></a><img class="social-icon" src="../../../../../assets/images/icons/Recurso 4.svg"></li>
-              <li class="instagram my-2"><a [href]="mCategoria.configGeneral?.url_intagram" data-toggle="tooltip" target="_blank" title="Instagram"><img class="social-icon" src="../../../../../assets/images/icons/Recurso 3.svg"></a></li>
-             </ul>
+              <li *ngIf="mCategoria.configGeneral?.url_face" class="facebook my-2"><a [href]="mCategoria.configGeneral?.url_face" data-toggle="tooltip" target="_blank" title="Facebook"><img class="social-icon" src="../../../../../assets/images/icons/Recurso 5.svg"></a></li>
+              <li *ngIf="mCategoria.configGeneral?.url_twitter" class="twitter my-2"><a [href]="mCategoria.configGeneral?.url_twitter" data-toggle="tooltip" target="_blank" title="Twitter"><img class="social-icon" src="../../../../../assets/images/icons/Recurso 4.svg"></a></li>
+              <li *ngIf="mCategoria.configGeneral?.url_intagram" class="instagram my-2"><a [href]="mCategoria.configGeneral?.url_intagram" data-toggle="tooltip" target="_blank" title="Instagram"><img class="social-icon" src="../../../../../assets/images/icons/Recurso 3.svg"></a></li>
+              <li *ngIf="!mCategoria.configGeneral?.url_face && !mCategoria.configGeneral?.url_twitter && !mCategoria.configGeneral?.url_intagram " class="instagram my-2" style="text-align: center;">
+                No existen redes sociales registradas
+              </li>
+          </ul>
   <hr class="col-4 d-none d-md-block">
   </div>
 </footer>

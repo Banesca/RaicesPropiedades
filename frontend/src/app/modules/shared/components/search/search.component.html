@@ -123,21 +123,22 @@
       </div>
       <div class="row">
         <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+          <!-- regiones -->
           <div ngbDropdown class="d-inline-block">
             <input
               type="button"
               class="btn search-dropdown btn-block"
               id="dropdownBasic1"
-              [value]="selectedProvince.descripcion"
+              [value]="selectedProvince.nombre"
               ngbDropdownToggle
             />
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <input
                 type="button"
-                *ngFor="let ubication of ubicaciones"
+                *ngFor="let province of provinces"
                 ngbDropdownItem
-                (click)="setProvince(ubication)"
-                [value]="ubication.descripcion"
+                (click)="setProvince(province)"
+                [value]="province.nombre"
               />
             </div>
           </div>
@@ -148,7 +149,7 @@
               type="button"
               class="btn search-dropdown btn-block"
               id="dropdownBasic1"
-              [value]="selectedCiudad.descripcion"
+              [value]="selectedPartido.nombre"
               ngbDropdownToggle
             />
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -156,19 +157,19 @@
                 type="button"
                 *ngFor="let partido of partidos"
                 ngbDropdownItem
-                (click)="setCiudad(partido)"
-                [value]="partido.descripcion"
+                (click)="setPartido(partido)"
+                [value]="partido.nombre"
               />
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        <!-- <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block">
             <input
               type="button"
               class="btn search-dropdown btn-block"
               id="dropdownBasic1"
-              [value]="selectedLocalidad.descripcion"
+              [value]="selectedLocalidad.nombre"
               ngbDropdownToggle
             />
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -177,12 +178,12 @@
                 *ngFor="let localidad of localidades"
                 ngbDropdownItem
                 (click)="setLocalidad(localidad)"
-                [value]="localidad.descripcion"
+                [value]="localidad.nombre"
               />
             </div>
           </div>
-        </div>
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        </div> -->
+        <!-- <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block">
             <input
               type="button"
@@ -201,7 +202,7 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="col-sm-12 text-white d-flex justify-content-center py-5">

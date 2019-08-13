@@ -10,11 +10,11 @@
 <app-propiertys-grid>
   <h3 class="mb-4 brown-text font-weight-extrabold text-uppercase">Oportunidades</h3>
   <ng-container *ngFor="let publicaciones of mCategorias; let i = index" [attr.data-index]="i">
-      <div *ngIf="publicaciones.ficha1.esUnaPropiedad == '1'" class="col-md-4 col-9 p-4">
+      <div *ngIf="publicaciones.esUnaPropiedad == '1'" class="col-md-4 col-9 p-4">
         <div  [routerLink]="[baseUrl,publicaciones.idFichas]" class="card">
-          <img [src]="publicaciones.ficha2.imagen1" class="card-img-top">
+          <img [src]="publicaciones.imagen1" class="card-img-top">
           <div class="card-footer font-weight-semibold text-uppercase " >
-              {{ publicaciones.ficha1.descipcion }}
+              {{ publicaciones.descipcion }}
           </div>
         </div>
       </div>

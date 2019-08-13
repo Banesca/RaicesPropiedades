@@ -124,7 +124,7 @@ class PaisesController extends Controller {
     }
 
     public function getLocalidades(Request $request) {
-        $request->validate([
+        $this->validate($request,[
             'idRegion' => 'required',
 
         ]);

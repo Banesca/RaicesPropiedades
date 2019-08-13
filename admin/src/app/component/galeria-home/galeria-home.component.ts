@@ -149,12 +149,11 @@ export class GaleriaHomeComponent implements OnInit {
     this._GaleriaHomeService
       .actualizarCategoria(this.mCategoriasSelect, pKey)
       .then(data => {
-        console.log(data);
-        // this.mFormaEstado = enCRUD.Eliminar;
-        // this.mCategoriasSelect = Galeria.empy();
-        // this.getAll();
-        // this.mLoading = false;
-        // this._AlertsService.msg('OK', '!ÉXITO!', 'Galería Actualizada Correctamente.')
+        this.mFormaEstado = enCRUD.Eliminar;
+        this.mCategoriasSelect = Galeria.empy();
+        this.getAll();
+        this.mLoading = false;
+        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería Actualizada Correctamente.')
       })
       .catch(err => {
         this._AlertsService.msg(
@@ -170,13 +169,12 @@ export class GaleriaHomeComponent implements OnInit {
     this._GaleriaHomeService
       .nuevaCategoria(this.getFormData())
       .then(data => {
-        console.log(data);
-        // this.mFormaEstado = enCRUD.Eliminar;
-        // this.mCategoriasSelect = Galeria.empy();
-        // this.getAll();
-        // this.mForma.reset();
-        // this.mLoading = false;
-        // this._AlertsService.msg('OK', '!ÉXITO!', 'Galería creada Correctamente.')
+        this.mFormaEstado = enCRUD.Eliminar;
+        this.mCategoriasSelect = Galeria.empy();
+        this.getAll();
+        this.mForma.reset();
+        this.mLoading = false;
+        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería creada Correctamente.')
       })
       .catch(err => {
         this._AlertsService.msg("ERR", "ERROR", "Error al crear la galería.");
