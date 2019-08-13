@@ -54,6 +54,7 @@ export interface IPublicacion {
     fk_TipoCochera?: number;
     fk_TipoLocal?: number;
     fk_TipoHotel?: number;
+    fk_TipoTecho?: number;
     fk_TipoTerreno?: number;
     fk_TipoCampo?: number;
     fk_TipoFondoComercio?: number;
@@ -62,8 +63,9 @@ export interface IPublicacion {
     comision: string;
 
     //Características
+    Largo?: string,
+    Ancho?: string,
     Altura?: number;
-    Ancho?: number;
     Agricultura?: number,
     AltoEntrada?: number,
     AlturaTecho?: number;
@@ -99,6 +101,17 @@ export interface IPublicacion {
     fk_TipoExpensas?: number;
     fk_TipoVista?: number;
     fk_TipoCosta?: number;
+    fk_TipoPiso?: number;
+    fk_TipoPendiente?: number;
+    fk_TipoCobertura?: number;
+    fk_TipoCoche?: number;
+    fk_TipoAcceso?: number;
+    fk_TipoBano?: number;
+    fk_TipoAscensor?: number;
+    fk_TipoTechoIndustrial?: number;
+    fk_TipoPorton?: number;
+    fk_TipoCalefaccion?: number;
+
 
     LongitudFondo?: number;
     LongitudFrente?: number;
@@ -120,7 +133,37 @@ export interface IPublicacion {
     Generales_PermiteMascotas?: number;
     Generales_SeguroCaucion?: number;
 
-
+    Baulera?: number;
+    Vivienda?: number;
+    MontoExpensas?: number;
+    TerrenoPropio?: number;
+    Vidriera?: number;
+    MetrosDeLaEsquina?: number;
+    EnEdificio?: number;
+    UltimaActividad?: string;
+    GaleriaShopping?: string;
+    HabitacionesPorPiso?: number;
+    RentabilidadAnual?: number;
+    FondoIrregular?: number;
+    FrenteIrregular?: number;
+    LateralDerechoIrregular?: number;
+    LateralIzquierdoIrregular?: number;
+    MedidaLinealDerecha?: number;
+    MedidaLinealIzquierda?: number;
+    FOT?: number;
+    Zonificacion?: string;
+    Reciclado?: number;
+    Ganaderia?: number;
+    CasaPrincipal?: number;
+    CasaCaseros?: number;
+    DistanciaPavimento?: number;
+    ReferenciaCercana?: string;
+    RecaudacionMensual?: number;
+    Local?: number;
+    VentaMercaderia?: number;
+    GeneradorPropio?: number;
+    Detalle?: string;
+    TipoBien?: string;
 
     //Ambientes
     Ambientes_Altillo?: number;

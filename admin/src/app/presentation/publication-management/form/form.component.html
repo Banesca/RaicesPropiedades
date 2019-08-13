@@ -6,7 +6,7 @@
          <mat-progress-bar *ngIf="loading" class="card-progress-bar" mode="indeterminate"></mat-progress-bar>
          <mat-card-content>
 
-            <mat-horizontal-stepper [linear]="false" #stepper>
+            <mat-horizontal-stepper [linear]="true" #stepper>
                <mat-step [stepControl]="formOne">
                   <ng-template matStepLabel>Datos generales</ng-template>
                   <form [formGroup]="formOne">
@@ -514,7 +514,8 @@
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <mat-select placeholder="Partido*" formControlName="fk_Direccion_Partido_Id">
+                                       <mat-select placeholder="Partido*" formControlName="fk_Direccion_Partido_Id"
+                                       (selectionChange)="reloadLocalidades($event)">
                                           <mat-option *ngFor="let item of arrayPartido" [value]="item.id">
                                              {{item.nombre}}
                                           </mat-option>
@@ -532,34 +533,13 @@
                               </div>
                            </div>
 
+                          
                            <div class="col-md-3">
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <mat-select placeholder="Región*" formControlName="fk_Direccion_Region_Id"
-                                          (selectionChange)="reloadLocalidades($event)">
-                                          <mat-option *ngFor="let item of arrayRegion" [value]="item.id">
-                                             {{item.nombre}}
-                                          </mat-option>
-                                          <mat-option value='0'>
-                                             Otra
-                                          </mat-option>
-                                       </mat-select>
-                                       <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
-                                       </mat-error>
-
-                                    </mat-form-field>
-                                 </div>
-                              </div>
-                           </div>
-
-                           <div class="col-md-3">
-                              <div class="form-group">
-                                 <div class="example-container">
-                                    <mat-form-field>
-                                       <mat-select placeholder="Localidad*" formControlName="fk_Direccion_Localidad_Id">
+                                       <mat-select placeholder="Localidad*" formControlName="fk_Direccion_Localidad_Id"
+                                       (selectionChange)="reloadBarrios($event)">
 
                                           <mat-option *ngFor="let item of arrayLocalidad" [value]="item.id">
                                              {{item.nombre}}
@@ -582,28 +562,10 @@
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <mat-select placeholder="Ciudad" formControlName="fk_Direccion_Ciudad_Id">
-                                          <mat-option *ngFor="let item of arrayCiudad" value="item.value">
-                                             {{item.label}}
-                                          </mat-option>
-                                       </mat-select>
-                                       <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
-                                       </mat-error>
-
-                                    </mat-form-field>
-                                 </div>
-                              </div>
-                           </div>
-
-                           <div class="col-md-3">
-                              <div class="form-group">
-                                 <div class="example-container">
-                                    <mat-form-field>
-                                       <mat-select placeholder="Barrio" formControlName="fk_Direccion_Barrio_Id">
-                                          <mat-option *ngFor="let item of arrayBarrio" value="item.value">
-                                             {{item.label}}
+                                       <mat-select placeholder="Barrio" formControlName="fk_Direccion_Barrio_Id"
+                                       (selectionChange)="reloadSubBarrios($event)">
+                                          <mat-option *ngFor="let item of arrayBarrio" [value]="item.id">
+                                             {{item.nombre}}
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
@@ -621,8 +583,8 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Sub-barrio" formControlName="fk_Direccion_SubBarrio_Id">
-                                          <mat-option *ngFor="let item of arraySubBarrio" value="item.value">
-                                             {{item.label}}
+                                          <mat-option *ngFor="let item of arraySubBarrio" [value]="item.id">
+                                             {{item.nombre}}
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
@@ -746,6 +708,121 @@
                         <div class="row">
 
                            <!-- ************************************* INPUTS ************************************************-->
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Detalle">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Detalle" formControlName="Detalle">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+                           
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.TipoBien">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Tipo Bien" formControlName="TipoBien">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Largo">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Largo" formControlName="Largo">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Ancho">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Ancho" formControlName="Ancho">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Altura">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Altura" formControlName="Altura">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.AnchoEntrada">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Ancho Entrada"
+                                          formControlName="AnchoEntrada">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.AltoEntrada">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Alto Entrada"
+                                          formControlName="AltoEntrada">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.AlturaTecho">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Altura Techo"
+                                          formControlName="AlturaTecho">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
                            <div class="col-md-3" *ngIf="vista.caracteristicas.LongitudFrente">
                               <div class="form-group">
                                  <div class="example-container">
@@ -776,12 +853,106 @@
                               </div>
                            </div>
 
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.MedidaLinealDerecha">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Medida Lineal Der."
+                                          formControlName="MedidaLinealDerecha">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.MedidaLinealIzquierda">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Medida Lineal Izq."
+                                          formControlName="MedidaLinealIzquierda">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
                            <div class="col-md-3" *ngIf="vista.caracteristicas.Antiguedad">
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
                                        <input type="text" matInput placeholder="Antigüedad"
                                           formControlName="Antiguedad">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.AntiguedadComercio">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Antigüedad Comercio"
+                                          formControlName="AntiguedadComercio">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.SuperficieTotal">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Superficie Total"
+                                          formControlName="SuperficieTotal">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.SuperficieConstruible">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Superficie Construible"
+                                          formControlName="SuperficieConstruible">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.SuperficieTerreno">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Superficie Terreno"
+                                          formControlName="SuperficieTerreno">
                                        <mat-error>
                                           Este valor es
                                           <strong>requerido</strong>
@@ -808,12 +979,108 @@
                               </div>
                            </div>
 
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.SuperficieCubiertaCasa">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Sup. Cubierta Casa"
+                                          formControlName="SuperficieCubiertaCasa">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
                            <div class="col-md-3" *ngIf="vista.caracteristicas.SuperficieDescubierta">
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
                                        <input type="text" matInput placeholder="Superficie Descubierta"
                                           formControlName="SuperficieDescubierta">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.SuperficiePlaya">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Superficie Playa"
+                                          formControlName="SuperficiePlaya">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.SuperficieDeposito">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Superficie Depósito"
+                                          formControlName="SuperficieDeposito">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.SuperficieLocal">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Superficie Local"
+                                          formControlName="SuperficieLocal">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.SuperficiePlanta">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Superficie Planta"
+                                          formControlName="SuperficiePlanta">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.SuperficieOficina">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Superficie Oficina"
+                                          formControlName="SuperficieOficina">
                                        <mat-error>
                                           Este valor es
                                           <strong>requerido</strong>
@@ -844,6 +1111,21 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <input type="text" matInput placeholder="Expensas" formControlName="Expensas">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadPlantas">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Plantas"
+                                          formControlName="CantidadPlantas">
                                        <mat-error>
                                           Este valor es
                                           <strong>requerido</strong>
@@ -898,6 +1180,336 @@
                               </div>
                            </div>
 
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadPisos">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Pisos"
+                                          formControlName="CantidadPisos">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.HabitacionesPorPiso">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Hab. Por Piso"
+                                          formControlName="HabitacionesPorPiso">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.DepartamentosPorPiso">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Dep. Por Piso"
+                                          formControlName="DepartamentosPorPiso">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadPersonal">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Personal"
+                                          formControlName="CantidadPersonal">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadHabitaciones">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Habitaciones"
+                                          formControlName="CantidadHabitaciones">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadOficinas">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Oficinas"
+                                          formControlName="CantidadOficinas">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadColumnas">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Columnas"
+                                          formControlName="CantidadColumnas">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadNaves">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Naves"
+                                          formControlName="CantidadNaves">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadEstrellas">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Estrellas"
+                                          formControlName="CantidadEstrellas">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadPlazas">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Plazas"
+                                          formControlName="CantidadPlazas">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadCubiertos">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Cubiertos"
+                                          formControlName="CantidadCubiertos">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CantidadHectareas">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Cant. Hectáreas"
+                                          formControlName="CantidadHectareas">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.RentabilidadAnual">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Rentabilidad Anual"
+                                          formControlName="RentabilidadAnual">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.RecaudacionMensual">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Recaudación Mensual"
+                                          formControlName="RecaudacionMensual">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.MontoExpensas">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Monto Expensas"
+                                          formControlName="MontoExpensas">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.MetrosDeLaEsquina">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Mts. De La Esquina"
+                                          formControlName="MetrosDeLaEsquina">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.ReferenciaCercana">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Referencia Cercana"
+                                          formControlName="ReferenciaCercana">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.UltimaActividad">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Última Actividad"
+                                          formControlName="UltimaActividad">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.GaleriaShopping">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Galería Shopping"
+                                          formControlName="GaleriaShopping">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.FOT">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="FOT" formControlName="FOT">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Zonificacion">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Zonificación"
+                                          formControlName="Zonificacion">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.DistanciaPavimento">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Distancia Pavimento"
+                                          formControlName="DistanciaPavimento">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+
 
 
 
@@ -907,7 +1519,8 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Disposición" formControlName="fk_Disposicion">
-                                          <mat-option *ngFor="let item of arrayDisposicion" [value]="item.idDisposicion">
+                                          <mat-option *ngFor="let item of arrayDisposicion"
+                                             [value]="item.idDisposicion">
                                              {{item.descripcion}}
                                           </mat-option>
                                        </mat-select>
@@ -926,7 +1539,66 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Orientación" formControlName="fk_Orientacion">
-                                          <mat-option *ngFor="let item of arrayOrientacion" [value]="item.idOrientacion">
+                                          <mat-option *ngFor="let item of arrayOrientacion"
+                                             [value]="item.idOrientacion">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoCobertura">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo de Cobertura" formControlName="fk_TipoCobertura">
+                                          <mat-option *ngFor="let item of arrayTipoCobertura"
+                                             [value]="item.idTipoCobertura">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoCoche">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo de Coche" formControlName="fk_TipoCoche">
+                                          <mat-option *ngFor="let item of arrayTipoCoche" [value]="item.idTipoCoche">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoAcceso">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo de Acceso" formControlName="fk_TipoAcceso">
+                                          <mat-option *ngFor="let item of arrayTipoAcceso" [value]="item.idTipoAcceso">
                                              {{item.descripcion}}
                                           </mat-option>
                                        </mat-select>
@@ -964,7 +1636,8 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Tipo Expensas" formControlName="fk_TipoExpensas">
-                                          <mat-option *ngFor="let item of arrayTipoExpensas" [value]=" item.idTipoExpensa">
+                                          <mat-option *ngFor="let item of arrayTipoExpensas"
+                                             [value]=" item.idTipoExpensa">
                                              {{item.descripcion}}
                                           </mat-option>
                                        </mat-select>
@@ -1016,7 +1689,265 @@
                               </div>
                            </div>
 
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoTecho">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo Techo" formControlName="fk_TipoTecho">
+                                          <mat-option *ngFor="let item of arrayTipoTecho" [value]="item.idTipoTecho">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoTechoIndustrial">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo Techo Ind."
+                                          formControlName="fk_TipoTechoIndustrial">
+                                          <mat-option *ngFor="let item of arrayTipoTechoIndustrial"
+                                             [value]="item.idTipoTechoIndustrial">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoPorton">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo Portón" formControlName="fk_TipoPorton">
+                                          <mat-option *ngFor="let item of arrayTipoPorton" [value]="item.idTipoPorton">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoCalefaccion">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo Calefacción" formControlName="fk_TipoCalefaccion">
+                                          <mat-option *ngFor="let item of arrayTipoCalefaccion"
+                                             [value]="item.idTipoPorton">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoPiso">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo Piso" formControlName="fk_TipoPiso">
+                                          <mat-option *ngFor="let item of arrayTipoPiso" [value]="item.idTipoPiso">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoPendiente">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo Pendiente" formControlName="fk_TipoPendiente">
+                                          <mat-option *ngFor="let item of arrayTipoPendiente"
+                                             [value]="item.idTipoPendiente">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoBano">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo Baño" formControlName="fk_TipoBano">
+                                          <mat-option *ngFor="let item of arrayTipoBano" [value]="item.idTipoBano">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoAscensor">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo Ascensor" formControlName="fk_TipoAscensor">
+                                          <mat-option *ngFor="let item of arrayTipoAscensor"
+                                             [value]="item.idTipoAscensor">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
                            <!-- *********************************************** CHECKBOX ***************************************-->
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Ganaderia">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="Ganaderia">
+                                       Ganadería
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Agricultura">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="Agricultura">
+                                       Agricultura
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CasaPrincipal">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="CasaPrincipal">
+                                       Casa Principal
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.CasaCaseros">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="CasaCaseros">
+                                       Casa Caseros
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Vivienda">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="Vivienda">
+                                       Vivienda
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Local">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="Local">
+                                       Local
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.VentaMercaderia">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="VentaMercaderia">
+                                       Venta Mercadería
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.TerrenoPropio">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="TerrenoPropio">
+                                       Terreno Propio
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Vidriera">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="Vidriera">
+                                       Vidriera
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.EnEdificio">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="EnEdificio">
+                                       En Edificio
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
                            <div class="col-md-3" *ngIf="vista.caracteristicas.AptoCredito">
                               <div class="form-group">
                                  <div class="example-container">
@@ -1047,11 +1978,75 @@
                               </div>
                            </div>
 
-                           <div class="col-md-3" *ngIf="vista.caracteristicas.PropiedadOcupada">
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Baulera">
                               <div class="form-group">
                                  <div class="example-container">
-                                    <mat-checkbox formControlName="PropiedadOcupada">
-                                       Propiedad Ocupada
+                                    <mat-checkbox formControlName="Baulera">
+                                       Baulera
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Demolicion">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="Demolicion">
+                                       Demolición
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Reciclado">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="Reciclado">
+                                       Reciclado
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.FondoIrregular">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="FondoIrregular">
+                                       Fondo Irregular
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.FrenteIrregular">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="FrenteIrregular">
+                                       Frente Irregular
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.LateralDerechoIrregular">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="LateralDerechoIrregular">
+                                       Lat. Der. Irregular
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.LateralIzquierdoIrregular">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="LateralIzquierdoIrregular">
+                                       Lat. Izq. Irregular
                                     </mat-checkbox>
                                  </div>
                               </div>
@@ -1072,6 +2067,16 @@
                                  <div class="example-container">
                                     <mat-checkbox formControlName="Generales_SeguroCaucion">
                                        Seguro Caución
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.PropiedadOcupada">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="PropiedadOcupada">
+                                       Propiedad Ocupada
                                     </mat-checkbox>
                                  </div>
                               </div>
@@ -1212,7 +2217,8 @@
                                     style="background-color: brown; color: white">Cancelar</button>
 
                                  <button mat-raised-button matStepperPrevious
-                                    style="margin-left: 10px; background-color: #262626; color: white" (click)="getDataForm()">Regresar</button>
+                                    style="margin-left: 10px; background-color: #262626; color: white"
+                                    (click)="getDataForm()">Regresar</button>
 
                                  <button mat-raised-button color="primary" matStepperNext style="margin-left: 10px;"
                                     [disabled]="!formThree.valid">Publicar</button>

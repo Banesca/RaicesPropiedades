@@ -47,7 +47,6 @@ export class FormComponent implements OnInit {
    arrayPais: any[] = [];
    arrayProvincia: any[] = [];
    arrayPartido: any[] = [];
-   arrayRegion: any[] = [];
    arrayLocalidad: any[] = [];
    arrayCiudad: any[] = [];
    arrayBarrio: any[] = [];
@@ -59,7 +58,17 @@ export class FormComponent implements OnInit {
    arrayTipoExpensas: any[] = [];
    arrayTipoVista: any[] = [];
    arrayTipoCosta: any[] = [];
-
+   arrayTipoTecho: any[] = [];
+   arrayTipoPiso: any[] = [];
+   arrayTipoPendiente: any[] = [];
+   arrayTipoCobertura: any[] = [];
+   arrayTipoCoche: any[] = [];
+   arrayTipoAcceso: any[] = [];
+   arrayTipoBano: any[] = [];
+   arrayTipoAscensor: any[] = [];
+   arrayTipoTechoIndustrial: any[] = [];
+   arrayTipoPorton: any[] = [];
+   arrayTipoCalefaccion: any[] = [];
 
    arrayMedidasDeAmbientes: { label: string, selected: boolean, medidas: any }[] = [];
    arrayAmbientes: { label: string, variableName: string, isMedidas: boolean, medidas: string, selected: boolean }[] = [];
@@ -134,10 +143,6 @@ export class FormComponent implements OnInit {
          this.arrayProvincia = resp.Provincias;
       });
 
-      this.service.getRegiones().then((resp: any) => {
-         this.arrayRegion = resp.Regiones;
-      });
-
       this.service.getDisposicion().then((resp: any) => {
          this.arrayDisposicion = resp;
       });
@@ -162,6 +167,58 @@ export class FormComponent implements OnInit {
          this.arrayTipoCosta = resp;
       });
 
+      this.service.getTipoTecho().then((resp: any) => {
+         this.arrayTipoTecho = resp;
+      });
+
+      this.service.getTipoPiso().then((resp: any) => {
+         this.arrayTipoPiso = resp;
+      });
+
+      this.service.getTipoPendiente().then((resp: any) => {
+         this.arrayTipoPendiente = resp;
+      });
+
+      this.service.getTipoCobertura().then((resp: any) => {
+         this.arrayTipoCobertura = resp;
+      });
+
+      this.service.getTipoCoche().then((resp: any) => {
+         this.arrayTipoCoche = resp;
+      });
+
+      this.service.getTipoAcceso().then((resp: any) => {
+         this.arrayTipoAcceso = resp;
+      });
+
+      this.service.getTipoBano().then((resp: any) => {
+         let arrAux = []
+         for (let index = 0; index < resp.length; index++) {
+            const element = resp[index];
+            let o = {
+               idTipoBano: element.idTipoBaño,
+               descripcion: element.descripcion
+            }
+            arrAux.push(o);
+         }
+         this.arrayTipoBano = arrAux;
+      });
+
+      this.service.getTipoAscensor().then((resp: any) => {
+         this.arrayTipoAscensor = resp;
+      });
+
+      this.service.getTipoTechoIndustrial().then((resp: any) => {
+         this.arrayTipoTechoIndustrial = resp;
+      });
+
+      this.service.getTipoPorton().then((resp: any) => {
+         this.arrayTipoPorton = resp;
+      });
+
+      this.service.getTipoCalefaccion().then((resp: any) => {
+         this.arrayTipoCalefaccion = resp;
+      });
 
    }
 
@@ -227,6 +284,50 @@ export class FormComponent implements OnInit {
          CantidadBanos: [''],
          CantidadAmbientes: [''],
          CantidadDormitorios: [''],
+         CantidadPlantas: [''],
+         SuperficieTerreno: [''],
+         Largo: [''],
+         Ancho: [''],
+         Altura: [''],
+         MontoExpensas: [''],
+         MetrosDeLaEsquina: [''],
+         UltimaActividad: [''],
+         GaleriaShopping: [''],
+         SuperficiePlaya: [''],
+         SuperficieDeposito: [''],
+         CantidadPisos: [''],
+         HabitacionesPorPiso: [''],
+         CantidadPersonal: [''],
+         RentabilidadAnual: [''],
+         CantidadHabitaciones: [''],
+         CantidadEstrellas: [''],
+         CantidadPlazas: [''],
+         CantidadCubiertos: [''],
+         SuperficieTotal: [''],
+         SuperficieConstruible: [''],
+         MedidaLinealDerecha: [''],
+         MedidaLinealIzquierda: [''],
+         FOT: [''],
+         Zonificacion: [''],
+         SuperficiePlanta: [''],
+         DepartamentosPorPiso: [''],
+         SuperficieOficina: [''],
+         SuperficieCubiertaCasa: [''],
+         CantidadHectareas: [''],
+         DistanciaPavimento: [''],
+         SuperficieLocal: [''],
+         ReferenciaCercana: [''],
+         AntiguedadComercio: [''],
+         RecaudacionMensual: [''],
+         CantidadOficinas: [''],
+         AnchoEntrada: [''],
+         AltoEntrada: [''],
+         CantidadColumnas: [''],
+         CantidadNaves: [''],
+         AlturaTecho: [''],
+         Detalle: [''],
+         TipoBien: [''],
+
 
          //Checks
          AptoCredito: [false],
@@ -235,6 +336,24 @@ export class FormComponent implements OnInit {
          PropiedadOcupada: [false],
          Generales_PermiteMascotas: [false],
          Generales_SeguroCaucion: [false],
+         Baulera: [false],
+         Vivienda: [false],
+         TerrenoPropio: [false],
+         Vidriera: [false],
+         EnEdificio: [false],
+         Demolicion: [false],
+         FondoIrregular: [false],
+         FrenteIrregular: [false],
+         LateralDerechoIrregular: [false],
+         LateralIzquierdoIrregular: [false],
+         Reciclado: [false],
+         Ganaderia: [false],
+         Agricultura: [false],
+         CasaPrincipal: [false],
+         CasaCaseros: [false],
+         Local: [false],
+         VentaMercaderia: [false],
+         GeneradorPropio: [false],
 
 
          //Selects
@@ -244,6 +363,17 @@ export class FormComponent implements OnInit {
          fk_TipoExpensas: [''],
          fk_TipoVista: [''],
          fk_TipoCosta: [''],
+         fk_TipoTecho: [''],
+         fk_TipoPiso: [''],
+         fk_TipoPendiente: [''],
+         fk_TipoCobertura: [''],
+         fk_TipoCoche: [''],
+         fk_TipoAcceso: [''],
+         fk_TipoBano: [''],
+         fk_TipoAscensor: [''],
+         fk_TipoTechoIndustrial: [''],
+         fk_TipoCalefaccion: [''],
+         fk_TipoPorton: [''],
 
       })
 
@@ -355,6 +485,50 @@ export class FormComponent implements OnInit {
       obj.CantidadBanos = data3.CantidadBanos ? data3.CantidadBanos : '';
       obj.CantidadAmbientes = data3.CantidadAmbientes ? data3.CantidadAmbientes : '';
       obj.CantidadDormitorios = data3.CantidadDormitorios ? data3.CantidadDormitorios : '';
+      obj.CantidadPlantas = data3.CantidadPlantas ? data3.CantidadPlantas : '';
+      obj.SuperficieTerreno = data3.SuperficieTerreno ? data3.SuperficieTerreno : '';
+      obj.Largo = data3.Largo ? data3.Largo : '';
+      obj.Ancho = data3.Ancho ? data3.Ancho : '';
+      obj.Altura = data3.Altura ? data3.Altura : '';
+      obj.MontoExpensas = data3.MontoExpensas ? data3.MontoExpensas : '';
+      obj.MetrosDeLaEsquina = data3.MetrosDeLaEsquina ? data3.MetrosDeLaEsquina : '';
+      obj.UltimaActividad = data3.UltimaActividad ? data3.UltimaActividad : '';
+      obj.GaleriaShopping = data3.GaleriaShopping ? data3.GaleriaShopping : '';
+      obj.SuperficiePlaya = data3.SuperficiePlaya ? data3.SuperficiePlaya : '';
+      obj.SuperficieDeposito = data3.SuperficieDeposito ? data3.SuperficieDeposito : '';
+      obj.CantidadPisos = data3.CantidadPisos ? data3.CantidadPisos : '';
+      obj.HabitacionesPorPiso = data3.HabitacionesPorPiso ? data3.HabitacionesPorPiso : '';
+      obj.CantidadPersonal = data3.CantidadPersonal ? data3.CantidadPersonal : '';
+      obj.RentabilidadAnual = data3.RentabilidadAnual ? data3.RentabilidadAnual : '';
+      obj.CantidadHabitaciones = data3.CantidadHabitaciones ? data3.CantidadHabitaciones : '';
+      obj.CantidadEstrellas = data3.CantidadEstrellas ? data3.CantidadEstrellas : '';
+      obj.CantidadPlazas = data3.CantidadPlazas ? data3.CantidadPlazas : '';
+      obj.CantidadCubiertos = data3.CantidadCubiertos ? data3.CantidadCubiertos : '';
+      obj.SuperficieTotal = data3.SuperficieTotal ? data3.SuperficieTotal : '';
+      obj.SuperficieConstruible = data3.SuperficieConstruible ? data3.SuperficieConstruible : '';
+      obj.MedidaLinealDerecha = data3.MedidaLinealDerecha ? data3.MedidaLinealDerecha : '';
+      obj.MedidaLinealIzquierda = data3.MedidaLinealIzquierda ? data3.MedidaLinealIzquierda : '';
+      obj.FOT = data3.FOT ? data3.FOT : '';
+      obj.Zonificacion = data3.Zonificacion ? data3.Zonificacion : '';
+      obj.SuperficiePlanta = data3.SuperficiePlanta ? data3.SuperficiePlanta : '';
+      obj.DepartamentosPorPiso = data3.DepartamentosPorPiso ? data3.DepartamentosPorPiso : '';
+      obj.SuperficieOficina = data3.SuperficieOficina ? data3.SuperficieOficina : '';
+      obj.SuperficieCubiertaCasa = data3.SuperficieCubiertaCasa ? data3.SuperficieCubiertaCasa : '';
+      obj.CantidadHectareas = data3.CantidadHectareas ? data3.CantidadHectareas : '';
+      obj.DistanciaPavimento = data3.DistanciaPavimento ? data3.DistanciaPavimento : '';
+      obj.SuperficieLocal = data3.SuperficieLocal ? data3.SuperficieLocal : '';
+      obj.ReferenciaCercana = data3.ReferenciaCercana ? data3.ReferenciaCercana : '';
+      obj.AntiguedadComercio = data3.AntiguedadComercio ? data3.AntiguedadComercio : '';
+      obj.CantidadOficinas = data3.CantidadOficinas ? data3.CantidadOficinas : '';
+      obj.RecaudacionMensual = data3.RecaudacionMensual ? data3.RecaudacionMensual : '';
+      obj.AnchoEntrada = data3.AnchoEntrada ? data3.AnchoEntrada : '';
+      obj.AltoEntrada = data3.AltoEntrada ? data3.AltoEntrada : '';
+      obj.CantidadColumnas = data3.CantidadColumnas ? data3.CantidadColumnas : '';
+      obj.CantidadNaves = data3.CantidadNaves ? data3.CantidadNaves : '';
+      obj.AlturaTecho = data3.AlturaTecho ? data3.AlturaTecho : '';
+      obj.Detalle = data3.Detalle ? data3.Detalle : '';
+      obj.TipoBien = data3.TipoBien ? data3.TipoBien : '';
+
 
       //Checks
       obj.AptoCredito = data3.AptoCredito ? 1 : 0;
@@ -363,6 +537,24 @@ export class FormComponent implements OnInit {
       obj.PropiedadOcupada = data3.PropiedadOcupada ? 1 : 0;
       obj.Generales_PermiteMascotas = data3.Generales_PermiteMascotas ? 1 : 0;
       obj.Generales_SeguroCaucion = data3.Generales_SeguroCaucion ? 1 : 0;
+      obj.Baulera = data3.Baulera ? 1 : 0;
+      obj.Vivienda = data3.Vivienda ? 1 : 0;
+      obj.TerrenoPropio = data3.TerrenoPropio ? 1 : 0;
+      obj.Vidriera = data3.Vidriera ? 1 : 0;
+      obj.EnEdificio = data3.EnEdificio ? 1 : 0;
+      obj.Demolicion = data3.Demolicion ? 1 : 0;
+      obj.FondoIrregular = data3.FondoIrregular ? 1 : 0;
+      obj.FrenteIrregular = data3.FrenteIrregular ? 1 : 0;
+      obj.LateralDerechoIrregular = data3.LateralDerechoIrregular ? 1 : 0;
+      obj.LateralIzquierdoIrregular = data3.LateralIzquierdoIrregular ? 1 : 0;
+      obj.Ganaderia = data3.Ganaderia ? 1 : 0;
+      obj.Agricultura = data3.Agricultura ? 1 : 0;
+      obj.CasaPrincipal = data3.CasaPrincipal ? 1 : 0;
+      obj.CasaCaseros = data3.CasaCaseros ? 1 : 0;
+      obj.PropiedadOcupada = data3.PropiedadOcupada ? 1 : 0;
+      obj.Local = data3.Local ? 1 : 0;
+      obj.VentaMercaderia = data3.VentaMercaderia ? 1 : 0;
+      obj.GeneradorPropio = data3.GeneradorPropio ? 1 : 0;
 
 
       //Selects
@@ -372,6 +564,17 @@ export class FormComponent implements OnInit {
       obj.fk_TipoExpensas = data3.fk_TipoExpensas ? data3.fk_TipoExpensas : '';
       obj.fk_TipoVista = data3.fk_TipoVista ? data3.fk_TipoVista : '';
       obj.fk_TipoCosta = data3.fk_TipoCosta ? data3.fk_TipoCosta : '';
+      obj.fk_TipoTecho = data3.fk_TipoTecho ? data3.fk_TipoTecho : '';
+      obj.fk_TipoPendiente = data3.fk_TipoPendiente ? data3.fk_TipoPendiente : '';
+      obj.fk_TipoCobertura = data3.fk_TipoCobertura ? data3.fk_TipoCobertura : '';
+      obj.fk_TipoCoche = data3.fk_TipoCoche ? data3.fk_TipoCoche : '';
+      obj.fk_TipoAcceso = data3.fk_TipoAcceso ? data3.fk_TipoAcceso : '';
+      obj.fk_TipoBano = data3.fk_TipoBano ? data3.fk_TipoBano : '';
+      obj.fk_TipoAscensor = data3.fk_TipoAscensor ? data3.fk_TipoAscensor : '';
+      obj.fk_TipoTechoIndustrial = data3.fk_TipoTechoIndustrial ? data3.fk_TipoTechoIndustrial : '';
+      obj.fk_TipoPorton = data3.fk_TipoPorton ? data3.fk_TipoPorton : '';
+      obj.fk_TipoCalefaccion = data3.fk_TipoCalefaccion ? data3.fk_TipoCalefaccion : '';
+
 
       //Obtenemos y llenamos los selects de Ambientes
       this.vista.ambientes.forEach(element => {
@@ -394,7 +597,7 @@ export class FormComponent implements OnInit {
       this.vista.edificio.servicios.forEach(element => {
          obj[element.variableName] = element.selected ? 1 : 0;
       });
-      
+
       console.log(obj);
 
    }
@@ -424,6 +627,12 @@ export class FormComponent implements OnInit {
             });
             this.vista = DataByTipoPropiedad.Departamento;
             break;
+         case 2: //Departamento Tipo Casa
+            let array2 = [];
+            array2.push({ id: '0', descripcion: "No Aplica" });
+            this.arrayTipoDeUnidad = array2;
+            this.vista = DataByTipoPropiedad.DepartamentoTipoCasa;
+            break;
          case 3: //Casa
             this.service.getTipoUnidadCasa().then((resp: any) => {
                //parseamos el array a uno con valores en común para el select
@@ -434,6 +643,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Casa;
             break;
          case 4: //Quinta
             this.service.getTipoUnidadCasa().then((resp: any) => {
@@ -445,6 +655,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Quinta;
             break;
          case 5: //Cochera
             this.service.getTipoCochera().then((resp: any) => {
@@ -456,6 +667,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Cochera;
             break;
          case 6: //Local
             this.service.getTipoLocal().then((resp: any) => {
@@ -467,6 +679,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Local;
             break;
          case 7: //Hotel
             this.service.getTipoHotel().then((resp: any) => {
@@ -478,6 +691,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Hotel;
             break;
          case 8: //Terreno
             this.service.getTipoTerreno().then((resp: any) => {
@@ -489,8 +703,14 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Terreno;
             break;
-
+         case 9: //Oficina
+            let array9 = [];
+            array9.push({ id: '0', descripcion: "No Aplica" });
+            this.arrayTipoDeUnidad = array9;
+            this.vista = DataByTipoPropiedad.Oficina;
+            break;
          case 10: //Campo
             this.service.getTipoCampo().then((resp: any) => {
                //parseamos el array a uno con valores en común para el select
@@ -501,6 +721,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Campo;
             break;
          case 11: //Fondo de Comercio
             this.service.getTipoFondoComercio().then((resp: any) => {
@@ -512,12 +733,21 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.FondoComercio;
             break;
 
-         case 2: //Departamento Tipo Casa
-         case 9: //Oficina
          case 12: //Galpón
+            let array12 = [];
+            array12.push({ id: '0', descripcion: "No Aplica" });
+            this.arrayTipoDeUnidad = array12;
+            this.vista = DataByTipoPropiedad.Galpon;
+            break;
          case 13: //Negocio Especial
+            let array13 = [];
+            array13.push({ id: '0', descripcion: "No Aplica" });
+            this.arrayTipoDeUnidad = array13;
+            this.vista = DataByTipoPropiedad.NegocioEspecial;
+            break;
          default: //Cuando se ingrese algo desconocido
             //No posee tipo de unidad
             this.arrayTipoDeUnidad = [{ id: 0, descripcion: "Otro" }]
@@ -622,6 +852,24 @@ export class FormComponent implements OnInit {
       if (event.value >= 0) {
          this.service.getLocalidades(event.value).then((resp: any) => {
             this.arrayLocalidad = resp.Localidades;
+         });
+      }
+   }
+
+   reloadBarrios(event) {
+      this.formThree.controls['fk_Direccion_Barrio_Id'].setValue('');
+      if (event.value >= 0) {
+         this.service.getBarrios(event.value).then((resp: any) => {
+            this.arrayBarrio = resp.Barrios;
+         });
+      }
+   }
+
+   reloadSubBarrios(event) {
+      this.formThree.controls['fk_Direccion_SubBarrio_Id'].setValue('');
+      if (event.value >= 0) {
+         this.service.getSubBarrios(event.value).then((resp: any) => {
+            this.arraySubBarrio = resp.SubBarrios;
          });
       }
    }
