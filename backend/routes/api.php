@@ -9,6 +9,7 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+use App\Partidos;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -90,10 +91,10 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::get('paises/get','PaisesController@getPais');
     Route::get('regiones/get','PaisesController@getRegiones');
     Route::get('provincias/get','PaisesController@getProvincias');
-    Route::post('partidos/get','PaisesController@getPartidos'); //idProvincia
-    Route::post('localidades/get','PaisesController@getLocalidades'); //idRegion
-    Route::post('barrios/get','PaisesController@getBarrios'); //idLocalidad
-    Route::post('subbarrios/get','PaisesController@getsubBarrios'); //idBarrio
+    Route::post('partidos/get','PaisesController@getPartidos');         //fk_provincia
+    Route::post('localidades/get','PaisesController@getLocalidades');   //fk_idPartido
+    Route::post('barrios/get','PaisesController@getBarrios');           //idLocalidad
+    Route::post('subbarrios/get','PaisesController@getsubBarrios');     //idBarrio
     Route::get('sincronizacion','PaisesController@sincService');
     /* Galeria */
     /*   Agregada 12/6/2019    */
@@ -171,7 +172,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::post('addContactanos','ContactoController@add');
     Route::get('listarContactanos','ContactoController@listar');
 
-    Route::get('ubicaciones','BuscadorDePropiedadesController@direcciones');
+    //Route::get('ubicaciones','BuscadorDePropiedadesController@direcciones');
 
     Route::post('buscadorGeneral','BuscadorDePropiedadesController@buscarGeneral');
 
@@ -181,6 +182,14 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     });
 
     Route::get('prueba1','UserController@prueba');
+
+    Route::get('pr',function(){
+        Partidos::create([
+            'id'           => 1,
+            'nombre'       => 'pr',
+            'fk_provincia' => 14,
+        ]);
+    });
 
 });
 
