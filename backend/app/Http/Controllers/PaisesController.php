@@ -235,7 +235,6 @@ class PaisesController extends Controller {
                     $paises = Paises::create([
                         'id'     => $pais['Id'],
                         'nombre' => $pais['Nombre'],
-
                     ]);
                 }
 
@@ -399,6 +398,7 @@ class PaisesController extends Controller {
                                         curl_close($ch);
                                         $result = json_decode($response, true);
 
+
                                         if (isset($result)) {
                                             foreach ($result as $barrio) {
 
@@ -446,6 +446,9 @@ class PaisesController extends Controller {
                             }
                         }
                     }
+                }
+                if ($pais['Nombre']=='Argentina') {
+                    break;
                 }
             }
             DB::commit();
