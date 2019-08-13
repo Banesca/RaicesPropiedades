@@ -746,6 +746,48 @@
                         <div class="row">
 
                            <!-- ************************************* INPUTS ************************************************-->
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Largo">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Largo" formControlName="Largo">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Ancho">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Ancho" formControlName="Ancho">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Altura">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <input type="text" matInput placeholder="Altura" formControlName="Altura">
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
                            <div class="col-md-3" *ngIf="vista.caracteristicas.LongitudFrente">
                               <div class="form-group">
                                  <div class="example-container">
@@ -973,6 +1015,66 @@
                               </div>
                            </div>
 
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoCobertura">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Disposición" formControlName="fk_TipoCobertura">
+                                          <mat-option *ngFor="let item of arrayTipoCobertura"
+                                             [value]="item.idTipoCobertura">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoCoche">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo de Coche" formControlName="fk_TipoCoche">
+                                          <mat-option *ngFor="let item of arrayTipoCoche"
+                                             [value]="item.idTipoCoche">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoAcceso">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Tipo de Acceso" formControlName="fk_TipoAcceso">
+                                          <mat-option *ngFor="let item of arrayTipoAcceso"
+                                             [value]="item.idTipoAcceso">
+                                             {{item.descripcion}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
                            <div class="col-md-3" *ngIf="vista.caracteristicas.fk_TipoBalcon">
                               <div class="form-group">
                                  <div class="example-container">
@@ -1093,7 +1195,8 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Tipo Pendiente" formControlName="fk_TipoPendiente">
-                                          <mat-option *ngFor="let item of arrayTipoPendiente" [value]="item.idTipoPendiente">
+                                          <mat-option *ngFor="let item of arrayTipoPendiente"
+                                             [value]="item.idTipoPendiente">
                                              {{item.descripcion}}
                                           </mat-option>
                                        </mat-select>
@@ -1138,6 +1241,16 @@
                               </div>
                            </div>
 
+                           <div class="col-md-3" *ngIf="vista.caracteristicas.Baulera">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-checkbox formControlName="Baulera">
+                                       Baulera
+                                    </mat-checkbox>
+                                 </div>
+                              </div>
+                           </div>
+
                            <div class="col-md-3" *ngIf="vista.caracteristicas.PropiedadOcupada">
                               <div class="form-group">
                                  <div class="example-container">
@@ -1147,6 +1260,8 @@
                                  </div>
                               </div>
                            </div>
+
+
 
                            <div class="col-md-3" *ngIf="vista.caracteristicas.Generales_PermiteMascotas">
                               <div class="form-group">

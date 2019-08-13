@@ -63,8 +63,9 @@ export interface IPublicacion {
     comision: string;
 
     //Características
+    Largo?: string,
+    Ancho?: string,
     Altura?: number;
-    Ancho?: number;
     Agricultura?: number,
     AltoEntrada?: number,
     AlturaTecho?: number;
@@ -102,6 +103,9 @@ export interface IPublicacion {
     fk_TipoCosta?: number;
     fk_TipoPiso?: number;
     fk_TipoPendiente?: number;
+    fk_TipoCobertura?: number;
+    fk_TipoCoche?: number;
+    fk_TipoAcceso?: number;
 
     LongitudFondo?: number;
     LongitudFrente?: number;
@@ -123,6 +127,7 @@ export interface IPublicacion {
     Generales_PermiteMascotas?: number;
     Generales_SeguroCaucion?: number;
 
+    Baulera?: number;
 
 
     //Ambientes

@@ -62,7 +62,9 @@ export class FormComponent implements OnInit {
    arrayTipoTecho: any[] = [];
    arrayTipoPiso: any[] = [];
    arrayTipoPendiente: any[] = [];
-
+   arrayTipoCobertura: any[] = [];
+   arrayTipoCoche: any[] = [];
+   arrayTipoAcceso: any[] = [];
 
    arrayMedidasDeAmbientes: { label: string, selected: boolean, medidas: any }[] = [];
    arrayAmbientes: { label: string, variableName: string, isMedidas: boolean, medidas: string, selected: boolean }[] = [];
@@ -177,6 +179,18 @@ export class FormComponent implements OnInit {
          this.arrayTipoPendiente = resp;
       });
 
+      this.service.getTipoCobertura().then((resp: any) => {
+         this.arrayTipoCobertura = resp;
+      });
+      
+      this.service.getTipoCoche().then((resp: any) => {
+         this.arrayTipoCoche = resp;
+      });
+
+      this.service.getTipoAcceso().then((resp: any) => {
+         this.arrayTipoAcceso = resp;
+      });
+
    }
 
    createForm() {
@@ -243,6 +257,9 @@ export class FormComponent implements OnInit {
          CantidadDormitorios: [''],
          CantidadPlantas: [''],
          SuperficieTerreno: [''],
+         Largo: [''],
+         Ancho: [''],
+         Altura: [''],
 
          //Checks
          AptoCredito: [false],
@@ -251,6 +268,7 @@ export class FormComponent implements OnInit {
          PropiedadOcupada: [false],
          Generales_PermiteMascotas: [false],
          Generales_SeguroCaucion: [false],
+         Baulera: [false],
 
 
          //Selects
@@ -263,6 +281,9 @@ export class FormComponent implements OnInit {
          fk_TipoTecho: [''],
          fk_TipoPiso: [''],
          fk_TipoPendiente: [''],
+         fk_TipoCobertura: [''],
+         fk_TipoCoche: [''],
+         fk_TipoAcceso: [''],
 
       })
 
@@ -376,6 +397,10 @@ export class FormComponent implements OnInit {
       obj.CantidadDormitorios = data3.CantidadDormitorios ? data3.CantidadDormitorios : '';
       obj.CantidadPlantas = data3.CantidadPlantas ? data3.CantidadPlantas : '';
       obj.SuperficieTerreno = data3.SuperficieTerreno ? data3.SuperficieTerreno : '';
+      obj.Largo = data3.Largo ? data3.Largo : '';
+      obj.Ancho = data3.Ancho ? data3.Ancho : '';
+      obj.Altura = data3.Altura ? data3.Altura : '';
+
 
       //Checks
       obj.AptoCredito = data3.AptoCredito ? 1 : 0;
@@ -384,6 +409,7 @@ export class FormComponent implements OnInit {
       obj.PropiedadOcupada = data3.PropiedadOcupada ? 1 : 0;
       obj.Generales_PermiteMascotas = data3.Generales_PermiteMascotas ? 1 : 0;
       obj.Generales_SeguroCaucion = data3.Generales_SeguroCaucion ? 1 : 0;
+      obj.Baulera = data3.Baulera ? 1 : 0;
 
 
       //Selects
@@ -395,6 +421,9 @@ export class FormComponent implements OnInit {
       obj.fk_TipoCosta = data3.fk_TipoCosta ? data3.fk_TipoCosta : '';
       obj.fk_TipoTecho = data3.fk_TipoTecho ? data3.fk_TipoTecho : '';
       obj.fk_TipoPendiente = data3.fk_TipoPendiente ? data3.fk_TipoPendiente : '';
+      obj.fk_TipoCobertura= data3.fk_TipoCobertura ? data3.fk_TipoCobertura : '';
+      obj.fk_TipoCoche = data3.fk_TipoCoche ? data3.fk_TipoCoche : '';
+      obj.fk_TipoAcceso = data3.fk_TipoAcceso ? data3.fk_TipoAcceso : '';
 
 
       //Obtenemos y llenamos los selects de Ambientes
@@ -485,6 +514,7 @@ export class FormComponent implements OnInit {
                }
                this.arrayTipoDeUnidad = array;
             });
+            this.vista = DataByTipoPropiedad.Cochera;
             break;
          case 6: //Local
             this.service.getTipoLocal().then((resp: any) => {

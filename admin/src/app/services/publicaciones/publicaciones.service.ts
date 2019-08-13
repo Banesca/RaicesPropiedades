@@ -300,4 +300,35 @@ export class PublicacionesService {
       })).toPromise();
   }
 
+  getTipoCobertura() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoCobertura', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoCoche() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoCoche', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  getTipoAcceso() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'getTipoAcceso', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+
 }
