@@ -28,25 +28,21 @@ export class SearchComponent implements OnInit {
   tipoOperation: TipoOperaion[];
   operation: TipoOperaion;
   arrayProvinces: any = provincias;
-
-  selectedProvince: any;
   montos: number[] = montos;
   selectedMinimo: Number | string;
   selectedMaximo: Number | string;
+  // provincias, partidos,localidades y barrios
+  selectedProvince: any;
   selectedPartido: any;
-  // selectedLocalidad: any;
+  selectedLocalidad: any;
+  selectedBarrio: any;
   _unknowns: string[] = unknown;
-  // selectedBarrio: any;
   //ubication
 
-  // regiones: any=[];
   provinces: any = [];
   partidos: any = [];
-  // localidades: any=[];
-  // ubicaciones: any;
-  // barrios: any;
-
-  //
+  localidades: any = [];
+  barrios: any = [];
 
   constructor(
     private _ArticuloService: ArticuloService,
@@ -56,11 +52,11 @@ export class SearchComponent implements OnInit {
     this.moneda = Monedas.empy();
     this.tipo = TipoPropiedad.empy();
     this.operation = TOperaion.empy();
+    // provincias, partidos,localidades y barrios
     this.selectedProvince = { nombre: "Indistinto" };
     this.selectedPartido = { nombre: "Indistinto" };
-    // this.selectedRegion = { nombre: "Indistinto" };
-    // this.selectedLocalidad = { nombre: "Indistinto" };
-    // this.selectedBarrio = { nombre: "Indistinto" };
+    this.selectedLocalidad = { nombre: "Indistinto" };
+    this.selectedBarrio = { nombre: "Indistinto" };
     this.selectedMinimo = "Indistinto";
     this.selectedMaximo = "Indistinto";
   }
@@ -73,8 +69,6 @@ export class SearchComponent implements OnInit {
     this.gTipoPropiedad();
     this.gTipoOperacion();
     this.getProvinces();
-    // this.getProvinces();
-    // this.getUbication();
   }
 
   gMonedas() {
@@ -104,7 +98,6 @@ export class SearchComponent implements OnInit {
       .getProvinces()
       .then(response => {
         this.provinces = response.Provincias;
-        console.log("ubicaciones:", this.provinces);
       })
       .catch(error => {
         console.log(error);
@@ -148,9 +141,8 @@ export class SearchComponent implements OnInit {
 
   setProvince = (value: any): void => {
     this.selectedProvince.nombre = value.nombre;
-    console.log(value);
     this._ArticuloService
-      .getPartidos({ idProvincia: value.id })
+      .getPartidos({ fk_provincia: value.id })
       .then(response => {
         this.selectedPartido.nombre = "Indistinto";
         this.partidos = response.Partidos;
@@ -158,40 +150,41 @@ export class SearchComponent implements OnInit {
       .catch(error => {
         console.log(error);
       });
-    // this.partidos = value.partidos;
   };
-  
-  setPartido = (value: any): void => {
-    console.log("setPartido:",value);
-    this.selectedPartido.nombre = value.nombre;
-  };
-  // setRegion = (data: any): void => {
-  //   this.selectedRegion = data;
-  //   this._ArticuloService
-  //     .getLocalidades({ idRegion: data.id})
-  //     .then(response => {
-  //       this.localidades = response.Localidades;
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // };
 
+  setPartido = (value: any): void => {
+    this.selectedPartido.nombre = value.nombre;
+    this._ArticuloService
+      .getLocalidades({ fk_idPartido: value.id })
+      .then(response => {
+        this.selectedLocalidad.nombre = "Indistinto";
+        this.localidades = response.Localidades;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  setLocalidad = (value: any): void => {
+    this.selectedLocalidad.nombre = value.nombre;
+    this._ArticuloService
+      .getBarrios({ idLocalidad: value.id })
+      .then(response => {
+        this.selectedBarrio.nombre = "Indistinto";
+        this.barrios = response.Barrios;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  setBarrio = (data: any) => {
+    this.selectedBarrio.nombre = data.nombre;
+  };
   setMnimo = (data: number): void => {
     this.selectedMinimo = data;
   };
 
   setMaximo = (data: number): void => {
     this.selectedMaximo = data;
-  };
-
-  // setLocalidad = (data: any): void => {
-  //   this.selectedLocalidad = data;
-  //   // this.barrios = data.barrios;
-  // };
-
-  setBarrio = (data: any) => {
-    // this.selectedBarrio = data;
   };
 
   // ------------------------

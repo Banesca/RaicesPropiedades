@@ -24,7 +24,6 @@ export class PropiertysComponent implements OnInit {
           .All()
             .then(data => {
             this.mCategorias = data;
-            console.log(data);
           })
           .catch(error => {
             console.log(error);

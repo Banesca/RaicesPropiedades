@@ -89,18 +89,7 @@ export class ArticuloService {
   }
 
   
-  getLocalidades(formData) {
-    return this._HttpClient
-      .post(this.mUrl + this.mService + "localidades/get", formData ,{
-        headers: getHeaders()
-      })
-      .pipe(
-        map((data: any) => {
-          return data;
-        })
-      )
-      .toPromise();
-  }
+  
   getProvinces() {
     return this._HttpClient
       .get(this.mUrl + this.mService + "provincias/get", {
@@ -116,6 +105,30 @@ export class ArticuloService {
   getPartidos(formData) {
     return this._HttpClient
       .post(this.mUrl + this.mService + "partidos/get", formData, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+  getLocalidades(formData) {
+    return this._HttpClient
+      .post(this.mUrl + this.mService + "localidades/get", formData, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+  getBarrios(formData) {
+    return this._HttpClient
+      .post(this.mUrl + this.mService + "barrios/get", formData, {
         headers: getHeaders()
       })
       .pipe(

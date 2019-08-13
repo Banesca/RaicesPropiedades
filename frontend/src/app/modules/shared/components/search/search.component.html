@@ -143,6 +143,7 @@
             </div>
           </div>
         </div>
+        <!-- partidos -->
         <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block">
             <input
@@ -163,7 +164,8 @@
             </div>
           </div>
         </div>
-        <!-- <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        <!-- localidades -->
+        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block">
             <input
               type="button"
@@ -182,14 +184,15 @@
               />
             </div>
           </div>
-        </div> -->
-        <!-- <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        </div>
+        <!-- Barrios -->
+        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block">
             <input
               type="button"
               class="btn search-dropdown btn-block"
               id="dropdownBasic1"
-              [value]="selectedBarrio.descripcion"
+              [value]="selectedBarrio.nombre"
               ngbDropdownToggle
             />
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -198,11 +201,11 @@
                 *ngFor="let barrio of barrios"
                 ngbDropdownItem
                 (click)="setBarrio(barrio)"
-                [value]="barrio.descripcion"
+                [value]="barrio.nombre"
               />
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
     <div class="col-sm-12 text-white d-flex justify-content-center py-5">
