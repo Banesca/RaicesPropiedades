@@ -21,7 +21,48 @@ class BuscadorDePropiedadesController extends Controller {
         $idLocalidad = @$request->idLocalidad;
         $idBarrio    = @$request->idBarrio;
 
-        $resultadoUnico = Propiedad::where(function($query)
+        $resultadoUnico = Propiedad::with(
+            'TipoPropiedad',
+            'Disposicion',
+            'Estado',
+            'Orientacion',
+            'TipoAcceso',
+            'TipoAscensor',
+            'TipoBalcon',
+            'TipoBano',
+            'TipoCalefaccion',
+            'TipoCampo',
+            'TipoCobertura',
+            'TipoCoche',
+            'TipoCochera',
+            'TipoCosta',
+            'TipoEdificio',
+            'TipoExpensas',
+            'TipoFondoComercio',
+            'TipoFrente',
+            'TipoHotel',
+            'TipoLocal',
+            'TipoPendiente',
+            'TipoPiso',
+            'TipoPorton',
+            'TipoTecho',
+            'TipoTechoIndustrial',
+            'TipoTerreno',
+            'TipoUnidadCasa',
+            'TipoUnidadDepartamento',
+            'Barrio',
+            'Localidad',
+            'Pais',
+            'Partido',
+            'Provincia',
+            'SubBarrio',
+            'Region',
+            'TipoVista',
+            'estadoPublicacion',
+            'tipoOpeacion',
+            'tipoMoneda'
+        )
+            ->where(function($query)
         use ($idTipoOperaion, $idTipoPropiedad, $idMonedas, $idProvincia, $idPartido, $idLocalidad, $idBarrio) {
             ! is_null($idTipoOperaion) ? $query->where('fk_idTipoOperaion', $idTipoOperaion) : '';
             ! is_null($idTipoPropiedad) ? $query->where('fk_tipoPropiedad', $idTipoPropiedad) : '';
@@ -38,7 +79,6 @@ class BuscadorDePropiedadesController extends Controller {
 
     public function direcciones() {
         $E = Region::with('partidos.localidades.barrios')->get();
-
         return response()->json($E, 200);
     }
 }
