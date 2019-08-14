@@ -86,6 +86,7 @@ export class FormComponent implements OnInit {
       }
    }
 
+   inPromise: boolean = false;
 
    constructor(
       private service: PublicacionesService,
@@ -878,6 +879,7 @@ export class FormComponent implements OnInit {
    }
 
    publicar() {
+      this.inPromise = true
       //Obtenemos el objeto con los datos
       let obj = this.getDataForm();
       //Parseamos el objeto a FORM DATA
@@ -890,12 +892,20 @@ export class FormComponent implements OnInit {
 
       //Registramos el objeto
       this.service.addPropiedad(formData).then((resp: any) => {
-         console.log(resp);
+         this.inPromise = false
+         this.alertService.msg(
+            "OK",
+            "Registro",
+            resp.msj
+         );
+      }).catch(e => {
+         console.error(e);
+         this.alertService.msg("ERR", "ERROR", "Error al cargar los datos.");
       });
    }
    show() { }
 
    delete() { }
 
- 
+
 }
