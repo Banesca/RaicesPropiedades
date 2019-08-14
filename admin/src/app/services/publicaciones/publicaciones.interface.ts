@@ -3,7 +3,7 @@ export interface IPublicacion {
     titulo: string;
     fk_estado_publicacion: number;
     descipcion: string;
-    fk_tipoPropiedad: number;
+    fk_idTipoPropiedad: number;
     esUnaOportunidad: number;
     esUnaNovedad: number;
     aparece_en_galeria: number;

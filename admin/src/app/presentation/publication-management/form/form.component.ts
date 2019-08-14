@@ -227,7 +227,7 @@ export class FormComponent implements OnInit {
          titulo: ['', Validators.required],
          fk_estado_publicacion: [null, Validators.required],
          descipcion: ['', Validators.required], //Descripcion --> se coloca descipcion por motivo de concordar con el error de backend
-         fk_tipoPropiedad: [null, Validators.required],
+         fk_idTipoPropiedad: [null, Validators.required],
          esUnaOportunidad: ["0", Validators.required],
          esUnaNovedad: ["0", Validators.required],
          aparece_en_galeria: ["1", Validators.required],
@@ -259,7 +259,6 @@ export class FormComponent implements OnInit {
          //fk_Direccion_Pais_Id: ['', Validators.required],
          fk_Direccion_Provincia_Id: ['', Validators.required],
          fk_Direccion_Partido_Id: ['', Validators.required],
-         fk_Direccion_Region_Id: ['', Validators.required],
          fk_Direccion_Localidad_Id: ['', Validators.required],
          fk_Direccion_Ciudad_Id: [''],
          fk_Direccion_Barrio_Id: [''],
@@ -391,7 +390,7 @@ export class FormComponent implements OnInit {
       obj.titulo = data1.titulo;
       obj.fk_estado_publicacion = data1.fk_estado_publicacion;
       obj.descipcion = data1.descipcion;
-      obj.fk_tipoPropiedad = data1.fk_tipoPropiedad;
+      obj.fk_idTipoPropiedad = data1.fk_idTipoPropiedad;
       obj.esUnaOportunidad = +data1.esUnaOportunidad;
       obj.esUnaNovedad = +data1.esUnaNovedad;
       obj.aparece_en_galeria = +data1.aparece_en_galeria;
@@ -411,7 +410,7 @@ export class FormComponent implements OnInit {
       let data3 = this.formThree.value;
       //Obtenemos la data de Datos Generales
       //Asignamos el tipo de unidad
-      switch (obj.fk_tipoPropiedad) {
+      switch (obj.fk_idTipoPropiedad) {
          //Asignamos el tipo de unidad segun el tipo de propiedad seleccionado
          case 1: //Departamento
             obj.fk_TipoUnidadDepartamento = data3.tipoDeUnidad;
@@ -463,7 +462,6 @@ export class FormComponent implements OnInit {
       obj.fk_Direccion_Pais_Id = 1; //Por Default Argentina
       obj.fk_Direccion_Provincia_Id = data3.fk_Direccion_Provincia_Id;
       obj.fk_Direccion_Partido_Id = data3.fk_Direccion_Partido_Id;
-      obj.fk_Direccion_Region_Id = data3.fk_Direccion_Region_Id;
       obj.fk_Direccion_Localidad_Id = data3.fk_Direccion_Localidad_Id;
       obj.fk_Direccion_Ciudad_Id = data3.fk_Direccion_Ciudad_Id ? data3.fk_Direccion_Ciudad_Id : '';
       obj.fk_Direccion_Barrio_Id = data3.fk_Direccion_Barrio_Id ? data3.fk_Direccion_Barrio_Id : '';
@@ -593,12 +591,13 @@ export class FormComponent implements OnInit {
       });
 
       //Obtenemos y llenamos los selects de Edificios
-      //Servicios
-      this.vista.edificio.servicios.forEach(element => {
-         obj[element.variableName] = element.selected ? 1 : 0;
-      });
-
-      console.log(obj);
+      if (this.vista.edificio) {
+         //Servicios
+         this.vista.edificio.servicios.forEach(element => {
+            obj[element.variableName] = element.selected ? 1 : 0;
+         });
+      }
+      return obj;
 
    }
 
@@ -857,9 +856,13 @@ export class FormComponent implements OnInit {
    }
 
    reloadBarrios(event) {
+      console.log(event.value);
+
       this.formThree.controls['fk_Direccion_Barrio_Id'].setValue('');
       if (event.value >= 0) {
          this.service.getBarrios(event.value).then((resp: any) => {
+            console.log(resp);
+
             this.arrayBarrio = resp.Barrios;
          });
       }
@@ -874,7 +877,25 @@ export class FormComponent implements OnInit {
       }
    }
 
+   publicar() {
+      //Obtenemos el objeto con los datos
+      let obj = this.getDataForm();
+      //Parseamos el objeto a FORM DATA
+      let formData: FormData = new FormData();
+      let keys = Object.keys(obj)
+      for (let index = 0; index < keys.length; index++) {
+         const element = keys[index];
+         formData.append(element, obj[element]);
+      }
+
+      //Registramos el objeto
+      this.service.addPropiedad(formData).then((resp: any) => {
+         console.log(resp);
+      });
+   }
    show() { }
 
    delete() { }
+
+ 
 }
