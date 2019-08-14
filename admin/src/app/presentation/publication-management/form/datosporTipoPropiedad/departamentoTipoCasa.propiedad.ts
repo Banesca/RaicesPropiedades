@@ -1,5 +1,4 @@
-import { isMedidas } from "../datosPorTipoPropiedad";
-
+import { isMedidas } from "./funcion";
 
 export const caracteristicasDepartamentoTipoCasa = {
     LongitudFrente: true,
