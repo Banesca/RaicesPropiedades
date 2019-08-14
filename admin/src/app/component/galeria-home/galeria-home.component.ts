@@ -37,7 +37,7 @@ export class GaleriaHomeComponent implements OnInit {
     private _PublicacionesService: PublicacionesService
   ) {
     this.mCategorias = [];
-    //   this.mCategoriasSelect = MailSuscribers.empy();
+    // this.mCategoriasSelect = MailSuscribers.empy();
     this.mForma = this.generarFormulario();
     this.mCategoriasSelect = Galeria.empy();
     this.mFormaEstado = enCRUD.Eliminar;
@@ -46,6 +46,7 @@ export class GaleriaHomeComponent implements OnInit {
   }
 
   ngOnInit() {}
+
   get f() {
     return this.mForma.controls;
   }
@@ -134,7 +135,8 @@ export class GaleriaHomeComponent implements OnInit {
     }
   }
 
-  nuevo() {
+  nuevo() {    
+    this.mCategoriasSelect = Galeria.empy();
     this.mFormaEstado = enCRUD.Crear;
   }
 
@@ -153,6 +155,7 @@ export class GaleriaHomeComponent implements OnInit {
         this.mCategoriasSelect = Galeria.empy();
         this.getAll();
         this.mLoading = false;
+        this.submitted = false;
         this._AlertsService.msg('OK', '!ÉXITO!', 'Galería Actualizada Correctamente.')
       })
       .catch(err => {
@@ -174,6 +177,7 @@ export class GaleriaHomeComponent implements OnInit {
         this.getAll();
         this.mForma.reset();
         this.mLoading = false;
+        this.submitted = false;
         this._AlertsService.msg('OK', '!ÉXITO!', 'Galería creada Correctamente.')
       })
       .catch(err => {

@@ -17,7 +17,7 @@
         idGaleria: null,
         titulo: "",
         descripcion: "",
-        fk_publicaciones: null,
+        fk_publicaciones: "",
         images: null
       } as IGaleria;
     }

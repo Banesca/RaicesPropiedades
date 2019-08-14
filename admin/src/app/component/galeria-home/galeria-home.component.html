@@ -136,7 +136,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="">Publicación</label>
-              <select formControlName="fk_publicaciones" class="form-control form-control-lg">
+              <select [(ngModel)]="mCategoriasSelect.fk_publicaciones" formControlName="fk_publicaciones" class="form-control form-control-lg">
                 <option value="">Seleciona Una Publicación</option>
                 <option *ngFor="let publicacion of mPublicaciones" type="number" [value]="publicacion.idPropiedad">{{publicacion.descipcion}}</option>
               </select>
@@ -171,7 +171,11 @@
                     </div>
                   </div>
                   <div>
-                    <output id="list"></output>
+                    <output id="list">
+                        <span *ngFor="let image of mCategoriasSelect.images; let i = index">
+                          <img class="thumb" src="" style="height:150px;" title="">
+                        </span>
+                    </output>
                   </div>
                   <div>
                     <input id="files" multiple="true" name="files[]" type="file" (change)="handleFileSelect($event)"/>
