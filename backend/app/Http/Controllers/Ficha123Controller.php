@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Propiedad;
 
+use Illuminate\Http\Request;
+
 class Ficha123Controller extends Controller
 {
-    public function listar($idFichas)
+    public function listar(Request $request,$idFichas)
     {
         $ficha123 = Propiedad::with(
             'TipoPropiedad',
@@ -73,7 +75,7 @@ class Ficha123Controller extends Controller
 
     }
 
-    public function listarTodo()
+    public function listarTodo(Request $request) // Uso request para pasarlo al arbol, aunq no tenga nada
     {
 
         $ficha123 = Propiedad::with(
@@ -135,7 +137,7 @@ class Ficha123Controller extends Controller
                 ];
             });
 
-            return response()->json($ficha123);
+            return response()->json(BuscadorDePropiedadesController::getArbol( $request, $ficha123));
         }else{
             $response = [
                 'msj'             => 'No existe la propiedad',
@@ -145,7 +147,7 @@ class Ficha123Controller extends Controller
 
     }
 
-    public function listarTodoSinFiltro()
+    public function listarTodoSinFiltro(Request $request) // Uso request para pasarlo al arbol, aunq no tenga nada
     {
         $ficha123 = Propiedad::with(
             'TipoPropiedad',
@@ -205,7 +207,7 @@ class Ficha123Controller extends Controller
                 ];
             });
 
-            return response()->json($ficha123);
+            return response()->json(BuscadorDePropiedadesController::getArbol( $request, $ficha123));
         }else{
             $response = [
                 'msj'             => 'No existe la propiedad',
