@@ -29,7 +29,7 @@ export class ListComponent implements OnInit {
 
       this.loading = true
       // Es necesario crear todos los servicios para las publicaciones
-      this.service.All().then(
+      this.service.listarTodasPropiedades().then(
          res => {
             this.data = res;
             console.log(res);
@@ -49,17 +49,20 @@ export class ListComponent implements OnInit {
 
    eliminar(pKey: number) {
       if (confirm('Está seguro de que quiere eliminar esta publicación?')) {
+         this.loading = true;
          this.service
             .deletePropiedad(pKey)
             .then(data => {
                this.loadData();
                this.alertService.msg('OK', 'Eliminar Publicación', 'Publicación Eliminada Correctamente.')
+               this.loading = false;
             })
             .catch(error => {
                console.error(error);
-               this.alertService.msg('ERR', 'Eliminar Publicación', 'Error al Eliminar Publicación.')
+               this.alertService.msg('ERR', 'Eliminar Publicación', 'Error al Eliminar Publicación.');
+               this.loading = false;
             });
       }
    }
-   
+
 }

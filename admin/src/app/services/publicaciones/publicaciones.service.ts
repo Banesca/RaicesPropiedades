@@ -430,6 +430,24 @@ export class PublicacionesService {
       .toPromise();
   }
 
+
+
+  editPropiedad(datos, id) {
+    return this._HttpClient
+      .post<any>(environment.apiHost + "/api/v1/editPropiedad/" + id, datos, {
+        headers: new HttpHeaders({
+          "Access-Control-Allow-Origin": "*",
+          "Authorization": "Bearer " + localStorage.getItem("access_token")
+        })
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+
   deletePropiedad(pKey) {
     return this._HttpClient
       .delete(environment.apiHost + '/api/v1/deletePropiedad/' + pKey, { headers: getHeaders() })
@@ -438,5 +456,14 @@ export class PublicacionesService {
           return data;
         })
       ).toPromise();
+  }
+
+  getPropiedad(pKey) {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'listarPropiedades/' + pKey, {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+      })).toPromise();
   }
 }

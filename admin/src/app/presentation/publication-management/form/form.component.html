@@ -4,7 +4,7 @@
    <div class="col-12">
       <mat-card class="example-card">
          <mat-progress-bar *ngIf="loading" class="card-progress-bar" mode="indeterminate"></mat-progress-bar>
-         <mat-card-content>
+         <mat-card-content *ngIf="!loading">
 
             <mat-horizontal-stepper [linear]="true" #stepper>
                <mat-step [stepControl]="formOne">
@@ -17,7 +17,7 @@
                            <div class="form-group">
                               <div class="example-container">
                                  <mat-form-field>
-                                    <input matInput placeholder="Título" formControlName="titulo">
+                                    <input matInput placeholder="Título*" formControlName="titulo">
                                     <mat-error>
                                        Este valor es
                                        <strong>requerido</strong>
@@ -32,7 +32,7 @@
                            <div class="form-group">
                               <div class="example-container">
                                  <mat-form-field>
-                                    <mat-select placeholder="Estado" formControlName="fk_estado_publicacion">
+                                    <mat-select placeholder="Estado*" formControlName="fk_estado_publicacion">
                                        <mat-option *ngFor="let item of arrayEstadoPublicacion"
                                           [value]="item.idEstadoPublicaion">
                                           {{item.descripcion}}
@@ -53,7 +53,7 @@
                            <div class="form-group">
                               <div class="example-container">
                                  <mat-form-field>
-                                    <textarea matInput placeholder="Descripción"
+                                    <textarea matInput placeholder="Descripción*"
                                        formControlName="descipcion"></textarea>
                                     <mat-error>
                                        Este valor es
@@ -71,7 +71,7 @@
                            <div class="form-group">
                               <div class="example-container">
                                  <mat-form-field>
-                                    <mat-select placeholder="Tipo de priopiedad" formControlName="fk_idTipoPropiedad"
+                                    <mat-select placeholder="Tipo de priopiedad*" formControlName="fk_idTipoPropiedad"
                                        (selectionChange)="changeTipoPropiedad($event)">
                                        <mat-option *ngFor="let item of arrayTipoDePropiedad"
                                           [value]="item.idTipoPropiedad">
@@ -90,7 +90,7 @@
 
                         <div class="col-md-3">
                            <div class="form-group">
-                              <label for="">Es una oportunidad</label>
+                              <label for="">Es una oportunidad*</label>
                               <div class="example-container">
                                  <mat-radio-group formControlName="esUnaOportunidad">
                                     <mat-radio-button value="1">Si</mat-radio-button>
@@ -102,7 +102,7 @@
 
                         <div class="col-md-3">
                            <div class="form-group">
-                              <label for="">Es una novedad</label>
+                              <label for="">Es una novedad*</label>
                               <div class="example-container">
                                  <mat-radio-group formControlName="esUnaNovedad">
                                     <mat-radio-button value="1">Si</mat-radio-button>
@@ -114,7 +114,7 @@
 
                         <div class="col-md-3">
                            <div class="form-group">
-                              <label for="">Aparecera en la galería</label>
+                              <label for="">Aparecera en la galería*</label>
                               <div class="example-container">
                                  <mat-radio-group formControlName="aparece_en_galeria"
                                     (change)="changeApareceEnGaleria()">
@@ -130,7 +130,7 @@
                         <div class="col-12 text-right">
                            <div class="buttons-content">
                               <button mat-raised-button onclick="window.history.back()"
-                                 style="background-color: brown; color: white">Cancelar</button>
+                                 style="background-color: brown; color: white">Salir</button>
                               <button mat-raised-button color="primary" matStepperNext style="margin-left: 10px;"
                                  [disabled]="!formOne.valid">Siguiente</button>
                            </div>
@@ -297,13 +297,13 @@
                      <div class="col-12 text-right">
                         <div>
                            <button mat-raised-button onclick="window.history.back()"
-                              style="background-color: brown; color: white">Cancelar</button>
+                              style="background-color: brown; color: white">Salir</button>
 
                            <button mat-raised-button matStepperPrevious
                               style="margin-left: 10px; background-color: #262626; color: white">Regresar</button>
 
                            <button mat-raised-button color="primary" matStepperNext style="margin-left: 10px;"
-                              [disabled]="!formTwo.valid">Siguiente</button>
+                              [disabled]="!formOne.valid || !formTwo.valid">Siguiente</button>
                         </div>
                      </div>
                   </div>
@@ -325,7 +325,7 @@
                      <fieldset>
                         <div class="row">
                            <div class="col-md-12">
-                              <legend>Datos básicos</legend>
+                              <legend>Datos básicos*</legend>
 
                            </div>
                         </div>
@@ -337,7 +337,7 @@
                                     <div class="form-group">
                                        <div class="example-container">
                                           <mat-form-field>
-                                             <mat-select placeholder="Tipo de unidad" formControlName="tipoDeUnidad">
+                                             <mat-select placeholder="Tipo de unidad*" formControlName="tipoDeUnidad">
                                                 <mat-option *ngFor="let item of arrayTipoDeUnidad" [value]="item.id">
                                                    {{item.descripcion}}
                                                 </mat-option>
@@ -356,7 +356,7 @@
                                     <div class="form-group">
                                        <div class="example-container">
                                           <mat-form-field>
-                                             <mat-select placeholder="Tipo de operación"
+                                             <mat-select placeholder="Tipo de operación*"
                                                 formControlName="fk_idTipoOperaion">
                                                 <mat-option *ngFor="let item of arrayTipoDeOperacion"
                                                    [value]="item.idTipoOperaion">
@@ -382,7 +382,7 @@
                                     <div class="form-group">
                                        <div class="example-container">
                                           <mat-form-field>
-                                             <input matInput placeholder="Precio" formControlName="precio">
+                                             <input matInput placeholder="Precio*" formControlName="precio">
                                              <mat-error>
                                                 Este valor es
                                                 <strong>requerido</strong>
@@ -399,7 +399,7 @@
                                     <div class="form-group">
                                        <div class="example-container">
                                           <mat-form-field>
-                                             <mat-select placeholder="Moneda" formControlName="fk_idMonedas">
+                                             <mat-select placeholder="Moneda*" formControlName="fk_idMonedas">
                                                 <mat-option *ngFor="let item of arrayMonedas" [value]="item.idMonedas">
                                                    {{item.moneda}}
                                                 </mat-option>
@@ -413,7 +413,7 @@
                                     <div class="form-group">
                                        <div class="example-container">
                                           <mat-form-field>
-                                             <mat-select placeholder="Estado" formControlName="fk_Estado">
+                                             <mat-select placeholder="Estado*" formControlName="fk_Estado">
                                                 <mat-option *ngFor="let item of arrayEstadoDePropiedad"
                                                    [value]="item.idEstadoPropiedad">
                                                    {{item.descripcion}}
@@ -435,7 +435,7 @@
                      <fieldset>
                         <div class="row">
                            <div class="col-md-12">
-                              <legend>Compartir comisión</legend>
+                              <legend>Compartir comisión*</legend>
 
                            </div>
                         </div>
@@ -2215,14 +2215,21 @@
                            <div class="col-12 text-right">
                               <div>
                                  <button mat-raised-button onclick="window.history.back()"
-                                    style="background-color: brown; color: white">Cancelar</button>
+                                    style="background-color: brown; color: white">Salir</button>
 
                                  <button mat-raised-button matStepperPrevious
                                     style="margin-left: 10px; background-color: #262626; color: white"
                                     (click)="getDataForm()">Regresar</button>
 
-                                 <button mat-raised-button color="primary" matStepperNext style="margin-left: 10px;"
-                                    [disabled]="inPromise || !formThree.valid " (click)="publicar()">Publicar</button>
+                                 <button *ngIf="!id" mat-raised-button color="primary" matStepperNext
+                                    style="margin-left: 10px;"
+                                    [disabled]="inPromise || !formOne.valid || !formTwo.valid || !formThree.valid"
+                                    (click)="publicar()">Publicar</button>
+
+                                 <button *ngIf="id" mat-raised-button color="primary" matStepperNext
+                                    style="margin-left: 10px;"
+                                    [disabled]="inPromise || !formOne.valid || !formTwo.valid || !formThree.valid "
+                                    (click)="modificar()">Modificar</button>
                               </div>
                            </div>
                         </div>
