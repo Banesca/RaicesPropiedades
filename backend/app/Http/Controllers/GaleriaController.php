@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use App\ConfigFooter;
 use App\Galeria;
+use App\ImagenGaleria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 // use Image;
 
 class GaleriaController extends Controller
 {
     /*Creado por Breiddy Monterrey*/
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         // return response()->json(['request'=>$request->all(),'images'=>$request->images]);
         $this->validate($request, [
             'titulo'           => 'required|min:2',
@@ -32,10 +36,32 @@ class GaleriaController extends Controller
         try {
 
             $galeria = new Galeria($request->all());
-
             $galeria->save();
 
-            // $galeria->tipoPropiedad;
+            foreach ($request->images as $img) {
+                if (is_null($request[$img])) {
+                } else {
+                    $originalImage  = $request[$img];
+                    $thumbnailImage = Image::make($originalImage);
+                    $thumbnailImage->fit(2048, 2048, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $nombre_publico = $originalImage->getClientOriginalName();
+                    $extension      = $originalImage->getClientOriginalExtension();
+                    $nombre_interno = str_replace('.' . $extension, '', $nombre_publico);
+                    $nombre_interno = str_slug($nombre_interno, '-') . '-' . time() . '-' . strval(rand(100, 999)) . '.' . $extension;
+                    Storage::disk('local')->put('\\imagenesDeGaleria\\' . $nombre_interno, (string) $thumbnailImage->encode());
+
+                    ImagenGaleria::create([
+                        'imagen'       => $nombre_interno,
+                        'fk_idGaleria' => $galeria->idGaleria,
+                    ]);
+
+                }
+            }
+
+            $galeria->imagenes; //para listar las imagenes
+
             DB::commit();
             $response = [
                 'msj'  => 'Galeria Creada Exitosamente',
@@ -86,7 +112,8 @@ class GaleriaController extends Controller
         return response()->json($response, 200);
     }
 
-    public function update(Request $request, $idGaleria) {
+    public function update(Request $request, $idGaleria)
+    {
         //return response()->json(['request'=>$request->all(),'images'=>$request->images]);
         DB::beginTransaction();
         try {

@@ -15,6 +15,7 @@ class Ficha3Controller extends Controller {
 
     public function add(Request $request) {
 
+       // return response()->json($request->all());
         /*$this->validate($request, [
             'fk_ficha2' => 'required',
         ], [
@@ -65,9 +66,9 @@ class Ficha3Controller extends Controller {
 
             $propiedad->save();
 
-            $sincronice=new SincroniceArgenController();
+           // $sincronice=new SincroniceArgenController();
 
-            $sincronice->add($propiedad); //para add propiedad en argen pro
+            //$sincronice->add($propiedad); //para add propiedad en argen pro
 
             @$propiedad->TipoPropiedad;
             @$propiedad->Disposicion;
