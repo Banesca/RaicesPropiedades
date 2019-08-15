@@ -101,7 +101,7 @@ export class OfficeComponent implements OnInit {
       .then(data => {
         this.successMensaje = true;
         this.mLoading = false;
-        this.submitted=true;
+        this.submitted=false;
         this.contactForm.reset();
       })
       .catch(error => {
