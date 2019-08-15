@@ -137,7 +137,7 @@ class Ficha123Controller extends Controller
                 ];
             });
 
-            return response()->json(BuscadorDePropiedadesController::getArbol( $request, $ficha123));
+            return response()->json($ficha123);
         }else{
             $response = [
                 'msj'             => 'No existe la propiedad',
@@ -207,7 +207,7 @@ class Ficha123Controller extends Controller
                 ];
             });
 
-            return response()->json(BuscadorDePropiedadesController::getArbol( $request, $ficha123));
+            return response()->json($ficha123);
         }else{
             $response = [
                 'msj'             => 'No existe la propiedad',

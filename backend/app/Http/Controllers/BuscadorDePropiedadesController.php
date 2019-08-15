@@ -71,6 +71,7 @@ class BuscadorDePropiedadesController extends Controller {
                 ! is_null($idLocalidad) ? $query->where('fk_Direccion_Localidad_Id', $idLocalidad) : '';
                 ! is_null($idBarrio) ? $query->where('fk_Direccion_Barrio_Id', $idBarrio) : '';
             })
+            ->where('fk_estado_publicacion', 1)
             ->get();
 
         $resultadoUnico->each(function ($resultadoUnico) {
@@ -179,9 +180,8 @@ class BuscadorDePropiedadesController extends Controller {
             ! is_null($idBarrio) ? $query->where('fk_Direccion_Barrio_Id', $idBarrio) : '';
         })->distinct()
             ->get();
-
-        $ar['arbol']=$array;
-        return $ar;
+        $response=['propiedades'=>$ar,'arbol'=>$array];
+        return $response;
 
 
     }
