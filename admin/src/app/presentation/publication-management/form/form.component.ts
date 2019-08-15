@@ -6,6 +6,7 @@ import { AlertsService } from 'src/app/services/alerts.service';
 import { PublicacionesService } from 'src/app/services/publicaciones/publicaciones.service';
 import { IPublicacion, VistaPublicaciones } from 'src/app/services/publicaciones/publicaciones.interface';
 import { DataByTipoPropiedad } from './datosPorTipoPropiedad';
+import { element } from '@angular/core/src/render3';
 
 @Component({
    selector: 'app-form',
@@ -86,6 +87,7 @@ export class FormComponent implements OnInit {
       }
    }
 
+   inPromise: boolean = false;
 
    constructor(
       private service: PublicacionesService,
@@ -105,7 +107,8 @@ export class FormComponent implements OnInit {
          this.id = params.id
          if (this.id) {
             // EN  CASO DE EDICION CARGA LOS DATOS DEL REGISTRO A EDITAR
-            this.createForm()
+            this.createForm(true);
+
          } else {
             this.createForm()
          }
@@ -222,12 +225,13 @@ export class FormComponent implements OnInit {
 
    }
 
-   createForm() {
+   createForm(isUpdate?: boolean) {
+      this.loading = true;
       this.formOne = this.fb.group({
          titulo: ['', Validators.required],
          fk_estado_publicacion: [null, Validators.required],
          descipcion: ['', Validators.required], //Descripcion --> se coloca descipcion por motivo de concordar con el error de backend
-         fk_tipoPropiedad: [null, Validators.required],
+         fk_idTipoPropiedad: [null, Validators.required],
          esUnaOportunidad: ["0", Validators.required],
          esUnaNovedad: ["0", Validators.required],
          aparece_en_galeria: ["1", Validators.required],
@@ -259,7 +263,6 @@ export class FormComponent implements OnInit {
          //fk_Direccion_Pais_Id: ['', Validators.required],
          fk_Direccion_Provincia_Id: ['', Validators.required],
          fk_Direccion_Partido_Id: ['', Validators.required],
-         fk_Direccion_Region_Id: ['', Validators.required],
          fk_Direccion_Localidad_Id: ['', Validators.required],
          fk_Direccion_Ciudad_Id: [''],
          fk_Direccion_Barrio_Id: [''],
@@ -378,6 +381,218 @@ export class FormComponent implements OnInit {
       })
 
       this.loadSelects();
+
+      if (isUpdate) {
+
+         this.service.getPropiedad(this.id).then((res: any) => {
+            //Cargamos el 1er step
+            this.formOne.setValue({
+               titulo: res.titulo,
+               fk_estado_publicacion: res.fk_estado_publicacion,
+               descipcion: res.descipcion, //Descripcion --> se coloca descipcion por motivo de concordar con el error de backend
+               fk_idTipoPropiedad: res.fk_idTipoPropiedad,
+               esUnaOportunidad: res.esUnaOportunidad == 1 ? "1" : "0",
+               esUnaNovedad: res.esUnaNovedad == 1 ? "1" : "0",
+               aparece_en_galeria: res.aparece_en_galeria == 1 ? "1" : "0",
+            });
+
+            //Ejecutamos la validacion si aparece en galería
+            this.changeApareceEnGaleria();
+
+            //Ejecutamos el select de tipo de propiedad
+            this.changeTipoPropiedad({ value: res.fk_idTipoPropiedad });
+
+            //Cargamos el 2do step
+            this.formTwo.setValue({
+               imageGalery: res.imagen_para_galeria ? res.imagenes.imagen_para_galeria : null,
+               image1: res.imagen1 ? res.imagenes.imagen1 : null,
+               image2: res.imagen2 ? res.imagenes.imagen2 : null,
+               image3: res.imagen3 ? res.imagenes.imagen3 : null,
+               image4: res.imagen4 ? res.imagenes.imagen4 : null,
+               image5: res.imagen5 ? res.imagenes.imagen5 : null,
+               image6: res.imagen6 ? res.imagenes.imagen6 : null,
+               image7: res.imagen7 ? res.imagenes.imagen7 : null
+            });
+
+            //Cargamos el 3er step
+            //Cargamos los dependientes de dirección segun los datos
+            this.reloadPartidos({ value: res.fk_Direccion_Provincia_Id });
+            this.reloadLocalidades({ value: res.fk_Direccion_Partido_Id });
+            res.fk_Direccion_Localidad_Id ? this.reloadBarrios({ value: res.fk_Direccion_Localidad_Id }) : null;
+            res.fk_Direccion_Barrio_Id ? this.reloadSubBarrios({ vakue: res.fk_Direccion_Barrio_Id }) : null;
+
+            this.formThree.setValue({
+               //Datos Basicos
+               tipoDeUnidad: this.getTipoDeUnidad(res),
+               fk_idTipoOperaion: res.fk_idTipoOperaion, // se coloca fk_idTipoOperaion para coincidir con el campo del backend
+               precio: res.precio,
+               fk_idMonedas: res.fk_idMonedas,
+               no_publicar_precio_inter: res.no_publicar_precio_inter == 1 ? true : false,
+               fk_Estado: res.fk_Estado,
+
+               //Compartir comision
+               comision: res.comision,
+
+
+               //Ubicación
+               //fk_Direccion_Pais_Id: ['', Validators.required],
+               fk_Direccion_Provincia_Id: res.fk_Direccion_Provincia_Id,
+               fk_Direccion_Partido_Id: res.fk_Direccion_Partido_Id,
+               fk_Direccion_Localidad_Id: res.fk_Direccion_Localidad_Id,
+               fk_Direccion_Ciudad_Id: res.fk_Direccion_Ciudad_Id,
+               fk_Direccion_Barrio_Id: res.fk_Direccion_Barrio_Id,
+               fk_Direccion_SubBarrio_Id: res.fk_Direccion_SubBarrio_Id,
+               Direccion_Nombrecalle: res.Direccion_Nombrecalle,
+               Direccion_Numero: res.Direccion_Numero,
+               Direccion_Piso: res.Direccion_Piso,
+               Direccion_Departamento: res.Direccion_Departamento,
+               Direccion_Coordenadas_Latitud: res.Direccion_Coordenadas_Latitud,
+               Direccion_Coordenadas_Longitud: res.Direccion_Coordenadas_Longitud,
+
+
+               //Caracteristicas
+               //Inputs
+               LongitudFrente: res.LongitudFrente,
+               LongitudFondo: res.LongitudFondo,
+               Antiguedad: res.Antiguedad,
+               SuperficieCubierta: res.SuperficieCubierta,
+               SuperficieDescubierta: res.SuperficieDescubierta,
+               CantidadCocheras: res.CantidadCocheras,
+               Expensas: res.Expensas,
+               CantidadBanos: res.CantidadBanos,
+               CantidadAmbientes: res.CantidadAmbientes,
+               CantidadDormitorios: res.CantidadDormitorios,
+               CantidadPlantas: res.CantidadPlantas,
+               SuperficieTerreno: res.SuperficieTerreno,
+               Largo: res.Largo,
+               Ancho: res.Ancho,
+               Altura: res.Altura,
+               MontoExpensas: res.MontoExpensas,
+               MetrosDeLaEsquina: res.MetrosDeLaEsquina,
+               UltimaActividad: res.UltimaActividad,
+               GaleriaShopping: res.GaleriaShopping,
+               SuperficiePlaya: res.SuperficiePlaya,
+               SuperficieDeposito: res.SuperficieDeposito,
+               CantidadPisos: res.CantidadPisos,
+               HabitacionesPorPiso: res.HabitacionesPorPiso,
+               CantidadPersonal: res.CantidadPersonal,
+               RentabilidadAnual: res.RentabilidadAnual,
+               CantidadHabitaciones: res.CantidadHabitaciones,
+               CantidadEstrellas: res.CantidadEstrellas,
+               CantidadPlazas: res.CantidadPlazas,
+               CantidadCubiertos: res.CantidadCubiertos,
+               SuperficieTotal: res.SuperficieTotal,
+               SuperficieConstruible: res.SuperficieConstruible,
+               MedidaLinealDerecha: res.MedidaLinealDerecha,
+               MedidaLinealIzquierda: res.MedidaLinealIzquierda,
+               FOT: res.FOT,
+               Zonificacion: res.Zonificacion,
+               SuperficiePlanta: res.SuperficiePlanta,
+               DepartamentosPorPiso: res.DepartamentosPorPiso,
+               SuperficieOficina: res.SuperficieOficina,
+               SuperficieCubiertaCasa: res.SuperficieCubiertaCasa,
+               CantidadHectareas: res.CantidadHectareas,
+               DistanciaPavimento: res.DistanciaPavimento,
+               SuperficieLocal: res.SuperficieLocal,
+               ReferenciaCercana: res.ReferenciaCercana,
+               AntiguedadComercio: res.AntiguedadComercio,
+               RecaudacionMensual: res.RecaudacionMensual,
+               CantidadOficinas: res.CantidadOficinas,
+               AnchoEntrada: res.AnchoEntrada,
+               AltoEntrada: res.AltoEntrada,
+               CantidadColumnas: res.CantidadColumnas,
+               CantidadNaves: res.CantidadNaves,
+               AlturaTecho: res.AlturaTecho,
+               Detalle: res.Detalle,
+               TipoBien: res.TipoBien,
+
+
+               //Checks
+               AptoCredito: res.AptoCredito == "1" ? true : false,
+               AptoProfesional: res.AptoProfesional == "1" ? true : false,
+               CocheraOptativa: res.CocheraOptativa == "1" ? true : false,
+               PropiedadOcupada: res.PropiedadOcupada == "1" ? true : false,
+               Generales_PermiteMascotas: res.Generales_PermiteMascotas == "1" ? true : false,
+               Generales_SeguroCaucion: res.Generales_SeguroCaucion == "1" ? true : false,
+               Baulera: res.Baulera == "1" ? true : false,
+               Vivienda: res.Vivienda == "1" ? true : false,
+               TerrenoPropio: res.TerrenoPropio == "1" ? true : false,
+               Vidriera: res.Vidriera == "1" ? true : false,
+               EnEdificio: res.EnEdificio == "1" ? true : false,
+               Demolicion: res.Demolicion == "1" ? true : false,
+               FondoIrregular: res.FondoIrregular == "1" ? true : false,
+               FrenteIrregular: res.FrenteIrregular == "1" ? true : false,
+               LateralDerechoIrregular: res.LateralDerechoIrregular == "1" ? true : false,
+               LateralIzquierdoIrregular: res.LateralIzquierdoIrregular == "1" ? true : false,
+               Reciclado: res.Reciclado == "1" ? true : false,
+               Ganaderia: res.Ganaderia == "1" ? true : false,
+               Agricultura: res.Agricultura == "1" ? true : false,
+               CasaPrincipal: res.CasaPrincipal == "1" ? true : false,
+               CasaCaseros: res.CasaCaseros == "1" ? true : false,
+               Local: res.Local == "1" ? true : false,
+               VentaMercaderia: res.VentaMercaderia == "1" ? true : false,
+               GeneradorPropio: res.GeneradorPropio == "1" ? true : false,
+
+
+               //Selects
+               fk_Disposicion: res.fk_Disposicion,
+               fk_Orientacion: res.fk_Orientacion,
+               fk_TipoBalcon: res.fk_TipoBalcon,
+               fk_TipoExpensas: res.fk_TipoExpensas,
+               fk_TipoVista: res.fk_TipoVista,
+               fk_TipoCosta: res.fk_TipoCosta,
+               fk_TipoTecho: res.fk_TipoTecho,
+               fk_TipoPiso: res.fk_TipoPiso,
+               fk_TipoPendiente: res.fk_TipoPendiente,
+               fk_TipoCobertura: res.fk_TipoCobertura,
+               fk_TipoCoche: res.fk_TipoCoche,
+               fk_TipoAcceso: res.fk_TipoAcceso,
+               fk_TipoBano: res.fk_TipoBano,
+               fk_TipoAscensor: res.fk_TipoAscensor,
+               fk_TipoTechoIndustrial: res.fk_TipoTechoIndustrial,
+               fk_TipoCalefaccion: res.fk_TipoCalefaccion,
+               fk_TipoPorton: res.fk_TipoPorton
+
+            });
+
+            //Recorremos los arrays para saber que item está seleccionado
+            //Obtenemos y llenamos los selects de Ambientes
+            if (this.vista.ambientes) {
+               this.vista.ambientes.forEach(element => {
+                  element.selected = res[element.variableName] == "1" ? true : false;
+               });
+            }
+
+            //Obtenemos y llenamos los selects de Instalaciones
+            if (this.vista.instalaciones) {
+               this.vista.instalaciones.forEach(element => {
+                  element.selected = res[element.variableName] == "1" ? true : false;
+               });
+            }
+
+
+            //Obtenemos y llenamos los selects de Servicios
+            if (this.vista.servicios) {
+               this.vista.servicios.forEach(element => {
+                  element.selected = res[element.variableName] == "1" ? true : false;
+               });
+            }
+
+            //Obtenemos y llenamos los selects de Edificios
+            if (this.vista.edificio) {
+               //Servicios
+               this.vista.edificio.servicios.forEach(element => {
+                  element.selected = res[element.variableName] == "1" ? true : false;
+               });
+            }
+            this.loading = false;
+         });
+
+      } else {
+         this.loading = false;
+      }
+
+
    }
 
    getDataForm() {
@@ -391,7 +606,7 @@ export class FormComponent implements OnInit {
       obj.titulo = data1.titulo;
       obj.fk_estado_publicacion = data1.fk_estado_publicacion;
       obj.descipcion = data1.descipcion;
-      obj.fk_tipoPropiedad = data1.fk_tipoPropiedad;
+      obj.fk_idTipoPropiedad = data1.fk_idTipoPropiedad;
       obj.esUnaOportunidad = +data1.esUnaOportunidad;
       obj.esUnaNovedad = +data1.esUnaNovedad;
       obj.aparece_en_galeria = +data1.aparece_en_galeria;
@@ -411,7 +626,7 @@ export class FormComponent implements OnInit {
       let data3 = this.formThree.value;
       //Obtenemos la data de Datos Generales
       //Asignamos el tipo de unidad
-      switch (obj.fk_tipoPropiedad) {
+      switch (obj.fk_idTipoPropiedad) {
          //Asignamos el tipo de unidad segun el tipo de propiedad seleccionado
          case 1: //Departamento
             obj.fk_TipoUnidadDepartamento = data3.tipoDeUnidad;
@@ -463,7 +678,6 @@ export class FormComponent implements OnInit {
       obj.fk_Direccion_Pais_Id = 1; //Por Default Argentina
       obj.fk_Direccion_Provincia_Id = data3.fk_Direccion_Provincia_Id;
       obj.fk_Direccion_Partido_Id = data3.fk_Direccion_Partido_Id;
-      obj.fk_Direccion_Region_Id = data3.fk_Direccion_Region_Id;
       obj.fk_Direccion_Localidad_Id = data3.fk_Direccion_Localidad_Id;
       obj.fk_Direccion_Ciudad_Id = data3.fk_Direccion_Ciudad_Id ? data3.fk_Direccion_Ciudad_Id : '';
       obj.fk_Direccion_Barrio_Id = data3.fk_Direccion_Barrio_Id ? data3.fk_Direccion_Barrio_Id : '';
@@ -472,6 +686,8 @@ export class FormComponent implements OnInit {
       obj.Direccion_Numero = data3.Direccion_Numero ? data3.Direccion_Numero : '';
       obj.Direccion_Piso = data3.Direccion_Piso ? data3.Direccion_Piso : '';
       obj.Direccion_Departamento = data3.Direccion_Departamento ? data3.Direccion_Departamento : '';
+      obj.Direccion_Coordenadas_Latitud = data3.Direccion_Coordenadas_Latitud ? data3.Direccion_Coordenadas_Latitud : '';
+      obj.Direccion_Coordenadas_Longitud = data3.Direccion_Coordenadas_Longitud ? data3.Direccion_Coordenadas_Longitud : '';
 
       //Llenamos las caracteristicas
       //Inputs
@@ -575,30 +791,38 @@ export class FormComponent implements OnInit {
       obj.fk_TipoPorton = data3.fk_TipoPorton ? data3.fk_TipoPorton : '';
       obj.fk_TipoCalefaccion = data3.fk_TipoCalefaccion ? data3.fk_TipoCalefaccion : '';
 
-
       //Obtenemos y llenamos los selects de Ambientes
-      this.vista.ambientes.forEach(element => {
-         obj[element.variableName] = element.selected ? 1 : 0;
-         element.isMedidas ? obj["Medidas_" + element.variableName] = element.medidas : null;
-      });
+      if (this.vista.ambientes) {
+         this.vista.ambientes.forEach(element => {
+            obj[element.variableName] = element.selected ? 1 : 0;
+            element.isMedidas ? obj["Medidas_" + element.variableName] = element.medidas : null;
+         });
+      }
+
 
       //Obtenemos y llenamos los selects de Instalaciones
-      this.vista.instalaciones.forEach(element => {
-         obj[element.variableName] = element.selected ? 1 : 0;
-      });
+      if (this.vista.instalaciones) {
+         this.vista.instalaciones.forEach(element => {
+            obj[element.variableName] = element.selected ? 1 : 0;
+         });
+      }
+
 
       //Obtenemos y llenamos los selects de Servicios
-      this.vista.servicios.forEach(element => {
-         obj[element.variableName] = element.selected ? 1 : 0;
-      });
+      if (this.vista.servicios) {
+         this.vista.servicios.forEach(element => {
+            obj[element.variableName] = element.selected ? 1 : 0;
+         });
+      }
 
       //Obtenemos y llenamos los selects de Edificios
-      //Servicios
-      this.vista.edificio.servicios.forEach(element => {
-         obj[element.variableName] = element.selected ? 1 : 0;
-      });
-
-      console.log(obj);
+      if (this.vista.edificio) {
+         //Servicios
+         this.vista.edificio.servicios.forEach(element => {
+            obj[element.variableName] = element.selected ? 1 : 0;
+         });
+      }
+      return obj;
 
    }
 
@@ -756,6 +980,37 @@ export class FormComponent implements OnInit {
       }
       //Luego de cambiar el array eliminamos el posible valor seleccionado
       this.formThree.controls['tipoDeUnidad'].setValue(null);
+      //Limpiamos los selects
+      //Recorremos los arrays para saber que item está seleccionado
+      //Obtenemos y llenamos los selects de Ambientes
+      if (this.vista.ambientes) {
+         this.vista.ambientes.forEach(element => {
+            element.selected = false;
+         });
+      }
+
+      //Obtenemos y llenamos los selects de Instalaciones
+      if (this.vista.instalaciones) {
+         this.vista.instalaciones.forEach(element => {
+            element.selected = false;
+         });
+      }
+
+
+      //Obtenemos y llenamos los selects de Servicios
+      if (this.vista.servicios) {
+         this.vista.servicios.forEach(element => {
+            element.selected = false;
+         });
+      }
+
+      //Obtenemos y llenamos los selects de Edificios
+      if (this.vista.edificio && this.vista.edificio.servicios) {
+         //Servicios
+         this.vista.edificio.servicios.forEach(element => {
+            element.selected = false;
+         });
+      }
 
    }
 
@@ -838,6 +1093,7 @@ export class FormComponent implements OnInit {
       }
    }
 
+
    reloadPartidos(event) {
       this.formThree.controls['fk_Direccion_Partido_Id'].setValue('');
       if (event.value >= 0) {
@@ -874,7 +1130,97 @@ export class FormComponent implements OnInit {
       }
    }
 
+   publicar() {
+      this.inPromise = true
+      //Obtenemos el objeto con los datos
+      let obj = this.getDataForm();
+      //Parseamos el objeto a FORM DATA
+      let formData: FormData = new FormData();
+      let keys = Object.keys(obj)
+      for (let index = 0; index < keys.length; index++) {
+         const element = keys[index];
+         formData.append(element, obj[element]);
+      }
+      //Registramos el objeto
+      this.service.addPropiedad(formData).then((resp: any) => {
+         this.inPromise = false
+         this.alertService.msg(
+            "OK",
+            "Registro",
+            resp.msj
+         );
+         this.formOne.reset();
+         this.formTwo.reset();
+         this.formThree.reset();
+         this.router.navigate(['/gestionar-publicaciones']);
+
+      }).catch(e => {
+         console.error(e);
+         this.alertService.msg("ERR", "ERROR", "Error al publicar los datos.");
+      });
+   }
+
+   modificar() {
+      this.inPromise = true
+      //Obtenemos el objeto con los datos
+      let obj = this.getDataForm();
+      //Parseamos el objeto a FORM DATA
+      let formData: FormData = new FormData();
+      let keys = Object.keys(obj)
+      for (let index = 0; index < keys.length; index++) {
+         const element = keys[index];
+         formData.append(element, obj[element]);
+      }
+      //Registramos el objeto
+      this.service.editPropiedad(formData, this.id).then((resp: any) => {
+         this.inPromise = false
+         this.alertService.msg(
+            "OK",
+            "Modificación",
+            resp.msj
+         );
+
+      }).catch(e => {
+         console.error(e);
+         this.alertService.msg("ERR", "ERROR", "Error al modificar los datos.");
+      });
+   }
+
+   getTipoDeUnidad(obj) {
+      switch (obj.fk_idTipoPropiedad) {
+         //Asignamos el tipo de unidad segun el tipo de propiedad seleccionado
+         case 1: //Departamento
+            return obj.fk_TipoUnidadDepartamento;
+         case 3: //Casa
+            return obj.fk_TipoUnidadCasa;
+         case 4: //Quinta
+            return obj.fk_TipoUnidadCasa
+         case 5: //Cochera
+            return obj.fk_TipoCochera
+         case 6: //Local
+            return obj.fk_TipoLocal
+         case 7: //Hotel
+            return obj.fk_TipoHotel
+         case 8: //Terreno
+            return obj.fk_TipoTerreno
+         case 10: //Campo
+            return obj.fk_TipoCampo
+         case 11: //Fondo de Comercio
+            return obj.fk_TipoFondoComercio
+
+         case 2: //Departamento Tipo Casa
+         case 9: //Oficina
+         case 12: //Galpón
+         case 13: //Negocio Especial
+         default: //Cuando se ingrese algo desconocido
+            //No posee tipo de unidad
+            return 0;
+      }
+   }
+
    show() { }
 
    delete() { }
+
+
 }

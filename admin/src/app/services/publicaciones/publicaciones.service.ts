@@ -1,12 +1,18 @@
 import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { getHeaders } from '../../misc/Headers';
+
+const httpOptions = {
+  headers: getHeaders()
+};
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class PublicacionesService {
   private mService = '/api/v1/';
   private mUrl: string;
@@ -16,6 +22,16 @@ export class PublicacionesService {
 
   All() {
     return this._HttpClient.get(environment.apiHost + this.mService + 'listarPropiedades', {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
+  listarTodasPropiedades() {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'listarTodasPropiedades', {
       headers: getHeaders()
     }).pipe(
       map((data: any[]) => {
@@ -398,4 +414,56 @@ export class PublicacionesService {
   }
 
 
+  addPropiedad(datos) {
+    return this._HttpClient
+      .post<any>(environment.apiHost + "/api/v1/addPropiedad", datos, {
+        headers: new HttpHeaders({
+          "Access-Control-Allow-Origin": "*",
+          "Authorization": "Bearer " + localStorage.getItem("access_token")
+        })
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+
+
+
+  editPropiedad(datos, id) {
+    return this._HttpClient
+      .post<any>(environment.apiHost + "/api/v1/editPropiedad/" + id, datos, {
+        headers: new HttpHeaders({
+          "Access-Control-Allow-Origin": "*",
+          "Authorization": "Bearer " + localStorage.getItem("access_token")
+        })
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+
+  deletePropiedad(pKey) {
+    return this._HttpClient
+      .delete(environment.apiHost + '/api/v1/deletePropiedad/' + pKey, { headers: getHeaders() })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      ).toPromise();
+  }
+
+  getPropiedad(pKey) {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'listarPropiedades/' + pKey, {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+      })).toPromise();
+  }
 }
