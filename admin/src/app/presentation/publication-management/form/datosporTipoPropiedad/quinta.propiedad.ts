@@ -1,4 +1,4 @@
-import { isMedidas } from "../datosPorTipoPropiedad";
+import { isMedidas } from "./funcion";
 
 
 export const caracteristicasQuinta = {

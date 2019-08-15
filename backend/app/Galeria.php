@@ -21,9 +21,10 @@ class Galeria extends Model
         'updated_at',
     ];
 
-    // public function tipoPropiedad()
-    // {
-    //     return $this->belongsTo('App\TipoPropiedad', 'fk_tipoPropiedad');
-    // }
+
+    public function imagenes()
+    {
+        return $this->hasMany('App\ImagenGaleria', 'fk_idGaleria','idGaleria');
+    }
 
 }

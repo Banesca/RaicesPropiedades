@@ -1,6 +1,3 @@
-import { isMedidas } from "../datosPorTipoPropiedad";
-
-
 export const caracteristicasCampo = {
     SuperficieCubierta: true,
     SuperficieCubiertaCasa: true,

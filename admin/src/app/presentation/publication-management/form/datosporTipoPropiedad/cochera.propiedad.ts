@@ -1,6 +1,3 @@
-import { isMedidas } from "../datosPorTipoPropiedad";
-
-
 export const caracteristicasCochera = {
     Largo: true,
     Ancho: true,
