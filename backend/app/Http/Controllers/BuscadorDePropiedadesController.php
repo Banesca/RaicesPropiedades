@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Barrio;
-use App\Ficha123;
+use App\resultadoUnico;
 use App\Propiedad;
 use App\Region;
 use Illuminate\Http\Request;
@@ -72,6 +72,19 @@ class BuscadorDePropiedadesController extends Controller {
                 ! is_null($idBarrio) ? $query->where('fk_Direccion_Barrio_Id', $idBarrio) : '';
             })
             ->get();
+
+        $resultadoUnico->each(function ($resultadoUnico) {
+            $resultadoUnico->imagenes = [
+                'imagen1'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen1),
+                'imagen2'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen2),
+                'imagen3'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen3),
+                'imagen4'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen4),
+                'imagen5'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen5),
+                'imagen6'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen6),
+                'imagen7'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen7),
+                'imagen_para_galeria' => asset('storage\\ficha2\\' . @$resultadoUnico->imagen_para_galeria),
+            ];
+        });
 
         return response()->json($this->getArbol($request, $resultadoUnico), 200);
     }

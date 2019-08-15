@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Log;
 use Validator;
 use Illuminate\Support\Facades\DB;
 
-
 class AuthController extends Controller {
 
     public function login(Request $request) {
