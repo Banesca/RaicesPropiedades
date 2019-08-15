@@ -16,7 +16,7 @@ export class ArticuloService {
   private mService = "/api/v1/";
   /** Url obtenida del servicio de configuracion */
   private mUrl: string;
-  public filter: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  public filter: BehaviorSubject<any> = new BehaviorSubject([]);
   public search: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   /**
@@ -88,8 +88,6 @@ export class ArticuloService {
       .toPromise();
   }
 
-  
-  
   getProvinces() {
     return this._HttpClient
       .get(this.mUrl + this.mService + "provincias/get", {
@@ -129,6 +127,19 @@ export class ArticuloService {
   getBarrios(formData) {
     return this._HttpClient
       .post(this.mUrl + this.mService + "barrios/get", formData, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+  
+  getItemsBySearch(formData: FormData) {
+    return this._HttpClient
+      .post(this.mUrl + this.mService + "buscadorGeneral", formData, {
         headers: getHeaders()
       })
       .pipe(

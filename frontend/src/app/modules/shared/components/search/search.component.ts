@@ -7,7 +7,7 @@ import {
   Monedas,
   TipoPropiedad,
   TipoOperaion,
-  TOperaion
+  TOperaion,
 } from "src/app/servicios/interfaces.index";
 import { Observable, of } from "rxjs";
 
@@ -53,10 +53,10 @@ export class SearchComponent implements OnInit {
     this.tipo = TipoPropiedad.empy();
     this.operation = TOperaion.empy();
     // provincias, partidos,localidades y barrios
-    this.selectedProvince = { nombre: "Indistinto" };
-    this.selectedPartido = { nombre: "Indistinto" };
-    this.selectedLocalidad = { nombre: "Indistinto" };
-    this.selectedBarrio = { nombre: "Indistinto" };
+    this.selectedProvince = { id: null , nombre: "Indistinto" };
+    this.selectedPartido = { id: null , nombre: "Indistinto" };
+    this.selectedLocalidad = { id: null , nombre: "Indistinto" };
+    this.selectedBarrio = { id: null , nombre: "Indistinto" };
     this.selectedMinimo = "Indistinto";
     this.selectedMaximo = "Indistinto";
   }
@@ -140,7 +140,7 @@ export class SearchComponent implements OnInit {
   }
 
   setProvince = (value: any): void => {
-    this.selectedProvince.nombre = value.nombre;
+    this.selectedProvince = value;
     this._ArticuloService
       .getPartidos({ fk_provincia: value.id })
       .then(response => {
@@ -153,7 +153,7 @@ export class SearchComponent implements OnInit {
   };
 
   setPartido = (value: any): void => {
-    this.selectedPartido.nombre = value.nombre;
+    this.selectedPartido = value;
     this._ArticuloService
       .getLocalidades({ fk_idPartido: value.id })
       .then(response => {
@@ -165,7 +165,7 @@ export class SearchComponent implements OnInit {
       });
   };
   setLocalidad = (value: any): void => {
-    this.selectedLocalidad.nombre = value.nombre;
+    this.selectedLocalidad = value;
     this._ArticuloService
       .getBarrios({ idLocalidad: value.id })
       .then(response => {
@@ -177,7 +177,7 @@ export class SearchComponent implements OnInit {
       });
   };
   setBarrio = (data: any) => {
-    this.selectedBarrio.nombre = data.nombre;
+    this.selectedBarrio = data;
   };
   setMnimo = (data: number): void => {
     this.selectedMinimo = data;
@@ -190,28 +190,17 @@ export class SearchComponent implements OnInit {
   // ------------------------
 
   searchFilter() {
-    const array: any[] = [];
-    if (this.tipo.descripcion !== "Seleccione") {
-      array.push(this.tipo.descripcion);
-    }
-
-    if (this.moneda.moneda !== "Seleccione") {
-      array.push(this.moneda.moneda);
-    }
-
-    if (this.operation.descripcion !== "Seleccione") {
-      array.push(this.operation.descripcion);
-    }
-
-    if (this.selectedMinimo !== "Indistinto") {
-      array.push({ montoMinimo: this.selectedMinimo });
-    }
-
-    if (this.selectedMaximo !== "Indistinto") {
-      array.push({ montoMaximo: this.selectedMaximo });
-    }
-
+    const filterForm = new FormData();
+    filterForm.append("idTipoPropiedad", this.tipo.idTipoPropiedad+'');
+    filterForm.append("idMonedas", this.moneda.idMonedas+'');
+    filterForm.append("idTipoOperaion", this.operation.idTipoOperaion+'');
+    filterForm.append("montoMinimo", this.selectedMinimo+'');
+    filterForm.append("montoMaximo", this.selectedMaximo+'');
+    filterForm.append("idProvincia", this.selectedProvince.id);
+    filterForm.append("idPartido", this.selectedPartido.id);
+    filterForm.append("idLocalidad", this.selectedLocalidad.id);
+    filterForm.append("idBarrio", this.selectedBarrio.id);
     this._ArticuloService.search.next(true);
-    this._ArticuloService.filter.next(array);
+    this._ArticuloService.filter.next(filterForm);
   }
 }

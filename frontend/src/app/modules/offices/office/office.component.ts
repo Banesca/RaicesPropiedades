@@ -44,14 +44,25 @@ export class OfficeComponent implements OnInit {
 
   ngOnInit() {
     this.contactForm = this._formBuilder.group({
-      nombre: ["", [Validators.required, Validators.pattern("[a-zA-Z]*"), Validators.minLength(6)]],
+      nombre: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern("[a-zA-Z ]*"),
+          Validators.minLength(6)
+        ]
+      ],
       email: [
         "",
-        [Validators.required,Validators.email,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")]
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")
+        ]
       ],
       telefono: [
         "",
-        [Validators.required,Validators.pattern("^[0-9]{10,12}$")]
+        [Validators.required, Validators.pattern("^[0-9]{10,12}$")]
       ],
       mensaje: ["", Validators.required]
     });
@@ -90,6 +101,7 @@ export class OfficeComponent implements OnInit {
       .then(data => {
         this.successMensaje = true;
         this.mLoading = false;
+        this.submitted=true;
         this.contactForm.reset();
       })
       .catch(error => {

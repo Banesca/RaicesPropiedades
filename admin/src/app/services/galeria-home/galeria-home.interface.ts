@@ -7,7 +7,7 @@
     idGaleria: number;
     titulo: string;
     descripcion: string;
-    fk_publicaciones: number;
+    fk_publicaciones: string;
     images:any;
   }
 

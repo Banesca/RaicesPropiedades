@@ -73,10 +73,7 @@ export class GaleriaHomeComponent implements OnInit {
   getFormData() {
     this.formData.append("titulo", this.mCategoriasSelect.titulo);
     this.formData.append("descripcion", this.mCategoriasSelect.descripcion);
-    this.formData.append(
-      "fk_publicaciones",
-      `${this.mCategoriasSelect.fk_publicaciones}`
-    );
+    this.formData.append("fk_publicaciones",this.mCategoriasSelect.fk_publicaciones);
     for (let i = 0; i < this.length; i++) {
       this.formData.append("images[" + i + "]", this.images[i]);
     }
