@@ -82,6 +82,7 @@ export class SuscritComponent implements OnInit {
     .then(data => {
       this.mLoading = false;
       this.successMensaje = true;
+      this.submitted = false;
       this.suscritForm.reset();
     })
     .catch(error => {
