@@ -159,15 +159,14 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::get('getTipoPiso','ReturnSeedController@get_TipoPisoSeeder');
     Route::get('getTipoLocal','ReturnSeedController@get_TipoLocalSeeder');
 
-    //Route::post('addFicha1','Ficha1Controller@add');
-    //Route::post('addFicha2','Ficha2Controller@add');
     Route::post('addPropiedad','Ficha3Controller@add');
     Route::post('editPropiedad/{idPropiedad}','Ficha3Controller@edit');
     Route::delete('deletePropiedad/{idPropiedad}','Ficha3Controller@delete');
 
-    Route::post('sincronice','SincroniceArgenController@add'); /*en construcción*/
+    Route::post('sincronice','SincroniceArgenController@add'); /*Faltan pruebas*/
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
     Route::get('listarPropiedades','Ficha123Controller@listarTodo');
+    Route::get('listarTodasPropiedades','Ficha123Controller@listarTodoSinFiltro');
 
     Route::post('addContactanos','ContactoController@add');
     Route::get('listarContactanos','ContactoController@listar');
@@ -178,18 +177,9 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     Route::get('/storage', function () {
         return Artisan::call('storage:link');
-        //return response()->json('Storage publicada');
     });
 
     Route::get('prueba1','UserController@prueba');
-
-    Route::get('pr',function(){
-        Partidos::create([
-            'id'           => 1,
-            'nombre'       => 'pr',
-            'fk_provincia' => 14,
-        ]);
-    });
 
 });
 
