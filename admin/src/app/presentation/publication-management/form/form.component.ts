@@ -889,7 +889,6 @@ export class FormComponent implements OnInit {
          const element = keys[index];
          formData.append(element, obj[element]);
       }
-
       //Registramos el objeto
       this.service.addPropiedad(formData).then((resp: any) => {
          this.inPromise = false
@@ -898,6 +897,11 @@ export class FormComponent implements OnInit {
             "Registro",
             resp.msj
          );
+         this.formOne.reset();
+         this.formTwo.reset();
+         this.formThree.reset();
+         this.router.navigate(['/gestionar-publicaciones']);
+
       }).catch(e => {
          console.error(e);
          this.alertService.msg("ERR", "ERROR", "Error al cargar los datos.");

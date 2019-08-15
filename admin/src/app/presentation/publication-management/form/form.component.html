@@ -68,7 +68,6 @@
 
                      <div class="row">
                         <div class="col-md-3">
-
                            <div class="form-group">
                               <div class="example-container">
                                  <mat-form-field>
@@ -515,7 +514,7 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Partido*" formControlName="fk_Direccion_Partido_Id"
-                                       (selectionChange)="reloadLocalidades($event)">
+                                          (selectionChange)="reloadLocalidades($event)">
                                           <mat-option *ngFor="let item of arrayPartido" [value]="item.id">
                                              {{item.nombre}}
                                           </mat-option>
@@ -533,13 +532,13 @@
                               </div>
                            </div>
 
-                          
+
                            <div class="col-md-3">
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Localidad*" formControlName="fk_Direccion_Localidad_Id"
-                                       (selectionChange)="reloadBarrios($event)">
+                                          (selectionChange)="reloadBarrios($event)">
 
                                           <mat-option *ngFor="let item of arrayLocalidad" [value]="item.id">
                                              {{item.nombre}}
@@ -563,7 +562,7 @@
                                  <div class="example-container">
                                     <mat-form-field>
                                        <mat-select placeholder="Barrio" formControlName="fk_Direccion_Barrio_Id"
-                                       (selectionChange)="reloadSubBarrios($event)">
+                                          (selectionChange)="reloadSubBarrios($event)">
                                           <mat-option *ngFor="let item of arrayBarrio" [value]="item.id">
                                              {{item.nombre}}
                                           </mat-option>
@@ -721,7 +720,7 @@
                                  </div>
                               </div>
                            </div>
-                           
+
                            <div class="col-md-3" *ngIf="vista.caracteristicas.TipoBien">
                               <div class="form-group">
                                  <div class="example-container">
@@ -2147,7 +2146,8 @@
 
                      <fieldset *ngIf="vista.edificio">
 
-                        <fieldset *ngIf="vista.edificio && vista.edificio.caracteristicas && vista.caracteristicas.length > 0">
+                        <fieldset
+                           *ngIf="vista.edificio && vista.edificio.caracteristicas && vista.caracteristicas.length > 0">
                            <div class="row">
                               <div class="col-md-12 ">
                                  <legend>Edificio - Características</legend>
@@ -2167,7 +2167,8 @@
                            </div>
                         </fieldset>
 
-                        <fieldset *ngIf="vista.edificio && vista.edificio.instalaciones && vista.instalaciones.length > 0">
+                        <fieldset
+                           *ngIf="vista.edificio && vista.edificio.instalaciones && vista.instalaciones.length > 0">
                            <div class="row">
                               <div class="col-md-12 ">
                                  <legend>Edificio - Instalaciones</legend>
@@ -2221,9 +2222,12 @@
                                     (click)="getDataForm()">Regresar</button>
 
                                  <button mat-raised-button color="primary" matStepperNext style="margin-left: 10px;"
-                                    [disabled]="!formThree.valid" (click)="publicar()">Publicar</button>
+                                    [disabled]="inPromise || !formThree.valid " (click)="publicar()">Publicar</button>
                               </div>
                            </div>
+                        </div>
+                        <div class="row" *ngIf="inPromise" style="margin-top: 15px">
+                           <mat-progress-bar mode="indeterminate"></mat-progress-bar>
                         </div>
                      </fieldset>
 
