@@ -137,7 +137,7 @@ export class ArticuloService {
       .toPromise();
   }
   
-  getItemsBySearch(formData: FormData) {
+  getItemsBySearch(formData) {
     return this._HttpClient
       .post(this.mUrl + this.mService + "buscadorGeneral", formData, {
         headers: getHeaders()

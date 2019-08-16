@@ -9,7 +9,9 @@
 
   &-content {
     display: flex;
-    width: 57%;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
   &-infoFiltro {
@@ -17,7 +19,7 @@
       margin-bottom: 12px;
       padding-left: 10px;
     }
-    width: 57%;
+    width: 90%;
     margin: 40px 0 30px 0;
     border-bottom: 2px solid;
     display: flex;
@@ -36,19 +38,21 @@
     font-weight: bold;
   }
 
-  &-card {
-    /* max-height: 395px; */
-    width: 29.5%;
+  /*&-card {
+    max-height: 395px;
+   width: 29.5%;
     display: flex;
     flex-direction: column;
     margin: 0 2px;
-    /* min-width: 161px; */
+     min-width: 161px; 
     margin-bottom: 25px;
     height: 433px;
-  }
+  }*/
 
   &-image {
     flex: 3;
+    min-height: 250px;
+    max-height: 250px;
   }
 
   &-info {
@@ -56,17 +60,24 @@
     background: #f3f4ef;
     font-size: 14px;
     font-weight: bold;
+    min-height: 125px;
+    max-height: 125px;
   }
 
   &-precios {
     flex: 1.5;
     background: #e4b405;
+    max-height: 100px;
+    min-height: 100px;
   }
 
   &-title2 {
-    padding: 3px 0px 3px 13px;
+    padding: 3px 5px 3px 13px;
     font-size: 20px;
     font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     color: white;
   }
 
@@ -80,7 +91,7 @@
   }
 
   &-subtitle {
-    font-size: 12px;
+    font-size: 17px;
     color: white;
     font-weight: bold;
     padding: 0px 13px;
@@ -92,6 +103,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    max-width: 200px;
   }
 
   &-filterTitle {
@@ -145,10 +157,10 @@
       justify-content: flex-end;
       align-items: center;
       font-weight: bold;
-      padding-top: 15px
+      padding-top: 15px;
     }
 
-    .textContent2{
+    .textContent2 {
       padding-top: 15px;
       font-size: 14px;
       display: flex;
@@ -168,7 +180,6 @@
       color: #e4b405;
       font-weight: normal;
     }
-
   }
 }
 .grid-container {
@@ -178,16 +189,15 @@
   grid-template-areas: "filters goHome";
 }
 
-.filters { 
+.filters {
   grid-area: filters;
-  display: flex; 
+  display: flex;
 }
 
-.goHome { 
-  grid-area: goHome; 
+.goHome {
+  grid-area: goHome;
   cursor: pointer;
 }
-.goHome:hover{ 
-  color:#e4b405;
+.goHome:hover {
+  color: #e4b405;
 }
-

@@ -53,15 +53,15 @@ export class SearchComponent implements OnInit {
     this.tipo = TipoPropiedad.empy();
     this.operation = TOperaion.empy();
     // provincias, partidos,localidades y barrios
-    this.selectedProvince = { id: null , nombre: "Indistinto" };
-    this.selectedPartido = { id: null , nombre: "Indistinto" };
-    this.selectedLocalidad = { id: null , nombre: "Indistinto" };
-    this.selectedBarrio = { id: null , nombre: "Indistinto" };
+    this.selectedProvince = { id: null, nombre: "Indistinto" };
+    this.selectedPartido = { id: null, nombre: "Indistinto" };
+    this.selectedLocalidad = { id: null, nombre: "Indistinto" };
+    this.selectedBarrio = { id: null, nombre: "Indistinto" };
     this.selectedMinimo = "Indistinto";
     this.selectedMaximo = "Indistinto";
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   getAll() {
     this.gMonedas();
@@ -190,17 +190,33 @@ export class SearchComponent implements OnInit {
   // ------------------------
 
   searchFilter() {
-    const filterForm = new FormData();
-    filterForm.append("idTipoPropiedad", this.tipo.idTipoPropiedad+'');
-    filterForm.append("idMonedas", this.moneda.idMonedas+'');
-    filterForm.append("idTipoOperaion", this.operation.idTipoOperaion+'');
-    filterForm.append("montoMinimo", this.selectedMinimo+'');
-    filterForm.append("montoMaximo", this.selectedMaximo+'');
+
+    let objectFilter = {
+      TipoPropiedad: this.tipo,
+      Monedas: this.moneda,
+      TipoOperaion: this.operation,
+      montoMinimo: this.selectedMinimo,
+      montoMaximo: this.selectedMaximo,
+      Provincia: this.selectedProvince,
+      Partido: this.selectedPartido,
+      Localidad: this.selectedLocalidad,
+      Barrio: this.selectedBarrio
+    }
+
+    
+    /*
+    filterForm.append("idTipoPropiedad", this.tipo.idTipoPropiedad + '');
+    filterForm.append("idMonedas", this.moneda.idMonedas + '');
+    filterForm.append("idTipoOperaion", this.operation.idTipoOperaion + '');
+    filterForm.append("montoMinimo", this.selectedMinimo + '');
+    filterForm.append("montoMaximo", this.selectedMaximo + '');
     filterForm.append("idProvincia", this.selectedProvince.id);
     filterForm.append("idPartido", this.selectedPartido.id);
     filterForm.append("idLocalidad", this.selectedLocalidad.id);
-    filterForm.append("idBarrio", this.selectedBarrio.id);
+    filterForm.append("idBarrio", this.selectedBarrio.id);*/
     this._ArticuloService.search.next(true);
-    this._ArticuloService.filter.next(filterForm);
+    //    this._ArticuloService.filter.next(filterForm);
+    this._ArticuloService.filter.next(objectFilter);
+
   }
 }
