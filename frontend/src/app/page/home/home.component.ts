@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { PublicacionesService } from "src/app/servicios/servicios.index";
+import { PublicacionesService,GaleriaHomeService } from "src/app/servicios/servicios.index";
 import { ArticuloService } from "../../servicios/servicios.index";
 
 @Component({
@@ -13,13 +13,16 @@ export class HomeComponent implements OnInit {
 
   mContacto: any[];
   mCategorias: any;
+  galeriaHome: any;
   mLoading = false;
   searchClicked: boolean;
   constructor(
     private _PublicacionesService: PublicacionesService,
-    public articuloService: ArticuloService
+    public articuloService: ArticuloService,
+    private _GaleriaHomeService: GaleriaHomeService
   ) {
     this.getAll();
+    this.getGaleriaHome();
   }
 
   ngOnInit() {
@@ -31,7 +34,15 @@ export class HomeComponent implements OnInit {
     this._PublicacionesService.All().then(data => {
       this.mCategorias = data;
     });
-
-    
+  }
+  getGaleriaHome(){
+    this._GaleriaHomeService
+      .All()
+        .then(res => {
+       this.galeriaHome = res.data
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 }
