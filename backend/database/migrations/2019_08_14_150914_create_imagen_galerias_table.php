@@ -15,7 +15,7 @@ class CreateImagenGaleriasTable extends Migration
     {
         Schema::create('fk_imagen_galerias', function (Blueprint $table) {
             $table->increments('idImagenesGaleria');
-            $table->string('imagen');
+            $table->text('imagen');
             $table->integer('fk_idGaleria')->nullable()->unsigned();
             $table->softDeletes();
             $table->timestamps();
