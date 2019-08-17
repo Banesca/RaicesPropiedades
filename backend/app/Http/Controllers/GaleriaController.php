@@ -39,9 +39,9 @@ class GaleriaController extends Controller
             $galeria->save();
 
             foreach ($request->images as $img) {
-                if (is_null($request[$img])) {
+                if (is_null($request->images)) {
                 } else {
-                    $originalImage  = $request[$img];
+                    $originalImage  = $img;
                     $thumbnailImage = Image::make($originalImage);
                     $thumbnailImage->fit(2048, 2048, function ($constraint) {
                         $constraint->aspectRatio();
