@@ -37,10 +37,8 @@ class GaleriaController extends Controller
 
             $galeria = new Galeria($request->all());
             $galeria->save();
-
-            foreach ($request->images as $img) {
-                if (is_null($request->images)) {
-                } else {
+            if (!is_null($request->images)) {
+                foreach ($request->images as $img) {
                     $originalImage  = $img;
                     $thumbnailImage = Image::make($originalImage);
                     $thumbnailImage->fit(2048, 2048, function ($constraint) {
@@ -51,12 +49,10 @@ class GaleriaController extends Controller
                     $nombre_interno = str_replace('.' . $extension, '', $nombre_publico);
                     $nombre_interno = str_slug($nombre_interno, '-') . '-' . time() . '-' . strval(rand(100, 999)) . '.' . $extension;
                     Storage::disk('local')->put('\\imagenesDeGaleria\\' . $nombre_interno, (string) $thumbnailImage->encode());
-
                     ImagenGaleria::create([
                         'imagen'       => $nombre_interno,
                         'fk_idGaleria' => $galeria->idGaleria,
                     ]);
-
                 }
             }
 
