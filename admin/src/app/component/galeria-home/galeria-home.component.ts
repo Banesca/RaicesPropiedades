@@ -9,6 +9,7 @@ import {
 import { GaleriaHomeService } from "./../../services/galeria-home/galeria-home.service";
 import { AlertsService } from "../../services/alerts.service";
 import { PublicacionesService } from "./../../services/publicaciones/publicaciones.service";
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: "app-galeria-home",
@@ -34,7 +35,8 @@ export class GaleriaHomeComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _GaleriaHomeService: GaleriaHomeService,
     private _AlertsService: AlertsService,
-    private _PublicacionesService: PublicacionesService
+    private _PublicacionesService: PublicacionesService,
+    private config: NgbCarouselConfig,
   ) {
     this.mCategorias = [];
     // this.mCategoriasSelect = MailSuscribers.empy();
@@ -43,9 +45,15 @@ export class GaleriaHomeComponent implements OnInit {
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
     this.getPublicaciones();
+    config.interval = 5000;
+    config.wrap = true;
+    config.keyboard = false;
+    config.pauseOnHover = false;
+    config.showNavigationIndicators = false;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   get f() {
     return this.mForma.controls;
@@ -137,8 +145,9 @@ export class GaleriaHomeComponent implements OnInit {
     this.mFormaEstado = enCRUD.Crear;
   }
 
-  ver(pCategoria: IGaleria) {
+  ver(pCategoria: any) {
     this.mCategoriasSelect = pCategoria;
+    console.log(this.mCategoriasSelect);
     this.mFormaEstado = enCRUD.Leer;
   }
 

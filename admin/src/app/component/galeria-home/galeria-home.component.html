@@ -172,8 +172,8 @@
                   </div>
                   <div>
                     <output id="list">
-                        <span *ngFor="let image of mCategoriasSelect.images; let i = index">
-                          <img class="thumb" src="" style="height:150px;" title="">
+                        <span *ngFor="let element of mCategoriasSelect.imagenes">
+                          <img class="thumb" [src]="element.imagen" style="height:150px;" title="">
                         </span>
                     </output>
                   </div>
@@ -189,9 +189,8 @@
         
       </form>
     </div>
-  </div>
-  
-  <div *ngIf="mFormaEstado == enCRUD.Leer" class="row animated fadeIn fast">
+  </div>  
+  <div *ngIf="mFormaEstado == enCRUD.Leer" class="row animated fadeIn fast">    
       <div class="col-md-12">
         <form>
           <div class="form-group text-right">
@@ -226,6 +225,24 @@
             ></textarea>
           </div>
         </form>
+      </div>
+      <div class="col-md-6 m-auto" style="">
+        <ngb-carousel *ngIf="mCategoriasSelect.imagenes?.length>0">
+          <ng-template ngbSlide *ngFor="let element of mCategoriasSelect.imagenes; let i = index">
+            <div class="item">
+              <div class="related_product_item">
+                <div class="related_product_pic">
+                  <div class="picsum-img-wrapper">
+                    <img [src]="element.imagen" alt="Random first slide" class="w-100">
+                  </div>
+                  <div class="carousel-caption">
+                    <h3>Imagen {{i+1}}/{{mCategoriasSelect.imagenes.length}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>          
+        </ngb-carousel>
       </div>
     </div>
   </div>
