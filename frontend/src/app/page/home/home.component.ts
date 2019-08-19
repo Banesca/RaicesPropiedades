@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   mCategorias: any;
   galeriaHome: any;
   mLoading = false;
+  totalNovedades: number = 0;
   searchClicked: boolean;
   constructor(
     private _PublicacionesService: PublicacionesService,
@@ -33,6 +34,11 @@ export class HomeComponent implements OnInit {
   getAll() {
     this._PublicacionesService.All().then(data => {
       this.mCategorias = data;
+      (data).forEach(element => {
+        if(element.esUnaNovedad == 1){
+          this.totalNovedades++;
+        }
+      });
     });
   }
   getGaleriaHome(){
