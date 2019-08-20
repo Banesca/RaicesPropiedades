@@ -4,10 +4,13 @@
         <div class="row d-flex justify-content-center mx-5">
             <ng-content select="h3"></ng-content>
         </div>
+        <div class="row d-flex justify-content-center mx-5">          
+          <ng-content select="span"></ng-content>
+        </div>
         <div style="overflow-x: scroll; z-index: 100;" class="container list d-flex py-5 mx-auto">
           <ng-content select="ng-container"></ng-content>   
         </div>
-          </div>
+        </div>
     </section>
 </div>
 

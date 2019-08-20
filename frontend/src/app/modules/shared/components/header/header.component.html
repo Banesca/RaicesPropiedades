@@ -9,22 +9,22 @@
     <div class="dropdown-divider"></div>
     <li class="nav-item">
           <a routerLink="/" class="link-nav text-center" (click)="status = !status">
-            <span class="nav-underline">Home</span>
+            <span class="nav-underline text-uppercase">Home</span>
           </a>
         </li>
         <li class="nav-item">
           <a routerLink="/nosotros" class="link-nav text-center" (click)="status = !status">
-            <span class="nav-underline">Nosotros</span>
+            <span class="nav-underline text-uppercase">Nosotros</span>
           </a>
         </li>
         <li class="nav-item">
             <a routerLink="/oportunidades" class="link-nav text-center" (click)="status = !status">
-              <span class="nav-underline">Oportunidades</span>
+              <span class="nav-underline text-uppercase">Oportunidades</span>
             </a>
           </li>
           <li ngbDropdown class="nav-item">
               <a [routerLinkActive]="['active-route']" ngbDropdown class="link-nav text-center">
-                <span ngbDropdownToggle class="nav-underline  brown-text">
+                <span ngbDropdownToggle class="nav-underline  brown-text text-uppercase">
                      Sucursales
                       <div ngbDropdownMenu class="m-0 p-0 brown-text" aria-labelledby="dropdownBasic1">
                         <ng-container *ngFor="let sucursal of mCategoria">
@@ -37,7 +37,7 @@
             </li>
               <li>
                   <a (click)="openModal()" (click)="status = !status" class="link-nav text-center">
-                    <span class="nav-underline yellow-text" style="cursor: pointer;">Tasación Sin Costo</span>
+                    <span class="nav-underline yellow-text text-uppercase" style="cursor: pointer;">Tasación Sin Costo</span>
                   </a>
                 </li>
   </ul>    
@@ -48,22 +48,22 @@
             <ul class="navigation d-flex align-items-center"> 
             <li class="nav-item d-none d-md-block ml-lg-none">
               <a [routerLinkActive]="['active-route']" routerLink="/home" class="link-nav">
-                <span class="nav-underline">Home</span>
+                <span class="nav-underline text-uppercase">Home</span>
               </a>
             </li>
             <li class="nav-item d-none d-md-block">
               <a [routerLinkActive]="['active-route']" routerLink="/nosotros" class="link-nav">
-                <span class="nav-underline">Nosotros</span>
+                <span class="nav-underline text-uppercase">Nosotros</span>
               </a>
             </li>
             <li class="nav-item d-none d-md-block ml-lg-none">
                 <a [routerLinkActive]="['active-route']" routerLink="/oportunidades" class="link-nav">
-                  <span class="nav-underline">Oportunidades</span>
+                  <span class="nav-underline text-uppercase">Oportunidades</span>
                 </a>
               </li>
               <li ngbDropdown class="nav-item d-none d-md-block">
                 <a [routerLinkActive]="['active-route']" ngbDropdown class="link-nav">
-                  <span ngbDropdownToggle class="nav-underline  brown-text">
+                  <span ngbDropdownToggle class="nav-underline  brown-text text-uppercase">
                        Sucursales
                         <div ngbDropdownMenu class="m-0 p-0 brown-text" aria-labelledby="dropdownBasic1">
                           <ng-container *ngFor="let sucursal of mCategoria">
@@ -76,7 +76,7 @@
               </li>
               <li class="d-none d-md-block">
                 <a (click)="openModal()" class="link-nav">
-                  <span class="nav-underline yellow-text" style="cursor: pointer;">Tasación Sin Costo</span>
+                  <span class="nav-underline yellow-text text-uppercase" style="font-size:17px;cursor: pointer;">Tasación Sin Costo</span>
                 </a>
               </li>
             <li class="nav-item d-none d-md-block ml-auto ml-lg-none">

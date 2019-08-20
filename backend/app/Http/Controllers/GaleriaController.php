@@ -18,7 +18,6 @@ class GaleriaController extends Controller
     /*Creado por Breiddy Monterrey*/
     public function store(Request $request)
     {
-        // return response()->json(['request'=>$request->all(),'images'=>$request->images]);
         $this->validate($request, [
             'titulo'           => 'required|min:2',
             'descripcion'      => 'required|min:2',
@@ -37,11 +36,9 @@ class GaleriaController extends Controller
 
             $galeria = new Galeria($request->all());
             $galeria->save();
-
-            foreach ($request->images as $img) {
-                if (is_null($request[$img])) {
-                } else {
-                    $originalImage  = $request[$img];
+            if (!is_null($request->images)) {
+                foreach ($request->images as $img) {
+                    $originalImage  = $img;
                     $thumbnailImage = Image::make($originalImage);
                     $thumbnailImage->fit(2048, 2048, function ($constraint) {
                         $constraint->aspectRatio();
@@ -51,12 +48,10 @@ class GaleriaController extends Controller
                     $nombre_interno = str_replace('.' . $extension, '', $nombre_publico);
                     $nombre_interno = str_slug($nombre_interno, '-') . '-' . time() . '-' . strval(rand(100, 999)) . '.' . $extension;
                     Storage::disk('local')->put('\\imagenesDeGaleria\\' . $nombre_interno, (string) $thumbnailImage->encode());
-
                     ImagenGaleria::create([
-                        'imagen'       => $nombre_interno,
+                        'imagen'       => asset('storage\\imagenesDeGaleria\\'.$nombre_interno),
                         'fk_idGaleria' => $galeria->idGaleria,
                     ]);
-
                 }
             }
 
@@ -83,7 +78,7 @@ class GaleriaController extends Controller
     public function listaGaleria()
     {
 
-        $galeria  = Galeria::all();
+        $galeria  = Galeria::with('imagenes')->get();
         $response = [
             'msj'  => 'Galerias',
             'data' => $galeria,
@@ -120,6 +115,25 @@ class GaleriaController extends Controller
 
             $galeria = Galeria::findOrFail($idGaleria);
             $galeria->fill($request->all());
+
+            if (!is_null($request->images)) {
+                foreach ($request->images as $img) {
+                    $originalImage  = $img;
+                    $thumbnailImage = Image::make($originalImage);
+                    $thumbnailImage->fit(2048, 2048, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $nombre_publico = $originalImage->getClientOriginalName();
+                    $extension      = $originalImage->getClientOriginalExtension();
+                    $nombre_interno = str_replace('.' . $extension, '', $nombre_publico);
+                    $nombre_interno = str_slug($nombre_interno, '-') . '-' . time() . '-' . strval(rand(100, 999)) . '.' . $extension;
+                    Storage::disk('local')->put('\\imagenesDeGaleria\\' . $nombre_interno, (string) $thumbnailImage->encode());
+                    ImagenGaleria::create([
+                        'imagen'       => asset('storage\\imagenesDeGaleria\\'.$nombre_interno),
+                        'fk_idGaleria' => $idGaleria,
+                    ]);
+                }
+            }
 
             $galeria->save();
 
