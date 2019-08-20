@@ -145,6 +145,7 @@ export class LayoutComponent implements OnInit {
               this.gPropiedades[element.variableName] == "1" ? true : false;
           });
         }
+        console.log(this.gPropiedades);
         this.images = [
           /*
       this.gPropiedades.ficha2.imagen1,

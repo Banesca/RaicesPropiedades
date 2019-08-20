@@ -1,3 +1,24 @@
+<ngb-carousel>
+  <ng-template ngbSlide *ngFor="let image of images">
+    <img [src]="image" class="carousel-image" alt="Random slide" />
+    <div class="carousel-caption">
+      <h1 class="font-weight-light text-uppercase text-left">
+        <!--  gPropiedades.ficha1.descipcion  -->
+      </h1>
+      <hr class="col-1 mx-0 mt-1 mb-4" style="border-bottom: 2px solid white;" />
+      <h1 class="font-weight-extrabold text-uppercase text-left">0$</h1>
+      <!-- container d-none d-md-block d-md-flex py-4 justify-content-center -->
+      <div class="galery-image">
+        <img *ngIf="gPropiedades.imagen1" [src]="gPropiedades.imagen1" alt="" />
+        <img *ngIf="gPropiedades.imagen2" [src]="gPropiedades.imagen2" alt="" />
+        <img *ngIf="gPropiedades.imagen3" [src]="gPropiedades.imagen3" alt="" />
+        <img *ngIf="gPropiedades.imagen4" [src]="gPropiedades.imagen4" alt="" />
+        <img *ngIf="gPropiedades.imagen5" [src]="gPropiedades.imagen5" alt="" />
+        <img *ngIf="gPropiedades.imagen6" [src]="gPropiedades.imagen6" alt="" />
+      </div>
+    </div>
+  </ng-template>
+</ngb-carousel>
 <app-search>
   <img
     *ngIf="galeriaHome?.length > 0"
@@ -13,60 +34,7 @@
 </div>
 
 <div *ngIf="!searchClicked">
-  <ngb-carousel>
-    <ng-template ngbSlide *ngFor="let image of images">
-      <img [src]="image" class="carousel-image" alt="Random slide" />
-      <div class="carousel-caption">
-        <h1 class="font-weight-light text-uppercase text-left">
-          <!--  gPropiedades.ficha1.descipcion  -->
-         </h1>
-        <hr
-          class="col-1 mx-0 mt-1 mb-4"
-          style="border-bottom: 2px solid white;"
-        />
-        <h1 class="font-weight-extrabold text-uppercase text-left">2500$</h1>
-        <div
-          class="container d-none d-md-block d-md-flex py-4 justify-content-center galery-image"
-        >
-          <img
-            *ngIf="gPropiedades.ficha2.imagen1.length > 2"
-            [src]="gPropiedades.ficha2.imagen1"
-            alt=""
-          />
-          <img
-            *ngIf="gPropiedades.ficha2.imagen2.length > 2"
-            [src]="gPropiedades.ficha2.imagen2"
-            alt=""
-          />
-          <img
-            *ngIf="gPropiedades.ficha2.imagen3.length > 2"
-            [src]="gPropiedades.ficha2.imagen3"
-            alt=""
-          />
-          <img
-            *ngIf="gPropiedades.ficha2.imagen4.length > 2"
-            [src]="gPropiedades.ficha2.imagen4"
-            alt=""
-          />
-          <img
-            *ngIf="gPropiedades.ficha2.imagen5.length > 2"
-            [src]="gPropiedades.ficha2.imagen5"
-            alt=""
-          />
-          <img
-            *ngIf="gPropiedades.ficha2.imagen6.length > 2"
-            [src]="gPropiedades.ficha2.imagen6"
-            alt=""
-          />
-          <img
-            *ngIf="gPropiedades.ficha2.imagen7.length > 2"
-            [src]="gPropiedades.ficha2.imagen7"
-            alt=""
-          />
-        </div>
-      </div>
-    </ng-template>
-  </ngb-carousel>
+  
 
   <section *ngIf="gPropiedades">
     <div class="container-fluid sec2 section-container">
