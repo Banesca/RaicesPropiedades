@@ -46,7 +46,7 @@ export class ArticlesComponent implements OnInit {
       this.propiedadesInPromise = true;
       this.selectedMinimo = objConsulta.montoMinimo ? objConsulta.montoMinimo : 'mínimo';
       this.selectedMaximo = objConsulta.montoMaximo ? objConsulta.montoMaximo : 'máximo';
-      console.log(objConsulta);
+      
       articulosService.getItemsBySearch(objConsulta).then(data => {
         
         this.articulos = data.propiedades;
