@@ -18,8 +18,8 @@
       <img [src]="image" class="carousel-image" alt="Random slide" />
       <div class="carousel-caption">
         <h1 class="font-weight-light text-uppercase text-left">
-          {{ gPropiedades.ficha1.descipcion }}
-        </h1>
+          <!--  gPropiedades.ficha1.descipcion  -->
+         </h1>
         <hr
           class="col-1 mx-0 mt-1 mb-4"
           style="border-bottom: 2px solid white;"
@@ -68,7 +68,7 @@
     </ng-template>
   </ngb-carousel>
 
-  <section>
+  <section *ngIf="gPropiedades">
     <div class="container-fluid sec2 section-container">
       <div class="container" style="z-index: 3;">
         <div class="col-sm-12 ">
@@ -77,22 +77,134 @@
           >
             Descripción
           </h3>
-          <div class="d-flex justify-content-center">
-            <img
-              class="img-fluid mt-3"
-              style="width: 3rem; height: 3rem;"
-              src="../../../../../../assets/images/icons/Recurso 19.svg"
-            />
+          <div class="row justify-content-center">
+            <div *ngIf="gPropiedades.SuperficieConstruible=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie construible
+              </h6>
+            </div>            
+            <div *ngIf="gPropiedades.SuperficieCubierta=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie cubierta
+              </h6>
+            </div>
+            <div *ngIf="gPropiedades.SuperficieCubiertaCasa=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie cubierta de casa
+              </h6>
+            </div>
+            <div *ngIf="gPropiedades.SuperficieDeposito=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie deposito
+              </h6>
+            </div>
+            <div *ngIf="gPropiedades.SuperficieDescubierta=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie descubierta
+              </h6>
+            </div>
+            <div *ngIf="gPropiedades.SuperficieLocal=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie local
+              </h6>
+            </div>
+            <div *ngIf="gPropiedades.SuperficieOficina=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie oficina
+              </h6>
+            </div>
+            <div *ngIf="gPropiedades.SuperficiePlanta=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie planta
+              </h6>
+            </div>
+            <div *ngIf="gPropiedades.SuperficiePlaya=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie playa
+              </h6>
+            </div>
+            <div *ngIf="gPropiedades.SuperficieTerreno=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie terreno
+              </h6>
+            </div>
+            <div *ngIf="gPropiedades.SuperficieTotal=='1'" class="col-md-2">
+              <div class="d-flex justify-content-center">
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+              </div>
+              <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
+                Valor unidad
+              </h4>
+              <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
+                Superficie total
+              </h6>
+            </div>
           </div>
-          <h4
-            class="yellow-text text-center font-weight-extrabold text-uppercase mt-3"
-          >
-            420MT2
-          </h4>
+          
         </div>
-        <div class="container d-flex justify-content-center col-lg-8">
-          <div class="row">
-            <div class="col-md-2 col-4 flex-column">
+        <div class="justify-content-center col-md-12">
+          <div class="row justify-content-center">
+            <div *ngIf="gPropiedades.tipo_propiedad" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
                 <img
                   style="width: 3rem; height: 3rem;"
@@ -102,10 +214,10 @@
                 />
               </div>
               <h6 class="gray-icon-text text-center font-weight-bold">
-                Casa
+                {{gPropiedades.tipo_propiedad.descripcion}}
               </h6>
             </div>
-            <div class="col-md-2 col-4 flex-column">
+            <div *ngIf="gPropiedades.tipo_opeacion" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
                 <img
                   style="width: 3rem; height: 3rem;"
@@ -115,10 +227,10 @@
                 />
               </div>
               <h6 class="gray-icon-text text-center font-weight-bold">
-                Alquiler
+                {{gPropiedades.tipo_opeacion.descripcion}}
               </h6>
             </div>
-            <div class="col-md-2 col-4 flex-column">
+            <div *ngIf="gPropiedades.CantidadDormitorios=='1'" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
                 <img
                   style="width: 3rem; height: 3rem;"
@@ -127,9 +239,11 @@
                   alt=""
                 />
               </div>
-              <h6 class="gray-icon-text text-center font-weight-bold">5</h6>
+              <h6  class="gray-icon-text text-center font-weight-bold">
+                Valor
+              </h6>
             </div>
-            <div class="col-md-2 col-4 flex-column">
+            <div *ngIf="gPropiedades.CantidadBanos=='1'" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
                 <img
                   style="width: 3rem; height: 3rem;"
@@ -139,10 +253,10 @@
                 />
               </div>
               <h6 class="gray-icon-text text-center font-weight-bold">
-                3
+                Valor
               </h6>
             </div>
-            <div class="col-md-2 col-4 flex-column">
+            <div *ngIf="gPropiedades.CantidadCocheras=='1'" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
                 <img
                   style="width: 3rem; height: 3rem;"
@@ -151,19 +265,8 @@
                   alt=""
                 />
               </div>
-              <h6 class="gray-icon-text text-center font-weight-bold">2</h6>
-            </div>
-            <div class="col-md-2 col-4 flex-column">
-              <div class="d-flex justify-content-center mt-4 mb-2">
-                <img
-                  style="width: 3rem; height: 3rem;"
-                  src="../../../../assets/images/icons/Recurso 21.svg"
-                  class=""
-                  alt=""
-                />
-              </div>
               <h6 class="gray-icon-text text-center font-weight-bold">
-                10 Años
+                Valor
               </h6>
             </div>
           </div>
@@ -171,164 +274,50 @@
         <div class="container py-5">
           <div class="col-lg-12 my-5">
             <h6 class="gray-text col-lg-12 font-weight-bold">
-              Caracteristicas Adicionales
+              Ambientes
             </h6>
             <hr class="my-1" />
             <div class="container my-3 d-flex justify-content-center">
               <div class=" row d-flex justify-content-center">
-                <li
+                <ng-container *ngFor="let ambiente of vista.ambientes">
+                  <li *ngIf="ambiente.selected"
                   class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
+                  >
+                    <img
                     src="../../../../../assets/images/icons/Recurso 22.svg"
                     class="mr-2 footer-contact-icons"
                     alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
+                    />{{ambiente.label}}
+                  </li>
+                </ng-container>
               </div>
             </div>
           </div>
-          <div class="col-lg-12 my-5">
-            <h6 class="gray-text col-lg-12 font-weight-bold">Cercanias</h6>
+          <divclass="col-lg-12 my-5">
+            <h6 class="gray-text col-lg-12 font-weight-bold">Instalaciones</h6>
             <hr class="my-1" />
             <div class="container my-3 d-flex justify-content-center">
               <div class=" row d-flex justify-content-center">
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
+                <ng-container *ngFor="let instalacion of vista.instalaciones">
+                  <li *ngIf="instalacion.selected" class="my-3 d-flex gray-text font-semibold col-lg-3 text-center">
+                    <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons" alt="" />{{instalacion.label}}
+                  </li>
+                </ng-container>
               </div>
             </div>
           </div>
-          <div class="col-lg-12 my-5">
+          <div  class="col-lg-12 my-5">
             <h6 class="gray-text col-lg-12 font-weight-bold">
-              Detalles de Interes
+              Servicios
             </h6>
             <hr class="my-1" />
             <div class="container my-3 d-flex justify-content-center">
               <div class=" row d-flex justify-content-center">
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
-                <li
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                >
-                  <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                  />Detalle traido de la API
-                </li>
+                <ng-container *ngFor="let servicio of vista.servicios">
+                  <li *ngIf="servicio.selected" class="my-3 d-flex gray-text font-semibold col-lg-3 text-center">
+                    <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons" alt="" />{{servicio.label}}
+                  </li>
+                </ng-container>
               </div>
             </div>
           </div>

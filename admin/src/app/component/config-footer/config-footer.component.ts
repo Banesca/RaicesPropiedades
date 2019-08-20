@@ -59,7 +59,6 @@ export class ConfigFooterComponent implements OnInit {
     this._confgFooterService._getConfigFooter().subscribe(
       (resp: any) => {
         if (resp) {
-            console.log(resp);
           this.myForm.setValue({
             quienesSomos: resp.configGeneral.quienesSomos,
             direccion: resp.configGeneral.direccion,
