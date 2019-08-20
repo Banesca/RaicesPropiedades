@@ -25,7 +25,7 @@
     <span *ngIf="!totalNovedades > 0">No existen novedades</span>
     <ng-container *ngFor="let publicaciones of mCategorias">
       <div *ngIf="publicaciones.esUnaNovedad == '1'" class="col-md-4 col-9 p-4">
-        <div [routerLink]="[baseUrl, publicaciones.idFichas]" class="card">
+        <div [routerLink]="[baseUrl, publicaciones.idPropiedad]" class="card">
           <img [src]="publicaciones.imagen1" class="card-img-top" />
           <div class="card-footer font-weight-semibold text-uppercase ">
             {{ publicaciones.descipcion }}

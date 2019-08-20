@@ -56,6 +56,7 @@
           
   </div>
   <div class="container-fluid bg-light sec2 section-component">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <div class="container  py-5 "> 
             <div class="col-sm-12 d-flex justify-content-center">
                 <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase">Formulario <span class="font-weight-extrabold">de contacto</span></h3>
@@ -63,13 +64,13 @@
             <div class="row">
               <div class="col-sm-12 mx-0 px-0 my-4 d-flex justify-content-center">
                   <div class="py-5 bg-white contact-container shadow col-lg-5 col-md-6 w-100 d-flex justify-content-center" style="z-index: 3;">
-                    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                    
                       <div class="">
                       <div class="group">      
                         <input formControlName="nombre" type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>Nombre y Apellido</label>
+                        <label class="text-uppercase">Su nombre</label>
                         <div *ngIf="submitted && f.nombre.errors" type="alert" class="invalid-feedback d-block">
                             <div *ngIf="f.nombre.errors.required">Nombre y Apellido son Requerido</div>
                             <div *ngIf="f.nombre.errors.pattern">Nombre y Apellido no válido</div>
@@ -81,7 +82,7 @@
                         <input formControlName="email" type="text" required>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>Email</label>
+                        <label class="text-uppercase">Su email</label>
                         <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback d-block">
                             <div *ngIf="f.email.errors.required">Email es Requerido</div>
                             <div *ngIf="f.telefono.errors.pattern">Email no válido.</div>
@@ -91,7 +92,7 @@
                           <input formControlName="telefono" type="text" required>
                           <span class="highlight"></span>
                           <span class="bar"></span>
-                          <label>Teléfono</label>
+                          <label class="text-uppercase">Su teléfono</label>
                           <div *ngIf="submitted && f.telefono.errors" type="alert" class="invalid-feedback d-block">
                               <div *ngIf="f.telefono.errors.required">El Teléfono Requerido</div>
                               <div *ngIf="f.telefono.errors.pattern">Número teléfonico no válido.</div>                              
@@ -101,23 +102,24 @@
                           <textarea formControlName="mensaje" name="" id="" cols="30" rows="2"></textarea>     
                             <span class="highlight"></span>
                             <span class="bar"></span>
-                            <label class="mb-3">Mensaje</label>
+                            <label class="mb-3 text-uppercase">Mensaje</label>
                             <div *ngIf="submitted && f.mensaje.errors" type="alert" class="invalid-feedback d-block">
                                 <div *ngIf="f.mensaje.errors.required">El Mensaje es Requerido</div>
                             </div>
                           </div>
                     </div> 
-                    <div class="col-sm-12" style="z-index: 2;">
+                    <!-- <div class="col-sm-12" style="z-index: 2;">
                       <div class="d-flex justify-content-center">
                          <button class="btn shadow btn-block brown-button text-uppercase font-weight-bold col-lg-4"
                          >Enviar
                        </button>
                       </div>
-                     </div>
-                  </form>
+                     </div> -->
                   
               </div>
-          </div>
+      
+      
+            </div>
         
     </div>
   <!--
@@ -158,15 +160,14 @@
       </div>
     </div>
   </div>
-      <!--<div *ngIf="errorMensaje" class="row">
-          <div class="col-lg-12 my-2">
-            <h3 class="text-center mt-3 font-weight-bold">Ocurrió un error al enviar el mensaje</h3>
-            <p class="mb-5 text-center font-weight-bold">Por favor intete nuevamente</p>
-            <button (click)="reintentar()"  class="btn brown-button btn-lg mx-auto btn-block col-lg-5">Volver</button>
-          </div>
-        </div>-->
+      <div class="col-sm-12" style="z-index: 2;">
+        <div class="d-flex justify-content-center">
+          <button class="btn shadow btn-block brown-button text-uppercase font-weight-bold col-lg-4">Enviar
+          </button>
+        </div>
+      </div>
   </div>
-    
+</form>
 </div>
 
 </section>

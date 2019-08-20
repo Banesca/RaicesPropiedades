@@ -17,7 +17,7 @@ export class LayoutComponent implements OnInit  {
   images = [];
 
   constructor(private _PublicacionesService: PublicacionesService, config: NgbCarouselConfig,
-    private _ActivatedRoute: ActivatedRoute ) {
+    private _ActivatedRoute: ActivatedRoute) {
     this.gPropiedades;
     this._ActivatedRoute.params.subscribe(param => {
       this.mId = param['ruta'];
@@ -42,6 +42,7 @@ export class LayoutComponent implements OnInit  {
     this._PublicacionesService.getPublicacion(this.mId).then
     (data => {
       this.gPropiedades = data;
+      console.log("this.gPropiedades",this.gPropiedades);
       this.images = [
         /*
       this.gPropiedades.ficha2.imagen1,
@@ -51,7 +52,7 @@ export class LayoutComponent implements OnInit  {
       this.gPropiedades.ficha2.imagen5,
       this.gPropiedades.ficha2.imagen6,
       this.gPropiedades.ficha2.imagen7,*/
-      this.gPropiedades.ficha2.imagen1,
+      // this.gPropiedades.ficha2.imagen1,
     'https://picsum.photos/id/539/900/500' ];
     })
 
@@ -60,5 +61,4 @@ export class LayoutComponent implements OnInit  {
         console.log(error);
       });
   }
-
 }
