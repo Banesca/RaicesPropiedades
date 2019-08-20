@@ -41,7 +41,7 @@
                         <td>{{item.estado_publicacion.descripcion}}</td>
                         <td class="text-right">
                            <button [routerLink]="['/gestionar-publicaciones/form', item.idPropiedad]" type="button"
-                              class="btn btn-primary">
+                              class="btn btn-primary" [disabled]="item.estado_publicacion.idEstadoPublicaion == 3">
                               <i class="fa fa-edit"></i>
                            </button>
                            <button (click)="eliminar(item.idPropiedad)" type="button" class="btn btn-danger">

@@ -385,9 +385,15 @@ export class FormComponent implements OnInit {
       if (isUpdate) {
 
          this.service.getPropiedad(this.id).then((res: any) => {
+            
+            if (res.msj) {
+            this.alertService.msg('ERR', 'Propiedad', res.msj);
+               return;
+            } 
+
             //Cargamos el 1er step
             this.formOne.setValue({
-               titulo: res.titulo,
+               titulo: res.titulo ? res.titulo : '',
                fk_estado_publicacion: res.fk_estado_publicacion,
                descipcion: res.descipcion, //Descripcion --> se coloca descipcion por motivo de concordar con el error de backend
                fk_idTipoPropiedad: res.fk_idTipoPropiedad,
