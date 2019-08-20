@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SucursalesService, ContactoService } from "src/app/servicios/servicios.index";
+import { SucursalesService, ContactoService, ArticuloService } from "src/app/servicios/servicios.index";
 import { ActivatedRoute, Router, Event, NavigationStart } from '@angular/router';
 import { ISucursal, IContacto } from 'src/app/servicios/interfaces.index';
 import {
@@ -26,23 +26,35 @@ export class OfficeComponent implements OnInit {
   errorMensaje = false;
   hideForm = false;
   mLoading = false;
+  searchClicked: boolean;
 
 
-  constructor(private router: Router, private _SucursalesService: SucursalesService, private _ContactoService: ContactoService,
-    private _ActivatedRoute: ActivatedRoute, private _formBuilder: FormBuilder ) {
+  constructor(
+    private router: Router,
+    private _SucursalesService: SucursalesService,
+    private _ContactoService: ContactoService,
+    public articuloService: ArticuloService,
+    private _ActivatedRoute: ActivatedRoute,
+    private _formBuilder: FormBuilder
+  ) {
     this._ActivatedRoute.params.subscribe(param => {
       this.mId = param['ruta'];
     });
     this.GetSucursalUrl();
-    router.events.subscribe( (event: Event) => {
+    router.events.subscribe((event: Event) => {
 
       if (event instanceof NavigationStart) {
         this.GetSucursalUrl();
       }
-  });
+    });
   }
 
   ngOnInit() {
+
+    this.articuloService.search.subscribe(data => {
+      this.searchClicked = data;
+    });
+
     this.contactForm = this._formBuilder.group({
       nombre: [
         "",
@@ -72,27 +84,27 @@ export class OfficeComponent implements OnInit {
   get f() { return this.contactForm.controls; }
 
   onSubmit() {
-      this.submitted = true;
+    this.submitted = true;
 
-      if (this.contactForm.invalid) {
-          return;
-      }
+    if (this.contactForm.invalid) {
+      return;
+    }
 
-      this.mContacto = this.contactForm.value as IContacto;
-      this.guardar();
+    this.mContacto = this.contactForm.value as IContacto;
+    this.guardar();
   }
 
 
   GetSucursalUrl() {
     this._SucursalesService.getSucursal(this.mId).then(data => {
       this.gSucursal = data.suculsales;
-    })   
+    })
       .catch(error => {
         console.log(error);
       });
   }
 
-  guardar() {    
+  guardar() {
     this.mLoading = true;
     this.hideForm = true;
     this._ContactoService
@@ -101,13 +113,13 @@ export class OfficeComponent implements OnInit {
       .then(data => {
         this.successMensaje = true;
         this.mLoading = false;
-        this.submitted=false;
+        this.submitted = false;
         this.contactForm.reset();
       })
       .catch(error => {
         console.log(error);
-          this.errorMensaje = true;
-          this.mLoading = false;
+        this.errorMensaje = true;
+        this.mLoading = false;
       });
   }
   reintentar() {

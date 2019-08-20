@@ -1,45 +1,65 @@
 <app-header-bottom>
-  <div class="container title col-md-4 py-5 ml-5"> 
+  <div class="container title col-md-4 py-5 ml-5">
     <div class="col-sm-12">
       <h1 class="font-weight-light text-uppercase">Nosotros</h1>
       <hr class="col-2 mx-0 my-1">
     </div>
   </div>
 </app-header-bottom>
-<app-search></app-search>
-<div class="sec2"></div>
-<div class="container-fluid bg-light polygon d-flex align-items-center pl-0 sec2">
+<app-search>
+  <img *ngIf="galeriaHome?.length > 0" src="../../../../assets/images/icons/Recurso 6.svg"
+    class="position-absolute d-none d-md-block" style="top: -20%; z-index: 1;" alt="" />
+</app-search>
+
+<div *ngIf="searchClicked">
+  <app-articles></app-articles>
+</div>
+
+<div *ngIf="!searchClicked">
+
+  <div class="sec2"></div>
+  <div class="container-fluid bg-light polygon d-flex align-items-center pl-0 sec2">
     <div class="col-md-6 m-0 p-0 pb-4 d-md-block d-none">
-        <img src="../../../../assets/images/IMAGEN-NOSOTROS.png" class="img-fluid position-sticky" alt="">
-  </div>
-  <div class="container col-md-7 col-lg-6 py-5" style="z-index: 3;"> 
-        <div class="col-sm-12">
-            <h3 class="font-weight-light brown-text text-center text-md-right text-uppercase">Raices</h3>
-          </div>
-          <div class="col-sm-12">
-            <h3 class="font-weight-extrabold brown-text text-center text-md-right text-uppercase">Propiedades</h3>
-          </div>
-          <!-- <div ngIf="!mCategoria.configGeneral?.quienesSomos"> -->
-            <p class="col-sm-12 text-center text-md-right brown-text">
-              Es una empresa familiar dedicada al rubro inmobiliaria desde el año 1977, la empresa fue fundada y sigue siendo 
-              conducuda actualmente por su Presidente el Sr. Gustavo J. Dsetuat. La primera apertura y actual casa central esta ubicada
-              en el corazón de la Ciudad de Pilar, actualmente el responsable de la mendonada oficina es su hijo el Señor
-              Emiliano F. Destuet, a cargo desde el año 2003, continuando con la labor aprendida de su padre y manteniendo los mismos 
-              conceptos y valores que hcieron de nuestra empresa una marca registrada en la Ciudad de Pilar y alrededores
-            </p>
-            <p class="col-sm-12 text-center text-md-right brown-text">
-              Siempre apostamos al crecimiento de Pilar, es por eso que las grandes firmas nos han elegido. Transcurria el año 1990 y 
-              se produjo la apertura de la sucursal Open Door en el centro comercial "Open Door" punto comercial y de encuentro por 
-              excelencia de la Localidad
-            </p>
-            <p class="col-sm-12 text-center text-md-right brown-text">
-              La oficina esta acargo de su esposa, señora Adriana L. Bonfanti, se ha especializado a lo largo de los años de la comercialización 
-              y del desarrollo de las Charas de Polo en la zona, afincandose y sumando a su cartera de clientes a los más renombrados Polistas de alto 
-              Handicap del País
-            </p>
-          <!-- </div> -->
-          <!-- <div ngIf="mCategoria.configGeneral?.quienesSomos">
-            <p class="col-sm-12 text-center text-md-right brown-text">{mCategoria.configGeneral?.quienesSomos}</p>
-          </div> -->
+      <img src="../../../../assets/images/IMAGEN-NOSOTROS.png" class="img-fluid position-sticky" alt="">
+    </div>
+    <div class="container col-md-7 col-lg-6 py-5" style="z-index: 3;">
+      <div class="col-sm-12">
+        <h3 class="font-weight-light brown-text text-center text-md-right text-uppercase">Raices</h3>
       </div>
+      <div class="col-sm-12">
+        <h3 class="font-weight-extrabold brown-text text-center text-md-right text-uppercase">Propiedades</h3>
+      </div>
+      <!-- <div ngIf="!mCategoria.configGeneral?.quienesSomos"> -->
+      <p class="col-sm-12 text-center text-md-right brown-text">
+        Es una empresa familiar dedicada al rubro inmobiliaria desde el año 1977, la empresa fue fundada y sigue siendo
+        conducuda actualmente por su Presidente el Sr. Gustavo J. Dsetuat. La primera apertura y actual casa central
+        esta
+        ubicada
+        en el corazón de la Ciudad de Pilar, actualmente el responsable de la mendonada oficina es su hijo el Señor
+        Emiliano F. Destuet, a cargo desde el año 2003, continuando con la labor aprendida de su padre y manteniendo los
+        mismos
+        conceptos y valores que hcieron de nuestra empresa una marca registrada en la Ciudad de Pilar y alrededores
+      </p>
+      <p class="col-sm-12 text-center text-md-right brown-text">
+        Siempre apostamos al crecimiento de Pilar, es por eso que las grandes firmas nos han elegido. Transcurria el año
+        1990 y
+        se produjo la apertura de la sucursal Open Door en el centro comercial "Open Door" punto comercial y de
+        encuentro
+        por
+        excelencia de la Localidad
+      </p>
+      <p class="col-sm-12 text-center text-md-right brown-text">
+        La oficina esta acargo de su esposa, señora Adriana L. Bonfanti, se ha especializado a lo largo de los años de
+        la
+        comercialización
+        y del desarrollo de las Charas de Polo en la zona, afincandose y sumando a su cartera de clientes a los más
+        renombrados Polistas de alto
+        Handicap del País
+      </p>
+      <!-- </div> -->
+      <!-- <div ngIf="mCategoria.configGeneral?.quienesSomos">
+                <p class="col-sm-12 text-center text-md-right brown-text">{mCategoria.configGeneral?.quienesSomos}</p>
+              </div> -->
+    </div>
+  </div>
 </div>

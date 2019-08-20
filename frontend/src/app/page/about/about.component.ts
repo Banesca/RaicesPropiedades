@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IConfigG } from "src/app/servicios/interfaces.index";
-import { ConfiguracionGeneralService, SucursalesService } from "src/app/servicios/servicios.index";
+import { ConfiguracionGeneralService, SucursalesService, ArticuloService } from "src/app/servicios/servicios.index";
 
 @Component({
   selector: 'app-about',
@@ -10,15 +10,23 @@ import { ConfiguracionGeneralService, SucursalesService } from "src/app/servicio
 
 export class AboutComponent implements OnInit {
   mCategoria = {configGeneral:{}} as IConfigG;
+  searchClicked: boolean;
 
   
-  constructor(private _ConfiguracionGeneral: ConfiguracionGeneralService,private _SucursalesService: SucursalesService) { 
+  constructor(
+    private _ConfiguracionGeneral: ConfiguracionGeneralService,
+    public articuloService: ArticuloService,
+    private _SucursalesService: SucursalesService
+    ) { 
 
     this.mCategoria;
     this.getAll();
   }
 
   ngOnInit() {
+    this.articuloService.search.subscribe(data => {
+      this.searchClicked = data;
+    });
   }
 
   getAll() {

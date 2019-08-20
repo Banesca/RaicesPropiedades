@@ -1,5 +1,5 @@
-import { Component,Input, OnInit } from '@angular/core';
-import { PublicacionesService } from "src/app/servicios/servicios.index";
+import { Component, Input, OnInit } from '@angular/core';
+import { PublicacionesService, ArticuloService } from "src/app/servicios/servicios.index";
 
 @Component({
   selector: 'app-propiertys',
@@ -13,20 +13,29 @@ export class PropiertysComponent implements OnInit {
   mContacto: any[];
   mCategorias: any;
   mLoading = false;
+  searchClicked: boolean;
 
-  constructor(private _PublicacionesService: PublicacionesService) {}
+  constructor(
+    private _PublicacionesService: PublicacionesService,
+    public articuloService: ArticuloService,
+  ) { }
 
   ngOnInit() {
+
+    this.articuloService.search.subscribe(data => {
+      this.searchClicked = data;
+    });
+
     this.getAll();
   }
-      getAll() {
-        this._PublicacionesService
-          .All()
-            .then(data => {
-            this.mCategorias = data;
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      }
+  getAll() {
+    this._PublicacionesService
+      .All()
+      .then(data => {
+        this.mCategorias = data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 }
