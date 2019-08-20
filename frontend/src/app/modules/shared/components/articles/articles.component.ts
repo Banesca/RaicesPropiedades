@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticuloService } from '../../../../servicios/servicios.index'
+import { montos } from '../search/mockData';
 @Component({
   selector: "app-articles",
   templateUrl: "./articles.component.html",
@@ -18,8 +19,12 @@ export class ArticlesComponent implements OnInit {
   ];
   public recomendation = [1, 2, 3, 4];
   propiedadesInPromise: boolean = false;
-
+  public arbol: any;
   filterData: any;
+  selectedMinimo: Number | string = 'mínimo';
+  selectedMaximo: Number | string = 'máximo';
+  montos: number[] = montos;
+
   constructor(private articulosService: ArticuloService) {
 
     articulosService.filter.subscribe(filterData => {
@@ -30,17 +35,22 @@ export class ArticlesComponent implements OnInit {
         idTipoPropiedad: filterData.TipoPropiedad && filterData.TipoPropiedad.idTipoPropiedad ? filterData.TipoPropiedad.idTipoPropiedad : '',
         idMonedas: filterData.Moneda && filterData.Moneda.idMonedas ? filterData.Moneda.idMonedas : '',
         idTipoOperaion: filterData.TipoOperaion && filterData.TipoOperaion.idTipoOperaion ? filterData.TipoOperaion.idTipoOperaion : '',
-        montoMinimo: filterData.montoMinimo ? filterData.montoMinimo : '',
-        montoMaximo: filterData.montoMaximo ? filterData.montoMaximo : '',
+        montoMinimo: filterData.montoMinimo && filterData.montoMinimo != 'Indistinto' ? filterData.montoMinimo : '',
+        montoMaximo: filterData.montoMaximo && filterData.montoMaximo != 'Indistinto' ? filterData.montoMaximo : '',
         idProvincia: filterData.Provincia && filterData.Provincia.id ? filterData.Provincia.id : '',
-        idPartido: filterData.Partido.id && filterData.Partido.id ? filterData.Partido.id : '',
+        idPartido: filterData.Partido && filterData.Partido.id ? filterData.Partido.id : '',
         idLocalidad: filterData.Localidad && filterData.Localidad.id ? filterData.Localidad.id : '',
         idBarrio: filterData.Barrio && filterData.Barrio.id ? filterData.Barrio.id : ''
       }
 
       this.propiedadesInPromise = true;
+      this.selectedMinimo = objConsulta.montoMinimo ? objConsulta.montoMinimo : 'mínimo';
+      this.selectedMaximo = objConsulta.montoMaximo ? objConsulta.montoMaximo : 'máximo';
+      console.log(objConsulta);
       articulosService.getItemsBySearch(objConsulta).then(data => {
+        
         this.articulos = data.propiedades;
+        this.arbol = data.arbol;
         this.propiedadesInPromise = false;
       }).catch(error => {
         this.propiedadesInPromise = false;
@@ -81,5 +91,29 @@ export class ArticlesComponent implements OnInit {
   goBack() {
     this.articulosService.search.next(false);
     window.scroll(0, 0);
+  }
+
+  removeChip(opcion: string) {
+
+    //Vaciamos la escalera de la direccion en caso de eliminar algun chip
+    if (opcion == 'Provincia') {
+      this.filterData.Partido = null;
+    }
+    if (opcion == 'Provincia' || opcion == 'Partido') {
+      this.filterData.Localidad = null;
+    }
+    if (opcion == 'Provincia' || opcion == 'Partido' || opcion == 'Localidad') {
+      this.filterData.Barrio = null;
+    }
+
+    this.filterData[opcion] = null;
+    this.articulosService.search.next(true);
+    this.articulosService.filter.next(this.filterData);
+  }
+
+  setFilter(opcion: string, value: any) {
+    this.filterData[opcion] = value;
+    this.articulosService.search.next(true);
+    this.articulosService.filter.next(this.filterData);
   }
 }

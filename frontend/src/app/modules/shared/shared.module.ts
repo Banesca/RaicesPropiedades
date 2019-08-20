@@ -23,10 +23,10 @@ import localePy from '@angular/common/locales/es-PY';
 import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/en';
 import { TransactionModalComponent } from './components/transaction-modal/transaction-modal.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatIconModule} from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 import { PropiertysGridComponent } from './components/propiertys-grid/propiertys-grid.component';
-
+import { MatChipsModule } from '@angular/material/chips';
 
 
 
@@ -74,9 +74,10 @@ registerLocaleData(localeEn, 'en')
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatChipsModule
   ],
   entryComponents: [TransactionModalComponent],
   providers: [{ provide: LOCALE_ID, useValue: "es" }]
 })
-export class SharedModule {}
+export class SharedModule { }

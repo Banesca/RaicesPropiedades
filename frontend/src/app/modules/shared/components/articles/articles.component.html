@@ -10,13 +10,75 @@
   </div>
   <div class="articulos-content">
     <div class="articulos-filter" *ngIf="!propiedadesInPromise">
-      <div class="articulos-filterTitle">60 resultados</div>
+      <div class="articulos-filterTitle">{{articulos.length}} resultados</div>
 
       <div class="articulos-filterSections">
-        <div *ngFor="let item of filtro2" class="articulos-filteritems">
-          {{ item }}
-        </div>
+        <mat-chip-list #chipList aria-label="Filtro Seleccionado" *ngIf="filterData">
+          <!--CHIP TipoOperaion-->
+          <mat-chip removable="true" (removed)="removeChip('TipoOperaion')"
+            *ngIf="filterData.TipoOperaion && filterData.TipoOperaion.idTipoOperaion">
+            <span>{{filterData.TipoOperaion.descripcion}}</span>
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+
+          <!--CHIP TipoPropiedad-->
+          <mat-chip removable="true" (removed)="removeChip('TipoPropiedad')"
+            *ngIf="filterData.TipoPropiedad && filterData.TipoPropiedad.idTipoPropiedad">
+            <span></span> {{filterData.TipoPropiedad.descripcion}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+
+          <!--CHIP Moneda-->
+          <mat-chip removable="true" (removed)="removeChip('Moneda')"
+            *ngIf="filterData.Moneda && filterData.Moneda.idMonedas">
+            <span></span> {{filterData.Moneda.moneda}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+
+          <!--CHIP Mont. Max-->
+          <mat-chip removable="true" (removed)="removeChip('montoMinimo')"
+            *ngIf="filterData.montoMinimo && filterData.montoMinimo != 'Indistinto'">
+            <span></span> Min {{filterData.montoMinimo}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+
+          <!--CHIP Mont. Min-->
+          <mat-chip removable="true" (removed)="removeChip('montoMaximo')"
+            *ngIf="filterData.montoMaximo && filterData.montoMaximo != 'Indistinto'">
+            <span></span> Max {{filterData.montoMaximo}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+
+          <!--CHIP Provincia-->
+          <mat-chip removable="true" (removed)="removeChip('Provincia')"
+            *ngIf="filterData.Provincia && filterData.Provincia.id">
+            <span></span> {{filterData.Provincia.nombre}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+
+          <!--CHIP Partido-->
+          <mat-chip removable="true" (removed)="removeChip('Partido')"
+            *ngIf="filterData.Partido && filterData.Partido.id">
+            <span></span> {{filterData.Partido.nombre}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+
+          <!--CHIP Localidad-->
+          <mat-chip removable="true" (removed)="removeChip('Localidad')"
+            *ngIf="filterData.Localidad && filterData.Localidad.id">
+            <span>{{filterData.Localidad.nombre}}</span>
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+
+          <!--CHIP Barrio-->
+          <mat-chip removable="true" (removed)="removeChip('Barrio')" *ngIf="filterData.Barrio && filterData.Barrio.id">
+            <span>{{filterData.Barrio.nombre}}</span>
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+
+        </mat-chip-list>
       </div>
+      <!--
       <div class="articulos-relevante">
         <div class="title">
           Ordenar por Publicaciones
@@ -28,40 +90,73 @@
           </i>
         </div>
       </div>
-
-      <div class="articulos-relevante">
+      -->
+      <div class="articulos-relevante"
+        *ngIf="(!filterData.TipoOperaion || !filterData.TipoOperaion.idTipoOperaion) && arbol.TipoOperaion && arbol.TipoOperaion.length">
         <div class="title">
-          Zonas
+          Tipo Operación
         </div>
         <div class="textContent2">
-          <div *ngFor="let item of recomendation">
-            Countries B Cerrado(15)
+          <div *ngFor="let item of arbol.TipoOperaion" (click)="setFilter('TipoOperaion', item.tipo_opeacion)">
+            <span *ngIf="item.fk_idTipoOperaion">{{item.tipo_opeacion.descripcion}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="articulos-relevante"
+        *ngIf="(!filterData.TipoPropiedad || !filterData.TipoPropiedad.idTipoPropiedad) && arbol.TipoPropiedad && arbol.TipoPropiedad.length">
+        <div class="title">
+          Edificación
+        </div>
+        <div class="textContent2">
+          <div *ngFor="let item of arbol.TipoPropiedad" (click)="setFilter('TipoPropiedad', item.tipo_propiedad)">
+            <span *ngIf="item.fk_idTipoPropiedad">{{item.tipo_propiedad.descripcion}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="articulos-relevante"
+        *ngIf="(!filterData.Moneda || !filterData.Moneda.idMonedas) && arbol.TipoMonedas && arbol.TipoMonedas.length">
+        <div class="title">
+          Moneda
+        </div>
+        <div class="textContent2">
+          <div *ngFor="let item of arbol.TipoMonedas" (click)="setFilter('Moneda', item.tipo_moneda)">
+            <span *ngIf="item.fk_idMonedas">{{item.tipo_moneda.moneda}}</span>
           </div>
         </div>
       </div>
 
       <div class="articulos-relevante">
-        <div class="title">
-          Precio
-        </div>
-        <div class="textContent2">
-          <div *ngFor="let item of recomendation">
-            Countries B Cerrado(15)
-          </div>
-        </div>
-
         <div class="textContent">
-          maximos
-          <i class="material-icons icon">
-            keyboard_arrow_down
-          </i>
-          minimo
-          <i class="material-icons icon">
-            keyboard_arrow_down
-          </i>
+          <div class="textContent">
+            <div ngbDropdown style="display: flex">
+              <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="selectedMaximo"
+                ngbDropdownToggle />
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <input type="button" *ngFor="let monto of montos" ngbDropdownItem
+                  (click)="setFilter('montoMaximo', monto)" [value]="monto" />
+              </div>
+              <i class="material-icons icon" ngbDropdownToggle style="margin: auto">
+              </i>
+            </div>
+          </div>
+
+          <div class="textContent">
+            <div ngbDropdown style="display: flex">
+              <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="selectedMinimo"
+                ngbDropdownToggle />
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <input type="button" *ngFor="let monto of montos" ngbDropdownItem
+                  (click)="setFilter('montoMinimo', monto)" [value]="monto" />
+              </div>
+              <i class="material-icons icon" ngbDropdownToggle style="margin: auto">
+              </i>
+            </div>
+          </div>
         </div>
       </div>
-
+      <!--
       <div class="articulos-relevante">
         <div class="title">
           Mas Especificaciones
@@ -70,6 +165,7 @@
           alberca(10)
         </div>
       </div>
+      -->
     </div>
 
     <!-- inmuebles -->
