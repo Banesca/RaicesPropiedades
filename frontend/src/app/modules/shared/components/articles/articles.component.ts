@@ -29,6 +29,7 @@ export class ArticlesComponent implements OnInit {
   constructor(private articulosService: ArticuloService) {
 
     articulosService.filter.subscribe(filterData => {
+      console.log('subscribe');
       //Obtenemos el filtro del buscador
       this.filterData = filterData;
       //Parseamos la data para que se use en el api
@@ -49,6 +50,7 @@ export class ArticlesComponent implements OnInit {
       this.selectedMaximo = objConsulta.montoMaximo ? objConsulta.montoMaximo : 'máximo';
 
       articulosService.getItemsBySearch(objConsulta).then(data => {
+        console.log("getItemsBySearch",data);
         this.articulos = data.propiedades;
         this.arbol = data.arbol;
         this.propiedadesInPromise = false;

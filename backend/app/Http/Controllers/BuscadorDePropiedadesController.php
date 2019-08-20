@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 class BuscadorDePropiedadesController extends Controller {
 
     public function buscarGeneral(Request $request) {
-
         $idTipoOperaion  = @$request->idTipoOperaion;
         $idTipoPropiedad = @$request->idTipoPropiedad;
         $idMonedas       = @$request->idMonedas;
@@ -19,6 +18,16 @@ class BuscadorDePropiedadesController extends Controller {
         $idPartido       = @$request->idPartido;
         $idLocalidad     = @$request->idLocalidad;
         $idBarrio        = @$request->idBarrio;
+        // return response()->json([
+        //     'function'=>'buscarGeneral',
+        //     'idTipoOperaion'=>$idTipoOperaion,
+        //     'idTipoPropiedad'=>$idTipoPropiedad,
+        //     'idMonedas'=>$idMonedas,
+        //     'idProvincia'=>$idProvincia,
+        //     'idPartido'=>$idPartido,
+        //     'idLocalidad'=>$idLocalidad,
+        //     'idBarrio'=>$idBarrio
+        //     ]);
 
         $resultadoUnico = Propiedad::with(
             'TipoPropiedad',

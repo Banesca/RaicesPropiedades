@@ -49,27 +49,24 @@ export class LayoutComponent implements OnInit {
 
   GetPublicacionUrl() {
     this._PublicacionesService.getPublicacion(this.mId).then
-      (data => {
-        console.log(data);
-
-        this.gPropiedades = data;
-        this.images = [
-          /*
-        this.gPropiedades.ficha2.imagen1,
-        this.gPropiedades.ficha2.imagen2,
-        this.gPropiedades.ficha2.imagen3,
-        this.gPropiedades.ficha2.imagen4,
-        this.gPropiedades.ficha2.imagen5,
-        this.gPropiedades.ficha2.imagen6,
-        this.gPropiedades.ficha2.imagen7,*/
-          this.gPropiedades.ficha2.imagen1,
-          'https://picsum.photos/id/539/900/500'];
-      })
-
+    (data => {
+      this.gPropiedades = data;
+      console.log("this.gPropiedades",this.gPropiedades);
+      this.images = [
+        /*
+      this.gPropiedades.ficha2.imagen1,
+      this.gPropiedades.ficha2.imagen2,
+      this.gPropiedades.ficha2.imagen3,
+      this.gPropiedades.ficha2.imagen4,
+      this.gPropiedades.ficha2.imagen5,
+      this.gPropiedades.ficha2.imagen6,
+      this.gPropiedades.ficha2.imagen7,*/
+      // this.gPropiedades.ficha2.imagen1,
+    'https://picsum.photos/id/539/900/500' ];
+    })
 
       .catch(error => {
         console.log(error);
       });
   }
-
 }
