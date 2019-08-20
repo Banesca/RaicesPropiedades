@@ -1,4 +1,5 @@
-<app-propiertys-carousel *ngIf="galeriaHome?.length > 0"></app-propiertys-carousel><app-search>
+<app-propiertys-carousel *ngIf="galeriaHome?.length > 0"></app-propiertys-carousel>
+<app-search>
   <img *ngIf="galeriaHome?.length > 0" src="../../../../assets/images/icons/Recurso 6.svg" class="position-absolute d-none d-md-block"
     style="top: -20%; z-index: 1;" alt="" />
 </app-search>
@@ -10,8 +11,8 @@
     </div>
 </app-header-bottom>-->
 <app-search>
-  <img *ngIf="galeriaHome?.length > 0" src="../../../../assets/images/icons/Recurso 6.svg"
-    class="position-absolute d-none d-md-block" style="top: -20%; z-index: 1;" alt="" />
+  <img *ngIf="galeriaHome?.length > 0" src="../../../../assets/images/icons/Recurso 6.svg" class="position-absolute d-none d-md-block"
+    style="top: -20%; z-index: 1;" alt="" />
 </app-search>
 
 <div *ngIf="searchClicked">
@@ -23,10 +24,10 @@
     <h3 class="mb-4 brown-text font-weight-extrabold text-uppercase">Oportunidades</h3>
     <ng-container *ngFor="let publicaciones of mCategorias; let i = index" [attr.data-index]="i">
       <div *ngIf="publicaciones.esUnaPropiedad == '1'" class="col-md-4 col-9 p-4">
-        <div  [routerLink]="[baseUrl,publicaciones.idPropiedad]" class="card">
+        <div [routerLink]="[baseUrl,publicaciones.idPropiedad]" class="card">
           <img [src]="publicaciones.imagen1" class="card-img-top">
-          <div class="card-footer font-weight-semibold text-uppercase " >
-              {{ publicaciones.descipcion }}
+          <div class="card-footer font-weight-semibold text-uppercase ">
+            {{ publicaciones.descipcion }}
           </div>
         </div>
       </div>
