@@ -17,6 +17,7 @@ export class ArticlesComponent implements OnInit {
     "Norte GranB Area",
     "country B Cerrado"
   ];
+  public baseUrl: string = "/buscador/detail/";
   public recomendation = [1, 2, 3, 4];
   propiedadesInPromise: boolean = false;
   public arbol: any;
@@ -46,9 +47,8 @@ export class ArticlesComponent implements OnInit {
       this.propiedadesInPromise = true;
       this.selectedMinimo = objConsulta.montoMinimo ? objConsulta.montoMinimo : 'mínimo';
       this.selectedMaximo = objConsulta.montoMaximo ? objConsulta.montoMaximo : 'máximo';
-      
+
       articulosService.getItemsBySearch(objConsulta).then(data => {
-        
         this.articulos = data.propiedades;
         this.arbol = data.arbol;
         this.propiedadesInPromise = false;
@@ -115,5 +115,9 @@ export class ArticlesComponent implements OnInit {
     this.filterData[opcion] = value;
     this.articulosService.search.next(true);
     this.articulosService.filter.next(this.filterData);
+  }
+
+  onClickPublicacion() {
+    this.articulosService.search.next(false);
   }
 }
