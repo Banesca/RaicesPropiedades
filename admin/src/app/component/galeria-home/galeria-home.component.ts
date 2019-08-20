@@ -147,7 +147,6 @@ export class GaleriaHomeComponent implements OnInit {
 
   ver(pCategoria: any) {
     this.mCategoriasSelect = pCategoria;
-    console.log(this.mCategoriasSelect);
     this.mFormaEstado = enCRUD.Leer;
   }
 
