@@ -12,6 +12,7 @@ import { caracteristicasCampo, arrayInstalacionesCampo, arrayServiciosCampo } fr
 import { caracteristicasFondoComercio, arrayAmbientesFondoComercio, arrayServiciosFondoComercio } from "./datosporTipoPropiedad/fondoComercio.propiedad";
 import { caracteristicasGalpon, arrayInstalacionesGalpon, arrayServiciosGalpon } from "./datosporTipoPropiedad/galpon.propiedad";
 import { caracteristicasNegocioEspecial } from "./datosporTipoPropiedad/negocioEspecial.propiedad";
+import { isMedidas } from "./datosporTipoPropiedad/funcion";
 
 
 const dataDepartamento: VistaPublicaciones = {
@@ -139,7 +140,7 @@ export const DataByTipoPropiedad = {
 }
 
 /* Estos son los datos globales o generales de cada array... Los datos de cada tipo de propiedad en especifico estaran en un archivo con
-    el nombre del tipo de propiedad
+    el nombre del tipo de propiedad*/
 
 export const arrayAmbientesGlobal = [
     { label: "Altillo", variableName: "Ambientes_Altillo", isMedidas: isMedidas("Altillo"), medidas: '', selected: false },
@@ -323,4 +324,4 @@ export const arrayEdificioServiciosGlobal = [
     { label: "Videocable", variableName: "Edificio_Servicios_Videocable", selected: false },
     { label: "Vigilancia", variableName: "Edificio_Servicios_Vigilancia", selected: false },
 ]
-*/
+
