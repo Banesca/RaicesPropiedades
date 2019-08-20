@@ -40,12 +40,9 @@
                         <td>{{item.esUnaNovedad == 1 ? 'Si' : 'No'}}</td>
                         <td>{{item.estado_publicacion.descripcion}}</td>
                         <td class="text-right">
-                           <button (click)="show(item)" type="button" class="btn btn-secondary">
-                              <i class="fa fa-eye"></i>
-                           </button>
                            <button [routerLink]="['/gestionar-publicaciones/form', item.idPropiedad]" type="button"
                               class="btn btn-primary">
-                              <i class="fa fa-pencil"></i>
+                              <i class="fa fa-edit"></i>
                            </button>
                            <button (click)="eliminar(item.idPropiedad)" type="button" class="btn btn-danger">
                               <i class="fa fa-trash"></i>
