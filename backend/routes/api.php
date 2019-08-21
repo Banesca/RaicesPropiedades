@@ -180,6 +180,9 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     });
 
     Route::get('prueba1','UserController@prueba');
+    Route::get('vistaMail',function(){
+        return view('correos.mailsMasivos');
+    });
 
 });
 
