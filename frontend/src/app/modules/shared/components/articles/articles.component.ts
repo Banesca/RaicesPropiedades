@@ -22,49 +22,83 @@ export class ArticlesComponent implements OnInit {
   propiedadesInPromise: boolean = false;
   public arbol: any;
   filterData: any;
-  selectedMinimo: Number | string = 'mínimo';
-  selectedMaximo: Number | string = 'máximo';
+  selectedMinimo: Number | string = "mínimo";
+  selectedMaximo: Number | string = "máximo";
   montos: number[] = montos;
 
   constructor(private articulosService: ArticuloService) {
 
     articulosService.filter.subscribe(filterData => {
-      console.log('subscribe');
+
       //Obtenemos el filtro del buscador
       this.filterData = filterData;
       //Parseamos la data para que se use en el api
       let objConsulta = {
-        idTipoPropiedad: filterData.TipoPropiedad && filterData.TipoPropiedad.idTipoPropiedad ? filterData.TipoPropiedad.idTipoPropiedad : '',
-        idMonedas: filterData.Moneda && filterData.Moneda.idMonedas ? filterData.Moneda.idMonedas : '',
-        idTipoOperaion: filterData.TipoOperaion && filterData.TipoOperaion.idTipoOperaion ? filterData.TipoOperaion.idTipoOperaion : '',
-        montoMinimo: filterData.montoMinimo && filterData.montoMinimo != 'Indistinto' ? filterData.montoMinimo : '',
-        montoMaximo: filterData.montoMaximo && filterData.montoMaximo != 'Indistinto' ? filterData.montoMaximo : '',
-        idProvincia: filterData.Provincia && filterData.Provincia.id ? filterData.Provincia.id : '',
-        idPartido: filterData.Partido && filterData.Partido.id ? filterData.Partido.id : '',
-        idLocalidad: filterData.Localidad && filterData.Localidad.id ? filterData.Localidad.id : '',
-        idBarrio: filterData.Barrio && filterData.Barrio.id ? filterData.Barrio.id : ''
-      }
+        idTipoPropiedad:
+          filterData.TipoPropiedad && filterData.TipoPropiedad.idTipoPropiedad
+            ? filterData.TipoPropiedad.idTipoPropiedad
+            : "",
+        idMonedas:
+          filterData.Moneda && filterData.Moneda.idMonedas
+            ? filterData.Moneda.idMonedas
+            : "",
+        idTipoOperaion:
+          filterData.TipoOperaion && filterData.TipoOperaion.idTipoOperaion
+            ? filterData.TipoOperaion.idTipoOperaion
+            : "",
+        montoMinimo:
+          filterData.montoMinimo && filterData.montoMinimo != "Indistinto"
+            ? filterData.montoMinimo
+            : "",
+        montoMaximo:
+          filterData.montoMaximo && filterData.montoMaximo != "Indistinto"
+            ? filterData.montoMaximo
+            : "",
+        idProvincia:
+          filterData.Provincia && filterData.Provincia.id
+            ? filterData.Provincia.id
+            : "",
+        idPartido:
+          filterData.Partido && filterData.Partido.id
+            ? filterData.Partido.id
+            : "",
+        idLocalidad:
+          filterData.Localidad && filterData.Localidad.id
+            ? filterData.Localidad.id
+            : "",
+        idBarrio:
+          filterData.Barrio && filterData.Barrio.id ? filterData.Barrio.id : ""
+      };
 
       this.propiedadesInPromise = true;
-      this.selectedMinimo = objConsulta.montoMinimo ? objConsulta.montoMinimo : 'mínimo';
-      this.selectedMaximo = objConsulta.montoMaximo ? objConsulta.montoMaximo : 'máximo';
+      this.selectedMinimo = objConsulta.montoMinimo
+        ? objConsulta.montoMinimo
+        : "mínimo";
+      this.selectedMaximo = objConsulta.montoMaximo
+        ? objConsulta.montoMaximo
+        : "máximo";
 
-      articulosService.getItemsBySearch(objConsulta).then(data => {
-        console.log("getItemsBySearch",data);
-        this.articulos = data.propiedades;
-        this.arbol = data.arbol;
-        this.propiedadesInPromise = false;
-      }).catch(error => {
-        this.propiedadesInPromise = false;
-        console.error(error);
-      });
+      articulosService
+        .getItemsBySearch(objConsulta)
+        .then(data => {
+          this.articulos = data.propiedades;
+          this.arbol = data.arbol;
+          this.propiedadesInPromise = false;
+        })
+        .catch(error => {
+          this.propiedadesInPromise = false;
+          console.error(error);
+        });
     });
-
+    
   }
   getFormData(filterData) {
     const formData = new FormData();
     filterData.forEach(element => {
-      formData.append(Object.keys(element)[0] + "", Object.values(element)[0] + "");
+      formData.append(
+        Object.keys(element)[0] + "",
+        Object.values(element)[0] + ""
+      );
     });
     return formData;
   }
@@ -74,20 +108,38 @@ export class ArticlesComponent implements OnInit {
   }
 
   verifyStringOrObject() {
-    let value = '';
+    let value = "";
     let data = this.filterData;
     if (data) {
-      data.TipoPropiedad && data.TipoPropiedad.idTipoPropiedad ? value = value + data.TipoPropiedad.descripcion + ' / ' : '';
-      data.Moneda && data.Moneda.idMonedas ? value = value + data.Moneda.moneda + ' / ' : '';
-      data.TipoOperaion && data.TipoOperaion.idTipoOperaion ? value = value + data.TipoOperaion.descripcion + ' / ' : '';
-      data.montoMinimo && data.montoMinimo != 'Indistinto' ? value = value + data.montoMinimo + ' / ' : '';
-      data.montoMaximo && data.montoMaximo != 'Indistinto' ? value = value + data.montoMaximo + ' / ' : '';
-      data.Provincia && data.Provincia.id ? value = value + data.Provincia.nombre + ' / ' : '';
-      data.Partido && data.Partido.id ? value = value + data.Partido.nombre + ' / ' : '';
-      data.Localidad && data.Localidad.id ? value = value + data.Localidad.nombre + ' / ' : '';
-      data.Barrio && data.Barrio.id ? value = value + data.Barrio.nombre + + ' / ' : ''
+      data.TipoPropiedad && data.TipoPropiedad.idTipoPropiedad
+        ? (value = value + data.TipoPropiedad.descripcion + " / ")
+        : "";
+      data.Moneda && data.Moneda.idMonedas
+        ? (value = value + data.Moneda.moneda + " / ")
+        : "";
+      data.TipoOperaion && data.TipoOperaion.idTipoOperaion
+        ? (value = value + data.TipoOperaion.descripcion + " / ")
+        : "";
+      data.montoMinimo && data.montoMinimo != "Indistinto"
+        ? (value = value + data.montoMinimo + " / ")
+        : "";
+      data.montoMaximo && data.montoMaximo != "Indistinto"
+        ? (value = value + data.montoMaximo + " / ")
+        : "";
+      data.Provincia && data.Provincia.id
+        ? (value = value + data.Provincia.nombre + " / ")
+        : "";
+      data.Partido && data.Partido.id
+        ? (value = value + data.Partido.nombre + " / ")
+        : "";
+      data.Localidad && data.Localidad.id
+        ? (value = value + data.Localidad.nombre + " / ")
+        : "";
+      data.Barrio && data.Barrio.id
+        ? (value = value + data.Barrio.nombre + +" / ")
+        : "";
     }
-    return value
+    return value;
   }
 
   goBack() {
@@ -96,15 +148,15 @@ export class ArticlesComponent implements OnInit {
   }
 
   removeChip(opcion: string) {
-
+    
     //Vaciamos la escalera de la direccion en caso de eliminar algun chip
-    if (opcion == 'Provincia') {
+    if (opcion == "Provincia") {
       this.filterData.Partido = null;
     }
-    if (opcion == 'Provincia' || opcion == 'Partido') {
+    if (opcion == "Provincia" || opcion == "Partido") {
       this.filterData.Localidad = null;
     }
-    if (opcion == 'Provincia' || opcion == 'Partido' || opcion == 'Localidad') {
+    if (opcion == "Provincia" || opcion == "Partido" || opcion == "Localidad") {
       this.filterData.Barrio = null;
     }
 

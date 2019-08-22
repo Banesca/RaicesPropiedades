@@ -61,8 +61,16 @@ export class GaleriaHomeComponent implements OnInit {
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      titulo: ["", [Validators.required, Validators.minLength(3)]],
-      descripcion: ["", [Validators.required, Validators.minLength(10)]],
+      titulo: ["", [
+        Validators.required, 
+        Validators.minLength(3),
+        Validators.pattern("[ña-zA-Z _]*")
+      ]],
+      descripcion: ["", [
+        Validators.required, 
+        Validators.minLength(10),
+        Validators.maxLength(40),
+      ]],
       fk_publicaciones: ["", Validators.required],
       images: null
     });

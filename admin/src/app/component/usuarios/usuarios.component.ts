@@ -198,6 +198,7 @@ export class UsuariosComponent implements OnInit {
     this._usuarios
       .nuevaCategoria(this.mCategoriasSelect)
       .then(data => {
+        console.log('data',data);
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;

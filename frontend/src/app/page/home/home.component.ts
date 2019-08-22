@@ -22,11 +22,13 @@ export class HomeComponent implements OnInit {
     public articuloService: ArticuloService,
     private _GaleriaHomeService: GaleriaHomeService
   ) {
-    this.getAll();
-    this.getGaleriaHome();
+    
   }
 
   ngOnInit() {
+    this.getAll();
+    this.getGaleriaHome();
+    
     this.articuloService.search.subscribe(data => {
       this.searchClicked = data;
     });
@@ -34,18 +36,18 @@ export class HomeComponent implements OnInit {
   getAll() {
     this._PublicacionesService.All().then(data => {
       this.mCategorias = data;
-      (data).forEach(element => {
-        if(element.esUnaNovedad == 1){
+      data.forEach(element => {
+        if (element.esUnaNovedad == 1) {
           this.totalNovedades++;
         }
       });
     });
   }
-  getGaleriaHome(){
+  getGaleriaHome() {
     this._GaleriaHomeService
       .All()
-        .then(res => {
-       this.galeriaHome = res.data
+      .then(res => {
+        this.galeriaHome = res.data;
       })
       .catch(error => {
         console.log(error);

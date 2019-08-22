@@ -174,14 +174,13 @@ class UserController extends Controller {
         DB::beginTransaction();
 
         try {
-
             $usuario = new User($request->all());
-
+            
             if ($request->fk_statusUser == 'undefine' || is_null($request->fk_statusUser) || $request->fk_statusUser == '' || $request->fk_statusUser = "") {
                 $usuario->fk_statusUser = 1;
             }
             $usuario->password = bcrypt($request->password);
-            $usuario->save();
+            $usuario->save();            
             $response = [
                 'msj'  => 'Usuario Creado Exitosamente',
                 'user' => $usuario,
