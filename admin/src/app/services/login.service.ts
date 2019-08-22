@@ -4,8 +4,7 @@ import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Access-Control-Allow-Origin': '*'
+    'Content-Type':  'application/json'
     // 'Authorization': 'my-auth-token'
   })
 };
@@ -36,7 +35,7 @@ export class LoginService {
   }
 
   _getAuthUser(origin_token:any){
-    return this.http.get(environment.apiHost + '/api/auth/getUser/',{
+    return this.http.get(environment.apiHost + '/api/auth/getUser',{
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Access-Control-Allow-Origin': '*',
