@@ -20,7 +20,7 @@ class NuevoPasswordMail extends Mailable /*implements ShouldQueue*/
     public $user; //al hacer public la variable no hace falta usar with en la vista
 
 
-    public function __construct(Suscripcion $user)
+    public function __construct(User $user)
     {
         $this->user = $user;
     }

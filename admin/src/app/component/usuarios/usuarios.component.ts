@@ -198,7 +198,7 @@ export class UsuariosComponent implements OnInit {
     this._usuarios
       .nuevaCategoria(this.mCategoriasSelect)
       .then(data => {
-        console.log('data',data);
+        this.submitted=false;
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
@@ -262,6 +262,7 @@ export class UsuariosComponent implements OnInit {
       .actualizarCategoria(this.mCategoriasSelect, this.id)
       .then(data => {
         this.mFormaEstado = enCRUD.Eliminar;
+        this.submitted = false;
         this.getAll();
         this.mLoading = false;
         this._AlertsService.msg(

@@ -31,6 +31,7 @@ export class SuscritComponent implements OnInit {
   submitted = false;
   mLoading = false;
   closeResult: string;
+  error: string;
   private modalRef: NgbModalRef;
 
   constructor(config: NgbModalConfig, private modalService: NgbModal,
@@ -87,6 +88,8 @@ export class SuscritComponent implements OnInit {
     })
     .catch(error => {
       this.errorMensaje = true;
+      // console.log(error.error.errors.email[0]);
+      this.error=error.error.errors.email[0];
       console.log(error)
       this.mLoading = false;
     });

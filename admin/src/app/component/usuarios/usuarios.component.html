@@ -261,7 +261,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for=""
-                        >Password ({{ mCategoriasSelect.id ? 0 : 8 }})</label
+                        >Password</label
                       >
                       <input
                         class="form-control"
@@ -302,7 +302,7 @@
                         class="invalid-feedback d-block"
                       >
                         <div *ngIf="f.password_confirmation.errors.required">
-                          El nombre es Requerido
+                          La confirmación de la contraseña es requerida
                         </div>
                         <div *ngIf="f.password_confirmation.errors.minlength">
                           La confirmación del password debe tener un mínimo de 8

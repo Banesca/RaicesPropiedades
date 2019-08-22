@@ -17,7 +17,8 @@
           <div *ngIf="errorMensaje" class="row">
               <div class="col-lg-12 my-2">
                 <h3 class="text-center mt-3 font-weight-bold">Hubo un problema al realizar la suscripción</h3>
-                <p class="mb-5 text-center font-weight-bold">Por favor intente nuevamente</p>
+                <p class="mb-5 text-center font-weight-bold" *ngIf="!error">Por favor intente nuevamente</p>
+                <p class="mb-5 text-center font-weight-bold" *ngIf="error">{{error}}</p>
                 <button  class="btn brown-button btn-lg mx-auto btn-block col-lg-5" (click)="submittedClose()">Volver</button>
               </div>
             </div>

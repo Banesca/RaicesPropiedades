@@ -10,6 +10,7 @@ use App\PerfilCliente;
 use App\Suscripcion;
 use App\User;
 use App\Mail\NuevoRegistroMail;
+use App\Mail\NuevoPasswordMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -257,7 +258,7 @@ class UserController extends Controller {
 
             if ($request->password != null && ! empty($request->password)) {
                 $user->password = bcrypt($request->password);
-                Mail::to($request->email)->send(new NuevoPasswordMail($usuario));
+                Mail::to($request->email)->send(new NuevoPasswordMail($user));
             } else {
                 $user->password = $pass_last;
             }
@@ -267,7 +268,7 @@ class UserController extends Controller {
                 'user' => $user,
             ];
 
-            $user->save();
+            $user->update();
 
             if ($request->password != null && ! empty($request->password)) {
                 Mail::to($request->email)->send(new NuevoPasswordMail($user));
@@ -281,7 +282,7 @@ class UserController extends Controller {
             Log::error('Ha ocurrido un error en UserController: '.$e->getMessage().', Linea: '.$e->getLine());
 
             return response()->json([
-                'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
+                'message' => 'Ha ocurrido un error al tratar de guardar los datos.'
             ], 500);
         }
     }
