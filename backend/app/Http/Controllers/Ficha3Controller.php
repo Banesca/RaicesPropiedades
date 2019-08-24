@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Ficha123;
+use App\Mail\PropiedadMail;
 use App\Propiedad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
@@ -14,7 +16,6 @@ use Image;
 class Ficha3Controller extends Controller {
 
     public function add(Request $request) {
-
        // return response()->json($request->all());
         /*$this->validate($request, [
             'fk_ficha2' => 'required',
@@ -65,6 +66,9 @@ class Ficha3Controller extends Controller {
             }
 
             $propiedad->save();
+
+
+            Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email,$propiedad->descipcion,$propiedad->idPropiedad));
 
            $sincronice=new SincroniceArgenController();
             $sincronice->add($propiedad); //para add propiedad en argen pro

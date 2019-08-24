@@ -422,7 +422,7 @@
     </style>
 </head>
 <body class="">
-<span class="preheader">Hola {!! $sus->email !!}</span>
+<span class="preheader">Hola {!! $email !!}</span>
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
     <tr>
         <td>&nbsp;</td>
@@ -442,12 +442,10 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <h2>Hola! {{$sus->email}} Se ha suscrito correctamente.</h2>
+                                        <h2>Su propiedad N° {{$numero}} fue creada exitosamente.</h2>
                                         <hr>
                                         <p>
-                                            Si desea cancelar la suscripcion siga el siguiente link
-                                            <a target="_blank" href=" http://raicesonline.com.ar/backend/public/formCancelarSuscripcion/{{ $sus->tocken }}"> Aqui</a>
-
+                                            La descripcion de su propiedad es: {{$descipcion}}
                                         </p>
                                         <h5>www.raicespropiedades.com</h5>
                                     </td>

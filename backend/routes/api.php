@@ -184,6 +184,8 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
         return view('correos.mailsMasivos');
     });
 
+    Route::post('reestablecerClave', 'UserController@reestablecerClave'); // recibe email y genera clave aleatoria, posterior envia email para el login
+
 });
 
 
