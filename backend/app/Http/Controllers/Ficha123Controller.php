@@ -50,7 +50,7 @@ class Ficha123Controller extends Controller
             'estadoPublicacion',
             'tipoOpeacion',
             'tipoMoneda')
-            ->where('fk_estado_publicacion', 1)
+            ->wherein('fk_estado_publicacion',[1,2])
             ->find($idFichas);
         if (!is_null($ficha123)) {
             $ficha123->imagenes = [
@@ -119,7 +119,7 @@ class Ficha123Controller extends Controller
             'tipoOpeacion',
             'tipoMoneda'
         )
-            ->where('fk_estado_publicacion', 1)
+            ->wherein('fk_estado_publicacion',[1,2])
             ->get();
 
         if (!is_null($ficha123)) {

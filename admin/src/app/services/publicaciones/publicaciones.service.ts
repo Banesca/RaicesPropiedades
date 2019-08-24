@@ -416,7 +416,7 @@ export class PublicacionesService {
 
   addPropiedad(datos) {
     return this._HttpClient
-      .post<any>(environment.apiHost + "/api/v1/addPropiedad", datos, {
+      .post<any>(environment.apiHost + "/api/auth/addPropiedad", datos, {
         headers: new HttpHeaders({
           "Access-Control-Allow-Origin": "*",
           "Authorization": "Bearer " + localStorage.getItem("access_token")
