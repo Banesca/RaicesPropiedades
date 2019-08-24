@@ -91,68 +91,79 @@
         </div>
       </div>
       -->
-      <div class="articulos-relevante"
-        *ngIf="(!filterData.TipoOperaion || !filterData.TipoOperaion.idTipoOperaion) && arbol.TipoOperaion && arbol.TipoOperaion.length">
-        <div class="title">
-          Tipo Operación
-        </div>
-        <div class="textContent2">
-          <div *ngFor="let item of arbol.TipoOperaion" (click)="setFilter('TipoOperaion', item.tipo_opeacion)">
-            <span *ngIf="item.fk_idTipoOperaion">{{item.tipo_opeacion.descripcion}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="articulos-relevante"
-        *ngIf="(!filterData.TipoPropiedad || !filterData.TipoPropiedad.idTipoPropiedad) && arbol.TipoPropiedad && arbol.TipoPropiedad.length">
-        <div class="title">
-          Edificación
-        </div>
-        <div class="textContent2">
-          <div *ngFor="let item of arbol.TipoPropiedad" (click)="setFilter('TipoPropiedad', item.tipo_propiedad)">
-            <span *ngIf="item.fk_idTipoPropiedad">{{item.tipo_propiedad.descripcion}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="articulos-relevante"
-        *ngIf="(!filterData.Moneda || !filterData.Moneda.idMonedas) && arbol.TipoMonedas && arbol.TipoMonedas.length">
-        <div class="title">
-          Moneda
-        </div>
-        <div class="textContent2">
-          <div *ngFor="let item of arbol.TipoMonedas" (click)="setFilter('Moneda', item.tipo_moneda)">
-            <span *ngIf="item.fk_idMonedas">{{item.tipo_moneda.moneda}}</span>
-          </div>
-        </div>
-      </div>
-
+      <!-- (!filterData.TipoOperaion || !filterData.TipoOperaion.idTipoOperaion) && arbol.TipoOperaion && -->
+      <!-- arbol.TipoOperaion.length -->
       <div class="articulos-relevante">
-        <div class="textContent">
-          <div class="textContent">
-            <div ngbDropdown style="display: flex">
-              <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="selectedMaximo"
-                ngbDropdownToggle />
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <input type="button" *ngFor="let monto of montos" ngbDropdownItem
-                  (click)="setFilter('montoMaximo', monto)" [value]="monto" />
+        <div class="title">
+          Obtener publicaciones
+        </div>
+        <div class="textContent2">
+          <div (click)="setFilter('relevance&price', 'mostrelevant')">
+            <span >Más relevante</span>
+          </div>
+          <div (click)="setFilter('relevance&price', 'higherprice')">
+            <span >Mayor precio</span>
+          </div>
+          <div (click)="setFilter('relevance&price', 'lowerprice')">
+            <span >Menor precio</span>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!filterData.TipoBarrio && arbol.TipoBarrio && arbol.TipoBarrio.length" class="articulos-relevante">
+        <div class="title">
+          Zonas
+        </div>
+        <div class="textContent2">
+          <ng-container *ngFor="let item of arbol.TipoBarrio">
+            <div *ngIf="item.barrio" (click)="setFilter('zona', item.barrio.id)">
+              <span>{{item.barrio.nombre}}</span>
+            </div>
+          </ng-container>          
+        </div>
+      </div>
+      <div class="articulos-relevante">
+        <div class="title">
+          Precio
+        </div>
+        <div class="textContent2">
+          <div class="row">
+            <div class="col-md-6">
+              <div ngbDropdown style="">
+                <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="selectedMinimo"
+                  ngbDropdownToggle />
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <input type="button" *ngFor="let monto of montos" ngbDropdownItem (click)="setFilter('montoMinimo', monto)"
+                    [value]="monto" />
+                    
+                </div>
               </div>
-              <i class="material-icons icon" ngbDropdownToggle style="margin: auto">
-              </i>
+            </div>
+            <div class="col-md-6">
+              <div ngbDropdown style="">
+                <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="selectedMaximo"
+                  ngbDropdownToggle />
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <input type="button" *ngFor="let monto of montos" ngbDropdownItem (click)="setFilter('montoMaximo', monto)"
+                    [value]="monto" />
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class="textContent">
-            <div ngbDropdown style="display: flex">
-              <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="selectedMinimo"
-                ngbDropdownToggle />
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <input type="button" *ngFor="let monto of montos" ngbDropdownItem
-                  (click)="setFilter('montoMinimo', monto)" [value]="monto" />
-              </div>
-              <i class="material-icons icon" ngbDropdownToggle style="margin: auto">
-              </i>
-            </div>
+        </div>
+      </div>
+      <div class="articulos-relevante">
+        <div class="title">
+          Metros cubiertos
+        </div>
+        <div class="textContent2">
+          <div (click)="setFilter('coveredmeters', 'f200m2')">
+            <span>Desde 200m2</span>
+          </div>
+          <div (click)="setFilter('coveredmeters', 'f200m2t500m2')">
+            <span>Desde 200m2 - 500m2</span>
+          </div>
+          <div (click)="setFilter('coveredmeters', 't500m2')">
+            <span>Hata 500m2</span>
           </div>
         </div>
       </div>

@@ -83,6 +83,7 @@ export class ArticlesComponent implements OnInit {
         .then(data => {
           this.articulos = data.propiedades;
           this.arbol = data.arbol;
+          console.log('arbol',this.arbol);
           this.propiedadesInPromise = false;
         })
         .catch(error => {
