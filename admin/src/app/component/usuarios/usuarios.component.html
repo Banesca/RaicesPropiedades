@@ -11,16 +11,16 @@
         *ngIf="mFormaEstado == enCRUD.Crear"
         class="py-5 text-center font-weight-bold"
       >
-        Nuevo usuario
+        Nuevo Usuario
       </h3>
       <h3
         *ngIf="mFormaEstado == enCRUD.Actualizar"
         class="py-5 text-center font-weight-bold"
       >
-        Actualizar usuario
+        Actualizar Usuario
       </h3>
       <h3 *ngIf="mFormaEstado == enCRUD.Leer" class="py-5 text-center font-weight-bold">
-            Detalles del usuario
+            Detalles del Usuario
       </h3>
       <h3
         *ngIf="mFormaEstado == enCRUD.Asignar"
@@ -279,6 +279,8 @@
                         <div *ngIf="f.password.errors.required">
                           El password es Requerido
                         </div>
+                      </div>
+                      <div *ngIf="f.password.errors" type="alert" class="invalid-feedback d-block">
                         <div *ngIf="f.password.errors.minlength">
                           El password debe tener un mínimo de 8 caracateres
                         </div>
@@ -304,6 +306,8 @@
                         <div *ngIf="f.password_confirmation.errors.required">
                           La confirmación de la contraseña es requerida
                         </div>
+                      </div>
+                      <div *ngIf="f.password_confirmation.errors" type="alert" class="invalid-feedback d-block">
                         <div *ngIf="f.password_confirmation.errors.minlength">
                           La confirmación del password debe tener un mínimo de 8
                           caracateres
