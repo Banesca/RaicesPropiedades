@@ -16,7 +16,7 @@ use Image;
 class Ficha3Controller extends Controller {
 
     public function add(Request $request) {
-       // return response()->json($request->all());
+        //return response()->json($request->all());
         /*$this->validate($request, [
             'fk_ficha2' => 'required',
         ], [
