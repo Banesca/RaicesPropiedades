@@ -12,9 +12,9 @@
               <div class="form-group mb-3">
                   <input formControlName="nombre_apellido" type="text" [ngClass]="{ 'is-invalid': submitted && f.nombre_apellido.errors }" class="form-control form-control-lg" placeholder="Nombre y Apellido"
                   aria-describedby="basic-addon1">
-                  <div *ngIf="submitted && f.nombre_apellido.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="f.nombre_apellido.errors.required">Nombre y Apellido son Requerido</div>
-                      <div *ngIf="f.nombre_apellido.errors.pattern">Debe ingresar caracteres alfabéticos</div>
+                  <div *ngIf=" f.nombre_apellido.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="submitted && f.nombre_apellido.errors.required">Nombre y Apellido son Requerido</div>
+                      <div *ngIf="f.nombre_apellido.errors.pattern">Debe ingresar únicamente caracteres alfabéticos</div>
                   </div>
               </div>
             </div>
@@ -23,8 +23,8 @@
               <div class="form-group mb-3">
                   <input formControlName="email" type="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control form-control-lg" placeholder="testing@gmail.com"
                   aria-describedby="basic-addon1">
-                  <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="f.email.errors.required">El Email es Requerido</div>
+                  <div *ngIf="f.email.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="submitted && f.email.errors.required">El Email es Requerido</div>
                       <div *ngIf="f.email.errors.email">Colocal email que cumpla con las siguientes características: testing@gmail.com</div>
                   </div>
             </div>
@@ -34,10 +34,10 @@
               <div class="form-group mb-3">
                 <input formControlName="telefono" type="text" oninput="this.value=this.value.replace(/[^\d+]/,'')" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" class="form-control form-control-lg" minlength="9" maxlength="14" placeholder="Teléfono / Celular"
                   aria-describedby="basic-addon1">
-                  <div *ngIf="submitted && f.telefono.errors" type="alert" class="invalid-feedback">
+                  <div *ngIf="f.telefono.errors" type="alert" class="invalid-feedback">
                       <div *ngIf="f.telefono.errors.minlength">Ingrese un número de teléfono válido</div>
                       <div *ngIf="f.telefono.errors.pattern">Ingrese un número de teléfono válido</div>
-                      <div *ngIf="f.telefono.errors.required">El Teléfono es Requerido</div>
+                      <div *ngIf="submitted && f.telefono.errors.required">El Teléfono es Requerido</div>
                   </div>
                 </div>
               </div>
@@ -48,8 +48,8 @@
                     <option value="">Seleciona Una Categoría</option>
                     <option  *ngFor="let categoria of mCategorias" type="number" [value]="categoria.idTipoPropiedad">{{categoria.descripcion}}</option>
                     </select>
-                  <div *ngIf="submitted && f.fk_tipoPropiedad.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="f.fk_tipoPropiedad.errors.required">La categoría de la propiedades es Requerida</div>
+                  <div *ngIf="f.fk_tipoPropiedad.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="submitted && f.fk_tipoPropiedad.errors.required">La categoría de la propiedades es Requerida</div>
                   </div>
               </div>
             </div>
@@ -59,10 +59,10 @@
                 <input formControlName="titulo" type="text" [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" class="form-control form-control-lg" placeholder="Título"
                   aria-describedby="basic-addon1">
                   <div *ngIf="f.titulo.errors" type="alert" class="d-block invalid-feedback">
-                      <div *ngIf="f.titulo.hasError('pattern')">El título debe tambien contener letras</div>
+                      <div *ngIf="f.titulo.hasError('pattern')">El título debe contener únicamente caracteres alfabéticos</div>
                   </div>
-                  <div *ngIf="submitted && f.titulo.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="f.titulo.errors.required">El Título es Requerido</div>
+                  <div *ngIf="f.titulo.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="submitted && f.titulo.errors.required">El Título es Requerido</div>
                   </div>
               </div>
             </div>
@@ -71,8 +71,8 @@
               <div class="form-group mb-3">
                 <textarea formControlName="descripcion" name="" [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }" cols="20"
                   rows="2" placeholder="Descripción" class="form-control form-control-lg"></textarea>
-                <div *ngIf="submitted && f.descripcion.errors" type="alert" class="invalid-feedback">
-                  <div *ngIf="f.descripcion.errors.required">La Descripción es Requerida</div>
+                <div *ngIf="f.descripcion.errors" type="alert" class="invalid-feedback">
+                  <div *ngIf="submitted && f.descripcion.errors.required">La Descripción es Requerida</div>
                 </div>
               </div>
             </div>
@@ -82,15 +82,15 @@
               <div class="form-group mb-3 col-md-6">
                 <input type="file" (change)="onFileChange($event,'imagen_1')" class="form-file form-control form-control-lg" placeholder="file1.jpg">
                 <div class="invalid-feedback d-block text-success text-center ng-star-inserted" *ngIf="files>=1">Imagen cargada satisfactoriamente</div>
-                <div *ngIf="submitted && f.imagen_1.errors" type="alert" class="invalid-feedback d-block">
-                  <div *ngIf="f.imagen_1.errors.required">Las imagenes son Requerida</div>
+                <div *ngIf="f.imagen_1.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.imagen_1.errors.required">Las imagenes son Requerida</div>
                 </div>
               </div>
               <div class="form-group mb-3 col-md-6">
                 <input type="file" (change)="onFileChange($event,'imagen_2')" class="form-file form-control form-control-lg" placeholder="file1.jpg">
                 <div class="invalid-feedback d-block text-success text-center ng-star-inserted" *ngIf="files==2">Imagen cargada satisfactoriamente</div>
-                <div *ngIf="submitted && f.imagen_2.errors" type="alert" class="invalid-feedback d-block">
-                  <div *ngIf="f.imagen_2.errors.required">Las imagen son Requerida</div>
+                <div *ngIf="f.imagen_2.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.imagen_2.errors.required">Las imagen son Requerida</div>
                 </div>
               </div>
             </div>

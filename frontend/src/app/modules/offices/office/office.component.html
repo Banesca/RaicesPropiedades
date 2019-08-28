@@ -80,10 +80,10 @@
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label class="text-uppercase">Su nombre</label>
-                        <div *ngIf="submitted && f.nombre.errors" type="alert" class="invalid-feedback d-block">
-                            <div *ngIf="f.nombre.errors.required">Nombre y Apellido son Requerido</div>
-                            <div *ngIf="f.nombre.errors.pattern">Nombre y Apellido no válido</div>
-                            <div *ngIf="f.nombre.errors.pattern">Debe ingresar caracteres alfabéticos</div>
+                        <div *ngIf="f.nombre.errors" type="alert" class="invalid-feedback d-block">
+                            <div *ngIf="submitted && f.nombre.errors.required">El Nombre es Requerido</div>
+                            <div *ngIf="f.nombre.errors.pattern">Nombre no válido</div>
+                            <div *ngIf="f.nombre.errors.pattern">Debe ingresar únicamente caracteres alfabéticos</div>
                             <div *ngIf="f.nombre.errors.minlength">Debe ingresar al menos 6 caracteres alfabéticos</div>                            
                         </div>
                       </div>
@@ -92,8 +92,8 @@
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label class="text-uppercase">Su email</label>
-                        <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback d-block">
-                            <div *ngIf="f.email.errors.required">Email es Requerido</div>
+                        <div *ngIf="f.email.errors" type="alert" class="invalid-feedback d-block">
+                            <div *ngIf="submitted && f.email.errors.required">Email es Requerido</div>
                             <div *ngIf="f.telefono.errors.pattern">Email no válido.</div>
                         </div>
                       </div> 
@@ -102,8 +102,8 @@
                           <span class="highlight"></span>
                           <span class="bar"></span>
                           <label class="text-uppercase">Su teléfono</label>
-                          <div *ngIf="submitted && f.telefono.errors" type="alert" class="invalid-feedback d-block">
-                              <div *ngIf="f.telefono.errors.required">El Teléfono Requerido</div>
+                          <div *ngIf="f.telefono.errors" type="alert" class="invalid-feedback d-block">
+                              <div *ngIf="submitted && f.telefono.errors.required">El Teléfono Requerido</div>
                               <div *ngIf="f.telefono.errors.pattern">Número teléfonico no válido.</div>                              
                           </div>
                       </div> 
@@ -112,8 +112,8 @@
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label class="mb-3 text-uppercase">Mensaje</label>
-                            <div *ngIf="submitted && f.mensaje.errors" type="alert" class="invalid-feedback d-block">
-                                <div *ngIf="f.mensaje.errors.required">El Mensaje es Requerido</div>
+                            <div *ngIf="f.mensaje.errors" type="alert" class="invalid-feedback d-block">
+                                <div *ngIf="submitted && f.mensaje.errors.required">El Mensaje es Requerido</div>
                             </div>
                         </div>
                     </div> 

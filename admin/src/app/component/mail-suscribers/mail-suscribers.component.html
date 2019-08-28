@@ -100,8 +100,8 @@
             formControlName="titulo"
             placeholder="Título del Mail"
           />
-          <div *ngIf="submitted && f.titulo.errors" type="alert" class="invalid-feedback d-block">
-            <div *ngIf="f.titulo.errors.required">El título es Requerido</div>
+          <div *ngIf="f.titulo.errors" type="alert" class="invalid-feedback d-block">
+            <div *ngIf="submitted && f.titulo.errors.required">El título es Requerido</div>
             <div *ngIf="f.titulo.errors.minlength">Mínimo de 5 caracteres</div>
           </div>
         </div>
@@ -114,8 +114,8 @@
             type="text"
             formControlName="descripcion"
           ></textarea>
-          <div *ngIf="submitted && f.descripcion.errors" type="alert" class="invalid-feedback d-block">
-            <div *ngIf="f.descripcion.errors.required">La descripción es Requerida</div>
+          <div *ngIf="f.descripcion.errors" type="alert" class="invalid-feedback d-block">
+            <div *ngIf="submitted && f.descripcion.errors.required">La descripción es Requerida</div>
           </div>
         </div>
       </form>

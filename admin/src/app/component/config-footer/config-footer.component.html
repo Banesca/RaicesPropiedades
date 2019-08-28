@@ -4,8 +4,8 @@
             <label for="">¿Quiénes Somos?</label>
             <br>
             <textarea name="textarea" rows="10" cols="50" formControlName="quienesSomos">Escribe Quiénes Somos</textarea>
-            <div *ngIf="submitted && f.quienesSomos.errors" type="alert" class="invalid-feedback d-block">
-                  <div *ngIf="f.quienesSomos.errors.required" >Es requerido</div>
+            <div *ngIf="f.quienesSomos.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.quienesSomos.errors.required" >Es requerido</div>
                   <div *ngIf="f.quienesSomos.errors.minlength">Debe ingresar al menos 10 caracteres</div>
             </div>
             
@@ -13,54 +13,54 @@
       <div class="col-12 mt-4" >
             <label for="">Dirección</label>
             <input type="input" formControlName="direccion" class="form-control" placeholder="Escriba La Dirección">
-            <div *ngIf="submitted && f.direccion.errors" type="alert" class="invalid-feedback d-block">
-                  <div *ngIf="f.direccion.errors.required">Es requerido</div>
+            <div *ngIf="f.direccion.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.direccion.errors.required">Es requerido</div>
                   <div *ngIf="f.direccion.errors.minlength">Debe ingresar al menos 10 caracteres</div>
             </div>
       </div>
       <div class="col-6 mt-4" >
             <label for="">Celular 1</label>
             <input type="text" oninput="this.value=this.value.replace(/[^\d+]/,'')" formControlName="celular1" class="form-control" placeholder="Escriba El Número de Celular">
-            <div *ngIf="submitted && f.celular1.errors" type="alert" class="invalid-feedback d-block">
-                  <div *ngIf="f.celular1.errors.required">Es requerido</div>
+            <div *ngIf="f.celular1.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.celular1.errors.required">Es requerido</div>
                   <div *ngIf="f.celular1.errors.pattern">Debe ingresar un número válido</div>
             </div>
       </div>
       <div class="col-6 mt-4" >
             <label for="">Celular 2</label>
             <input type="text" oninput="this.value=this.value.replace(/[^\d+]/,'')" formControlName="celular2" class="form-control" placeholder="Escriba El Número de Celular">
-            <div *ngIf="submitted && f.celular2.errors" type="alert" class="invalid-feedback d-block">
-                  <div *ngIf="f.celular2.errors.required">Es requerido</div>
+            <div *ngIf="f.celular2.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.celular2.errors.required">Es requerido</div>
                   <div *ngIf="f.celular2.errors.pattern">Debe ingresar un número válido</div>                  
             </div>
       </div>
       <div class="col-6 mt-4" >
             <label for="">Correo</label>
             <input type="input" formControlName="correo" class="form-control" placeholder="Escriba El Número de Celular">
-            <div *ngIf="submitted && f.correo.errors" type="alert" class="invalid-feedback d-block">
-                  <div *ngIf="f.correo.errors.required">Es requerido</div>
+            <div *ngIf="f.correo.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.correo.errors.required">Es requerido</div>
                   <div *ngIf="f.correo.errors.pattern">Debe ingresar un correo electrónico válido</div>                  
             </div>
       </div>
       <div class="col-6 mt-4" >
             <label for="">URL De Facebook</label>
             <input type="input" formControlName="url_face" class="form-control" placeholder="Escriba La URL De Facebook">
-           <div *ngIf="submitted && f.url_face.errors" type="alert" class="invalid-feedback d-block">
-                  <div *ngIf="f.url_face.errors.required">Es requerido</div>
+           <div *ngIf="f.url_face.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.url_face.errors.required">Es requerido</div>
             </div>
       </div>
       <div class="col-6 mt-4" >
             <label for="">URL De Instagram</label>
             <input type="input" formControlName="url_intagram" class="form-control" placeholder="Escriba La URL De Facebook">
-            <div *ngIf="submitted && f.url_intagram.errors" type="alert" class="invalid-feedback d-block">
-                  <div *ngIf="f.url_intagram.errors.required">Es requerido</div>
+            <div *ngIf="f.url_intagram.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.url_intagram.errors.required">Es requerido</div>
             </div>
       </div>
       <div class="col-6 mt-4" >
             <label for="">URL De Twitter</label>
             <input type="input" formControlName="url_twitter" class="form-control" placeholder="Escriba La URL De Facebook">
-            <div *ngIf="submitted && f.url_twitter.errors" type="alert" class="invalid-feedback d-block">
-                  <div *ngIf="f.url_twitter.errors.required">Es requerido</div>
+            <div *ngIf=" f.url_twitter.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.url_twitter.errors.required">Es requerido</div>
             </div>
       </div>
       <div class="card col-lg-6 col-12 mt-4 emails-cont ">

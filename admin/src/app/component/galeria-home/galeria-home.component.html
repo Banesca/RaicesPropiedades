@@ -127,10 +127,10 @@
             <div class="form-group">
               <label for="">Título</label>
               <input class="form-control" type="text" formControlName="titulo" placeholder="Título" [(ngModel)]="mCategoriasSelect.titulo" />
-              <div *ngIf="submitted && f.titulo.errors" type="alert" class="invalid-feedback d-block">
-                <div *ngIf="f.titulo.errors.required">El título es requerido</div>
+              <div *ngIf="f.titulo.errors" type="alert" class="invalid-feedback d-block">
+                <div *ngIf="submitted && f.titulo.errors.required">El título es requerido</div>
                 <div *ngIf="f.titulo.errors.minlength">Mínimo de 3 caracteres</div>
-                <div *ngIf="f.titulo.errors.pattern">El título debe contener caracteres alfabéticos</div>
+                <div *ngIf="f.titulo.errors.pattern">El título debe contener únicamente caracteres alfabéticos</div>
               </div>
             </div>
           </div>
@@ -152,8 +152,8 @@
             <div class="form-group">
               <label for="">Descripción</label>
               <textarea class="form-control" type="text" formControlName="descripcion" placeholder="Descripción" [(ngModel)]="mCategoriasSelect.descripcion"></textarea>
-              <div *ngIf="submitted && f.descripcion.errors" type="alert" class="invalid-feedback d-block">
-                <div *ngIf="f.descripcion.errors.required">Descripción es requerida</div>
+              <div *ngIf="f.descripcion.errors" type="alert" class="invalid-feedback d-block">
+                <div *ngIf="submitted && f.descripcion.errors.required">Descripción es requerida</div>
                 <div *ngIf="f.descripcion.errors.minlength">Mínimo de 10 caracteres</div>
                 <div *ngIf="f.descripcion.errors.maxlength">Máximo de 40 caracteres</div>            
               </div>

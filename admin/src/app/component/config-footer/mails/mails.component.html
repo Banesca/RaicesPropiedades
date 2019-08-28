@@ -4,8 +4,8 @@
       <div class="form-group">
         
         <input type="input" formControlName="email" class="form-control" placeholder="Escriba El Correo">
-        <div *ngIf="submitted && f.email.errors" type="alert" class="invalid-feedback d-block">
-          <div *ngIf="f.email.errors.required">Es requerido</div>
+        <div *ngIf="f.email.errors" type="alert" class="invalid-feedback d-block">
+          <div *ngIf="submitted && f.email.errors.required">Es requerido</div>
           <div *ngIf="f.email.errors.pattern">Debe ingresar un correo electrónico válido</div>          
         </div>
       </div>

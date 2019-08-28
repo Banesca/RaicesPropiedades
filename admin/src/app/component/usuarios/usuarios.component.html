@@ -218,11 +218,11 @@
                         placeholder="Nombre"
                       />
                       <div
-                        *ngIf="submitted && f.name.errors"
+                        *ngIf="f.name.errors"
                         type="alert"
                         class="invalid-feedback d-block"
                       >
-                        <div *ngIf="f.name.errors.required">
+                        <div *ngIf="submitted && f.name.errors.required">
                           El nombre es Requerido
                         </div>
                         <div *ngIf="f.name.errors.minlength">
@@ -242,11 +242,11 @@
                         placeholder="Email"
                       />
                       <div
-                        *ngIf="submitted && f.email.errors"
+                        *ngIf="f.email.errors"
                         type="alert"
                         class="invalid-feedback d-block"
                       >
-                        <div *ngIf="f.email.errors.required">
+                        <div *ngIf="submitted && f.email.errors.required">
                           El email es Requerido
                         </div>
                         <div *ngIf="f.email.errors.pattern">
@@ -272,15 +272,13 @@
                         [required]="requirePasssword"
                       />
                       <div
-                        *ngIf="submitted && f.password.errors"
+                        *ngIf="f.password.errors"
                         type="alert"
                         class="invalid-feedback d-block"
                       >
-                        <div *ngIf="f.password.errors.required">
+                        <div *ngIf="submitted && f.password.errors.required">
                           El password es Requerido
                         </div>
-                      </div>
-                      <div *ngIf="f.password.errors" type="alert" class="invalid-feedback d-block">
                         <div *ngIf="f.password.errors.minlength">
                           El password debe tener un mínimo de 8 caracateres
                         </div>
@@ -299,15 +297,13 @@
                         [required]="requirePasssword"
                       />
                       <div
-                        *ngIf="submitted && f.password_confirmation.errors"
+                        *ngIf="f.password_confirmation.errors"
                         type="alert"
                         class="invalid-feedback d-block"
                       >
-                        <div *ngIf="f.password_confirmation.errors.required">
+                        <div *ngIf="submitted && f.password_confirmation.errors.required">
                           La confirmación de la contraseña es requerida
                         </div>
-                      </div>
-                      <div *ngIf="f.password_confirmation.errors" type="alert" class="invalid-feedback d-block">
                         <div *ngIf="f.password_confirmation.errors.minlength">
                           La confirmación del password debe tener un mínimo de 8
                           caracateres
