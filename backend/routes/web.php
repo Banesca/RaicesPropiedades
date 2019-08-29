@@ -12,7 +12,8 @@ use App\Mail\PagoConTarjetaMail;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('loginGoogle','API\AuthController@redirectToProvider');
+Route::get('getUserGoogle','API\AuthController@handleProviderCallback');
 
 Route::get('/', function() {
     return view('welcome');
@@ -37,8 +38,6 @@ Route::get('pedidos', function() {
     return view('pedidos');
 });
 Route::get('email', function() {
-
-
     Mail::raw('Tu contraseña es', function($mensaje) {
         $mensaje->from('us@example.com', 'Laravel');
         $mensaje->to('alecortez240192@gmail.com')->subject('Your Reminder!');

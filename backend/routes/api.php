@@ -17,7 +17,7 @@ Route::group([ 'prefix' => 'auth' ], function() {
 
     Route::group([ 'middleware' => 'auth:api' ], function() {
         Route::get('logout', 'API\AuthController@logout');//cerrar sesion
-        Route::get('getUser', 'API\AuthController@user');//Obtener usuarios autenticados
+        Route::get('getUser', 'API\AuthController@user');//Obtener usuario autenticado
         Route::post('editarUser/{idUser}', 'UserController@update');
         Route::delete('borrarUser/{idUser}', 'UserController@destroy');
 
