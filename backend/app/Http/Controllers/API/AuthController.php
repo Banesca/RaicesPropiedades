@@ -3,35 +3,42 @@
 namespace App\Http\Controllers\API;
 
 use App\ConfigFooter;
+use App\CouponsClient;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\UserController;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-use App\User;
-use App\CouponsClient;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-use Validator;
-use Illuminate\Support\Facades\DB;
+use Laravel\Socialite\Facades\Socialite;
 
-class AuthController extends Controller {
+class AuthController extends Controller
+{
+    public function login(Request $request)
+    {
+        if (! isset($request->idUser) || is_null($request->idUser)) {
+            $request->validate([
+                'email'       => 'required|string|email',
+                'password'    => 'required|string',
+                'remember_me' => 'boolean',
+            ], [
+                'email.required'    => 'El email es requerido',
+                'password.required' => 'El contraseña es requerida, si inició sesión con google debe entral con el link de google y cambiar su clave desde su perfil',
+            ]);
+        }
+        $cre;
 
-    public function login(Request $request) {
-
-        $request->validate([
-            'email'       => 'required|string|email',
-            'password'    => 'required|string',
-            'remember_me' => 'boolean',
-        ], [
-            'email.required'    => 'El email es requerido',
-            'password.required' => 'El contraseña es requerida',
-        ]);
-
-        $credentials = request([ 'email', 'password' ]);
+        if (isset($request->idUser) && ! is_null($request->idUser)) {
+            //para autenticar solo con el id
+            $cre = Auth::loginUsingId($request->idUser);
+        } else {
+            //para autenticar con el email y el password
+            $credentials = request(['email', 'password']);
+            $cre = Auth::attempt($credentials);
+        }
 
 
-        if (! Auth::attempt($credentials)) {
+        if (! $cre) {
             if (count(User::where('email', $request->email)->get()) > 0) {
                 return response()->json([
                     'message' => 'Clave errada',
@@ -44,59 +51,14 @@ class AuthController extends Controller {
             }
         }
 
-        /*if ($request->user()->statusUser == 0) {
-
-            $footer = ConfigFooter::first();
-
-            if(is_null($footer->PerAccUserAprobAdmin) || $footer->PerAccUserAprobAdmin==""){
-                $footer->PerAccUserAprobAdmin="0";
-            }
-
-            if($footer->PerAccUserAprobAdmin==1){
-                return response()->json([
-                    'message' => 'SU CUENTA ESTA EN PERIODO DE ACTIVACION. ESTE PROCESO PUEDE TARDAR 24 HS. NO OLVIDES REVISAR TU CASILLA DE MAIL, DONDE RECIBIRAS EL ACCESO A LA WEB. MUCHAS GRACIAS.',
-                ], 401);
-            }
-
-            /*PARA ACTIVAR LA CUENTA DE UNA VEZ SI NO ESTA ACTIVA*/
-            //$request->user()->update(['statusUser'=>1]);
-
-            //Auth::logout();
-
-            /*$u = new UserController();
-            $u->reestablecerClave(new Request([ 'email' => $request->email ]));*/
-
-            /*return response()->json([
-                'message' => 'La cuenta no ha sido activada, por favor vaya a su correo y siga el vinculo para activarla',
-            ], 401);
-
-        }*/
-        // idAF=1 viene del fron
-        // idAF=2 viene del admin
-
-
-        // PARA LIMITAR EL ACCESO, SOLO LOS ADMINISTRADORES PUEDEN ACCEDER AL ADMIN
-        /*if (isset($request->idAF) && $request->idAF == 2 && $request->user()->fk_idPerfil !=1  ){
-          return response()->json([
-                'message' => 'Su usuario no tiene acceso a esta plataforma',
-            ], 401);
-        }*/
-
-        // PARA LIMITAR EL ACCESO, SOLO LOS CLIENTES PUEDEN ACCEDER AL FRONT
-       /* if (isset($request->idAF) && $request->idAF == 1 && $request->user()->fk_idPerfil !=2  ){
-          return response()->json([
-                'message' => 'Su usuario no tiene acceso a esta plataforma',
-            ], 401);
-        }*/
-
-        $user = $request->user();
+        $user = is_null(@$request->user()) ? Auth::user() : $request->user();
 
         $tokenResult = $user->createToken('Personal Access Token');
-        $token = $tokenResult->token;
+        $token       = $tokenResult->token;
 
-
-        if ($request->remember_me)
+        if ($request->remember_me) {
             $token->expires_at = Carbon::now()->addDay();
+        }
 
         $token->save();
 
@@ -112,7 +74,8 @@ class AuthController extends Controller {
      *
      * @return [string] message
      */
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
 
         $request->user()->token()->revoke();
 
@@ -126,10 +89,10 @@ class AuthController extends Controller {
      *
      * @return [json] user object
      */
-    public function user(Request $request) {
+    public function user(Request $request)
+    {
 
         $u = $request->user();
-
 
         // Buscamos el usuario de DEPOCITO si es chofer o cliente //
         /*if ($u->fk_idPerfil == 3) {// Chofer
@@ -170,7 +133,7 @@ class AuthController extends Controller {
 
             return response()->json($u, 200);
         } catch (\Exception $e) {
-            Log::error('Ha ocurrido un error en AuthController: '.$e->getMessage().', Linea: '.$e->getLine());
+            Log::error('Ha ocurrido un error en AuthController: ' . $e->getMessage() . ', Linea: ' . $e->getLine());
 
             return response()->json([
                 'message' => 'Ha ocurrido un error al tratar de obtener los datos.',
@@ -178,4 +141,34 @@ class AuthController extends Controller {
         }
     }
 
+    public function redirectToProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleProviderCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (\Exception $e) {
+            return 'Problemas al autenticar con el servicio de Google';
+        }
+
+        // comprobar si existe el usuario
+        $existingUser = User::where('email', $user->email)->first();
+        if ($existingUser) {
+            //loguar si existe
+            return $this->login(new Request(['idUser' => $existingUser->id]));
+        } else {
+            // crear un nuevo usuario y luego regresar el tocken
+            $newUser                = new User;
+            $newUser->name          = $user->name;
+            $newUser->email         = $user->email;
+            $newUser->fk_statusUser = 1;
+
+            $newUser->save();
+
+            return $this->login(new Request(['idUser' => $newUser->id]));
+        }
+    }
 }
