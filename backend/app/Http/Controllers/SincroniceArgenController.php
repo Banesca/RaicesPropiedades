@@ -4,26 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Propiedad;
 
-class SincroniceArgenController extends Controller
-{
-    public function add(Propiedad $request1)
-    {
-
+class SincroniceArgenController extends Controller {
+    public function add(Propiedad $request1) {
+        $contenido;
         //departamento
         if ($request1->fk_idTipoPropiedad = 1) {
-            $contenido = http_build_query([
+
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
+                'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
-                //'aviso.InformacionAdicional'      => 'Departamento%20de%20test.',
 
                 'propiedad.Direccion.Pais.Id'                               => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'                          => $request1->fk_Direccion_Provincia_Id,
@@ -40,7 +38,7 @@ class SincroniceArgenController extends Controller
                 'propiedad.Direccion.Coordenadas.Latitud'                   => $request1->Direccion_Coordenadas_Latitud,
                 'propiedad.Direccion.Coordenadas.Longitud'                  => $request1->Direccion_Coordenadas_Longitud,
                 'propiedad.AptoCredito'                                     => (boolean) $request1->AptoCredito ? 'True' : 'False',
-                'propiedad.LongitudFrente'                                  => $request1->LongitudFrente,
+                //'propiedad.LongitudFrente'                                  => $request1->LongitudFrente,
                 'propiedad.LongitudFondo'                                   => $request1->LongitudFondo,
                 'propiedad.SuperficieCubierta'                              => $request1->SuperficieCubierta,
                 'propiedad.SuperficieDescubierta'                           => $request1->SuperficieDescubierta,
@@ -54,8 +52,8 @@ class SincroniceArgenController extends Controller
                 'propiedad.PropiedadOcupada'                                => (boolean) $request1->PropiedadOcupada ? 'True' : 'False',
                 'propiedad.TipoBalcon'                                      => $request1->fk_TipoBalcon,
                 'propiedad.TipoExpensas'                                    => $request1->fk_TipoExpensas,
-                'propiedad.TipoVista'                                       => $request1->fk_TipoVista,
-                'propiedad.TipoCosta'                                       => $request1->fk_TipoCosta,
+                //'propiedad.TipoVista'                                       => $request1->fk_TipoVista,
+                //'propiedad.TipoCosta'                                       => $request1->fk_TipoCosta,
                 'propiedad.TipoUnidad'                                      => $request1->fk_TipoUnidadDepartamento,
                 'propiedad.Estado'                                          => $request1->fk_Estado,
                 'propiedad.CantidadBanos'                                   => $request1->CantidadBanos,
@@ -152,12 +150,12 @@ class SincroniceArgenController extends Controller
                 'propiedad.Edificio.CantidadPisos'                          => $request1->CantidadPisos,
                 'propiedad.Edificio.SuperficiePlaya'                        => $request1->SuperficiePlaya,
                 'propiedad.Edificio.SuperficieDeposito'                     => $request1->SuperficieDeposito,
-                'propiedad.Edificio.LongitudFrente'                         => $request1->LongitudFrente,
+                //'propiedad.Edificio.LongitudFrente'                         => $request1->LongitudFrente,
                 'propiedad.Edificio.LongitudFondo'                          => $request1->LongitudFondo,
-                'propiedad.Edificio.TipoFrente'                             => $request1->TipoFrente,
-                'propiedad.Edificio.TipoVista'                              => $request1->TipoVista,
-                'propiedad.Edificio.TipoCosta'                              => $request1->TipoCosta,
-                'propiedad.Edificio.Disponibilidad'                         => $request1->Disponibilidad, //tipo fecha
+                //'propiedad.Edificio.TipoFrente'                             => $request1->TipoFrente,
+                //'propiedad.Edificio.TipoVista'                              => $request1->TipoVista,
+                //'propiedad.Edificio.TipoCosta'                              => $request1->TipoCosta,
+                //'propiedad.Edificio.Disponibilidad'                         => $request1->Disponibilidad, //tipo fecha
                 'propiedad.Edificio.Servicios.ABL'                          => (boolean) $request1->Edificio_Servicios_ABL ? 'True' : 'False',
                 'propiedad.Edificio.Servicios.AguaCorriente'                => (boolean) $request1->Edificio_Servicios_AguaCorriente ? 'True' : 'False',
                 'propiedad.Edificio.Servicios.Bar'                          => (boolean) $request1->Edificio_Servicios_Bar ? 'True' : 'False',
@@ -188,17 +186,19 @@ class SincroniceArgenController extends Controller
                 'propiedad.Edificio.Instalaciones.Sauna'                    => (boolean) $request1->Instalaciones_Sauna ? 'True' : 'False',
                 'propiedad.Edificio.Instalaciones.Termotanque'              => (boolean) $request1->Instalaciones_Termotanque ? 'True' : 'False',
             ]);
+
         }
 
+
         //'Departamento Tipo Casa
-        if ($request1->fk_idTipoPropiedad = 2) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 2) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -324,14 +324,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Casa
-        if ($request1->fk_idTipoPropiedad = 3) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 3) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -471,14 +471,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Quinta
-        if ($request1->fk_idTipoPropiedad = 4) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 4) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -615,14 +615,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Cochera
-        if ($request1->fk_idTipoPropiedad = 5) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 5) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -662,14 +662,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Local
-        if ($request1->fk_idTipoPropiedad = 6) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 6) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -761,14 +761,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Hotel
-        if ($request1->fk_idTipoPropiedad = 7) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 7) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -863,14 +863,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Terreno
-        if ($request1->fk_idTipoPropiedad = 8) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 8) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -944,14 +944,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Oficina
-        if ($request1->fk_idTipoPropiedad = 9) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 9) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -1054,14 +1054,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Campo
-        if ($request1->fk_idTipoPropiedad = 10) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 10) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -1126,14 +1126,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Fondo_de_Comercio
-        if ($request1->fk_idTipoPropiedad = 11) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 11) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -1186,14 +1186,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Galpón
-        if ($request1->fk_idTipoPropiedad = 12) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 12) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -1278,14 +1278,14 @@ class SincroniceArgenController extends Controller
         }
 
         //Negocio_Especial
-        if ($request1->fk_idTipoPropiedad = 13) {
-            $contenido = http_build_query([
+        elseif ($request1->fk_idTipoPropiedad = 13) {
+            $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
                 'psd'                             => '123456',
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_' . $request1->idPropiedad,
+                'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
                 'aviso.SistemaOrigen.Id'          => '103',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
@@ -1335,19 +1335,27 @@ class SincroniceArgenController extends Controller
 
         $response = curl_exec($curl);
         $err      = curl_error($curl);
-
-        if ($err) {
-           dd( "cURL Error #:".$err);
-        } else {
-
-           /* $propidad=Propiedad::find($request1->idPropiedad);
-            if (isset($propidad)) {
-                $propidad->update(['visibilidad'=>]);
-            }*/
-            dd($response) ;
-        }
-
         curl_close($curl);
 
+        if ($err) {
+            //dd("cURL Error #:".$err);
+        } else {
+
+            /* $propidad=Propiedad::find($request1->idPropiedad);
+             if (isset($propidad)) {
+                 $propidad->update(['visibilidad'=>]);
+             }*/
+             dd($response);
+        }
+
+
+    }
+
+    public static function QueryHtml($array) {
+        $post_url = '';
+        foreach ($array AS $key => $value)
+            $post_url .= $key.'='.$value.'&';
+
+        return $post_url = rtrim($post_url, '&');
     }
 }

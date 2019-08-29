@@ -37,6 +37,7 @@ Route::group([ 'prefix' => 'auth' ], function() {
         Route::post('sucursal/add', 'SucursalController@store');
         Route::post('sucursal/edit/{idSucursal}', 'SucursalController@update');
         Route::delete('sucursal/borrar/{idSucursal}', 'SucursalController@destroy');
+        Route::post('addPropiedad','Ficha3Controller@add');
         
     });
 });
@@ -159,7 +160,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::get('getTipoPiso','ReturnSeedController@get_TipoPisoSeeder');
     Route::get('getTipoLocal','ReturnSeedController@get_TipoLocalSeeder');
 
-    Route::post('addPropiedad','Ficha3Controller@add');
+
     Route::post('editPropiedad/{idPropiedad}','Ficha3Controller@edit');
     Route::delete('deletePropiedad/{idPropiedad}','Ficha3Controller@delete');
 
