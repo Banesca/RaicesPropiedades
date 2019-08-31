@@ -494,9 +494,6 @@
                                           <mat-option *ngFor="let item of arrayProvincia" [value]="item.id">
                                              {{item.nombre}}
                                           </mat-option>
-                                          <mat-option value='0'>
-                                             Otra
-                                          </mat-option>
                                        </mat-select>
                                        <mat-error>
                                           Este valor es
@@ -517,9 +514,6 @@
                                           (selectionChange)="reloadLocalidades($event)">
                                           <mat-option *ngFor="let item of arrayPartido" [value]="item.id">
                                              {{item.nombre}}
-                                          </mat-option>
-                                          <mat-option value='0'>
-                                             Otro
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
@@ -542,9 +536,6 @@
 
                                           <mat-option *ngFor="let item of arrayLocalidad" [value]="item.id">
                                              {{item.nombre}}
-                                          </mat-option>
-                                          <mat-option value='0'>
-                                             Otra
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
