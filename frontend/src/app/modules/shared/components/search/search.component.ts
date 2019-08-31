@@ -36,6 +36,7 @@ export class SearchComponent implements OnInit {
   selectedPartido: any;
   selectedLocalidad: any;
   selectedBarrio: any;
+  habitantes: number;
   _unknowns: string[] = unknown;
   //ubication
 
@@ -44,6 +45,8 @@ export class SearchComponent implements OnInit {
   localidades: any = [];
   barrios: any = [];
 
+  //busqueda avanzada
+  advancedSearchForm:boolean=false;
   constructor(
     private _ArticuloService: ArticuloService,
     private router: Router
@@ -59,9 +62,10 @@ export class SearchComponent implements OnInit {
     this.selectedBarrio = { id: null, nombre: "Indistinto" };
     this.selectedMinimo = "Indistinto";
     this.selectedMaximo = "Indistinto";
+    this.habitantes = null;
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   getAll() {
     this.gMonedas();
@@ -190,7 +194,6 @@ export class SearchComponent implements OnInit {
   // ------------------------
 
   searchFilter() {
-
     let objectFilter = {
       TipoPropiedad: this.tipo,
       Monedas: this.moneda,
@@ -200,23 +203,25 @@ export class SearchComponent implements OnInit {
       Provincia: this.selectedProvince,
       Partido: this.selectedPartido,
       Localidad: this.selectedLocalidad,
-      Barrio: this.selectedBarrio
-    }
-
-    
-    /*
-    filterForm.append("idTipoPropiedad", this.tipo.idTipoPropiedad + '');
-    filterForm.append("idMonedas", this.moneda.idMonedas + '');
-    filterForm.append("idTipoOperaion", this.operation.idTipoOperaion + '');
-    filterForm.append("montoMinimo", this.selectedMinimo + '');
-    filterForm.append("montoMaximo", this.selectedMaximo + '');
-    filterForm.append("idProvincia", this.selectedProvince.id);
-    filterForm.append("idPartido", this.selectedPartido.id);
-    filterForm.append("idLocalidad", this.selectedLocalidad.id);
-    filterForm.append("idBarrio", this.selectedBarrio.id);*/
+      Barrio: this.selectedBarrio,
+      Habitantes: this.habitantes
+    };
     this._ArticuloService.search.next(true);
     //    this._ArticuloService.filter.next(filterForm);
     this._ArticuloService.filter.next(objectFilter);
-
+  }
+  advancedSearch() {
+    switch (this.advancedSearchForm) {
+      case true:
+        this.advancedSearchForm = false;
+        this.habitantes=null;
+        break;
+      case false:
+        this.advancedSearchForm = true;
+        this.habitantes=0;
+        break;
+      default:
+        break;
+    }
   }
 }
