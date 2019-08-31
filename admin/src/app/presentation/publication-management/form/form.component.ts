@@ -1142,7 +1142,9 @@ export class FormComponent implements OnInit {
       let obj = this.getDataForm();
       //Parseamos el objeto a FORM DATA
       let formData: FormData = new FormData();
-      let keys = Object.keys(obj)
+      let keys = Object.keys(obj);
+      console.log(obj);
+      
       for (let index = 0; index < keys.length; index++) {
          const element = keys[index];
          formData.append(element, obj[element]);
