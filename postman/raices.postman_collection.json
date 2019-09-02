@@ -5358,20 +5358,22 @@
 									"key": "idTipoOperaion",
 									"value": "1",
 									"type": "text",
-									"description": ""
+									"description": "",
+									"disabled": true
 								},
 								{
 									"key": "idTipoPropiedad",
-									"value": "",
+									"value": "1",
 									"type": "text",
 									"description": "",
 									"disabled": true
 								},
 								{
 									"key": "idMonedas",
-									"value": "2",
+									"value": "1",
 									"type": "text",
-									"description": ""
+									"description": "",
+									"disabled": true
 								},
 								{
 									"key": "idProvincia",
@@ -5400,6 +5402,25 @@
 									"type": "text",
 									"description": "",
 									"disabled": true
+								},
+								{
+									"key": "habitantes",
+									"value": "2",
+									"type": "text",
+									"description": "",
+									"disabled": true
+								},
+								{
+									"key": "montoMinimo",
+									"value": "1396",
+									"type": "text",
+									"description": "requerido si montoMaximo tiene valor"
+								},
+								{
+									"key": "montoMaximo",
+									"value": "2000",
+									"type": "text",
+									"description": "requerido si montoMinimotiene valor"
 								}
 							]
 						},
