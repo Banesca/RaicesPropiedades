@@ -10,6 +10,7 @@ use App\ConfigFooter;
 // use App\PerfilCliente;
 // use App\Suscripcion;
 use App\Mail\ConfirmTasacion;
+use App\TipoTasacion;
 use App\Transacciones;
 use App\TipoPropiedad;
 use Illuminate\Http\Request;
@@ -113,7 +114,7 @@ class TransaccionesController extends Controller {
 
     public function listaCategorias() {
 
-        $categoria = TipoPropiedad::all();
+        $categoria = TipoTasacion::all();
         $response  = [
             'msj'  => 'Categorias',
             'data' => $categoria,
