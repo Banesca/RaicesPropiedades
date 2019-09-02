@@ -17,7 +17,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -199,7 +199,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -332,7 +332,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -479,7 +479,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -623,7 +623,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -670,7 +670,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -769,7 +769,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -871,7 +871,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -952,7 +952,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -1062,7 +1062,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -1134,7 +1134,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -1194,7 +1194,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -1286,7 +1286,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.EsWeb'                     => 'false',
                 'aviso.Titulo'                    => $request1->titulo,
                 'aviso.IdOrigen'                  => '575Y_'.$request1->idPropiedad,
-                'aviso.SistemaOrigen.Id'          => '103',
+                'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => '1',
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
@@ -1341,11 +1341,11 @@ class SincroniceArgenController extends Controller {
             //dd("cURL Error #:".$err);
         } else {
 
-            /* $propidad=Propiedad::find($request1->idPropiedad);
+             $propidad=Propiedad::find($request1->idPropiedad);
              if (isset($propidad)) {
-                 $propidad->update(['visibilidad'=>]);
-             }*/
-             dd($response);
+                 $propidad->update(['visibilidad'=>$response]);
+             }
+
         }
 
 

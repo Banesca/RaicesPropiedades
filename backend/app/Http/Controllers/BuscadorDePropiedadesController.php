@@ -11,13 +11,17 @@ use Illuminate\Http\Request;
 class BuscadorDePropiedadesController extends Controller {
 
     public function buscarGeneral(Request $request) {
-        $idTipoOperaion  = @$request->idTipoOperaion;
-        $idTipoPropiedad = @$request->idTipoPropiedad;
-        $idMonedas       = @$request->idMonedas;
-        $idProvincia     = @$request->idProvincia;
-        $idPartido       = @$request->idPartido;
-        $idLocalidad     = @$request->idLocalidad;
-        $idBarrio        = @$request->idBarrio;
+        $idTipoOperaion   = @$request->idTipoOperaion;
+        $idTipoPropiedad  = @$request->idTipoPropiedad;
+        $idMonedas        = @$request->idMonedas;
+        $idProvincia      = @$request->idProvincia;
+        $idPartido        = @$request->idPartido;
+        $idLocalidad      = @$request->idLocalidad;
+        $idBarrio         = @$request->idBarrio;
+        $CantidadPersonal = @$request->habitantes;
+
+        $montoMinimo = @$request->montoMinimo;
+        $montoMaximo = @$request->montoMaximo;
         // return response()->json([
         //     'function'=>'buscarGeneral',
         //     'idTipoOperaion'=>$idTipoOperaion,
@@ -71,7 +75,7 @@ class BuscadorDePropiedadesController extends Controller {
             'tipoMoneda'
         )
             ->where(function($query)
-            use ($idTipoOperaion, $idTipoPropiedad, $idMonedas, $idProvincia, $idPartido, $idLocalidad, $idBarrio) {
+            use ($idTipoOperaion, $idTipoPropiedad, $idMonedas, $idProvincia, $idPartido, $idLocalidad, $idBarrio,$CantidadPersonal,$montoMinimo, $montoMaximo ) {
                 ! is_null($idTipoOperaion) ? $query->where('fk_idTipoOperaion', $idTipoOperaion) : '';
                 ! is_null($idTipoPropiedad) ? $query->where('fk_tipoPropiedad', $idTipoPropiedad) : '';
                 ! is_null($idMonedas) ? $query->where('fk_idMonedas', $idMonedas) : '';
@@ -79,20 +83,23 @@ class BuscadorDePropiedadesController extends Controller {
                 ! is_null($idPartido) ? $query->where('fk_Direccion_Partido_Id', $idPartido) : '';
                 ! is_null($idLocalidad) ? $query->where('fk_Direccion_Localidad_Id', $idLocalidad) : '';
                 ! is_null($idBarrio) ? $query->where('fk_Direccion_Barrio_Id', $idBarrio) : '';
+                ! is_null($CantidadPersonal) ? $query->where('CantidadPersonal', $CantidadPersonal) : '';
+                ! is_null($montoMinimo) && ! is_null($montoMaximo) ? $query->whereBetween('precio', [ $montoMinimo, $montoMaximo ]) : '';
+
             })
             ->where('fk_estado_publicacion', 1)
             ->get();
 
-        $resultadoUnico->each(function ($resultadoUnico) {
+        $resultadoUnico->each(function($resultadoUnico) {
             $resultadoUnico->imagenes = [
-                'imagen1'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen1),
-                'imagen2'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen2),
-                'imagen3'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen3),
-                'imagen4'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen4),
-                'imagen5'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen5),
-                'imagen6'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen6),
-                'imagen7'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen7),
-                'imagen_para_galeria' => asset('storage\\ficha2\\' . @$resultadoUnico->imagen_para_galeria),
+                'imagen1'             => asset('storage\\ficha2\\'.@$resultadoUnico->imagen1),
+                'imagen2'             => asset('storage\\ficha2\\'.@$resultadoUnico->imagen2),
+                'imagen3'             => asset('storage\\ficha2\\'.@$resultadoUnico->imagen3),
+                'imagen4'             => asset('storage\\ficha2\\'.@$resultadoUnico->imagen4),
+                'imagen5'             => asset('storage\\ficha2\\'.@$resultadoUnico->imagen5),
+                'imagen6'             => asset('storage\\ficha2\\'.@$resultadoUnico->imagen6),
+                'imagen7'             => asset('storage\\ficha2\\'.@$resultadoUnico->imagen7),
+                'imagen_para_galeria' => asset('storage\\ficha2\\'.@$resultadoUnico->imagen_para_galeria),
             ];
         });
 
@@ -100,7 +107,7 @@ class BuscadorDePropiedadesController extends Controller {
     }
 
 
-    public static function getArbol(Request $request,$ar) {
+    public static function getArbol(Request $request, $ar) {
         $array = [];
 
         $idTipoOperaion  = @$request->idTipoOperaion;
@@ -146,16 +153,16 @@ class BuscadorDePropiedadesController extends Controller {
         })->distinct()
             ->get();
         $array['TipoProvincia'] = Propiedad::with('Provincia')->select('fk_Direccion_Provincia_Id')->where(function($query)
-            use ($idTipoOperaion, $idTipoPropiedad, $idMonedas, $idProvincia, $idPartido, $idLocalidad, $idBarrio) {
-                ! is_null($idTipoOperaion) ? $query->where('fk_idTipoOperaion', $idTipoOperaion) : '';
-                ! is_null($idTipoPropiedad) ? $query->where('fk_tipoPropiedad', $idTipoPropiedad) : '';
-                ! is_null($idMonedas) ? $query->where('fk_idMonedas', $idMonedas) : '';
-                ! is_null($idProvincia) ? $query->where('fk_Direccion_Provincia_Id', $idProvincia) : '';
-                ! is_null($idPartido) ? $query->where('fk_Direccion_Partido_Id', $idPartido) : '';
-                ! is_null($idLocalidad) ? $query->where('fk_Direccion_Localidad_Id', $idLocalidad) : '';
-                ! is_null($idBarrio) ? $query->where('fk_Direccion_Barrio_Id', $idBarrio) : '';
-            })->distinct()
-                ->get();
+        use ($idTipoOperaion, $idTipoPropiedad, $idMonedas, $idProvincia, $idPartido, $idLocalidad, $idBarrio) {
+            ! is_null($idTipoOperaion) ? $query->where('fk_idTipoOperaion', $idTipoOperaion) : '';
+            ! is_null($idTipoPropiedad) ? $query->where('fk_tipoPropiedad', $idTipoPropiedad) : '';
+            ! is_null($idMonedas) ? $query->where('fk_idMonedas', $idMonedas) : '';
+            ! is_null($idProvincia) ? $query->where('fk_Direccion_Provincia_Id', $idProvincia) : '';
+            ! is_null($idPartido) ? $query->where('fk_Direccion_Partido_Id', $idPartido) : '';
+            ! is_null($idLocalidad) ? $query->where('fk_Direccion_Localidad_Id', $idLocalidad) : '';
+            ! is_null($idBarrio) ? $query->where('fk_Direccion_Barrio_Id', $idBarrio) : '';
+        })->distinct()
+            ->get();
         $array['TipoPartido']   = Propiedad::with('Partido')->select('fk_Direccion_Partido_Id')->where(function($query)
         use ($idTipoOperaion, $idTipoPropiedad, $idMonedas, $idProvincia, $idPartido, $idLocalidad, $idBarrio) {
             ! is_null($idTipoOperaion) ? $query->where('fk_idTipoOperaion', $idTipoOperaion) : '';
@@ -189,7 +196,8 @@ class BuscadorDePropiedadesController extends Controller {
             ! is_null($idBarrio) ? $query->where('fk_Direccion_Barrio_Id', $idBarrio) : '';
         })->distinct()
             ->get();
-        $response=['propiedades'=>$ar,'arbol'=>$array];
+        $response               = [ 'propiedades' => $ar, 'arbol' => $array ];
+
         return $response;
 
 
