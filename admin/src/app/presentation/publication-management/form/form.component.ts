@@ -271,8 +271,8 @@ export class FormComponent implements OnInit {
          Direccion_Numero: [''],
          Direccion_Piso: [''],
          Direccion_Departamento: [''],
-         Direccion_Coordenadas_Latitud: ['', Validators.pattern("^-?[0-9]+(.[0-9]{0,5})?$")],
-         Direccion_Coordenadas_Longitud: ['', Validators.pattern("^-?[0-9]+(.[0-9]{0,5})?$")],
+         Direccion_Coordenadas_Latitud: ['', Validators.pattern("^-?[0-9]+(.[0-9]{0,20})?$")],
+         Direccion_Coordenadas_Longitud: ['', Validators.pattern("^-?[0-9]+(.[0-9]{0,20})?$")],
 
 
          //Caracteristicas
