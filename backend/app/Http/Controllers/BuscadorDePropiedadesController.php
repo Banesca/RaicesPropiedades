@@ -19,6 +19,9 @@ class BuscadorDePropiedadesController extends Controller {
         $idLocalidad      = @$request->idLocalidad;
         $idBarrio         = @$request->idBarrio;
         $CantidadPersonal = @$request->habitantes;
+
+        $montoMinimo = @$request->montoMinimo;
+        $montoMaximo = @$request->montoMaximo;
         // return response()->json([
         //     'function'=>'buscarGeneral',
         //     'idTipoOperaion'=>$idTipoOperaion,
@@ -80,6 +83,9 @@ class BuscadorDePropiedadesController extends Controller {
                 ! is_null($idPartido) ? $query->where('fk_Direccion_Partido_Id', $idPartido) : '';
                 ! is_null($idLocalidad) ? $query->where('fk_Direccion_Localidad_Id', $idLocalidad) : '';
                 ! is_null($idBarrio) ? $query->where('fk_Direccion_Barrio_Id', $idBarrio) : '';
+                ! is_null($CantidadPersonal) ? $query->where('CantidadPersonal', $CantidadPersonal) : '';
+                ! is_null($montoMinimo) && ! is_null($montoMaximo) ? $query->whereBetween('precio', [ $montoMinimo, $montoMaximo ]) : '';
+
             })
             ->where('fk_estado_publicacion', 1)
             ->get();
