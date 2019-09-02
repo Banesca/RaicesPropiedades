@@ -47,6 +47,7 @@ export class SearchComponent implements OnInit {
 
   //busqueda avanzada
   advancedSearchForm:boolean=false;
+  validateMonto:boolean=false;
   constructor(
     private _ArticuloService: ArticuloService,
     private router: Router
@@ -194,21 +195,31 @@ export class SearchComponent implements OnInit {
   // ------------------------
 
   searchFilter() {
-    let objectFilter = {
-      TipoPropiedad: this.tipo,
-      Monedas: this.moneda,
-      TipoOperaion: this.operation,
-      montoMinimo: this.selectedMinimo,
-      montoMaximo: this.selectedMaximo,
-      Provincia: this.selectedProvince,
-      Partido: this.selectedPartido,
-      Localidad: this.selectedLocalidad,
-      Barrio: this.selectedBarrio,
-      Habitantes: this.habitantes
-    };
-    this._ArticuloService.search.next(true);
-    //    this._ArticuloService.filter.next(filterForm);
-    this._ArticuloService.filter.next(objectFilter);
+    if (
+      (this.selectedMinimo == "Indistinto" &&
+        this.montoMaximo != "Indistinto") ||
+      (this.montoMaximo == "Indistinto" && this.selectedMinimo != "Indistinto")
+    ){
+      this.validateMonto=true;
+    }else{
+      this.validateMonto=false;
+      let objectFilter = {
+        idTipoPropiedad: this.tipo,
+        idMonedas: this.moneda,
+        idTipoOperaion: this.operation,
+        montoMinimo: this.selectedMinimo,
+        montoMaximo: this.selectedMaximo,
+        idProvincia: this.selectedProvince,
+        idPartido: this.selectedPartido,
+        idLocalidad: this.selectedLocalidad,
+        idBarrio: this.selectedBarrio,
+        habitantes: this.habitantes
+      };
+      this._ArticuloService.search.next(true);
+      //    this._ArticuloService.filter.next(filterForm);
+      this._ArticuloService.filter.next(objectFilter);
+    }
+      
   }
   advancedSearch() {
     switch (this.advancedSearchForm) {
