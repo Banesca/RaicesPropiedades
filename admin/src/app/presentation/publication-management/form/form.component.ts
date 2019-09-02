@@ -271,63 +271,63 @@ export class FormComponent implements OnInit {
          Direccion_Numero: [''],
          Direccion_Piso: [''],
          Direccion_Departamento: [''],
-         Direccion_Coordenadas_Latitud: [''],
-         Direccion_Coordenadas_Longitud: [''],
+         Direccion_Coordenadas_Latitud: ['', Validators.pattern("^-?[0-9]+(.[0-9]{0,20})?$")],
+         Direccion_Coordenadas_Longitud: ['', Validators.pattern("^-?[0-9]+(.[0-9]{0,20})?$")],
 
 
          //Caracteristicas
          //Inputs
-         LongitudFrente: [''],
-         LongitudFondo: [''],
-         Antiguedad: [''],
-         SuperficieCubierta: [''],
-         SuperficieDescubierta: [''],
-         CantidadCocheras: [''],
-         Expensas: [''],
-         CantidadBanos: [''],
-         CantidadAmbientes: [''],
-         CantidadDormitorios: [''],
-         CantidadPlantas: [''],
-         SuperficieTerreno: [''],
-         Largo: [''],
-         Ancho: [''],
-         Altura: [''],
-         MontoExpensas: [''],
-         MetrosDeLaEsquina: [''],
+         LongitudFrente: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         LongitudFondo: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         Antiguedad: ['', Validators.pattern("^[0-9]+$")],
+         SuperficieCubierta: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         SuperficieDescubierta: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         CantidadCocheras: ['', Validators.pattern("^[0-9]+$")],
+         Expensas: ['', Validators.pattern("^[0-9]+$")],
+         CantidadBanos: ['', Validators.pattern("^[0-9]+$")],
+         CantidadAmbientes: ['', Validators.pattern("^[0-9]+$")],
+         CantidadDormitorios: ['', Validators.pattern("^[0-9]+$")],
+         CantidadPlantas: ['', Validators.pattern("^[0-9]+$")],
+         SuperficieTerreno: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         Largo: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         Ancho: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         Altura: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         MontoExpensas: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         MetrosDeLaEsquina: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
          UltimaActividad: [''],
-         GaleriaShopping: [''],
-         SuperficiePlaya: [''],
-         SuperficieDeposito: [''],
-         CantidadPisos: [''],
-         HabitacionesPorPiso: [''],
-         CantidadPersonal: [''],
-         RentabilidadAnual: [''],
-         CantidadHabitaciones: [''],
-         CantidadEstrellas: [''],
-         CantidadPlazas: [''],
-         CantidadCubiertos: [''],
-         SuperficieTotal: [''],
-         SuperficieConstruible: [''],
-         MedidaLinealDerecha: [''],
-         MedidaLinealIzquierda: [''],
-         FOT: [''],
-         Zonificacion: [''],
-         SuperficiePlanta: [''],
-         DepartamentosPorPiso: [''],
-         SuperficieOficina: [''],
-         SuperficieCubiertaCasa: [''],
-         CantidadHectareas: [''],
-         DistanciaPavimento: [''],
-         SuperficieLocal: [''],
+         GaleriaShopping: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         SuperficiePlaya: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         SuperficieDeposito: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         CantidadPisos: ['', Validators.pattern("^[0-9]+$")],
+         HabitacionesPorPiso: ['', Validators.pattern("^[0-9]+$")],
+         CantidadPersonal: ['', Validators.pattern("^[0-9]+$")],
+         RentabilidadAnual: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         CantidadHabitaciones: ['', Validators.pattern("^[0-9]+$")],
+         CantidadEstrellas: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         CantidadPlazas: ['', Validators.pattern("^[0-9]+$")],
+         CantidadCubiertos: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         SuperficieTotal: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         SuperficieConstruible: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         MedidaLinealDerecha: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         MedidaLinealIzquierda: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         FOT: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         Zonificacion: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         SuperficiePlanta: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         DepartamentosPorPiso: ['', Validators.pattern("^[0-9]+$")],
+         SuperficieOficina: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         SuperficieCubiertaCasa: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         CantidadHectareas: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         DistanciaPavimento: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         SuperficieLocal: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
          ReferenciaCercana: [''],
-         AntiguedadComercio: [''],
-         RecaudacionMensual: [''],
-         CantidadOficinas: [''],
-         AnchoEntrada: [''],
-         AltoEntrada: [''],
-         CantidadColumnas: [''],
-         CantidadNaves: [''],
-         AlturaTecho: [''],
+         AntiguedadComercio: ['', Validators.pattern("^[0-9]+$")],
+         RecaudacionMensual: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         CantidadOficinas: ['', Validators.pattern("^[0-9]+$")],
+         AnchoEntrada: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         AltoEntrada: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
+         CantidadColumnas: ['', Validators.pattern("^[0-9]+$")],
+         CantidadNaves: ['', Validators.pattern("^[0-9]+$")],
+         AlturaTecho: ['', Validators.pattern("^[0-9]+(.[0-9]{0,5})?$")],
          Detalle: [''],
          TipoBien: [''],
 
@@ -385,11 +385,11 @@ export class FormComponent implements OnInit {
       if (isUpdate) {
 
          this.service.getPropiedad(this.id).then((res: any) => {
-            
+
             if (res.msj) {
-            this.alertService.msg('ERR', 'Propiedad', res.msj);
+               this.alertService.msg('ERR', 'Propiedad', res.msj);
                return;
-            } 
+            }
 
             //Cargamos el 1er step
             this.formOne.setValue({
@@ -1142,7 +1142,8 @@ export class FormComponent implements OnInit {
       let obj = this.getDataForm();
       //Parseamos el objeto a FORM DATA
       let formData: FormData = new FormData();
-      let keys = Object.keys(obj)
+      let keys = Object.keys(obj);
+
       for (let index = 0; index < keys.length; index++) {
          const element = keys[index];
          formData.append(element, obj[element]);

@@ -36,6 +36,7 @@ export class SearchComponent implements OnInit {
   selectedPartido: any;
   selectedLocalidad: any;
   selectedBarrio: any;
+  habitantes: number;
   _unknowns: string[] = unknown;
   //ubication
 
@@ -44,6 +45,9 @@ export class SearchComponent implements OnInit {
   localidades: any = [];
   barrios: any = [];
 
+  //busqueda avanzada
+  advancedSearchForm:boolean=false;
+  validateMonto:boolean=false;
   constructor(
     private _ArticuloService: ArticuloService,
     private router: Router
@@ -59,9 +63,10 @@ export class SearchComponent implements OnInit {
     this.selectedBarrio = { id: null, nombre: "Indistinto" };
     this.selectedMinimo = "Indistinto";
     this.selectedMaximo = "Indistinto";
+    this.habitantes = null;
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   getAll() {
     this.gMonedas();
@@ -190,33 +195,44 @@ export class SearchComponent implements OnInit {
   // ------------------------
 
   searchFilter() {
-
-    let objectFilter = {
-      TipoPropiedad: this.tipo,
-      Monedas: this.moneda,
-      TipoOperaion: this.operation,
-      montoMinimo: this.selectedMinimo,
-      montoMaximo: this.selectedMaximo,
-      Provincia: this.selectedProvince,
-      Partido: this.selectedPartido,
-      Localidad: this.selectedLocalidad,
-      Barrio: this.selectedBarrio
+    if (
+      (this.selectedMinimo == "Indistinto" &&
+        this.selectedMaximo != "Indistinto") ||
+      (this.selectedMaximo == "Indistinto" && this.selectedMinimo != "Indistinto")
+    ){
+      this.validateMonto=true;
+    }else{
+      this.validateMonto=false;
+      let objectFilter = {
+        idTipoPropiedad: this.tipo,
+        idMonedas: this.moneda,
+        idTipoOperaion: this.operation,
+        montoMinimo: this.selectedMinimo,
+        montoMaximo: this.selectedMaximo,
+        idProvincia: this.selectedProvince,
+        idPartido: this.selectedPartido,
+        idLocalidad: this.selectedLocalidad,
+        idBarrio: this.selectedBarrio,
+        habitantes: this.habitantes
+      };
+      this._ArticuloService.search.next(true);
+      //    this._ArticuloService.filter.next(filterForm);
+      this._ArticuloService.filter.next(objectFilter);
     }
-
-    
-    /*
-    filterForm.append("idTipoPropiedad", this.tipo.idTipoPropiedad + '');
-    filterForm.append("idMonedas", this.moneda.idMonedas + '');
-    filterForm.append("idTipoOperaion", this.operation.idTipoOperaion + '');
-    filterForm.append("montoMinimo", this.selectedMinimo + '');
-    filterForm.append("montoMaximo", this.selectedMaximo + '');
-    filterForm.append("idProvincia", this.selectedProvince.id);
-    filterForm.append("idPartido", this.selectedPartido.id);
-    filterForm.append("idLocalidad", this.selectedLocalidad.id);
-    filterForm.append("idBarrio", this.selectedBarrio.id);*/
-    this._ArticuloService.search.next(true);
-    //    this._ArticuloService.filter.next(filterForm);
-    this._ArticuloService.filter.next(objectFilter);
-
+      
+  }
+  advancedSearch() {
+    switch (this.advancedSearchForm) {
+      case true:
+        this.advancedSearchForm = false;
+        this.habitantes=null;
+        break;
+      case false:
+        this.advancedSearchForm = true;
+        this.habitantes=0;
+        break;
+      default:
+        break;
+    }
   }
 }

@@ -494,9 +494,6 @@
                                           <mat-option *ngFor="let item of arrayProvincia" [value]="item.id">
                                              {{item.nombre}}
                                           </mat-option>
-                                          <mat-option value='0'>
-                                             Otra
-                                          </mat-option>
                                        </mat-select>
                                        <mat-error>
                                           Este valor es
@@ -517,9 +514,6 @@
                                           (selectionChange)="reloadLocalidades($event)">
                                           <mat-option *ngFor="let item of arrayPartido" [value]="item.id">
                                              {{item.nombre}}
-                                          </mat-option>
-                                          <mat-option value='0'>
-                                             Otro
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
@@ -542,9 +536,6 @@
 
                                           <mat-option *ngFor="let item of arrayLocalidad" [value]="item.id">
                                              {{item.nombre}}
-                                          </mat-option>
-                                          <mat-option value='0'>
-                                             Otra
                                           </mat-option>
                                        </mat-select>
                                        <mat-error>
@@ -670,8 +661,7 @@
                                        <input type="text" matInput formControlName="Direccion_Coordenadas_Latitud"
                                           placeholder="Latitud">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -686,8 +676,7 @@
                                        <input type="text" matInput formControlName="Direccion_Coordenadas_Longitud"
                                           placeholder="Longitud">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -741,8 +730,7 @@
                                     <mat-form-field>
                                        <input type="text" matInput placeholder="Largo" formControlName="Largo">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -755,8 +743,7 @@
                                     <mat-form-field>
                                        <input type="text" matInput placeholder="Ancho" formControlName="Ancho">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -769,8 +756,7 @@
                                     <mat-form-field>
                                        <input type="text" matInput placeholder="Altura" formControlName="Altura">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -784,8 +770,7 @@
                                        <input type="text" matInput placeholder="Ancho Entrada"
                                           formControlName="AnchoEntrada">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -799,8 +784,7 @@
                                        <input type="text" matInput placeholder="Alto Entrada"
                                           formControlName="AltoEntrada">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -814,8 +798,7 @@
                                        <input type="text" matInput placeholder="Altura Techo"
                                           formControlName="AlturaTecho">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -829,8 +812,7 @@
                                        <input type="text" matInput placeholder="Longitud Frente"
                                           formControlName="LongitudFrente">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -844,8 +826,7 @@
                                        <input type="text" matInput placeholder="Longitud Fondo"
                                           formControlName="LongitudFondo">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -859,8 +840,7 @@
                                        <input type="text" matInput placeholder="Medida Lineal Der."
                                           formControlName="MedidaLinealDerecha">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -874,8 +854,7 @@
                                        <input type="text" matInput placeholder="Medida Lineal Izq."
                                           formControlName="MedidaLinealIzquierda">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -889,8 +868,7 @@
                                        <input type="text" matInput placeholder="Antigüedad"
                                           formControlName="Antiguedad">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -905,8 +883,7 @@
                                        <input type="text" matInput placeholder="Antigüedad Comercio"
                                           formControlName="AntiguedadComercio">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -921,8 +898,7 @@
                                        <input type="text" matInput placeholder="Superficie Total"
                                           formControlName="SuperficieTotal">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -937,8 +913,7 @@
                                        <input type="text" matInput placeholder="Superficie Construible"
                                           formControlName="SuperficieConstruible">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -953,8 +928,7 @@
                                        <input type="text" matInput placeholder="Superficie Terreno"
                                           formControlName="SuperficieTerreno">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -969,8 +943,7 @@
                                        <input type="text" matInput placeholder="Superficie Cubierta"
                                           formControlName="SuperficieCubierta">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -985,8 +958,7 @@
                                        <input type="text" matInput placeholder="Sup. Cubierta Casa"
                                           formControlName="SuperficieCubiertaCasa">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -1001,8 +973,7 @@
                                        <input type="text" matInput placeholder="Superficie Descubierta"
                                           formControlName="SuperficieDescubierta">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -1017,8 +988,7 @@
                                        <input type="text" matInput placeholder="Superficie Playa"
                                           formControlName="SuperficiePlaya">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -1033,8 +1003,7 @@
                                        <input type="text" matInput placeholder="Superficie Depósito"
                                           formControlName="SuperficieDeposito">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -1049,8 +1018,7 @@
                                        <input type="text" matInput placeholder="Superficie Local"
                                           formControlName="SuperficieLocal">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -1065,8 +1033,7 @@
                                        <input type="text" matInput placeholder="Superficie Planta"
                                           formControlName="SuperficiePlanta">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -1081,8 +1048,7 @@
                                        <input type="text" matInput placeholder="Superficie Oficina"
                                           formControlName="SuperficieOficina">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
 
                                     </mat-form-field>
@@ -1097,8 +1063,7 @@
                                        <input type="text" matInput placeholder="Cantidad Cocheras"
                                           formControlName="CantidadCocheras">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1111,8 +1076,7 @@
                                     <mat-form-field>
                                        <input type="text" matInput placeholder="Expensas" formControlName="Expensas">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1126,8 +1090,7 @@
                                        <input type="text" matInput placeholder="Cant. Plantas"
                                           formControlName="CantidadPlantas">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1141,8 +1104,7 @@
                                        <input type="text" matInput placeholder="Cant. Baños"
                                           formControlName="CantidadBanos">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1156,8 +1118,7 @@
                                        <input type="text" matInput placeholder="Cant. Ambientes"
                                           formControlName="CantidadAmbientes">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1171,8 +1132,7 @@
                                        <input type="text" matInput placeholder="Cant. Dormitorios"
                                           formControlName="CantidadDormitorios">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1186,8 +1146,7 @@
                                        <input type="text" matInput placeholder="Cant. Pisos"
                                           formControlName="CantidadPisos">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1201,8 +1160,7 @@
                                        <input type="text" matInput placeholder="Hab. Por Piso"
                                           formControlName="HabitacionesPorPiso">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1216,8 +1174,7 @@
                                        <input type="text" matInput placeholder="Dep. Por Piso"
                                           formControlName="DepartamentosPorPiso">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1231,8 +1188,7 @@
                                        <input type="text" matInput placeholder="Cant. Personal"
                                           formControlName="CantidadPersonal">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1246,8 +1202,7 @@
                                        <input type="text" matInput placeholder="Cant. Habitaciones"
                                           formControlName="CantidadHabitaciones">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1261,8 +1216,7 @@
                                        <input type="text" matInput placeholder="Cant. Oficinas"
                                           formControlName="CantidadOficinas">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1276,8 +1230,7 @@
                                        <input type="text" matInput placeholder="Cant. Columnas"
                                           formControlName="CantidadColumnas">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1291,8 +1244,7 @@
                                        <input type="text" matInput placeholder="Cant. Naves"
                                           formControlName="CantidadNaves">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1306,8 +1258,7 @@
                                        <input type="text" matInput placeholder="Cant. Estrellas"
                                           formControlName="CantidadEstrellas">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1321,8 +1272,7 @@
                                        <input type="text" matInput placeholder="Cant. Plazas"
                                           formControlName="CantidadPlazas">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser un <b>numero entero</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1336,8 +1286,7 @@
                                        <input type="text" matInput placeholder="Cant. Cubiertos"
                                           formControlName="CantidadCubiertos">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1351,8 +1300,7 @@
                                        <input type="text" matInput placeholder="Cant. Hectáreas"
                                           formControlName="CantidadHectareas">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1366,8 +1314,7 @@
                                        <input type="text" matInput placeholder="Rentabilidad Anual"
                                           formControlName="RentabilidadAnual">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1381,8 +1328,7 @@
                                        <input type="text" matInput placeholder="Recaudación Mensual"
                                           formControlName="RecaudacionMensual">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1396,8 +1342,7 @@
                                        <input type="text" matInput placeholder="Monto Expensas"
                                           formControlName="MontoExpensas">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1411,8 +1356,7 @@
                                        <input type="text" matInput placeholder="Mts. De La Esquina"
                                           formControlName="MetrosDeLaEsquina">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1456,8 +1400,7 @@
                                        <input type="text" matInput placeholder="Galería Shopping"
                                           formControlName="GaleriaShopping">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1470,8 +1413,7 @@
                                     <mat-form-field>
                                        <input type="text" matInput placeholder="FOT" formControlName="FOT">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1485,8 +1427,7 @@
                                        <input type="text" matInput placeholder="Zonificación"
                                           formControlName="Zonificacion">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>
@@ -1500,8 +1441,7 @@
                                        <input type="text" matInput placeholder="Distancia Pavimento"
                                           formControlName="DistanciaPavimento">
                                        <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
+                                          Este dato debe ser <b>decimal</b>.
                                        </mat-error>
                                     </mat-form-field>
                                  </div>

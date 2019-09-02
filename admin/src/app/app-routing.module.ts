@@ -5,7 +5,7 @@ import { RandomGuard } from './guards/random.guard';
 
 import { AuthbackendComponent } from './component/authbackend/authbackend.component';
 import { UsuariosComponent } from './component/usuarios/usuarios.component';
-;
+
 import { PerfilComponent } from './component/perfil/perfil.component';
 import { ConfigFooterComponent } from './component/config-footer/config-footer.component';
 import { MailSuscribersComponent } from './component/mail-suscribers/mail-suscribers.component';
