@@ -197,8 +197,8 @@ export class SearchComponent implements OnInit {
   searchFilter() {
     if (
       (this.selectedMinimo == "Indistinto" &&
-        this.montoMaximo != "Indistinto") ||
-      (this.montoMaximo == "Indistinto" && this.selectedMinimo != "Indistinto")
+        this.selectedMaximo != "Indistinto") ||
+      (this.selectedMaximo == "Indistinto" && this.selectedMinimo != "Indistinto")
     ){
       this.validateMonto=true;
     }else{

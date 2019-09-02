@@ -93,10 +93,7 @@
                   [value]="monto"
                 />
               </div>
-            </div>
-            <div *ngIf="validateMonto" type="alert" class="invalid-feedback">
-              Debe espeficicar ambos montos
-            </div>
+            </div>            
           </div>
           <div class="col-md-4 py-1  col-12 px-1">
             <label class="col font-weight-extrabold text-uppercase">Monto Mínimo:</label>
@@ -117,9 +114,6 @@
                   [value]="monto"
                 />
               </div>
-            </div>
-            <div *ngIf="validateMonto" type="alert" class="invalid-feedback">
-              Debe espeficicar ambos montos
             </div>
           </div>
         </div>
@@ -223,7 +217,11 @@
         </div>
       </div>
     </div>
-
+    <div *ngIf="validateMonto" class="col-sm-12 text-white d-flex justify-content-center py-5">
+      <div>
+          Debe espeficicar ambos montos (mínimo y máximo)
+      </div>
+    </div>
     <div class="col-sm-12 text-white d-flex justify-content-center py-5">
       <button
         (click)="advancedSearch()"
