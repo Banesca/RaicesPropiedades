@@ -22,7 +22,6 @@ export class PropiertysCarouselComponent {
       .All()
         .then(res => {
        this.mCategorias = res.data
-          console.log('this.mCategorias:',this.mCategorias);
       })
       .catch(error => {
         console.log(error);

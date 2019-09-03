@@ -215,9 +215,9 @@ export class SearchComponent implements OnInit {
         idBarrio: this.selectedBarrio,
         habitantes: this.habitantes
       };
-      // this._ArticuloService.search.next(true);
+      this._ArticuloService.search.next(true);
       //    this._ArticuloService.filter.next(filterForm);
-      // this._ArticuloService.filter.next(objectFilter);
+      this._ArticuloService.filter.next(objectFilter);
     }
       
   }
