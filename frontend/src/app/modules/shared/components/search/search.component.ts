@@ -204,9 +204,9 @@ export class SearchComponent implements OnInit {
     }else{
       this.validateMonto=false;
       let objectFilter = {
-        idTipoPropiedad: this.tipo,
+        idTipoPropiedad: this.tipo.idTipoPropiedad,
         idMonedas: this.moneda,
-        idTipoOperaion: this.operation,
+        idTipoOperaion: this.operation.idTipoOperaion,
         montoMinimo: this.selectedMinimo,
         montoMaximo: this.selectedMaximo,
         idProvincia: this.selectedProvince,
@@ -215,9 +215,9 @@ export class SearchComponent implements OnInit {
         idBarrio: this.selectedBarrio,
         habitantes: this.habitantes
       };
-      this._ArticuloService.search.next(true);
+      // this._ArticuloService.search.next(true);
       //    this._ArticuloService.filter.next(filterForm);
-      this._ArticuloService.filter.next(objectFilter);
+      // this._ArticuloService.filter.next(objectFilter);
     }
       
   }
