@@ -42,7 +42,6 @@ export class OfficeComponent implements OnInit {
     });
     this.GetSucursalUrl();
     router.events.subscribe((event: Event) => {
-
       if (event instanceof NavigationStart) {
         this.GetSucursalUrl();
       }
