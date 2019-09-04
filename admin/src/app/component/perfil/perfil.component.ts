@@ -71,6 +71,7 @@ export class PerfilComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.getAuthUser();
+      console.log('perfil.component.ts ngOnInit');
     }, 3000);
 
   }
