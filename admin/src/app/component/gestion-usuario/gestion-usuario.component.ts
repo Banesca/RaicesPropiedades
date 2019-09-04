@@ -268,7 +268,7 @@ export class GestionUsuarioComponent implements OnInit {
          this.userPerfil = user.perfil_cliene ? user.perfil_cliene : "";
          this.userId = user.id ? user.id : null
          if (!this.userPerfil) { this.alertService.msg('ERR', 'err', 'no se encontro un perfil del cliente'); }
-        console.log('gestion-usuario.component.ts set');
+        console.log("gestion-usuario.component.ts set");
       }, 200);
       console.log(this.userId);
       console.log(this.userPerfil);
