@@ -19,7 +19,8 @@
   <app-propiertys-grid>
     <h3 class="mb-4 brown-text font-weight-extrabold text-uppercase">Oportunidades</h3>
     <ng-container *ngFor="let publicaciones of mCategorias; let i = index" [attr.data-index]="i">
-      <div *ngIf="publicaciones.esUnaPropiedad == '1'" class="col-md-4 col-9 p-4">
+      <!-- *ngIf="publicaciones.esUnaPropiedad == '1'" -->
+      <div  class="col-md-4 col-9 p-4">
         <div [routerLink]="[baseUrl,publicaciones.idPropiedad]" class="card">
           <img [src]="publicaciones.imagen1" class="card-img-top">
           <div class="card-footer font-weight-semibold text-uppercase ">
