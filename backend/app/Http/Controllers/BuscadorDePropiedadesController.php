@@ -77,7 +77,7 @@ class BuscadorDePropiedadesController extends Controller {
             ->where(function($query)
             use ($idTipoOperaion, $idTipoPropiedad, $idMonedas, $idProvincia, $idPartido, $idLocalidad, $idBarrio,$CantidadPersonal,$montoMinimo, $montoMaximo ) {
                 ! is_null($idTipoOperaion) ? $query->where('fk_idTipoOperaion', $idTipoOperaion) : '';
-                ! is_null($idTipoPropiedad) ? $query->where('fk_tipoPropiedad', $idTipoPropiedad) : '';
+                ! is_null($idTipoPropiedad) ? $query->where('fk_idTipoPropiedad', $idTipoPropiedad) : '';
                 ! is_null($idMonedas) ? $query->where('fk_idMonedas', $idMonedas) : '';
                 ! is_null($idProvincia) ? $query->where('fk_Direccion_Provincia_Id', $idProvincia) : '';
                 ! is_null($idPartido) ? $query->where('fk_Direccion_Partido_Id', $idPartido) : '';

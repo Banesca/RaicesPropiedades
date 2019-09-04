@@ -32,14 +32,21 @@ class SuscripcionUserController extends Controller {
             $sus->save();
 
             $TodosCorreos=Suscripcion::get();
+            $cc=Mail_::all();
 
             foreach ($TodosCorreos as $correo){
                 Mail::to($correo->email)->send(new MailsMasivos($sus,$correo->email));
             }
 
+            /*Copia a Emails de Recepción*/
+            foreach ($cc as $correo){
+                Mail::to($correo->email)->send(new MailsMasivos($sus,$correo->email));
+            }
+
+
 
             $response = [
-                'msj'             => 'Suscripción Creada Satisfactoriamente',
+                'msj'             => 'Mails enviados Satisfactoriamente',
                 'SuscripcionUser' => [
                     'id'          => $sus->idSuscripcionUser,
                     'titulo'      => $sus->titulo,
