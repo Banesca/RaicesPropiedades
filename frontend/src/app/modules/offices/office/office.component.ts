@@ -11,9 +11,9 @@ import {
 } from "@angular/forms";
 
 @Component({
-  selector: 'app-office',
-  templateUrl: './office.component.html',
-  styleUrls: ['./office.component.scss']
+  selector: "app-office",
+  templateUrl: "./office.component.html",
+  styleUrls: ["./office.component.scss"]
 })
 export class OfficeComponent implements OnInit {
   gSucursal: ISucursal;
@@ -28,7 +28,6 @@ export class OfficeComponent implements OnInit {
   mLoading = false;
   searchClicked: boolean;
 
-
   constructor(
     private router: Router,
     private _SucursalesService: SucursalesService,
@@ -36,19 +35,22 @@ export class OfficeComponent implements OnInit {
     public articuloService: ArticuloService,
     private _ActivatedRoute: ActivatedRoute,
     private _formBuilder: FormBuilder
-  ) {
+  ) {}
+  getParams() {
     this._ActivatedRoute.params.subscribe(param => {
-      this.mId = param['ruta'];
-    });
-    this.GetSucursalUrl();
-    router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) {
-        this.GetSucursalUrl();
-      }
+      this.mId = param["ruta"];
+      console.log("this.mId", this.mId);
+      this.GetSucursalUrl();
     });
   }
-
   ngOnInit() {
+    this.getParams();
+    
+    // this.router.events.subscribe((event: Event) => {
+    //   if (event instanceof NavigationStart) {
+    //     this.GetSucursalUrl();
+    //   }
+    // });
 
     this.articuloService.search.subscribe(data => {
       this.searchClicked = data;
@@ -79,8 +81,9 @@ export class OfficeComponent implements OnInit {
     });
   }
 
-
-  get f() { return this.contactForm.controls; }
+  get f() {
+    return this.contactForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -93,11 +96,13 @@ export class OfficeComponent implements OnInit {
     this.guardar();
   }
 
-
   GetSucursalUrl() {
-    this._SucursalesService.getSucursal(this.mId).then(data => {
-      this.gSucursal = data.suculsales;
-    })
+    this._SucursalesService
+      .getSucursal(this.mId)
+      .then(data => {
+        this.gSucursal = data.suculsales;
+        console.log("this.gSucursal", this.gSucursal);
+      })
       .catch(error => {
         console.log(error);
       });
@@ -131,7 +136,4 @@ export class OfficeComponent implements OnInit {
     this.hideForm = false;
     this.submitted = false;
   }
-
-
-
 }

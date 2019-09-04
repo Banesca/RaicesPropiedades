@@ -28,7 +28,7 @@
                      Sucursales
                       <div ngbDropdownMenu class="m-0 p-0 brown-text" aria-labelledby="dropdownBasic1">
                         <ng-container *ngFor="let sucursal of mCategoria">
-                        <button class="text-uppercase" [routerLinkActive]="'active'" [routerLink]="[baseUrl,sucursal.idSucursal]" ngbDropdownItem>{{sucursal.nombreSucursal}}</button>
+                        <a class="text-uppercase" [routerLinkActive]="'active'" [routerLink]="[baseUrl,sucursal.idSucursal]" ngbDropdownItem>{{sucursal.idSucursal}} {{sucursal.nombreSucursal}}</a>
                         <div class="dropdown-divider m-0 p-0 m-0 p-0"></div>
                       </ng-container>
                       </div>
