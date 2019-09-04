@@ -52,6 +52,10 @@ export class SearchComponent implements OnInit {
     private _ArticuloService: ArticuloService,
     private router: Router
   ) {
+    
+  }
+
+  ngOnInit() {
     this.getAll();
     this.moneda = Monedas.empy();
     this.tipo = TipoPropiedad.empy();
@@ -65,8 +69,6 @@ export class SearchComponent implements OnInit {
     this.selectedMaximo = "Indistinto";
     this.habitantes = null;
   }
-
-  ngOnInit() {}
 
   getAll() {
     this.gMonedas();
@@ -203,21 +205,21 @@ export class SearchComponent implements OnInit {
       this.validateMonto=true;
     }else{
       this.validateMonto=false;
-      let objectFilter = {
-        idTipoPropiedad: this.tipo.idTipoPropiedad,
+      this._ArticuloService.search.next(true);
+      this._ArticuloService.filter.next({
+        idTipoPropiedad: this.tipo,
         idMonedas: this.moneda,
-        idTipoOperaion: this.operation.idTipoOperaion,
-        montoMinimo: this.selectedMinimo,
-        montoMaximo: this.selectedMaximo,
+        idTipoOperaion: this.operation,
+        montoMinimo:
+          this.selectedMinimo == "Indistinto" ? null : this.selectedMinimo,
+        montoMaximo:
+          this.selectedMaximo == "Indistinto" ? null : this.selectedMaximo,
         idProvincia: this.selectedProvince,
         idPartido: this.selectedPartido,
         idLocalidad: this.selectedLocalidad,
         idBarrio: this.selectedBarrio,
         habitantes: this.habitantes
-      };
-      this._ArticuloService.search.next(true);
-      //    this._ArticuloService.filter.next(filterForm);
-      this._ArticuloService.filter.next(objectFilter);
+      });
     }
       
   }

@@ -14,12 +14,12 @@ import { CategoriaService } from "src/app/services/categoria/categoria.service";
 
 
 @Component({
-  selector: 'app-transacciones',
-  templateUrl: './transacciones.component.html',
-  styleUrls: ['./transacciones.component.css']
+  selector: "app-transacciones",
+  templateUrl: "./transacciones.component.html",
+  styleUrls: ["./transacciones.component.css"]
 })
 export class TransaccionesComponent implements OnInit {
-  mCategorias: ITransacciones[];
+  mCategorias: ITransacciones[] = [];
   mCategoriasList: ICategoria[];
   mCategoriasSelect: ITransacciones;
   mLoading: boolean;
@@ -36,16 +36,16 @@ export class TransaccionesComponent implements OnInit {
     private _TransaccionesService: TransaccionesService,
     private _CategoriasService: CategoriaService,
     private _AlertsService: AlertsService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.mCategorias = [];
     this.mForma = this.generarFormulario();
     this.mCategoriasSelect = Transacciones.empy();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
-    this.getCategoria() 
+    this.getCategoria();
   }
-
-  ngOnInit() {}
 
   generarFormulario() {
     // Estructura de nuestro formulario
@@ -67,7 +67,7 @@ export class TransaccionesComponent implements OnInit {
         this.mLoading = false;
       })
       .catch(error => {
-        console.log(error)
+        console.log(error);
       });
   }
 
@@ -80,7 +80,7 @@ export class TransaccionesComponent implements OnInit {
         this.mLoading = false;
       })
       .catch(error => {
-        console.log(error)
+        console.log(error);
       });
   }
 
@@ -90,39 +90,47 @@ export class TransaccionesComponent implements OnInit {
   }
 
   eliminar(pKey: number) {
-    if(confirm('¿Está seguro de que quiere eliminar esta tasación?')){
-      this.mLoading = true;
-    this._TransaccionesService
-      .eliminarCategoria(pKey)
-      .then(data => {
-        this.getAll();
-        this.mLoading = false;
-        this._AlertsService.msg('OK', '¡ÉXITO!', 'Tasación eliminada correctamente.')
-      })
-      .catch(error => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Error al Eliminar la tasación.')
-
-      });
-  }
-  
-}
-confirmar(pKey: number) {
-    if(confirm('¿Está seguro de que quiere confirmar esta tasación?')){
+    if (confirm("¿Está seguro de que quiere eliminar esta tasación?")) {
       this.mLoading = true;
       this._TransaccionesService
-      .confirmarCategoria(pKey)
-      .then(data => {
-        this.mLoading = false;
-        this.getAll();
-        this._AlertsService.msg('OK', '¡ÉXITO!', 'Tasación confirmada');
-      })
-      .catch(error => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Error al Eliminar la tasación.')
-
-      });
+        .eliminarCategoria(pKey)
+        .then(data => {
+          this.getAll();
+          this.mLoading = false;
+          this._AlertsService.msg(
+            "OK",
+            "¡ÉXITO!",
+            "Tasación eliminada correctamente."
+          );
+        })
+        .catch(error => {
+          this._AlertsService.msg(
+            "ERR",
+            "ERROR",
+            "Error al Eliminar la tasación."
+          );
+        });
+    }
   }
-  
-}
+  confirmar(pKey: number) {
+    if (confirm("¿Está seguro de que quiere confirmar esta tasación?")) {
+      this.mLoading = true;
+      this._TransaccionesService
+        .confirmarCategoria(pKey)
+        .then(data => {
+          this.mLoading = false;
+          this.getAll();
+          this._AlertsService.msg("OK", "¡ÉXITO!", "Tasación confirmada");
+        })
+        .catch(error => {
+          this._AlertsService.msg(
+            "ERR",
+            "ERROR",
+            "Error al Eliminar la tasación."
+          );
+        });
+    }
+  }
 
   ver(pCategoria: ITransacciones) {
     this.mCategoriasSelect = pCategoria;
@@ -138,18 +146,27 @@ confirmar(pKey: number) {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '¡ÉXITO!', 'Tasación actualizada correctamente.')
+        this._AlertsService.msg(
+          "OK",
+          "¡ÉXITO!",
+          "Tasación actualizada correctamente."
+        );
       })
       .catch(err => {
         // Parsear Object errors a Array de errores para poder mapearlos
-        const mapped = Object.keys(err.error.errors).map(key => ({ type: key, value: err.error.errors[key] }));
+        const mapped = Object.keys(err.error.errors).map(key => ({
+          type: key,
+          value: err.error.errors[key]
+        }));
         // Notificando Errores
-        mapped ? mapped.map(e => { this._AlertsService.msg('ERR', 'ERROR', e.value) }) :
-          err.error.message ? this._AlertsService.msg('ERR', 'ERROR', err.error.message) :
-            this._AlertsService.msg('ERR', 'ERROR', 'Error al Actualizar.')
-
+        mapped
+          ? mapped.map(e => {
+              this._AlertsService.msg("ERR", "ERROR", e.value);
+            })
+          : err.error.message
+          ? this._AlertsService.msg("ERR", "ERROR", err.error.message)
+          : this._AlertsService.msg("ERR", "ERROR", "Error al Actualizar.");
       });
   }
-
 }
 

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ArticuloService } from '../../../../servicios/servicios.index'
-import { montos } from '../search/mockData';
+import { Component, OnInit } from "@angular/core";
+import { ArticuloService } from "../../../../servicios/servicios.index";
+import { montos } from "../search/mockData";
 @Component({
   selector: "app-articles",
   templateUrl: "./articles.component.html",
@@ -22,68 +22,38 @@ export class ArticlesComponent implements OnInit {
   propiedadesInPromise: boolean = false;
   public arbol: any;
   filterData: any;
+  objectFilter: any;
   selectedMinimo: Number | string = "mínimo";
   selectedMaximo: Number | string = "máximo";
   montos: number[] = montos;
 
   constructor(private articulosService: ArticuloService) {
-
     articulosService.filter.subscribe(filterData => {
-
       //Obtenemos el filtro del buscador
       this.filterData = filterData;
-      //Parseamos la data para que se use en el api
-      let objConsulta = {
-        idTipoPropiedad:
-          filterData.TipoPropiedad && filterData.TipoPropiedad.idTipoPropiedad
-            ? filterData.TipoPropiedad.idTipoPropiedad
-            : "",
-        idMonedas:
-          filterData.Moneda && filterData.Moneda.idMonedas
-            ? filterData.Moneda.idMonedas
-            : "",
-        idTipoOperaion:
-          filterData.TipoOperaion && filterData.TipoOperaion.idTipoOperaion
-            ? filterData.TipoOperaion.idTipoOperaion
-            : "",
+      this.objectFilter = {
+        idTipoPropiedad: this.filterData.idTipoPropiedad.idTipoPropiedad,
+        idMonedas: this.filterData.idMonedas.idMonedas,
+        idTipoOperaion: this.filterData.idTipoOperaion.idTipoOperaion,
         montoMinimo:
-          filterData.montoMinimo && filterData.montoMinimo != "Indistinto"
-            ? filterData.montoMinimo
-            : "",
+          this.filterData.montoMinimo == "Indistinto"
+            ? null
+            : this.filterData.montoMinimo,
         montoMaximo:
-          filterData.montoMaximo && filterData.montoMaximo != "Indistinto"
-            ? filterData.montoMaximo
-            : "",
-        idProvincia:
-          filterData.Provincia && filterData.Provincia.id
-            ? filterData.Provincia.id
-            : "",
-        idPartido:
-          filterData.Partido && filterData.Partido.id
-            ? filterData.Partido.id
-            : "",
-        idLocalidad:
-          filterData.Localidad && filterData.Localidad.id
-            ? filterData.Localidad.id
-            : "",
-        idBarrio:
-          filterData.Barrio && filterData.Barrio.id ? filterData.Barrio.id : ""
+          this.filterData.montoMaximo == "Indistinto"
+            ? null
+            : this.filterData.montoMaximo,
+        idProvincia: this.filterData.idProvincia.id,
+        idPartido: this.filterData.idPartido.id,
+        idLocalidad: this.filterData.idLocalidad.id,
+        idBarrio: this.filterData.idBarrio.id,
+        habitantes: this.filterData.habitantes
       };
-
-      this.propiedadesInPromise = true;
-      this.selectedMinimo = objConsulta.montoMinimo
-        ? objConsulta.montoMinimo
-        : "mínimo";
-      this.selectedMaximo = objConsulta.montoMaximo
-        ? objConsulta.montoMaximo
-        : "máximo";
-
       articulosService
-        .getItemsBySearch(objConsulta)
+        .getItemsBySearch(this.objectFilter)
         .then(data => {
           this.articulos = data.propiedades;
           this.arbol = data.arbol;
-          console.log('arbol',this.arbol);
           this.propiedadesInPromise = false;
         })
         .catch(error => {
@@ -91,7 +61,6 @@ export class ArticlesComponent implements OnInit {
           console.error(error);
         });
     });
-    
   }
   getFormData(filterData) {
     const formData = new FormData();
@@ -112,14 +81,14 @@ export class ArticlesComponent implements OnInit {
     let value = "";
     let data = this.filterData;
     if (data) {
-      data.TipoPropiedad && data.TipoPropiedad.idTipoPropiedad
+      data.idTipoPropiedad && data.idTipoPropiedad.idTipoPropiedad
         ? (value = value + data.TipoPropiedad.descripcion + " / ")
         : "";
-      data.Moneda && data.Moneda.idMonedas
-        ? (value = value + data.Moneda.moneda + " / ")
+      data.idMoneda && data.idMoneda.idMonedas
+        ? (value = value + data.idMoneda.moneda + " / ")
         : "";
-      data.TipoOperaion && data.TipoOperaion.idTipoOperaion
-        ? (value = value + data.TipoOperaion.descripcion + " / ")
+      data.idTipoOperaion && data.idTipoOperaion.idTipoOperaion
+        ? (value = value + data.idTipoOperaion.descripcion + " / ")
         : "";
       data.montoMinimo && data.montoMinimo != "Indistinto"
         ? (value = value + data.montoMinimo + " / ")
@@ -127,49 +96,88 @@ export class ArticlesComponent implements OnInit {
       data.montoMaximo && data.montoMaximo != "Indistinto"
         ? (value = value + data.montoMaximo + " / ")
         : "";
-      data.Provincia && data.Provincia.id
-        ? (value = value + data.Provincia.nombre + " / ")
+      data.idProvincia && data.idProvincia.id
+        ? (value = value + data.idProvincia.nombre + " / ")
         : "";
-      data.Partido && data.Partido.id
-        ? (value = value + data.Partido.nombre + " / ")
+      data.idPartido && data.idPartido.id
+        ? (value = value + data.idPartido.nombre + " / ")
         : "";
-      data.Localidad && data.Localidad.id
-        ? (value = value + data.Localidad.nombre + " / ")
+      data.idLocalidad && data.idLocalidad.id
+        ? (value = value + data.idLocalidad.nombre + " / ")
         : "";
-      data.Barrio && data.Barrio.id
-        ? (value = value + data.Barrio.nombre + +" / ")
+      data.idBarrio && data.idBarrio.id
+        ? (value = value + data.idBarrio.nombre + +" / ")
         : "";
     }
     return value;
   }
 
   goBack() {
+    
     this.articulosService.search.next(false);
     window.scroll(0, 0);
   }
 
   removeChip(opcion: string) {
-    
     //Vaciamos la escalera de la direccion en caso de eliminar algun chip
-    if (opcion == "Provincia") {
-      this.filterData.Partido = null;
+    if (opcion == "idProvincia") {
+      this.objectFilter.idPartido = null;
+      this.filterData.idPartido=null;
     }
-    if (opcion == "Provincia" || opcion == "Partido") {
-      this.filterData.Localidad = null;
+    if (opcion == "idProvincia" || opcion == "idPartido") {
+      this.objectFilter.idLocalidad = null;
+      this.filterData.idLocalidad=null;
     }
-    if (opcion == "Provincia" || opcion == "Partido" || opcion == "Localidad") {
-      this.filterData.Barrio = null;
+    if (
+      opcion == "idProvincia" ||
+      opcion == "idPartido" ||
+      opcion == "idLocalidad"
+    ) {
+      this.filterData.idBarrio = null;
+      this.objectFilter.idBarrio = null;
     }
-
+    
+    this.objectFilter[opcion] = null;
     this.filterData[opcion] = null;
     this.articulosService.search.next(true);
-    this.articulosService.filter.next(this.filterData);
+    this.articulosService
+      .getItemsBySearch(this.objectFilter)
+      .then(data => {
+        this.articulos = data.propiedades;
+        this.arbol = data.arbol;
+        this.propiedadesInPromise = false;
+      })
+      .catch(error => {
+        this.propiedadesInPromise = false;
+        console.error(error);
+      });
+    // this.articulosService.filter.next(this.objectFilter);
   }
 
   setFilter(opcion: string, value: any) {
-    this.filterData[opcion] = value;
-    this.articulosService.search.next(true);
-    this.articulosService.filter.next(this.filterData);
+    switch (opcion) {
+      case 'zona':
+        this.objectFilter[opcion] = value.id;
+        this.filterData[opcion] = value;
+        break;
+      default:
+        this.objectFilter[opcion] = value;
+        this.filterData[opcion] = value;
+        break;
+    }
+    this.articulosService
+      .getItemsBySearch(this.objectFilter)
+      .then(data => {
+        this.articulos = data.propiedades;
+        this.arbol = data.arbol;
+        this.propiedadesInPromise = false;
+      })
+      .catch(error => {
+        this.propiedadesInPromise = false;
+        console.error(error);
+      });
+    // this.articulosService.search.next(true);
+    // this.articulosService.filter.next(this.objectFilter);
   }
 
   onClickPublicacion() {

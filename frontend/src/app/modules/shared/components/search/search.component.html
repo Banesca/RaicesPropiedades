@@ -74,6 +74,16 @@
               </div>
             </div>
           </div>
+          <div class="col-md-4 py-1  col-12 px-1">
+            <label class="col font-weight-extrabold text-uppercase">Monto Mínimo:</label>
+            <div ngbDropdown class="d-inline-block">
+              <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="selectedMinimo"
+                ngbDropdownToggle />
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <input type="button" *ngFor="let monto of montos" ngbDropdownItem (click)="setMnimo(monto)" [value]="monto" />
+              </div>
+            </div>
+          </div>
           <div class="col-md-4 py-1 col-12 px-1">
             <label class="col font-weight-extrabold text-uppercase">Monto Máximo:</label>
             <div ngbDropdown class="d-inline-block">
@@ -95,27 +105,7 @@
               </div>
             </div>            
           </div>
-          <div class="col-md-4 py-1  col-12 px-1">
-            <label class="col font-weight-extrabold text-uppercase">Monto Mínimo:</label>
-            <div ngbDropdown class="d-inline-block">
-              <input
-                type="button"
-                class="btn search-dropdown btn-block"
-                id="dropdownBasic1"
-                [value]="selectedMinimo"
-                ngbDropdownToggle
-              />
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <input
-                  type="button"
-                  *ngFor="let monto of montos"
-                  ngbDropdownItem
-                  (click)="setMnimo(monto)"
-                  [value]="monto"
-                />
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
       <div class="row mt-3">
