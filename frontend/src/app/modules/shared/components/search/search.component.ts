@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input} from "@angular/core";
 import { ArticuloService } from "src/app/servicios/servicios.index";
 import {
   IMonedas,
@@ -46,17 +46,18 @@ export class SearchComponent implements OnInit {
   barrios: any = [];
 
   //busqueda avanzada
-  advancedSearchForm:boolean=false;
-  validateMonto:boolean=false;
+  advancedSearchForm: boolean = false;
+  validateMonto: boolean = false;
   constructor(
     private _ArticuloService: ArticuloService,
     private router: Router
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit() {
     this.getAll();
+    this.emptyValues();
+  }
+  emptyValues() {
     this.moneda = Monedas.empy();
     this.tipo = TipoPropiedad.empy();
     this.operation = TOperaion.empy();
@@ -69,7 +70,6 @@ export class SearchComponent implements OnInit {
     this.selectedMaximo = "Indistinto";
     this.habitantes = null;
   }
-
   getAll() {
     this.gMonedas();
     this.gOrientacion();
@@ -200,11 +200,12 @@ export class SearchComponent implements OnInit {
     if (
       (this.selectedMinimo == "Indistinto" &&
         this.selectedMaximo != "Indistinto") ||
-      (this.selectedMaximo == "Indistinto" && this.selectedMinimo != "Indistinto")
-    ){
-      this.validateMonto=true;
-    }else{
-      this.validateMonto=false;
+      (this.selectedMaximo == "Indistinto" &&
+        this.selectedMinimo != "Indistinto")
+    ) {
+      this.validateMonto = true;
+    } else {
+      this.validateMonto = false;
       this._ArticuloService.search.next(true);
       this._ArticuloService.filter.next({
         idTipoPropiedad: this.tipo,
@@ -220,18 +221,18 @@ export class SearchComponent implements OnInit {
         idBarrio: this.selectedBarrio,
         habitantes: this.habitantes
       });
+      this.emptyValues();
     }
-      
   }
   advancedSearch() {
     switch (this.advancedSearchForm) {
       case true:
         this.advancedSearchForm = false;
-        this.habitantes=null;
+        this.habitantes = null;
         break;
       case false:
         this.advancedSearchForm = true;
-        this.habitantes=0;
+        this.habitantes = 0;
         break;
       default:
         break;

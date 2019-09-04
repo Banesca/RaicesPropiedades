@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit  } from "@angular/core";
 import { ArticuloService } from "../../../../servicios/servicios.index";
 import { montos } from "../search/mockData";
 @Component({
@@ -26,7 +26,6 @@ export class ArticlesComponent implements OnInit {
   selectedMinimo: Number | string = "mínimo";
   selectedMaximo: Number | string = "máximo";
   montos: number[] = montos;
-
   constructor(private articulosService: ArticuloService) {
     articulosService.filter.subscribe(filterData => {
       //Obtenemos el filtro del buscador
@@ -82,10 +81,10 @@ export class ArticlesComponent implements OnInit {
     let data = this.filterData;
     if (data) {
       data.idTipoPropiedad && data.idTipoPropiedad.idTipoPropiedad
-        ? (value = value + data.TipoPropiedad.descripcion + " / ")
+        ? (value = value + data.idTipoPropiedad.descripcion + " / ")
         : "";
-      data.idMoneda && data.idMoneda.idMonedas
-        ? (value = value + data.idMoneda.moneda + " / ")
+      data.idMonedas && data.idMonedas.idMonedas
+        ? (value = value + data.idMonedas.moneda + " / ")
         : "";
       data.idTipoOperaion && data.idTipoOperaion.idTipoOperaion
         ? (value = value + data.idTipoOperaion.descripcion + " / ")
@@ -113,7 +112,6 @@ export class ArticlesComponent implements OnInit {
   }
 
   goBack() {
-    
     this.articulosService.search.next(false);
     window.scroll(0, 0);
   }
@@ -122,11 +120,11 @@ export class ArticlesComponent implements OnInit {
     //Vaciamos la escalera de la direccion en caso de eliminar algun chip
     if (opcion == "idProvincia") {
       this.objectFilter.idPartido = null;
-      this.filterData.idPartido=null;
+      this.filterData.idPartido = null;
     }
     if (opcion == "idProvincia" || opcion == "idPartido") {
       this.objectFilter.idLocalidad = null;
-      this.filterData.idLocalidad=null;
+      this.filterData.idLocalidad = null;
     }
     if (
       opcion == "idProvincia" ||
@@ -136,7 +134,7 @@ export class ArticlesComponent implements OnInit {
       this.filterData.idBarrio = null;
       this.objectFilter.idBarrio = null;
     }
-    
+
     this.objectFilter[opcion] = null;
     this.filterData[opcion] = null;
     this.articulosService.search.next(true);
@@ -156,7 +154,7 @@ export class ArticlesComponent implements OnInit {
 
   setFilter(opcion: string, value: any) {
     switch (opcion) {
-      case 'zona':
+      case "zona":
         this.objectFilter[opcion] = value.id;
         this.filterData[opcion] = value;
         break;
