@@ -234,10 +234,10 @@ export class FormComponent implements OnInit {
          fk_idTipoPropiedad: [null, Validators.required],
          esUnaOportunidad: ["0", Validators.required],
          esUnaNovedad: ["0", Validators.required],
-         aparece_en_galeria: ["1", Validators.required],
+         aparece_en_galeria: ["0", Validators.required],//Por defecto no aparece en galeria, por lo tanto el valor es 0
       })
       this.formTwo = this.fb.group({
-         imageGalery: ['', Validators.required],
+         imageGalery: [''], //Validators.required],
          image1: ['', Validators.required],
          image2: [''],
          image3: [''],
@@ -1160,7 +1160,6 @@ export class FormComponent implements OnInit {
          this.formTwo.reset();
          this.formThree.reset();
          this.router.navigate(['/gestionar-publicaciones']);
-
       }).catch(e => {
          console.error(e);
          this.alertService.msg("ERR", "ERROR", "Error al publicar los datos.");
