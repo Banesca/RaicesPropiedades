@@ -17,6 +17,8 @@ import {
 } from './servicios.index';
 
 export function configProviderFactoryStatic(pConfig: ConfigService) {
+  console.log("configProviderFactoryStatic");
+  console.log(pConfig.loadAppConfigStatic());
   return () => pConfig.loadAppConfigStatic();
 }
 
