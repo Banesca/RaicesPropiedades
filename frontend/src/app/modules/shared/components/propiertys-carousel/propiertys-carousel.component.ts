@@ -14,14 +14,22 @@ export class PropiertysCarouselComponent {
 
   constructor(private _GaleriaHomeService: GaleriaHomeService) {
     // customize default values of carousels used by this component tree
-    this.getAll()
+    this.getAll();
   }
-
+  loadImageEmpty(galeries){
+    for (let i = 0; i < galeries.length; i++) {
+      const element = galeries[i];
+      if (element.imagenes.length==0){
+        element.imagenes.push({ imagen:"../../../../../assets/images/BANNER-2"});
+      }
+    }
+  }
   getAll() {
     this._GaleriaHomeService
       .All()
         .then(res => {
-       this.mCategorias = res.data
+          this.mCategorias = res.data;
+          this.loadImageEmpty(this.mCategorias);
       })
       .catch(error => {
         console.log(error);

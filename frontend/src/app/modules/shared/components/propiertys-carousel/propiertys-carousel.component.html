@@ -1,28 +1,32 @@
-<ngb-carousel >
-    <ng-template *ngFor="let galeria of mCategorias" ngbSlide>
-      <img src="../../../../../assets/images/BANNER-2" class="carousel-image" alt="Random slide" >
-      <!-- onerror="this.src='assets/images/no_image_aviable.jpg'"> -->
-      <div class="carousel-caption d-flex align-items-center">
-        
-          <div class="position-relative text-white align-items-center w-100 d-flex justify-contend-between">  
-              <div class="container title col-md-8 col-lg-6 col-12 py-5 d-flex flex-column align-items-start"> 
-                  <div class="col-sm-12 text-md-left">
-                    <h1 class="font-weight-light text-uppercase font-weight-extrabold">
-                    {{galeria.titulo}}</h1>
-                  </div>
-                  <p class="col-sm-12 text-md-left">{{galeria.descripcion}}</p>
-                    <!-- <button class="col-md-6 mx-3 btn white-button text-white">Ver Más</button> -->
-              </div>    
-              <div class="container d-flex justify-content-end mr-5 ">
-                  <ul class="nav flex-column d-none d-md-block">
-                      <li class="facebook my-2"><a href="#" data-toggle="tooltip" title="Facebook"><img class="social-icon" src="../../../../assets/images/icons/Recurso 5.svg"></a></li>
-                      <li class="twitter my-2"><a href="#" data-toggle="tooltip" title="Twitter"></a><img class="social-icon" src="../../../../assets/images/icons/Recurso 4.svg"></li>
-                      <li class="instagram my-2"><a href="#" data-toggle="tooltip" title="Instagram"><img class="social-icon" src="../../../../assets/images/icons/Recurso 3.svg"></a></li>
-                      <li class="youtube my-2"><a href="#" data-toggle="tooltip" title="Youtube"><img class="social-icon" src="../../../../assets/images/icons/Recurso 30.svg" ></a></li>
-                    </ul>
+<ngb-carousel>
+  <div *ngFor="let galeria of mCategorias">
+      <ng-template *ngFor="let imagen of galeria.imagenes" ngbSlide>
+        <img [src]="imagen.imagen" class="carousel-image" alt="Random slide" style="height:70vh;" onerror="this.src='assets/images/no_image_aviable.jpg'">
+        <!-- <img src="../../../../../assets/images/BANNER-2" class="carousel-image" alt="Random slide"> -->
+        <div class="carousel-caption d-flex align-items-center">
+      
+          <div class="position-relative text-white align-items-center w-100 d-flex justify-contend-between">
+            <div class="container title col-md-8 col-lg-6 col-12 py-5 d-flex flex-column align-items-start">
+              <div class="col-sm-12 text-md-left">
+                <h1 class="font-weight-light text-uppercase font-weight-extrabold">
+                  {{galeria.titulo}}</h1>
               </div>
+              <p class="col-sm-12 text-md-left">{{galeria.descripcion}}</p>
+              <!-- <button class="col-md-6 mx-3 btn white-button text-white">Ver Más</button> -->
             </div>
-      </div>
-    </ng-template>
-  </ngb-carousel>
+            <div class="container d-flex justify-content-end mr-5 ">
+              <ul class="nav flex-column d-none d-md-block">
+                <li class="facebook my-2"><a href="#" data-toggle="tooltip" title="Facebook"><img class="social-icon" src="../../../../assets/images/icons/Recurso 5.svg"></a></li>
+                <li class="twitter my-2"><a href="#" data-toggle="tooltip" title="Twitter"></a><img class="social-icon" src="../../../../assets/images/icons/Recurso 4.svg"></li>
+                <li class="instagram my-2"><a href="#" data-toggle="tooltip" title="Instagram"><img class="social-icon" src="../../../../assets/images/icons/Recurso 3.svg"></a></li>
+                <li class="youtube my-2"><a href="#" data-toggle="tooltip" title="Youtube"><img class="social-icon" src="../../../../assets/images/icons/Recurso 30.svg"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    
+  </div>
+</ngb-carousel>
+
 
