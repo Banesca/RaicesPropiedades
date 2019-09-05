@@ -67,12 +67,22 @@
                         <span>{{filterData.idBarrio.nombre}}</span>
                         <mat-icon matChipRemove>cancel</mat-icon>
                     </mat-chip>
-
-                    <!--CHIP Barrio-->
+                    <!--CHIP Zona-->
                     <mat-chip removable="true" (removed)="removeChip('zona')" *ngIf="filterData.zona">
                         <span>{{filterData.zona.nombre}}</span>
                         <mat-icon matChipRemove>cancel</mat-icon>
                     </mat-chip>
+                    <!--CHIP Relevancia y precio-->
+                    <mat-chip removable="true" (removed)="removeChip('relevanceyprice')" *ngIf="filterData.relevanceyprice">
+                        <span>{{filterData.relevanceyprice.label}}</span>
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                    <!--CHIP Metros cubiertos-->
+                    <mat-chip removable="true" (removed)="removeChip('coveredmeters')" *ngIf="filterData.coveredmeters">
+                        <span>{{filterData.coveredmeters.label}}</span>
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                   
                 </mat-chip-list>
             </div>
             <!--
@@ -95,13 +105,13 @@
                     Obtener publicaciones
                 </div>
                 <div class="textContent2">
-                    <div (click)="setFilter('relevance&price', 'mostrelevant')">
+                    <div (click)="setFilter('relevanceyprice', {label:'Más relevante',value:'mostrelevant'})">
                         <span>Más relevante</span>
                     </div>
-                    <div (click)="setFilter('relevance&price', 'higherprice')">
+                    <div (click)="setFilter('relevanceyprice', {label:'Mayor precio',value:'higherprice'})">
                         <span>Mayor precio</span>
                     </div>
-                    <div (click)="setFilter('relevance&price', 'lowerprice')">
+                    <div (click)="setFilter('relevanceyprice', {label:'Menor precio',value:'lowerprice'})">
                         <span>Menor precio</span>
                     </div>
                 </div>
@@ -153,13 +163,13 @@
                     Metros cubiertos
                 </div>
                 <div class="textContent2">
-                    <div (click)="setFilter('coveredmeters', 'f200m2')">
+                    <div (click)="setFilter('coveredmeters', {label:'Desde 200m2',value:'f200m2'})">
                         <span>Desde 200m2</span>
                     </div>
-                    <div (click)="setFilter('coveredmeters', 'f200m2t500m2')">
+                    <div (click)="setFilter('coveredmeters', {label:'Desde 200m2 - 500m2',value:'f200m2t500m2'})">
                         <span>Desde 200m2 - 500m2</span>
                     </div>
-                    <div (click)="setFilter('coveredmeters', 't500m2')">
+                    <div (click)="setFilter('coveredmeters', {label:'Hata 500m2',value:'t500m2'})">
                         <span>Hata 500m2</span>
                     </div>
                 </div>
@@ -199,8 +209,7 @@
                     (click)="onClickPublicacion()" style="height: max-content;">
                     <div class="articulos-image">
                         <img [src]="item.imagenes.imagen_para_galeria" [alt]="item.titulo" width="100%" height="250px" style="max-height: 250px;"
-                             /> 
-                             <!-- onerror="this.src='assets/images/no_image_aviable.jpg'" -->
+                             onerror="this.src='assets/images/no_image_aviable.jpg'" /> 
                     </div>
                     <div class="articulos-precios">
                         <div class="articulos-title2">

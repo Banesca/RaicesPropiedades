@@ -30,6 +30,7 @@ export class ArticlesComponent implements OnInit {
     articulosService.filter.subscribe(filterData => {
       //Obtenemos el filtro del buscador
       this.filterData = filterData;
+      console.log("this.filterData:", this.filterData);
       this.objectFilter = {
         idTipoPropiedad: this.filterData.idTipoPropiedad.idTipoPropiedad,
         idMonedas: this.filterData.idMonedas.idMonedas,
@@ -156,6 +157,14 @@ export class ArticlesComponent implements OnInit {
     switch (opcion) {
       case "zona":
         this.objectFilter[opcion] = value.id;
+        this.filterData[opcion] = value;
+        break;
+      case "relevanceyprice":
+        this.objectFilter[opcion] = value.value;
+        this.filterData[opcion] = value;
+        break;
+      case "coveredmeters":
+        this.objectFilter[opcion] = value.value;
         this.filterData[opcion] = value;
         break;
       default:
