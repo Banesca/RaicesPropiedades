@@ -85,13 +85,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-undefined
+@angular/material/chips
+
+@angular/material/icon
 
 @angular/platform-browser
 MIT
 
 @angular/router
 MIT
+
+undefined
 
 @ng-bootstrap/ng-bootstrap
 MIT
