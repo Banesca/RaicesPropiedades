@@ -193,7 +193,6 @@ export class SearchComponent implements OnInit {
   setMaximo = (data: number): void => {
     this.selectedMaximo = data;
   };
-
   // ------------------------
 
   searchFilter() {
