@@ -173,9 +173,9 @@ export class ArticlesComponent implements OnInit {
         this.objectFilter[opcion] = value.id;
         this.filterData[opcion] = value;
         break;
-      case "relevanceyprice":
-        this.objectFilter[opcion] = value.value;
-        this.filterData[opcion] = value;
+      // case "relevanceyprice":
+      //   this.objectFilter[opcion] = value.value;
+      //   this.filterData[opcion] = value;
         break;
       default:
         this.objectFilter[opcion] = value;
