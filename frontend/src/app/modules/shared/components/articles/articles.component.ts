@@ -63,6 +63,7 @@ export class ArticlesComponent implements OnInit {
         idBarrio: this.filterData.idBarrio.id,
         habitantes: this.filterData.habitantes
       };
+      this.propiedadesInPromise = true;
       this.articulosService
         .getItemsBySearch(this.objectFilter)
         .then(data => {
@@ -153,6 +154,7 @@ export class ArticlesComponent implements OnInit {
     this.objectFilter[opcion] = null;
     this.filterData[opcion] = null;
     this.articulosService.search.next(true);
+    this.propiedadesInPromise=true;
     this.articulosService
       .getItemsBySearch(this.objectFilter)
       .then(data => {
@@ -183,6 +185,7 @@ export class ArticlesComponent implements OnInit {
         break;
     }
     if((!this.minM2 && !this.maxM2)||(this.minM2 < this.maxM2)){
+      this.propiedadesInPromise=true;
       this.articulosService
         .getItemsBySearch(this.objectFilter)
         .then(data => {
