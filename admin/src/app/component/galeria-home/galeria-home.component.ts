@@ -205,27 +205,32 @@ export class GaleriaHomeComponent implements OnInit {
       if (!f.type.match("image.*")) {
         continue;
       }
+      if (f.size<300000){
+        this._AlertsService.msg("ERR", "ERROR", "Las dimensiones de la imagen "+f.name+ " son demasiado pequeñas para subirla a la galería.");
+      }else{
+        let reader = new FileReader();
+        console.log("f");
+        console.log(f);
+        // Closure to capture the file information.
+        reader.onload = (function(theFile) {
+          return function(e) {
+            // Render thumbnail.
+            let span = document.createElement("span");
+            span.innerHTML = [
+              '<img class="thumb" style="height:150px;" src="',
+              e.target.result,
+              '" title="',
+              escape(theFile.name),
+              '"/>'
+            ].join("");
+            document.getElementById("list").insertBefore(span, null);
+          };
+        })(f);
 
-      let reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          let span = document.createElement("span");
-          span.innerHTML = [
-            '<img class="thumb" style="height:150px;" src="',
-            e.target.result,
-            '" title="',
-            escape(theFile.name),
-            '"/>'
-          ].join("");
-          document.getElementById("list").insertBefore(span, null);
-        };
-      })(f);
-
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+      }
+      
     }
   }
 }

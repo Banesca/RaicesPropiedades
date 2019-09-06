@@ -42,6 +42,8 @@ export class GaleriaHomeService {
       )
       .pipe(
         map((data: any) => {
+          console.log('nuevaCategoria');
+          console.log(data);
           return data;
         })
       )
