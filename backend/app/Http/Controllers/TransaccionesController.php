@@ -114,7 +114,7 @@ class TransaccionesController extends Controller {
 
     public function listaCategorias() {
 
-        $categoria = TipoTasacion::all();
+        $categoria = TipoPropiedad::all();
         $response  = [
             'msj'  => 'Categorias',
             'data' => $categoria,
