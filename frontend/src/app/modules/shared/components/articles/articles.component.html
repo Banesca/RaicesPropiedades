@@ -77,9 +77,14 @@
                         <span>{{filterData.relevanceyprice.label}}</span>
                         <mat-icon matChipRemove>cancel</mat-icon>
                     </mat-chip>
-                    <!--CHIP Metros cubiertos-->
-                    <mat-chip removable="true" (removed)="removeChip('coveredmeters')" *ngIf="filterData.coveredmeters">
-                        <span>{{filterData.coveredmeters.label}}</span>
+                    <!--CHIP Metros cubiertos (mín)-->
+                    <mat-chip removable="true" (removed)="removeChip('minM2')" *ngIf="filterData.minM2">
+                        <span>Mín M2: {{filterData.minM2}}</span>
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                    <!--CHIP Metros cubiertos (máx)-->
+                    <mat-chip removable="true" (removed)="removeChip('maxM2')" *ngIf="filterData.maxM2">
+                        <span>Máx M2: {{filterData.maxM2}}</span>
                         <mat-icon matChipRemove>cancel</mat-icon>
                     </mat-chip>
                    <!--CHIP habitantes-->
@@ -104,7 +109,7 @@
       -->
             <!-- (!filterData.TipoOperaion || !filterData.TipoOperaion.idTipoOperaion) && arbol.TipoOperaion && -->
             <!-- arbol.TipoOperaion.length -->
-            <div class="articulos-relevante">
+            <!-- <div class="articulos-relevante">
                 <div class="title">
                     Obtener publicaciones
                 </div>
@@ -119,17 +124,20 @@
                         <span>Menor precio</span>
                     </div>
                 </div>
-            </div>
-            <div *ngIf="!filterData.TipoBarrio && arbol.TipoBarrio && arbol.TipoBarrio.length" class="articulos-relevante">
-                <div class="title">
-                Zonas
-                </div>
-                <div class="textContent2">
-                <ng-container *ngFor="let item of arbol.TipoBarrio">
-                    <div *ngIf="item.barrio" (click)="setFilter('zona', item.barrio)">
-                    <span>Zona {{item.barrio.nombre}}</span>
+            </div> -->
+            <!-- !filterData.TipoBarrio &&  -->
+            <div *ngIf="arbol" class="">
+                <div *ngIf="arbol.TipoBarrio && arbol.TipoBarrio.length" class="articulos-relevante">
+                    <div class="title">
+                    Zonas
                     </div>
-                </ng-container>          
+                    <div class="textContent2">
+                    <ng-container *ngFor="let item of arbol.TipoBarrio">
+                        <div *ngIf="item.barrio" (click)="setFilter('zona', item.barrio)">
+                        <span>Zona {{item.barrio.nombre}}</span>
+                        </div>
+                    </ng-container>          
+                    </div>
                 </div>
             </div>
             <div class="articulos-relevante">
@@ -167,14 +175,19 @@
                     Metros cubiertos
                 </div>
                 <div class="textContent2">
-                    <div (click)="setFilter('coveredmeters', {label:'Desde 200m2',value:'f200m2'})">
-                        <span>Desde 200m2</span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- oninput="this.value=this.value.replace(/[^\d+]/,'') -->
+                            <input  [(ngModel)]="minM2" (ngModelChange)="setFilter('minM2', minM2)" placeholder="Mín M2" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+                        </div>
+                        <div class="col-md-6">
+                            <input [(ngModel)]="maxM2" (ngModelChange)="setFilter('maxM2', maxM2)" placeholder="Máx M2" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+                        </div>
                     </div>
-                    <div (click)="setFilter('coveredmeters', {label:'Desde 200m2 - 500m2',value:'f200m2t500m2'})">
-                        <span>Desde 200m2 - 500m2</span>
-                    </div>
-                    <div (click)="setFilter('coveredmeters', {label:'Hata 500m2',value:'t500m2'})">
-                        <span>Hata 500m2</span>
+                    <div *ngIf="(minM2 >= maxM2)&&(minM2!='')&&(maxM2!='')" class="row">
+                        <div class="col-md-12">
+                            Debe registrar un valor mínimo y máximo para este filtro
+                        </div>
                     </div>
                 </div>
             </div>
@@ -211,54 +224,57 @@
             <div class="row" style="padding-left: 20px; width: 100%" *ngIf="!propiedadesInPromise">
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 " *ngFor="let item of articulos" [routerLink]="[baseUrl, item.idPropiedad]"
                     (click)="onClickPublicacion()" style="height: max-content;">
-                    <div class="articulos-image">
-                        <img [src]="item.imagenes.imagen_para_galeria" [alt]="item.titulo" width="100%" height="250px" style="max-height: 250px;"
-                             onerror="this.src='assets/images/no_image_aviable.jpg'" /> 
+                    <div *ngIf="item">
+                        <div class="articulos-image" *ngIf="item.imagenes.imagen_para_galeria">
+                            <img [src]="item.imagenes.imagen_para_galeria" [alt]="item.titulo" width="100%" height="250px" style="max-height: 250px;"
+                                onerror="this.src='assets/images/no_image_aviable.jpg'" /> 
+                        </div>
+                        <div class="articulos-precios">
+                            <div class="articulos-title2">
+                                {{item.precio | number:'1.2-2'}}
+                                <span *ngIf="item.tipo_moneda && item.tipo_moneda.idMonedas && item.tipo_moneda.idMonedas == 1">
+                                    $ARS
+                                </span>
+                                <span *ngIf="item.tipo_moneda && item.tipo_moneda.idMonedas && item.tipo_moneda.idMonedas == 2">
+                                    $USD
+                                </span>
+                                <span *ngIf="item.tipo_moneda && item.tipo_moneda.idMonedas && item.tipo_moneda.idMonedas == 3">
+                                    $UYU
+                                </span>
+                            </div>
+                            <div class="articulos-subtitle">
+                                {{item.titulo}}
+                            </div>
+                        </div>
+            
+                        <div class="articulos-info" >
+                            <div *ngIf="item.tipo_propiedad.descripcion && item.tipo_opeacion.descripcion" class="articulos-subtitle3">
+                                <span style="font-size: 15px">
+                                    <b>{{item.tipo_propiedad.descripcion}}</b>
+                                </span> <br>
+                                En {{item.tipo_opeacion.descripcion}}
+            
+                            </div>
+                            <div class="articulos-subtitle3">
+                                <span *ngIf="item.sub_barrio && item.sub_barrio.nombre">
+                                    {{item.sub_barrio.nombre}} -
+                                </span>
+                                <span *ngIf="item.barrio && item.barrio.nombre">
+                                    {{item.barrio.nombre}} -
+                                </span>
+                                <span *ngIf="item.localidad && item.localidad.nombre">
+                                    {{item.localidad.nombre}} -
+                                </span>
+                                <span *ngIf="item.partido && item.partido.nombre">
+                                    {{item.partido.nombre}} -
+                                </span>
+                                <span *ngIf="item.provincia && item.provincia.nombre">
+                                    {{item.provincia.nombre}}
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="articulos-precios">
-                        <div class="articulos-title2">
-                            {{item.precio | number:'1.2-2'}}
-                            <span *ngIf="item.tipo_moneda && item.tipo_moneda.idMonedas && item.tipo_moneda.idMonedas == 1">
-                                $ARS
-                            </span>
-                            <span *ngIf="item.tipo_moneda && item.tipo_moneda.idMonedas && item.tipo_moneda.idMonedas == 2">
-                                $USD
-                            </span>
-                            <span *ngIf="item.tipo_moneda && item.tipo_moneda.idMonedas && item.tipo_moneda.idMonedas == 3">
-                                $UYU
-                            </span>
-                        </div>
-                        <div class="articulos-subtitle">
-                            {{item.titulo}}
-                        </div>
-                    </div>
-        
-                    <div class="articulos-info" >
-                        <div class="articulos-subtitle3">
-                            <span style="font-size: 15px">
-                                <b>{{item.tipo_propiedad.descripcion}}</b>
-                            </span> <br>
-                            En {{item.tipo_opeacion.descripcion}}
-        
-                        </div>
-                        <div class="articulos-subtitle3">
-                            <span *ngIf="item.sub_barrio && item.sub_barrio.nombre">
-                                {{item.sub_barrio.nombre}} -
-                            </span>
-                            <span *ngIf="item.barrio && item.barrio.nombre">
-                                {{item.barrio.nombre}} -
-                            </span>
-                            <span *ngIf="item.localidad && item.localidad.nombre">
-                                {{item.localidad.nombre}} -
-                            </span>
-                            <span *ngIf="item.partido && item.partido.nombre">
-                                {{item.partido.nombre}} -
-                            </span>
-                            <span *ngIf="item.provincia && item.provincia.nombre">
-                                {{item.provincia.nombre}}
-                            </span>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         

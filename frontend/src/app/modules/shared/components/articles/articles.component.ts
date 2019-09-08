@@ -26,11 +26,25 @@ export class ArticlesComponent implements OnInit {
   selectedMinimo: Number | string = "mínimo";
   selectedMaximo: Number | string = "máximo";
   montos: number[] = montos;
+  minM2: number=null;
+  maxM2: number=null;
   constructor(private articulosService: ArticuloService) {
-    articulosService.filter.subscribe(filterData => {
+    
+  }
+  getFormData(filterData) {
+    const formData = new FormData();
+    filterData.forEach(element => {
+      formData.append(
+        Object.keys(element)[0] + "",
+        Object.values(element)[0] + ""
+      );
+    });
+    return formData;
+  }
+  searchResult(){
+    this.articulosService.filter.subscribe(filterData => {
       //Obtenemos el filtro del buscador
       this.filterData = filterData;
-      console.log("this.filterData:", this.filterData);
       this.objectFilter = {
         idTipoPropiedad: this.filterData.idTipoPropiedad.idTipoPropiedad,
         idMonedas: this.filterData.idMonedas.idMonedas,
@@ -49,11 +63,14 @@ export class ArticlesComponent implements OnInit {
         idBarrio: this.filterData.idBarrio.id,
         habitantes: this.filterData.habitantes
       };
-      articulosService
+      this.propiedadesInPromise = true;
+      this.articulosService
         .getItemsBySearch(this.objectFilter)
         .then(data => {
           this.articulos = data.propiedades;
+          console.log('this.articulos',this.articulos)
           this.arbol = data.arbol;
+          console.log('this.arbol',this.arbol)
           this.propiedadesInPromise = false;
         })
         .catch(error => {
@@ -62,19 +79,12 @@ export class ArticlesComponent implements OnInit {
         });
     });
   }
-  getFormData(filterData) {
-    const formData = new FormData();
-    filterData.forEach(element => {
-      formData.append(
-        Object.keys(element)[0] + "",
-        Object.values(element)[0] + ""
-      );
-    });
-    return formData;
-  }
   ngOnInit() {
     let resultsElement = document.getElementById("resultados-busqueda");
     resultsElement.scrollIntoView();
+    this.searchResult();
+    console.log('this.minM2',this.minM2);
+    console.log('this.maxM2',this.maxM2);
   }
 
   verifyStringOrObject() {
@@ -135,10 +145,16 @@ export class ArticlesComponent implements OnInit {
       this.filterData.idBarrio = null;
       this.objectFilter.idBarrio = null;
     }
-
+    if (opcion == "minM2") {
+      this.minM2 = null;
+    }
+    if (opcion == "maxM2") {
+      this.maxM2 = null;
+    }
     this.objectFilter[opcion] = null;
     this.filterData[opcion] = null;
     this.articulosService.search.next(true);
+    this.propiedadesInPromise=true;
     this.articulosService
       .getItemsBySearch(this.objectFilter)
       .then(data => {
@@ -159,30 +175,30 @@ export class ArticlesComponent implements OnInit {
         this.objectFilter[opcion] = value.id;
         this.filterData[opcion] = value;
         break;
-      case "relevanceyprice":
-        this.objectFilter[opcion] = value.value;
-        this.filterData[opcion] = value;
-        break;
-      case "coveredmeters":
-        this.objectFilter[opcion] = value.value;
-        this.filterData[opcion] = value;
+      // case "relevanceyprice":
+      //   this.objectFilter[opcion] = value.value;
+      //   this.filterData[opcion] = value;
         break;
       default:
         this.objectFilter[opcion] = value;
         this.filterData[opcion] = value;
         break;
     }
-    this.articulosService
-      .getItemsBySearch(this.objectFilter)
-      .then(data => {
-        this.articulos = data.propiedades;
-        this.arbol = data.arbol;
-        this.propiedadesInPromise = false;
-      })
-      .catch(error => {
-        this.propiedadesInPromise = false;
-        console.error(error);
-      });
+    if((!this.minM2 && !this.maxM2)||(this.minM2 < this.maxM2)){
+      this.propiedadesInPromise=true;
+      this.articulosService
+        .getItemsBySearch(this.objectFilter)
+        .then(data => {
+          this.articulos = data.propiedades;
+          this.arbol = data.arbol;
+          this.propiedadesInPromise = false;
+        })
+        .catch(error => {
+          this.propiedadesInPromise = false;
+          console.error(error);
+        });
+    }
+    
     // this.articulosService.search.next(true);
     // this.articulosService.filter.next(this.objectFilter);
   }
