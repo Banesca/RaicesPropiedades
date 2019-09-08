@@ -17,9 +17,9 @@ class MonedasSeeder extends Seeder {
             'idMonedas' => 2,
             'moneda'    => 'Dolar',
         ]);
-        \App\Moneda::create([
+        /*\App\Moneda::create([
             'idMonedas' => 3,
             'moneda'    => 'Peso Uruguayo',
-        ]);
+        ]);*/
     }
 }
