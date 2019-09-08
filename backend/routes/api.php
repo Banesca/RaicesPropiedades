@@ -85,7 +85,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::post('transacciones/edit/{idTransaccion}', 'TransaccionesController@update');
     Route::delete('transacciones/eliminar/{idTransaccion}', 'TransaccionesController@destroy');
     Route::get('transacciones/{idTransaccion}', 'TransaccionesController@listarTransaccionesPorId');
-    Route::get('transacciones/confirmar/{idTransaccion}', 'TransaccionesController@confirmarTransaccion');
+    Route::post('transacciones/changestatus/{idTransaccion}', 'TransaccionesController@changeStatusTransaccion');
     /*   Transacciones    */
 
     /* OBTENER  PAISES PARA EL BUSCADOR */

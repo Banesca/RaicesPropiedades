@@ -235,7 +235,7 @@ class TransaccionesController extends Controller {
         return response()->json($response, 200);
 
     }
-    public function confirmarTransaccion($idTransaccion) {
+    public function changeStatusTransaccion(Request $request,$idTransaccion) {
         $Transaccion = Transacciones::find($idTransaccion);
         
         if ($Transaccion == null) {
@@ -243,8 +243,16 @@ class TransaccionesController extends Controller {
                 'message' => 'No existe la transacción',
             ];
         } else {
-            $Transaccion->status="confirmada";
-            Mail::to($Transaccion->email)->send(new ConfirmTasacion($Transaccion));
+            $Transaccion->status=$request->status;
+            switch ($request->status) {
+                case 'confirmada':
+                    # code...
+                    Mail::to($Transaccion->email)->send(new ConfirmTasacion($Transaccion));
+                    break;                
+                default:
+                    # code...
+                    break;
+            }
             $Transaccion->update();
             $response = [
                 'msj'  => 'transacción',
