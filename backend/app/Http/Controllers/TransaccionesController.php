@@ -235,7 +235,8 @@ class TransaccionesController extends Controller {
         return response()->json($response, 200);
 
     }
-    public function changeStatusTransaccion(Request $request,$idTransaccion) {
+
+    public function changeStatusTransaccion($idTransaccion) {
         $Transaccion = Transacciones::find($idTransaccion);
         
         if ($Transaccion == null) {
@@ -243,16 +244,8 @@ class TransaccionesController extends Controller {
                 'message' => 'No existe la transacción',
             ];
         } else {
-            $Transaccion->status=$request->status;
-            switch ($request->status) {
-                case 'confirmada':
-                    # code...
+            $Transaccion->status="confirmada";
                     Mail::to($Transaccion->email)->send(new ConfirmTasacion($Transaccion));
-                    break;                
-                default:
-                    # code...
-                    break;
-            }
             $Transaccion->update();
             $response = [
                 'msj'  => 'transacción',
@@ -261,6 +254,32 @@ class TransaccionesController extends Controller {
         }
 
         return response()->json($response, 200);
+    }
+
+    public function listTransaccionBorradas() {
+        $response = [
+            'msj' => 'No hay Tasacción borradas',
+        ];
+
+        return response()->json(count($p = Transacciones::onlyTrashed()->get()) > 0 ? $p : $response);
+    }
+
+    public function recuperarTransaccionBorra($idTransacciones) {
+        ! is_null($a = @Transacciones::onlyTrashed()->find($idTransacciones)) //primero busco si esta la Transaccion como eliminada
+            ?
+            $a->restore() && $p = $this->printerr('Recuperada exitosamente') //si está, entonces la recupero y construyo el mensaje
+            :
+            $p = $this->printerr('No existe como eliminada'); //si no, construyo el mensaje de error
+
+        return $p;
+    }
+
+    public function printerr($msj) {
+        $response = [
+            'msj' => 'Propiedad '.$msj,
+        ];
+
+        return $response;
     }
 
 }

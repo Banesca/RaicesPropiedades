@@ -177,6 +177,9 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::get('listPropiedadesBorradas','Ficha3Controller@listPropiedadesBorradas');
     Route::get('recuperarPropiedadBorra/{idPropiedad}','Ficha3Controller@recuperarPropiedadBorra');
 
+    Route::get('listTransaccionBorradas','TransaccionesController@listTransaccionBorradas');
+    Route::get('recuperarTransaccionBorra/{idTransacciones}','TransaccionesController@recuperarTransaccionBorra');
+
     //Route::get('ubicaciones','BuscadorDePropiedadesController@direcciones');
 
     Route::post('buscadorGeneral','BuscadorDePropiedadesController@buscarGeneral');
