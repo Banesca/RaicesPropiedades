@@ -274,4 +274,8 @@ class Ficha3Controller extends Controller {
         }
 
     }
+
+    public function listPropiedadesBorradas(){
+        return response()->json(Propiedad::onlyTrashed()->get());
+    }
 }
