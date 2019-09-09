@@ -71,6 +71,9 @@ export class GaleriaHomeComponent implements OnInit {
         Validators.minLength(10),
         Validators.maxLength(40),
       ]],
+      orden: [null, [
+        Validators.required
+      ]],
       fk_publicaciones: ["", Validators.required],
       images: null
     });
@@ -90,6 +93,7 @@ export class GaleriaHomeComponent implements OnInit {
     this.formData.append("titulo", this.mCategoriasSelect.titulo);
     this.formData.append("descripcion", this.mCategoriasSelect.descripcion);
     this.formData.append("fk_publicaciones",this.mCategoriasSelect.fk_publicaciones);
+    this.formData.append("orden", `${this.mCategoriasSelect.orden}`);
     for (let i = 0; i < this.length; i++) {
       this.formData.append("images[" + i + "]", this.images[i]);
     }
@@ -191,9 +195,10 @@ export class GaleriaHomeComponent implements OnInit {
         this.mForma.reset();
         this.mLoading = false;
         this.submitted = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería creada Correctamente.')
+        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería creada Correctamente.');
       })
       .catch(err => {
+        console.log(err);
         this._AlertsService.msg("ERR", "ERROR", "Error al crear la galería.");
       });
   }

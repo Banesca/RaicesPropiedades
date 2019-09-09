@@ -148,7 +148,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="form-group">
               <label for="">Descripción</label>
               <textarea class="form-control" type="text" formControlName="descripcion" placeholder="Descripción" [(ngModel)]="mCategoriasSelect.descripcion"></textarea>
@@ -156,6 +156,15 @@
                 <div *ngIf="submitted && f.descripcion.errors.required">Descripción es requerida</div>
                 <div *ngIf="f.descripcion.errors.minlength">Mínimo de 10 caracteres</div>
                 <div *ngIf="f.descripcion.errors.maxlength">Máximo de 40 caracteres</div>            
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Orden de galería</label>
+              <input class="form-control" type="number" formControlName="orden" placeholder="Orden" [(ngModel)]="mCategoriasSelect.orden" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+              <div *ngIf="f.orden.errors" type="alert" class="invalid-feedback d-block">
+                <div *ngIf="submitted && f.orden.errors.required">El orden es requerida</div>
               </div>
             </div>
           </div>

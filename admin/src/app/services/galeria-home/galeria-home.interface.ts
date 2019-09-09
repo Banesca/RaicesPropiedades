@@ -9,6 +9,7 @@
     descripcion: string;
     fk_publicaciones: string;
     images:any;
+    orden: number;
   }
 
   export class Galeria {
@@ -18,7 +19,8 @@
         titulo: "",
         descripcion: "",
         fk_publicaciones: "",
-        images: null
+        images: null,
+        orden: null
       } as IGaleria;
     }
   }
