@@ -112,11 +112,11 @@ export class TransaccionesComponent implements OnInit {
         });
     }
   }
-  confirmar(pKey: number) {
-    if (confirm("¿Está seguro de que quiere confirmar esta tasación?")) {
+  changeStateTo(newStatus:string, pKey: number) {
+    if (confirm("¿Está seguro de que quiere cambiar el estado a '" + newStatus+"'?")) {
       this.mLoading = true;
       this._TransaccionesService
-        .confirmarCategoria(pKey)
+        .changeStateToCategoria(newStatus,pKey)
         .then(data => {
           this.mLoading = false;
           this.getAll();

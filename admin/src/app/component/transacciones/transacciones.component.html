@@ -27,10 +27,12 @@
                                 <td>{{categoria.nombre_apellido}}</td>
                                 <td>{{categoria.telefono}}</td>
                                 <td>{{categoria.titulo}}</td>
-                                <td>{{categoria.descripcion}}</td>
-                                <td>{{categoria.tipo_propiedad.descripcion}}</td>
+                                <td *ngIf="categoria.descripcion===null">Sin descripción</td>
+                                <td *ngIf="categoria.descripcion!=null">{{categoria.descripcion}}</td>                                
+                                <td *ngIf="categoria.tipo_propiedad===null">Sin categoría</td>
+                                <td *ngIf="categoria.tipo_propiedad!=null">{{categoria.tipo_propiedad.descripcion}}</td>
                                 <td>
-                                    <button (click)="ver(categoria)" type="button" class="btn mr-2 btn-info">
+                                    <button (click)="ver(categoria)" type="button" class="btn mr-2 btn-info" placement="top" ngbTooltip="Ver">
                                         <i class="far fa-eye"></i>
                                     </button>
                                     <!--
@@ -41,11 +43,14 @@
                 >
                 <i class="fas fa-pencil-alt"></i>
                 </button>-->                                    
-                                    <button (click)="eliminar(categoria.idTransacciones)" type="button" class="btn mr-2 btn-danger">
+                                    <button (click)="eliminar(categoria.idTransacciones)" type="button" class="btn mr-2 btn-danger" placement="top" ngbTooltip="Eliminar">
                                         <i class="fa fa-trash"></i>
                                     </button>
-                                    <button *ngIf="(categoria.status==='pendiente')" (click)="confirmar(categoria.idTransacciones)" type="button" class="btn mr-2 btn-success">
+                                    <button *ngIf="(categoria.status==='pendiente')" (click)="changeStateTo('confirmada',categoria.idTransacciones)" type="button" class="btn mr-2 btn-success" placement="top" ngbTooltip="Marcar como confirmada">
                                         <i class="fa fa-check"></i>
+                                    </button>
+                                    <button *ngIf="(categoria.status==='confirmada')" (click)="changeStateTo('pendiente',categoria.idTransacciones)" type="button" class="btn mr-2 btn-warning" placement="top" ngbTooltip="Marcar como pendiente">
+                                        <i class="fa fa-remove"></i>
                                     </button>
                                 </td>
                             </tr>
