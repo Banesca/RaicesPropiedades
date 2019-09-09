@@ -9,7 +9,9 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+use App\Http\Controllers\Ficha3Controller;
 use App\Partidos;
+use App\Propiedad;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -171,6 +173,9 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     Route::post('addContactanos','ContactoController@add');
     Route::get('listarContactanos','ContactoController@listar');
+
+    Route::get('listPropiedadesBorradas','Ficha3Controller@listPropiedadesBorradas');
+    Route::get('recuperarPropiedadBorra/{idPropiedad}','Ficha3Controller@recuperarPropiedadBorra');
 
     //Route::get('ubicaciones','BuscadorDePropiedadesController@direcciones');
 
