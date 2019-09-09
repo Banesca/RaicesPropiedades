@@ -67,10 +67,10 @@ class Ficha3Controller extends Controller {
 
             $propiedad->save();
 
-            Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email,$propiedad->descipcion,$propiedad->idPropiedad));
+            Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email, $propiedad->descipcion, $propiedad->idPropiedad));
 
-           $sincronice=new SincroniceArgenController();
-           $sincronice->add($propiedad); //para add propiedad en argen pro
+            $sincronice = new SincroniceArgenController();
+            $sincronice->add($propiedad); //para add propiedad en argen pro
 
             @$propiedad->TipoPropiedad;
             @$propiedad->Disposicion;
@@ -257,25 +257,52 @@ class Ficha3Controller extends Controller {
         }
     }
 
-    public function delete($idPropiedad){
+    public function delete($idPropiedad) {
         $propiedad = Propiedad::find($idPropiedad);
         if (! is_null($propiedad)) {
-            $propiedad->update(['fk_estado_publicacion'=>3]);  //se cambia de estatus
+            $propiedad->update([ 'fk_estado_publicacion' => 3 ]);  //se cambia de estatus
             $propiedad->delete(); //se le asiga la fehca de borrado
             $response = [
-                'msj'             => 'Propiedad borrada Exitosamente',
+                'msj' => 'Propiedad borrada Exitosamente',
             ];
+
             return response()->json($response, 201);
-        }else{
+        } else {
             $response = [
-                'msj'             => 'No existe la propiedad',
+                'msj' => 'No existe la propiedad',
             ];
+
             return response()->json($response, 200);
         }
 
     }
 
-    public function listPropiedadesBorradas(){
-        return response()->json(Propiedad::onlyTrashed()->get());
+    public function listPropiedadesBorradas() {
+        $response = [
+            'msj' => 'No hay propiedades borradas',
+        ];
+
+        return response()->json(count($p = Propiedad::onlyTrashed()->get()) > 0 ? $p : $response);
+    }
+
+    public function recuperarPropiedadBorra($idPropiedad) {
+        $response = [
+            'msj' => 'Error, La propiedad que intenta recuperar no esta borrada',
+        ];
+        ! is_null($a = @Propiedad::onlyTrashed()->find($idPropiedad)) //primero busco si esta la propiedad como eliminada
+            ?
+            $a->restore() && $p = $this->printerr('Recuperada exitosamente') //si está, entonces la recupero y construyo el mensaje
+            :
+            $p = $this->printerr('No existe como eliminada'); //si no, construyo el mensaje de error
+
+        return $p;
+    }
+
+    public function printerr($msj) {
+        $response = [
+            'msj' => 'Propiedad '.$msj,
+        ];
+
+        return $response;
     }
 }
