@@ -14,6 +14,7 @@ class Galeria extends Model
         'titulo',
         'descripcion',
         'fk_publicaciones',
+        'orden'
     ];
 
     protected $hidden = [

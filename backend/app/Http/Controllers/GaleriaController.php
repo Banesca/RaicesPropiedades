@@ -34,6 +34,16 @@ class GaleriaController extends Controller
 
         try {
 
+            if (! is_null($request->orden)) {
+                $d = Galeria::where('orden', $request->orden)->get();
+                if (count($d) > 0) {
+                    $response = [
+                        'msj' => 'El orden ya se encuentra en la lista, y no se pueden repetir',
+                    ];
+                    return response()->json($response, 403);
+                }
+            }
+
             $galeria = new Galeria($request->all());
             $galeria->save();
             if (!is_null($request->images)) {
@@ -76,10 +86,21 @@ class GaleriaController extends Controller
     public function listaGaleria()
     {
 
-        $galeria  = Galeria::with('imagenes')->get();
+        $galeria  = Galeria::with('imagenes')->whereNotNull('orden')->orderby('orden', 'ASC')->get();
+        $de = [];
+        foreach ($galeria as $key => $item) {
+            array_push($de, $item);
+        }
+
+        $galeria  = Galeria::with('imagenes')->whereNull('orden')->orderby('orden', 'ASC')->get();
+
+        foreach ($galeria as $key => $item) {
+            array_push($de, $item);
+        }
+
         $response = [
             'msj'  => 'Galerias',
-            'data' => $galeria,
+            'data' => $de,
         ];
 
         return response()->json($response, 200);
@@ -111,6 +132,19 @@ class GaleriaController extends Controller
         DB::beginTransaction();
         try {
 
+            if (! is_null($request->orden)) {
+
+                $d = Galeria::where('orden', $request->orden)->get();
+
+                if (count($d) > 0 && $d[0]->idGaleria != $request->idGaleria) {
+                    $response = [
+                        'msj' => 'El orden ya se encuentra en la lista, y no se pueden repetir',
+                    ];
+
+                    return response()->json($response, 403);
+                }
+            }
+
             $galeria = Galeria::findOrFail($idGaleria);
             $galeria->fill($request->all());
 
@@ -132,7 +166,7 @@ class GaleriaController extends Controller
             }
 
             $galeria->save();
-
+            DB::commit();
             $response = [
                 'msj'  => 'Galeria actualizada exitosamente',
                 'data' => $galeria,
