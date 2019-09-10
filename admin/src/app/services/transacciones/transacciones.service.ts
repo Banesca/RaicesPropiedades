@@ -52,17 +52,42 @@ export class TransaccionesService {
       .toPromise();
   }
 
-  changeStateToCategoria(newStatus:string,pKey: number) {
+  changeStateToCategoria(newStatus: string, pKey: number) {
     return this._HttpClient
       .post(
         environment.apiHost + this.mService + "/changestatus/" + pKey,
-        { 'status': newStatus},
+        { status: newStatus },
         {
           headers: getHeaders()
         }
-      ).pipe(
+      )
+      .pipe(
         map((data: any) => {
           return data;
+        })
+      )
+      .toPromise();
+  }
+  paperBin(){
+    return this._HttpClient
+      .get(environment.apiHost + '/api/v1/listTransaccionBorradas', {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      )
+      .toPromise();
+  }
+  restore(pKey: number){
+    return this._HttpClient
+      .get(environment.apiHost + '/api/v1/recuperarTransaccionBorra/'+pKey, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((res: any) => {
+          return res;
         })
       )
       .toPromise();

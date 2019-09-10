@@ -30,7 +30,7 @@ export class TransaccionesComponent implements OnInit {
   mForma: FormGroup;
   mFormaEstado: string;
   enCRUD = enCRUD;
-
+  paperBinList:boolean =false;
   constructor(
     private _formBuilder: FormBuilder,
     private _TransaccionesService: TransaccionesService,
@@ -166,6 +166,32 @@ export class TransaccionesComponent implements OnInit {
           : err.error.message
           ? this._AlertsService.msg("ERR", "ERROR", err.error.message)
           : this._AlertsService.msg("ERR", "ERROR", "Error al Actualizar.");
+      });
+  }
+  paperBin(){
+    this.mLoading = true;
+    this._TransaccionesService
+      .paperBin()
+      .then(data => {
+        this.paperBinList=true;
+        this.mCategorias = data;
+        this.mLoading = false;
+      })
+      .catch(err => {
+        this._AlertsService.msg("ERR", "ERROR", "Error al listar elementos eliminados.");
+      });
+  }
+  restore(pKey: number){
+    this._TransaccionesService
+      .restore(pKey)
+      .then(data => {
+        this.mLoading = false;
+        this.paperBinList=false;
+        this.getAll();
+        this._AlertsService.msg("OK", "¡ÉXITO!", "Tasación restaurada");
+      })
+      .catch(err => {
+        this._AlertsService.msg("ERR", "ERROR", "Error al listar elementos eliminados.");
       });
   }
 }

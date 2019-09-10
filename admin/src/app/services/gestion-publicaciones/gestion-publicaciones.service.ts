@@ -69,4 +69,5 @@ export class GestionPublicacionesService {
          headers: getHeaders()
       })
    }
+   
 }

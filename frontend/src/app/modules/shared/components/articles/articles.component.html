@@ -147,25 +147,17 @@
                 <div class="textContent2">
                     <div class="row">
                         <div class="col-md-6">
-                            <div ngbDropdown style="">
-                                <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="selectedMinimo"
-                                    ngbDropdownToggle />
-                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                    <input type="button" *ngFor="let monto of montos" ngbDropdownItem (click)="setFilter('montoMinimo', monto)"
-                                        [value]="monto" />
-
-                                </div>
-                            </div>
+                            <!-- (ngModelChange)="setFilter('montoMinimo', montoMinimo)" -->
+                            <input [(ngModel)]="montoMinimo"  placeholder="Monto mínimo" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
                         </div>
                         <div class="col-md-6">
-                            <div ngbDropdown style="">
-                                <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="selectedMaximo"
-                                    ngbDropdownToggle />
-                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                    <input type="button" *ngFor="let monto of montos" ngbDropdownItem (click)="setFilter('montoMaximo', monto)"
-                                        [value]="monto" />
-                                </div>
-                            </div>
+                            <!-- (ngModelChange)="setFilter('montoMaximo', montoMaximo)" -->
+                            <input [(ngModel)]="montoMaximo"  placeholder="Monto máximo" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+                        </div>
+                    </div>
+                    <div *ngIf="montoMinimo && montoMaximo && montoMinimo<montoMaximo" class="row">
+                        <div class="col-md-12">
+                            <button class="btn brown-button text-uppercase font-weight-bold m-2" (click)="setFilter('montos', {montoMinimo:montoMinimo,montoMaximo:montoMaximo})"> Desde {{montoMinimo}} hasta {{montoMaximo}}</button>
                         </div>
                     </div>
                 </div>
@@ -177,16 +169,17 @@
                 <div class="textContent2">
                     <div class="row">
                         <div class="col-md-6">
-                            <!-- oninput="this.value=this.value.replace(/[^\d+]/,'') -->
-                            <input  [(ngModel)]="minM2" (ngModelChange)="setFilter('minM2', minM2)" placeholder="Mín M2" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+                            <!-- (ngModelChange)="setFilter('minM2', minM2)" -->
+                            <input  [(ngModel)]="minM2" placeholder="Mín M2" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
                         </div>
                         <div class="col-md-6">
-                            <input [(ngModel)]="maxM2" (ngModelChange)="setFilter('maxM2', maxM2)" placeholder="Máx M2" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+                            <!-- (ngModelChange)="setFilter('maxM2', maxM2)" -->
+                            <input [(ngModel)]="maxM2"  placeholder="Máx M2" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
                         </div>
                     </div>
-                    <div *ngIf="(minM2 >= maxM2)&&(minM2!='')&&(maxM2!='')" class="row">
+                    <div *ngIf="minM2 && maxM2 && minM2<maxM2" class="row">
                         <div class="col-md-12">
-                            Debe registrar un valor mínimo y máximo para este filtro
+                            <button class="btn brown-button text-uppercase font-weight-bold m-2" (click)="setFilter('metros', {minM2:minM2,maxM2:maxM2})"> Desde {{minM2}} m2 hasta {{maxM2}} m2</button>
                         </div>
                     </div>
                 </div>

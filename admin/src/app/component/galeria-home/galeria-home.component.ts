@@ -214,8 +214,6 @@ export class GaleriaHomeComponent implements OnInit {
         this._AlertsService.msg("ERR", "ERROR", "Las dimensiones de la imagen "+f.name+ " son demasiado pequeñas para subirla a la galería.");
       }else{
         let reader = new FileReader();
-        console.log("f");
-        console.log(f);
         // Closure to capture the file information.
         reader.onload = (function(theFile) {
           return function(e) {
@@ -231,7 +229,6 @@ export class GaleriaHomeComponent implements OnInit {
             document.getElementById("list").insertBefore(span, null);
           };
         })(f);
-
         // Read in the image file as a data URL.
         reader.readAsDataURL(f);
       }

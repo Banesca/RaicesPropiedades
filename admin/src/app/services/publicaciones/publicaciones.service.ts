@@ -466,4 +466,16 @@ export class PublicacionesService {
         return data;
       })).toPromise();
   }
+  paperBin() { //papelera
+    return this._HttpClient
+      .get(environment.apiHost + '/api/v1/listPropiedadesBorradas', {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      )
+      .toPromise();
+  }
 }

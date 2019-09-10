@@ -13,18 +13,14 @@
         <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Leer">
           Detalles Galería Home
         </h3>
-            <button
-            (click)="nuevo()"
-            type="button"
-            class="btn btn-primary"
-            class="btn btn-success my-4"
-            *ngIf="mFormaEstado != enCRUD.Crear && mFormaEstado != enCRUD.Actualizar && mFormaEstado != enCRUD.Leer"
-          >
-            <i class="fa fa-plus"></i>
-           Nuevo
-           </button>
-          </div>
-      </div>
+        
+        <button (click)="nuevo()" type="button" class="btn btn-success m-2" *ngIf="mFormaEstado != enCRUD.Crear && mFormaEstado != enCRUD.Actualizar && mFormaEstado != enCRUD.Leer">
+          <i class="fa fa-plus"></i>
+          Nuevo
+        </button>
+            
+    </div>
+</div>
 
 
   

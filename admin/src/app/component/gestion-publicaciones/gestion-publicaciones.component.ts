@@ -168,4 +168,5 @@ export class GestionPublicacionesComponent implements OnInit {
       this.firstFormGroup.controls['apareceEnLaGaleria'].value
     );
   }
+  
 }

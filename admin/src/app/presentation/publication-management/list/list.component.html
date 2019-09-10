@@ -5,15 +5,16 @@
          <mat-progress-bar *ngIf="loading" class="card-progress-bar" mode="indeterminate"></mat-progress-bar>
          <mat-card-header>
             <div class="row">
-               <div class="col-md-10">
-                  <!-- filtros aqui -->
-               </div>
 
-               <div class="col-md-2 text-right">
+               <div class="col-md-12 text-right">
                   <button [routerLink]="['/gestionar-publicaciones/form']" mat-raised-button color="success">
                      <i class="fa fa-plus"></i>
                      Nueva
                   </button>
+                    <button (click)="paperBin()" type="button" class="btn btn-warning m-2" >
+                        <i class="fa fa-eye"></i>
+                        Ver papelera
+                    </button>
                </div>
             </div>
          </mat-card-header>

@@ -28,6 +28,8 @@ export class ArticlesComponent implements OnInit {
   montos: number[] = montos;
   minM2: number=null;
   maxM2: number=null;
+  montoMinimo: number=null;
+  montoMaximo: number=null;
   constructor(private articulosService: ArticuloService) {
     
   }
@@ -45,32 +47,26 @@ export class ArticlesComponent implements OnInit {
     this.articulosService.filter.subscribe(filterData => {
       //Obtenemos el filtro del buscador
       this.filterData = filterData;
+      this.montoMinimo=this.filterData.montoMinimo;
+      this.montoMaximo=this.filterData.montoMaximo;
       this.objectFilter = {
-        idTipoPropiedad: this.filterData.idTipoPropiedad.idTipoPropiedad,
-        idMonedas: this.filterData.idMonedas.idMonedas,
-        idTipoOperaion: this.filterData.idTipoOperaion.idTipoOperaion,
-        montoMinimo:
-          this.filterData.montoMinimo == "Indistinto"
-            ? null
-            : this.filterData.montoMinimo,
-        montoMaximo:
-          this.filterData.montoMaximo == "Indistinto"
-            ? null
-            : this.filterData.montoMaximo,
-        idProvincia: this.filterData.idProvincia.id,
-        idPartido: this.filterData.idPartido.id,
-        idLocalidad: this.filterData.idLocalidad.id,
-        idBarrio: this.filterData.idBarrio.id,
-        habitantes: this.filterData.habitantes
+        idTipoPropiedad:this.filterData.idTipoPropiedad.idTipoPropiedad,
+        idMonedas:this.filterData.idMonedas.idMonedas,
+        idTipoOperaion:this.filterData.idTipoOperaion.idTipoOperaion,
+        montoMinimo:this.filterData.montoMinimo,
+        montoMaximo:this.filterData.montoMaximo,
+        idProvincia:this.filterData.idProvincia.id,
+        idPartido:this.filterData.idPartido.id,
+        idLocalidad:this.filterData.idLocalidad.id,
+        idBarrio:this.filterData.idBarrio.id,
+        habitantes:this.filterData.habitantes
       };
       this.propiedadesInPromise = true;
       this.articulosService
         .getItemsBySearch(this.objectFilter)
         .then(data => {
-          this.articulos = data.propiedades;
-          console.log('this.articulos',this.articulos)
+          this.articulos = data.propiedades;          
           this.arbol = data.arbol;
-          console.log('this.arbol',this.arbol)
           this.propiedadesInPromise = false;
         })
         .catch(error => {
@@ -83,8 +79,6 @@ export class ArticlesComponent implements OnInit {
     let resultsElement = document.getElementById("resultados-busqueda");
     resultsElement.scrollIntoView();
     this.searchResult();
-    console.log('this.minM2',this.minM2);
-    console.log('this.maxM2',this.maxM2);
   }
 
   verifyStringOrObject() {
@@ -100,10 +94,10 @@ export class ArticlesComponent implements OnInit {
       data.idTipoOperaion && data.idTipoOperaion.idTipoOperaion
         ? (value = value + data.idTipoOperaion.descripcion + " / ")
         : "";
-      data.montoMinimo && data.montoMinimo != "Indistinto"
+      data.montoMinimo && data.montoMinimo != null
         ? (value = value + data.montoMinimo + " / ")
         : "";
-      data.montoMaximo && data.montoMaximo != "Indistinto"
+      data.montoMaximo && data.montoMaximo != null
         ? (value = value + data.montoMaximo + " / ")
         : "";
       data.idProvincia && data.idProvincia.id
@@ -151,6 +145,12 @@ export class ArticlesComponent implements OnInit {
     if (opcion == "maxM2") {
       this.maxM2 = null;
     }
+    if (opcion == "montoMinimo") {
+      this.montoMinimo = null;
+    }
+    if (opcion == "montoMaximo") {
+      this.montoMaximo = null;
+    }
     this.objectFilter[opcion] = null;
     this.filterData[opcion] = null;
     this.articulosService.search.next(true);
@@ -175,10 +175,18 @@ export class ArticlesComponent implements OnInit {
         this.objectFilter[opcion] = value.id;
         this.filterData[opcion] = value;
         break;
-      // case "relevanceyprice":
-      //   this.objectFilter[opcion] = value.value;
-      //   this.filterData[opcion] = value;
+      case "montos":
+        this.objectFilter['montoMinimo'] = value.montoMinimo;
+        this.objectFilter['montoMaximo'] = value.montoMaximo;
+        this.filterData['montoMinimo'] = value.montoMinimo;
+        this.filterData['montoMaximo'] = value.montoMaximo;
         break;
+      case "metros":
+        this.objectFilter['minM2'] = value.minM2;
+        this.objectFilter['maxM2'] = value.maxM2;
+        this.filterData['minM2'] = value.minM2;
+        this.filterData['maxM2'] = value.maxM2;
+        break;        
       default:
         this.objectFilter[opcion] = value;
         this.filterData[opcion] = value;

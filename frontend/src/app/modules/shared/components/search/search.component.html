@@ -77,32 +77,20 @@
           <div class="col-md-4 py-1  col-12 px-1">
             <label class="col font-weight-extrabold text-uppercase">Monto Mínimo:</label>
             <div ngbDropdown class="d-inline-block">
-              <input type="button" class="btn search-dropdown btn-block" id="dropdownBasic1" [value]="selectedMinimo"
-                ngbDropdownToggle />
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <input type="button" *ngFor="let monto of montos" ngbDropdownItem (click)="setMnimo(monto)" [value]="monto" />
-              </div>
+              <input type="number" class="btn search-dropdown btn-block" placeholder="Indistinto" [(ngModel)]="selectedMinimo"
+                oninput="this.value=this.value.replace(/[^\d+]/,'')" />
             </div>
           </div>
           <div class="col-md-4 py-1 col-12 px-1">
             <label class="col font-weight-extrabold text-uppercase">Monto Máximo:</label>
             <div ngbDropdown class="d-inline-block">
               <input
-                type="button"
+                type="number"
                 class="btn search-dropdown btn-block"
-                id="dropdownBasic1"
-                [value]="selectedMaximo"
-                ngbDropdownToggle
+                placeholder="Indistinto"
+                [(ngModel)]="selectedMaximo"
+                oninput="this.value=this.value.replace(/[^\d+]/,'')"
               />
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <input
-                  type="button"
-                  *ngFor="let monto of montos"
-                  ngbDropdownItem
-                  (click)="setMaximo(monto)"
-                  [value]="monto"
-                />
-              </div>
             </div>            
           </div>
           

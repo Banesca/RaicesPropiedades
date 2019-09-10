@@ -32,8 +32,7 @@ export class ListComponent implements OnInit {
       this.service.listarTodasPropiedades().then(
          res => {
             this.data = res;
-            console.log(res);
-
+            console.log('res',this.data);
             this.loading = false;
          }, error => {
             this.loading = false;
@@ -64,5 +63,17 @@ export class ListComponent implements OnInit {
             });
       }
    }
-
+   paperBin(){
+      this.loading = true;
+      this.service
+            .paperBin()
+            .then(data => {
+                  this.data = data;
+                  console.log('this.data',this.data);
+                  this.loading = false;
+            })
+            .catch(err => {
+            console.log(err);
+            });
+  }
 }

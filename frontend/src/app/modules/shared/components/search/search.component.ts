@@ -66,8 +66,8 @@ export class SearchComponent implements OnInit {
     this.selectedPartido = { id: null, nombre: "Indistinto" };
     this.selectedLocalidad = { id: null, nombre: "Indistinto" };
     this.selectedBarrio = { id: null, nombre: "Indistinto" };
-    this.selectedMinimo = "Indistinto";
-    this.selectedMaximo = "Indistinto";
+    this.selectedMinimo = null;
+    this.selectedMaximo = null;
     this.habitantes = null;
   }
   getAll() {
@@ -186,34 +186,44 @@ export class SearchComponent implements OnInit {
   setBarrio = (data: any) => {
     this.selectedBarrio = data;
   };
-  setMnimo = (data: number): void => {
-    this.selectedMinimo = data;
-  };
+  // setMnimo = (data: number): void => {
+  //   this.selectedMinimo = data;
+  // };
 
-  setMaximo = (data: number): void => {
-    this.selectedMaximo = data;
-  };
+  // setMaximo = (data: number): void => {
+  //   this.selectedMaximo = data;
+  // };
   // ------------------------
 
   searchFilter() {
     if (
-      (this.selectedMinimo == "Indistinto" &&
-        this.selectedMaximo != "Indistinto") ||
-      (this.selectedMaximo == "Indistinto" &&
-        this.selectedMinimo != "Indistinto")
+      (this.selectedMinimo == null &&
+        this.selectedMaximo != null) ||
+      (this.selectedMaximo == null &&
+        this.selectedMinimo != null)
     ) {
       this.validateMonto = true;
     } else {
       this.validateMonto = false;
       this._ArticuloService.search.next(true);
+      console.log({
+        idTipoPropiedad: this.tipo,
+        idMonedas: this.moneda,
+        idTipoOperaion: this.operation,
+        montoMinimo: this.selectedMinimo,
+        montoMaximo: this.selectedMaximo,
+        idProvincia: this.selectedProvince,
+        idPartido: this.selectedPartido,
+        idLocalidad: this.selectedLocalidad,
+        idBarrio: this.selectedBarrio,
+        habitantes: this.habitantes
+      });
       this._ArticuloService.filter.next({
         idTipoPropiedad: this.tipo,
         idMonedas: this.moneda,
         idTipoOperaion: this.operation,
-        montoMinimo:
-          this.selectedMinimo == "Indistinto" ? null : this.selectedMinimo,
-        montoMaximo:
-          this.selectedMaximo == "Indistinto" ? null : this.selectedMaximo,
+        montoMinimo: this.selectedMinimo,
+        montoMaximo: this.selectedMaximo,
         idProvincia: this.selectedProvince,
         idPartido: this.selectedPartido,
         idLocalidad: this.selectedLocalidad,

@@ -2,6 +2,10 @@
     <div class="row">
         <div class="col-md-12">
             <h3 class="py-5 text-center font-weight-bold">Tasaciones</h3>
+            <button (click)="paperBin()" type="button" class="btn btn-warning m-2" >
+                        <i class="fa fa-eye"></i>
+                        Ver papelera
+                    </button>            
         </div>
     </div>
 
@@ -35,6 +39,9 @@
                                     <button (click)="ver(categoria)" type="button" class="btn mr-2 btn-info" placement="top" ngbTooltip="Ver">
                                         <i class="far fa-eye"></i>
                                     </button>
+                                    <button *ngIf="paperBinList" (click)="restore(categoria.idTransacciones)" type="button" class="btn mr-2 btn-warning" placement="top" ngbTooltip="Restaurar">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
                                     <!--
                 <button
                   (click)="modificar(categoria)"
@@ -43,13 +50,14 @@
                 >
                 <i class="fas fa-pencil-alt"></i>
                 </button>-->                                    
-                                    <button (click)="eliminar(categoria.idTransacciones)" type="button" class="btn mr-2 btn-danger" placement="top" ngbTooltip="Eliminar">
+                                    <button *ngIf="!paperBinList" (click)="eliminar(categoria.idTransacciones)" type="button" class="btn mr-2 btn-danger" placement="top" ngbTooltip="Eliminar">
                                         <i class="fa fa-trash"></i>
                                     </button>
-                                    <button *ngIf="(categoria.status==='pendiente')" (click)="changeStateTo('confirmada',categoria.idTransacciones)" type="button" class="btn mr-2 btn-success" placement="top" ngbTooltip="Marcar como confirmada">
+                                    
+                                    <button *ngIf="(categoria.status==='pendiente')&&(!paperBinList)" (click)="changeStateTo('confirmada',categoria.idTransacciones)" type="button" class="btn mr-2 btn-success" placement="top" ngbTooltip="Marcar como confirmada">
                                         <i class="fa fa-check"></i>
                                     </button>
-                                    <button *ngIf="(categoria.status==='confirmada')" (click)="changeStateTo('pendiente',categoria.idTransacciones)" type="button" class="btn mr-2 btn-warning" placement="top" ngbTooltip="Marcar como pendiente">
+                                    <button *ngIf="(categoria.status==='confirmada')&&(!paperBinList)" (click)="changeStateTo('pendiente',categoria.idTransacciones)" type="button" class="btn mr-2 btn-warning" placement="top" ngbTooltip="Marcar como pendiente">
                                         <i class="fa fa-remove"></i>
                                     </button>
                                 </td>

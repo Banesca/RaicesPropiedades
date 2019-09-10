@@ -56,8 +56,8 @@ export class TransactionModalComponent implements OnInit {
         [Validators.required, Validators.pattern("[ña-zA-Z _]*")]
       ],
       descripcion: ["", Validators.required],
-      imagen_1: [null, Validators.required],
-      imagen_2: [null, Validators.required]
+      imagen_1: [null],
+      imagen_2: [null]
     });
   }
 
@@ -95,8 +95,8 @@ export class TransactionModalComponent implements OnInit {
     );
     formData.append("titulo", this.mContacto.titulo);
     formData.append("descripcion", this.mContacto.descripcion);
-    formData.append("imagen_1", this.contactForm.get("imagen_1").value);
-    formData.append("imagen_2", this.contactForm.get("imagen_2").value);
+    formData.append("imagen_1", this.contactForm.get("imagen_1").value?this.contactForm.get("imagen_1").value:null);
+    formData.append("imagen_2", this.contactForm.get("imagen_2").value?this.contactForm.get("imagen_2").value:null);
     return formData;
   }
   guardar() {
@@ -133,11 +133,9 @@ export class TransactionModalComponent implements OnInit {
       let file = event.target.files[0];
       if (image === "imagen_1") {
         this.contactForm.get("imagen_1").setValue(file);
-        this.files++;
       }
       if (image === "imagen_2") {
         this.contactForm.get("imagen_2").setValue(file);
-        this.files++;
       }
     }
   }
