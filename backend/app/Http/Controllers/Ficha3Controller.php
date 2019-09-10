@@ -282,7 +282,47 @@ class Ficha3Controller extends Controller {
             'msj' => 'No hay propiedades borradas',
         ];
 
-        return response()->json(count($p = Propiedad::onlyTrashed()->get()) > 0 ? $p : $response);
+        return response()->json(count($p = Propiedad::onlyTrashed()->with(
+            'TipoPropiedad',
+            'Disposicion',
+            'Estado',
+            'Orientacion',
+            'TipoAcceso',
+            'TipoAscensor',
+            'TipoBalcon',
+            'TipoBano',
+            'TipoCalefaccion',
+            'TipoCampo',
+            'TipoCobertura',
+            'TipoCoche',
+            'TipoCochera',
+            'TipoCosta',
+            'TipoEdificio',
+            'TipoExpensas',
+            'TipoFondoComercio',
+            'TipoFrente',
+            'TipoHotel',
+            'TipoLocal',
+            'TipoPendiente',
+            'TipoPiso',
+            'TipoPorton',
+            'TipoTecho',
+            'TipoTechoIndustrial',
+            'TipoTerreno',
+            'TipoUnidadCasa',
+            'TipoUnidadDepartamento',
+            'Barrio',
+            'Localidad',
+            'Pais',
+            'Partido',
+            'Provincia',
+            'SubBarrio',
+            'Region',
+            'TipoVista',
+            'estadoPublicacion',
+            'tipoOpeacion',
+            'tipoMoneda'
+        )->get()) > 0 ? $p : $response);
     }
 
     public function recuperarPropiedadBorra($idPropiedad) {
