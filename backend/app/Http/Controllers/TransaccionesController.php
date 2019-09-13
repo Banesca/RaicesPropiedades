@@ -33,8 +33,8 @@ class TransaccionesController extends Controller {
             'fk_tipoPropiedad' => 'required|min:1',
             'titulo'           => 'required|min:2',
             'email'            => 'required|email|min:2',
-            'imagen_1'         => 'image|required|mimes:jpeg,png,jpg,gif,svg',
-            'imagen_2'         => 'image|required|mimes:jpeg,png,jpg,gif,svg',
+            'imagen_1'         => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'imagen_2'         => 'image|mimes:jpeg,png,jpg,gif,svg',
         ], [
             'nombre_apellido.required'  => 'El nombre es requerido',
             'nombre_apellido.min'       => 'El Nombre no puede tener menos de 2 caracteres',
@@ -46,9 +46,7 @@ class TransaccionesController extends Controller {
             'titulo.min'                => 'El título no puede tener menos de 2 caracteres',
             'email.required'            => 'El correo es  requerido',
             'email.min'                 => 'El correo no puede tener menos de 2 caracteres',
-            'imagen_1.required'         => 'La Imagen es requerida',
             'imagen_1.mimes'            => 'Solo jpeg,png,jpg,gif,svg son soportados',
-            'imagen_2.required'         => 'La Imagen es requerida',
             'imagen_2.mimes'            => 'Solo jpeg,png,jpg,gif,svg son soportados',
             ]);
             try {
