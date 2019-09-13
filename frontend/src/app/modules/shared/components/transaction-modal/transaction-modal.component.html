@@ -42,27 +42,40 @@
                 </div>
               </div>
             <div class="col-sm-12">
-              <label for="exampleFormControlSelect1" class="text-uppercase">Categoría</label>
+              <label for="exampleFormControlSelect1" class="text-uppercase">Tipo de operación</label>
               <div class="form-group mb-3">
                   <select  formControlName="fk_tipoPropiedad"  [ngClass]="{ 'is-invalid': submitted && f.fk_tipoPropiedad.errors }" class="form-control form-control-lg">
-                    <option value="">Seleciona Una Categoría</option>
+                    <option value="">Seleciona un tipo de operación</option>
                     <option  *ngFor="let categoria of mCategorias" type="number" [value]="categoria.idTipoPropiedad">{{categoria.descripcion}}</option>
                     </select>
                   <div *ngIf="f.fk_tipoPropiedad.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="submitted && f.fk_tipoPropiedad.errors.required">La categoría de la propiedades es Requerida</div>
+                      <div *ngIf="submitted && f.fk_tipoPropiedad.errors.required">El tipo de operación de la propiedades es Requerida</div>
                   </div>
               </div>
             </div>
             <div class="col-sm-12">
-              <label for="exampleFormControlSelect1" class="text-uppercase">Título</label>
+              <label for="exampleFormControlSelect1" class="text-uppercase">Tipo de operación</label>
+              <div class="form-group mb-3">
+                <select formControlName="fk_tipoPropiedad" [ngClass]="{ 'is-invalid': submitted && f.fk_tipoPropiedad.errors }"
+                  class="form-control form-control-lg">
+                  <option value="">Seleciona un tipo de operación</option>
+                  <option *ngFor="let categoria of mCategorias" type="number" [value]="categoria.idTipoPropiedad">{{categoria.descripcion}}</option>
+                </select>
+                <div *ngIf="f.fk_tipoPropiedad.errors" type="alert" class="invalid-feedback">
+                  <div *ngIf="submitted && f.fk_tipoPropiedad.errors.required">El tipo de operación de la propiedades es Requerida</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <label for="exampleFormControlSelect1" class="text-uppercase">Dirección</label>
               <div class="form-group mb-3">
                 <input formControlName="titulo" type="text" [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" class="form-control form-control-lg" placeholder="Título"
                   aria-describedby="basic-addon1">
                   <div *ngIf="f.titulo.errors" type="alert" class="d-block invalid-feedback">
-                      <div *ngIf="f.titulo.hasError('pattern')">El título debe contener únicamente caracteres alfabéticos</div>
+                      <div *ngIf="f.titulo.hasError('pattern')">La dirección debe contener únicamente caracteres alfabéticos</div>
                   </div>
                   <div *ngIf="f.titulo.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="submitted && f.titulo.errors.required">El Título es Requerido</div>
+                      <div *ngIf="submitted && f.titulo.errors.required">La dirección es Requerido</div>
                   </div>
               </div>
             </div>
@@ -109,14 +122,14 @@
   </div>
   <div *ngIf="successMensaje" class="row">
       <div class="col-lg-12 my-2">
-        <h3 class="text-center mt-3 font-weight-bold">¡La Tasación se creó con éxito!</h3>
+        <h3 class="text-center mt-3 font-weight-bold">¡La solicitud se registró con éxito!</h3>
         <p class="mb-5 text-center font-weight-bold">En breve nos estaremos contactando</p>
         <button (click)="submittedClose() ; activeModal.close('Close click')"  class="btn brown-button btn-lg mx-auto btn-block col-lg-5" type="button" data-dismiss="modal" aria-label="Close">Cerrar</button>
       </div>
     </div>
     <div *ngIf="errorMensaje" class="row">
         <div class="col-lg-12 my-2">
-          <h3 class="text-center mt-3 font-weight-bold">Ocurrió un error al enviar la Tasación</h3>
+          <h3 class="text-center mt-3 font-weight-bold">Ocurrió un error al enviar la solicitud</h3>
           <p class="mb-5 text-center font-weight-bold">Por favor intete nuevamente</p>
           <button (click)="reintentar()"  class="btn brown-button btn-lg mx-auto btn-block col-lg-5">Volver</button>
         </div>
