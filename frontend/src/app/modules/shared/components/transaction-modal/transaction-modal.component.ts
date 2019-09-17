@@ -26,9 +26,13 @@ export class TransactionModalComponent implements OnInit {
   submitted = false;
   errorMensaje = false;
   hideForm = false;
-  files = 0;
   mLoading = false;
   closeResult: string;
+  upload={
+    image1:false,
+    image2:false
+  }
+
   private modalRef: NgbModalRef;
 
   constructor(
@@ -133,9 +137,11 @@ export class TransactionModalComponent implements OnInit {
       let file = event.target.files[0];
       if (image === "imagen_1") {
         this.contactForm.get("imagen_1").setValue(file);
+        this.upload.image1=true;
       }
       if (image === "imagen_2") {
         this.contactForm.get("imagen_2").setValue(file);
+        this.upload.image2=true;
       }
     }
   }
