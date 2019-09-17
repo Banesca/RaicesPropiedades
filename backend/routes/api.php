@@ -32,7 +32,7 @@ Route::group([ 'prefix' => 'auth' ], function() {
 
         Route::post('config/agregarActualizar', 'ConfigGeneralController@storeOrUpdate');
 
-        Route::post('addMail', 'MailController@addMail');
+        Route::post('addMail', 'MailController@addMail'); //para mail de recepcion
         Route::post('editMail/{idMail}', 'MailController@update');
         Route::delete('borrarMail/{idMail}', 'MailController@destroy');
 
