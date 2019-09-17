@@ -26,9 +26,11 @@ export class TransactionModalComponent implements OnInit {
   submitted = false;
   errorMensaje = false;
   hideForm = false;
-  files = 0;
   mLoading = false;
   closeResult: string;
+  image1={upload:false,format:false};
+  image2={upload:false,format:false};
+
   private modalRef: NgbModalRef;
 
   constructor(
@@ -70,7 +72,7 @@ export class TransactionModalComponent implements OnInit {
     if (this.contactForm.invalid) {
       return;
     }
-    this.mContacto = this.contactForm.value as IContacto;
+    this.mContacto = this.contactForm.value;
     this.guardar();
   }
 
@@ -95,22 +97,24 @@ export class TransactionModalComponent implements OnInit {
     );
     formData.append("titulo", this.mContacto.titulo);
     formData.append("descripcion", this.mContacto.descripcion);
-    formData.append("imagen_1", this.contactForm.get("imagen_1").value?this.contactForm.get("imagen_1").value:null);
-    formData.append("imagen_2", this.contactForm.get("imagen_2").value?this.contactForm.get("imagen_2").value:null);
+    if(this.contactForm.get("imagen_1").value){
+      formData.append("imagen_1", this.contactForm.get("imagen_1").value);
+    }
+    if (this.contactForm.get("imagen_2").value) {
+      formData.append("imagen_2", this.contactForm.get("imagen_2").value);
+    }
     return formData;
   }
   guardar() {
     this.mLoading = true;
     this.hideForm = true;
-
-    const form = this.getFormData();
     // registar tasacion
     this._ContactoService
-      .New(form)
+      .New(this.getFormData())
       .then(data => {
         this.successMensaje = true;
         this.mLoading = false;
-        this.contactForm.reset();
+        // this.contactForm.reset();
       })
       .catch(error => {
         console.log(error);
@@ -131,12 +135,26 @@ export class TransactionModalComponent implements OnInit {
   onFileChange(event, image) {
     if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
-      if (image === "imagen_1") {
-        this.contactForm.get("imagen_1").setValue(file);
-      }
-      if (image === "imagen_2") {
-        this.contactForm.get("imagen_2").setValue(file);
+        if (image === "imagen_1") {
+          if ((/\.(jpg|jpeg|bmp|gif|png)$/i).test(file.name) === false) {
+            this.image1.format=true;
+            this.image1.upload = false;
+          } else {
+            this.contactForm.get("imagen_1").setValue(file);
+            this.image1.upload = true;
+            this.image1.format = false;
+          }
+        }
+        if (image === "imagen_2") {
+          if ((/\.(jpg|jpeg|bmp|gif|png)$/i).test(file.name) === false) {
+            this.image2.format = true;
+            this.image2.upload = false;
+          } else {
+            this.contactForm.get("imagen_2").setValue(file);
+            this.image2.upload = true;
+            this.image1.format = false;
+          }
+        }
       }
     }
-  }
 }

@@ -1,3 +1,35 @@
+.sec2{
+	width:100%;
+	position: relative;
+}
+
+.sec2:before{
+	content: '';
+	width: 50%;
+	height: 150px;
+	position: absolute;
+	z-index: 0;
+	left: 0;
+	background: white;
+	bottom:-48px;
+	transform: skewY(5deg);
+}
+
+.sec2:after{
+	content: '';
+	width: 50%;
+	height:150px;
+	position: absolute;
+	z-index: 0;
+	right: 0;
+	background: white;
+	bottom:-48px;
+	transform: skewY(-5deg);
+}
+.section-container {
+    padding-bottom: 8rem!important;
+
+}
 .articulos {
   &-container {
     height: 1840px;

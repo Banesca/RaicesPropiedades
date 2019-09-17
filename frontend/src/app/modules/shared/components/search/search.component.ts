@@ -45,9 +45,8 @@ export class SearchComponent implements OnInit {
   localidades: any = [];
   barrios: any = [];
 
-  //busqueda avanzada
-  advancedSearchForm: boolean = false;
   validateMonto: boolean = false;
+
   constructor(
     private _ArticuloService: ArticuloService,
     private router: Router
@@ -206,18 +205,6 @@ export class SearchComponent implements OnInit {
     } else {
       this.validateMonto = false;
       this._ArticuloService.search.next(true);
-      console.log({
-        idTipoPropiedad: this.tipo,
-        idMonedas: this.moneda,
-        idTipoOperaion: this.operation,
-        montoMinimo: this.selectedMinimo,
-        montoMaximo: this.selectedMaximo,
-        idProvincia: this.selectedProvince,
-        idPartido: this.selectedPartido,
-        idLocalidad: this.selectedLocalidad,
-        idBarrio: this.selectedBarrio,
-        habitantes: this.habitantes
-      });
       this._ArticuloService.filter.next({
         idTipoPropiedad: this.tipo,
         idMonedas: this.moneda,
@@ -231,20 +218,6 @@ export class SearchComponent implements OnInit {
         habitantes: this.habitantes
       });
       this.emptyValues();
-    }
-  }
-  advancedSearch() {
-    switch (this.advancedSearchForm) {
-      case true:
-        this.advancedSearchForm = false;
-        this.habitantes = null;
-        break;
-      case false:
-        this.advancedSearchForm = true;
-        this.habitantes = 0;
-        break;
-      default:
-        break;
     }
   }
 }

@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit {
         localStorage.removeItem('imgPerfil');
         /* location.reload(); // reiniciamos la pagina */
         this.router.navigate(['/login']);
-        console.log("cerrando sesion desde el servicio");
       },
       error => { console.log('algo salio mal'); console.log(error) 
       this.router.navigate(['/login']);
