@@ -430,7 +430,7 @@
             <div class="content">
 
                 <!-- START HEADER IMAGE CONTAINER -->
-                <img class="header" src="{!! $message->embed(public_path('img/raices/header.jpg'))!!}" alt="">
+                <img class="header" src="{{ asset('img/raices/header.jpg') }}" alt="">
                 <!-- START HEADER IMAGE CONTAINER -->
 
                 <!-- START CENTERED WHITE CONTAINER -->
@@ -462,23 +462,7 @@
 
                 <!-- START FOOTER -->
                 <div class="wrapper-footer">
-                    <img src="{!! $message->embed(public_path('img/raices/footer-o.jpg'))!!}" alt="" class="footer">
-                    {{--<div class="wrapper-footer-social">
-                        <a target="_blank" href="https://facebook.com">
-                            <img class="item-a" src="{!! $message->embed(public_path('img/raices/facebook.jpg'))!!}" alt="">
-                        </a>
-
-                        <a target="_blank" href="https://twitter.com">
-                            <img class="item-b" src="{!! $message->embed(public_path('img/raices/twitter.jpg'))!!}" alt="">
-                        </a>
-                        <a target="_blank" href="https://instagram.com">
-                            <img class="item-c" src="{!! $message->embed(public_path('img/raices/instagram.jpg'))!!}" alt="">
-                        </a>
-                        <a target="_blank" href="https://main.com">
-                            <img class="item-d" src="{!! $message->embed(public_path('img/raices/main.jpg'))!!}" alt="">
-                        </a>
-                    </div>
-                    --}}
+                    <img src="{{ asset('img/raices/footer-o.jpg') }}" alt="" class="footer">
                 </div>
                 <!-- END FOOTER -->
             </div>
