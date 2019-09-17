@@ -44,7 +44,6 @@ export class SucursalesService {
 
   getSucursal(pKey: string) {
     const url = `${this.mUrl + this.mService}`;
-    console.log('getSucursal',url + pKey);
     return this._HttpClient.get(url + pKey, {
       headers: getHeaders()
     }).pipe(

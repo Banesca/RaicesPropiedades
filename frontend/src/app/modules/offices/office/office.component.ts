@@ -23,7 +23,7 @@ export class OfficeComponent implements OnInit {
   contactForm: FormGroup;
   successMensaje = false;
   submitted = false;
-  errorMensaje = false;
+  errorMensaje :any= null;
   hideForm = false;
   mLoading = false;
   searchClicked: boolean;
@@ -39,18 +39,12 @@ export class OfficeComponent implements OnInit {
   getParams() {
     this._ActivatedRoute.params.subscribe(param => {
       this.mId = param["ruta"];
-      console.log("this.mId", this.mId);
       this.GetSucursalUrl();
     });
   }
   ngOnInit() {
     this.getParams();
     
-    // this.router.events.subscribe((event: Event) => {
-    //   if (event instanceof NavigationStart) {
-    //     this.GetSucursalUrl();
-    //   }
-    // });
 
     this.articuloService.search.subscribe(data => {
       this.searchClicked = data;
@@ -101,7 +95,6 @@ export class OfficeComponent implements OnInit {
       .getSucursal(this.mId)
       .then(data => {
         this.gSucursal = data.suculsales;
-        console.log("this.gSucursal", this.gSucursal);
       })
       .catch(error => {
         console.log(error);
@@ -122,12 +115,12 @@ export class OfficeComponent implements OnInit {
       })
       .catch(error => {
         console.log(error);
-        this.errorMensaje = true;
+        this.errorMensaje = error;
         this.mLoading = false;
       });
   }
   reintentar() {
-    this.errorMensaje = false;
+    this.errorMensaje = null;
     this.hideForm = false;
     this.submitted = false;
   }

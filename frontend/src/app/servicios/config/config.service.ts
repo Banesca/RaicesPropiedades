@@ -19,13 +19,11 @@ export class ConfigService {
       .get(lFileConfig)
       .pipe(
         map((response: IConfigStatic) => {
-          console.log('loadAppConfigStatic map');
           return response;
         })
       )
       .toPromise()
       .then(data => {
-        console.log('loadAppConfigStatic then');
         this.mCfgStatic = data;
       });
   }
