@@ -38,7 +38,7 @@ function cancelar(token) {
                 type: 'success',
                 //showCancelButton: true,
                 confirmButtonColor: '#463ddd',
-                confirmButtonText: 'Ok, Ir a la página principal',
+                confirmButtonText: 'Ir a la página principal',
                 //cancelButtonText: 'No, cancalar',
                 showLoaderOnConfirm: true,
                 preConfirm: function () {
