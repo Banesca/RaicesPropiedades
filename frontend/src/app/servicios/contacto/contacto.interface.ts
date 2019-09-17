@@ -10,8 +10,8 @@ export interface IContacto {
     fk_tipoPropiedad: number;
     titulo: string;
     descripcion: string;
-    imagen_1: object;
-    imagen_2: object;
+    imagen_1: any;
+    imagen_2: any;
 }
 
 

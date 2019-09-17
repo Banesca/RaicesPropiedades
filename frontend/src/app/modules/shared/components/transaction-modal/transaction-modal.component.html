@@ -82,11 +82,14 @@
             <div class="row">
               <div class="form-group mb-3 col-md-6">
                 <input type="file" (change)="onFileChange($event,'imagen_1')" class="form-file form-control form-control-lg" placeholder="file1.jpg">
-                <div class="invalid-feedback d-block text-success text-center ng-star-inserted" *ngIf="upload.image1">Imagen cargada satisfactoriamente</div>
+                <div class="invalid-feedback d-block text-success text-center ng-star-inserted" *ngIf="image1.upload">Imagen cargada satisfactoriamente</div>
+                <div class="invalid-feedback d-block text-center ng-star-inserted" *ngIf="image1.format" >Solo jpeg,png,jpg,gif,svg son soportados</div>
               </div>
               <div class="form-group mb-3 col-md-6">
                 <input type="file" (change)="onFileChange($event,'imagen_2')" class="form-file form-control form-control-lg" placeholder="file1.jpg">
-                <div class="invalid-feedback d-block text-success text-center ng-star-inserted" *ngIf="upload.image2">Imagen cargada satisfactoriamente</div>
+                <div class="invalid-feedback d-block text-success text-center ng-star-inserted" *ngIf="image2.upload">Imagen cargada satisfactoriamente</div>
+                <div class="invalid-feedback d-block text-center ng-star-inserted" *ngIf="image2.format">Solo jpeg,png,jpg,gif,svg son
+                  soportados</div>
               </div>
             </div>
             </div>
