@@ -7,6 +7,7 @@ import { PublicationManagementRoutingModule } from './publication-management-rou
 
 import { MaterialUiModule } from 'src/app/models/material/material-ui.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
    declarations: [
@@ -19,7 +20,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
       PublicationManagementRoutingModule,
       MaterialUiModule,
       ReactiveFormsModule,
-      FormsModule
+      FormsModule,
+       NgxPaginationModule
    ],
    exports: [],
    providers: [],

@@ -33,18 +33,16 @@
             <th class="col">Email</th>
           </thead>
           <tbody *ngIf="activos">
-  
-              <tr
-              *ngFor="let categoria of mCategorias; let i = index"
-              (dblclick)="modificar(categoria)"
-            >
-     
-          <td>{{i + 1}}</td>
-          <td>{{categoria.email}}</td>
-          </tr>
+            <tr *ngFor="let categoria of mCategorias| paginate: { itemsPerPage: 5, currentPage: p }; let i = index" (dblclick)="modificar(categoria)">
+              <td>{{i + 1}}</td>
+              <td>{{categoria.email}}</td>
+            </tr>
         </tbody>
         
         </table>
+        <div class="w-100">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
         <div
           *ngIf="(mCategorias | keys).length === 0 && !mLoading && activos"
           class="alert alert-info"

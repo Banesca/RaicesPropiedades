@@ -28,7 +28,7 @@
               <th></th>
             </thead>
             <tbody>
-              <tr *ngFor="let categoria of mCategorias; let i = index">
+              <tr *ngFor="let categoria of mCategorias| paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
                 <td class="d-flex justify-content-center">
                   {{ categoria.idSuscripcionUser }}
                 </td>
@@ -46,6 +46,9 @@
               </tr>
             </tbody>
           </table>
+          <div class="w-100">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
           <div
             *ngIf="(mCategorias | keys).length === 0 && !mLoading"
             class="alert alert-info"
