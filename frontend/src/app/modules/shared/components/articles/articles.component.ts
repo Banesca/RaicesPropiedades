@@ -112,6 +112,9 @@ export class ArticlesComponent implements OnInit {
       data.idBarrio && data.idBarrio.id
         ? (value = value + data.idBarrio.nombre + +" / ")
         : "";
+      data.Ambientes_Cochera
+        ? (value = value +"Con cochera / ")
+        : "";
     }
     return value;
   }
@@ -186,7 +189,7 @@ export class ArticlesComponent implements OnInit {
         this.objectFilter['maxM2'] = value.maxM2;
         this.filterData['minM2'] = value.minM2;
         this.filterData['maxM2'] = value.maxM2;
-        break;        
+        break;
       default:
         this.objectFilter[opcion] = value;
         this.filterData[opcion] = value;

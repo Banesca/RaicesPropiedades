@@ -94,6 +94,11 @@
                         <span>{{filterData.habitantes}} habitantes</span>
                         <mat-icon matChipRemove>cancel</mat-icon>
                     </mat-chip>
+                    <!--CHIP cochera-->
+                    <mat-chip removable="true" (removed)="removeChip('Ambientes_Cochera')" *ngIf="filterData.Ambientes_Cochera">
+                        <span>Con cochera</span>
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
                 </mat-chip-list>
             </div>
             <!--
@@ -148,12 +153,12 @@
                 </div>
                 <div class="textContent2">
                     <div class="row">
-                        <div class="col-md-6">
-                            <!-- (ngModelChange)="setFilter('montoMinimo', montoMinimo)" -->
-                            <input [(ngModel)]="montoMinimo"  placeholder="Monto mínimo" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+                        <div class="col-md-12">
+                            <input [(ngModel)]="montoMinimo"  placeholder="Monto mínimo" type="number" class="btn search-dropdown btn-block mb-2" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
                         </div>
-                        <div class="col-md-6">
-                            <!-- (ngModelChange)="setFilter('montoMaximo', montoMaximo)" -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
                             <input [(ngModel)]="montoMaximo"  placeholder="Monto máximo" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
                         </div>
                     </div>
@@ -170,18 +175,33 @@
                 </div>
                 <div class="textContent2">
                     <div class="row">
-                        <div class="col-md-6">
-                            <!-- (ngModelChange)="setFilter('minM2', minM2)" -->
-                            <input  [(ngModel)]="minM2" placeholder="Mín M2" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+                        <div class="col-md-12">
+                            <input  [(ngModel)]="minM2" placeholder="Mínimo M2" type="number" class="btn search-dropdown btn-block mb-2" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
                         </div>
-                        <div class="col-md-6">
-                            <!-- (ngModelChange)="setFilter('maxM2', maxM2)" -->
-                            <input [(ngModel)]="maxM2"  placeholder="Máx M2" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input [(ngModel)]="maxM2"  placeholder="Máximo M2" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
                         </div>
                     </div>
                     <div *ngIf="minM2 && maxM2 && minM2<maxM2" class="row">
                         <div class="col-md-12">
                             <button class="btn brown-button text-uppercase font-weight-bold m-2" (click)="setFilter('metros', {minM2:minM2,maxM2:maxM2})"> Desde {{minM2}} m2 hasta {{maxM2}} m2</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="articulos-relevante">
+                <div class="title">
+                    Con cochera
+                </div>
+                <div class="textContent2">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="switch" for="checkbox">
+                                <input type="checkbox" [(ngModel)]="objectFilter.Ambientes_Cochera" (click)="setFilter('Ambientes_Cochera', $event.target.checked)" id="checkbox" />
+                                <div class="slider round"></div>
+                            </label>
                         </div>
                     </div>
                 </div>
