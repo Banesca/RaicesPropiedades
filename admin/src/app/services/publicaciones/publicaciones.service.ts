@@ -478,4 +478,16 @@ export class PublicacionesService {
       )
       .toPromise();
   }
+  filter(data: any) { //buscador
+    return this._HttpClient
+      .post(environment.apiHost + this.mService + 'propiedades/filter',data, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      )
+      .toPromise();
+  }
 }

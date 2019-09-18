@@ -10,11 +10,28 @@
       <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Actualizar">
         Actualizar Sucursal
       </h3>
-      <button (click)="nuevo()" type="button" class="btn btn-primary" class="btn btn-success my-4"
-        *ngIf="mFormaEstado != enCRUD.Crear &&  mFormaEstado != enCRUD.Actualizar">
-        <i class="fa fa-plus"></i>
-        Nuevo
-      </button>
+      <div class="d-flex row justify-content-between" *ngIf="mFormaEstado != enCRUD.Crear && mFormaEstado != enCRUD.Actualizar">
+        <div class="col-md-12">
+          <form [formGroup]="filterForm" *ngIf="mFormaEstado != enCRUD.Crear && mFormaEstado != enCRUD.Actualizar && mFormaEstado !=
+                  enCRUD.Leer"
+            class="d-flex align-items-center m-2">
+            <div class="col-md-2">
+              <button class="btn btn-success btn-block" type="button" (click)="nuevo()">
+                <i class="fa fa-plus"></i> Nuevo
+              </button>
+            </div>
+            <div class="form-group col-md-8 mb-0">
+              <input class="form-control ng-untouched ng-pristine ng-valid" formControlName="filter" placeholder="Buscar por nombre, número de contacto, email o dirección"
+                type="text">
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-success btn-block" type="button" (click)="filter()" [disabled]=" inPromise">
+                Buscar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 

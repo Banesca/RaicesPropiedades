@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicacionesService } from 'src/app/services/publicaciones/publicaciones.service';
 import { AlertsService } from 'src/app/services/alerts.service';
+import {
+  NgForm,
+  FormGroup,
+  FormBuilder,
+  Validators
+} from "@angular/forms";
 
 @Component({
    selector: 'app-list',
@@ -11,15 +17,24 @@ export class ListComponent implements OnInit {
    data: any[] = []
    tiposPropiedades: any[] = [];
 
+      filterForm: FormGroup;
+
    loading: boolean = false
    constructor(
       private service: PublicacionesService,
-      private alertService: AlertsService
+      private alertService: AlertsService,
+      private _formBuilder: FormBuilder
    ) { }
 
    ngOnInit(): void {
-      this.loadData()
+      this.loadData();
+      this.filterForm = this.getFilterForm();
    }
+      getFilterForm() {
+            return this._formBuilder.group({
+                  filter: [""]
+            });
+      }
 
    loadData() {
 
@@ -76,4 +91,17 @@ export class ListComponent implements OnInit {
             console.log(err);
             });
   }
+      filter() {
+            // Buscar  por título, descripción, tipo
+            console.log("filter", this.filterForm.value);
+            this.service
+                  .filter(this.filterForm.value)
+                  .then(data => {
+                  console.log(data);
+                  })
+                  .catch(err => {
+                  console.log(err);
+                  this.alertService.msg("ERR", "ERROR", "Error al crear la galería.");
+                  });
+      }
 }

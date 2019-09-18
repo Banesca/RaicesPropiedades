@@ -279,5 +279,9 @@ class TransaccionesController extends Controller {
 
         return $response;
     }
+    public function filter(Request $request) {
+        //aplicar busqueda (nombre, teléfono, título, descripción o categoría)
+        return response()->json(['request'=>$request->filter]);
+    }
 
 }

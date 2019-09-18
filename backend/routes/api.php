@@ -60,7 +60,8 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     Route::post('sucursal/listar', 'SucursalController@listar');
     Route::get('sucursal/{id}', 'SucursalController@listarPorId');
-
+    //alejandro continualo
+    Route::post('sucursal/filter', 'SucursalController@filter');
 
     /*   crud del mail masivo    */
     Route::post('enviarMailMasivos', 'SuscripcionUserController@add'); // agregar
@@ -77,6 +78,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::get('suscripcion/listarSuscripcionesCanceladas','SuscripcionController@listarSuscripcionesCanceladas');
     Route::get('suscripcion/buscarSuscripcionPorEmail/{email}','SuscripcionController@buscarSuscripcionPorEmail');
     Route::post('suscripcion/cancelarSuscripcionTocken/{tocken}','SuscripcionController@cancelarSuscripcionTocken');
+    Route::post('suscripcion/filter','SuscripcionController@filter');
     /*SUSCRIPCIONES*/
 
     /*   Transacciones    */
@@ -88,6 +90,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::delete('transacciones/eliminar/{idTransaccion}', 'TransaccionesController@destroy');
     Route::get('transacciones/{idTransaccion}', 'TransaccionesController@listarTransaccionesPorId');
     Route::post('transacciones/changestatus/{idTransaccion}', 'TransaccionesController@changeStatusTransaccion');
+    Route::post('transacciones/filter', 'TransaccionesController@filter');
     /*   Transacciones    */
 
     /* OBTENER  PAISES PARA EL BUSCADOR */
@@ -106,6 +109,8 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::get('galeria/{id}', 'GaleriaController@listarGaleriaPorId');
     Route::post('galeria/edit/{idGaleria}', 'GaleriaController@update');
     Route::delete('galeria/eliminar/{idGaleria}', 'GaleriaController@destroy');
+    //alejandro continualo
+    Route::post('galeria/filter', 'GaleriaController@filter');
     /* Galeria */
 
     Route::get('limpiar_cache', function () {
@@ -179,7 +184,11 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     Route::get('listTransaccionBorradas','TransaccionesController@listTransaccionBorradas');
     Route::get('recuperarTransaccionBorra/{idTransacciones}','TransaccionesController@recuperarTransaccionBorra');
-
+    //alejandro continualo
+    Route::post('propiedades/filter',function(\Request $request){
+        //aplicar busqueda (Buscar por título ,descripción, tipo)
+        return response()->json(['request'=>$request->filter]);
+    });
     //Route::get('ubicaciones','BuscadorDePropiedadesController@direcciones');
 
     Route::post('buscadorGeneral','BuscadorDePropiedadesController@buscarGeneral');

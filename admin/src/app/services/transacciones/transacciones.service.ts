@@ -92,4 +92,16 @@ export class TransaccionesService {
       )
       .toPromise();
   }
+  filter(data: any) {
+    return this._HttpClient
+      .post(environment.apiHost + this.mService + "/filter", data, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      )
+      .toPromise();
+  }
 }

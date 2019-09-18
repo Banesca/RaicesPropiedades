@@ -61,4 +61,16 @@ export class SucursalService {
         })
       ).toPromise();
   }
+  filter(data: any) {
+    return this._HttpClient
+      .post(environment.apiHost + "/api/v1/sucursal/filter", data, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      )
+      .toPromise();
+  }
 }

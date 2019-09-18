@@ -183,4 +183,8 @@ class SuscripcionController extends Controller {
             return response()->json($response, 404);
         }
     }
+    public function filter(Request $request) {
+        //aplicar busqueda (Buscar por título y descripción)
+        return response()->json(['request'=>$request->filter]);
+    }
 }

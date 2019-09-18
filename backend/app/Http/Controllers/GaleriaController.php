@@ -218,4 +218,8 @@ class GaleriaController extends Controller
             ], 500);
         }
     }
+    public function filter(Request $request){
+        //aplicar busqueda (titulo o descripcion)
+        return response()->json(['request'=>$request->filter]);
+    }
 }

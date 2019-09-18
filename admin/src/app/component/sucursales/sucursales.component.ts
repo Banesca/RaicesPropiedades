@@ -16,7 +16,10 @@ export class SucursalesComponent implements OnInit {
   enCRUD = enCRUD;
   sucursalList: ISucursales[] = [];
   sucursalSelected: ISucursales;
-  myForm: FormGroup
+
+  myForm: FormGroup;
+  filterForm: FormGroup;
+
   mLoading: boolean;
   progressBar = false;
   constructor(
@@ -35,15 +38,19 @@ export class SucursalesComponent implements OnInit {
   ngOnInit() {
     this.mFormaEstado = enCRUD.Eliminar;
     this.getSucursalList();
+    this.filterForm = this.getFilterForm();
   }
-
+  getFilterForm() {
+    return this.fb.group({
+      filter: [""]
+    });
+  }
   getSucursalList() {
     this.mLoading = true;
     this._sucursalService
       .getAll()
       .then(data => {
         this.sucursalList = data.suculsales;
-        this.getSucursalList();
         this.mLoading = false;
       })
       .catch(error => {
@@ -142,6 +149,19 @@ export class SucursalesComponent implements OnInit {
       });
   }
 }
+  filter() {
+    // Buscar por nombre, número de contacto, email o dirección
+    console.log("filter",this.filterForm.value);
+    this._sucursalService
+      .filter(this.filterForm.value)
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+        this._as.msg("ERR", "ERROR", "Error al crear la galería.");
+      });
+  }
 
 
 }

@@ -25,7 +25,10 @@ export class MailSuscribersComponent implements OnInit {
   mMostrarForma = false;
   mNuevo = false;
   submitted = false;
+
   mForma: FormGroup;
+  filterForm: FormGroup;
+
   mFormaEstado: string;
   enCRUD = enCRUD;
 
@@ -34,17 +37,24 @@ export class MailSuscribersComponent implements OnInit {
     private _MailSuscribersService: MailSuscribersService,
     private _AlertsService: AlertsService
   ) {
+    
+  }
+  get f() {
+    return this.mForma.controls;
+  }
+  ngOnInit() {
     this.mCategorias = [];
     this.mCategoriasSelect = MailSuscribers.empy();
     this.mForma = this.generarFormulario();
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
+    this.filterForm = this.getFilterForm();
   }
-  get f() {
-    return this.mForma.controls;
+  getFilterForm() {
+    return this._formBuilder.group({
+      filter: [""]
+    });
   }
-  ngOnInit() {}
-
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
@@ -100,6 +110,19 @@ onSubmit() {
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Hubo un problema al envíar el Mail.')
+      });
+  }
+  filter() {
+    // Buscar por título y descripción
+    console.log("filter", this.filterForm.value);
+    this._MailSuscribersService
+      .filter(this.filterForm.value)
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+        this._AlertsService.msg("ERR", "ERROR", "Error al crear la galería.");
       });
   }
 }

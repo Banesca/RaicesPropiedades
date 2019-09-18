@@ -153,4 +153,8 @@ class SucursalController extends Controller {
 
         return response()->json($response, 200);
     }
+    public function filter(Request $request) {
+        //aplicar busqueda (nombre, número de contacto, email o dirección)
+        return response()->json(['request'=>$request->filter]);
+    }
 }

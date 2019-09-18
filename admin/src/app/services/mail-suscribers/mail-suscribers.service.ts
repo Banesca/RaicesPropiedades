@@ -6,16 +6,14 @@ import { IMailSuscriber, IMailSuscriberRs, ISuscriberRs} from './mail-suscriber.
 import { getHeaders } from '../../misc/Headers';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class MailSuscribersService {
-  constructor(
-    private _HttpClient: HttpClient) {
-  }
+  constructor(private _HttpClient: HttpClient) {}
 
   allCategorias() {
     return this._HttpClient
-      .get(environment.apiHost + '/api/v1/ListarMensajesMailMasivos', {
+      .get(environment.apiHost + "/api/v1/ListarMensajesMailMasivos", {
         headers: getHeaders()
       })
       .pipe(
@@ -28,7 +26,7 @@ export class MailSuscribersService {
 
   allSuscribers() {
     return this._HttpClient
-      .get(environment.apiHost + '/api/v1/suscripcion/listarSuscripciones', {
+      .get(environment.apiHost + "/api/v1/suscripcion/listarSuscripciones", {
         headers: getHeaders()
       })
       .pipe(
@@ -42,7 +40,9 @@ export class MailSuscribersService {
   nuevaCategoria(pCategoria: IMailSuscriber) {
     const lCategoria = JSON.stringify(pCategoria);
     return this._HttpClient
-      .post(environment.apiHost + '/api/v1/enviarMailMasivos', lCategoria, { headers: getHeaders() })
+      .post(environment.apiHost + "/api/v1/enviarMailMasivos", lCategoria, {
+        headers: getHeaders()
+      })
       .pipe(
         map((data: any) => {
           return data;
@@ -52,10 +52,28 @@ export class MailSuscribersService {
   }
   search(pCategoria: any) {
     return this._HttpClient
-      .get(environment.apiHost + '/api/v1/suscripcion/buscarSuscripcionPorEmail' + '/' + pCategoria  , { headers: getHeaders() })
+      .get(
+        environment.apiHost +
+          "/api/v1/suscripcion/buscarSuscripcionPorEmail" +
+          "/" +
+          pCategoria,
+        { headers: getHeaders() }
+      )
       .pipe(
         map((data: any) => {
           return data;
+        })
+      )
+      .toPromise();
+  }
+  filter(data: any) {
+    return this._HttpClient
+      .post(environment.apiHost + "/api/v1/suscripcion/filter", data, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((res: any) => {
+          return res;
         })
       )
       .toPromise();

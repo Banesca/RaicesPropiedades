@@ -28,6 +28,8 @@ export class TransaccionesComponent implements OnInit {
   mId: number;
 
   mForma: FormGroup;
+  filterForm: FormGroup;
+
   mFormaEstado: string;
   enCRUD = enCRUD;
   paperBinList:boolean =false;
@@ -45,8 +47,13 @@ export class TransaccionesComponent implements OnInit {
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
     this.getCategoria();
+    this.filterForm = this.getFilterForm();
   }
-
+  getFilterForm() {
+    return this._formBuilder.group({
+      filter: [""]
+    });
+  }
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
@@ -192,6 +199,19 @@ export class TransaccionesComponent implements OnInit {
       })
       .catch(err => {
         this._AlertsService.msg("ERR", "ERROR", "Error al listar elementos eliminados.");
+      });
+  }
+  filter() {
+    // Buscar por nombre, teléfono, título o descripción, categoria
+    console.log("filter",this.filterForm.value);
+    this._TransaccionesService
+      .filter(this.filterForm.value)
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+        this._AlertsService.msg("ERR", "ERROR", "Error al crear la galería.");
       });
   }
 }

@@ -26,7 +26,10 @@ export class GaleriaHomeComponent implements OnInit {
   images: any = [];
   length: number = 0;
   submitted: boolean = false;
+
   mForma: FormGroup;
+  filterForm: FormGroup;
+
   mFormaEstado: string;
   enCRUD = enCRUD;
   formData = new FormData();
@@ -36,8 +39,10 @@ export class GaleriaHomeComponent implements OnInit {
     private _GaleriaHomeService: GaleriaHomeService,
     private _AlertsService: AlertsService,
     private _PublicacionesService: PublicacionesService,
-    private config: NgbCarouselConfig,
-  ) {
+    private config: NgbCarouselConfig
+  ) {}
+
+  ngOnInit() {
     this.mCategorias = [];
     // this.mCategoriasSelect = MailSuscribers.empy();
     this.mForma = this.generarFormulario();
@@ -45,35 +50,42 @@ export class GaleriaHomeComponent implements OnInit {
     this.mFormaEstado = enCRUD.Eliminar;
     this.getAll();
     this.getPublicaciones();
-    config.interval = 5000;
-    config.wrap = true;
-    config.keyboard = false;
-    config.pauseOnHover = false;
-    config.showNavigationIndicators = false;
-  }
-
-  ngOnInit() {
+    this.config.interval = 5000;
+    this.config.wrap = true;
+    this.config.keyboard = false;
+    this.config.pauseOnHover = false;
+    this.config.showNavigationIndicators = false;
+    this.filterForm = this.getFilterForm();
   }
 
   get f() {
     return this.mForma.controls;
   }
+  getFilterForm() {
+    return this._formBuilder.group({
+      filter: [""]
+    });
+  }
   generarFormulario() {
     // Estructura de nuestro formulario
     return this._formBuilder.group({
-      titulo: ["", [
-        Validators.required, 
-        Validators.minLength(3),
-        Validators.pattern("[ña-zA-Z _]*")
-      ]],
-      descripcion: ["", [
-        Validators.required, 
-        Validators.minLength(10),
-        Validators.maxLength(40),
-      ]],
-      orden: [null, [
-        Validators.required
-      ]],
+      titulo: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern("[ña-zA-Z _]*")
+        ]
+      ],
+      descripcion: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(40)
+        ]
+      ],
+      orden: [null, [Validators.required]],
       fk_publicaciones: ["", Validators.required],
       images: null
     });
@@ -92,7 +104,10 @@ export class GaleriaHomeComponent implements OnInit {
   getFormData() {
     this.formData.append("titulo", this.mCategoriasSelect.titulo);
     this.formData.append("descripcion", this.mCategoriasSelect.descripcion);
-    this.formData.append("fk_publicaciones",this.mCategoriasSelect.fk_publicaciones);
+    this.formData.append(
+      "fk_publicaciones",
+      this.mCategoriasSelect.fk_publicaciones
+    );
     this.formData.append("orden", `${this.mCategoriasSelect.orden}`);
     for (let i = 0; i < this.length; i++) {
       this.formData.append("images[" + i + "]", this.images[i]);
@@ -152,7 +167,7 @@ export class GaleriaHomeComponent implements OnInit {
     }
   }
 
-  nuevo() {    
+  nuevo() {
     this.mCategoriasSelect = Galeria.empy();
     this.mFormaEstado = enCRUD.Crear;
   }
@@ -173,7 +188,11 @@ export class GaleriaHomeComponent implements OnInit {
         this.getAll();
         this.mLoading = false;
         this.submitted = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería Actualizada Correctamente.')
+        this._AlertsService.msg(
+          "OK",
+          "!ÉXITO!",
+          "Galería Actualizada Correctamente."
+        );
       })
       .catch(err => {
         this._AlertsService.msg(
@@ -195,7 +214,11 @@ export class GaleriaHomeComponent implements OnInit {
         this.mForma.reset();
         this.mLoading = false;
         this.submitted = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Galería creada Correctamente.');
+        this._AlertsService.msg(
+          "OK",
+          "!ÉXITO!",
+          "Galería creada Correctamente."
+        );
       })
       .catch(err => {
         console.log(err);
@@ -210,9 +233,15 @@ export class GaleriaHomeComponent implements OnInit {
       if (!f.type.match("image.*")) {
         continue;
       }
-      if (f.size<300000){
-        this._AlertsService.msg("ERR", "ERROR", "Las dimensiones de la imagen "+f.name+ " son demasiado pequeñas para subirla a la galería.");
-      }else{
+      if (f.size < 300000) {
+        this._AlertsService.msg(
+          "ERR",
+          "ERROR",
+          "Las dimensiones de la imagen " +
+            f.name +
+            " son demasiado pequeñas para subirla a la galería."
+        );
+      } else {
         let reader = new FileReader();
         // Closure to capture the file information.
         reader.onload = (function(theFile) {
@@ -232,7 +261,17 @@ export class GaleriaHomeComponent implements OnInit {
         // Read in the image file as a data URL.
         reader.readAsDataURL(f);
       }
-      
     }
+  }
+  filter() {
+    this._GaleriaHomeService
+      .filter(this.filterForm.value)
+      .then(data => {
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+        this._AlertsService.msg("ERR", "ERROR", "Error al crear la galería.");
+      });
   }
 }
