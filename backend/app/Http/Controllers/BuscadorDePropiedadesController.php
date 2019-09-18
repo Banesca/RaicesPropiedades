@@ -12,14 +12,16 @@ use Illuminate\Http\Request;
 class BuscadorDePropiedadesController extends Controller {
 
     public function buscarGeneral(Request $request) {
-        $idTipoOperaion   = @$request->idTipoOperaion;
-        $idTipoPropiedad  = @$request->idTipoPropiedad;
-        $idMonedas        = @$request->idMonedas;
-        $idProvincia      = @$request->idProvincia;
-        $idPartido        = @$request->idPartido;
-        $idLocalidad      = @$request->idLocalidad;
-        $idBarrio         = @$request->idBarrio;
-        $CantidadPersonal = @$request->habitantes;
+        $idTipoOperaion       = @$request->idTipoOperaion;
+        $idTipoPropiedad      = @$request->idTipoPropiedad;
+        $idMonedas            = @$request->idMonedas;
+        $idProvincia          = @$request->idProvincia;
+        $idPartido            = @$request->idPartido;
+        $idLocalidad          = @$request->idLocalidad;
+        $idBarrio             = @$request->idBarrio;
+        $CantidadPersonal     = @$request->habitantes;
+        $CantidadHabitaciones = @$request->CantidadHabitaciones;
+        $Ambientes_Cochera    = @$request->Ambientes_Cochera;
 
         $montoMinimo = @$request->montoMinimo;
         $montoMaximo = @$request->montoMaximo;
@@ -81,7 +83,7 @@ class BuscadorDePropiedadesController extends Controller {
             'tipoMoneda'
         )
             ->where(function($query)
-            use ($idTipoOperaion, $idTipoPropiedad, $idMonedas, $idProvincia, $idPartido, $idLocalidad, $idBarrio, $CantidadPersonal, $montoMinimo, $montoMaximo, $minM2, $maxM2) {
+            use ($idTipoOperaion, $idTipoPropiedad, $idMonedas, $idProvincia, $idPartido, $idLocalidad, $idBarrio, $CantidadPersonal, $CantidadHabitaciones, $Ambientes_Cochera, $montoMinimo, $montoMaximo, $minM2, $maxM2) {
                 ! is_null($idTipoOperaion) ? $query->where('fk_idTipoOperaion', $idTipoOperaion) : '';
                 ! is_null($idTipoPropiedad) ? $query->where('fk_idTipoPropiedad', $idTipoPropiedad) : '';
                 ! is_null($idMonedas) ? $query->where('fk_idMonedas', $idMonedas) : '';
@@ -90,6 +92,8 @@ class BuscadorDePropiedadesController extends Controller {
                 ! is_null($idLocalidad) ? $query->where('fk_Direccion_Localidad_Id', $idLocalidad) : '';
                 ! is_null($idBarrio) ? $query->where('fk_Direccion_Barrio_Id', $idBarrio) : '';
                 ! is_null($CantidadPersonal) ? $query->where('CantidadPersonal', $CantidadPersonal) : '';
+                ! is_null($CantidadHabitaciones) ? $query->where('CantidadHabitaciones', $CantidadHabitaciones) : '';
+                ! is_null($Ambientes_Cochera) ? $query->where('Ambientes_Cochera', $Ambientes_Cochera) : '';
                 ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function($query) use ($minM2, $maxM2) {
                     $query->orwhereBetween('SuperficieConstruible', [ $minM2, $maxM2 ]);
                     $query->orwhereBetween('SuperficieCubierta', [ $minM2, $maxM2 ]);
