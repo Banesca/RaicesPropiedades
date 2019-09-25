@@ -1,89 +1,124 @@
 <div class="row">
-
-   <div class="col-12">
-      <mat-card class="example-card">
-         <mat-progress-bar *ngIf="loading" class="card-progress-bar" mode="indeterminate"></mat-progress-bar>
-         <mat-card-header>
-            <div class="row">
-
-               <div class="col-md-12 text-right">
-                  <button [routerLink]="['/gestionar-publicaciones/form']" mat-raised-button color="success">
-                     <i class="fa fa-plus"></i>
-                     Nueva
+  <div class="col-12">
+    <mat-card class="example-card">
+      <mat-progress-bar
+        *ngIf="loading"
+        class="card-progress-bar"
+        mode="indeterminate"
+      ></mat-progress-bar>
+      <mat-card-header>
+        <div class="row">
+          <div class="col-md-12 text-right">
+            <button
+              (click)="paperBin()"
+              type="button"
+              class="btn btn-warning m-2"
+            >
+              <i class="fa fa-eye"></i>
+              Ver papelera
+            </button>
+          </div>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="d-flex row justify-content-between">
+          <div class="col-md-12">
+            <form
+              [formGroup]="filterForm"
+              class="d-flex align-items-center m-2"
+            >
+              <div class="col-md-2">
+                <button
+                  [routerLink]="['/gestionar-publicaciones/form']"
+                  mat-raised-button
+                  color="success"
+                >
+                  <i class="fa fa-plus"></i> Nuevo
+                </button>
+              </div>
+              <div class="form-group col-md-8 mb-0">
+                <input
+                  class="form-control ng-untouched ng-pristine ng-valid"
+                  formControlName="filter"
+                  placeholder="Buscar por título, descripción, tipo"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-2">
+                <button
+                  class="btn btn-success btn-block"
+                  type="button"
+                  (click)="filter()"
+                >
+                  Buscar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <th>#</th>
+              <th>Título</th>
+              <th>Descripción</th>
+              <th>Tipo</th>
+              <th>Oportunidad</th>
+              <th>Novedad</th>
+              <th>Estado</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let item of data
+                    | paginate: { itemsPerPage: 5, currentPage: p };
+                  let i = index
+                "
+              >
+                <td scope="row">{{ item.idPropiedad }}</td>
+                <td>{{ item.titulo }}</td>
+                <td>{{ item.descipcion }}</td>
+                <td>{{ item.tipo_propiedad.descripcion }}</td>
+                <td>{{ item.esUnaOportunidad == 1 ? "Si" : "No" }}</td>
+                <td>{{ item.esUnaNovedad == 1 ? "Si" : "No" }}</td>
+                <td>{{ item.estado_publicacion.descripcion }}</td>
+                <td class="text-right">
+                  <button
+                    [routerLink]="[
+                      '/gestionar-publicaciones/form',
+                      item.idPropiedad
+                    ]"
+                    type="button"
+                    class="btn btn-primary"
+                    [disabled]="item.estado_publicacion.idEstadoPublicaion == 3"
+                    style="margin-right: 5px;"
+                  >
+                    <i class="fa fa-edit"></i>
                   </button>
-                    <button (click)="paperBin()" type="button" class="btn btn-warning m-2" >
-                        <i class="fa fa-eye"></i>
-                        Ver papelera
-                    </button>
-               </div>
-            </div>
-         </mat-card-header>
-         <mat-card-content>
-             <div class="d-flex row justify-content-between" >
-                <div class="col-md-12">
-                <form [formGroup]="filterForm"  class="d-flex align-items-center m-2">
-                    <div class="col-md-2">
-                    <button class="btn btn-success btn-block" type="button" (click)="nuevo()">
-                        <i class="fa fa-plus"></i> Nuevo
-                    </button>
-                    </div>
-                    <div class="form-group col-md-8 mb-0">
-                    <input class="form-control ng-untouched ng-pristine ng-valid" formControlName="filter" placeholder="Buscar por título, descripción, tipo"
-                        type="text">
-                    </div>
-                    <div class="col-md-2">
-                    <button class="btn btn-success btn-block" type="button" (click)="filter()" [disabled]=" inPromise">
-                        Buscar
-                    </button>
-                    </div>
-                </form>
-                </div>
-            </div>
-            <div class="table-responsive">
-               <table class="table table-striped">
-                  <thead class="thead-dark">
-                     <th>#</th>
-                     <th>Título</th>
-                     <th>Descripción</th>
-                     <th>Tipo</th>
-                     <th>Oportunidad</th>
-                     <th>Novedad</th>
-                     <th>Estado</th>
-                     <th></th>
-                  </thead>
-                  <tbody>
-                        <tr *ngFor="let item of data| paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
-                            <td scope="row">{{item.idPropiedad}}</td>
-                            <td>{{item.titulo}}</td>
-                            <td>{{item.descipcion}}</td>
-                            <td>{{item.tipo_propiedad.descripcion}}</td>
-                            <td>{{item.esUnaOportunidad == 1 ? 'Si' : 'No'}}</td>
-                            <td>{{item.esUnaNovedad == 1 ? 'Si' : 'No'}}</td>
-                            <td>{{item.estado_publicacion.descripcion}}</td>
-                            <td class="text-right">
-                            <button [routerLink]="['/gestionar-publicaciones/form', item.idPropiedad]" type="button"
-                                class="btn btn-primary" [disabled]="item.estado_publicacion.idEstadoPublicaion == 3" style="margin-right: 5px;">
-                                <i class="fa fa-edit"></i>
-                            </button>
-                            <button (click)="eliminar(item.idPropiedad)" type="button" class="btn btn-danger">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                            </td>
-                        </tr>
-                        <tr *ngIf="data.length == 0">
-                            <td colspan="7" class="text-center">
-                            <strong>No existen</strong> publicaciones que mostrar...
-                            </td>
-                        </tr>
-                  </tbody>
-               </table>
-                <div class="w-100">
-                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
-                </div>
-
-            </div>
-         </mat-card-content>
-      </mat-card>
-   </div>
-
+                  <button
+                    (click)="eliminar(item.idPropiedad)"
+                    type="button"
+                    class="btn btn-danger"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr *ngIf="data.length == 0">
+                <td colspan="7" class="text-center">
+                  <strong>No existen</strong> publicaciones que mostrar...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="w-100">
+            <pagination-controls
+              (pageChange)="p = $event"
+            ></pagination-controls>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

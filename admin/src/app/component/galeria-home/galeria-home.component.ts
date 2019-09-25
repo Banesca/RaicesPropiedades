@@ -9,7 +9,7 @@ import {
 import { GaleriaHomeService } from "./../../services/galeria-home/galeria-home.service";
 import { AlertsService } from "../../services/alerts.service";
 import { PublicacionesService } from "./../../services/publicaciones/publicaciones.service";
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselConfig } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-galeria-home",
@@ -130,6 +130,7 @@ export class GaleriaHomeComponent implements OnInit {
       .allGalerias()
       .then(res => {
         this.mCategorias = res.data;
+        console.log("getAll", this.mCategorias);
         this.mLoading = false;
       })
       .catch(error => {
@@ -139,6 +140,9 @@ export class GaleriaHomeComponent implements OnInit {
   }
 
   modificar(pCategoria: IGaleria) {
+    console.log("modificar");
+    console.log("mCategoriasSelect", this.mCategoriasSelect);
+    console.log("pCategoria", pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
   }
