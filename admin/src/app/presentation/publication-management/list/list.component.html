@@ -69,13 +69,7 @@
               <th></th>
             </thead>
             <tbody>
-              <tr
-                *ngFor="
-                  let item of data
-                    | paginate: { itemsPerPage: 5, currentPage: p };
-                  let i = index
-                "
-              >
+              <tr *ngFor="let item of data; let i = index">
                 <td scope="row">{{ item.idPropiedad }}</td>
                 <td>{{ item.titulo }}</td>
                 <td>{{ item.descipcion }}</td>
@@ -112,11 +106,6 @@
               </tr>
             </tbody>
           </table>
-          <div class="w-100">
-            <pagination-controls
-              (pageChange)="p = $event"
-            ></pagination-controls>
-          </div>
         </div>
       </mat-card-content>
     </mat-card>
