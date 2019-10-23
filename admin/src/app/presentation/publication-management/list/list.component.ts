@@ -32,7 +32,7 @@ export class ListComponent implements OnInit {
    }
       getFilterForm() {
             return this._formBuilder.group({
-                  filter: [""]
+                  search: [""]
             });
       }
 
@@ -117,11 +117,10 @@ export class ListComponent implements OnInit {
   }
       filter() {
             // Buscar  por título, descripción, tipo
-            console.log("filter", this.filterForm.value);
             this.service
                   .filter(this.filterForm.value)
                   .then(data => {
-                  console.log(data);
+                        this.data = data.propiedades;
                   })
                   .catch(err => {
                   console.log(err);
