@@ -186,14 +186,12 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     Route::get('listTransaccionBorradas','TransaccionesController@listTransaccionBorradas');
     Route::get('recuperarTransaccionBorra/{idTransacciones}','TransaccionesController@recuperarTransaccionBorra');
-    //alejandro continualo
-    Route::post('propiedades/filter',function(\Request $request){
-        //aplicar busqueda (Buscar por título ,descripción, tipo)
-        return response()->json(['request'=>$request->filter]);
-    });
+
     //Route::get('ubicaciones','BuscadorDePropiedadesController@direcciones');
 
     Route::post('buscadorGeneral','BuscadorDePropiedadesController@buscarGeneral');
+
+    Route::post('propiedades/filte','BuscadorDePropiedadesController@propiedades_filte');
 
     Route::get('/storage', function () {
         return Artisan::call('storage:link');
