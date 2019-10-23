@@ -53,7 +53,7 @@ export class TransactionModalComponent implements OnInit {
         [Validators.required, Validators.pattern("^[0-9]{10,12}$")]
       ],
       fk_tipoPropiedad: ["", Validators.required],
-      titulo: [
+      direccion: [
         "",
         [Validators.required, Validators.pattern("[ña-zA-Z _]*")]
       ],
@@ -95,7 +95,7 @@ export class TransactionModalComponent implements OnInit {
       "fk_tipoPropiedad",
       this.contactForm.get("fk_tipoPropiedad").value
     );
-    formData.append("titulo", this.mContacto.titulo);
+    formData.append("direccion", this.mContacto.direccion);
     formData.append("descripcion", this.mContacto.descripcion);
     if(this.contactForm.get("imagen_1").value){
       formData.append("imagen_1", this.contactForm.get("imagen_1").value);

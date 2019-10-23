@@ -17,7 +17,7 @@ class Transacciones extends Model
         'nombre_apellido',
         'telefono',
         'fk_tipoPropiedad',
-        'titulo',
+        'direccion',
         'descripcion',
         'email',
         'imagen_1',

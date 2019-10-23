@@ -457,7 +457,15 @@ export class PublicacionesService {
         })
       ).toPromise();
   }
-
+  deletePropiedadFromPaperbin(pKey) {
+    return this._HttpClient
+      .delete(environment.apiHost + '/api/v1/deleteSinRetorno/' + pKey, { headers: getHeaders() })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      ).toPromise();
+  }
   getPropiedad(pKey) {
     return this._HttpClient.get(environment.apiHost + this.mService + 'listarPropiedades/' + pKey, {
       headers: getHeaders()

@@ -37,7 +37,7 @@ export class ListComponent implements OnInit {
       }
 
    loadData() {
-
+      this.inPaperBin=false;
       this.service.getTipoPropiedad().then((res: any) => {
          this.tiposPropiedades = res;
       })
@@ -47,7 +47,6 @@ export class ListComponent implements OnInit {
       this.service.listarTodasPropiedades().then(
          res => {
             this.data = res;
-            console.log('res',this.data);
             this.loading = false;
          }, error => {
             this.loading = false;
@@ -60,7 +59,32 @@ export class ListComponent implements OnInit {
    }
 
    show() { }
-
+   eliminarDePapelera(pKey: number) {
+      if (confirm('Está seguro de que quiere eliminar esta publicación de la papelera?')) {
+         this.loading = true;
+         this.service
+            .deletePropiedadFromPaperbin(pKey)
+            .then(data => {
+               this.loading = true
+                  // Es necesario crear todos los servicios para las publicaciones
+                  this.service.listarTodasPropiedades().then(
+                  res => {
+                        this.inPaperBin=false;
+                        this.data = res;
+                        this.loading = false;
+                  }, error => {
+                        this.loading = false;
+                  });
+               this.alertService.msg('OK', 'Eliminar Publicación', 'Publicación Eliminada de la papelera Correctamente.')
+               this.loading = false;
+            })
+            .catch(error => {
+               console.error(error);
+               this.alertService.msg('ERR', 'Eliminar Publicación', 'Error al Eliminar Publicación.');
+               this.loading = false;
+            });
+      }  
+   }
    eliminar(pKey: number) {
       if (confirm('Está seguro de que quiere eliminar esta publicación?')) {
          this.loading = true;
@@ -84,7 +108,6 @@ export class ListComponent implements OnInit {
             .paperBin()
             .then(data => {
                   this.data = data;
-                  console.log('this.data',this.data);
                   this.loading = false;
                   this.inPaperBin=true;
             })

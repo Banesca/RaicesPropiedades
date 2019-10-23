@@ -57,13 +57,13 @@
             <div class="col-sm-12">
               <label for="exampleFormControlSelect1" class="text-uppercase">Dirección</label>
               <div class="form-group mb-3">
-                <input formControlName="titulo" type="text" [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" class="form-control form-control-lg" placeholder="Título"
+                <input formControlName="direccion" type="text" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }" class="form-control form-control-lg" placeholder="Dirección"
                   aria-describedby="basic-addon1">
-                  <div *ngIf="f.titulo.errors" type="alert" class="d-block invalid-feedback">
-                      <div *ngIf="f.titulo.hasError('pattern')">La dirección debe contener únicamente caracteres alfabéticos</div>
+                  <div *ngIf="f.direccion.errors" type="alert" class="d-block invalid-feedback">
+                      <div *ngIf="f.direccion.hasError('pattern')">La dirección debe contener únicamente caracteres alfabéticos</div>
                   </div>
-                  <div *ngIf="f.titulo.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="submitted && f.titulo.errors.required">La dirección es Requerido</div>
+                  <div *ngIf="f.direccion.errors" type="alert" class="invalid-feedback">
+                      <div *ngIf="submitted && f.direccion.errors.required">La dirección es Requerido</div>
                   </div>
               </div>
             </div>

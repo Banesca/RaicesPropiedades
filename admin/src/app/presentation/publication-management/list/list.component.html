@@ -42,8 +42,19 @@
                 class="btn btn-warning w-50"
                 ngbTooltip="Ver papelera"
                 placement="top"
+                *ngIf="!inPaperBin"
               >
                 <i class="fa fa-trash"></i>
+              </button>
+               <button
+                (click)="loadData()"
+                type="button"
+                class="btn btn-warning w-50"
+                ngbTooltip="Atrás"
+                placement="top"
+                *ngIf="inPaperBin"
+              >
+                <i class="fa fa-arrow-left"></i>
               </button>
             </div>
           </form>
@@ -90,6 +101,14 @@
                   >
                     <i class="fa fa-trash"></i>
                   </button>
+                  <button
+                    (click)="eliminarDePapelera(item.idPropiedad)"
+                    type="button"
+                    class="btn btn-danger"
+                    *ngIf="inPaperBin"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </button>                  
                 </td>
               </tr>
               <tr *ngIf="data.length == 0">

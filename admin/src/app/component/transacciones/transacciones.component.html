@@ -36,8 +36,9 @@
                         <thead class="thead-dark ">
                             <th class="d-flex justify-content-center">#</th>
                             <th>Nombres</th>
+                            <th>Mail</th>
                             <th>Teléfono</th>
-                            <th>Título</th>
+                            <th>Dirección</th>
                             <th>Descripción</th>
                             <th>Categoría</th>
                             <th>Acción</th>
@@ -46,8 +47,9 @@
                             <tr *ngFor="let categoria of mCategorias| paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
                                 <td class="d-flex justify-content-center">{{i + 1}}</td>
                                 <td>{{categoria.nombre_apellido}}</td>
+                                <td>{{categoria.email}}</td>
                                 <td>{{categoria.telefono}}</td>
-                                <td>{{categoria.titulo}}</td>
+                                <td>{{categoria.direccion}}</td>
                                 <td *ngIf="categoria.descripcion===null">Sin descripción</td>
                                 <td *ngIf="categoria.descripcion!=null">{{categoria.descripcion}}</td>                                
                                 <td *ngIf="categoria.tipo_propiedad===null">Sin categoría</td>
@@ -139,10 +141,10 @@
 
                 <div class="form-group">
                     <label for="">Título</label>
-                    <input class="form-control" type="text" formControlName="titulo" placeholder="Título del Mail"
-                        [(ngModel)]="mCategoriasSelect.titulo" />
-                    <div *ngIf="mForma.controls['titulo'].errors?.required" class="alert alert-danger" role="alert">
-                        Título es requerido
+                    <input class="form-control" type="text" formControlName="direccion" placeholder="Dirección"
+                        [(ngModel)]="mCategoriasSelect.direccion" />
+                    <div *ngIf="mForma.controls['direccion'].errors?.required" class="alert alert-danger" role="alert">
+                        La dirección es requerida
                     </div>
                 </div>
 
@@ -188,7 +190,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Título</label>
-                            <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.titulo" name="mCategoriasSelect.titulo"
+                            <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.direccion" name="mCategoriasSelect.direccion"
                                 readonly />
                         </div>
                     </div>

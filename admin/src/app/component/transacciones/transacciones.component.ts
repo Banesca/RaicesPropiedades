@@ -1,17 +1,14 @@
 import { enCRUD } from "./../../misc/enums";
-import {
-  FormGroup,
-  FormBuilder,
-  Validators
-} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { ITransacciones, Transacciones } from './../../services/transacciones/transacciones.interface'
-import { TransaccionesService } from './../../services/transacciones/transacciones.service'
-import { AlertsService } from '../../services/alerts.service';
+import {
+  ITransacciones,
+  Transacciones
+} from "./../../services/transacciones/transacciones.interface";
+import { TransaccionesService } from "./../../services/transacciones/transacciones.service";
+import { AlertsService } from "../../services/alerts.service";
 import { ICategoria } from "src/app/services/categoria/categoria.interface";
 import { CategoriaService } from "src/app/services/categoria/categoria.service";
-
-
 
 @Component({
   selector: "app-transacciones",
@@ -32,7 +29,7 @@ export class TransaccionesComponent implements OnInit {
 
   mFormaEstado: string;
   enCRUD = enCRUD;
-  paperBinList:boolean =false;
+  paperBinList: boolean = false;
   constructor(
     private _formBuilder: FormBuilder,
     private _TransaccionesService: TransaccionesService,
@@ -60,7 +57,7 @@ export class TransaccionesComponent implements OnInit {
       nombre_apellido: ["", Validators.required],
       telefono: ["", Validators.required],
       fk_tipoPropiedad: ["", Validators.required],
-      titulo: ["", Validators.required],
+      direccion: ["", Validators.required],
       descripcion: ["", Validators.required]
     });
   }
@@ -71,6 +68,7 @@ export class TransaccionesComponent implements OnInit {
       .All()
       .then(res => {
         this.mCategorias = res.data;
+        console.log("mCategorias:", this.mCategorias);
         this.mLoading = false;
       })
       .catch(error => {
@@ -119,11 +117,15 @@ export class TransaccionesComponent implements OnInit {
         });
     }
   }
-  changeStateTo(newStatus:string, pKey: number) {
-    if (confirm("¿Está seguro de que quiere cambiar el estado a '" + newStatus+"'?")) {
+  changeStateTo(newStatus: string, pKey: number) {
+    if (
+      confirm(
+        "¿Está seguro de que quiere cambiar el estado a '" + newStatus + "'?"
+      )
+    ) {
       this.mLoading = true;
       this._TransaccionesService
-        .changeStateToCategoria(newStatus,pKey)
+        .changeStateToCategoria(newStatus, pKey)
         .then(data => {
           this.mLoading = false;
           this.getAll();
@@ -175,35 +177,43 @@ export class TransaccionesComponent implements OnInit {
           : this._AlertsService.msg("ERR", "ERROR", "Error al Actualizar.");
       });
   }
-  paperBin(){
+  paperBin() {
     this.mLoading = true;
     this._TransaccionesService
       .paperBin()
       .then(data => {
-        this.paperBinList=true;
+        this.paperBinList = true;
         this.mCategorias = data;
         this.mLoading = false;
       })
       .catch(err => {
-        this._AlertsService.msg("ERR", "ERROR", "Error al listar elementos eliminados.");
+        this._AlertsService.msg(
+          "ERR",
+          "ERROR",
+          "Error al listar elementos eliminados."
+        );
       });
   }
-  restore(pKey: number){
+  restore(pKey: number) {
     this._TransaccionesService
       .restore(pKey)
       .then(data => {
         this.mLoading = false;
-        this.paperBinList=false;
+        this.paperBinList = false;
         this.getAll();
         this._AlertsService.msg("OK", "¡Éxito!", "Tasación restaurada");
       })
       .catch(err => {
-        this._AlertsService.msg("ERR", "ERROR", "Error al listar elementos eliminados.");
+        this._AlertsService.msg(
+          "ERR",
+          "ERROR",
+          "Error al listar elementos eliminados."
+        );
       });
   }
   filter() {
     // Buscar por nombre, teléfono, título o descripción, categoria
-    console.log("filter",this.filterForm.value);
+    console.log("filter", this.filterForm.value);
     this._TransaccionesService
       .filter(this.filterForm.value)
       .then(data => {
@@ -215,4 +225,3 @@ export class TransaccionesComponent implements OnInit {
       });
   }
 }
-
