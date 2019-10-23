@@ -191,7 +191,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     Route::post('buscadorGeneral','BuscadorDePropiedadesController@buscarGeneral');
 
-    Route::post('propiedades/filte','BuscadorDePropiedadesController@propiedades_filte');
+    Route::post('propiedades/filter','BuscadorDePropiedadesController@propiedades_filte');
 
     Route::get('/storage', function () {
         return Artisan::call('storage:link');
