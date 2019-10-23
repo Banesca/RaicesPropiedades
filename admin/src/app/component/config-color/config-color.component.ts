@@ -49,7 +49,7 @@ export class ConfigColorComponent implements OnInit {
                 this.inPromise = false;
                 this.getColores();                    
                 this.form = {colorOscuro: null, colorMedio: null, colorClaro: null}
-                this._alertServicices.msg('OK', 'Éxito', 'Se guardo correctamente');
+                this._alertServicices.msg('OK', '¡Éxito!', 'Se guardo correctamente');
             },
             error => {
                 this.inPromise = false;
@@ -63,7 +63,7 @@ export class ConfigColorComponent implements OnInit {
         this._coloresServices.deleteColores(id).subscribe(
             resp => {
                 this.inPromise = false;
-                this._alertServicices.msg('OK', 'Éxito', 'Se actualizo correctamente');
+                this._alertServicices.msg('OK', '¡Éxito!', 'Se actualizo correctamente');
                 this.getColores();
             },
             error => {

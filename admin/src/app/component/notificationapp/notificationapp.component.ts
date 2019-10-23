@@ -101,7 +101,7 @@ export class NotificationappComponent implements OnInit {
       })
       .subscribe((resp)=> {
       if(resp.ok && resp.status === 201){
-        this.as.msg('OK', 'Éxito', 'Notificación enviada');
+        this.as.msg('OK', '¡Éxito!', 'Notificación enviada');
         this.newNotificacionForm.reset();
         $('#nuevo').modal('hide');
       }else{
@@ -149,7 +149,7 @@ export class NotificationappComponent implements OnInit {
       if(resp.ok ){
         this.inPromise = false;
         $('#modificarNoti').modal('hide');
-        this.as.msg('OK', 'Éxito', 'Se ha actualizado la Notificacion');
+        this.as.msg('OK', '¡Éxito!', 'Se ha actualizado la Notificacion');
         this.listNotifications();
       }else{
         console.error(resp);
@@ -169,7 +169,7 @@ export class NotificationappComponent implements OnInit {
      this.notificationService.delete(this.editNotificacionForm.value.id).subscribe((resp) => {
       if(resp.ok){
         $('#eliminar').modal('hide');
-        this.as.msg('OK', 'Éxito', 'Se ha eliminado la Notificacion');
+        this.as.msg('OK', '¡Éxito!', 'Se ha eliminado la Notificacion');
         this.listNotifications();
       }else{
         console.error(resp);

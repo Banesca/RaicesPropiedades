@@ -74,7 +74,7 @@ export class GaleriaHomeComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(3),
-          Validators.pattern("[ña-zA-Z _]*")
+          Validators.pattern("[ña-zA-ZñÑáéíóúÁÉÍÓÚ _]*")
         ]
       ],
       descripcion: [
@@ -140,9 +140,7 @@ export class GaleriaHomeComponent implements OnInit {
   }
 
   modificar(pCategoria: IGaleria) {
-    console.log("modificar");
-    console.log("mCategoriasSelect", this.mCategoriasSelect);
-    console.log("pCategoria", pCategoria);
+    console.log("pCategoria:", pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
   }
@@ -157,7 +155,7 @@ export class GaleriaHomeComponent implements OnInit {
           this.mLoading = false;
           this._AlertsService.msg(
             "OK",
-            "!ÉXITO!",
+            "¡Éxito!",
             "Galería eliminada Correctamente."
           );
         })
@@ -194,7 +192,7 @@ export class GaleriaHomeComponent implements OnInit {
         this.submitted = false;
         this._AlertsService.msg(
           "OK",
-          "!ÉXITO!",
+          "¡Éxito!",
           "Galería Actualizada Correctamente."
         );
       })
@@ -220,13 +218,14 @@ export class GaleriaHomeComponent implements OnInit {
         this.submitted = false;
         this._AlertsService.msg(
           "OK",
-          "!ÉXITO!",
+          "¡Éxito!",
           "Galería creada Correctamente."
         );
       })
       .catch(err => {
         console.log(err);
         this._AlertsService.msg("ERR", "ERROR", "Error al crear la galería.");
+        this._AlertsService.msg("ERR", "ERROR", err);
       });
   }
   handleFileSelect(evt) {
@@ -237,7 +236,7 @@ export class GaleriaHomeComponent implements OnInit {
       if (!f.type.match("image.*")) {
         continue;
       }
-      if (f.size < 300000) {
+      if (f.size < 200000) {
         this._AlertsService.msg(
           "ERR",
           "ERROR",
@@ -245,6 +244,8 @@ export class GaleriaHomeComponent implements OnInit {
             f.name +
             " son demasiado pequeñas para subirla a la galería."
         );
+        this._AlertsService.msg("ERR", "ERROR", "Tamaño mínimo:200000");
+        this._AlertsService.msg("ERR", "ERROR", "Tamaño del archivo:" + f.size);
       } else {
         let reader = new FileReader();
         // Closure to capture the file information.
@@ -271,11 +272,27 @@ export class GaleriaHomeComponent implements OnInit {
     this._GaleriaHomeService
       .filter(this.filterForm.value)
       .then(data => {
-        console.log("data:",data);
+        console.log("data:", data);
       })
       .catch(err => {
         console.log(err);
-        this._AlertsService.msg("ERR", "ERROR", "Error al crear la galería.");
+        // Parsear Object errors a Array de errores para poder mapearlos
+        const mapped = Object.keys(err.error.errors).map(key => ({
+          type: key,
+          value: err.error.errors[key]
+        }));
+        // Notificando Errores
+        mapped
+          ? mapped.map(e => {
+              this._AlertsService.msg("ERR", "ERROR", e.value);
+            })
+          : err.error.message
+          ? this._AlertsService.msg("ERR", "ERROR", err.error.message)
+          : this._AlertsService.msg(
+              "ERR",
+              "ERROR",
+              "Error al crear la galería."
+            );
       });
   }
 }

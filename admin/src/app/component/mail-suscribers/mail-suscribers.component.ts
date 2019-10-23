@@ -106,7 +106,7 @@ onSubmit() {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Mail Enviado Correctamente.')
+        this._AlertsService.msg('OK', '¡Éxito!', 'Mail Enviado Correctamente.')
       })
       .catch(error => {
         this._AlertsService.msg('ERR', 'ERROR', 'Hubo un problema al envíar el Mail.')

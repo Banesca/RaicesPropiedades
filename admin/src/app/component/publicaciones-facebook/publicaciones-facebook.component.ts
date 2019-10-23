@@ -120,7 +120,7 @@ export class PublicacionesFacebookComponent implements OnInit {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getPost();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '!ÉXITO!', 'Post Actualizado Correctamente.')
+        this._AlertsService.msg('OK', '¡Éxito!', 'Post Actualizado Correctamente.')
       })
       .catch(err => {
         // Parsear Object errors a Array de errores para poder mapearlos

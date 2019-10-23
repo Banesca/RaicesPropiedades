@@ -151,7 +151,7 @@ export class UsuariosComponent implements OnInit {
           this.mLoading = false;
           this._AlertsService.msg(
             "OK",
-            "!ÉXITO!",
+            "¡Éxito!",
             "Usuario eliminado correctamente"
           );
         })
@@ -204,7 +204,7 @@ export class UsuariosComponent implements OnInit {
         this.mLoading = false;
         this._AlertsService.msg(
           "OK",
-          "!ÉXITO!",
+          "¡Éxito!",
           "Usuario creado correctamente"
         );
       })
@@ -267,7 +267,7 @@ export class UsuariosComponent implements OnInit {
         this.mLoading = false;
         this._AlertsService.msg(
           "OK",
-          "!ÉXITO!",
+          "¡Éxito!",
           "Usuario actualizado correctamente"
         );
       })

@@ -220,7 +220,7 @@ export class GestionUsuarioComponent implements OnInit {
             if (resp) {
                this.inPromise = false;
                $("#newUserModal").modal('hide');
-               this.alertService.msg("OK", "Éxito", "Se ha guardado el registro");
+               this.alertService.msg("OK", "¡Éxito!", "Se ha guardado el registro");
                this.listaUser();
                this.newUser.reset();
                this.image.nativeElement.value = "";
@@ -318,7 +318,7 @@ export class GestionUsuarioComponent implements OnInit {
       this.UsuariosService.upgradeUsers(user, values.id).subscribe(
          resp => {
             $("#updateModal").modal('hide');
-            this.alertService.msg("OK", "Éxito", "Se ha actualizo el registro");
+            this.alertService.msg("OK", "¡Éxito!", "Se ha actualizo el registro");
             this.listaUser();
             this.getRolPerfil();
             /*   if(this.imageEdit.nativeElement){
@@ -397,7 +397,7 @@ export class GestionUsuarioComponent implements OnInit {
          resp => {
             $("#deleteUserModal").modal('hide');
             this.listaUser();
-            this.alertService.msg("OK", "Éxito", "Se ha elimino correctamente");
+            this.alertService.msg("OK", "¡Éxito!", "Se ha elimino correctamente");
          },
          error => {
             this.alertService.msg("ERR", "Error", 'Algo salio mal');

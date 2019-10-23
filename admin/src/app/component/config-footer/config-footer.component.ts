@@ -103,7 +103,7 @@ export class ConfigFooterComponent implements OnInit {
         .eliminarCategoria(pKey)
         .then(data => {
             if (data) {
-              this._alertService.msg("OK", "!ÉXITO!", "Email eliminado");
+              this._alertService.msg("OK", "¡Éxito!", "Email eliminado");
               this.getMails();
             } else {
               this._alertService.msg("ERR", "ERROR", "error al eliminar email");

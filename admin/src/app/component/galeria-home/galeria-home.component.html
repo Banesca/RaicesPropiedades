@@ -155,7 +155,7 @@
                   <div class="drop">
                     <div class="cont">
                       <div class="browse">
-                        click here to browse
+                        Adjuntar imagen
                       </div>
                     </div>
                     <div>
@@ -198,7 +198,7 @@
           </div>
         </form>
     </div>
-    <div class="col-md-6 m-auto" style="">
+    <div *ngIf="mFormaEstado == enCRUD.Actualizar" class="col-md-6 m-auto" style="">
         <ngb-carousel *ngIf="mCategoriasSelect.imagenes?.length>0">
           <ng-template ngbSlide *ngFor="let element of mCategoriasSelect.imagenes; let i = index">
             <div class="item">

@@ -49,7 +49,7 @@ export class MailsComponent implements OnInit {
     this.configFooterService._addMail(this.val).subscribe(
       resp => {
         if (resp) {
-          this.as.msg("OK", "!ÉXITO!", "Email Agregado");
+          this.as.msg("OK", "¡Éxito!", "Email Agregado");
           this.addMail.emit(false);
         } else {
           this.as.msg("ERR", "ERROR", "error al añadir email");

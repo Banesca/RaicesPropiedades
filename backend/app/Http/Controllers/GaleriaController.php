@@ -19,6 +19,7 @@ class GaleriaController extends Controller
     /*Creado por Breiddy Monterrey*/
     public function store(Request $request)
     {
+        // return response()->json(['request'=>$request->all()]);
         $this->validate($request, [
             'titulo'           => 'required|min:2',
             'descripcion'      => 'required|min:2',
@@ -41,7 +42,7 @@ class GaleriaController extends Controller
                     $response = [
                         'msj' => 'El orden ya se encuentra en la lista, y no se pueden repetir',
                     ];
-                    return response()->json($response, 403);
+                    return response()->json($response, 422);
                 }
             }
 

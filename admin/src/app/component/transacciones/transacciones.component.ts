@@ -106,7 +106,7 @@ export class TransaccionesComponent implements OnInit {
           this.mLoading = false;
           this._AlertsService.msg(
             "OK",
-            "¡ÉXITO!",
+            "¡Éxito!",
             "Tasación eliminada correctamente."
           );
         })
@@ -127,7 +127,7 @@ export class TransaccionesComponent implements OnInit {
         .then(data => {
           this.mLoading = false;
           this.getAll();
-          this._AlertsService.msg("OK", "¡ÉXITO!", "Tasación confirmada");
+          this._AlertsService.msg("OK", "¡Éxito!", "Tasación confirmada");
         })
         .catch(error => {
           this._AlertsService.msg(
@@ -155,7 +155,7 @@ export class TransaccionesComponent implements OnInit {
         this.mLoading = false;
         this._AlertsService.msg(
           "OK",
-          "¡ÉXITO!",
+          "¡Éxito!",
           "Tasación actualizada correctamente."
         );
       })
@@ -195,7 +195,7 @@ export class TransaccionesComponent implements OnInit {
         this.mLoading = false;
         this.paperBinList=false;
         this.getAll();
-        this._AlertsService.msg("OK", "¡ÉXITO!", "Tasación restaurada");
+        this._AlertsService.msg("OK", "¡Éxito!", "Tasación restaurada");
       })
       .catch(err => {
         this._AlertsService.msg("ERR", "ERROR", "Error al listar elementos eliminados.");
