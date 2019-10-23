@@ -261,11 +261,29 @@ class Ficha3Controller extends Controller {
         $propiedad = Propiedad::find($idPropiedad);
         if (! is_null($propiedad)) {
             $propiedad->update([ 'fk_estado_publicacion' => 3 ]);  //se cambia de estatus
-            $propiedad->delete(); //se le asiga la fehca de borrado
+            //$propiedad->delete(); //se le asiga la fehca de borrado
             $response = [
                 'msj' => 'Propiedad borrada Exitosamente',
             ];
 
+            return response()->json($response, 201);
+        } else {
+            $response = [
+                'msj' => 'No existe la propiedad',
+            ];
+
+            return response()->json($response, 200);
+        }
+
+    }
+
+    public function deleteSinRetorno($idPropiedad) {
+        $propiedad = Propiedad::find($idPropiedad);
+        if (! is_null($propiedad)) {
+            $propiedad->delete(); //se le asiga la fehca de borrado
+            $response = [
+                'msj' => 'Propiedad borrada Exitosamente',
+            ];
             return response()->json($response, 201);
         } else {
             $response = [
@@ -282,7 +300,7 @@ class Ficha3Controller extends Controller {
             'msj' => 'No hay propiedades borradas',
         ];
 
-        return response()->json(count($p = Propiedad::onlyTrashed()->with(
+        return response()->json(count($p = Propiedad::where('fk_estado_publicacion',3)->with(
             'TipoPropiedad',
             'Disposicion',
             'Estado',
