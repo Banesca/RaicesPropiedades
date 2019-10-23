@@ -1,9 +1,13 @@
-import { environment } from '../../../environments/environment';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { IMailSuscriber, IMailSuscriberRs, ISuscriberRs} from './mail-suscriber.interface'
-import { getHeaders } from '../../misc/Headers';
+import { environment } from "../../../environments/environment";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { map } from "rxjs/operators";
+import {
+  IMailSuscriber,
+  IMailSuscriberRs,
+  ISuscriberRs
+} from "./mail-suscriber.interface";
+import { getHeaders } from "../../misc/Headers";
 
 @Injectable({
   providedIn: "root"
@@ -50,13 +54,12 @@ export class MailSuscribersService {
       )
       .toPromise();
   }
-  search(pCategoria: any) {
+  //suscriptores
+  search(data: any) {
     return this._HttpClient
-      .get(
-        environment.apiHost +
-          "/api/v1/suscripcion/buscarSuscripcionPorEmail" +
-          "/" +
-          pCategoria,
+      .post(
+        environment.apiHost + "/api/v1/suscripcion/buscarSuscripcionPorEmail",
+        data,
         { headers: getHeaders() }
       )
       .pipe(
@@ -66,6 +69,7 @@ export class MailSuscribersService {
       )
       .toPromise();
   }
+  //mail a suscriptores
   filter(data: any) {
     return this._HttpClient
       .post(environment.apiHost + "/api/v1/suscripcion/filter", data, {

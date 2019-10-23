@@ -52,7 +52,7 @@ export class MailSuscribersComponent implements OnInit {
   }
   getFilterForm() {
     return this._formBuilder.group({
-      filter: [""]
+      search: [""]
     });
   }
   generarFormulario() {
@@ -114,11 +114,11 @@ onSubmit() {
   }
   filter() {
     // Buscar por título y descripción
-    console.log("filter", this.filterForm.value);
     this._MailSuscribersService
       .filter(this.filterForm.value)
       .then(data => {
         console.log(data);
+        // this.mCategorias = data.request;
       })
       .catch(err => {
         console.log(err);

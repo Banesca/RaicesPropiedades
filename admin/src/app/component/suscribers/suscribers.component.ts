@@ -1,20 +1,14 @@
 import { enCRUD } from "./../../misc/enums";
-import { ISuscriber, Suscriber } from './../../services/interfaces.index'
-import {
-  NgForm,
-  FormGroup,
-  FormBuilder,
-  Validators
-} from "@angular/forms";
+import { ISuscriber, Suscriber } from "./../../services/interfaces.index";
+import { NgForm, FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { MailSuscribersService } from './../../services/mail-suscribers/mail-suscribers.service'
-import { AlertsService } from '../../services/alerts.service';
-
+import { MailSuscribersService } from "./../../services/mail-suscribers/mail-suscribers.service";
+import { AlertsService } from "../../services/alerts.service";
 
 @Component({
-  selector: 'app-suscribers',
-  templateUrl: './suscribers.component.html',
-  styleUrls: ['./suscribers.component.css']
+  selector: "app-suscribers",
+  templateUrl: "./suscribers.component.html",
+  styleUrls: ["./suscribers.component.css"]
 })
 export class SuscribersComponent implements OnInit {
   activos: boolean = true;
@@ -23,9 +17,10 @@ export class SuscribersComponent implements OnInit {
   mLoading: boolean;
   mMostrarForma = false;
   mNuevo = false;
-  searchResult: any [] = [];
+  searchResult: any[] = [];
 
   mForma: FormGroup;
+  filterForm: FormGroup;
   mFormaEstado: string;
   enCRUD = enCRUD;
 
@@ -41,7 +36,9 @@ export class SuscribersComponent implements OnInit {
     this.getAll();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.filterForm = this.getFilterForm();
+  }
 
   generarFormulario() {
     // Estructura de nuestro formulario
@@ -49,7 +46,11 @@ export class SuscribersComponent implements OnInit {
       email: ["", [Validators.required, Validators.email]]
     });
   }
-
+  getFilterForm() {
+    return this._formBuilder.group({
+      search: [""]
+    });
+  }
   getAll() {
     this.mLoading = true;
     this._MailSuscribersService
@@ -59,8 +60,7 @@ export class SuscribersComponent implements OnInit {
         this.mLoading = false;
       })
       .catch(error => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Error al cargar los datos.')
-
+        this._AlertsService.msg("ERR", "ERROR", "Error al cargar los datos.");
       });
   }
 
@@ -68,7 +68,6 @@ export class SuscribersComponent implements OnInit {
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
   }
-
 
   nuevo() {
     this.mForma.reset();
@@ -80,18 +79,17 @@ export class SuscribersComponent implements OnInit {
     this.mFormaEstado = enCRUD.Leer;
   }
 
-  guardar() {
-    this.mCategoriasSelect = this.mForma.controls["email"].value;
+  filter() {
     this.mLoading = true;
     this._MailSuscribersService
-      .search(this.mCategoriasSelect)
+      .search(this.filterForm.value)
       .then(data => {
-          this.mCategorias = data.suscripcion;
+        this.mCategorias = data.suscripcion;
         this.mLoading = false;
       })
       .catch(error => {
         this.mLoading = false;
-        console.log(error)
+        console.log(error);
       });
   }
 }

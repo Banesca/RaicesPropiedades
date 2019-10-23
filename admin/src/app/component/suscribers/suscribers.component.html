@@ -5,7 +5,7 @@
       <div class="">
         <form
           class="d-flex align-items-center"
-          [formGroup]="mForma"
+          [formGroup]="filterForm"
           #vForma="ngForm"
         >
           <div class="w-25 mr-2">
@@ -33,7 +33,7 @@
               type="text"
               placeholder="Buscar por email"
               class="form-control ng-untouched ng-pristine ng-valid"
-              formControlName="email"
+              formControlName="search"
             />
           </div>
           <div class="w-25 ml-2">
@@ -43,7 +43,7 @@
               ngbTooltip="Buscar"
               placement="top"
               [disabled]="mLoading"
-              (click)="guardar()"
+              (click)="filter()"
             >
               Buscar <i class="fa fa-search"></i>
             </button>

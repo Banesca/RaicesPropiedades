@@ -63,7 +63,7 @@ export class GaleriaHomeComponent implements OnInit {
   }
   getFilterForm() {
     return this._formBuilder.group({
-      filter: [""]
+      search: [""]
     });
   }
   generarFormulario() {
@@ -130,7 +130,6 @@ export class GaleriaHomeComponent implements OnInit {
       .allGalerias()
       .then(res => {
         this.mCategorias = res.data;
-        console.log("getAll", this.mCategorias);
         this.mLoading = false;
       })
       .catch(error => {
@@ -272,7 +271,7 @@ export class GaleriaHomeComponent implements OnInit {
     this._GaleriaHomeService
       .filter(this.filterForm.value)
       .then(data => {
-        console.log("data:", data);
+        this.mCategorias = data.request;
       })
       .catch(err => {
         console.log(err);

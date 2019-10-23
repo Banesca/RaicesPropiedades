@@ -42,7 +42,7 @@ export class SucursalesComponent implements OnInit {
   }
   getFilterForm() {
     return this.fb.group({
-      filter: [""]
+      search: [""]
     });
   }
   getSucursalList() {
@@ -156,6 +156,8 @@ export class SucursalesComponent implements OnInit {
       .filter(this.filterForm.value)
       .then(data => {
         console.log(data);
+        this.sucursalList=data.request;
+
       })
       .catch(err => {
         console.log(err);
