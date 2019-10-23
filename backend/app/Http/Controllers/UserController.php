@@ -382,7 +382,7 @@ class UserController extends Controller {
         if (is_null($user)) {
 
             $response = [
-                'msj' => 'Verifica tu correo en la bandeja de entrada sino lo visualizas también lo puedes encontrar en el spam',
+                'msj' => 'Si eres parte de la plataforma revisa tu bandeja de entrada en donde te enviamos los pasos a seguit, sino los visualizas también los puedes encontrar en el spam',
             ];
 
             return response()->json($response, 200);
@@ -393,7 +393,7 @@ class UserController extends Controller {
 
             Mail::to($user->email)->send(new Prueba($user, $clave_nueva));
             $response = [
-                'msj'       => 'Verifica tu correo en la bandeja de entrada sino lo visualizas también lo puedes encontrar en el spam',
+                'msj'       => 'Si eres parte de la plataforma revisa tu bandeja de entrada en donde te enviamos los pasos a seguit, sino los visualizas también los puedes encontrar en el spam',
                 'user'      => $user,
                 'clave_new' => $clave_nueva,
             ];

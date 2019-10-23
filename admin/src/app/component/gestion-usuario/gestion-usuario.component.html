@@ -152,23 +152,27 @@
 <div class="container" style="max-width: 100%;">
    <div class="row">
       <div class="col-md-12">
-         <h4 class="p-2">Gestión de Usuarios </h4>
-         <div [formGroup]="filterForm">
-            <div class="form-group mx-auto" style="width: 100%; display: flex;">
-
-               <input type="text" placeholder="Buscar por nombre, usuario o mail" formControlName="filtro"
-                  class="form-control" style="width: 80%;">
-
-
-               <button type="button" class="btn btn-success" style="margin-left:10px; " (click)="filtrar()"
+         <h4 class="p-2">Gestión de Usuarios </h4>          
+            <div class="">
+              <form [formGroup]="filterForm" class="d-flex align-items-center">
+                <div class="w-25 m-2">
+                  <button class="btn btn-success btn-block" data-toggle="modal" data-target="#newUserModal" ngbTooltip="Agregar Usuario" placement="top"
+                  style="">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                </div>
+                <div class="w-50">
+                  <input class="form-control" formControlName="filtro" placeholder="Buscar por nombre, usuario o mail"
+                    type="text" />
+                </div>
+                <div class="w-25 m-2">
+                  <button type="button" class="btn btn-success" style="" (click)="filtrar()"
                   [disabled]=" inPromise">
-                  Buscar
-               </button>
-               <button class="btn btn-success btn-sm ml-4" data-toggle="modal" data-target="#newUserModal"
-                  style="margin-left:10px;"> Agregar Usuario</button>
+                      Buscar
+                  </button>
+                </div>
+              </form>
             </div>
-
-         </div>
       </div>
    </div>
    <div class="row">

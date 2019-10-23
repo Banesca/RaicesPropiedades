@@ -2,21 +2,21 @@
   <div class="row">
     <div class="col-md-12">
       <h3 class="py-5 text-center font-weight-bold">Mails a Suscriptores</h3>
-      <div class="d-flex row justify-content-between" *ngIf="mFormaEstado == enCRUD.Eliminar">
-        <div class="col-md-12">
-          <form [formGroup]="filterForm" *ngIf="mFormaEstado == enCRUD.Eliminar" class="d-flex align-items-center m-2">
-            <div class="col-md-2">
-              <button class="btn btn-success btn-block" type="button" (click)="nuevo()">
+      <div class="mb-5" *ngIf="mFormaEstado == enCRUD.Eliminar">
+        <div class="">
+          <form [formGroup]="filterForm" *ngIf="mFormaEstado == enCRUD.Eliminar" class="d-flex align-items-center">
+            <div class="w-25 mr-2">
+              <button class="btn btn-success btn-block" type="button" (click)="nuevo()" ngbTooltip="Nuevo" placement="top">
                 <i class="fa fa-plus"></i> Nuevo
               </button>
             </div>
-            <div class="form-group col-md-8 mb-0">
+            <div class="w-50">
               <input class="form-control ng-untouched ng-pristine ng-valid" formControlName="filter" placeholder="Buscar por título, descripción"
                 type="text">
             </div>
-            <div class="col-md-2">
-              <button class="btn btn-success btn-block" type="button" (click)="filter()" [disabled]=" inPromise">
-                Buscar
+            <div class="w-25 ml-2">
+              <button class="btn btn-success btn-block" type="button" (click)="filter()" [disabled]="mLoading" ngbTooltip="Buscar" placement="top">
+                Buscar <i class="fa fa-search"></i>
               </button>
             </div>
           </form>
@@ -35,7 +35,6 @@
               <th>Título</th>
               <th>Descripción</th>
               <th>Acción</th>
-              <th></th>
             </thead>
             <tbody>
               <tr *ngFor="let categoria of mCategorias| paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
@@ -44,7 +43,7 @@
                 </td>
                 <td>{{ categoria.titulo }}</td>
                 <td>{{ categoria.descripcion }}</td>
-                <td>
+                <td class="float-right">
                   <button
                     (click)="ver(categoria)"
                     type="button"

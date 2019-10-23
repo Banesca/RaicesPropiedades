@@ -2,7 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { NgxPaginationModule } from "ngx-pagination"; // <-- import the module
 //Social Login
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { FacebookLoginProvider, LoginOpt } from "angularx-social-login";

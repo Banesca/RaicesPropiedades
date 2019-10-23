@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
    tiposPropiedades: any[] = [];
 
       filterForm: FormGroup;
-
+      inPaperBin:boolean=false;
    loading: boolean = false
    constructor(
       private service: PublicacionesService,
@@ -86,6 +86,7 @@ export class ListComponent implements OnInit {
                   this.data = data;
                   console.log('this.data',this.data);
                   this.loading = false;
+                  this.inPaperBin=true;
             })
             .catch(err => {
             console.log(err);

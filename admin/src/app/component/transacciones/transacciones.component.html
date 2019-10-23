@@ -3,21 +3,21 @@
         <div class="col-md-12">
             <h3 class="py-5 text-center font-weight-bold">Tasaciones</h3>
             
-            <div class="d-flex row justify-content-between" *ngIf="mFormaEstado == enCRUD.Eliminar">
-            <div class="col-md-12">
-            <form [formGroup]="filterForm" class="d-flex align-items-center m-2">
-                <div class="col-md-2">
-                    <button class="btn btn-warning btn-block" type="button" (click)="paperBin()">
-                        Papelera
+            <div class="mb-5" *ngIf="mFormaEstado == enCRUD.Eliminar">
+            <div class="">
+            <form [formGroup]="filterForm" class="d-flex align-items-center">
+                <div class="w-25 mr-2">
+                    <button class="btn btn-warning btn-block" type="button" (click)="paperBin()" ngbTooltip="Papelera" placement="top">
+                        Papelera <i class="fa fa-trash"></i>
                     </button>
                 </div>
-                <div class="form-group col-md-8 mb-0">
+                <div class="w-50">
                 <input class="form-control ng-untouched ng-pristine ng-valid" formControlName="filter" placeholder="Buscar por nombre, teléfono, título, descripción o categoría"
                     type="text">
                 </div>
-                <div class="col-md-2">
-                <button class="btn btn-success btn-block" type="button" (click)="filter()" [disabled]=" inPromise">
-                    Buscar
+                <div class="w-25 ml-2">
+                <button class="btn btn-success btn-block" type="button" (click)="filter()" [disabled]="mLoading" ngbTooltip="Buscar" placement="top">
+                    Buscar <i class="fa fa-search"></i>
                 </button>
                 </div>
             </form>
@@ -40,7 +40,7 @@
                             <th>Título</th>
                             <th>Descripción</th>
                             <th>Categoría</th>
-                            <th></th>
+                            <th>Acción</th>
                         </thead>
                         <tbody>
                             <tr *ngFor="let categoria of mCategorias| paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
@@ -52,7 +52,7 @@
                                 <td *ngIf="categoria.descripcion!=null">{{categoria.descripcion}}</td>                                
                                 <td *ngIf="categoria.tipo_propiedad===null">Sin categoría</td>
                                 <td *ngIf="categoria.tipo_propiedad!=null">{{categoria.tipo_propiedad.descripcion}}</td>
-                                <td>
+                                <td class="float-right">
                                     <button (click)="ver(categoria)" type="button" class="btn mr-2 btn-info" placement="top" ngbTooltip="Ver">
                                         <i class="far fa-eye"></i>
                                     </button>

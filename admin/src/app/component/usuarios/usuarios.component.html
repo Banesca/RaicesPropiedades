@@ -29,17 +29,17 @@
         Asignar Módulos
       </h3>      
       <div
-        class="d-flex row justify-content-between"
+        class="mb-5"
         *ngIf="
           mFormaEstado != enCRUD.Crear &&
           mFormaEstado != enCRUD.Actualizar &&
           mFormaEstado != enCRUD.Asignar
         "
       >
-        <div class="col-md-12">
+        <div class="">
           <form
             [formGroup]="filterForm"
-            class="d-flex align-items-center m-2"
+            class="d-flex align-items-center"
             *ngIf="
               mFormaEstado != enCRUD.Crear &&
               mFormaEstado != enCRUD.Actualizar &&
@@ -47,42 +47,28 @@
             mFormaEstado != enCRUD.Leer
             "
           >
-            <div class="col-md-2">
-              <button
-                (click)="nuevo()"
-                type="button"
-                class="btn btn-success btn-block"
-              >
-                <i class="fa fa-plus"></i>
-                Nuevo
-              </button>
-            </div>
-            <div class="form-group col-md-8 mb-0">
-              <input
-                type="text"
-                placeholder="Buscar por nombre, usuario o mail"
-                formControlName="search"
-                class="form-control"
-              />
-            </div>
-            <div class="col-md-2">
-              <button
-                type="button"
-                class="btn btn-success btn-block"
-                (click)="filtrar()"
-                [disabled]="mLoading"
-              >
-                Buscar
-              </button>
-            </div>
+          <div class="w-25 mr-2">
+            <button (click)="nuevo()" class="btn btn-success btn-block" ngbTooltip="Nuevo" placement="top">
+              Nuevo <i class="fa fa-plus"></i>
+            </button>
+          </div>
+          <div class="w-50">
+            <input class="form-control ng-untouched ng-pristine ng-valid" formControlName="search" placeholder="Buscar por nombre, usuario o mail"
+              type="text" />
+          </div>
+          <div class="w-25 ml-2">
+            <button class="btn btn-success btn-block" type="button" (click)="filtrar()" ngbTooltip="Buscar" placement="top" [disabled]="mLoading">
+              Buscar <i class="fa fa-search"></i>
+            </button>
+          </div>
           </form>
         </div>
       </div>
 
-      <div class="col-md-12">
+      <div class="">
         <div *ngIf="mFormaEstado == enCRUD.Eliminar">
-          <div class="row animated fadeIn fast">
-            <div class="col-md-12">
+          <div class="">
+            <div class="">
               <div class="table-responsive">
                 <table class="table table-striped">
                   <thead class="thead-dark">
@@ -96,7 +82,7 @@
                       <td>{{ i + 1 }}</td>
                       <td>{{ categoria.name }}</td>
                       <td>{{ categoria.email }}</td>
-                      <td>
+                      <td class="float-right">
                         <button
                           (click)="ver(categoria)"
                           type="button"
@@ -111,13 +97,6 @@
                         >
                           <i class="fas fa-pencil-alt"></i>
                         </button>
-                        <!-- <button
-                          (click)="modulos(categoria.id)"
-                          type="button"
-                          class="btn mr-2 btn-info"
-                        >
-                          <i class="fa fa-cogs"></i>
-                        </button> -->
                         <button
                           (click)="eliminar(categoria.id)"
                           type="button"

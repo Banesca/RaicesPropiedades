@@ -271,7 +271,7 @@ export class GaleriaHomeComponent implements OnInit {
     this._GaleriaHomeService
       .filter(this.filterForm.value)
       .then(data => {
-        console.log(data);
+        console.log("data:",data);
       })
       .catch(err => {
         console.log(err);
