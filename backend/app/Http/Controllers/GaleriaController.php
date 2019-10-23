@@ -221,7 +221,19 @@ class GaleriaController extends Controller
         }
     }
     public function filter(Request $request){
-        //aplicar busqueda (titulo o descripcion)
-        return response()->json(['request'=>$request->filter]);
+        $busqueda = "%" . $request->search . "%";
+
+        $resultadoUnico = Galeria::
+        where(function ($query)
+        use (
+            $busqueda
+        ) {
+            $query->orwhere('titulo', 'like', $busqueda);
+            $query->orwhere('descripcion', 'like', $busqueda);
+        })
+            ->get();
+
+
+        return response()->json(['request'=>$resultadoUnico]);
     }
 }

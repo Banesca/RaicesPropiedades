@@ -280,8 +280,23 @@ class TransaccionesController extends Controller {
         return $response;
     }
     public function filter(Request $request) {
-        //aplicar busqueda (nombre, teléfono, título, descripción o categoría)
-        return response()->json(['request'=>$request->filter]);
+        $busqueda = "%" . $request->search . "%";
+
+        $resultadoUnico = Transacciones::
+        where(function ($query)
+        use (
+            $busqueda
+        ) {
+            $query->orwhere('nombre_apellido', 'like', $busqueda);
+            $query->orwhere('telefono', 'like', $busqueda);
+            $query->orwhere('direccion', 'like', $busqueda);
+            $query->orwhere('descripcion', 'like', $busqueda);
+            $query->orwhere('email', 'like', $busqueda);
+        })
+            ->get();
+
+
+        return response()->json(['request'=>$resultadoUnico]);
     }
 
 }

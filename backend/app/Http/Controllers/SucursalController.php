@@ -154,7 +154,22 @@ class SucursalController extends Controller {
         return response()->json($response, 200);
     }
     public function filter(Request $request) {
-        //aplicar busqueda (nombre, número de contacto, email o dirección)
-        return response()->json(['request'=>$request->filter]);
+
+            $busqueda = "%" . $request->search . "%";
+
+            $resultadoUnico = Sucursal::
+                where(function ($query)
+                use (
+                    $busqueda
+                ) {
+                    $query->orwhere('nombreSucursal', 'like', $busqueda);
+                    $query->orwhere('telefonoSucursal', 'like', $busqueda);
+                    $query->orwhere('emailSucursal', 'like', $busqueda);
+                    $query->orwhere('direccionSucursal', 'like', $busqueda);
+                })
+                ->get();
+
+
+        return response()->json(['request'=>$resultadoUnico]);
     }
 }

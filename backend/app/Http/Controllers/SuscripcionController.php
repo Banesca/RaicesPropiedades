@@ -184,7 +184,21 @@ class SuscripcionController extends Controller {
         }
     }
     public function filter(Request $request) {
-        //aplicar busqueda (Buscar por título y descripción)
-        return response()->json(['request'=>$request->filter]);
+        $busqueda = "%" . $request->search . "%";
+
+        $resultadoUnico = Suscripcion::
+        where(function ($query)
+        use (
+            $busqueda
+        ) {
+            $query->orwhere('email', 'like', $busqueda);
+            $query->orwhere('motivoDeCancelacion', 'like', $busqueda);
+            $query->orwhere('sugerencia', 'like', $busqueda);
+        })
+            ->where('fk_idStatusSistema', 1)
+            ->get();
+
+
+        return response()->json(['request'=>$resultadoUnico]);
     }
 }
