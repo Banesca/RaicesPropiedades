@@ -1,106 +1,75 @@
 <aside class="main-sidebar">
 
-  <section class="sidebar">
+    <section class="sidebar">
 
-    <div class="user-panel" style="height: 60px;">
-      <h5 *ngIf="!hideUser" style="color:white; padding:5px;">{{dataUser.userName}}</h5>
-      <div class="pull-left image">
-      </div>
-      <div class="pull-left info">
+        <div class="user-panel" style="height: 60px;">
+            <h5 *ngIf="!hideUser" style="color:white; padding:5px;">{{dataUser.userName}}</h5>
+            <div class="pull-left image"></div>
+            <div class="pull-left info">
 
-      </div>
-    </div>
+            </div>
+        </div>
 
-    <ul class="sidebar-menu" data-widget="tree">
-      <!-- ///////////////// -->
-  <!--     <li class="treeview">
-          <a routerLink="/perfil">
-            <i class="fa fa-circle-o"></i> <span>Dashboard</span>
-  
-          </a>
-  
-        </li> -->
-      <li class="treeview">
-        <a routerLink="/gestionar-usuarios">
-          <i class="fa fa-users"></i> <span>Gestión de Usuarios</span>
+        <ul class="sidebar-menu" data-widget="tree">
+            <!-- ///////////////// -->
+            <!--     <li class="treeview">
+                    <a routerLink="/perfil">
+                      <i class="fa fa-circle-o"></i> <span>Dashboard</span>
 
-        </a>
+                    </a>
 
-      </li>
+                  </li> -->
+            
 
-      <!-- <li class="treeview">
-        <a routerLink="/modulos">
-          <i class="fa fa-cogs"></i> <span>Gestión de Módulos</span>
-        </a>
-      </li> -->
-
-      <li class="treeview">
-        <a routerLink="/galeria-home">
-          <i class="fa fa-users"></i> <span>Galería Home</span>
-
-        </a>
-
-      </li>
-
-        <li class="treeview">
-            <a routerLink="/sucursales">
-              <i class="fas fa-building"></i> <span>Sucursales</span>
-    
-            </a>
-    
-          </li>
-          <li class="treeview">
-            <a routerLink="/suscribers">
-              <i class="fas fa-send"></i> <span>Suscriptores</span>
-    
-            </a>
-    
-          </li>
-          <li class="treeview">
-            <a routerLink="/mail-suscribers">
-              <i class="fas fa-send"></i> <span>Mails a Suscriptores</span>
-    
-            </a>
-    
-          </li>
-          <li class="treeview">
-              <a routerLink="/gestionar-publicaciones">
-                <i class="fas fa-building"></i> <span> Gestión de Publicaciones</span>
-      
+            <!-- <li class="treeview">
+              <a routerLink="/modulos">
+                <i class="fa fa-cogs"></i> <span>Gestión de Módulos</span>
               </a>
-      
-            </li>
-                      <li class="treeview">
-              <a routerLink="/publicaciones-facebook">
-                <i class="fas fa-send"></i> <span>Publicaciones en Facebook</span>
-      
-              </a>
-      
+            </li> -->
+            <li class="treeview">
+              <a routerLink="/gestionar-usuarios"> <i class="fa fa-users"></i> <span>Gestión de Usuarios</span></a>
             </li>
             <li class="treeview">
-              <a routerLink="/tasaciones">
-                <i class="fas fa-building"></i> <span> Tasaciones</span>
-      
-              </a>
-      
+                <a routerLink="/galeria-home"> <i class="fa fa-users"></i> <span>Galería Home</span></a>
             </li>
             <li class="treeview">
-              <a routerLink="/config-footer">
-                <i class="fas fa-tools"></i> <span>Configuración General</span>
-      
-              </a>
-      
+                <a routerLink="/sucursales"> <i class="fas fa-building"></i> <span>Sucursales</span></a>
+            </li>
+            <li class="treeview">
+              <a routerLink="/tasaciones"><i class="fas fa-building"></i> <span> Tasaciones</span></a>              
+            </li>
+            <li class="treeview">
+                <a routerLink="/suscribers"> <i class="fas fa-send"></i> <span>Suscriptores</span></a>
+            </li>
+            <li class="treeview">
+                <a routerLink="/mail-suscribers"> <i class="fas fa-send"></i> <span>Mails a Suscriptores</span></a>
+            </li>
+            <li class="treeview">
+                <a routerLink="/gestionar-publicaciones"> <i class="fas fa-building"></i><span> Gestión de Publicaciones</span></a>
+            </li>
+            <!--<li class="treeview">
+                <a routerLink="/publicaciones-facebook"> <i class="fas fa-send"></i>
+                    <span>Publicaciones en Facebook</span>
+
+                </a>
+
+            </li>-->
+            <li class="treeview">
+                <a routerLink="/tasaciones"> <i class="fas fa-building"></i><span class="text-uppercase"> tasaciones</span></a>
+            </li>
+            <li class="treeview">
+                <a routerLink="/config-footer"> <i class="fas fa-tools"></i> <span>Configuración General</span>
+
+                </a>
+
             </li>
 
 
-
-
-      <li class="header">LOGHOME</li>
-    </ul>
-  </section>
+            <li class="header">LOGHOME</li>
+        </ul>
+    </section>
 
 </aside>
-
 
 
 <!-- <aside class="main-sidebar">

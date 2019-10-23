@@ -154,6 +154,7 @@ class UserController extends Controller {
 
 
     public function store(Request $request) {
+
         $this->validate($request, [
             'name'                  => 'required|min:2',
             'email'                 => 'required|unique:tb_users,email,'.$request->id.',id,deleted_at,NULL',

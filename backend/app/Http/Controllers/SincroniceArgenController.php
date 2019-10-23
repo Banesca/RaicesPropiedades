@@ -23,6 +23,18 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
 
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 'propiedad.Direccion.Pais.Id'                               => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'                          => $request1->fk_Direccion_Provincia_Id,
                 'propiedad.Direccion.Partido.Id'                            => $request1->fk_Direccion_Partido_Id,
@@ -187,10 +199,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Edificio.Instalaciones.Termotanque'              => (boolean) $request1->Instalaciones_Termotanque ? 'True' : 'False',
             ]);
 
-        }
-
-
-        //'Departamento Tipo Casa
+        } //'Departamento Tipo Casa
         elseif ($request1->fk_idTipoPropiedad = 2) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -204,6 +213,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.Direccion.Pais.Id'                         => $request1->fk_Direccion_Pais_Id,
@@ -321,9 +343,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Ambientes.Toilette'                        => (boolean) $request1->Ambientes_Toilette ? 'True' : 'False',
                 'propiedad.Ambientes.Vestidor'                        => (boolean) $request1->Ambientes_Vestidor ? 'True' : 'False',
             ]);
-        }
-
-        //Casa
+        } //Casa
         elseif ($request1->fk_idTipoPropiedad = 3) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -337,6 +357,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.Direccion.Pais.Id'                         => $request1->fk_Direccion_Pais_Id,
@@ -468,9 +501,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Ambientes.Vestidor'                        => (boolean) $request1->Ambientes_Vestidor ? 'True' : 'False',
                 'propiedad.Ambientes.Vestuario'                       => (boolean) $request1->Ambientes_Vestuario ? 'True' : 'False',
             ]);
-        }
-
-        //Quinta
+        } //Quinta
         elseif ($request1->fk_idTipoPropiedad = 4) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -484,6 +515,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.AptoCredito'                                    => (boolean) $request1->AptoCredito ? 'True' : 'False',
@@ -612,9 +656,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Instalaciones.CanchaDeTenis'                    => (boolean) $request1->Instalaciones_CanchaDeTenis,
                 'propiedad.Instalaciones.CanchaDeVoley'                    => (boolean) $request1->Instalaciones_CanchaDeVoley,
             ]);
-        }
-
-        //Cochera
+        } //Cochera
         elseif ($request1->fk_idTipoPropiedad = 5) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -628,6 +670,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.AptoCredito'                    => (boolean) $request1->AptoCredito ? 'True' : 'False',
@@ -659,9 +714,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Generales.SeguroCaucion'        => (boolean) $request1->Generales_SeguroCaucion ? 'True' : 'False',
 
             ]);
-        }
-
-        //Local
+        } //Local
         elseif ($request1->fk_idTipoPropiedad = 6) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -675,6 +728,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.Direccion.Pais.Id'                         => $request1->fk_Direccion_Pais_Id,
@@ -758,9 +824,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Instalaciones.Pavimento'                   => (boolean) $request1->Instalaciones_Pavimento ? 'True' : 'False',
                 'propiedad.Generales.SeguroCaucion'                   => (boolean) $request1->Generales_SeguroCaucion ? 'True' : 'False',
             ]);
-        }
-
-        //Hotel
+        } //Hotel
         elseif ($request1->fk_idTipoPropiedad = 7) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -774,6 +838,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.Direccion.Pais.Id'                         => $request1->fk_Direccion_Pais_Id,
@@ -860,9 +937,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Instalaciones.Sauna'                       => (boolean) $request1->Instalaciones_Sauna ? 'True' : 'False',
 
             ]);
-        }
-
-        //Terreno
+        } //Terreno
         elseif ($request1->fk_idTipoPropiedad = 8) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -876,6 +951,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.Direccion.Pais.Id'              => $request1->fk_Direccion_Pais_Id,
@@ -941,9 +1029,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Generales.SeguroCaucion'        => (boolean) $request1->Generales_SeguroCaucion ? 'True' : 'False',
 
             ]);
-        }
-
-        //Oficina
+        } //Oficina
         elseif ($request1->fk_idTipoPropiedad = 9) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -957,6 +1043,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.Direccion.Pais.Id'                         => $request1->fk_Direccion_Pais_Id,
@@ -1051,9 +1150,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Generales.SeguroCaucion'                   => (boolean) $request1->Generales_SeguroCaucion ? 'True' : 'False',
 
             ]);
-        }
-
-        //Campo
+        } //Campo
         elseif ($request1->fk_idTipoPropiedad = 10) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -1067,6 +1164,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.Direccion.Pais.Id'                  => $request1->fk_Direccion_Pais_Id,
@@ -1123,9 +1233,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Generales.SeguroCaucion'            => (boolean) $request1->Generales_SeguroCaucion ? 'True' : 'False',
 
             ]);
-        }
-
-        //Fondo_de_Comercio
+        } //Fondo_de_Comercio
         elseif ($request1->fk_idTipoPropiedad = 11) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -1139,6 +1247,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.Direccion.Pais.Id'              => $request1->fk_Direccion_Pais_Id,
@@ -1183,9 +1304,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Servicios.Rentas'               => (boolean) $request1->Servicios_Rentas ? 'True' : 'False',
 
             ]);
-        }
-
-        //Galpón
+        } //Galpón
         elseif ($request1->fk_idTipoPropiedad = 12) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -1199,6 +1318,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.Direccion.Pais.Id'              => $request1->fk_Direccion_Pais_Id,
@@ -1275,9 +1407,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Generales.SeguroCaucion'                   => (boolean) $request1->Generales_SeguroCaucion ? 'True' : 'False',
 
             ]);
-        }
-
-        //Negocio_Especial
+        } //Negocio_Especial
         elseif ($request1->fk_idTipoPropiedad = 13) {
             $contenido = self::QueryHtml([
                 'usr'                             => 'integrador@argenprop.com',
@@ -1291,6 +1421,19 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+
+                'aviso.Fotos[0].Url'              => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.Fotos[1].Url'              => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
+                'aviso.Fotos[2].Url'              => ! is_null($request1->imagen3) ? asset('storage\\ficha2\\'.@$request1->imagen3) : null,
+                'aviso.Fotos[3].Url'              => ! is_null($request1->imagen4) ? asset('storage\\ficha2\\'.@$request1->imagen4) : null,
+                'aviso.Fotos[4].Url'              => ! is_null($request1->imagen5) ? asset('storage\\ficha2\\'.@$request1->imagen5) : null,
+                'aviso.Fotos[5].Url'              => ! is_null($request1->imagen6) ? asset('storage\\ficha2\\'.@$request1->imagen6) : null,
+                'aviso.Fotos[6].Url'              => ! is_null($request1->imagen7) ? asset('storage\\ficha2\\'.@$request1->imagen7) : null,
+                'aviso.Fotos[7].Url'              => ! is_null($request1->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$request1->imagen_para_galeria) : null,
+
+                'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
+                'aviso.TipoMultimedia[0].Id' => '1',
+
                 //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
 
                 'propiedad.Direccion.Pais.Id'              => $request1->fk_Direccion_Pais_Id,
@@ -1341,10 +1484,10 @@ class SincroniceArgenController extends Controller {
             //dd("cURL Error #:".$err);
         } else {
 
-             $propidad=Propiedad::find($request1->idPropiedad);
-             if (isset($propidad)) {
-                 $propidad->update(['visibilidad'=>$response]);
-             }
+            $propidad = Propiedad::find($request1->idPropiedad);
+            if (isset($propidad)) {
+                $propidad->update([ 'visibilidad' => $response ]);
+            }
 
         }
 

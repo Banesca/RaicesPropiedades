@@ -117,6 +117,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
         Artisan::call(
             'cache:clear');
         Artisan::call('config:cache');
+        Artisan::call('storage:link');
         //Artisan::call('vendor:publish');
         return response()->json('cache borrada y configurada');
 

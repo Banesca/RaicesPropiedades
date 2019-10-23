@@ -40,7 +40,7 @@ const routes: Routes = [
          { path: 'gestionar-usuarios', component: UsuariosComponent, canActivate: [RandomGuard] },
          { path: 'galeria-home', component: GaleriaHomeComponent, canActivate: [RandomGuard] },
          // { path: 'gestionar-publicaciones', component: GestionPublicacionesComponent, canActivate: [RandomGuard] },
-         { path: 'publicaciones-facebook', component: PublicacionesFacebookComponent, canActivate: [RandomGuard] },
+         //{ path: 'publicaciones-facebook', component: PublicacionesFacebookComponent, canActivate: [RandomGuard] },
          { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [RandomGuard] },
          { path: 'perfil', component: PerfilComponent, canActivate: [RandomGuard] },
          { path: 'config-footer', component: ConfigFooterComponent, canActivate: [RandomGuard] },
