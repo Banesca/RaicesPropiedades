@@ -171,6 +171,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
 
     Route::post('editPropiedad/{idPropiedad}','Ficha3Controller@edit');
     Route::delete('deletePropiedad/{idPropiedad}','Ficha3Controller@delete');
+    Route::delete('deleteSinRetorno/{idPropiedad}','Ficha3Controller@deleteSinRetorno');
 
     Route::post('sincronice','SincroniceArgenController@add'); /*Faltan pruebas*/
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
