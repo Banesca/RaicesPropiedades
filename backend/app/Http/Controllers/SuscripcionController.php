@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\SuscripcionMail;
 use App\Suscripcion;
+use App\SuscripcionUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -186,6 +187,22 @@ class SuscripcionController extends Controller {
     public function filter(Request $request) {
         $busqueda = "%" . $request->search . "%";
 
+        $resultadoUnico = SuscripcionUser::
+        where(function ($query)
+        use (
+            $busqueda
+        ) {
+            $query->orwhere('titulo', 'like', $busqueda);
+            $query->orwhere('descripcion', 'like', $busqueda);
+        })
+            ->get();
+
+
+        return response()->json(['request'=>$resultadoUnico]);
+    }
+    public function filterSuscriptores(Request $request) {
+        $busqueda = "%" . $request->search . "%";
+
         $resultadoUnico = Suscripcion::
         where(function ($query)
         use (
@@ -195,7 +212,6 @@ class SuscripcionController extends Controller {
             $query->orwhere('motivoDeCancelacion', 'like', $busqueda);
             $query->orwhere('sugerencia', 'like', $busqueda);
         })
-            ->where('fk_idStatusSistema', 1)
             ->get();
 
 

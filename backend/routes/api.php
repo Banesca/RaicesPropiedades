@@ -14,6 +14,12 @@ use App\Partidos;
 use App\Propiedad;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Request;
+header('Access-Control-Allow-Origin: *'); 
+    header("Access-Control-Allow-Credentials: true");
+    header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+    header('Access-Control-Max-Age: 1000');
+    header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
 
 Route::group([ 'prefix' => 'auth' ], function() {
 
@@ -44,7 +50,7 @@ Route::group([ 'prefix' => 'auth' ], function() {
     });
 });
 //  
-Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
+Route::group([ 'prefix' => 'v1'], function() {
 
     Route::post('login', 'API\AuthController@login'); //logear
     Route::post('crearUser', 'UserController@store');
@@ -79,6 +85,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::get('suscripcion/buscarSuscripcionPorEmail/{email}','SuscripcionController@buscarSuscripcionPorEmail');
     Route::post('suscripcion/cancelarSuscripcionTocken/{tocken}','SuscripcionController@cancelarSuscripcionTocken');
     Route::post('suscripcion/filter','SuscripcionController@filter');
+    Route::post('suscriptores/filter','SuscripcionController@filterSuscriptores');
     /*SUSCRIPCIONES*/
 
     /*   Transacciones    */
@@ -173,7 +180,7 @@ Route::group([ 'prefix' => 'v1','middleware' => 'cors'], function() {
     Route::delete('deletePropiedad/{idPropiedad}','Ficha3Controller@delete');
     Route::delete('deleteSinRetorno/{idPropiedad}','Ficha3Controller@deleteSinRetorno');
 
-    Route::post('sincronice','SincroniceArgenController@add'); /*Faltan pruebas*/
+    //Route::post('sincronice','SincroniceArgenController@add'); /*Faltan pruebas*/
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
     Route::get('listarPropiedades','Ficha123Controller@listarTodo');
     Route::get('listarTodasPropiedades','Ficha123Controller@listarTodoSinFiltro');
