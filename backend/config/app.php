@@ -171,9 +171,9 @@ return [
 
 
         /*PERSONALIZADOS*/
-        Barryvdh\Cors\ServiceProvider::class,
+        //Barryvdh\Cors\ServiceProvider::class,
         //Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,
+        //Barryvdh\DomPDF\ServiceProvider::class,
        // Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 

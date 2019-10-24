@@ -4,33 +4,27 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class cors
+class Cors
 {
+
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        header("Access-Control-Allow-Origin: *");
-
-        // ALLOW OPTIONS METHOD
-        $headers = [
-            'Access-Control-Allow-Methods'=> 'POST, GET, OPTIONS, PUT, DELETE',
-            'Access-Control-Allow-Headers'=> 'Content-Type, X-Auth-Token, Origin'
-        ];
-        if($request->getMethod() == "OPTIONS") {
-            // The client-side application can set only headers allowed in Access-Control-Allow-Headers
-            return \Illuminate\Http\Response::make('OK', 200, $headers);
-        }
-
-        $response = $next($request);
-        foreach($headers as $key => $value)
-            $response->header($key, $value);
-        return $response;
-
+        return $next($request)
+            ->header('Access-Control-Allow-Origin', $_SERVER['HTTP_ORIGIN'])
+            // Depending of your application you can't use '*'
+            // Some security CORS concerns 
+            //->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+            ->header('Access-Control-Allow-Credentials', 'true')
+            ->header('Access-Control-Max-Age', '10000')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
     }
 }
