@@ -151,11 +151,9 @@ export class SucursalesComponent implements OnInit {
 }
   filter() {
     // Buscar por nombre, número de contacto, email o dirección
-    console.log("filter",this.filterForm.value);
     this._sucursalService
       .filter(this.filterForm.value)
       .then(data => {
-        console.log(data);
         this.sucursalList=data.request;
 
       })

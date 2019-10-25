@@ -1,23 +1,16 @@
 import { enCRUD } from "./../../misc/enums";
-import { MailSuscribers } from './../../services/interfaces.index'
-import {
-  NgForm,
-  FormGroup,
-  FormBuilder,
-  Validators
-} from "@angular/forms";
+import { MailSuscribers } from "./../../services/interfaces.index";
+import { NgForm, FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
-import { IMailSuscriber } from './../../services/mail-suscribers/mail-suscriber.interface'
-import { MailSuscribersService } from './../../services/mail-suscribers/mail-suscribers.service'
-import { AlertsService } from '../../services/alerts.service';
-
+import { IMailSuscriber } from "./../../services/mail-suscribers/mail-suscriber.interface";
+import { MailSuscribersService } from "./../../services/mail-suscribers/mail-suscribers.service";
+import { AlertsService } from "../../services/alerts.service";
 
 @Component({
-  selector: 'app-mail-suscribers',
-  templateUrl: './mail-suscribers.component.html',
-  styleUrls: ['./mail-suscribers.component.css']
+  selector: "app-mail-suscribers",
+  templateUrl: "./mail-suscribers.component.html",
+  styleUrls: ["./mail-suscribers.component.css"]
 })
-
 export class MailSuscribersComponent implements OnInit {
   mCategorias: IMailSuscriber[];
   mCategoriasSelect: IMailSuscriber;
@@ -36,9 +29,7 @@ export class MailSuscribersComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _MailSuscribersService: MailSuscribersService,
     private _AlertsService: AlertsService
-  ) {
-    
-  }
+  ) {}
   get f() {
     return this.mForma.controls;
   }
@@ -74,17 +65,20 @@ export class MailSuscribersComponent implements OnInit {
         this.mLoading = false;
       })
       .catch(error => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Ha ocurrido un problema al cargar los datos.')
-
+        this._AlertsService.msg(
+          "ERR",
+          "ERROR",
+          "Ha ocurrido un problema al cargar los datos."
+        );
       });
   }
-onSubmit() {
+  onSubmit() {
     this.submitted = true;
     if (this.mForma.invalid) {
       return;
     }
 
-  this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
+    this.mCategoriasSelect = this.mForma.value as IMailSuscriber;
     this.guardar();
   }
 
@@ -106,19 +100,23 @@ onSubmit() {
         this.mFormaEstado = enCRUD.Eliminar;
         this.getAll();
         this.mLoading = false;
-        this._AlertsService.msg('OK', '¡Éxito!', 'Mail Enviado Correctamente.')
+        this.submitted = false;
+        this._AlertsService.msg("OK", "¡Éxito!", "Mail Enviado Correctamente.");
       })
       .catch(error => {
-        this._AlertsService.msg('ERR', 'ERROR', 'Hubo un problema al envíar el Mail.')
+        this._AlertsService.msg(
+          "ERR",
+          "ERROR",
+          "Hubo un problema al envíar el Mail."
+        );
       });
   }
   filter() {
     // Buscar por título y descripción
     this._MailSuscribersService
-      .filter(this.filterForm.value)
+      .suscripcionFilter(this.filterForm.value)
       .then(data => {
-        console.log(data);
-        // this.mCategorias = data.request;
+        this.mCategorias = data.request;
       })
       .catch(err => {
         console.log(err);

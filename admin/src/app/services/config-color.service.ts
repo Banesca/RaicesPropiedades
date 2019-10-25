@@ -31,7 +31,7 @@ export class ConfigColorService {
     return this.http.get(environment.apiHost + '/api/v1/paleta-color',httpOptions)
   }
 
-  addColores(data:any){ console.log(data)
+  addColores(data:any){ 
     return this.http.post(environment.apiHost + '/api/auth/colores',data,httpOptions);
   }
 

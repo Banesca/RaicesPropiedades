@@ -68,7 +68,6 @@ export class TransaccionesComponent implements OnInit {
       .All()
       .then(res => {
         this.mCategorias = res.data;
-        console.log("mCategorias:", this.mCategorias);
         this.mLoading = false;
       })
       .catch(error => {
@@ -213,7 +212,6 @@ export class TransaccionesComponent implements OnInit {
   }
   filter() {
     // Buscar por nombre, teléfono, título o descripción, categoria
-    console.log("filter", this.filterForm.value);
     this._TransaccionesService
       .filter(this.filterForm.value)
       .then(data => {

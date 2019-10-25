@@ -139,7 +139,6 @@ export class GaleriaHomeComponent implements OnInit {
   }
 
   modificar(pCategoria: IGaleria) {
-    console.log("pCategoria:", pCategoria);
     this.mCategoriasSelect = pCategoria;
     this.mFormaEstado = enCRUD.Actualizar;
   }

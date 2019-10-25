@@ -82,9 +82,9 @@ export class SuscribersComponent implements OnInit {
   filter() {
     this.mLoading = true;
     this._MailSuscribersService
-      .search(this.filterForm.value)
+      .suscriptoresFilter(this.filterForm.value)
       .then(data => {
-        this.mCategorias = data.suscripcion;
+        this.mCategorias = data.request;
         this.mLoading = false;
       })
       .catch(error => {

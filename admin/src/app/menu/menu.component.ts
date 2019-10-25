@@ -27,7 +27,6 @@ export class MenuComponent implements OnInit {
         /* location.reload(); */
         setTimeout(() => {
             this.route.navigate(['']);
-            console.log('menu.component.ts ngOnInit');
         }, 250);
       }
     })

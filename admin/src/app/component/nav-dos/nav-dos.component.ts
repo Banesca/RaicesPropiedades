@@ -37,7 +37,7 @@ export class NavDosComponent implements OnInit {
     )
   }
 
-  buscar(){ console.log("clicik")
+  buscar(){ 
     $("#nav-dos").css('display','none');
     $("#searchInput").css('display','block');
   }

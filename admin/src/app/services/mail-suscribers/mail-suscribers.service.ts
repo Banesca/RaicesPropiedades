@@ -55,13 +55,11 @@ export class MailSuscribersService {
       .toPromise();
   }
   //suscriptores
-  search(data: any) {
+  suscriptoresFilter(data: any) {
     return this._HttpClient
-      .post(
-        environment.apiHost + "/api/v1/suscripcion/buscarSuscripcionPorEmail",
-        data,
-        { headers: getHeaders() }
-      )
+      .post(environment.apiHost + "/api/v1/suscriptores/filter", data, {
+        headers: getHeaders()
+      })
       .pipe(
         map((data: any) => {
           return data;
@@ -70,7 +68,7 @@ export class MailSuscribersService {
       .toPromise();
   }
   //mail a suscriptores
-  filter(data: any) {
+  suscripcionFilter(data: any) {
     return this._HttpClient
       .post(environment.apiHost + "/api/v1/suscripcion/filter", data, {
         headers: getHeaders()

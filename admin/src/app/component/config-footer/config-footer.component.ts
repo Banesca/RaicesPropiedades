@@ -58,19 +58,31 @@ export class ConfigFooterComponent implements OnInit {
   getConfigFooter() {
     this._confgFooterService._getConfigFooter().subscribe(
       (resp: any) => {
-        if (resp) {
+        if (resp.configGeneral) {
           this.myForm.setValue({
-            quienesSomos: resp.configGeneral.quienesSomos,
-            direccion: resp.configGeneral.direccion,
-            celular1: resp.configGeneral.celular1,
-            celular2: resp.configGeneral.celular2,
-            correo: resp.configGeneral.correo,
-            url_face: resp.configGeneral.url_face,
-            url_intagram: resp.configGeneral.url_intagram,
+            quienesSomos: resp.configGeneral.quienesSomos
+              ? resp.configGeneral.quienesSomos
+              : "",
+            direccion: resp.configGeneral.direccion
+              ? resp.configGeneral.direccion
+              : "",
+            celular1: resp.configGeneral.celular1
+              ? resp.configGeneral.celular1
+              : null,
+            celular2: resp.configGeneral.celular2
+              ? resp.configGeneral.celular2
+              : null,
+            correo: resp.configGeneral.correo ? resp.configGeneral.correo : "",
+            url_face: resp.configGeneral.url_face
+              ? resp.configGeneral.url_face
+              : "",
+            url_intagram: resp.configGeneral.url_intagram
+              ? resp.configGeneral.url_intagram
+              : "",
             url_twitter: resp.configGeneral.url_twitter
+              ? resp.configGeneral.url_twitter
+              : ""
           });
-        } else {
-          this._alertService.msg("ERR", "Error", "Error al gargar datos");
         }
       },
       error => {
@@ -102,12 +114,12 @@ export class ConfigFooterComponent implements OnInit {
       this._confgFooterService
         .eliminarCategoria(pKey)
         .then(data => {
-            if (data) {
-              this._alertService.msg("OK", "¡Éxito!", "Email eliminado");
-              this.getMails();
-            } else {
-              this._alertService.msg("ERR", "ERROR", "error al eliminar email");
-            }
+          if (data) {
+            this._alertService.msg("OK", "¡Éxito!", "Email eliminado");
+            this.getMails();
+          } else {
+            this._alertService.msg("ERR", "ERROR", "error al eliminar email");
+          }
         })
         .catch(error => {
           console.log(error);
