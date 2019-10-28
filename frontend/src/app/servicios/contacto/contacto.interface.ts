@@ -8,7 +8,7 @@ export interface IContacto {
     email: string;
     telefono: string;
     fk_tipoPropiedad: number;
-    titulo: string;
+    direccion: string;
     descripcion: string;
     imagen_1: any;
     imagen_2: any;
@@ -22,7 +22,7 @@ export class CContacto{
             email: '',
             telefono: '',
             fk_tipoPropiedad: null,
-            titulo: '',
+            direccion: '',
             descripcion: '',
             imagen_1: null,
             imagen_2: null
