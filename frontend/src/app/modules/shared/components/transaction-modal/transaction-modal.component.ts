@@ -45,7 +45,7 @@ export class TransactionModalComponent implements OnInit {
     this.contactForm = this._formBuilder.group({
       nombre_apellido: [
         "",
-        [Validators.required, Validators.pattern("[ña-zA-Z _]*")]
+        [Validators.required, Validators.pattern("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$")]
       ],
       email: ["", [Validators.required, Validators.email]],
       telefono: [

@@ -1,7 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { SucursalesService, ContactoService, ArticuloService } from "src/app/servicios/servicios.index";
-import { ActivatedRoute, Router, Event, NavigationStart } from '@angular/router';
-import { ISucursal, IContacto } from 'src/app/servicios/interfaces.index';
+import { Component, OnInit } from "@angular/core";
+import {
+  SucursalesService,
+  ContactoService,
+  ArticuloService
+} from "src/app/servicios/servicios.index";
+import {
+  ActivatedRoute,
+  Router,
+  Event,
+  NavigationStart
+} from "@angular/router";
+import { ISucursal, IContacto } from "src/app/servicios/interfaces.index";
 import {
   NgForm,
   FormGroup,
@@ -23,7 +32,7 @@ export class OfficeComponent implements OnInit {
   contactForm: FormGroup;
   successMensaje = false;
   submitted = false;
-  errorMensaje :any= null;
+  errorMensaje: any = null;
   hideForm = false;
   mLoading = false;
   searchClicked: boolean;
@@ -44,7 +53,6 @@ export class OfficeComponent implements OnInit {
   }
   ngOnInit() {
     this.getParams();
-    
 
     this.articuloService.search.subscribe(data => {
       this.searchClicked = data;
@@ -55,7 +63,7 @@ export class OfficeComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.pattern("[a-zA-Z ]*"),
+          Validators.pattern("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$"),
           Validators.minLength(6)
         ]
       ],
@@ -105,9 +113,9 @@ export class OfficeComponent implements OnInit {
     this.mLoading = true;
     this.hideForm = true;
     this._ContactoService
-      //.New(this.mContacto)
       .NewContact(this.mContacto)
       .then(data => {
+        console.log("data:", data);
         this.successMensaje = true;
         this.mLoading = false;
         this.submitted = false;

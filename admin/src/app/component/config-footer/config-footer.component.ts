@@ -86,7 +86,8 @@ export class ConfigFooterComponent implements OnInit {
         }
       },
       error => {
-        this._alertService.msg("ERR", "Error", "Error al gargar datos");
+        console.log(error);
+        this._alertService.msg("ERR", "Error", "Error al cargar datos");
       }
     );
   }
@@ -96,11 +97,12 @@ export class ConfigFooterComponent implements OnInit {
         if (resp) {
           this.mailList = resp.mails;
         } else {
-          this._alertService.msg("ERR", "Error", "Error al gargar datos");
+          this._alertService.msg("ERR", "Error", "Error al cargar datos");
         }
       },
       error => {
-        this._alertService.msg("ERR", "Error", "Error al gargar datos");
+        console.log(error);
+        this._alertService.msg("ERR", "Error", "Error al cargar datos");
       }
     );
   }
