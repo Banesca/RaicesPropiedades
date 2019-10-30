@@ -62,7 +62,6 @@ class Ficha3Controller extends Controller {
 
                     $propiedad[$img] = $nombre_interno;
                 }
-
             }
 
             $propiedad->save();
