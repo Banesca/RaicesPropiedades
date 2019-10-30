@@ -32,7 +32,7 @@
                 (click)="filter()"
                 ngbTooltip="Buscar"
                 placement="top"
-                [disabled]="mLoading"
+                [disabled]="loading"
               >
                 <i class="fa fa-search"></i>
               </button>
@@ -46,7 +46,7 @@
               >
                 <i class="fa fa-trash"></i>
               </button>
-               <button
+              <button
                 (click)="loadData()"
                 type="button"
                 class="btn btn-warning w-50"
@@ -108,7 +108,7 @@
                     *ngIf="inPaperBin"
                   >
                     <i class="fa fa-trash"></i>
-                  </button>                  
+                  </button>
                 </td>
               </tr>
               <tr *ngIf="data.length == 0">
