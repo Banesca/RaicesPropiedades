@@ -1,12 +1,12 @@
 <ngb-carousel>
   <ng-template ngbSlide *ngFor="let image of images">
-    <img [src]="image" class="carousel-image" alt="Random slide" />
+    <img [src]="image" class="carousel-image" alt="Random slide" style="max-height: 500px;" onerror="this.src='assets/images/no_image_aviable.jpg'"/>
     <div class="carousel-caption">
       <h1 class="font-weight-light text-uppercase text-left">
         <!--  gPropiedades.ficha1.descipcion  -->
       </h1>
       <hr class="col-1 mx-0 mt-1 mb-4" style="border-bottom: 2px solid white;" />
-      <h1 class="font-weight-extrabold text-uppercase text-left">0$</h1>
+      <h1 class="font-weight-extrabold text-uppercase text-left">{{gPropiedades.precio}}$</h1>
       <!-- container d-none d-md-block d-md-flex py-4 justify-content-center -->
       <div class="galery-image">
         <img *ngIf="gPropiedades.imagenes.imagen1" [src]="gPropiedades.imagenes.imagen1" alt="" />
@@ -15,6 +15,7 @@
         <img *ngIf="gPropiedades.imagenes.imagen4" [src]="gPropiedades.imagenes.imagen4" alt="" />
         <img *ngIf="gPropiedades.imagenes.imagen5" [src]="gPropiedades.imagenes.imagen5" alt="" />
         <img *ngIf="gPropiedades.imagenes.imagen6" [src]="gPropiedades.imagenes.imagen6" alt="" />
+        <img *ngIf="gPropiedades.imagenes.imagen7" [src]="gPropiedades.imagenes.imagen7" alt="" />
       </div>
     </div>
   </ng-template>
@@ -239,7 +240,7 @@
             </h6>
             <hr class="my-1" />
             <div class="container my-3 d-flex justify-content-center">
-              <div class=" row d-flex justify-content-center">
+              <div class="row d-flex">
                 <ng-container *ngFor="let ambiente of vista.ambientes">
                   <li *ngIf="ambiente.selected"
                   class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
@@ -258,7 +259,7 @@
             <h6 class="gray-text col-lg-12 font-weight-bold">Instalaciones</h6>
             <hr class="my-1" />
             <div class="container my-3 d-flex justify-content-center">
-              <div class=" row d-flex justify-content-center">
+              <div class="row d-flex">
                 <ng-container *ngFor="let instalacion of vista.instalaciones">
                   <li *ngIf="instalacion.selected" class="my-3 d-flex gray-text font-semibold col-lg-3 text-center">
                     <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons" alt="" />{{instalacion.label}}
@@ -273,7 +274,7 @@
             </h6>
             <hr class="my-1" />
             <div class="container my-3 d-flex justify-content-center">
-              <div class=" row d-flex justify-content-center">
+              <div class="row d-flex">
                 <ng-container *ngFor="let servicio of vista.servicios">
                   <li *ngIf="servicio.selected" class="my-3 d-flex gray-text font-semibold col-lg-3 text-center">
                     <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons" alt="" />{{servicio.label}}

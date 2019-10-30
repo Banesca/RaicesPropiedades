@@ -5,9 +5,7 @@ import {
 } from "src/app/servicios/servicios.index";
 import { ActivatedRoute } from "@angular/router";
 import { NgbCarouselConfig } from "@ng-bootstrap/ng-bootstrap";
-import {
-  VistaPublicaciones
-} from "src/app/servicios/publicaciones/publicaciones.interface";
+import { VistaPublicaciones } from "src/app/servicios/publicaciones/publicaciones.interface";
 import { DataByTipoPropiedad } from "../../../../../presentation/publication-management/form/datosPorTipoPropiedad";
 
 @Component({
@@ -20,7 +18,7 @@ export class LayoutComponent implements OnInit {
   status: boolean;
   mId: string;
   mLoading = false;
-  images = [];
+  images: any[] = [];
   searchClicked: boolean;
   //Inicializamos la vista en blanco
   vista: VistaPublicaciones = {
@@ -144,18 +142,31 @@ export class LayoutComponent implements OnInit {
               this.gPropiedades[element.variableName] == "1" ? true : false;
           });
         }
-        this.images = [
-          /*
-      this.gPropiedades.ficha2.imagen1,
-      this.gPropiedades.ficha2.imagen2,
-      this.gPropiedades.ficha2.imagen3,
-      this.gPropiedades.ficha2.imagen4,
-      this.gPropiedades.ficha2.imagen5,
-      this.gPropiedades.ficha2.imagen6,
-      this.gPropiedades.ficha2.imagen7,*/
-          // this.gPropiedades.ficha2.imagen1,
-          "https://picsum.photos/id/539/900/500"
-        ];
+        if (this.gPropiedades.imagenes.imagen1)
+          this.images.push(this.gPropiedades.imagenes.imagen1);
+        if (this.gPropiedades.imagenes.imagen2)
+          this.images.push(this.gPropiedades.imagenes.imagen2);
+        if (this.gPropiedades.imagenes.imagen3)
+          this.images.push(this.gPropiedades.imagenes.imagen3);
+        if (this.gPropiedades.imagenes.imagen4)
+          this.images.push(this.gPropiedades.imagenes.imagen4);
+        if (this.gPropiedades.imagenes.imagen5)
+          this.images.push(this.gPropiedades.imagenes.imagen5);
+        if (this.gPropiedades.imagenes.imagen6)
+          this.images.push(this.gPropiedades.imagenes.imagen6);
+        if (this.gPropiedades.imagenes.imagen7)
+          this.images.push(this.gPropiedades.imagenes.imagen7);
+        if (
+          !this.gPropiedades.imagenes.imagen1 &&
+          !this.gPropiedades.imagenes.imagen2 &&
+          !this.gPropiedades.imagenes.imagen3 &&
+          !this.gPropiedades.imagenes.imagen4 &&
+          !this.gPropiedades.imagenes.imagen5 &&
+          !this.gPropiedades.imagenes.imagen6 &&
+          !this.gPropiedades.imagenes.imagen7
+        ) {
+          this.images.push("https://picsum.photos/id/539/900/500");
+        }
       })
 
       .catch(error => {

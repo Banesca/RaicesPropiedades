@@ -19,7 +19,7 @@
                 [value]="operation.descripcion"
                 ngbDropdownToggle
               />
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
+              <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
                 <input
                   type="button"
                   *ngFor="let tipo of tipoOperation"
@@ -40,7 +40,7 @@
                 [value]="tipo.descripcion"
                 ngbDropdownToggle
               />
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
+              <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
                 <input
                   type="button"
                   *ngFor="let tipoPropiedades of mTipoPropiedad"
@@ -63,7 +63,7 @@
                 [value]="moneda.moneda"
                 ngbDropdownToggle
               />
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
+              <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
                 <input
                   type="button"
                   *ngFor="let moneda of mMonedas"
@@ -105,7 +105,7 @@
               [value]="selectedProvince.nombre"
               ngbDropdownToggle
             />
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
+            <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
               <input
                 type="button"
                 *ngFor="let province of provinces"
@@ -126,7 +126,7 @@
               [value]="selectedPartido.nombre"
               ngbDropdownToggle
             />
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
+            <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
               <input
                 type="button"
                 *ngFor="let partido of partidos"
@@ -147,7 +147,7 @@
               [value]="selectedLocalidad.nombre"
               ngbDropdownToggle
             />
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
+            <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
               <input
                 type="button"
                 *ngFor="let localidad of localidades"
@@ -168,7 +168,7 @@
               [value]="selectedBarrio.nombre"
               ngbDropdownToggle
             />
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
+            <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
               <input
                 type="button"
                 *ngFor="let barrio of barrios"

@@ -65,7 +65,8 @@ export class ArticlesComponent implements OnInit {
       this.articulosService
         .getItemsBySearch(this.objectFilter)
         .then(data => {
-          this.articulos = data.propiedades;          
+          this.articulos = data.propiedades; 
+          console.log("this.articulos:",this.articulos);
           this.arbol = data.arbol;
           this.propiedadesInPromise = false;
         })
