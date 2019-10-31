@@ -4,7 +4,7 @@ import { getHeaders } from "../../misc/Headers";
 
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, of, BehaviorSubject, Subject } from "rxjs";
+import { Observable, of, BehaviorSubject, ReplaySubject } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Injectable({
@@ -16,7 +16,7 @@ export class ArticuloService {
   private mService = "/api/v1/";
   /** Url obtenida del servicio de configuracion */
   private mUrl: string;
-  public filter: BehaviorSubject<any> = new BehaviorSubject([]);
+  public filter: BehaviorSubject<object> = new BehaviorSubject(null);
   public search: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   /**
@@ -136,7 +136,6 @@ export class ArticuloService {
       )
       .toPromise();
   }
-  
   getItemsBySearch(formData) {
     return this._HttpClient
       .post(this.mUrl + this.mService + "buscadorGeneral", formData, {
@@ -144,9 +143,14 @@ export class ArticuloService {
       })
       .pipe(
         map((data: any) => {
+          this.filter = new BehaviorSubject(null);
           return data;
         })
       )
       .toPromise();
+  }
+  resetSubjects() {
+    this.filter = new BehaviorSubject(null);
+    this.search = new BehaviorSubject(false);
   }
 }

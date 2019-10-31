@@ -1,6 +1,12 @@
-import { Component, OnInit  } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ArticuloService } from "../../../../servicios/servicios.index";
 import { montos } from "../search/mockData";
+import {
+  ActivatedRoute,
+  Router,
+  Event,
+  NavigationStart
+} from "@angular/router";
 @Component({
   selector: "app-articles",
   templateUrl: "./articles.component.html",
@@ -26,13 +32,14 @@ export class ArticlesComponent implements OnInit {
   selectedMinimo: Number | string = "mínimo";
   selectedMaximo: Number | string = "máximo";
   montos: number[] = montos;
-  minM2: number=null;
-  maxM2: number=null;
-  montoMinimo: number=null;
-  montoMaximo: number=null;
-  constructor(private articulosService: ArticuloService) {
-    
-  }
+  minM2: number = null;
+  maxM2: number = null;
+  montoMinimo: number = null;
+  montoMaximo: number = null;
+  constructor(
+    private router: Router,
+    private articuloService: ArticuloService
+  ) {}
   getFormData(filterData) {
     const formData = new FormData();
     filterData.forEach(element => {
@@ -43,43 +50,98 @@ export class ArticlesComponent implements OnInit {
     });
     return formData;
   }
-  searchResult(){
-    this.articulosService.filter.subscribe(filterData => {
-      //Obtenemos el filtro del buscador
-      this.filterData = filterData;
-      this.montoMinimo=this.filterData.montoMinimo;
-      this.montoMaximo=this.filterData.montoMaximo;
-      this.objectFilter = {
-        idTipoPropiedad:this.filterData.idTipoPropiedad.idTipoPropiedad,
-        idMonedas:this.filterData.idMonedas.idMonedas,
-        idTipoOperaion:this.filterData.idTipoOperaion.idTipoOperaion,
-        montoMinimo:this.filterData.montoMinimo,
-        montoMaximo:this.filterData.montoMaximo,
-        idProvincia:this.filterData.idProvincia.id,
-        idPartido:this.filterData.idPartido.id,
-        idLocalidad:this.filterData.idLocalidad.id,
-        idBarrio:this.filterData.idBarrio.id,
-        habitantes:this.filterData.habitantes
-      };
-      this.propiedadesInPromise = true;
-      this.articulosService
-        .getItemsBySearch(this.objectFilter)
-        .then(data => {
-          this.articulos = data.propiedades; 
-          console.log("this.articulos:",this.articulos);
-          this.arbol = data.arbol;
-          this.propiedadesInPromise = false;
-        })
-        .catch(error => {
-          this.propiedadesInPromise = false;
-          console.error(error);
-        });
+  searchResult() {
+    console.log("articles.component.ts searchResult");
+    this.propiedadesInPromise = true;
+    this.articuloService.filter.subscribe(filterData => {
+      if (filterData) {
+        console.log("filterData:", filterData);
+        //Obtenemos el filtro del buscador
+        this.filterData = filterData;
+        this.montoMinimo = this.filterData.montoMinimo;
+        this.montoMaximo = this.filterData.montoMaximo;
+        this.objectFilter = {
+          idTipoPropiedad: this.filterData.idTipoPropiedad.idTipoPropiedad,
+          idMonedas: this.filterData.idMonedas.idMonedas,
+          idTipoOperaion: this.filterData.idTipoOperaion.idTipoOperaion
+            ? this.filterData.idTipoOperaion.idTipoOperaion
+            : null,
+          montoMinimo: this.filterData.montoMinimo,
+          montoMaximo: this.filterData.montoMaximo,
+          idProvincia: this.filterData.idProvincia.id,
+          idPartido: this.filterData.idPartido.id,
+          idLocalidad: this.filterData.idLocalidad.id,
+          idBarrio: this.filterData.idBarrio.id,
+          habitantes: this.filterData.habitantes
+        };
+        this.articuloService
+          .getItemsBySearch(this.objectFilter)
+          .then(data => {
+            this.articulos = data.propiedades;
+            console.log("this.articulos:", this.articulos);
+            this.arbol = data.arbol;
+            this.propiedadesInPromise = false;
+            // this.articuloService.completeSubjects();
+            // this.articuloService.newSubjects();
+            // this.articuloService.filter..complete()();
+          })
+          .catch(error => {
+            this.propiedadesInPromise = false;
+            console.error(error);
+          });
+      }
     });
   }
   ngOnInit() {
     let resultsElement = document.getElementById("resultados-busqueda");
     resultsElement.scrollIntoView();
-    this.searchResult();
+    console.log("articles.component.ts ngOnInit");
+    this.articuloService.search.subscribe(data => {
+      console.log("this.articuloService.search.subscribe:", data);
+      if (data) {
+        console.log("true=======");
+        console.log("articles.component.ts searchResult");
+        this.propiedadesInPromise = true;
+        this.articuloService.filter.subscribe(filterData => {
+          if (filterData) {
+            console.log("filterData:", filterData);
+            //Obtenemos el filtro del buscador
+            this.filterData = filterData;
+            this.montoMinimo = this.filterData.montoMinimo;
+            this.montoMaximo = this.filterData.montoMaximo;
+            this.objectFilter = {
+              idTipoPropiedad: this.filterData.idTipoPropiedad.idTipoPropiedad,
+              idMonedas: this.filterData.idMonedas.idMonedas,
+              idTipoOperaion: this.filterData.idTipoOperaion.idTipoOperaion
+                ? this.filterData.idTipoOperaion.idTipoOperaion
+                : null,
+              montoMinimo: this.filterData.montoMinimo,
+              montoMaximo: this.filterData.montoMaximo,
+              idProvincia: this.filterData.idProvincia.id,
+              idPartido: this.filterData.idPartido.id,
+              idLocalidad: this.filterData.idLocalidad.id,
+              idBarrio: this.filterData.idBarrio.id,
+              habitantes: this.filterData.habitantes
+            };
+            this.articuloService
+              .getItemsBySearch(this.objectFilter)
+              .then(data => {
+                this.articulos = data.propiedades;
+                console.log("this.articulos:", this.articulos);
+                this.arbol = data.arbol;
+                this.propiedadesInPromise = false;
+                // this.articuloService.completeSubjects();
+                // this.articuloService.newSubjects();
+                // this.articuloService.filter..complete()();
+              })
+              .catch(error => {
+                this.propiedadesInPromise = false;
+                console.error(error);
+              });
+          }
+        });
+      }
+    });
   }
 
   verifyStringOrObject() {
@@ -113,15 +175,13 @@ export class ArticlesComponent implements OnInit {
       data.idBarrio && data.idBarrio.id
         ? (value = value + data.idBarrio.nombre + +" / ")
         : "";
-      data.Ambientes_Cochera
-        ? (value = value +"Con cochera / ")
-        : "";
+      data.Ambientes_Cochera ? (value = value + "Con cochera / ") : "";
     }
     return value;
   }
 
   goBack() {
-    this.articulosService.search.next(false);
+    this.articuloService.search.next(false);
     window.scroll(0, 0);
   }
 
@@ -157,9 +217,9 @@ export class ArticlesComponent implements OnInit {
     }
     this.objectFilter[opcion] = null;
     this.filterData[opcion] = null;
-    this.articulosService.search.next(true);
-    this.propiedadesInPromise=true;
-    this.articulosService
+    this.articuloService.search.next(true);
+    this.propiedadesInPromise = true;
+    this.articuloService
       .getItemsBySearch(this.objectFilter)
       .then(data => {
         this.articulos = data.propiedades;
@@ -170,7 +230,7 @@ export class ArticlesComponent implements OnInit {
         this.propiedadesInPromise = false;
         console.error(error);
       });
-    // this.articulosService.filter.next(this.objectFilter);
+    // this.articuloService.filter.next(this.objectFilter);
   }
 
   setFilter(opcion: string, value: any) {
@@ -180,25 +240,25 @@ export class ArticlesComponent implements OnInit {
         this.filterData[opcion] = value;
         break;
       case "montos":
-        this.objectFilter['montoMinimo'] = value.montoMinimo;
-        this.objectFilter['montoMaximo'] = value.montoMaximo;
-        this.filterData['montoMinimo'] = value.montoMinimo;
-        this.filterData['montoMaximo'] = value.montoMaximo;
+        this.objectFilter["montoMinimo"] = value.montoMinimo;
+        this.objectFilter["montoMaximo"] = value.montoMaximo;
+        this.filterData["montoMinimo"] = value.montoMinimo;
+        this.filterData["montoMaximo"] = value.montoMaximo;
         break;
       case "metros":
-        this.objectFilter['minM2'] = value.minM2;
-        this.objectFilter['maxM2'] = value.maxM2;
-        this.filterData['minM2'] = value.minM2;
-        this.filterData['maxM2'] = value.maxM2;
+        this.objectFilter["minM2"] = value.minM2;
+        this.objectFilter["maxM2"] = value.maxM2;
+        this.filterData["minM2"] = value.minM2;
+        this.filterData["maxM2"] = value.maxM2;
         break;
       default:
         this.objectFilter[opcion] = value;
         this.filterData[opcion] = value;
         break;
     }
-    if((!this.minM2 && !this.maxM2)||(this.minM2 < this.maxM2)){
-      this.propiedadesInPromise=true;
-      this.articulosService
+    if ((!this.minM2 && !this.maxM2) || this.minM2 < this.maxM2) {
+      this.propiedadesInPromise = true;
+      this.articuloService
         .getItemsBySearch(this.objectFilter)
         .then(data => {
           this.articulos = data.propiedades;
@@ -210,12 +270,12 @@ export class ArticlesComponent implements OnInit {
           console.error(error);
         });
     }
-    
-    // this.articulosService.search.next(true);
-    // this.articulosService.filter.next(this.objectFilter);
+
+    // this.articuloService.search.next(true);
+    // this.articuloService.filter.next(this.objectFilter);
   }
 
   onClickPublicacion() {
-    this.articulosService.search.next(false);
+    this.articuloService.search.next(false);
   }
 }

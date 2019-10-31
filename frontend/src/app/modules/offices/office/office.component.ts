@@ -57,7 +57,6 @@ export class OfficeComponent implements OnInit {
     this.articuloService.search.subscribe(data => {
       this.searchClicked = data;
     });
-
     this.contactForm = this._formBuilder.group({
       nombre: [
         "",

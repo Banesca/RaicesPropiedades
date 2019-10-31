@@ -77,14 +77,14 @@
           <div class="col-md-4 py-1  col-12 px-1">
             <label class="col font-weight-extrabold text-uppercase">Monto Mínimo:</label>
             <div ngbDropdown class="d-inline-block">
-              <input type="number" class="btn search-dropdown btn-block" placeholder="Indistinto" [(ngModel)]="selectedMinimo"
+              <input type="number" class="btn search-dropdown btn-block" placeholder="Monto Mínimo" [(ngModel)]="selectedMinimo"
                 oninput="this.value=this.value.replace(/[^\d+]/,'')" />
             </div>
           </div>
           <div class="col-md-4 py-1 col-12 px-1">
             <label class="col font-weight-extrabold text-uppercase">Monto Máximo:</label>
             <div ngbDropdown class="d-inline-block">
-              <input type="number" class="btn search-dropdown btn-block" placeholder="Indistinto" [(ngModel)]="selectedMaximo"
+              <input type="number" class="btn search-dropdown btn-block" placeholder="Monto Máximo" [(ngModel)]="selectedMaximo"
                 oninput="this.value=this.value.replace(/[^\d+]/,'')" />
             </div>
           </div>
@@ -185,7 +185,7 @@
           <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label>
           <!-- regiones -->
           <div class="d-inline-block">
-            <input type="number" class="btn search-dropdown btn-block" id="" [(ngModel)]="habitantes" oninput="this.value=this.value.replace(/[^\d+]/,'')" />
+            <input placeholder="Habitantes" type="number" class="btn search-dropdown btn-block" id="" [(ngModel)]="habitantes" oninput="this.value=this.value.replace(/[^\d+]/,'')" />
           </div>
         </div>
       </div>

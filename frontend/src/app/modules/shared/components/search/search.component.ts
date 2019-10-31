@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ArticuloService } from "src/app/servicios/servicios.index";
 import {
   IMonedas,
@@ -7,7 +7,7 @@ import {
   Monedas,
   TipoPropiedad,
   TipoOperaion,
-  TOperaion,
+  TOperaion
 } from "src/app/servicios/interfaces.index";
 import { Observable, of } from "rxjs";
 
@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
   validateMonto: boolean = false;
 
   constructor(
-    private _ArticuloService: ArticuloService,
+    private articuloService: ArticuloService,
     private router: Router
   ) {}
 
@@ -61,10 +61,10 @@ export class SearchComponent implements OnInit {
     this.tipo = TipoPropiedad.empy();
     this.operation = TOperaion.empy();
     // provincias, partidos,localidades y barrios
-    this.selectedProvince = { id: null, nombre: "Indistinto" };
-    this.selectedPartido = { id: null, nombre: "Indistinto" };
-    this.selectedLocalidad = { id: null, nombre: "Indistinto" };
-    this.selectedBarrio = { id: null, nombre: "Indistinto" };
+    this.selectedProvince = { id: null, nombre: "Provincia" };
+    this.selectedPartido = { id: null, nombre: "Partido" };
+    this.selectedLocalidad = { id: null, nombre: "Localidad" };
+    this.selectedBarrio = { id: null, nombre: "Barrio" };
     this.selectedMinimo = null;
     this.selectedMaximo = null;
     this.habitantes = null;
@@ -78,7 +78,7 @@ export class SearchComponent implements OnInit {
   }
 
   gMonedas() {
-    this._ArticuloService
+    this.articuloService
       .getMonedas()
       .then(data => {
         this.mMonedas = data;
@@ -89,7 +89,7 @@ export class SearchComponent implements OnInit {
   }
 
   gOrientacion() {
-    this._ArticuloService
+    this.articuloService
       .getOrientacion()
       .then(data => {
         this.mOrientacion = data;
@@ -100,7 +100,7 @@ export class SearchComponent implements OnInit {
   }
 
   getProvinces() {
-    this._ArticuloService
+    this.articuloService
       .getProvinces()
       .then(response => {
         this.provinces = response.Provincias;
@@ -111,7 +111,7 @@ export class SearchComponent implements OnInit {
   }
 
   gTipoPropiedad() {
-    this._ArticuloService
+    this.articuloService
       .getTipoPropiedad()
       .then(data => {
         this.mTipoPropiedad = data;
@@ -122,7 +122,7 @@ export class SearchComponent implements OnInit {
   }
 
   gTipoOperacion() {
-    this._ArticuloService
+    this.articuloService
       .getTipoOperacion()
       .then(operation => {
         this.tipoOperation = operation;
@@ -147,10 +147,10 @@ export class SearchComponent implements OnInit {
 
   setProvince = (value: any): void => {
     this.selectedProvince = value;
-    this._ArticuloService
+    this.articuloService
       .getPartidos({ fk_provincia: value.id })
       .then(response => {
-        this.selectedPartido.nombre = "Indistinto";
+        this.selectedPartido.nombre = "Partido";
         this.partidos = response.Partidos;
       })
       .catch(error => {
@@ -160,10 +160,10 @@ export class SearchComponent implements OnInit {
 
   setPartido = (value: any): void => {
     this.selectedPartido = value;
-    this._ArticuloService
+    this.articuloService
       .getLocalidades({ fk_idPartido: value.id })
       .then(response => {
-        this.selectedLocalidad.nombre = "Indistinto";
+        this.selectedLocalidad.nombre = "Localidad";
         this.localidades = response.Localidades;
       })
       .catch(error => {
@@ -172,10 +172,10 @@ export class SearchComponent implements OnInit {
   };
   setLocalidad = (value: any): void => {
     this.selectedLocalidad = value;
-    this._ArticuloService
+    this.articuloService
       .getBarrios({ idLocalidad: value.id })
       .then(response => {
-        this.selectedBarrio.nombre = "Indistinto";
+        this.selectedBarrio.nombre = "Barrio";
         this.barrios = response.Barrios;
       })
       .catch(error => {
@@ -195,17 +195,16 @@ export class SearchComponent implements OnInit {
   // ------------------------
 
   searchFilter() {
+    console.log("search.component.ts searchFilter");
     if (
-      (this.selectedMinimo == null &&
-        this.selectedMaximo != null) ||
-      (this.selectedMaximo == null &&
-        this.selectedMinimo != null)
+      (this.selectedMinimo == null && this.selectedMaximo != null) ||
+      (this.selectedMaximo == null && this.selectedMinimo != null)
     ) {
       this.validateMonto = true;
     } else {
       this.validateMonto = false;
-      this._ArticuloService.search.next(true);
-      this._ArticuloService.filter.next({
+      this.articuloService.search.next(true);
+      this.articuloService.filter.next({
         idTipoPropiedad: this.tipo,
         idMonedas: this.moneda,
         idTipoOperaion: this.operation,

@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { PublicacionesService,GaleriaHomeService } from "src/app/servicios/servicios.index";
+import {
+  PublicacionesService,
+  GaleriaHomeService
+} from "src/app/servicios/servicios.index";
 import { ArticuloService } from "../../servicios/servicios.index";
 import {
   ActivatedRoute,
@@ -28,7 +31,8 @@ export class HomeComponent implements OnInit {
     private _PublicacionesService: PublicacionesService,
     public articuloService: ArticuloService,
     private _GaleriaHomeService: GaleriaHomeService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.getAll();
@@ -42,7 +46,7 @@ export class HomeComponent implements OnInit {
     // si se realizó una busqueda en  el buscador, se borra la busqueda al cambiar a esta pagina
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
-        this.articuloService.search.next(false);
+        this.articuloService.resetSubjects();
         window.scroll(0, 0);
       }
     });

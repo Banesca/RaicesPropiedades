@@ -18,7 +18,7 @@ export class Monedas {
     static empy() {
         return {
             idMonedas: null,
-            moneda: 'Seleccione'
+            moneda: 'Moneda'
         } as IMonedas
     }
 }
@@ -26,7 +26,7 @@ export class TipoPropiedad {
     static empy() {
         return {
             idTipoPropiedad: null,
-            descripcion: 'Seleccione'
+            descripcion: 'Edificación'
         } as ITipoPropiedad
     }
 }
@@ -43,7 +43,7 @@ export class TOperaion {
     static empy() {
         return {
             idTipoOperaion: null,
-            descripcion: 'Seleccione'
+            descripcion: 'Operación'
         } as TipoOperaion
     }
 }
