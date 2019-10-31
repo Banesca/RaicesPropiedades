@@ -1,16 +1,16 @@
 frontend/package-lock.json
 frontend/node_modules
-frontend/dist
+frontend/dist/
 admin/package-lock.json
 registroRuta/src/assets/bower_components
 backend/etc
 backend/.env
 backend/.idea
 backend/.DS_Store
-backend/storage
-backend/node_modules
+backend/storage/
+backend/node_modules/
 
-backend/vendor
+backend/vendor/
 .idea/
 backend/config/mail.php
 backend/public/.DS_Store
