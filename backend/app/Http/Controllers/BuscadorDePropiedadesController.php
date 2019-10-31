@@ -7,10 +7,8 @@ use App\Region;
 use App\resultadoUnico;
 use Illuminate\Http\Request;
 
-class BuscadorDePropiedadesController extends Controller
-{
-    public function buscarGeneral(Request $request)
-    {
+class BuscadorDePropiedadesController extends Controller {
+    public function buscarGeneral(Request $request) {
         $idTipoOperaion       = @$request->idTipoOperaion;
         $idTipoPropiedad      = @$request->idTipoPropiedad;
         $idMonedas            = @$request->idMonedas;
@@ -80,7 +78,7 @@ class BuscadorDePropiedadesController extends Controller
             'tipoOpeacion',
             'tipoMoneda'
         )
-            ->where(function ($query)
+            ->where(function($query)
             use (
                 $idTipoOperaion,
                 $idTipoPropiedad,
@@ -107,18 +105,18 @@ class BuscadorDePropiedadesController extends Controller
                 ! is_null($CantidadPersonal) ? $query->where('CantidadPersonal', $CantidadPersonal) : '';
                 ! is_null($CantidadHabitaciones) ? $query->where('CantidadHabitaciones', $CantidadHabitaciones) : '';
                 ! is_null($Ambientes_Cochera) ? $query->where('Ambientes_Cochera', $Ambientes_Cochera) : '';
-                ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function ($query) use ($minM2, $maxM2) {
-                    $query->orwhereBetween('SuperficieConstruible', [$minM2, $maxM2]);
-                    $query->orwhereBetween('SuperficieCubierta', [$minM2, $maxM2]);
-                    $query->orwhereBetween('SuperficieCubiertaCasa', [$minM2, $maxM2]);
-                    $query->orwhereBetween('SuperficieDeposito', [$minM2, $maxM2]);
-                    $query->orwhereBetween('SuperficieDescubierta', [$minM2, $maxM2]);
-                    $query->orwhereBetween('SuperficieLocal', [$minM2, $maxM2]);
-                    $query->orwhereBetween('SuperficieOficina', [$minM2, $maxM2]);
-                    $query->orwhereBetween('SuperficiePlanta', [$minM2, $maxM2]);
-                    $query->orwhereBetween('SuperficiePlaya', [$minM2, $maxM2]);
-                    $query->orwhereBetween('SuperficieTerreno', [$minM2, $maxM2]);
-                    $query->orwhereBetween('SuperficieTotal', [$minM2, $maxM2]);
+                ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function($query) use ($minM2, $maxM2) {
+                    $query->orwhereBetween('SuperficieConstruible', [ $minM2, $maxM2 ]);
+                    $query->orwhereBetween('SuperficieCubierta', [ $minM2, $maxM2 ]);
+                    $query->orwhereBetween('SuperficieCubiertaCasa', [ $minM2, $maxM2 ]);
+                    $query->orwhereBetween('SuperficieDeposito', [ $minM2, $maxM2 ]);
+                    $query->orwhereBetween('SuperficieDescubierta', [ $minM2, $maxM2 ]);
+                    $query->orwhereBetween('SuperficieLocal', [ $minM2, $maxM2 ]);
+                    $query->orwhereBetween('SuperficieOficina', [ $minM2, $maxM2 ]);
+                    $query->orwhereBetween('SuperficiePlanta', [ $minM2, $maxM2 ]);
+                    $query->orwhereBetween('SuperficiePlaya', [ $minM2, $maxM2 ]);
+                    $query->orwhereBetween('SuperficieTerreno', [ $minM2, $maxM2 ]);
+                    $query->orwhereBetween('SuperficieTotal', [ $minM2, $maxM2 ]);
                 }) : '';
                 ! is_null($montoMinimo) && ! is_null($montoMaximo) ? $query->whereBetween('precio', [
                     $montoMinimo,
@@ -128,16 +126,16 @@ class BuscadorDePropiedadesController extends Controller
             ->where('fk_estado_publicacion', 1)
             ->get();
 
-        $resultadoUnico->each(function ($resultadoUnico) {
+        $resultadoUnico->each(function($resultadoUnico) {
             $resultadoUnico->imagenes = [
-                'imagen1'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen1),
-                'imagen2'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen2),
-                'imagen3'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen3),
-                'imagen4'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen4),
-                'imagen5'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen5),
-                'imagen6'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen6),
-                'imagen7'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen7),
-                'imagen_para_galeria' => asset('storage\\ficha2\\' . @$resultadoUnico->imagen_para_galeria),
+                'imagen1'             => ! is_null(@$resultadoUnico->imagen1) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen1) : '',
+                'imagen2'             => ! is_null(@$resultadoUnico->imagen2) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen2) : '',
+                'imagen3'             => ! is_null(@$resultadoUnico->imagen3) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen3) : '',
+                'imagen4'             => ! is_null(@$resultadoUnico->imagen4) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen4) : '',
+                'imagen5'             => ! is_null(@$resultadoUnico->imagen5) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen5) : '',
+                'imagen6'             => ! is_null(@$resultadoUnico->imagen6) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen6) : '',
+                'imagen7'             => ! is_null(@$resultadoUnico->imagen7) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen7) : '',
+                'imagen_para_galeria' => ! is_null(@$resultadoUnico->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen_para_galeria) : '',
             ];
         });
 
@@ -145,9 +143,8 @@ class BuscadorDePropiedadesController extends Controller
     }
 
     //aplicar busqueda (Buscar por título ,descripción, tipo)
-    public function propiedades_filte(Request $request)
-    {
-        $busqueda = "%" . $request->search . "%";
+    public function propiedades_filte(Request $request) {
+        $busqueda = "%".$request->search."%";
 
         $resultadoUnico = Propiedad::with(
             'TipoPropiedad',
@@ -190,7 +187,7 @@ class BuscadorDePropiedadesController extends Controller
             'tipoOpeacion',
             'tipoMoneda'
         )
-            ->where(function ($query)
+            ->where(function($query)
             use (
                 $busqueda
             ) {
@@ -202,24 +199,23 @@ class BuscadorDePropiedadesController extends Controller
             ->where('fk_estado_publicacion', 1)
             ->get();
 
-        $resultadoUnico->each(function ($resultadoUnico) {
+        $resultadoUnico->each(function($resultadoUnico) {
             $resultadoUnico->imagenes = [
-                'imagen1'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen1),
-                'imagen2'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen2),
-                'imagen3'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen3),
-                'imagen4'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen4),
-                'imagen5'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen5),
-                'imagen6'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen6),
-                'imagen7'             => asset('storage\\ficha2\\' . @$resultadoUnico->imagen7),
-                'imagen_para_galeria' => asset('storage\\ficha2\\' . @$resultadoUnico->imagen_para_galeria),
+                'imagen1'             => ! is_null(@$resultadoUnico->imagen1) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen1) : '',
+                'imagen2'             => ! is_null(@$resultadoUnico->imagen2) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen2) : '',
+                'imagen3'             => ! is_null(@$resultadoUnico->imagen3) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen3) : '',
+                'imagen4'             => ! is_null(@$resultadoUnico->imagen4) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen4) : '',
+                'imagen5'             => ! is_null(@$resultadoUnico->imagen5) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen5) : '',
+                'imagen6'             => ! is_null(@$resultadoUnico->imagen6) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen6) : '',
+                'imagen7'             => ! is_null(@$resultadoUnico->imagen7) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen7) : '',
+                'imagen_para_galeria' => ! is_null(@$resultadoUnico->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen_para_galeria) : '',
             ];
         });
 
-        return response()->json(['propiedades' => $resultadoUnico], 200);
+        return response()->json([ 'propiedades' => $resultadoUnico ], 200);
     }
 
-    public static function getArbol(Request $request, $ar)
-    {
+    public static function getArbol(Request $request, $ar) {
         $array = [];
 
         $idTipoOperaion  = @$request->idTipoOperaion;
@@ -234,7 +230,7 @@ class BuscadorDePropiedadesController extends Controller
         $minM2           = @$request->minM2;
         $maxM2           = @$request->maxM2;
 
-        $array['TipoOperaion']  = Propiedad::with('tipoOpeacion')->select('fk_idTipoOperaion')->where(function ($query)
+        $array['TipoOperaion']  = Propiedad::with('tipoOpeacion')->select('fk_idTipoOperaion')->where(function($query)
         use (
             $idTipoOperaion,
             $idTipoPropiedad,
@@ -259,22 +255,22 @@ class BuscadorDePropiedadesController extends Controller
                 $montoMinimo,
                 $montoMaximo,
             ]) : '';
-            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function ($query) use ($minM2, $maxM2) {
-                $query->orwhereBetween('SuperficieConstruible', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubiertaCasa', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDeposito', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDescubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieLocal', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieOficina', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlanta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlaya', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTerreno', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTotal', [$minM2, $maxM2]);
+            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function($query) use ($minM2, $maxM2) {
+                $query->orwhereBetween('SuperficieConstruible', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubiertaCasa', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDeposito', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDescubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieLocal', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieOficina', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlanta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlaya', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTerreno', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTotal', [ $minM2, $maxM2 ]);
             }) : '';
         })->distinct()
             ->get();
-        $array['TipoPropiedad'] = Propiedad::with('TipoPropiedad')->select('fk_idTipoPropiedad')->where(function ($query
+        $array['TipoPropiedad'] = Propiedad::with('TipoPropiedad')->select('fk_idTipoPropiedad')->where(function($query
         )
         use (
             $idTipoOperaion,
@@ -300,22 +296,22 @@ class BuscadorDePropiedadesController extends Controller
                 $montoMinimo,
                 $montoMaximo,
             ]) : '';
-            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function ($query) use ($minM2, $maxM2) {
-                $query->orwhereBetween('SuperficieConstruible', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubiertaCasa', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDeposito', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDescubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieLocal', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieOficina', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlanta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlaya', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTerreno', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTotal', [$minM2, $maxM2]);
+            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function($query) use ($minM2, $maxM2) {
+                $query->orwhereBetween('SuperficieConstruible', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubiertaCasa', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDeposito', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDescubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieLocal', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieOficina', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlanta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlaya', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTerreno', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTotal', [ $minM2, $maxM2 ]);
             }) : '';
         })->distinct()
             ->get();
-        $array['TipoMonedas']   = Propiedad::with('tipoMoneda')->select('fk_idMonedas')->where(function ($query)
+        $array['TipoMonedas']   = Propiedad::with('tipoMoneda')->select('fk_idMonedas')->where(function($query)
         use (
             $idTipoOperaion,
             $idTipoPropiedad,
@@ -340,22 +336,22 @@ class BuscadorDePropiedadesController extends Controller
                 $montoMinimo,
                 $montoMaximo,
             ]) : '';
-            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function ($query) use ($minM2, $maxM2) {
-                $query->orwhereBetween('SuperficieConstruible', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubiertaCasa', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDeposito', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDescubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieLocal', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieOficina', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlanta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlaya', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTerreno', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTotal', [$minM2, $maxM2]);
+            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function($query) use ($minM2, $maxM2) {
+                $query->orwhereBetween('SuperficieConstruible', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubiertaCasa', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDeposito', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDescubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieLocal', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieOficina', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlanta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlaya', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTerreno', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTotal', [ $minM2, $maxM2 ]);
             }) : '';
         })->distinct()
             ->get();
-        $array['TipoProvincia'] = Propiedad::with('Provincia')->select('fk_Direccion_Provincia_Id')->where(function (
+        $array['TipoProvincia'] = Propiedad::with('Provincia')->select('fk_Direccion_Provincia_Id')->where(function(
             $query
         )
         use (
@@ -382,22 +378,22 @@ class BuscadorDePropiedadesController extends Controller
                 $montoMinimo,
                 $montoMaximo,
             ]) : '';
-            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function ($query) use ($minM2, $maxM2) {
-                $query->orwhereBetween('SuperficieConstruible', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubiertaCasa', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDeposito', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDescubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieLocal', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieOficina', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlanta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlaya', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTerreno', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTotal', [$minM2, $maxM2]);
+            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function($query) use ($minM2, $maxM2) {
+                $query->orwhereBetween('SuperficieConstruible', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubiertaCasa', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDeposito', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDescubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieLocal', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieOficina', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlanta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlaya', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTerreno', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTotal', [ $minM2, $maxM2 ]);
             }) : '';
         })->distinct()
             ->get();
-        $array['TipoPartido']   = Propiedad::with('Partido')->select('fk_Direccion_Partido_Id')->where(function ($query)
+        $array['TipoPartido']   = Propiedad::with('Partido')->select('fk_Direccion_Partido_Id')->where(function($query)
         use (
             $idTipoOperaion,
             $idTipoPropiedad,
@@ -422,22 +418,22 @@ class BuscadorDePropiedadesController extends Controller
                 $montoMinimo,
                 $montoMaximo,
             ]) : '';
-            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function ($query) use ($minM2, $maxM2) {
-                $query->orwhereBetween('SuperficieConstruible', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubiertaCasa', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDeposito', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDescubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieLocal', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieOficina', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlanta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlaya', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTerreno', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTotal', [$minM2, $maxM2]);
+            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function($query) use ($minM2, $maxM2) {
+                $query->orwhereBetween('SuperficieConstruible', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubiertaCasa', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDeposito', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDescubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieLocal', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieOficina', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlanta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlaya', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTerreno', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTotal', [ $minM2, $maxM2 ]);
             }) : '';
         })->distinct()
             ->get();
-        $array['TipoLocalidad'] = Propiedad::with('Localidad')->select('fk_Direccion_Localidad_Id')->where(function (
+        $array['TipoLocalidad'] = Propiedad::with('Localidad')->select('fk_Direccion_Localidad_Id')->where(function(
             $query
         )
         use (
@@ -464,22 +460,22 @@ class BuscadorDePropiedadesController extends Controller
                 $montoMinimo,
                 $montoMaximo,
             ]) : '';
-            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function ($query) use ($minM2, $maxM2) {
-                $query->orwhereBetween('SuperficieConstruible', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubiertaCasa', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDeposito', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDescubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieLocal', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieOficina', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlanta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlaya', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTerreno', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTotal', [$minM2, $maxM2]);
+            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function($query) use ($minM2, $maxM2) {
+                $query->orwhereBetween('SuperficieConstruible', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubiertaCasa', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDeposito', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDescubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieLocal', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieOficina', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlanta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlaya', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTerreno', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTotal', [ $minM2, $maxM2 ]);
             }) : '';
         })->distinct()
             ->get();
-        $array['TipoBarrio']    = Propiedad::with('Barrio')->select('fk_Direccion_Barrio_Id')->where(function ($query)
+        $array['TipoBarrio']    = Propiedad::with('Barrio')->select('fk_Direccion_Barrio_Id')->where(function($query)
         use (
             $idTipoOperaion,
             $idTipoPropiedad,
@@ -504,28 +500,27 @@ class BuscadorDePropiedadesController extends Controller
                 $montoMinimo,
                 $montoMaximo,
             ]) : '';
-            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function ($query) use ($minM2, $maxM2) {
-                $query->orwhereBetween('SuperficieConstruible', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieCubiertaCasa', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDeposito', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieDescubierta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieLocal', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieOficina', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlanta', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficiePlaya', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTerreno', [$minM2, $maxM2]);
-                $query->orwhereBetween('SuperficieTotal', [$minM2, $maxM2]);
+            ! is_null($minM2) && ! is_null($maxM2) ? $query->where(function($query) use ($minM2, $maxM2) {
+                $query->orwhereBetween('SuperficieConstruible', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieCubiertaCasa', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDeposito', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieDescubierta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieLocal', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieOficina', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlanta', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficiePlaya', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTerreno', [ $minM2, $maxM2 ]);
+                $query->orwhereBetween('SuperficieTotal', [ $minM2, $maxM2 ]);
             }) : '';
         })->distinct()
             ->get();
-        $response               = ['propiedades' => $ar, 'arbol' => $array];
+        $response               = [ 'propiedades' => $ar, 'arbol' => $array ];
 
         return $response;
     }
 
-    public function direcciones()
-    {
+    public function direcciones() {
         $E = Region::with('partidos.localidades.barrios')->get();
 
         return response()->json($E, 200);
