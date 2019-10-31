@@ -182,6 +182,7 @@ Route::group([ 'prefix' => 'v1'], function() {
 
     //Route::post('sincronice','SincroniceArgenController@add'); /*Faltan pruebas*/
     Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
+    Route::get('listarPropiedades/{idPropiedad}','Ficha123Controller@listar');
     Route::get('listarPropiedades','Ficha123Controller@listarTodo');
     Route::get('listarTodasPropiedades','Ficha123Controller@listarTodoSinFiltro');
 
