@@ -34,6 +34,8 @@ export class GaleriaHomeComponent implements OnInit {
   enCRUD = enCRUD;
   formData = new FormData();
 
+  width: number = null;
+  height: number = null;
   constructor(
     private _formBuilder: FormBuilder,
     private _GaleriaHomeService: GaleriaHomeService,
@@ -234,36 +236,45 @@ export class GaleriaHomeComponent implements OnInit {
       if (!f.type.match("image.*")) {
         continue;
       }
-      if (f.size < 200000) {
-        this._AlertsService.msg(
-          "ERR",
-          "ERROR",
-          "Las dimensiones de la imagen " +
-            f.name +
-            " son demasiado pequeñas para subirla a la galería."
-        );
-        this._AlertsService.msg("ERR", "ERROR", "Tamaño mínimo:200000");
-        this._AlertsService.msg("ERR", "ERROR", "Tamaño del archivo:" + f.size);
-      } else {
-        let reader = new FileReader();
-        // Closure to capture the file information.
-        reader.onload = (function(theFile) {
-          return function(e) {
-            // Render thumbnail.
+      let reader = new FileReader();
+      // Closure to capture the file information.
+      reader.onload = function(theFile: Event) {
+        var image = new Image();
+        image.src = `${reader.result}`;
+        image.onload = function() {
+          // access image size here
+          let errorMsj: string = "";
+          if (image.width < 2000 || image.height < 700) {
+            if (image.width < 2000) {
+              errorMsj +=
+                "<div type='alert' class='invalid-feedback d-block'>El ancho mínimo de la imagen debe ser de : 2000  px</div>" +
+                "<div type='alert' class='invalid-feedback d-block'>Ancho de la imagen: " +
+                image.width +
+                " px </div>";
+            }
+            if (image.height < 700) {
+              errorMsj +=
+                "<div type='alert' class='invalid-feedback d-block'>El alto mínimo de la imagen debe ser de : 700  px</div>" +
+                "<div type='alert' class='invalid-feedback d-block'>Alto de la imagen: " +
+                image.height +
+                " px</div>";
+            }
+            document.getElementById("files-errors").innerHTML = errorMsj;
+          } else {
+            document.getElementById("files-errors").innerHTML = "";
             let span = document.createElement("span");
             span.innerHTML = [
               '<img class="thumb" style="height:150px;" src="',
-              e.target.result,
+              reader.result,
               '" title="',
-              escape(theFile.name),
+              escape(image.name),
               '"/>'
             ].join("");
             document.getElementById("list").insertBefore(span, null);
-          };
-        })(f);
-        // Read in the image file as a data URL.
-        reader.readAsDataURL(f);
-      }
+          }
+        };
+      };
+      reader.readAsDataURL(f);
     }
   }
   filter() {
