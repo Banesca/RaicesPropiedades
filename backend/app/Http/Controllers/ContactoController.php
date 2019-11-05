@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contacto;
+use App\ContactoDePropiedad;
 use App\Mail\ContactoMail;
 use App\Mail\SuscripcionMail;
 use App\Mail_;
@@ -27,27 +28,27 @@ class ContactoController extends Controller {
             'mensaje.required'  => 'El mensaje es requerido',
         ]);
 
-        $contac = new Contacto($request->all());
+        $contac = new ContactoDePropiedad($request->all());
         $contac->save();
 
         /*Copia a Emails de Recepción*/
         $cc = Mail_::all();
         foreach ($cc as $correo) {
-            Mail::to($correo->email)->send(new ContactoMail($contac));
+            //Mail::to($correo->email)->send(new ContactoMail($contac));
         }
 
         /*Registro a usuario como nuevo suscriptor*/
-        $sus = Suscripcion::where('email', $request->email)->get();
+        /*$sus = Suscripcion::where('email', $request->email)->get();
         if (count($sus) == 0) {
             $s = new Suscripcion([ 'email' => $request->email ]);
             $s->generateToken();
             $s->save();
             Mail::to($request->email)->send(new SuscripcionMail($s));
-        }
+        }*/
 
 
         $response = [
-            'msj'      => 'Contacto creado exitosamente',
+            'msj'      => 'Contacto de Propiedad creado exitosamente',
             'contacto' => $contac,
         ];
 
