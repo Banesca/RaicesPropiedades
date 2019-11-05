@@ -341,9 +341,7 @@ class Propiedad extends Model {
         'updated_at',
     ];
 
-    /*public function ficha2and1() {
-        return $this->belongsTo('App\Ficha2', 'fk_ficha2')->with('ficha1');
-    }*/
+
 
     public function TipoPropiedad() {
         return $this->belongsTo('App\TipoPropiedad', 'fk_idTipoPropiedad');
@@ -478,13 +476,6 @@ class Propiedad extends Model {
         return $this->belongsTo('App\Barrios', 'fk_Direccion_Barrio_Id');
     }
 
-    /*public function tipoCalle() {
-       return $this->belongsTo('App\Calle', 'fk_Direccion_Calle_Id');
-   }*/
-
-    /*public function tipoCiudad() {
-       return $this->belongsTo('App\Moneda', 'fk_Direccion_Ciudad_Id');
-   }*/
 
     public function Localidad() {
         return $this->belongsTo('App\Localidades', 'fk_Direccion_Localidad_Id');
