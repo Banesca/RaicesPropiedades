@@ -180,6 +180,9 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('addContactanos', 'ContactoController@add');
     Route::get('listarContactanos', 'ContactoController@listar');
 
+    Route::post('propiedad/addContactanos', 'ContactoController@add');
+    Route::get('propiedad/listarContactanos', 'ContactoController@listar');
+
     Route::get('listPropiedadesBorradas', 'Ficha3Controller@listPropiedadesBorradas');
     Route::get('recuperarPropiedadBorra/{idPropiedad}', 'Ficha3Controller@recuperarPropiedadBorra');
 

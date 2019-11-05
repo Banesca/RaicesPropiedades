@@ -518,32 +518,13 @@
                                                 {!! $key !!}
                                             </strong> : {!! $item !!}
                                         </p>
+                                        <p>
+                                            <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="{{url('/img\icons\Recurso 19.svg')}}"/>
+                                        </p>
                                     @endforeach
                                 </tr>
 
-                                {{--<tr>
-                                    <p>
-                                        <strong>Email: </strong>{!! $contacto->email !!}
-                                    </p>
-                                </tr>
-                                <tr>
-                                    <p>
-                                        <strong>Teléfono: </strong>{!! $contacto->telefono !!}
-                                    </p>
-                                </tr>
-                                <tr>
-                                    <p>
-                                        <strong>Mensaje: </strong>{!! $contacto->mensaje !!}
-                                    </p>
-                                </tr>
-
-
-
-
-
-
-
-                                 <div class="container-fluid sec2 section-container">
+                                {{--  <div class="container-fluid sec2 section-container">
                                     <div class="container" style="z-index: 3;">
                                         <div class="col-sm-12 ">
                                             <h3 class="text-center brown-text text-uppercase font-weight-extrabold">
@@ -753,57 +734,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="container-fluid sec3" style="background: #E6B706; padding-top: 5rem !important;">
-                                    <div class="container  py-5 ">
-                                        <div class="col-sm-12">
-                                            <h3 class="font-weight-extrabold text-center text-white text-uppercase my-3">
-                                                Contacto </h3>
-                                            <h6 class="font-weight-semibold text-center text-white text-uppercase">
-                                                horario </h6>
-                                            <h5 class="font-weight-extrabold text-center text-white text-uppercase">
-                                                08:00 AM - 07:00PM </h5>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4 flex-column" style="z-index: 2;">
-                                                <div class="d-flex justify-content-center mt-4 mb-2">
-                                                    <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 14.svg" class="img-fluid" alt=""/>
-                                                </div>
-                                                <h5 class="text-white text-center font-weight-semibold">
-                                                    Brandsen 805, C1161 CABA, Argentina </h5>
-                                            </div>
-                                            <div class="col-md-4 flex-column" style="z-index: 2;">
-                                                <div class="d-flex justify-content-center mt-4 mb-2">
-                                                    <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 16.svg" class="img-fluid" alt=""/>
-                                                </div>
-                                                <h5 class="text-white text-center font-weight-semibold">
-                                                    +51 444222555 </h5>
-                                            </div>
-                                            <div class="col-md-4 flex-column" style="z-index: 2;">
-                                                <div class="d-flex justify-content-center mt-4 mb-2">
-                                                    <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 15.svg" class="img-fluid" alt=""/>
-                                                </div>
-                                                <h5 class="text-white text-center font-weight-semibold">
-                                                    raices@example.org </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bg-light sec1" style="padding-top: 5rem !important;">
-                                    <div class="container-fluid d-flex align-items-center">
-                                        <div class="container col-lg-4 col-md-6 py-5 ml-lg-5" style="z-index: 4;">
-                                            <div class="col-sm-12">
-                                                <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase mb-3">
-                                                    Dirección </h3>
-                                            </div>
-                                            <p class="col-sm-12 font-weight-semibold text-md-left text-center brown-text">
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem aperiam obcaecati quas repellat quisquam consectetur explicabo dignissimos. </p>
-                                        </div>
-                                        <div class="col-md-8 d-none d-md-block"></div>
-                                    </div>
-                                </div>
-
-                                --}}
+                                </div>--}}
 
 
                             </table>
