@@ -136,8 +136,8 @@
         }
 
         h1 {
-            font-size: 35px;
-            font-weight: 300;
+            font-size: 20px;
+            font-weight: 600;
             text-align: center;
             text-transform: capitalize;
         }
@@ -158,7 +158,7 @@
         ul,
         ol {
             font-family: sans-serif;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: normal;
             margin: 0;
             margin-bottom: 15px;
@@ -377,6 +377,10 @@
                 left: 2.5%;
             }
 
+            .wrapper {
+                padding: 20px 5px;
+            }
+
             .wrapper-footer .item-a,
             .wrapper-footer .item-b,
             .wrapper-footer .item-c,
@@ -389,6 +393,10 @@
         @media only screen and (max-width: 320px) {
             .wrapper-footer-social {
                 top: 50%;
+            }
+
+            .wrapper {
+                padding: 20px 10px;
             }
 
             .wrapper-footer .item-a,
@@ -508,18 +516,36 @@
                                         text-transform: capitalize;">
                                 DATOS DE LA PROPIEDAD </h2>
                             <table role = "presentation" border = "0" cellpadding = "0" cellspacing = "0">
+                                <?php
+                                $r = 0;
+                                ?>
 
                                 @foreach(json_decode(json_encode($contacto->propiedad), true) as $key=>$item)
+
+                                    @if($r==0)
                                         <tr>
+                                            @endif
+
                                             <td width = "40%" align = "left" style = "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
                                                 <p>
                                                     <strong>
-                                                        {!! $key !!}
-                                                    </strong> : {!! $item !!}
+                                                        {!! !is_null($key) || $key!='' ? $key : ''!!}
+                                                    </strong> : {!! !is_null($item) || $item!='' ? $item : ''!!}
                                                 </p>
                                             </td>
 
+                                            <?php
+                                            $r++;
+                                            ?>
+                                            @if($r==2)
                                         </tr>
+                                    @endif
+                                    @if($r==2)
+                                        <?php
+                                        $r = 0;
+                                        ?>
+                                    @endif
+
                                     {{-- <p>
                                         <img class = "img-fluid mt-3" style = "width: 3rem; height: 3rem;" src = "{{url('/img\icons\Recurso 19.svg')}}"/>
                                     </p>
