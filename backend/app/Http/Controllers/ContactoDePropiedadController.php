@@ -31,22 +31,25 @@ class ContactoDePropiedadController extends Controller {
 
         $contac = new ContactoDePropiedad($request->all());
         $contac->save();
+        $contac->propiedad;
+
+        Mail::to($contac->email)->send(new ContactoPropiedadMail($contac));
 
         /*Copia a Emails de Recepción*/
-        $cc = Mail_::all();
-        foreach ($cc as $correo) {
+        //$cc = Mail_::all();
+        //foreach ($cc as $correo) {
             //Mail::to($correo->email)->send(new ContactoPropiedadMail($contac));
-        }
+        //}
 
         /*Registro a usuario como nuevo suscriptor*/
-        /* $sus = Suscripcion::where('email', $request->email)->get();
+
+         /*$sus = Suscripcion::where('email', $request->email)->get();
          if (count($sus) == 0) {
              $s = new Suscripcion([ 'email' => $request->email ]);
              $s->generateToken();
              $s->save();
              Mail::to($request->email)->send(new SuscripcionMail($s));
-         }
-        */
+         }*/
 
         $response = [
             'msj'      => 'Contacto De Propiedad creada exitosamente',

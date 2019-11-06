@@ -5,8 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ContactoDePropiedad extends Model
-{
+class ContactoDePropiedad extends Model {
+
     use SoftDeletes;
 
     protected $table = 'tb_contacto_de_propiedads';
@@ -26,8 +26,7 @@ class ContactoDePropiedad extends Model
         'updated_at',
     ];
 
-    public function propiedad()
-    {
+    public function propiedad() {
         return $this->belongsTo('App\Propiedad', 'fk_idPropiedad');
     }
 }
