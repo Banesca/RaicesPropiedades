@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactoDePropiedadController extends Controller {
     public function add(Request $request) {
+
         $this->validate($request, [
-            'email'          => 'required|email|unique:tb_contacto_de_propiedads,email,'.$request->id.',idContacto,deleted_at,NULL',
+            'email'          => 'required|email|unique:tb_contacto_de_propiedads,email,'.$request->id.',idContactoPropiedad,deleted_at,NULL',
             'nombre'         => 'required',
             'telefono'       => 'required',
             'mensaje'        => 'required',
