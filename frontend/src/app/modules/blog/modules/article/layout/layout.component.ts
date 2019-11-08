@@ -1,12 +1,21 @@
 import { Component, OnInit } from "@angular/core";
 import {
   PublicacionesService,
+  ContactoService,
   ArticuloService
 } from "src/app/servicios/servicios.index";
 import { ActivatedRoute } from "@angular/router";
 import { NgbCarouselConfig } from "@ng-bootstrap/ng-bootstrap";
 import { VistaPublicaciones } from "src/app/servicios/publicaciones/publicaciones.interface";
 import { DataByTipoPropiedad } from "../../../../../presentation/publication-management/form/datosPorTipoPropiedad";
+import { IContacto } from "src/app/servicios/interfaces.index";
+import {
+  NgForm,
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators
+} from "@angular/forms";
 
 @Component({
   selector: "app-layout",
@@ -17,7 +26,13 @@ export class LayoutComponent implements OnInit {
   gPropiedades: any;
   status: boolean;
   mId: string;
-  mLoading = false;
+  successMensaje: boolean = false;
+  errorMensaje: any = null;
+  submitted: boolean = false;
+  mLoading: boolean = false;
+  mContacto: IContacto;
+  contactForm: FormGroup;
+  contactFormSection: boolean = false;
   images: any[] = [];
   searchClicked: boolean;
   //Inicializamos la vista en blanco
@@ -36,7 +51,9 @@ export class LayoutComponent implements OnInit {
     private _PublicacionesService: PublicacionesService,
     config: NgbCarouselConfig,
     private _ActivatedRoute: ActivatedRoute,
-    private articuloService: ArticuloService
+    private articuloService: ArticuloService,
+    private _formBuilder: FormBuilder,
+    private _ContactoService: ContactoService
   ) {
     this._ActivatedRoute.params.subscribe(param => {
       this.mId = param["ruta"];
@@ -50,12 +67,68 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.contactForm = this.getContactForm();
     this.GetPublicacionUrl();
     this.articuloService.search.subscribe(data => {
       this.searchClicked = data;
     });
   }
+  get f() {
+    return this.contactForm.controls;
+  }
+  onSubmit() {
+    this.submitted = true;
 
+    if (this.contactForm.invalid) {
+      return;
+    }
+
+    this.contactForm.controls["fk_idPropiedad"].setValue(this.mId);
+    this.guardar();
+  }
+  guardar() {
+    this.mLoading = true;
+    this.submitted = true;
+    this._ContactoService
+      .NewContactPropiedad(this.contactForm.value)
+      .then(data => {
+        this.successMensaje = true;
+        this.mLoading = false;
+        this.submitted = false;
+        this.contactForm.reset();
+      })
+      .catch(error => {
+        console.log(error);
+        this.errorMensaje = error;
+        this.mLoading = false;
+      });
+  }
+  getContactForm() {
+    return this._formBuilder.group({
+      nombre: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$"),
+          Validators.minLength(6)
+        ]
+      ],
+      email: [
+        "",
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")
+        ]
+      ],
+      telefono: [
+        "",
+        [Validators.required, Validators.pattern("^[0-9]{10,12}$")]
+      ],
+      mensaje: ["", Validators.required],
+      fk_idPropiedad: [""]
+    });
+  }
   setVistaValue(idTipoVivienda) {
     //Validamos que tipo de propiedad se selecciona para cargar los tipos de unidad que se van a mostrar
     //Segun la api de argen prod https://inmuebles.atlassian.net/wiki/spaces/PUB/pages/39813246/3.2.2.3+Objeto+Propiedad
@@ -172,5 +245,14 @@ export class LayoutComponent implements OnInit {
       .catch(error => {
         console.log(error);
       });
+  }
+  contact() {
+    this.errorMensaje = null;
+    this.successMensaje = false;
+    if (this.contactFormSection) {
+      this.contactFormSection = false;
+    } else {
+      this.contactFormSection = true;
+    }
   }
 }

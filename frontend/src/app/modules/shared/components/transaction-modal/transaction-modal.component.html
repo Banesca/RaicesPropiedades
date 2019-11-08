@@ -60,7 +60,7 @@
                 <input formControlName="direccion" type="text" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }" class="form-control form-control-lg" placeholder="Dirección"
                   aria-describedby="basic-addon1">
                   <div *ngIf="f.direccion.errors" type="alert" class="d-block invalid-feedback">
-                      <div *ngIf="f.direccion.hasError('pattern')">La dirección debe contener únicamente caracteres alfabéticos</div>
+                      <div *ngIf="f.direccion.hasError('pattern')">La dirección debe contener únicamente caracteres alfanuméricos</div>
                   </div>
                   <div *ngIf="f.direccion.errors" type="alert" class="invalid-feedback">
                       <div *ngIf="submitted && f.direccion.errors.required">La dirección es Requerido</div>

@@ -74,7 +74,18 @@ export class ContactoService {
       )
       .toPromise();
   }
-
+  NewContactPropiedad(pContacto: any) {
+    return this._HttpClient
+      .post(this.mUrl + "/api/v1/propiedad/addContactanos", pContacto, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
   /**
    * Actualiza una tupla de tipo IContacto
    * @IContacto Recibe un objeto del tipo IContacto como parametro

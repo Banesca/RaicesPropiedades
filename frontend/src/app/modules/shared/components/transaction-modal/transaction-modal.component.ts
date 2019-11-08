@@ -55,7 +55,7 @@ export class TransactionModalComponent implements OnInit {
       fk_tipoPropiedad: ["", Validators.required],
       direccion: [
         "",
-        [Validators.required, Validators.pattern("[ña-zA-Z _]*")]
+        [Validators.required, Validators.pattern("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$")]
       ],
       descripcion: ["", Validators.required],
       imagen_1: [null],
