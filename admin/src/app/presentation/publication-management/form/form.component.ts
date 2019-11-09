@@ -119,7 +119,7 @@ export class FormComponent implements OnInit {
    loadSelects() {
 
       this.service.getEstadoPublicacion().then((resp: any) => {
-         this.arrayEstadoPublicacion = resp;
+         this.arrayEstadoPublicacion = resp.filter(item => item.descripcion != "Eliminada");
       });
 
       this.service.getTipoPropiedad().then((resp: any) => {

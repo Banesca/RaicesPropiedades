@@ -154,6 +154,12 @@
                   <ng-template matStepLabel>Imágenes</ng-template>
 
                   <div class="row">
+                        <div class="col-md-12" >
+                              <div class="alert alert-info" role="alert">
+                                    El ancho mínimo de la imagen debe ser de 2000 px <br>
+                                    El alto mínimo de la imagen debe ser de 700 px
+                              </div>
+                        </div>
                      <!--Imagen para galeria-->
                      <div class="col-sm-3" *ngIf="this.formOne.value.aparece_en_galeria == '1' ">
                         <mat-card class="card-material">

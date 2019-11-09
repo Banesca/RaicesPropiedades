@@ -146,7 +146,8 @@ label {
 /* active state */
 input:focus ~ label,
 input:valid ~ label,
-textarea:focus ~ label {
+textarea:focus ~ label,
+textarea:valid ~ label {
   top: -20px;
   font-size: 14px;
   color: #39211f;

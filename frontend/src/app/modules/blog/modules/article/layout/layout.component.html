@@ -350,10 +350,10 @@
                     </div>
                   </div>
                   <div class="group">
-                    <textarea formControlName="mensaje" name="" id="" cols="30" rows="2"></textarea>
+                    <textarea rows="3" formControlName="mensaje" required></textarea>
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label class="mb-3 text-uppercase">Mensaje</label>
+                    <label class="text-uppercase">Mensaje</label>
                     <div *ngIf="f.mensaje.errors" type="alert" class="invalid-feedback d-block">
                       <div *ngIf="submitted && f.mensaje.errors.required">El Mensaje es Requerido</div>
                     </div>

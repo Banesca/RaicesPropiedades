@@ -16,7 +16,11 @@ import {
   FormBuilder,
   Validators
 } from "@angular/forms";
-
+import {
+  NgbModalConfig,
+  NgbModal,
+  NgbModalRef
+} from "@ng-bootstrap/ng-bootstrap";
 @Component({
   selector: "app-layout",
   templateUrl: "./layout.component.html",
@@ -254,5 +258,9 @@ export class LayoutComponent implements OnInit {
     } else {
       this.contactFormSection = true;
     }
+  }
+  submittedClose() {
+    this.successMensaje = false;
+    this.submitted = false;
   }
 }
