@@ -46,7 +46,6 @@ export class SearchComponent implements OnInit {
   barrios: any = [];
 
   validateMonto: boolean = false;
-
   constructor(
     private articuloService: ArticuloService,
     private router: Router
@@ -195,7 +194,6 @@ export class SearchComponent implements OnInit {
   // ------------------------
 
   searchFilter() {
-    console.log("search.component.ts searchFilter");
     if (
       (this.selectedMinimo == null && this.selectedMaximo != null) ||
       (this.selectedMaximo == null && this.selectedMinimo != null)

@@ -1,7 +1,14 @@
-<app-propiertys-carousel *ngIf="galeriaHome?.length > 0"></app-propiertys-carousel>
+<app-propiertys-carousel
+  *ngIf="galeriaHome?.length > 0"
+></app-propiertys-carousel>
 <app-search>
-  <img *ngIf="galeriaHome?.length > 0" src="../../../../assets/images/icons/Recurso 6.svg" class="position-absolute d-none d-md-block"
-    style="top: -120px; z-index: 1;" alt="" />
+  <img
+    *ngIf="galeriaHome?.length > 0"
+    src="../../../../assets/images/icons/Recurso 6.svg"
+    class="position-absolute d-none d-md-block"
+    style="top: -120px; z-index: 1;"
+    alt=""
+  />
 </app-search>
 <!--<app-header-bottom>
     <div class="container title col-md-4 py-5 ml-5"> 
@@ -17,21 +24,35 @@
 
 <div *ngIf="!searchClicked">
   <div class="bg-brown sec2">
-      <section class="releases section-container bg-white polygon section-component-bottom" id="">            
-        <app-propiertys-grid>
-          <h3 class="mb-4 brown-text font-weight-extrabold text-uppercase">Oportunidades</h3>
-          <ng-container *ngFor="let publicaciones of mCategorias; let i = index" [attr.data-index]="i">
-            <!-- *ngIf="publicaciones.esUnaPropiedad == '1'" -->
-            <div  class="col-md-4 col-9 p-4">
-              <div [routerLink]="[baseUrl,publicaciones.idPropiedad]" class="card">
-                <img [src]="publicaciones.imagenes.imagen1" class="card-img-top">
-                <div class="card-footer font-weight-semibold text-uppercase ">
-                  {{ publicaciones.descipcion }}
-                </div>
+    <section
+      class="releases section-container bg-white polygon section-component-bottom"
+      id=""
+    >
+      <app-propiertys-grid>
+        <h3 class="mb-4 brown-text font-weight-extrabold text-uppercase">
+          Oportunidades
+        </h3>
+        <ng-container
+          *ngFor="let publicaciones of mCategorias; let i = index"
+          [attr.data-index]="i"
+        >
+          <!-- *ngIf="publicaciones.esUnaPropiedad == '1'" -->
+          <div class="col-md-4 col-12 p-4">
+            <div
+              [routerLink]="[baseUrl, publicaciones.idPropiedad]"
+              class="card"
+            >
+              <img
+                [src]="publicaciones.imagenes.imagen1"
+                class="card-img-top"
+              />
+              <div class="card-footer font-weight-semibold text-uppercase ">
+                {{ publicaciones.descipcion }}
               </div>
             </div>
-          </ng-container>
+          </div>
+        </ng-container>
       </app-propiertys-grid>
-      </section>
+    </section>
   </div>
 </div>
