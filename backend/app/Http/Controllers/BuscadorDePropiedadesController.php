@@ -191,10 +191,10 @@ class BuscadorDePropiedadesController extends Controller {
             use (
                 $busqueda
             ) {
-                $query->orwhere('fk_idTipoOperaion', 'like', $busqueda);
-                $query->orwhere('fk_idTipoPropiedad', 'like', $busqueda);
-                $query->orwhere('titulo', 'like', $busqueda);
-                $query->orwhere('descipcion', 'like', $busqueda);
+                $query->where('fk_idTipoOperaion', 'like', $busqueda);
+                $query->where('fk_idTipoPropiedad', 'like', $busqueda);
+                $query->where('titulo', 'like', $busqueda);
+                $query->where('descipcion', 'like', $busqueda);
             })
             ->where('fk_estado_publicacion', 1)
             ->get();
