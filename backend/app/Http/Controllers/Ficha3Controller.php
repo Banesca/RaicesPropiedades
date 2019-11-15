@@ -185,6 +185,10 @@ class Ficha3Controller extends Controller {
                 }
 
                 $propiedad->save();
+
+                $sincronice = new SincroniceArgenController();
+                $sincronice->add($propiedad); //para edit propiedad en argen pro
+
                 @$propiedad->TipoPropiedad;
                 @$propiedad->Disposicion;
                 @$propiedad->Estado;

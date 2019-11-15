@@ -36,10 +36,10 @@ class ContactoDePropiedadController extends Controller {
         Mail::to($contac->email)->send(new ContactoPropiedadMail($contac));
 
         /*Copia a Emails de Recepción*/
-        //$cc = Mail_::all();
-        //foreach ($cc as $correo) {
-            //Mail::to($correo->email)->send(new ContactoPropiedadMail($contac));
-        //}
+        $cc = Mail_::all();
+        foreach ($cc as $correo) {
+            Mail::to($correo->email)->send(new ContactoPropiedadMail($contac));
+        }
 
         /*Registro a usuario como nuevo suscriptor*/
 
