@@ -31,8 +31,7 @@ export class HomeComponent implements OnInit {
     private _PublicacionesService: PublicacionesService,
     public articuloService: ArticuloService,
     private _GaleriaHomeService: GaleriaHomeService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.getAll();

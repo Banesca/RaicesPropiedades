@@ -50,48 +50,6 @@ export class ArticlesComponent implements OnInit {
     });
     return formData;
   }
-  searchResult() {
-    console.log("articles.component.ts searchResult");
-    this.propiedadesInPromise = true;
-    this.articuloService.filter.subscribe(filterData => {
-      if (filterData) {
-        console.log("filterData:", filterData);
-        //Obtenemos el filtro del buscador
-        this.filterData = filterData;
-        this.montoMinimo = this.filterData.montoMinimo;
-        this.montoMaximo = this.filterData.montoMaximo;
-        this.objectFilter = {
-          idTipoPropiedad: this.filterData.idTipoPropiedad.idTipoPropiedad,
-          idMonedas: this.filterData.idMonedas.idMonedas,
-          idTipoOperaion: this.filterData.idTipoOperaion.idTipoOperaion
-            ? this.filterData.idTipoOperaion.idTipoOperaion
-            : null,
-          montoMinimo: this.filterData.montoMinimo,
-          montoMaximo: this.filterData.montoMaximo,
-          idProvincia: this.filterData.idProvincia.id,
-          idPartido: this.filterData.idPartido.id,
-          idLocalidad: this.filterData.idLocalidad.id,
-          idBarrio: this.filterData.idBarrio.id,
-          habitantes: this.filterData.habitantes
-        };
-        this.articuloService
-          .getItemsBySearch(this.objectFilter)
-          .then(data => {
-            this.articulos = data.propiedades;
-            console.log("this.articulos:", this.articulos);
-            this.arbol = data.arbol;
-            this.propiedadesInPromise = false;
-            // this.articuloService.completeSubjects();
-            // this.articuloService.newSubjects();
-            // this.articuloService.filter..complete()();
-          })
-          .catch(error => {
-            this.propiedadesInPromise = false;
-            console.error(error);
-          });
-      }
-    });
-  }
   ngOnInit() {
     let resultsElement = document.getElementById("resultados-busqueda");
     resultsElement.scrollIntoView();
@@ -123,12 +81,14 @@ export class ArticlesComponent implements OnInit {
               idBarrio: this.filterData.idBarrio.id,
               habitantes: this.filterData.habitantes
             };
+            console.log("this.objectFilter:", this.objectFilter);
             this.articuloService
               .getItemsBySearch(this.objectFilter)
               .then(data => {
                 this.articulos = data.propiedades;
                 console.log("this.articulos:", this.articulos);
                 this.arbol = data.arbol;
+                console.log("this.arbol:", this.arbol);
                 this.propiedadesInPromise = false;
                 // this.articuloService.completeSubjects();
                 // this.articuloService.newSubjects();
@@ -217,8 +177,9 @@ export class ArticlesComponent implements OnInit {
     }
     this.objectFilter[opcion] = null;
     this.filterData[opcion] = null;
-    this.articuloService.search.next(true);
+    // this.articuloService.search.next(true);
     this.propiedadesInPromise = true;
+    console.log("this.objectFilter:", this.objectFilter);
     this.articuloService
       .getItemsBySearch(this.objectFilter)
       .then(data => {
@@ -235,7 +196,19 @@ export class ArticlesComponent implements OnInit {
 
   setFilter(opcion: string, value: any) {
     switch (opcion) {
-      case "zona":
+      case "idProvincia":
+        this.objectFilter[opcion] = value.id;
+        this.filterData[opcion] = value;
+        break;
+      case "idPartido":
+        this.objectFilter[opcion] = value.id;
+        this.filterData[opcion] = value;
+        break;
+      case "idLocalidad":
+        this.objectFilter[opcion] = value.id;
+        this.filterData[opcion] = value;
+        break;
+      case "idBarrio":
         this.objectFilter[opcion] = value.id;
         this.filterData[opcion] = value;
         break;
@@ -258,6 +231,7 @@ export class ArticlesComponent implements OnInit {
     }
     if ((!this.minM2 && !this.maxM2) || this.minM2 < this.maxM2) {
       this.propiedadesInPromise = true;
+      console.log("this.objectFilter:", this.objectFilter);
       this.articuloService
         .getItemsBySearch(this.objectFilter)
         .then(data => {

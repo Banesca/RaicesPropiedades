@@ -12,10 +12,12 @@ import { IConfigG } from "src/app/servicios/interfaces.index";
 })
 export class HeaderBottomComponent implements OnInit {
   config = { configGeneral: {} } as IConfigG;
+  ulClass: string = "nav flex-column d-md-block";
   constructor(private _ConfiguracionGeneral: ConfiguracionGeneralService) {}
 
   ngOnInit() {
     this.getAllConfigurations();
+    this.assignUlClass(window.innerWidth);
   }
   getAllConfigurations() {
     this._ConfiguracionGeneral
@@ -27,5 +29,15 @@ export class HeaderBottomComponent implements OnInit {
         console.log("Error en peticion de getAll");
         console.log(error);
       });
+  }
+  assignUlClass(width: number) {
+    if (width < 768) {
+      this.ulClass = "list-group list-group-horizontal";
+    } else {
+      this.ulClass = "nav flex-column d-md-block";
+    }
+  }
+  onResize(event) {
+    this.assignUlClass(event.target.innerWidth);
   }
 }

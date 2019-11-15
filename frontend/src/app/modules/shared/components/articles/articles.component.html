@@ -133,17 +133,54 @@
                 </div>
             </div> -->
             <!-- !filterData.TipoBarrio &&  -->
-            <div *ngIf="arbol" class="">
-                <div *ngIf="arbol.TipoBarrio && arbol.TipoBarrio.length" class="articulos-relevante">
+            <div *ngIf="arbol" class="articulos-filterTitle">Zonas</div>
+            <div *ngIf="arbol" class="articulos-filterSections">
+                <div *ngIf="arbol.TipoProvincia && arbol.TipoProvincia.length" class="articulos-relevante">
                     <div class="title">
-                    Zonas
+                        Provincias
                     </div>
                     <div class="textContent2">
-                    <ng-container *ngFor="let item of arbol.TipoBarrio">
-                        <div *ngIf="item.barrio" (click)="setFilter('zona', item.barrio)">
-                        <span>Zona {{item.barrio.nombre}}</span>
-                        </div>
-                    </ng-container>          
+                        <ng-container *ngFor="let item of arbol.TipoProvincia">
+                            <div *ngIf="item.provincia" (click)="setFilter('idProvincia', item.provincia)">
+                                <span>{{item.provincia.nombre}}</span>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div *ngIf="arbol.TipoPartido && arbol.TipoPartido.length" class="articulos-relevante">
+                    <div class="title">
+                        Partidos
+                    </div>
+                    <div class="textContent2">
+                        <ng-container *ngFor="let item of arbol.TipoPartido">
+                            <div *ngIf="item.partido" (click)="setFilter('idPartido', item.partido)">
+                                <span>{{item.partido.nombre}}</span>
+                            </div>
+                        </ng-container>                        
+                    </div>
+                </div>
+                <div *ngIf="arbol.TipoLocalidad && arbol.TipoLocalidad.length" class="articulos-relevante">
+                    <div class="title">
+                        Localidades
+                    </div>
+                    <div class="textContent2">
+                        <ng-container *ngFor="let item of arbol.TipoLocalidad">
+                            <div *ngIf="item.localidad" (click)="setFilter('idLocalidad', item.localidad)">
+                                <span>{{item.localidad.nombre}}</span>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div *ngIf="arbol.TipoBarrio && arbol.TipoBarrio.length" class="articulos-relevante">
+                    <div class="title">
+                    Barrios
+                    </div>
+                    <div class="textContent2">
+                        <ng-container *ngFor="let item of arbol.TipoBarrio">
+                            <div *ngIf="item.barrio" (click)="setFilter('idBarrio', item.barrio)">
+                                <span>{{item.barrio.nombre}}</span>
+                            </div>
+                        </ng-container>
                     </div>
                 </div>
             </div>

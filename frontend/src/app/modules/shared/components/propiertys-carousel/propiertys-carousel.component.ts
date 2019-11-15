@@ -13,6 +13,7 @@ import { IGaleria, IConfigG } from "src/app/servicios/interfaces.index";
 export class PropiertysCarouselComponent {
   config = { configGeneral: {} } as IConfigG;
   mCategorias: IGaleria[];
+  ulClass: string = "nav flex-column d-md-block";
   // images = [1, 2, 3, 4].map(() => `https://picsum.photos/1920/500?random&t=${Math.random()}`);
 
   constructor(
@@ -22,6 +23,8 @@ export class PropiertysCarouselComponent {
     // customize default values of carousels used by this component tree
     this.getAll();
     this.getAllConfigurations();
+    this.assignUlClass(window.innerWidth);
+    console.log("width:",window.innerWidth);
   }
   loadImageEmpty(galeries) {
     for (let i = 0; i < galeries.length; i++) {
@@ -54,5 +57,15 @@ export class PropiertysCarouselComponent {
         console.log("Error en peticion de getAll");
         console.log(error);
       });
+  }
+  assignUlClass(width:number){
+    if (width < 768) {
+      this.ulClass = "list-group list-group-horizontal";
+    } else {
+      this.ulClass = "nav flex-column d-md-block";
+    }
+  }
+  onResize(event) {
+    this.assignUlClass(event.target.innerWidth);
   }
 }

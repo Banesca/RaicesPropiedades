@@ -11,7 +11,7 @@
         <div class="col-lg-5 d-flex  px-0">
           <div class="col-lg-6 py-3 mt-auto px-1">
             <label class="col font-weight-extrabold text-uppercase">Tipo Operación:</label>
-            <div ngbDropdown class="d-inline-block">
+            <div ngbDropdown class="d-inline-block w-100">
               <input
                 type="button"
                 class="btn search-dropdown btn-block"
@@ -32,7 +32,7 @@
           </div>
           <div class="col-lg-6 py-3 mt-auto px-1">
             <label class="col font-weight-extrabold text-uppercase">Edificación:</label>
-            <div ngbDropdown class="d-inline-block">
+            <div ngbDropdown class="d-inline-block w-100">
               <input
                 type="button"
                 class="btn search-dropdown btn-block"
@@ -55,7 +55,7 @@
         <div class="col-lg-7 align-items-center d-md-flex px-0">
           <div class="col-md-4 py-1 col-12 px-1">
             <label class="col  font-weight-extrabold text-uppercase" >Moneda:</label>
-            <div ngbDropdown class="d-inline-block">
+            <div ngbDropdown class="d-inline-block w-100">
               <input
                 type="button"
                 class="btn search-dropdown btn-block"
@@ -78,14 +78,14 @@
 
             <div class="col-md-6 py-1  col-6 px-1">
               <label class="col font-weight-extrabold text-uppercase">Monto Mínimo:</label>
-              <div ngbDropdown class="d-inline-block w-100">
+              <div ngbDropdown class="d-inline-block w-100 w-100">
                 <input type="number" class="btn search-dropdown btn-block" placeholder="Monto Mínimo" [(ngModel)]="selectedMinimo"
                 oninput="this.value=this.value.replace(/[^\d+]/,'')" />
               </div>
             </div>
             <div class="col-md-6 py-1 col-6 px-1">
               <label class="col font-weight-extrabold text-uppercase">Monto Máximo:</label>
-              <div ngbDropdown class="d-inline-block w-100">
+              <div ngbDropdown class="d-inline-block w-100 w-100">
                 <input type="number" class="btn search-dropdown btn-block" placeholder="Monto Máximo" [(ngModel)]="selectedMaximo"
                 oninput="this.value=this.value.replace(/[^\d+]/,'')" />
               </div>
@@ -100,7 +100,7 @@
       <div class="row">
         <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
           <!-- regiones -->
-          <div ngbDropdown class="d-inline-block">
+          <div ngbDropdown class="d-inline-block w-100">
             <input
               type="button"
               class="btn search-dropdown btn-block"
@@ -121,7 +121,7 @@
         </div>
         <!-- partidos -->
         <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
-          <div ngbDropdown class="d-inline-block">
+          <div ngbDropdown class="d-inline-block w-100">
             <input
               type="button"
               class="btn search-dropdown btn-block"
@@ -142,7 +142,7 @@
         </div>
         <!-- localidades -->
         <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
-          <div ngbDropdown class="d-inline-block">
+          <div ngbDropdown class="d-inline-block w-100">
             <input
               type="button"
               class="btn search-dropdown btn-block"
@@ -163,7 +163,7 @@
         </div>
         <!-- Barrios -->
         <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
-          <div ngbDropdown class="d-inline-block">
+          <div ngbDropdown class="d-inline-block w-100">
             <input
               type="button"
               class="btn search-dropdown btn-block"
@@ -187,7 +187,7 @@
         <div class="col-lg-3 col-12 my-2 my-lg-0 px-1">
           <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label>
           <!-- regiones -->
-          <div class="d-inline-block w-100">
+          <div class="d-inline-block w-100 w-100">
             <input placeholder="Habitantes" type="number" class="btn search-dropdown btn-block" id="" [(ngModel)]="habitantes" oninput="this.value=this.value.replace(/[^\d+]/,'')" />
           </div>
         </div>

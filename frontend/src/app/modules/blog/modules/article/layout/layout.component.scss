@@ -94,13 +94,18 @@ hr {
 .gray-icon-text {
   color: #bfc0c4;
 }
-
 .galery-image {
+  @media (max-width: 700px) {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
   img {
     width: 142px;
     height: auto;
+
     @media (max-width: 992px) {
-      width: 50px;
+      width: 30px;
     }
   }
 }

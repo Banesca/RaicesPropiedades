@@ -39,6 +39,7 @@ router-outlet ~ * {
 
 .carousel-image {
   width: -webkit-fill-available;
+  height: 70vh;
 }
 
 a {
@@ -238,6 +239,9 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .carousel-image {
+    height: 100%;
+  }
   .navbar-brand {
     display: block;
   }

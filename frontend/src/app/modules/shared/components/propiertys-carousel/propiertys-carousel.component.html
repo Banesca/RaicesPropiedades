@@ -1,21 +1,19 @@
 <ngb-carousel>
-  <div *ngFor="let galeria of mCategorias">
+  <div (window:resize)="onResize($event)" *ngFor="let galeria of mCategorias">
     <ng-template *ngFor="let imagen of galeria.imagenes" ngbSlide>
       <img
         [src]="imagen.imagen"
         class="carousel-image"
         alt="Random slide"
-        style="height:70vh;width: 100%;"
+        style="width: 100%;"
         onerror="this.src='assets/images/no_image_aviable.jpg'"
       />
-      <!-- <img src="../../../../../assets/images/BANNER-2" class="carousel-image" alt="Random slide"> -->
-      <div class="carousel-caption d-flex align-items-center">
-        <div
-          class="position-relative text-white align-items-center w-100 d-flex justify-contend-between"
-        >
-          <div
-            class="container title col-md-8 col-lg-6 col-12 py-5 d-flex flex-column align-items-start"
-          >
+      <div class="carousel-caption  align-items-center">
+        <!-- d-flex -->
+        <div class="row align-items-center justify-contend-between h-100">
+          <!-- position-relative text-white align-items-center w-100 d-flex justify-contend-between -->
+          <div class="title col-md-8 col-lg-6 col-12 ">
+            <!-- container title col-md-8 col-lg-6 col-12 py-5 flex-column d-flex flex-column align-items-start -->
             <div class="col-sm-12 text-md-left">
               <h1
                 class="font-weight-light text-uppercase font-weight-extrabold"
@@ -26,9 +24,13 @@
             <p class="col-sm-12 text-md-left">{{ galeria.descripcion }}</p>
             <!-- <button class="col-md-6 mx-3 btn white-button text-white">Ver Más</button> -->
           </div>
-          <div class="container d-flex justify-content-end mr-5 ">
-            <ul class="nav flex-column d-none d-md-block">
-              <li *ngIf="config.configGeneral?.url_face" class="facebook my-2">
+          <div
+            class="col-md-4 col-lg-6 col-12 social-networks justify-content-end d-flex"
+          >
+            <!-- col-md-4 col-lg-6 col-12 social-networks container d-flex justify-content-end mr-5 -->
+            <ul [class]="ulClass">
+              <!-- list-group list-group-horizontal [class]="ulClass"-->
+              <li *ngIf="config.configGeneral?.url_face" class="facebook m-2">
                 <a
                   [href]="config.configGeneral?.url_face"
                   data-toggle="tooltip"
@@ -41,7 +43,7 @@
               </li>
               <li
                 *ngIf="config.configGeneral?.url_twitter"
-                class="twitter my-2"
+                class="twitter m-2"
               >
                 <a
                   [href]="config.configGeneral?.url_twitter"
@@ -55,7 +57,7 @@
               </li>
               <li
                 *ngIf="config.configGeneral?.url_intagram"
-                class="instagram my-2"
+                class="instagram m-2"
               >
                 <a
                   [href]="config.configGeneral?.url_intagram"
