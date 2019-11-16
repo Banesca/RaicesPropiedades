@@ -24,7 +24,6 @@ export class PropiertysCarouselComponent {
     this.getAll();
     this.getAllConfigurations();
     this.assignUlClass(window.innerWidth);
-    console.log("width:",window.innerWidth);
   }
   loadImageEmpty(galeries) {
     for (let i = 0; i < galeries.length; i++) {
