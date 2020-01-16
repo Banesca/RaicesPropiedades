@@ -46,6 +46,6 @@ class DatabaseSeeder extends Seeder {
         $this->call(TipoExpensasSeeder::class);
         $this->call(TipoPisoSeeder::class);
         $this->call(TipoLocalSeeder::class);
-        $this->call(PublicacionesSeeder::class);
+        //$this->call(PublicacionesSeeder::class);
     }
 }

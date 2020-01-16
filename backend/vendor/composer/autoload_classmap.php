@@ -15,6 +15,7 @@ return array(
     'App\\Console\\Commands\\emailPrueba' => $baseDir . '/app/Console/Commands/emailPrueba.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Contacto' => $baseDir . '/app/Contacto.php',
+    'App\\ContactoDePropiedad' => $baseDir . '/app/ContactoDePropiedad.php',
     'App\\Disposicion' => $baseDir . '/app/Disposicion.php',
     'App\\EstadoPropiedad' => $baseDir . '/app/EstadoPropiedad.php',
     'App\\EstadoPublicacion' => $baseDir . '/app/EstadoPublicacion.php',

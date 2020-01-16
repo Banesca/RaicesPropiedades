@@ -14,8 +14,8 @@ class UsersTableSeeder extends Seeder {
         // Usuario por defecto 
         DB::table('tb_users')->insert([
             'name'        => 'Admin',
-            'password'    => bcrypt(123456789),
-            'email'       => 'admin@example.org',
+            'password'    => bcrypt('1a2b3c_4f5e+6_78-9'),
+            'email'       => 'admin@raicespropiedades.com',
             'fk_statusUser'  => '1',
         ]);
     }
