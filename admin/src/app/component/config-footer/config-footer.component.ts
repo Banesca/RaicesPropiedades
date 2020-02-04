@@ -51,7 +51,7 @@ export class ConfigFooterComponent implements OnInit {
       ],
       url_face: ["", Validators.required],
       url_intagram: ["", Validators.required],
-      url_twitter: ["", Validators.required]
+      //url_twitter: ["", Validators.required]
     });
   }
 
@@ -79,9 +79,9 @@ export class ConfigFooterComponent implements OnInit {
             url_intagram: resp.configGeneral.url_intagram
               ? resp.configGeneral.url_intagram
               : "",
-            url_twitter: resp.configGeneral.url_twitter
+            /*url_twitter: resp.configGeneral.url_twitter
               ? resp.configGeneral.url_twitter
-              : ""
+              : ""*/
           });
         }
       },
