@@ -1,0 +1,152 @@
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <h3 class="py-5 text-center font-weight-bold">
+
+        Ficha para Cliente
+
+      </h3>
+
+      <div class="mb-5">
+
+        <div>
+
+          <form class="d-flex align-items-center">
+
+            <div class="w-25 mr-2">
+
+              <button class="btn btn-success btn-block">
+
+                Nuevo <i class="fa fa-plus"></i>
+
+              </button>
+
+            </div>
+
+            <div class="w-50">
+
+              <input class="form-control ng-untouched ng-pristine ng-valid" 
+                formControlName="search" 
+                placeholder="Buscar por título o descripción"
+                type="text"/>
+
+            </div>
+
+            <div class="w-25 ml-2">
+
+              <button class="btn btn-success btn-block" 
+                type="button" 
+                (click)="filter()" 
+                [disabled]="mLoading" 
+                ngbTooltip="Buscar" 
+                placement="top">
+
+                Buscar  <i class="fa fa-search"></i>
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <div class="table-responsive">
+
+        <table class="table table-striped">
+
+          <thead class="thead-dark ">
+
+            <tr>
+
+              <th class="d-flex justify-content-center"> # </th>
+
+              <th>Título</th>
+
+              <th>Ubicación</th>
+
+              <th>Valor</th>
+
+              <th>Acción</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let categoria of mCategorias | paginate: { itemsPerPage: 5, currentPage: p }; let i = index"
+              (dblclick)="modificar(categoria)">
+
+              <td class="d-flex justify-content-center">{{i + 1}}</td>
+
+              <td>{{categoria.titulo}}</td>
+
+              <td>{{categoria.descripcion}}</td>
+
+              <td class="float-right">
+
+                <button (click)="ver(categoria)" type="button" class="btn mr-2 btn-info">
+
+                  <i class="far fa-eye"></i>
+
+                </button>
+
+                <button (click)="modificar(categoria)" type="button" class="btn mr-2 btn-primary">
+
+                  <i class="fas fa-pencil-alt"></i>
+
+                </button>
+
+                <button (click)="eliminar(categoria.idGaleria)" type="button" class="btn mr-2 btn-danger">
+
+                  <i class="fa fa-trash"></i>
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <div class="w-100">
+
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+        </div>
+
+        <div class="alert alert-info" role="alert">
+
+          <strong>No existen</strong> Mails que mostrar...
+
+        </div>
+
+        <div class="alert alert-warning" role="alert">
+
+          <strong>Cargando</strong> por favor espere...
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
