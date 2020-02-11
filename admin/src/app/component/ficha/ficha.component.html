@@ -5,9 +5,7 @@
     <div class="col-md-12">
 
       <h3 class="py-5 text-center font-weight-bold">
-
         Ficha para Cliente
-
       </h3>
 
       <div class="mb-5">
@@ -19,9 +17,7 @@
             <div class="w-25 mr-2">
 
               <button class="btn btn-success btn-block">
-
                 Nuevo <i class="fa fa-plus"></i>
-
               </button>
 
             </div>
@@ -45,7 +41,6 @@
                 placement="top">
 
                 Buscar  <i class="fa fa-search"></i>
-
               </button>
 
             </div>
@@ -88,7 +83,12 @@
 
           <tbody>
 
-            <tr *ngFor="let categoria of mCategorias | paginate: { itemsPerPage: 5, currentPage: p }; let i = index"
+            <tr *ngFor="let categoria of mCategorias | 
+              paginate: { 
+                itemsPerPage: 5, 
+                currentPage: p 
+              }; 
+              let i = index"
               (dblclick)="modificar(categoria)">
 
               <td class="d-flex justify-content-center">{{i + 1}}</td>
@@ -118,6 +118,8 @@
                 </button>
 
               </td>
+
+
 
             </tr>
 
