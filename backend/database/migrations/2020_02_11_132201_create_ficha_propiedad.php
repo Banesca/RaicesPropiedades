@@ -19,7 +19,13 @@ class CreateFichaPropiedad extends Migration
             $table->string("ubicacion");
             $table->string("caracteristica");
             $table->string("valor");
-            $table->string("");
+            $table->string("img1fa");//una imagen
+            $table->string("img2pr");//15 imagenes
+            $table->string("img3pl");//una imagen
+            $table->string("img4pl");//una imagen
+            $table->string("img5sa");//una imagen
+            $table->string("img6sa");//una imagen
+            $table->integer('fk_idPropiedad')->unsigned();
             $table->timestamps();
         });
     }
