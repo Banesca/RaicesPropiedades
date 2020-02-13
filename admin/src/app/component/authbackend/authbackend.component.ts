@@ -26,7 +26,6 @@ export class AuthbackendComponent implements OnInit {
   }
   ingresarLogin(){
     this.inPromise = true;
-    console.log(this.form);
     this.loginService.ingresarLogin(this.form).subscribe(
       (resp:any) =>{
 
