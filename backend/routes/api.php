@@ -35,6 +35,8 @@ Route::group(['prefix' => 'auth'], function () {
         Route::post('sucursal/edit/{idSucursal}', 'SucursalController@update');
         Route::delete('sucursal/borrar/{idSucursal}', 'SucursalController@destroy');
         Route::post('addPropiedad', 'Ficha3Controller@add');
+
+        Route::post('addFichaPropiedad', 'FichaPropiedadController@add');
     });
 });
 //  
@@ -207,8 +209,3 @@ Route::group(['prefix' => 'v1'], function () {
         return view('correos.contactoDePropiedadMail')->with('contacto', $con);
     });
 });
-
-
-
-
-

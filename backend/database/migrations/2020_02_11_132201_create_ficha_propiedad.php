@@ -23,11 +23,11 @@ class CreateFichaPropiedad extends Migration
             $table->string("img1fa");//una imagen
             $table->string("img2pr");//15 imagenes
             $table->string("img3pl");//una imagen
-            $table->string("img4pl");//una imagen
-            $table->string("img5sa");//una imagen
-            $table->string("img6sa");//una imagen
+            $table->string("img4pl")->nullable();//una imagen
+            $table->string("img5sa")->nullable();//una imagen
+            $table->string("img6sa")->nullable();//una imagen
             $table->integer('fk_idPropiedad')->unsigned();
-            $table->foreign('fk_idPropiedad')->references('idPropiedad')->on('tb_propiedades');//Clave Foranea
+            //$table->foreign('fk_idPropiedad')->references('idPropiedad')->on('tb_propiedades');//Clave Foranea
             $table->timestamps();
         });
     }
