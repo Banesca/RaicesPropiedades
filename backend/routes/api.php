@@ -36,11 +36,11 @@ Route::group(['prefix' => 'auth'], function () {
         Route::delete('sucursal/borrar/{idSucursal}', 'SucursalController@destroy');
         Route::post('addPropiedad', 'Ficha3Controller@add');
 
-        Route::post('addFichaPropiedad', 'FichaPropiedadController@add');
-        Route::post('editFichaPropiedad', 'FichaPropiedadController@edit');
-        Route::delete('deleteFichaPropiedad', 'FichaPropiedadController@delete');
-        Route::get('listarTodoFichaPropiedad', 'FichaPropiedadController@listarTodo');
-        Route::get('listarPorIdFichaPropiedad/{idFicha}', 'FichaPropiedadController@listarPorId');
+        Route::post('fichaPropiedad/agregar', 'FichaPropiedadController@add');
+        Route::post('fichaPropiedad/editar', 'FichaPropiedadController@edit');
+        Route::delete('fichaPropiedad/borrar', 'FichaPropiedadController@delete');
+        Route::get('fichaPropiedad/getAll', 'FichaPropiedadController@listarTodo');
+        Route::get('fichaPropiedad/ver/{idFicha}', 'FichaPropiedadController@listarPorId');
 
 
     });

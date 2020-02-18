@@ -50,8 +50,8 @@ class FichaPropiedadController extends Controller {
             ];
 
             foreach ($imgs as $img) {
-                if (is_null($request[$img])) {
-                } else {
+                if (!is_null($request[$img])) {
+
                     $originalImage = $request[$img];
 
                     $thumbnailImage = Image::make($originalImage);
@@ -66,7 +66,6 @@ class FichaPropiedadController extends Controller {
 
                     $fichaPropiedad[$img] = $nombre_interno;
                 }
-
             }
 
             $ficha->save();
@@ -205,7 +204,9 @@ class FichaPropiedadController extends Controller {
     }
 
     public function listarTodo() {
+
         $fichas = FichaPropiedad::get();
+        
         if (count($fichas) > 0) {
             foreach ($fichas as $key => $ficha) {
                 $fichas[$key]->urlImagen_img1fa = asset('storage\\fichaPropiedad\\'.@$fichas[$key]->img1fa);
@@ -229,15 +230,16 @@ class FichaPropiedadController extends Controller {
 
     public function listarPorId($idFicha) {
         $fichas = FichaPropiedad::find($idFicha);
-        if (count($fichas) > 0) {
-            foreach ($fichas as $key => $ficha) {
-                $fichas[$key]->urlImagen_img1fa = asset('storage\\fichaPropiedad\\'.@$fichas[$key]->img1fa);
-                $fichas[$key]->urlImagen_img2pr = asset('storage\\fichaPropiedad\\'.@$fichas[$key]->img2pr);
-                $fichas[$key]->urlImagen_img3pl = asset('storage\\fichaPropiedad\\'.@$fichas[$key]->img3pl);
-                $fichas[$key]->urlImagen_img4pl = asset('storage\\fichaPropiedad\\'.@$fichas[$key]->img4pl);
-                $fichas[$key]->urlImagen_img5sa = asset('storage\\fichaPropiedad\\'.@$fichas[$key]->img5sa);
-                $fichas[$key]->urlImagen_img6sa = asset('storage\\fichaPropiedad\\'.@$fichas[$key]->img6sa);
-            }
+
+        if (isset($fichas)) {
+            
+            $fichas->urlImagen_img1fa = asset('storage\\fichaPropiedad\\'.@$fichas->img1fa);
+            $fichas->urlImagen_img2pr = asset('storage\\fichaPropiedad\\'.@$fichas->img2pr);
+            $fichas->urlImagen_img3pl = asset('storage\\fichaPropiedad\\'.@$fichas->img3pl);
+            $fichas->urlImagen_img4pl = asset('storage\\fichaPropiedad\\'.@$fichas->img4pl);
+            $fichas->urlImagen_img5sa = asset('storage\\fichaPropiedad\\'.@$fichas->img5sa);
+            $fichas->urlImagen_img6sa = asset('storage\\fichaPropiedad\\'.@$fichas->img6sa);
+            
 
             return response()->json($fichas, 200);
         } else {
