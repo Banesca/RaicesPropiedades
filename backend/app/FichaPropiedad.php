@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FichaPropiedad extends Model
 {
     protected $table      = 'tb_fichas_propiedad';
     protected $primaryKey = 'idFichas';
+    use SoftDeletes;
 
     protected $fillable = [
         'titulo',

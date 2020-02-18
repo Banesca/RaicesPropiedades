@@ -37,9 +37,15 @@ Route::group(['prefix' => 'auth'], function () {
         Route::post('addPropiedad', 'Ficha3Controller@add');
 
         Route::post('addFichaPropiedad', 'FichaPropiedadController@add');
+        Route::post('editFichaPropiedad', 'FichaPropiedadController@edit');
+        Route::delete('deleteFichaPropiedad', 'FichaPropiedadController@delete');
+        Route::get('listarTodoFichaPropiedad', 'FichaPropiedadController@listarTodo');
+        Route::get('listarPorIdFichaPropiedad/{idFicha}', 'FichaPropiedadController@listarPorId');
+
+
     });
 });
-//  
+
 Route::group(['prefix' => 'v1'], function () {
 
     Route::post('login', 'API\AuthController@login'); //logear

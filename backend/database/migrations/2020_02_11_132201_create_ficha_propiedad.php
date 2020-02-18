@@ -29,6 +29,7 @@ class CreateFichaPropiedad extends Migration
             $table->integer('fk_idPropiedad')->unsigned();
             //$table->foreign('fk_idPropiedad')->references('idPropiedad')->on('tb_propiedades');//Clave Foranea
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
