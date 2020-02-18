@@ -4,13 +4,18 @@ export interface IFichasRs {
 }
 
 export interface IFichas {
-  idFichas: number,
-  ubicacion: string,
-  caracteristica: string,
-  valor: string,
-  comision: string,
-  img: Array<any>,
-  fk_idPropiedad: number
+  idFichas: number;
+  ubicacion: string;
+  caracteristica: string;
+  valor: string;
+  comision: string;
+  img1fa: string,
+  img2pr: string,
+  img3pl: string,
+  img4pl: string,
+  img5sa: string,
+  img6sa: string,
+  fk_idPropiedad: number;
 }
 
 export class Fichas {
@@ -21,7 +26,12 @@ export class Fichas {
       caracteristica: '',
       valor: '',
       comision: '',
-      img: {},
+      img1fa: '',
+      img2pr: '',
+      img3pl: '',
+      img4pl: '',
+      img5sa: '',
+      img6sa: '',
       fk_idPropiedad: null
     } as IFichas;
   }

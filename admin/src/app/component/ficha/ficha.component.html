@@ -4,24 +4,32 @@
 
     <div class="col-md-12">
 
-      <h3 class="py-5 text-center font-weight-bold">
-        Ficha para Cliente
+      <h3 class="py-5 text-center font-weight-bold" *ngIf="formEstado == enCRUD.Eliminar">
+        Ficha de Propiedad para Cliente
       </h3>
 
-      <div class="mb-5">
+      <h3 class="py-5 text-center font-weight-bold" *ngIf="formEstado == enCRUD.Crear">
+        Nueva Ficha de Propiedad
+      </h3>
+      
+      <h3 class="py-5 text-center font-weight-bold" *ngIf="formEstado == enCRUD.Actualizar">
+        Actualizar Ficha de Propiedad
+      </h3>
+
+      <div class="mb-5" *ngIf="mFormaEstado != enCRUD.Crear && mFormaEstado != enCRUD.Actualizar">
 
         <div>
 
-          <form class="d-flex align-items-center">
+          <form class="d-flex align-items-center" [formGroup]="filterForm">
 
             <div class="w-25 mr-2">
 
-              <button class="btn btn-success btn-block">
+              <button class="btn btn-success btn-block" (click)="nuevo()">
                 Nuevo <i class="fa fa-plus"></i>
               </button>
 
             </div>
-
+<!--
             <div class="w-50">
 
               <input class="form-control ng-untouched ng-pristine ng-valid" 
@@ -44,7 +52,7 @@
               </button>
 
             </div>
-
+-->
           </form>
 
         </div>
@@ -55,7 +63,7 @@
 
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="formEstado == enCRUD.Eliminar">
 
     <div class="col-md-12">
 
@@ -66,7 +74,6 @@
           <thead class="thead-dark ">
 
             <tr>
-
               <th class="d-flex justify-content-center"> # </th>
 
               <th>Título</th>
@@ -75,43 +82,42 @@
 
               <th>Valor</th>
 
-              <th>Acción</th>
+              <th>Comisión</th>
 
+              <th>Acción</th>
             </tr>
 
           </thead>
 
           <tbody>
 
-            <tr *ngFor="let categoria of mCategorias | 
+            <tr *ngFor="let ficha of fichas | 
               paginate: { 
                 itemsPerPage: 5, 
                 currentPage: p 
               }; 
-              let i = index"
-              (dblclick)="modificar(categoria)">
+              let i = index">
 
-              <td class="d-flex justify-content-center">{{i + 1}}</td>
-
-              <td>{{categoria.titulo}}</td>
-
-              <td>{{categoria.descripcion}}</td>
+              <td class="float-center">{{i + 1}}</td>
+              <td>{{ficha.titulo}}</td>
+              <td>{{ficha.ubicacion}}</td>
+              <td>{{ficha.valor}}</td>
+              <td>{{ficha.comision}}</td>
 
               <td class="float-right">
-
-                <button (click)="ver(categoria)" type="button" class="btn mr-2 btn-info">
+                <button (click)="ver(ficha)" type="button" class="btn mr-2 btn-info">
 
                   <i class="far fa-eye"></i>
 
                 </button>
 
-                <button (click)="modificar(categoria)" type="button" class="btn mr-2 btn-primary">
+                <button (click)="modificar(ficha)" type="button" class="btn mr-2 btn-primary">
 
                   <i class="fas fa-pencil-alt"></i>
 
                 </button>
 
-                <button (click)="eliminar(categoria.idGaleria)" type="button" class="btn mr-2 btn-danger">
+                <button (click)="eliminar(ficha, id.idFicha)" type="button" class="btn mr-2 btn-danger">
 
                   <i class="fa fa-trash"></i>
 
@@ -133,19 +139,231 @@
 
         </div>
 
-        <div class="alert alert-info" role="alert">
-
-          <strong>No existen</strong> Mails que mostrar...
-
-        </div>
-
-        <div class="alert alert-warning" role="alert">
-
-          <strong>Cargando</strong> por favor espere...
-
-        </div>
-
       </div>
+
+    </div>
+
+  </div>
+
+  <!--Formulario de CREAR Y ACTUALIZAR -->
+  <div *ngIf="formEstado == enCRUD.Crear ||  formEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
+
+    <div class="col-md-12">
+
+      <form [formGroup]="form">
+
+        <div class="row m-2">
+
+            <!-- BOTONES CABECERA-->
+            <div class="col-md-12">
+
+              <div class="pull-right">
+
+                <button (click)="formEstado = enCRUD.Eliminar" type="button" class="btn btn-primary m-2">
+
+                  <i class="fa fa-backward"></i>
+                  Regresar
+
+                </button>
+
+                <button *ngIf="formEstado == enCRUD.Crear" (click)="guardar()" [disabled]="!form.valid || progressBar" class="btn btn-primary m-2">
+
+                  <i class="fa fa-save"></i>
+                  Guardar
+
+                </button>
+
+                <button *ngIf="formEstado == enCRUD.Actualizar" (click)="actualizar(fichasSelected.idFichas)"
+                  [disabled]="!form.valid || progressBar" class="btn btn-primary m-2">
+
+                  <i class="fa fa-save"></i>
+                  Modificar
+
+                </button>
+              </div>
+            </div>
+            <!--FIN BOTONES CABECERA-->
+
+        </div>
+
+        <div class="row" *ngIf="progressBar">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <!--INPUTS-->
+        <div class="row">
+
+          <div class="col-md-8">
+
+            <div class="form-group">
+
+              <label for="">Nombre de la Propiedad <span style="color:red;font-weight:bold;">*</span></label>
+              <input type="input" formControlName="titulo" class="form-control">
+
+            </div>
+
+            <div *ngIf="form.controls['titulo'].errors && !form.controls['titulo'].pristine"
+              class="alert alert-danger">
+              
+              <span *ngIf="form.controls['titulo'].errors.required"> 
+                El Nombre de la Propiedad no puede estar vacío.<br>
+              </span>
+
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+
+              <label for="">Valor de la Propiedad<span style="color:red;font-weight:bold;">*</span></label>
+              <input type="input" formControlName="valor" class="form-control">
+
+            </div>
+
+            <div *ngIf="form.controls['valor'].errors && !form.controls['valor'].pristine"
+              class="alert alert-danger">
+
+              <span *ngIf="form.controls['valor'].errors.required"> 
+                El Valor de la propiedad no puede estar vacío.<br>
+              </span>
+
+              <!-- <span *ngIf="form.controls['valor'].errors.pattern"> 
+                El Número de Contacto debe ser sólo números.<br>
+              </span> -->
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="form-group">
+
+              <label for="">Ubicación <span style="color:red;font-weight:bold;">*</span></label>
+              <input type="input" formControlName="ubicacion" class="form-control">
+
+            </div>
+
+            <div *ngIf="form.controls['ubicacion'].errors && !form.controls['ubicacion'].pristine"
+              class="alert alert-danger">
+
+              <span *ngIf="form.controls['ubicacion'].errors.required">
+                La ubicacion no puede estar vacío.<br>
+              </span>
+
+              <!-- <span *ngIf="form.controls['ubicacion'].errors.pattern">
+                El formato del Correo es incorrecto.<br>
+              </span> -->
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div class="form-group">
+
+              <label for="">Caracteristicas <span style="color:red;font-weight:bold;">*</span></label>
+              <textarea formControlName="caracteristica" class="form-control"></textarea>
+
+            </div>
+
+            <div *ngIf="form.controls['caracteristica'].errors && !form.controls['caracteristica'].pristine"
+              class="alert alert-danger">
+
+              <span *ngIf="form.controls['caracteristica'].errors.required"> 
+                Las Caracteristicas de la Propiedad no puede estar vacía. <br>
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div class="form-group">
+
+              <label for="">Comisión Inmobiliaria<span style="color:red;font-weight:bold;">*</span></label>
+              <input type="text" formControlName="comision" class="form-control">
+
+            </div>
+
+            <div *ngIf="form.controls['comision'].errors && !form.controls['comision'].pristine"
+              class="alert alert-danger">
+
+              <span *ngIf="form.controls['comision'].errors.required"> 
+                La comision inmobiliaria no puede estar vacía. <br>
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div class="alert alert-info" role="alert">
+              El ancho mínimo de la imagen debe ser de 2000 px <br>
+              El alto mínimo de la imagen debe ser de 700 px
+            </div>
+
+            <div class="form-group">
+
+              <label for="">Imagenes</label>
+
+              <div class="wrapper-dropzone">
+
+                <div class="drop">
+
+                  <div class="cont">
+
+                    <div class="browse">
+                      Adjuntar imagen
+                    </div>
+
+                  </div>
+
+                  <div>
+
+                    <output id="list">
+
+                      <span *ngFor="let element of mCategoriasSelect.imagenes">
+                        <img class="thumb" [src]="element.imagen" style="height:150px;" title="">
+                      </span>
+
+                    </output>
+
+                    <div id="files-errors">
+                    </div>
+ 
+                  </div>
+
+                  <div>
+                    <input id="files" multiple="true" name="files[]" type="file" (change)="handleFileSelect($event)" />
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </form>
 
     </div>
 

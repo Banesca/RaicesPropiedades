@@ -1,9 +1,9 @@
- import { enCRUD } from "./../../misc/enums";
 import {Component, OnInit} from '@angular/core';
-import { /*NgForm, ,  FormArray,*/Validators, FormGroup, FormBuilder} from "@angular/forms";
-import { AlertsService } from "../../services/alerts.service";
-import { FichaService } from './../../services/ficha/ficha.service'
-import { IFichas, Fichas } from './../../services/ficha/ficha.interface'
+import {FormBuilder, FormGroup, /*NgForm, ,  FormArray,*/ Validators} from "@angular/forms";
+import {AlertsService} from "../../services/alerts.service";
+import {enCRUD} from "./../../misc/enums";
+import {Fichas, IFichas} from './../../services/ficha/ficha.interface';
+import {FichaService} from './../../services/ficha/ficha.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { IFichas, Fichas } from './../../services/ficha/ficha.interface'
 
 export class FichaComponent implements OnInit {
 
-  fichas: IFichas[];
+  fichas: any[];
   fichasSelect: IFichas;
   formEstado: string;
 
@@ -22,22 +22,30 @@ export class FichaComponent implements OnInit {
   public mLoading: boolean;
   
   form: FormGroup;
+  filterForm: FormGroup;
+  
   enCRUD = enCRUD;
-
+  progressBar = false;
+  
   constructor(
     private _formBuilder: FormBuilder,
     private _FichaService: FichaService,
     private _AlertsService: AlertsService
   ) 
   {
-    this.fichas = [];
     this.form = this.generarFormulario();
-
+    this.filterForm = this.generarFormulario();
+    this.formEstado = enCRUD.Crear;
   }
 
 
 
   ngOnInit() {
+    this.fichas = [];
+    this.getAll();
+
+    this.fichasSelect = Fichas.empy();
+    this.form.reset();
   }
 
 
@@ -49,22 +57,29 @@ export class FichaComponent implements OnInit {
       caracteristica: ["", Validators.required],
       valor: ["", Validators.required],
       comision: ["", Validators.required],
-      img: [{}, Validators.required],
+      img: [{}],
     });
  }
+
+  nuevo() {
+    this.form.reset();
+    this.formEstado = enCRUD.Crear;
+  }
 
   getAll() {
     this.mLoading = true;
     this._FichaService.All().subscribe(
-      (res: any) => 
-      {
-        this.fichas = res.fichas;
+      (res) => {
+        this.fichas = res;
         this.mLoading = false;
+        console.log('Lista:');
       },
-      (error) => {
-        console.log(error)
+      (error) =>{
+        console.log(error);
       }
     );
+
+    console.log(this.fichas);
   }
 
   guardar() {
