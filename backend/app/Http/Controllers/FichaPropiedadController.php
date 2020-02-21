@@ -11,6 +11,8 @@ use Image;
 
 class FichaPropiedadController extends Controller {
     public function add(Request $request) {
+
+        
         $this->validate($request, [
             'titulo'         => 'required',
             'ubicacion'      => 'required',
@@ -20,7 +22,7 @@ class FichaPropiedadController extends Controller {
             'img1fa'         => 'required',
             'img2pr'         => 'required',
             'img3pl'         => 'required',
-            'fk_idFichas'    => 'required',
+            'fk_idPropiedad'    => 'required',
         ], [
             'titulo'         => 'El Campo es requerido',
             'ubicacion'      => 'El Campo es requerido',
@@ -30,16 +32,17 @@ class FichaPropiedadController extends Controller {
             'img1fa'         => 'El Campo es requerido',
             'img2pr'         => 'El Campo es requerido',
             'img3pl'         => 'El Campo es requerido',
-            'fk_idFichas'    => 'El Campo es requerido',
+            'fk_idPropiedad'    => 'El Campo es requerido',
         ]);
 
+        
 
         DB::beginTransaction();
 
         try {
 
             $ficha = new FichaPropiedad($request->all());
-
+            
             $imgs = [
                 'img1fa',
                 'img2pr',

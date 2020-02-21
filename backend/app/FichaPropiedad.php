@@ -9,6 +9,7 @@ class FichaPropiedad extends Model
 {
     protected $table      = 'tb_fichas_propiedad';
     protected $primaryKey = 'idFichas';
+    use SoftDeletes;
 
     protected $fillable = [
         'titulo',
@@ -28,5 +29,6 @@ class FichaPropiedad extends Model
     protected $hidden   = [
         'created_at',
         'updated_at',
+        'deleted_at'
     ];
 }

@@ -20,7 +20,7 @@
 
         <div>
 
-          <form class="d-flex align-items-center" [formGroup]="filterForm">
+          <form class="d-flex align-items-center" [formGroup]="filterForm" *ngIf="formEstado == enCRUD.Eliminar">
 
             <div class="w-25 mr-2">
 
@@ -363,6 +363,60 @@
 
         </div>
 
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div class="alert alert-info" role="alert">
+              El ancho mínimo de la imagen debe ser de 2000 px <br>
+              El alto mínimo de la imagen debe ser de 700 px
+            </div>
+
+            <div class="form-group">
+
+              <label for="">Imagenes</label>
+
+              <div class="wrapper-dropzone">
+
+                <div class="drop">
+
+                  <div class="cont">
+
+                    <div class="browse">
+                      Adjuntar imagen
+                    </div>
+
+                  </div>
+
+                  <div>
+
+                    <output id="list">
+
+                      <span *ngFor="let element of mCategoriasSelect.imagenes">
+                        <img class="thumb" [src]="element.imagen" style="height:150px;" title="">
+                      </span>
+
+                    </output>
+
+                    <div id="files-errors">
+                    </div>
+ 
+                  </div>
+
+                  <div>
+                    <input id="files" multiple="true" name="files[]" type="file" (change)="handleFileSelect($event)" />
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
       </form>
 
     </div>

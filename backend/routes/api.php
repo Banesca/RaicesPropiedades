@@ -36,11 +36,6 @@ Route::group(['prefix' => 'auth'], function () {
         Route::delete('sucursal/borrar/{idSucursal}', 'SucursalController@destroy');
         Route::post('addPropiedad', 'Ficha3Controller@add');
 
-        Route::post('fichaPropiedad/agregar', 'FichaPropiedadController@add');
-        Route::post('fichaPropiedad/editar', 'FichaPropiedadController@edit');
-        Route::delete('fichaPropiedad/borrar', 'FichaPropiedadController@delete');
-        Route::get('fichaPropiedad/getAll', 'FichaPropiedadController@listarTodo');
-        Route::get('fichaPropiedad/ver/{idFicha}', 'FichaPropiedadController@listarPorId');
 
 
     });
@@ -214,4 +209,13 @@ Route::group(['prefix' => 'v1'], function () {
 
         return view('correos.contactoDePropiedadMail')->with('contacto', $con);
     });
+
+    
+    Route::post('fichaPropiedad/agregar', 'FichaPropiedadController@add');
+    Route::post('fichaPropiedad/editar', 'FichaPropiedadController@edit');
+    Route::delete('fichaPropiedad/borrar', 'FichaPropiedadController@delete');
+    Route::get('fichaPropiedad/getAll', 'FichaPropiedadController@listarTodo');
+    Route::get('fichaPropiedad/ver/{idFicha}', 'FichaPropiedadController@listarPorId');
+
+
 });

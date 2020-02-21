@@ -35,7 +35,7 @@ export class FichaComponent implements OnInit {
   {
     this.form = this.generarFormulario();
     this.filterForm = this.generarFormulario();
-    this.formEstado = enCRUD.Crear;
+    this.formEstado = enCRUD.Eliminar;
   }
 
 
@@ -73,13 +73,13 @@ export class FichaComponent implements OnInit {
         this.fichas = res;
         this.mLoading = false;
         console.log('Lista:');
+        console.log(this.fichas);
       },
       (error) =>{
         console.log(error);
       }
     );
 
-    console.log(this.fichas);
   }
 
   guardar() {
