@@ -3,7 +3,7 @@
   [config]="slideConfig" 
   (init)="slickInit($event)"
   (breakpoint)="breakpoint($event)">
-<div ngxSlickItem *ngFor="let slide of slides" class="slide" style="background: white;">
-<img src="{{ slide.img }}" alt="" width="300px">
+<div ngxSlickItem *ngFor="let slide of slides" class="slide" style="background: #f8f9fa;">
+<img src="{{ slide.img }}" alt="" width="100px" style="border-radius: 50%;">
 </div>
 </ngx-slick-carousel>

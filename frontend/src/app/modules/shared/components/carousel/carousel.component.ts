@@ -42,7 +42,7 @@ export class CarouselComponent implements OnInit {
       img: "https://www.solodev.com/assets/carousel/image8.png"
     },
     {
-      img: "https://www.solodev.com/assets/carousel/image9.png"
+      img: "https://www.solodev.com/assets/carousel/image8.png"
     },
     {
       img: "https://www.solodev.com/assets/carousel/image1.png"
@@ -93,7 +93,7 @@ export class CarouselComponent implements OnInit {
     responsive: [{
       breakpoint: 1920,
       settings: {
-        slidesToShow: 4,
+        slidesToShow: 8,
         slidesToScroll: 3,
         infinite: false,
         dots: false
@@ -101,7 +101,7 @@ export class CarouselComponent implements OnInit {
     }, {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 8,
         slidesToScroll: 2,
         infinite: false,
         dots: false
@@ -115,7 +115,7 @@ export class CarouselComponent implements OnInit {
     }, {
       breakpoint: 480,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: 8,
         slidesToScroll: 1
       }
     }]
