@@ -19,7 +19,6 @@ import { PropiertysComponent } from './page/propiertys/propiertys.component';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +39,7 @@ import {MatIconModule} from '@angular/material/icon';
     ArticleModule,
     ServiciosModule,
     NgbModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

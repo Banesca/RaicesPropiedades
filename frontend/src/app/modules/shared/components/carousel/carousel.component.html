@@ -1,0 +1,9 @@
+<ngx-slick-carousel class="carousel" 
+  #slickModal="slick-carousel" 
+  [config]="slideConfig" 
+  (init)="slickInit($event)"
+  (breakpoint)="breakpoint($event)">
+<div ngxSlickItem *ngFor="let slide of slides" class="slide" style="background: white;">
+<img src="{{ slide.img }}" alt="" width="300px">
+</div>
+</ngx-slick-carousel>
