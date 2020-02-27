@@ -98,7 +98,29 @@
         <label class="col font-weight-extrabold text-uppercase">Buscar en:</label>
       </div>
       <div class="row">
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
+          <!-- regiones -->
+          <div ngbDropdown class="d-inline-block w-100">
+            <input
+              type="button"
+              class="btn search-dropdown btn-block"
+              id="dropdownBasic1"
+              [value]="selectedProvince.nombre"
+              ngbDropdownToggle
+            />
+            <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
+              <input
+                type="button"
+                *ngFor="let province of provinces"
+                ngbDropdownItem
+                (click)="setProvince(province)"
+                [value]="province.nombre"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Zonas -->
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
           <!-- regiones -->
           <div ngbDropdown class="d-inline-block w-100">
             <input
@@ -120,7 +142,7 @@
           </div>
         </div>
         <!-- partidos -->
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block w-100">
             <input
               type="button"
@@ -141,7 +163,7 @@
           </div>
         </div>
         <!-- localidades -->
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block w-100">
             <input
               type="button"
@@ -162,7 +184,7 @@
           </div>
         </div>
         <!-- Barrios -->
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block w-100">
             <input
               type="button"
@@ -181,17 +203,26 @@
               />
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-lg-3 col-12 my-2 my-lg-0 px-1">
-          <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label>
+        </div> 
+          
+          <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
+         <!--  <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label> -->
           <!-- regiones -->
           <div class="d-inline-block w-100 w-100">
             <input placeholder="Habitantes" type="number" class="btn search-dropdown btn-block" id="" [(ngModel)]="habitantes" oninput="this.value=this.value.replace(/[^\d+]/,'')" />
           </div>
         </div>
+
       </div>
+   <!--    <div class="row mt-3">
+        <div class="col-lg-3 col-12 my-2 my-lg-0 px-1">
+          <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label>
+          regiones
+          <div class="d-inline-block w-100 w-100">
+            <input placeholder="Habitantes" type="number" class="btn search-dropdown btn-block" id="" [(ngModel)]="habitantes" oninput="this.value=this.value.replace(/[^\d+]/,'')" />
+          </div>
+        </div>
+      </div> -->
     </div>
 
     <div *ngIf="validateMonto" class="col-sm-12 text-white d-flex justify-content-center py-5">
