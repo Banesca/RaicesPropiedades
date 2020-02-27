@@ -47,9 +47,9 @@ class Ficha2Controller extends Controller {
 
                     $thumbnailImage = Image::make($originalImage);
 
-                    $thumbnailImage->fit(2048, 2048, function($constraint) {
+                    /*$thumbnailImage->fit(2048, 2048, function($constraint) {
                         $constraint->aspectRatio();
-                    });
+                    });*/
 
                     $nombre_publico = $originalImage->getClientOriginalName();
                     $extension      = $originalImage->getClientOriginalExtension();
