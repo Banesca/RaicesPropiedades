@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertsService } from '../../services/alerts.service';
-import { LoginService } from "../../services/login.service";
-import { Router } from '@angular/router';
-import { AuthGuard } from "../../services/auth.guard";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AlertsService} from '../../services/alerts.service';
+import {AuthGuard} from "../../services/auth.guard";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-authbackend',
