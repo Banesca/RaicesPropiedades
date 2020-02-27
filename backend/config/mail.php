@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +36,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'mail.depositocentral.com.ar'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +49,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 2525),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +63,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'no-responder@depositocentral.com.ar'),
+        'address' => env('MAIL_FROM_ADDRESS', 'somoslibreando@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'No_responder'),
     ],
 

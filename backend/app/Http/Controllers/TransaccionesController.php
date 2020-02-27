@@ -10,6 +10,7 @@ use App\ConfigFooter;
 // use App\PerfilCliente;
 // use App\Suscripcion;
 use App\Mail\ConfirmTasacion;
+use App\Mail\TasalacionMail;
 use App\TipoTasacion;
 use App\Transacciones;
 use App\TipoPropiedad;
@@ -88,7 +89,10 @@ class TransaccionesController extends Controller {
             $transaccion->save();
 
             $transaccion->tipoPropiedad;
+
+            Mail::to($request->email)->send(new TasalacionMail($transaccion));
             DB::commit();
+
             $response = [
                 'msj'  => 'Transacción Creada Exitosamente',
                 'data' => $transaccion,

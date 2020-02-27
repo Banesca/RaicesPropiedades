@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Mail;
 class SuscripcionController extends Controller {
 
     public function nuevaSus(Request $request) {
+
         $this->validate($request, [
             'email' => 'required|email|unique:tb_suscripcions,email,'.$request->idSuscripcion.',idSuscripcion',
         ], [
@@ -20,6 +21,7 @@ class SuscripcionController extends Controller {
             'email.email'    => 'El Email debe de tener un formato ejemplo@ejemplo.com',
             'email.required' => 'El Email es requerido',
         ]);
+
 
         DB::beginTransaction();
 
