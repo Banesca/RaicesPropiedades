@@ -10,7 +10,9 @@
 |
 */
 
-Route::group(['prefix' => 'auth'], function () {
+use App\Localidades;
+
+Route::group([ 'prefix' => 'auth'], function () {
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('logout', 'API\AuthController@logout');//cerrar sesion
@@ -206,6 +208,35 @@ Route::group(['prefix' => 'v1'], function () {
 
         return view('correos.contactoDePropiedadMail')->with('contacto', $con);
     });
+
+    Route::get('p200', function () {
+        /*BARRIOS*/
+        foreach (Localidades::get() as $localidad) {
+            $url = 'https://www.inmuebles.clarin.com/Regiones/FindBarrios?contentType=json&idLocalidad=' . $localidad->id;
+            $ch  = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            $err      = curl_error($ch);  //if you need
+            curl_close($ch);
+            $result_LOCALIDADES = json_decode($response, true);
+            if (isset($result_LOCALIDADES)) {
+                foreach ($result_LOCALIDADES as $key=>$barrio) {
+                    if (! Barrios::where('nombre', '=', $barrio['Nombre'])->exists()) {
+                        Barrios::create([
+                            'id'           => $barrio['Id'],
+                            'nombre'       => $barrio['Nombre'],
+                            'fk_localidad' => $localidad->id,
+                        ]);
+                    }
+                }
+            }
+        }
+        /*BARRIOS*/
+    });
+
+
 });
 
 
