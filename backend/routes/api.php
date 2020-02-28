@@ -12,7 +12,7 @@
 
 use App\Localidades;
 
-Route::group([ 'prefix' => 'auth'], function () {
+Route::group(['prefix' => 'auth'], function () {
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('logout', 'API\AuthController@logout');//cerrar sesion
@@ -38,11 +38,11 @@ Route::group([ 'prefix' => 'auth'], function () {
         Route::delete('sucursal/borrar/{idSucursal}', 'SucursalController@destroy');
         Route::post('addPropiedad', 'Ficha3Controller@add');
 
-        Route::post('pago/add','PagoController@store');
-        Route::post('pago/edit/{idPago}','PagoController@update');
-        Route::get('pago/listar','PagoController@listar');
-        Route::get('pago/listar/{idPago}','PagoController@listarPorId');
-        Route::delete('pago/borrar/{idPago}','PagoController@destroy');
+        Route::post('pago/add', 'PagoController@store');
+        Route::post('pago/edit/{idPago}', 'PagoController@update');
+        Route::get('pago/listar', 'PagoController@listar');
+        Route::get('pago/listar/{idPago}', 'PagoController@listarPorId');
+        Route::delete('pago/borrar/{idPago}', 'PagoController@destroy');
     });
 });
 //  
@@ -216,9 +216,11 @@ Route::group(['prefix' => 'v1'], function () {
     });
 
     Route::get('p200', function () {
-        /*BARRIOS*/
+        /*calles*/
+        ini_set('memory_limit', '512M');
+        ini_set('max_execution_time', '15000');
         foreach (Localidades::get() as $localidad) {
-            $url = 'https://www.inmuebles.clarin.com/Regiones/FindBarrios?contentType=json&idLocalidad=' . $localidad->id;
+            $url = 'https://www.inmuebles.clarin.com/Regiones/FindCalles?contentType=json&idLocalidad=' . $localidad->id;
             $ch  = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_POST, 0);
@@ -228,21 +230,21 @@ Route::group(['prefix' => 'v1'], function () {
             curl_close($ch);
             $result_LOCALIDADES = json_decode($response, true);
             if (isset($result_LOCALIDADES)) {
-                foreach ($result_LOCALIDADES as $key=>$barrio) {
-                    if (! Barrios::where('nombre', '=', $barrio['Nombre'])->exists()) {
-                        Barrios::create([
-                            'id'           => $barrio['Id'],
-                            'nombre'       => $barrio['Nombre'],
+                foreach ($result_LOCALIDADES as $key => $calle) {
+                    if (! \App\Calle::where('nombre', '=', $calle['Nombre'])->exists()) {
+                        \App\Calle::create([
+                            'idCalle'      => $calle['Id'],
+                            'nombre'       => $calle['Nombre'],
                             'fk_localidad' => $localidad->id,
                         ]);
                     }
                 }
             }
         }
-        /*BARRIOS*/
+
+        return response()->json('listo');
+        /*calles*/
     });
-
-
 });
 
 
