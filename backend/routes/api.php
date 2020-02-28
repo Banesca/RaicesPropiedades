@@ -42,7 +42,7 @@ Route::group([ 'prefix' => 'auth'], function () {
         Route::post('pago/edit/{idPago}','PagoController@update');
         Route::get('pago/listar','PagoController@listar');
         Route::get('pago/listar/{idPago}','PagoController@listarPorId');
-        Route::delete('pago/borrar','PagoController@destroy');
+        Route::delete('pago/borrar/{idPago}','PagoController@destroy');
     });
 });
 //  
