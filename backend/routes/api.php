@@ -37,6 +37,12 @@ Route::group([ 'prefix' => 'auth'], function () {
         Route::post('sucursal/edit/{idSucursal}', 'SucursalController@update');
         Route::delete('sucursal/borrar/{idSucursal}', 'SucursalController@destroy');
         Route::post('addPropiedad', 'Ficha3Controller@add');
+
+        Route::post('pago/add','PagoController@store');
+        Route::post('pago/edit/{idPago}','PagoController@update');
+        Route::get('pago/listar','PagoController@listar');
+        Route::get('pago/listar/{idPago}','PagoController@listarPorId');
+        Route::delete('pago/borrar/{idPago}','PagoController@destroy');
     });
 });
 //  
