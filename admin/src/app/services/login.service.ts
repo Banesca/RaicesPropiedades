@@ -13,15 +13,15 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoginService {
-  
+
   token:any =  localStorage.getItem('access_token');
   dataUser:any;
 
   constructor(
     private http: HttpClient,
-    
+
     ) {  }
-    
+
     isLoggedIn() {
       return !!this.getJwtToken();
     }
@@ -53,5 +53,5 @@ export class LoginService {
       })
     });
   }
-  
+
 }
