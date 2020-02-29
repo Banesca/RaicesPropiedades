@@ -501,5 +501,9 @@ class Propiedad extends Model {
         return $this->belongsTo('App\Regiones', 'fk_Direccion_Region_Id');
     }
 
+    public function Calle() {
+        return $this->belongsTo('App\Calle', 'fk_Direccion_Calle_Id');
+    }
+
 
 }

@@ -18,6 +18,7 @@ class CreateBannerClientesTable extends Migration
             $table->text('dir_imagen');
             $table->integer('fk_idUser');
             $table->integer('orden');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

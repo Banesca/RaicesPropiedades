@@ -52,7 +52,7 @@ class BannerClienteController extends Controller {
 
             $response          = [
                 'msj'  => 'Banner registrado exitosamente',
-                'pago' => $banner,
+                'banner' => $banner,
             ];
             DB::commit();
 
@@ -105,7 +105,7 @@ class BannerClienteController extends Controller {
 
                 $response = [
                     'msj'  => 'BannerCliente actualizada exitosamente',
-                    'pago' => $banner,
+                    'banner' => $banner,
                 ];
 
                 return response()->json($response, 200);
@@ -185,8 +185,8 @@ class BannerClienteController extends Controller {
         });
 
         $response = [
-            'msj'   => 'Lista de Pagos',
-            'pagos' => $banners,
+            'msj'   => 'Lista de Banners',
+            'banner' => $banners,
         ];
 
         return response()->json($response, 200);
@@ -195,10 +195,13 @@ class BannerClienteController extends Controller {
     public function listarPorId($id) {
 
         $banner            = BannerCliente::find($id);
-        $banner->urlImagen = asset('storage\\BannerClientes\\'.@$banner->dir_imagen);
+        if (!is_null($banner)) {
+            $banner->urlImagen = asset('storage\\BannerClientes\\'.@$banner->dir_imagen);
+        }
+
         $response          = [
             'msj'  => 'BannerCliente',
-            'pago' => $banner,
+            'banner' => $banner,
         ];
 
         return response()->json($response, 200);

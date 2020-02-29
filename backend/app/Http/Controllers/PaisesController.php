@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 ini_set('memory_limit', '512M');
 ini_set('max_execution_time', '15000');
 use App\Barrios;
+use App\Calle;
 use App\Localidades;
 use App\Paises;
 use App\Partidos;
@@ -192,6 +193,35 @@ class PaisesController extends Controller
             $Paises   = subBarrios::where('fk_barrio', '=', $idBarrio)->get();
             $response = [
                 'subBarrios' => $Paises,
+            ];
+            DB::commit();
+
+            return response()->json($response, 201);
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            Log::error('Ha ocurrido un error en PaisesController: ' . $e->getMessage() . ', Linea: ' . $e->getLine());
+
+            return response()->json([
+                'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
+            ], 500);
+        }
+    }
+
+  public function getcalles(Request $request)
+    {
+        $request->validate([
+            'idLocalidad' => 'required',
+        ]);
+
+        $idLocalidad = $request->idLocalidad;
+        DB::beginTransaction();
+
+        try {
+
+            $calles   = Calle::where('fk_localidad', '=', $idLocalidad)->get();
+            $response = [
+                'calles' => $calles,
             ];
             DB::commit();
 

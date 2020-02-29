@@ -110,6 +110,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('localidades/get', 'PaisesController@getLocalidades');   //fk_idPartido
     Route::post('barrios/get', 'PaisesController@getBarrios');           //idLocalidad
     Route::post('subbarrios/get', 'PaisesController@getsubBarrios');     //idBarrio
+    Route::post('calle/get', 'PaisesController@getcalles');     //idLocalidad
     //Route::get('sincronizacion','PaisesController@sincService2');
     /* Galeria */
     /*   Agregada 12/6/2019    */
