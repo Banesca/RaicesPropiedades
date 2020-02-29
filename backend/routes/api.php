@@ -43,6 +43,12 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('pago/listar', 'PagoController@listar');
         Route::get('pago/listar/{idPago}', 'PagoController@listarPorId');
         Route::delete('pago/borrar/{idPago}', 'PagoController@destroy');
+
+        Route::post('banner/add', 'BannerClienteController@store');
+        Route::post('banner/edit/{idBannerCliente}', 'BannerClienteController@update');
+        Route::get('banner/listar', 'BannerClienteController@listar');
+        Route::get('banner/listar/{idBannerCliente}', 'BannerClienteController@listarPorId');
+        Route::delete('banner/borrar/{idBannerCliente}', 'BannerClienteController@destroy');
     });
 });
 //  
