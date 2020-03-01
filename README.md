@@ -40,3 +40,14 @@ npm install
 ng serve --port 5200
 
 PUERTO POR DEFAULT http://localhost:5200/
+
+
+----- solucion errores comunes ----
+
+ERROR 
+Syntax error or access violation: 1118 Row size too large (> 8126). Changing some columns to TEXT or BLOB may help. In current row format, BLOB prefix of 0 bytes is stored inline.")
+
+SOLUCION
+EJECUTAR ESTOS COMANDO Y LUEGO LAS MIGRASIONES 
+SET GLOBAL innodb_default_row_format='dynamic';
+SET GLOBAL innodb_strict_mode=OFF;
