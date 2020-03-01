@@ -5342,7 +5342,7 @@
 				{
 					"name": "buscar general",
 					"request": {
-						"url": "http://localhost/argentina/RaicesPropiedades/backend/public/api/v1/buscadorGeneral",
+						"url": "localhost:8000/api/v1/buscadorGeneral",
 						"method": "POST",
 						"header": [
 							{
@@ -5358,8 +5358,7 @@
 									"key": "idTipoOperaion",
 									"value": "1",
 									"type": "text",
-									"description": "",
-									"disabled": true
+									"description": ""
 								},
 								{
 									"key": "idTipoPropiedad",
@@ -5404,23 +5403,31 @@
 									"disabled": true
 								},
 								{
+									"key": "idCalle",
+									"value": "3",
+									"type": "text",
+									"description": ""
+								},
+								{
 									"key": "habitantes",
 									"value": "2",
 									"type": "text",
-									"description": "",
+									"description": "requerido si montoMaximo tiene valor",
 									"disabled": true
 								},
 								{
 									"key": "montoMinimo",
 									"value": "1396",
 									"type": "text",
-									"description": "requerido si montoMaximo tiene valor"
+									"description": "requerido si montoMinimotiene valor",
+									"disabled": true
 								},
 								{
 									"key": "montoMaximo",
 									"value": "2000",
 									"type": "text",
-									"description": "requerido si montoMinimotiene valor"
+									"description": "",
+									"disabled": true
 								}
 							]
 						},
@@ -7318,6 +7325,67 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "detalles de la propiedad por visibilidad",
+					"request": {
+						"url": {
+							"raw": "http://www.inmuebles.clarin.com/Avisos/Details?contentType=json",
+							"protocol": "http",
+							"host": [
+								"www",
+								"inmuebles",
+								"clarin",
+								"com"
+							],
+							"path": [
+								"Avisos",
+								"Details"
+							],
+							"query": [
+								{
+									"key": "contentType",
+									"value": "json",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "usr",
+									"value": "integrador@argenprop.com",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "psd",
+									"value": "123456",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "IdVisibilidad",
+									"value": "10357587",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -7383,6 +7451,372 @@
 							}
 						],
 						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagos",
+			"description": "",
+			"item": [
+				{
+					"name": "add pago",
+					"request": {
+						"url": "localhost:8000/api/auth/pago/add",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc4ZTI1YTc2OTcxODFhNGUzMTE5ZmU1MTk1MzI2NDMyOTE3MGU5Njk3ZWVlNjNkNTBkNTc2ZmNiMDgzMzIyNDFmYzYyZmExZmZhZjg3YzcxIn0.eyJhdWQiOiIxIiwianRpIjoiNzhlMjVhNzY5NzE4MWE0ZTMxMTlmZTUxOTUzMjY0MzI5MTcwZTk2OTdlZWU2M2Q1MGQ1NzZmY2IwODMzMjI0MWZjNjJmYTFmZmFmODdjNzEiLCJpYXQiOjE1ODI4NDgyMTMsIm5iZiI6MTU4Mjg0ODIxMywiZXhwIjoxNTgyOTM0NjEzLCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.FTxlXY8iSD3wKu8uhoycDXyb60iPUdwweVunsfxZ48-X3ogEz3kcpt0N5Lrl8_h1fcaqpR-hCD5cLTlJEduYoZhsgaHVLcrc0NojcNuU25139bAQVpLyJWJ3bLb-BxpVKUilx9D31TQPLSw2K_Ropu-01IuV5qPqUiYmeqCnAou9PX-HmDbU2hWvAQ2PaBtSD0oL0mKqZITEH9RrlUtstLdJIB_w9m1fmsTXatU6aznJKusOsVtc9vcC1j6nF7lznqj8L3R7wDkUeb8cYXCsBAPOFFapMRQJyb3eUp9gwwY4oHpluH9RvWX6Hpw912Okeq6IGSFOdxdvdYpGQ6INwh7JCIgp97fNjuFybuL6krtq0weykj7nfFA9Hp4eyYrspFVE6FRM56B94NrwM0tz5s31bTIjc2Od_PqhG159_XTZvXpKrMLzAhfL6GRp6uliJuQyl8SmXqFIi1WWRjs5rLFkhM9lnAYv0etseXEU6dpnUZryPpbarpEp38RNFEY3c42fZ6ZwdJrmjcpyuxlzmzWlnMxY4WqlTkcBotd0DsCmh8YNJ8t5hKKZHxwNmaCrWROYs190NMZLSdAm2wY8CTbO1pVQEEWv-_USXl_5dCHSdYj9OJIkNs8Ef2WMpUGiZ_3O5XZoB1-s9y8v4PU9Xz1175CzIdSx9VzZzC3lzYA",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_adjunto",
+									"value": "",
+									"description": "",
+									"type": "file"
+								},
+								{
+									"key": "nombre",
+									"value": "hola",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "apellido",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "n_transferencia_deposito",
+									"value": "005",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "detalle",
+									"value": "detalle de prueba",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "edit pago",
+					"request": {
+						"url": "localhost:8000/api/auth/pago/edit/5",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc4ZTI1YTc2OTcxODFhNGUzMTE5ZmU1MTk1MzI2NDMyOTE3MGU5Njk3ZWVlNjNkNTBkNTc2ZmNiMDgzMzIyNDFmYzYyZmExZmZhZjg3YzcxIn0.eyJhdWQiOiIxIiwianRpIjoiNzhlMjVhNzY5NzE4MWE0ZTMxMTlmZTUxOTUzMjY0MzI5MTcwZTk2OTdlZWU2M2Q1MGQ1NzZmY2IwODMzMjI0MWZjNjJmYTFmZmFmODdjNzEiLCJpYXQiOjE1ODI4NDgyMTMsIm5iZiI6MTU4Mjg0ODIxMywiZXhwIjoxNTgyOTM0NjEzLCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.FTxlXY8iSD3wKu8uhoycDXyb60iPUdwweVunsfxZ48-X3ogEz3kcpt0N5Lrl8_h1fcaqpR-hCD5cLTlJEduYoZhsgaHVLcrc0NojcNuU25139bAQVpLyJWJ3bLb-BxpVKUilx9D31TQPLSw2K_Ropu-01IuV5qPqUiYmeqCnAou9PX-HmDbU2hWvAQ2PaBtSD0oL0mKqZITEH9RrlUtstLdJIB_w9m1fmsTXatU6aznJKusOsVtc9vcC1j6nF7lznqj8L3R7wDkUeb8cYXCsBAPOFFapMRQJyb3eUp9gwwY4oHpluH9RvWX6Hpw912Okeq6IGSFOdxdvdYpGQ6INwh7JCIgp97fNjuFybuL6krtq0weykj7nfFA9Hp4eyYrspFVE6FRM56B94NrwM0tz5s31bTIjc2Od_PqhG159_XTZvXpKrMLzAhfL6GRp6uliJuQyl8SmXqFIi1WWRjs5rLFkhM9lnAYv0etseXEU6dpnUZryPpbarpEp38RNFEY3c42fZ6ZwdJrmjcpyuxlzmzWlnMxY4WqlTkcBotd0DsCmh8YNJ8t5hKKZHxwNmaCrWROYs190NMZLSdAm2wY8CTbO1pVQEEWv-_USXl_5dCHSdYj9OJIkNs8Ef2WMpUGiZ_3O5XZoB1-s9y8v4PU9Xz1175CzIdSx9VzZzC3lzYA",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_adjunto",
+									"value": "",
+									"description": "",
+									"type": "file"
+								},
+								{
+									"key": "nombre",
+									"value": "hola",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "apellido",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "n_transferencia_deposito",
+									"value": "0055",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "detalle",
+									"value": "detalle de prueba",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "borrar pago",
+					"request": {
+						"url": "localhost:8000/api/auth/pago/borrar/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc4ZTI1YTc2OTcxODFhNGUzMTE5ZmU1MTk1MzI2NDMyOTE3MGU5Njk3ZWVlNjNkNTBkNTc2ZmNiMDgzMzIyNDFmYzYyZmExZmZhZjg3YzcxIn0.eyJhdWQiOiIxIiwianRpIjoiNzhlMjVhNzY5NzE4MWE0ZTMxMTlmZTUxOTUzMjY0MzI5MTcwZTk2OTdlZWU2M2Q1MGQ1NzZmY2IwODMzMjI0MWZjNjJmYTFmZmFmODdjNzEiLCJpYXQiOjE1ODI4NDgyMTMsIm5iZiI6MTU4Mjg0ODIxMywiZXhwIjoxNTgyOTM0NjEzLCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.FTxlXY8iSD3wKu8uhoycDXyb60iPUdwweVunsfxZ48-X3ogEz3kcpt0N5Lrl8_h1fcaqpR-hCD5cLTlJEduYoZhsgaHVLcrc0NojcNuU25139bAQVpLyJWJ3bLb-BxpVKUilx9D31TQPLSw2K_Ropu-01IuV5qPqUiYmeqCnAou9PX-HmDbU2hWvAQ2PaBtSD0oL0mKqZITEH9RrlUtstLdJIB_w9m1fmsTXatU6aznJKusOsVtc9vcC1j6nF7lznqj8L3R7wDkUeb8cYXCsBAPOFFapMRQJyb3eUp9gwwY4oHpluH9RvWX6Hpw912Okeq6IGSFOdxdvdYpGQ6INwh7JCIgp97fNjuFybuL6krtq0weykj7nfFA9Hp4eyYrspFVE6FRM56B94NrwM0tz5s31bTIjc2Od_PqhG159_XTZvXpKrMLzAhfL6GRp6uliJuQyl8SmXqFIi1WWRjs5rLFkhM9lnAYv0etseXEU6dpnUZryPpbarpEp38RNFEY3c42fZ6ZwdJrmjcpyuxlzmzWlnMxY4WqlTkcBotd0DsCmh8YNJ8t5hKKZHxwNmaCrWROYs190NMZLSdAm2wY8CTbO1pVQEEWv-_USXl_5dCHSdYj9OJIkNs8Ef2WMpUGiZ_3O5XZoB1-s9y8v4PU9Xz1175CzIdSx9VzZzC3lzYA",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Banner",
+			"description": "",
+			"item": [
+				{
+					"name": "banner add",
+					"request": {
+						"url": "localhost:8000/api/auth/banner/add",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU4OWNmODZmZjgzM2Q5NzM4YWI3MDQ5MmZmZjNlMjIxYzNiN2FhYzI4NDk2MTY1MzM4MWI2NzE0NTYxZDdiNjVlN2RhNzE4ZTM0MmIwZTY3In0.eyJhdWQiOiIxIiwianRpIjoiNTg5Y2Y4NmZmODMzZDk3MzhhYjcwNDkyZmZmM2UyMjFjM2I3YWFjMjg0OTYxNjUzMzgxYjY3MTQ1NjFkN2I2NWU3ZGE3MThlMzQyYjBlNjciLCJpYXQiOjE1ODI5MzY2MDEsIm5iZiI6MTU4MjkzNjYwMSwiZXhwIjoxNTgzMDIyOTk5LCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.ZbI7TFdz51gSDfQ1jc1JzvQ04AoOgpja7Tur1cFCrTuxryAtQYGVZ3qPa2jUog3PMMB5g0vPgxOM3Lcp-k6bezFsLKKM1A2A1AoirEURumO_xjxva0VFcgllrD2mufvpNNaOQ94QnvE_IsjzR4LGjCtbW-1snjD7AzzDBNWTOVjcl6tSigVrT_jIRR2N9Ict3M0BebeyhXlt_-er2IPd-eoxHCO_JGvZZw49XbjXelu7NZv7zenATK8ROBURMbSfA_6WJs24WRYdeIVhFSQR-uncS2-TpMumk2hFLK89ENxo-8UPcVqkQ5FVxR4yYxc6MrpTKy_m_C70-0AwDZ8zwWSLx-t-yHL3twlgQg3nrejURjd1C0gN3Dr7cBxLrBITCQEoF5GrBVvXJoPOPC5QiUBvDv1W2fSCefkBj0re94BA-3DaMNO1DotbinBP_gNdcFMBDVgQfNjDyZHHrzNMQAjvWaIqOKGkiTn4GbZwvUENc5xn3-tjpJajFliKw-iLY1rDlMnbdxQW3-LIF7E-q3kK5c1ly2ql3Pa43hlnsQ-QpEpqB362XzrEJgMemERnCmCkCd0bzFq-h4FyrsZbrjJXnA6ah_lXqZHEqNFG7LZXF1m3Z1kMF08Ec7kUoigxYXBl2y-bTlkcdCIw1zsNpCTfqHV_bijleMFuB4u8XiA",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_imagen",
+									"value": "",
+									"type": "file",
+									"description": ""
+								},
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "orden",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "banner edit",
+					"request": {
+						"url": "localhost:8000/api/auth/banner/edit/3",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU4OWNmODZmZjgzM2Q5NzM4YWI3MDQ5MmZmZjNlMjIxYzNiN2FhYzI4NDk2MTY1MzM4MWI2NzE0NTYxZDdiNjVlN2RhNzE4ZTM0MmIwZTY3In0.eyJhdWQiOiIxIiwianRpIjoiNTg5Y2Y4NmZmODMzZDk3MzhhYjcwNDkyZmZmM2UyMjFjM2I3YWFjMjg0OTYxNjUzMzgxYjY3MTQ1NjFkN2I2NWU3ZGE3MThlMzQyYjBlNjciLCJpYXQiOjE1ODI5MzY2MDEsIm5iZiI6MTU4MjkzNjYwMSwiZXhwIjoxNTgzMDIyOTk5LCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.ZbI7TFdz51gSDfQ1jc1JzvQ04AoOgpja7Tur1cFCrTuxryAtQYGVZ3qPa2jUog3PMMB5g0vPgxOM3Lcp-k6bezFsLKKM1A2A1AoirEURumO_xjxva0VFcgllrD2mufvpNNaOQ94QnvE_IsjzR4LGjCtbW-1snjD7AzzDBNWTOVjcl6tSigVrT_jIRR2N9Ict3M0BebeyhXlt_-er2IPd-eoxHCO_JGvZZw49XbjXelu7NZv7zenATK8ROBURMbSfA_6WJs24WRYdeIVhFSQR-uncS2-TpMumk2hFLK89ENxo-8UPcVqkQ5FVxR4yYxc6MrpTKy_m_C70-0AwDZ8zwWSLx-t-yHL3twlgQg3nrejURjd1C0gN3Dr7cBxLrBITCQEoF5GrBVvXJoPOPC5QiUBvDv1W2fSCefkBj0re94BA-3DaMNO1DotbinBP_gNdcFMBDVgQfNjDyZHHrzNMQAjvWaIqOKGkiTn4GbZwvUENc5xn3-tjpJajFliKw-iLY1rDlMnbdxQW3-LIF7E-q3kK5c1ly2ql3Pa43hlnsQ-QpEpqB362XzrEJgMemERnCmCkCd0bzFq-h4FyrsZbrjJXnA6ah_lXqZHEqNFG7LZXF1m3Z1kMF08Ec7kUoigxYXBl2y-bTlkcdCIw1zsNpCTfqHV_bijleMFuB4u8XiA",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_imagen",
+									"value": "",
+									"type": "file",
+									"description": ""
+								},
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "orden",
+									"value": "2",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar banner por orden",
+					"request": {
+						"url": "localhost:8000/api/auth/banner/listar",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU4OWNmODZmZjgzM2Q5NzM4YWI3MDQ5MmZmZjNlMjIxYzNiN2FhYzI4NDk2MTY1MzM4MWI2NzE0NTYxZDdiNjVlN2RhNzE4ZTM0MmIwZTY3In0.eyJhdWQiOiIxIiwianRpIjoiNTg5Y2Y4NmZmODMzZDk3MzhhYjcwNDkyZmZmM2UyMjFjM2I3YWFjMjg0OTYxNjUzMzgxYjY3MTQ1NjFkN2I2NWU3ZGE3MThlMzQyYjBlNjciLCJpYXQiOjE1ODI5MzY2MDEsIm5iZiI6MTU4MjkzNjYwMSwiZXhwIjoxNTgzMDIyOTk5LCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.ZbI7TFdz51gSDfQ1jc1JzvQ04AoOgpja7Tur1cFCrTuxryAtQYGVZ3qPa2jUog3PMMB5g0vPgxOM3Lcp-k6bezFsLKKM1A2A1AoirEURumO_xjxva0VFcgllrD2mufvpNNaOQ94QnvE_IsjzR4LGjCtbW-1snjD7AzzDBNWTOVjcl6tSigVrT_jIRR2N9Ict3M0BebeyhXlt_-er2IPd-eoxHCO_JGvZZw49XbjXelu7NZv7zenATK8ROBURMbSfA_6WJs24WRYdeIVhFSQR-uncS2-TpMumk2hFLK89ENxo-8UPcVqkQ5FVxR4yYxc6MrpTKy_m_C70-0AwDZ8zwWSLx-t-yHL3twlgQg3nrejURjd1C0gN3Dr7cBxLrBITCQEoF5GrBVvXJoPOPC5QiUBvDv1W2fSCefkBj0re94BA-3DaMNO1DotbinBP_gNdcFMBDVgQfNjDyZHHrzNMQAjvWaIqOKGkiTn4GbZwvUENc5xn3-tjpJajFliKw-iLY1rDlMnbdxQW3-LIF7E-q3kK5c1ly2ql3Pa43hlnsQ-QpEpqB362XzrEJgMemERnCmCkCd0bzFq-h4FyrsZbrjJXnA6ah_lXqZHEqNFG7LZXF1m3Z1kMF08Ec7kUoigxYXBl2y-bTlkcdCIw1zsNpCTfqHV_bijleMFuB4u8XiA",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_imagen",
+									"value": "",
+									"type": "file",
+									"description": ""
+								},
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "orden",
+									"value": "2",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar banner por por id y en orden",
+					"request": {
+						"url": "localhost:8000/api/auth/banner/listar/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU4OWNmODZmZjgzM2Q5NzM4YWI3MDQ5MmZmZjNlMjIxYzNiN2FhYzI4NDk2MTY1MzM4MWI2NzE0NTYxZDdiNjVlN2RhNzE4ZTM0MmIwZTY3In0.eyJhdWQiOiIxIiwianRpIjoiNTg5Y2Y4NmZmODMzZDk3MzhhYjcwNDkyZmZmM2UyMjFjM2I3YWFjMjg0OTYxNjUzMzgxYjY3MTQ1NjFkN2I2NWU3ZGE3MThlMzQyYjBlNjciLCJpYXQiOjE1ODI5MzY2MDEsIm5iZiI6MTU4MjkzNjYwMSwiZXhwIjoxNTgzMDIyOTk5LCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.ZbI7TFdz51gSDfQ1jc1JzvQ04AoOgpja7Tur1cFCrTuxryAtQYGVZ3qPa2jUog3PMMB5g0vPgxOM3Lcp-k6bezFsLKKM1A2A1AoirEURumO_xjxva0VFcgllrD2mufvpNNaOQ94QnvE_IsjzR4LGjCtbW-1snjD7AzzDBNWTOVjcl6tSigVrT_jIRR2N9Ict3M0BebeyhXlt_-er2IPd-eoxHCO_JGvZZw49XbjXelu7NZv7zenATK8ROBURMbSfA_6WJs24WRYdeIVhFSQR-uncS2-TpMumk2hFLK89ENxo-8UPcVqkQ5FVxR4yYxc6MrpTKy_m_C70-0AwDZ8zwWSLx-t-yHL3twlgQg3nrejURjd1C0gN3Dr7cBxLrBITCQEoF5GrBVvXJoPOPC5QiUBvDv1W2fSCefkBj0re94BA-3DaMNO1DotbinBP_gNdcFMBDVgQfNjDyZHHrzNMQAjvWaIqOKGkiTn4GbZwvUENc5xn3-tjpJajFliKw-iLY1rDlMnbdxQW3-LIF7E-q3kK5c1ly2ql3Pa43hlnsQ-QpEpqB362XzrEJgMemERnCmCkCd0bzFq-h4FyrsZbrjJXnA6ah_lXqZHEqNFG7LZXF1m3Z1kMF08Ec7kUoigxYXBl2y-bTlkcdCIw1zsNpCTfqHV_bijleMFuB4u8XiA",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_imagen",
+									"value": "",
+									"type": "file",
+									"description": ""
+								},
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "orden",
+									"value": "2",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "borrar banner",
+					"request": {
+						"url": "localhost:8000/api/auth/banner/borrar/2",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU4OWNmODZmZjgzM2Q5NzM4YWI3MDQ5MmZmZjNlMjIxYzNiN2FhYzI4NDk2MTY1MzM4MWI2NzE0NTYxZDdiNjVlN2RhNzE4ZTM0MmIwZTY3In0.eyJhdWQiOiIxIiwianRpIjoiNTg5Y2Y4NmZmODMzZDk3MzhhYjcwNDkyZmZmM2UyMjFjM2I3YWFjMjg0OTYxNjUzMzgxYjY3MTQ1NjFkN2I2NWU3ZGE3MThlMzQyYjBlNjciLCJpYXQiOjE1ODI5MzY2MDEsIm5iZiI6MTU4MjkzNjYwMSwiZXhwIjoxNTgzMDIyOTk5LCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.ZbI7TFdz51gSDfQ1jc1JzvQ04AoOgpja7Tur1cFCrTuxryAtQYGVZ3qPa2jUog3PMMB5g0vPgxOM3Lcp-k6bezFsLKKM1A2A1AoirEURumO_xjxva0VFcgllrD2mufvpNNaOQ94QnvE_IsjzR4LGjCtbW-1snjD7AzzDBNWTOVjcl6tSigVrT_jIRR2N9Ict3M0BebeyhXlt_-er2IPd-eoxHCO_JGvZZw49XbjXelu7NZv7zenATK8ROBURMbSfA_6WJs24WRYdeIVhFSQR-uncS2-TpMumk2hFLK89ENxo-8UPcVqkQ5FVxR4yYxc6MrpTKy_m_C70-0AwDZ8zwWSLx-t-yHL3twlgQg3nrejURjd1C0gN3Dr7cBxLrBITCQEoF5GrBVvXJoPOPC5QiUBvDv1W2fSCefkBj0re94BA-3DaMNO1DotbinBP_gNdcFMBDVgQfNjDyZHHrzNMQAjvWaIqOKGkiTn4GbZwvUENc5xn3-tjpJajFliKw-iLY1rDlMnbdxQW3-LIF7E-q3kK5c1ly2ql3Pa43hlnsQ-QpEpqB362XzrEJgMemERnCmCkCd0bzFq-h4FyrsZbrjJXnA6ah_lXqZHEqNFG7LZXF1m3Z1kMF08Ec7kUoigxYXBl2y-bTlkcdCIw1zsNpCTfqHV_bijleMFuB4u8XiA",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_imagen",
+									"value": "",
+									"type": "file",
+									"description": ""
+								},
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "orden",
+									"value": "2",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
 						"description": ""
 					},
 					"response": []
@@ -7484,6 +7918,33 @@
 							"value": "",
 							"type": "file",
 							"description": ""
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get calles de la localidad",
+			"request": {
+				"url": "localhost:8000/api/v1/calle/get",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "idLocalidad",
+							"value": "22",
+							"description": "",
+							"type": "text"
 						}
 					]
 				},
