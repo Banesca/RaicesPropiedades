@@ -252,8 +252,6 @@ Route::group(['prefix' => 'v1'], function () {
         return response()->json('listo');
         /*calles*/
     });
-});
-
     
     Route::post('fichaPropiedad/agregar', 'FichaPropiedadController@add');
     Route::post('fichaPropiedad/editar', 'FichaPropiedadController@edit');
