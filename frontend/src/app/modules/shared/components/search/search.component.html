@@ -119,28 +119,7 @@
             </div>
           </div>
         </div>
-        <!-- Zonas -->
-        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
-          <!-- regiones -->
-          <div ngbDropdown class="d-inline-block w-100">
-            <input
-              type="button"
-              class="btn search-dropdown btn-block"
-              id="dropdownBasic1"
-              [value]="selectedProvince.nombre"
-              ngbDropdownToggle
-            />
-            <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
-              <input
-                type="button"
-                *ngFor="let province of provinces"
-                ngbDropdownItem
-                (click)="setProvince(province)"
-                [value]="province.nombre"
-              />
-            </div>
-          </div>
-        </div>
+      
         <!-- partidos -->
         <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block w-100">
@@ -183,6 +162,8 @@
             </div>
           </div>
         </div>
+
+    
         <!-- Barrios -->
         <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block w-100">
@@ -205,6 +186,28 @@
           </div>
         </div> 
           
+              <!-- Zonas -->
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
+          <!-- regiones -->
+          <div ngbDropdown class="d-inline-block w-100">
+            <input
+              type="button"
+              class="btn search-dropdown btn-block"
+              id="dropdownBasic1"
+              [value]="selectedProvince.nombre"
+              ngbDropdownToggle
+            />
+            <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
+              <input
+                type="button"
+                *ngFor="let calle of calles"
+                ngbDropdownItem
+                (click)="setCalle(calle)"
+                [value]="calle.nombre"
+              />
+            </div>
+          </div>
+        </div>
           <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
          <!--  <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label> -->
           <!-- regiones -->

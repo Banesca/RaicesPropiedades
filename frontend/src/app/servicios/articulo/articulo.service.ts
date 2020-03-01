@@ -61,6 +61,19 @@ export class ArticuloService {
       )
       .toPromise();
   }
+  
+  getCalle(id) {
+    return this._HttpClient
+      .post(this.mUrl + this.mService + "calle/get", id, {
+        headers: getHeaders()
+      })
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+    }
 
   getOrientacion() {
     return this._HttpClient

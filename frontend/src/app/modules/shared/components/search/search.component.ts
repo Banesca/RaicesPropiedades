@@ -46,6 +46,8 @@ export class SearchComponent implements OnInit {
   barrios: any = [];
 
   validateMonto: boolean = false;
+  selectedCalle: any;
+  calles: any;
   constructor(
     private articuloService: ArticuloService,
     private router: Router
@@ -118,7 +120,19 @@ export class SearchComponent implements OnInit {
       .catch(error => {
         console.log(error);
       });
+  } 
+
+  gCalle(id) {
+    this.articuloService
+      .getCalle(id)
+      .then(data => {
+        this.mTipoPropiedad = data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
+
 
   gTipoOperacion() {
     this.articuloService
@@ -183,7 +197,20 @@ export class SearchComponent implements OnInit {
   };
   setBarrio = (data: any) => {
     this.selectedBarrio = data;
+    this.articuloService
+      .getCalle({ idLocalidad: this.selectedBarrio.id })
+      .then(response => {
+        this.selectedBarrio.nombre = "Barrio";
+        this.calles = response.Calles;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
+
+  setCalle = (data:any) => {
+    this.selectedCalle = data;
+  }
   // setMnimo = (data: number): void => {
   //   this.selectedMinimo = data;
   // };
