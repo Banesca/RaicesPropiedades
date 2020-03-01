@@ -1,33 +1,24 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard';
-import { RandomGuard } from './guards/random.guard';
-
-import { AuthbackendComponent } from './component/authbackend/authbackend.component';
-import { UsuariosComponent } from './component/usuarios/usuarios.component';
-
-import { PerfilComponent } from './component/perfil/perfil.component';
-import { ConfigFooterComponent } from './component/config-footer/config-footer.component';
-import { MailSuscribersComponent } from './component/mail-suscribers/mail-suscribers.component';
-
-import { ConfigColorComponent } from './component/config-color/config-color.component';
-
-import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
-import { TransaccionesComponent } from './component/transacciones/transacciones.component';
-import { ModulosComponent } from './component/modulos/modulos.component';
-
-
-import { RegistroComponent } from './component/registro/registro.component';
-import { PageComponent } from './component/layout/page/page.component';
-import { PrincipalComponent } from './component/layout/principal/principal.component';
-import { SuscribersComponent } from './component/suscribers/suscribers.component';
-
-
-import { SucursalesComponent } from './component/sucursales/sucursales.component';
-import { GaleriaHomeComponent } from './component/galeria-home/galeria-home.component';
-import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
-
-
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AuthbackendComponent} from './component/authbackend/authbackend.component';
+import {ConfigColorComponent} from './component/config-color/config-color.component';
+import {ConfigFooterComponent} from './component/config-footer/config-footer.component';
+import {FichaComponent} from './component/ficha/ficha.component';
+import {GaleriaHomeComponent} from './component/galeria-home/galeria-home.component';
+import {PageComponent} from './component/layout/page/page.component';
+import {PrincipalComponent} from './component/layout/principal/principal.component';
+import {MailSuscribersComponent} from './component/mail-suscribers/mail-suscribers.component';
+import {ModulosComponent} from './component/modulos/modulos.component';
+import {PerfilComponent} from './component/perfil/perfil.component';
+import {RegistroComponent} from './component/registro/registro.component';
+import {SucursalesComponent} from './component/sucursales/sucursales.component';
+import {SuscribersComponent} from './component/suscribers/suscribers.component';
+import {TransaccionesComponent} from './component/transacciones/transacciones.component';
+import {UsuariosComponent} from './component/usuarios/usuarios.component';
+import {AuthGuard} from './guards/auth.guard';
+import {RandomGuard} from './guards/random.guard';
+//import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
+//import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
 
 const routes: Routes = [
    {
@@ -44,6 +35,7 @@ const routes: Routes = [
          { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [RandomGuard] },
          { path: 'perfil', component: PerfilComponent, canActivate: [RandomGuard] },
          { path: 'config-footer', component: ConfigFooterComponent, canActivate: [RandomGuard] },
+         { path: 'ficha', component: FichaComponent, canActivate: [RandomGuard] },
          { path: 'sucursales', component: SucursalesComponent, canActivate: [RandomGuard] },
          { path: 'suscribers', component: SuscribersComponent, canActivate: [RandomGuard] },
          { path: 'tasaciones', component: TransaccionesComponent, canActivate: [RandomGuard] },
@@ -73,4 +65,3 @@ const routes: Routes = [
    exports: [RouterModule]
 })
 export class AppRoutingModule { }
-

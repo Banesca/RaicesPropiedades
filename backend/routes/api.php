@@ -45,7 +45,7 @@ Route::group([ 'prefix' => 'auth'], function () {
         Route::delete('pago/borrar/{idPago}','PagoController@destroy');
     });
 });
-//  
+
 Route::group(['prefix' => 'v1'], function () {
 
     Route::post('login', 'API\AuthController@login'); //logear
@@ -245,7 +245,12 @@ Route::group(['prefix' => 'v1'], function () {
 
 });
 
+    
+    Route::post('fichaPropiedad/agregar', 'FichaPropiedadController@add');
+    Route::post('fichaPropiedad/editar', 'FichaPropiedadController@edit');
+    Route::delete('fichaPropiedad/borrar', 'FichaPropiedadController@delete');
+    Route::get('fichaPropiedad/getAll', 'FichaPropiedadController@listarTodo');
+    Route::get('fichaPropiedad/ver/{idFicha}', 'FichaPropiedadController@listarPorId');
 
 
-
-
+});

@@ -61,6 +61,7 @@ import { TransaccionesComponent } from "./component/transacciones/transacciones.
 import { ModulosComponent } from "./component/modulos/modulos.component";
 import { PublicacionesFacebookComponent } from "./component/publicaciones-facebook/publicaciones-facebook.component";
 import { ErrorInterceptor } from "./services/interceptors";
+import { FichaComponent } from './component/ficha/ficha.component';
 
 const fbLoginOptions: LoginOpt = {
   scope:
@@ -115,7 +116,8 @@ export function provideConfig() {
     GaleriaHomeComponent,
     TransaccionesComponent,
     PublicacionesFacebookComponent,
-    ModulosComponent
+    ModulosComponent,
+    FichaComponent
   ],
   imports: [
     BrowserModule,
