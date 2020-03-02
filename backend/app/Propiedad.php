@@ -64,6 +64,7 @@ class Propiedad extends Model {
         'Ambientes_Suite',
         'Ambientes_Terraza',
         'Ambientes_Toilette',
+        'cantidad_Toilette',
         'Ambientes_Vestibulo',
         'Ambientes_Vestidor',
         'Ambientes_Vestuario',
@@ -333,14 +334,23 @@ class Propiedad extends Model {
         'Edificio_Servicios_Vigilancia',
         'Detalle',
         'TipoBien',
-        'visibilidad'
+        'visibilidad',
+
+        'cantidad_Toilette',
+        'informacion_adicional',
+        'calefaccion_Tipo_Balanceado',
+        'piso_Radiante_Individual',
+        'piso_Radiante_Central',
+        'hidromasaje',
+        'radiadores',
+        'calefon',
+        'cobertura_cochera',
     ];
 
     protected $hidden = [
         'created_at',
         'updated_at',
     ];
-
 
 
     public function TipoPropiedad() {
