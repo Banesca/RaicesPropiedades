@@ -3,7 +3,7 @@
     <div class="col-sm-12 text-white" style="z-index: 2;">
       <h3 class="font-weight-extrabold text-center text-uppercase">Buscador</h3>
       <h5 class="font-weight-light text-center text-uppercase">
-        Escuentra el inmueble ideal para tí
+        Encontrá el inmueble ideal para vos
       </h5>
     </div>
     <div class="container px-5">
@@ -98,7 +98,7 @@
         <label class="col font-weight-extrabold text-uppercase">Buscar en:</label>
       </div>
       <div class="row">
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
           <!-- regiones -->
           <div ngbDropdown class="d-inline-block w-100">
             <input
@@ -119,8 +119,9 @@
             </div>
           </div>
         </div>
+      
         <!-- partidos -->
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block w-100">
             <input
               type="button"
@@ -141,7 +142,7 @@
           </div>
         </div>
         <!-- localidades -->
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block w-100">
             <input
               type="button"
@@ -161,8 +162,10 @@
             </div>
           </div>
         </div>
+
+    
         <!-- Barrios -->
-        <div class="col-lg-3 col-6 my-2 my-lg-0 px-1">
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
           <div ngbDropdown class="d-inline-block w-100">
             <input
               type="button"
@@ -181,17 +184,48 @@
               />
             </div>
           </div>
+        </div> 
+          
+              <!-- Zonas -->
+        <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
+          <!-- regiones -->
+          <div ngbDropdown class="d-inline-block w-100">
+            <input
+              type="button"
+              class="btn search-dropdown btn-block"
+              id="dropdownBasic1"
+              [value]="selectedProvince.nombre"
+              ngbDropdownToggle
+            />
+            <div class="w-100" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="overflow-y: scroll;max-height: 300px;">
+              <input
+                type="button"
+                *ngFor="let calle of calles"
+                ngbDropdownItem
+                (click)="setCalle(calle)"
+                [value]="calle.nombre"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-lg-3 col-12 my-2 my-lg-0 px-1">
-          <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label>
+          <div class="col-lg-2 col-2 my-2 my-lg-0 px-1">
+         <!--  <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label> -->
           <!-- regiones -->
           <div class="d-inline-block w-100 w-100">
             <input placeholder="Habitantes" type="number" class="btn search-dropdown btn-block" id="" [(ngModel)]="habitantes" oninput="this.value=this.value.replace(/[^\d+]/,'')" />
           </div>
         </div>
+
       </div>
+   <!--    <div class="row mt-3">
+        <div class="col-lg-3 col-12 my-2 my-lg-0 px-1">
+          <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label>
+          regiones
+          <div class="d-inline-block w-100 w-100">
+            <input placeholder="Habitantes" type="number" class="btn search-dropdown btn-block" id="" [(ngModel)]="habitantes" oninput="this.value=this.value.replace(/[^\d+]/,'')" />
+          </div>
+        </div>
+      </div> -->
     </div>
 
     <div *ngIf="validateMonto" class="col-sm-12 text-white d-flex justify-content-center py-5">

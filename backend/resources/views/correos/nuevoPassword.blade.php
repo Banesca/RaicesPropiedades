@@ -446,7 +446,7 @@
                                         <hr>
                                         <!-- <p>
                                             Si desea cancelar la suscripcion siga el siguiente link
-                                            <a target="_blank" href=" http://raicesonline.com.ar/backend/public/formCancelarSuscripcion/{ $sus->tocken }"> Aqui</a>
+                                            <a target="_blank" href=" http://127.0.0.1:8000/formCancelarSuscripcion/{ $sus->tocken }"> Aqui</a>
 
                                         </p> -->
                                         <h5>www.raicespropiedades.com</h5>
