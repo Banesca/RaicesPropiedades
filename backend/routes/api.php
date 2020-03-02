@@ -255,14 +255,15 @@ Route::group(['prefix' => 'v1'], function () {
         return response()->json('listo');
         /*calles*/
     });
-});
-
-
-
-    
     Route::post('fichaPropiedad/agregar', 'FichaPropiedadController@add');
     Route::post('fichaPropiedad/editar', 'FichaPropiedadController@edit');
     Route::delete('fichaPropiedad/borrar', 'FichaPropiedadController@delete');
     Route::get('fichaPropiedad/getAll', 'FichaPropiedadController@listarTodo');
     Route::get('fichaPropiedad/ver/{idFicha}', 'FichaPropiedadController@listarPorId');
+
+});
+
+
+
+    
 
