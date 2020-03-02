@@ -1,10 +1,16 @@
+<div class="modal-header" style="background-color: #39211F;color: white;font-weight: bold;">
+  <h4 class="modal-title">Tasación Sin Costo</h4>
+  <button style="margin-top: 9px;
+  background-color: #39211f;
+  margin-right: 28px;" type="button" class="position-absolute close-button text-white" (click)="activeModal.dismiss('Cross click')">
+    <span>&times;</span>
+  </button>
+</div>
 <div class="transaction-modal modal-body bg-yellow text-white">
     <div class="container position-relative font-weight-semibold">
     <form [formGroup]="contactForm">
         <div *ngIf="!hideForm" class="row">
-        <button type="button" class="position-absolute close-button text-white" (click)="activeModal.dismiss('Cross click')">
-            <span>&times;</span>
-          </button>
+        
       <div class="col-lg-12">
           <div class="row">
             <div class="col-sm-12">
@@ -21,7 +27,7 @@
             <div class="col-sm-6">
               <label for="exampleFormControlSelect1" class="text-uppercase">Email</label>
               <div class="form-group mb-3">
-                  <input formControlName="email" type="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control form-control-lg" placeholder="testing@gmail.com"
+                  <input formControlName="email" type="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control form-control-lg" placeholder="correo@correo.com"
                   aria-describedby="basic-addon1">
                   <div *ngIf="f.email.errors" type="alert" class="invalid-feedback">
                       <div *ngIf="submitted && f.email.errors.required">El Email es Requerido</div>
@@ -35,7 +41,6 @@
                 <input formControlName="telefono" type="text" oninput="this.value=this.value.replace(/[^\d+]/,'')" [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }" class="form-control form-control-lg" minlength="9" maxlength="14" placeholder="Teléfono / Celular"
                   aria-describedby="basic-addon1">
                   <div *ngIf="f.telefono.errors" type="alert" class="invalid-feedback">
-                      <div *ngIf="f.telefono.errors.minlength">Ingrese un número de teléfono válido</div>
                       <div *ngIf="f.telefono.errors.pattern">Ingrese un número de teléfono válido</div>
                       <div *ngIf="submitted && f.telefono.errors.required">El Teléfono es Requerido</div>
                   </div>
@@ -59,9 +64,7 @@
               <div class="form-group mb-3">
                 <input formControlName="direccion" type="text" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }" class="form-control form-control-lg" placeholder="Dirección"
                   aria-describedby="basic-addon1">
-                  <div *ngIf="f.direccion.errors" type="alert" class="d-block invalid-feedback">
-                      <div *ngIf="f.direccion.hasError('pattern')">La dirección debe contener únicamente caracteres alfanuméricos</div>
-                  </div>
+                  
                   <div *ngIf="f.direccion.errors" type="alert" class="invalid-feedback">
                       <div *ngIf="submitted && f.direccion.errors.required">La dirección es Requerido</div>
                   </div>

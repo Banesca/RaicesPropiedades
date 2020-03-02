@@ -1,0 +1,24 @@
+.close-button {
+    right: -10%;
+    top: -5.5%;
+    z-index: 1024;
+    background-color: #E6B706;
+    border-radius: 100%;
+    padding: 0rem 1.2em;
+    border: none;
+    span {
+        font-size: 2.5rem;
+    }
+    &:focus {
+        outline: 0px;
+    }
+}
+    
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

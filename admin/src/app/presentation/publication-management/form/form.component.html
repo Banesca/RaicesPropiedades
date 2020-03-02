@@ -169,7 +169,22 @@
                               alt="Imagen para galería">
 
                            <mat-card-actions style="overflow: hidden">
-                              <input #image type="file" (change)="onFileChange($event,'imageGalery')">
+                            <div class="wrapper-dropzone">
+                              <div class="drop">
+                                <div class="cont">
+                                  <div class="browse">
+                                    Adjuntar imagen
+                                  </div>
+                                </div>
+                                <div>
+                                  <div id="files-errors">
+                                  </div>
+                                </div>
+                                <div>
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'imageG')" />
+                                </div>
+                              </div>
+                            </div>
                            </mat-card-actions>
                            <mat-card-subtitle class="card-subtitle">
                               Galería (Requerido)
@@ -180,14 +195,27 @@
                      <!--Imagen 1-->
                      <div class="col-sm-3">
                         <mat-card class="card-material">
-
                            <img mat-card-image class="img-card"
                               [src]="this.formTwo.value.image1 ? this.formTwo.value.image1 :  imageNotFound"
                               alt="Imagen 1">
-
                            <mat-card-actions style="overflow: hidden">
-                              <input #image type="file" (change)="onFileChange($event,'image1')">
-                           </mat-card-actions>
+                             <div class="wrapper-dropzone">
+                              <div class="drop">
+                                <div class="cont">
+                                  <div class="browse">
+                                    Arrastra y suelta la imagen
+                                  </div>
+                                </div>
+                                <div>
+                                  <div id="files-errors">
+                                  </div>
+                                </div>
+                                <div>
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'image1')" />
+                                </div>
+                              </div>
+                            </div>
+                            </mat-card-actions>
 
                            <mat-card-subtitle class="card-subtitle">
                               Imagen 1 (Requerido)
@@ -204,7 +232,22 @@
                               alt="Imagen 2">
 
                            <mat-card-actions style="overflow: hidden">
-                              <input #image type="file" (change)="onFileChange($event,'image2')">
+                            <div class="wrapper-dropzone">
+                              <div class="drop">
+                                <div class="cont">
+                                  <div class="browse">
+                                    Arrastra y suelta la imagen
+                                  </div>
+                                </div>
+                                <div>
+                                  <div id="files-errors">
+                                  </div>
+                                </div>
+                                <div>
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'image2')" />
+                                </div>
+                              </div>
+                            </div>
                            </mat-card-actions>
                            <mat-card-subtitle class="card-subtitle">
                               Imagen 2
@@ -221,7 +264,22 @@
                               alt="Imagen 3">
 
                            <mat-card-actions style="overflow: hidden">
-                              <input #image type="file" (change)="onFileChange($event,'image3')">
+                            <div class="wrapper-dropzone">
+                              <div class="drop">
+                                <div class="cont">
+                                  <div class="browse">
+                                    Arrastra y suelta la imagen
+                                  </div>
+                                </div>
+                                <div>
+                                  <div id="files-errors">
+                                  </div>
+                                </div>
+                                <div>
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'image3')" />
+                                </div>
+                              </div>
+                            </div>
                            </mat-card-actions>
                            <mat-card-subtitle class="card-subtitle">
                               Imagen 3
@@ -238,7 +296,22 @@
                               alt="Imagen 4">
 
                            <mat-card-actions style="overflow: hidden">
-                              <input #image type="file" (change)="onFileChange($event,'image4')">
+                            <div class="wrapper-dropzone">
+                              <div class="drop">
+                                <div class="cont">
+                                  <div class="browse">
+                                    Arrastra y suelta la imagen
+                                  </div>
+                                </div>
+                                <div>
+                                  <div id="files-errors">
+                                  </div>
+                                </div>
+                                <div>
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'image4')" />
+                                </div>
+                              </div>
+                            </div>
                            </mat-card-actions>
                            <mat-card-subtitle class="card-subtitle">
                               Imagen 4
@@ -255,7 +328,22 @@
                               alt="Imagen 5">
 
                            <mat-card-actions style="overflow: hidden">
-                              <input #image type="file" (change)="onFileChange($event,'image5')">
+                            <div class="wrapper-dropzone">
+                              <div class="drop">
+                                <div class="cont">
+                                  <div class="browse">
+                                    Arrastra y suelta la imagen
+                                  </div>
+                                </div>
+                                <div>
+                                  <div id="files-errors">
+                                  </div>
+                                </div>
+                                <div>
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'image5')" />
+                                </div>
+                              </div>
+                            </div>
                            </mat-card-actions>
                            <mat-card-subtitle class="card-subtitle">
                               Imagen 5
@@ -272,7 +360,22 @@
                               alt="Imagen 6">
 
                            <mat-card-actions style="overflow: hidden">
-                              <input #image type="file" (change)="onFileChange($event,'image6')">
+                            <div class="wrapper-dropzone">
+                              <div class="drop">
+                                <div class="cont">
+                                  <div class="browse">
+                                    Arrastra y suelta la imagen
+                                  </div>
+                                </div>
+                                <div>
+                                  <div id="files-errors">
+                                  </div>
+                                </div>
+                                <div>
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'image6')" />
+                                </div>
+                              </div>
+                            </div>
                            </mat-card-actions>
                            <mat-card-subtitle class="card-subtitle">
                               Imagen 6
@@ -289,7 +392,22 @@
                               alt="Imagen 7">
 
                            <mat-card-actions style="overflow: hidden">
-                              <input #image type="file" (change)="onFileChange($event,'image7')">
+                            <div class="wrapper-dropzone">
+                              <div class="drop">
+                                <div class="cont">
+                                  <div class="browse">
+                                    Arrastra y suelta la imagen
+                                  </div>
+                                </div>
+                                <div>
+                                  <div id="files-errors">
+                                  </div>
+                                </div>
+                                <div>
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'image7')" />
+                                </div>
+                              </div>
+                            </div>
                            </mat-card-actions>
                            <mat-card-subtitle class="card-subtitle">
                               Imagen 7

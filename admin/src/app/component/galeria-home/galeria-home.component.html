@@ -80,7 +80,7 @@
           </div>
     </div>
     <div class="col-md-12" *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" >
-      
+
         <form [formGroup]="mForma" #vForma="ngForm">
           <div class="form-group text-right">
             <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
@@ -91,7 +91,7 @@
               <i class="fa fa-save"></i>
               Guardar
             </button>
-    
+
             <button *ngIf="mFormaEstado == enCRUD.Actualizar" (click)="actualizar(mCategoriasSelect.idGaleria)" [disabled]="!vForma.valid"
               style="margin: 5px" class="btn btn-primary">
               <i class="fa fa-save"></i>
@@ -117,9 +117,9 @@
                   <option value="">Seleciona Una Publicación</option>
                   <option *ngFor="let publicacion of mPublicaciones" type="number" [value]="publicacion.idPropiedad">{{publicacion.descipcion}}</option>
                 </select>
-                <div *ngIf="submitted && f.fk_publicaciones.errors" type="alert" class="invalid-feedback d-block">
+                <!--<div *ngIf="submitted && f.fk_publicaciones.errors" type="alert" class="invalid-feedback d-block">
                   <div *ngIf="f.fk_publicaciones.errors.required">Debe seleccionar una publicación</div>
-                </div>
+                </div>-->
               </div>
             </div>
           </div>
@@ -154,7 +154,7 @@
                 El alto mínimo de la imagen debe ser de 700 px
               </div>
               <div class="form-group">
-                <label for="">Imagenes</label>
+                <label for="">Imagen</label>
                 <div class="wrapper-dropzone">
                   <div class="drop">
                     <div class="cont">
@@ -175,12 +175,12 @@
                       <input id="files" multiple="true" name="files[]" type="file" (change)="handleFileSelect($event)" />
                     </div>
                   </div>
-    
+
                 </div>
               </div>
             </div>
           </div>
-    
+
         </form>
     </div>
     <div *ngIf="mFormaEstado == enCRUD.Leer" class="col-md-12">
@@ -196,7 +196,7 @@
             <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.titulo" name="mCategoriasSelect.titulo"
               readonly />
           </div>
-    
+
           <div class="form-group">
             <label for="">Descripción</label>
             <textarea class="form-control" type="text" [(ngModel)]="mCategoriasSelect.descripcion" name="mCategoriasSelect.descripcion"

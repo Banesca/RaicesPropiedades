@@ -74,11 +74,28 @@
                     </span>
                 </a>
               </li>
-              <li class="d-none d-md-block">
-                <a (click)="openModal()" class="link-nav">
-                  <span class="nav-underline yellow-text text-uppercase" style="font-size:17px;cursor: pointer;">Tasación Sin Costo</span>
+              <li class="nav-item d-none d-md-block ml-lg-none">
+                <a (click)="openModal()"  style="cursor: pointer;
+    min-width: 200px;
+    color: #39211f;
+    font-weight: bold;
+    font-size: 19px;" class="link-nav">
+                  <span class="nav-underline  ">Tasación Sin Costo</span>
                 </a>
               </li>
+              <li class="nav-item d-none d-md-block ml-lg-none">
+                <a (click)="openModalPayment()"  style="cursor: pointer;
+    min-width: 200px;
+    color: #39211f;
+    font-weight: bold;
+    font-size: 19px;" class="link-nav">
+                  <span class="nav-underline  ">Notificar Pago</span>
+                </a>
+              </li>
+             
+             
+
+              
             <li class="nav-item d-none d-md-block ml-auto ml-lg-none">
                 <a routerLink="/" class="link-nav py-1">
                  <img src="../../../../assets/images/logo.png" style="width: 320px;" alt="">

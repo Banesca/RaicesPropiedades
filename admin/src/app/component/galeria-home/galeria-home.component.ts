@@ -88,7 +88,7 @@ export class GaleriaHomeComponent implements OnInit {
         ]
       ],
       orden: [null, [Validators.required]],
-      fk_publicaciones: ["", Validators.required],
+      //fk_publicaciones: ["", Validators.required],
       images: null
     });
   }

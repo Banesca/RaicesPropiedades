@@ -29,6 +29,7 @@ import { PropiertysGridComponent } from './components/propiertys-grid/propiertys
 import { MatChipsModule } from '@angular/material/chips';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { PagoModalComponent } from './components/pago-modal/pago-modal.component';
 
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
@@ -52,7 +53,8 @@ registerLocaleData(localeEn, 'en')
     TransactionModalComponent,
     PropiertysListComponent,
     PropiertysGridComponent,
-    CarouselComponent
+    CarouselComponent,
+    PagoModalComponent
   ],
   exports: [
     PropiertysCarouselComponent,
@@ -68,7 +70,8 @@ registerLocaleData(localeEn, 'en')
     TransactionModalComponent,
     PropiertysListComponent,
     PropiertysGridComponent,
-    CarouselComponent
+    CarouselComponent,
+    PagoModalComponent
   ],
   imports: [
     CommonModule,
@@ -81,7 +84,7 @@ registerLocaleData(localeEn, 'en')
     MatChipsModule,
     SlickCarouselModule
   ],
-  entryComponents: [TransactionModalComponent],
+  entryComponents: [TransactionModalComponent,PagoModalComponent],
   providers: [{ provide: LOCALE_ID, useValue: "es" }]
 })
 export class SharedModule { }

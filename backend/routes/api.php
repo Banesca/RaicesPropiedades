@@ -38,7 +38,6 @@ Route::group(['prefix' => 'auth'], function () {
         Route::delete('sucursal/borrar/{idSucursal}', 'SucursalController@destroy');
         Route::post('addPropiedad', 'Ficha3Controller@add');
 
-        Route::post('pago/add', 'PagoController@store');
         Route::post('pago/edit/{idPago}', 'PagoController@update');
         Route::get('pago/listar', 'PagoController@listar');
         Route::get('pago/listar/{idPago}', 'PagoController@listarPorId');
@@ -221,6 +220,10 @@ Route::group(['prefix' => 'v1'], function () {
 
         return view('correos.contactoDePropiedadMail')->with('contacto', $con);
     });
+
+    // pago 
+    Route::post('pago/add', 'PagoController@store');
+
 
     Route::get('p200', function () {
         /*calles*/

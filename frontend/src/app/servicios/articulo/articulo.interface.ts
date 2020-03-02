@@ -26,7 +26,7 @@ export class TipoPropiedad {
     static empy() {
         return {
             idTipoPropiedad: null,
-            descripcion: 'Edificación'
+            descripcion: 'Tipo de inmueble'
         } as ITipoPropiedad
     }
 }

@@ -14,6 +14,8 @@ import { map } from "rxjs/operators";
 export class ContactoService {
   /** Nombre de recurso ha obtener en la API */
   private mService = "/api/v1/transacciones";
+  private mServicepago = "/api/v1/pago";
+
   /** Url obtenida del servicio de configuracion */
   private mUrl: string;
 
@@ -62,6 +64,19 @@ export class ContactoService {
       )
       .toPromise();
   }
+
+
+  NewPayment(payment) {
+    return this._HttpClient
+      .post(this.mUrl + this.mServicepago + "/add", payment)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      )
+      .toPromise();
+  }
+
   NewContact(pContacto: IContacto) {
     return this._HttpClient
       .post(this.mUrl + "/api/v1/addContactanos", pContacto, {

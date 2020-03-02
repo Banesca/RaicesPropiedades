@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { ISucursal } from "src/app/servicios/interfaces.index";
 import { SucursalesService } from "src/app/servicios/servicios.index";
 import { TransactionModalComponent } from '../transaction-modal/transaction-modal.component';
+import {PagoModalComponent} from '../pago-modal/pago-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -36,6 +37,11 @@ export class HeaderComponent {
 
   openModal() {
     const modalRef = this.modalService.open(TransactionModalComponent);
+    modalRef.componentInstance.name = 'World';
+  }
+
+  openModalPayment() {
+    const modalRef = this.modalService.open(PagoModalComponent);
     modalRef.componentInstance.name = 'World';
   }
 

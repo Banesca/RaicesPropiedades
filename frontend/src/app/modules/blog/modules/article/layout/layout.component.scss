@@ -103,6 +103,7 @@ hr {
   img {
     width: 142px;
     height: auto;
+    max-height: 107px;
 
     @media (max-width: 992px) {
       width: 30px;
@@ -301,3 +302,15 @@ textarea:focus ~ .highlight {
   bottom: -48px;
   transform: skewY(-5deg);
 }
+
+
+.carousel-image {
+    height: 100vh !important;
+}
+
+
+.carousel-item {
+  background: none !important;
+}
+
+/// modale

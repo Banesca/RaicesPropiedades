@@ -1,5 +1,5 @@
 import { Component, Input, ElementRef, OnInit } from "@angular/core";
-import { IContacto, ICategoria } from "src/app/servicios/interfaces.index";
+import { IContacto, ICategoria, IPago } from "src/app/servicios/interfaces.index";
 import { ContactoService } from "src/app/servicios/servicios.index";
 import {
   NgForm,
@@ -11,14 +11,15 @@ import {
 import { NgbActiveModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: "app-transaction-modal",
-  templateUrl: "./transaction-modal.component.html",
-  styleUrls: ["./transaction-modal.component.scss"]
+  selector: 'app-pago-modal',
+  templateUrl: './pago-modal.component.html',
+  styleUrls: ['./pago-modal.component.scss']
 })
-export class TransactionModalComponent implements OnInit {
+export class PagoModalComponent implements OnInit {
+
   @Input() name;
 
-  mContacto: IContacto;
+  mContacto: IPago;
   mCategorias: ICategoria[];
   contactForm: FormGroup;
   contactFormEstado: string;
@@ -28,8 +29,7 @@ export class TransactionModalComponent implements OnInit {
   hideForm = false;
   mLoading = false;
   closeResult: string;
-  image1={upload:false,format:false};
-  image2={upload:false,format:false};
+  dir_adjunto={upload:false,format:false};
 
   private modalRef: NgbModalRef;
 
@@ -43,23 +43,16 @@ export class TransactionModalComponent implements OnInit {
 
   ngOnInit() {
     this.contactForm = this._formBuilder.group({
-      nombre_apellido: [
+      nombre: [
         "",
         [Validators.required, Validators.pattern("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$")]
       ],
-      email: ["", [Validators.required, Validators.email]],
-      telefono: [
+      n_transferencia_deposito: [
         "",
-        [Validators.required, Validators.pattern("^[0-9]{10,12}$")]
+        [Validators.required, Validators.pattern("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$")]
       ],
-      fk_tipoPropiedad: ["", Validators.required],
-      direccion: [
-        "",
-        [Validators.required]
-      ],
-      descripcion: ["", Validators.required],
-      imagen_1: [null],
-      imagen_2: [null]
+      detalle: ["", Validators.required],
+      dir_adjunto: [null]
     });
   }
 
@@ -88,21 +81,13 @@ export class TransactionModalComponent implements OnInit {
   }
   getFormData() {
     const formData = new FormData();
-    formData.append("nombre_apellido", this.mContacto.nombre_apellido);
-    formData.append("email", this.mContacto.email);
-    formData.append("telefono", this.mContacto.telefono);
-    formData.append(
-      "fk_tipoPropiedad",
-      this.contactForm.get("fk_tipoPropiedad").value
-    );
-    formData.append("direccion", this.mContacto.direccion);
-    formData.append("descripcion", this.mContacto.descripcion);
-    if(this.contactForm.get("imagen_1").value){
-      formData.append("imagen_1", this.contactForm.get("imagen_1").value);
+    formData.append("nombre", this.mContacto.nombre);
+    formData.append("n_transferencia_deposito", this.mContacto.n_transferencia_deposito);
+    formData.append("detalle", this.mContacto.detalle);
+    if(this.contactForm.get("dir_adjunto").value){
+      formData.append("dir_adjunto", this.contactForm.get("dir_adjunto").value);
     }
-    if (this.contactForm.get("imagen_2").value) {
-      formData.append("imagen_2", this.contactForm.get("imagen_2").value);
-    }
+   
     return formData;
   }
   guardar() {
@@ -110,7 +95,7 @@ export class TransactionModalComponent implements OnInit {
     this.hideForm = true;
     // registar tasacion
     this._ContactoService
-      .New(this.getFormData())
+      .NewPayment(this.getFormData())
       .then(data => {
         this.successMensaje = true;
         this.mLoading = false;
@@ -135,26 +120,17 @@ export class TransactionModalComponent implements OnInit {
   onFileChange(event, image) {
     if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
-        if (image === "imagen_1") {
+        if (image === "dir_adjunto") {
           if ((/\.(jpg|jpeg|bmp|gif|png)$/i).test(file.name) === false) {
-            this.image1.format=true;
-            this.image1.upload = false;
+            this.dir_adjunto.format=true;
+            this.dir_adjunto.upload = false;
           } else {
-            this.contactForm.get("imagen_1").setValue(file);
-            this.image1.upload = true;
-            this.image1.format = false;
+            this.contactForm.get("dir_adjunto").setValue(file);
+            this.dir_adjunto.upload = true;
+            this.dir_adjunto.format = false;
           }
         }
-        if (image === "imagen_2") {
-          if ((/\.(jpg|jpeg|bmp|gif|png)$/i).test(file.name) === false) {
-            this.image2.format = true;
-            this.image2.upload = false;
-          } else {
-            this.contactForm.get("imagen_2").setValue(file);
-            this.image2.upload = true;
-            this.image1.format = false;
-          }
-        }
+       
       }
     }
 }

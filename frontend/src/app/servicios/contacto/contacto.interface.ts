@@ -14,6 +14,14 @@ export interface IContacto {
   imagen_2: any;
 }
 
+export interface IPago {
+  nombre: string;
+  n_transferencia_deposito: string;
+  detalle: string;
+  dir_adjunto: any;
+  imagen_2: any;
+}
+
 export class CContacto {
   static empy() {
     return {

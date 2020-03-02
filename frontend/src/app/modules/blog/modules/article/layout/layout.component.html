@@ -1,7 +1,7 @@
 <ngb-carousel>
   <ng-template ngbSlide *ngFor="let image of images">
-    <img [src]="image" class="carousel-image w-100" alt="Random slide" style="max-height: 500px; " onerror="this.src='assets/images/no_image_aviable.jpg'"/>
-    <div class="carousel-caption">
+    <img [src]="image" class="carousel-image w-100" alt="Random slide" style="max-height: 600px; " onerror="this.src='assets/images/no_image_aviable.jpg'"/>
+    <div class="carousel-caption" style="margin-top: 100px;">
       <h1 class="font-weight-light text-uppercase text-left">
         <!--  gPropiedades.ficha1.descipcion  -->
       </h1>
@@ -9,13 +9,13 @@
       <h1 class="font-weight-extrabold text-uppercase text-left">{{gPropiedades.precio}}$</h1>
       <!-- container d-none d-md-block d-md-flex py-4 justify-content-center -->
       <div class="galery-image">
-        <img *ngIf="gPropiedades.imagenes.imagen1" [src]="gPropiedades.imagenes.imagen1" alt="" />
-        <img *ngIf="gPropiedades.imagenes.imagen2" [src]="gPropiedades.imagenes.imagen2" alt="" />
-        <img *ngIf="gPropiedades.imagenes.imagen3" [src]="gPropiedades.imagenes.imagen3" alt="" />
-        <img *ngIf="gPropiedades.imagenes.imagen4" [src]="gPropiedades.imagenes.imagen4" alt="" />
-        <img *ngIf="gPropiedades.imagenes.imagen5" [src]="gPropiedades.imagenes.imagen5" alt="" />
-        <img *ngIf="gPropiedades.imagenes.imagen6" [src]="gPropiedades.imagenes.imagen6" alt="" />
-        <img *ngIf="gPropiedades.imagenes.imagen7" [src]="gPropiedades.imagenes.imagen7" alt="" />
+        <a href="{{gPropiedades.imagenes.imagen1}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen1" [src]="gPropiedades.imagenes.imagen1" alt="" /></a>
+        <a href="{{gPropiedades.imagenes.imagen2}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen2" [src]="gPropiedades.imagenes.imagen2" alt="" /></a>
+        <a href="{{gPropiedades.imagenes.imagen3}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen3" [src]="gPropiedades.imagenes.imagen3" alt="" /></a>
+        <a href="{{gPropiedades.imagenes.imagen4}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen4" [src]="gPropiedades.imagenes.imagen4" alt="" /></a>
+        <a href="{{gPropiedades.imagenes.imagen5}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen5" [src]="gPropiedades.imagenes.imagen5" alt="" /></a>
+        <a href="{{gPropiedades.imagenes.imagen6}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen6" [src]="gPropiedades.imagenes.imagen6" alt="" /></a>
+        <a href="{{gPropiedades.imagenes.imagen7}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen7" [src]="gPropiedades.imagenes.imagen7" alt="" /></a>
       </div>
     </div>
   </ng-template>
