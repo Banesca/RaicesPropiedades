@@ -24,7 +24,6 @@ class ConfigGeneralController extends Controller {
                     'celular2'     => 'required',
                     'url_face'     => 'required',
                     'url_intagram' => 'required',
-                    'url_twitter'  => 'required',
                 ], [
                     'correo.email'    => 'El Email debe de tener un formato ejemplo@ejemplo.com',
                     'correo.required' => 'El campo es requerido',
@@ -34,7 +33,6 @@ class ConfigGeneralController extends Controller {
                     'celular2'        => 'El campo es requerido',
                     'url_face'        => 'El campo es requerido',
                     'url_intagram'    => 'El campo es requerido',
-                    'url_twitter'     => 'El campo es requerido',
                 ]);
             }
 
