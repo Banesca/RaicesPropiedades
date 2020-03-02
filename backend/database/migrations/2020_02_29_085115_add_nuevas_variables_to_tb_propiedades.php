@@ -15,7 +15,6 @@ class AddNuevasVariablesToTbPropiedades extends Migration
     {
         Schema::table('tb_propiedades', function (Blueprint $table) {
             $table->double('cantidad_Toilette')->nullable();
-            $table->text('informacion_adicional')->nullable();
             $table->string('calefaccion_Tipo_Balanceado')->nullable();
             $table->string('piso_Radiante_Individual')->nullable();
             $table->string('piso_Radiante_Central')->nullable();

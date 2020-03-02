@@ -337,7 +337,6 @@ class Propiedad extends Model {
         'visibilidad',
 
         'cantidad_Toilette',
-        'informacion_adicional',
         'calefaccion_Tipo_Balanceado',
         'piso_Radiante_Individual',
         'piso_Radiante_Central',
