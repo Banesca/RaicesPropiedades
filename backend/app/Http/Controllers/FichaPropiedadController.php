@@ -25,15 +25,15 @@ class FichaPropiedadController extends Controller
             'img3pl'         => 'required',
             'fk_idPropiedad' => 'required',
         ], [
-            'titulo'         => 'El Campo es requerido',
-            'ubicacion'      => 'El Campo es requerido',
-            'caracteristica' => 'El Campo es requerido',
-            'valor'          => 'El Campo es requerido',
-            'comision'       => 'El Campo es requerido',
-            'img1fa'         => 'El Campo es requerido',
-            'img2pr'         => 'El Campo es requerido',
-            'img3pl'         => 'El Campo es requerido',
-            'fk_idPropiedad' => 'El Campo es requerido',
+            'titulo.required'         => 'El Campo es requerido',
+            'ubicacion.required'      => 'El Campo es requerido',
+            'caracteristica.required' => 'El Campo es requerido',
+            'valor.required'          => 'El Campo es requerido',
+            'comision.required'       => 'El Campo es requerido',
+            'img1fa.required'         => 'El Campo es requerido',
+            'img2pr.required'         => 'El Campo es requerido',
+            'img3pl.required'         => 'El Campo es requerido',
+            'fk_idPropiedad.required' => 'El Campo es requerido',
         ]);
 
         DB::beginTransaction();
@@ -108,12 +108,12 @@ class FichaPropiedadController extends Controller
             'comision'       => 'required',
             'fk_idFichas'    => 'required',
         ], [
-            'titulo'         => 'El Campo es requerido',
-            'ubicacion'      => 'El Campo es requerido',
-            'caracteristica' => 'El Campo es requerido',
-            'valor'          => 'El Campo es requerido',
-            'comision'       => 'El Campo es requerido',
-            'fk_idFichas'    => 'El Campo es requerido',
+            'titulo.required'         => 'El Campo es requerido',
+            'ubicacion.required'      => 'El Campo es requerido',
+            'caracteristica.required' => 'El Campo es requerido',
+            'valor.required'          => 'El Campo es requerido',
+            'comision.required'       => 'El Campo es requerido',
+            'fk_idFichas.required'    => 'El Campo es requerido',
         ]);
 
         DB::beginTransaction();
