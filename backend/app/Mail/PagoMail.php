@@ -30,7 +30,7 @@ class PagoMail extends Mailable
      */
     public function build()
     {
-        return $this->view('correos.tasalacion')
+        return $this->view('correos.pago')
             ->subject('Se ha creado su pago correctamente');
     }
 }

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\ConfigGeneral;
+use App\Mail\PagoMail;
 use App\Pago;
+use Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
@@ -50,12 +54,20 @@ class PagoController extends Controller {
             }
 
             $pago->save();
-            $pago->urlImagen=asset('storage\\pagos\\'.@$pago->dir_adjunto);
-            $response = [
-                'msj'       => 'Pago registrado exitosamente',
-                'pago'      => $pago,
+            $pago->urlImagen = asset('storage\\pagos\\'.@$pago->dir_adjunto);
+            $response        = [
+                'msj'  => 'Pago registrado exitosamente',
+                'pago' => $pago,
             ];
             DB::commit();
+
+            $mail = ConfigGeneral::first();
+
+            $mail = $mail->correo;
+
+            if ($mail) {
+                Mail::to($mail)->send(new PagoMail($pago));
+            }
 
             return response()->json($response, 200);
         } catch (\Exception $e) {
@@ -94,12 +106,12 @@ class PagoController extends Controller {
             }
 
             $pago->save();
-            $pago->urlImagen=asset('storage\\pagos\\'.@$pago->dir_adjunto);
+            $pago->urlImagen = asset('storage\\pagos\\'.@$pago->dir_adjunto);
             DB::commit();
 
             $response = [
-                'msj'       => 'Pago actualizada exitosamente',
-                'pago'      => $pago,
+                'msj'  => 'Pago actualizada exitosamente',
+                'pago' => $pago,
             ];
 
             return response()->json($response, 200);
@@ -173,8 +185,8 @@ class PagoController extends Controller {
         });
 
         $response = [
-            'msj'       => 'Lista de Pagos',
-            'pagos'      => $pagos,
+            'msj'   => 'Lista de Pagos',
+            'pagos' => $pagos,
         ];
 
         return response()->json($response, 200);
@@ -182,11 +194,11 @@ class PagoController extends Controller {
 
     public function listarPorId($id) {
 
-        $pago = Pago::find($id);
-        $pago->urlImagen=asset('storage\\pagos\\'.@$pago->dir_adjunto);
-        $response = [
-            'msj'       => 'Pago',
-            'pago'      => $pago,
+        $pago            = Pago::find($id);
+        $pago->urlImagen = asset('storage\\pagos\\'.@$pago->dir_adjunto);
+        $response        = [
+            'msj'  => 'Pago',
+            'pago' => $pago,
         ];
 
         return response()->json($response, 200);
