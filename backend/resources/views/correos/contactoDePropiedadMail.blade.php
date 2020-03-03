@@ -521,69 +521,72 @@
                                 ?>
 
                                 @foreach(json_decode(json_encode($contacto->propiedad), true) as $key=>$item)
+                                    @if($key!='idPropiedad'
+                                      && $key!='fk_idTipoPropiedad'
+                                      && $key!='fk_Direccion_Barrio_Id'
+                                      && $key!='fk_Direccion_Calle_Id'
+                                      && $key!='fk_Direccion_Ciudad_Id'
+                                      && $key!='fk_Direccion_Localidad_Id'
+                                      && $key!='fk_Direccion_Pais_Id'
+                                      && $key!='fk_Direccion_Partido_Id'
+                                      && $key!='fk_Direccion_Provincia_Id'
+                                      && $key!='fk_Direccion_SubBarrio_Id'
+                                      && $key!='fk_Direccion_Region_Id'
+                                      && $key!='fk_Disposicion'
+                                      && $key!='fk_Estado'
+                                      && $key!='fk_Orientacion'
+                                      && $key!='fk_TipoAcceso'
+                                      && $key!='fk_TipoAscensor'
+                                      && $key!='fk_TipoBalcon'
+                                      && $key!='fk_TipoBano'
+                                      && $key!='fk_TipoCalefaccion'
+                                      && $key!='fk_TipoCampo'
+                                      && $key!='fk_TipoCobertura'
+                                      && $key!='fk_TipoCoche'
+                                      && $key!='fk_TipoCochera'
+                                      && $key!='fk_TipoCosta'
+                                      && $key!='fk_TipoEdificio'
+                                      && $key!='fk_TipoExpensas'
+                                      && $key!='fk_TipoFondoComercio'
+                                      && $key!='fk_TipoFrente'
+                                      && $key!='fk_TipoHotel'
+                                      && $key!='fk_TipoLocal'
+                                      && $key!='fk_TipoPendiente'
+                                      && $key!='fk_TipoPiso'
+                                      && $key!='fk_TipoPorton'
+                                      && $key!='fk_TipoTecho'
+                                      && $key!='fk_TipoTechoIndustrial'
+                                      && $key!='fk_TipoTerreno'
+                                      && $key!='fk_TipoUnidadCasa'
+                                      && $key!='fk_TipoUnidadDepartamento'
+                                      && $key!='fk_TipoVista'
+                                      && $key!='fk_ficha2'
+                                      && $key!='fk_estado_publicacion'
+                                      && $key!='fk_idTipoOperaion'
+                                      && $key!='fk_idMonedas'
+                                      && $key!=''
+                                      && $item!=''
+                                      )
+                                        @if($r==0)
+                                            <tr>
+                                                @endif
 
-                                    @if($r==0)
-                                        <tr>
-                                            @endif
+                                                <td width = "40%" align = "left" style = "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                                    <p>
 
-                                            <td width = "40%" align = "left" style = "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
-                                                <p>
-                                                    @if($key!='idPropiedad'
-                                                    && $key!='fk_idTipoPropiedad'
-                                                    && $key!='fk_Direccion_Barrio_Id'
-                                                    && $key!='fk_Direccion_Calle_Id'
-                                                    && $key!='fk_Direccion_Ciudad_Id'
-                                                    && $key!='fk_Direccion_Localidad_Id'
-                                                    && $key!='fk_Direccion_Pais_Id'
-                                                    && $key!='fk_Direccion_Partido_Id'
-                                                    && $key!='fk_Direccion_Provincia_Id'
-                                                    && $key!='fk_Direccion_SubBarrio_Id'
-                                                    && $key!='fk_Direccion_Region_Id'
-                                                    && $key!='fk_Disposicion'
-                                                    && $key!='fk_Estado'
-                                                    && $key!='fk_Orientacion'
-                                                    && $key!='fk_TipoAcceso'
-                                                    && $key!='fk_TipoAscensor'
-                                                    && $key!='fk_TipoBalcon'
-                                                    && $key!='fk_TipoBano'
-                                                    && $key!='fk_TipoCalefaccion'
-                                                    && $key!='fk_TipoCampo'
-                                                    && $key!='fk_TipoCobertura'
-                                                    && $key!='fk_TipoCoche'
-                                                    && $key!='fk_TipoCochera'
-                                                    && $key!='fk_TipoCosta'
-                                                    && $key!='fk_TipoEdificio'
-                                                    && $key!='fk_TipoExpensas'
-                                                    && $key!='fk_TipoFondoComercio'
-                                                    && $key!='fk_TipoFrente'
-                                                    && $key!='fk_TipoHotel'
-                                                    && $key!='fk_TipoLocal'
-                                                    && $key!='fk_TipoPendiente'
-                                                    && $key!='fk_TipoPiso'
-                                                    && $key!='fk_TipoPorton'
-                                                    && $key!='fk_TipoTecho'
-                                                    && $key!='fk_TipoTechoIndustrial'
-                                                    && $key!='fk_TipoTerreno'
-                                                    && $key!='fk_TipoUnidadCasa'
-                                                    && $key!='fk_TipoUnidadDepartamento'
-                                                    && $key!='fk_TipoVista'
-                                                    && $key!='fk_ficha2'
-                                                    && $key!='fk_estado_publicacion'
-                                                    && $key!='fk_idTipoOperaion'
-                                                    && $key!='fk_idMonedas'
-                                                    )
-                                                    <strong>
-                                                        {!! !is_null($key) || $key!='' ? $key : ''!!}
-                                                    </strong> : {!! !is_null($item) || $item!='' ? $item : ''!!}
-                                                        @endif
-                                                </p>
-                                            </td>
+                                                        <strong>
+                                                            {!! !is_null($key) || $key!='' ? $key : ''!!}
+                                                        </strong> : {!! !is_null($item) || $item!='' ? $item : ''!!}
 
-                                            <?php
-                                            $r++;
-                                            ?>
-                                            @if($r==2)
-                                        </tr>
+                                                    </p>
+                                                </td>
+
+                                                <?php
+                                                $r++;
+                                                ?>
+                                                @if($r==2)
+                                            </tr>
+                                        @endif
                                     @endif
                                     @if($r==2)
                                         <?php
