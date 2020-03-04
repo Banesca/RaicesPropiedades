@@ -166,7 +166,7 @@
 
                 </button>
 
-                <button *ngIf="formEstado == enCRUD.Crear" (click)="guardar()" [disabled]="!form.valid || progressBar" class="btn btn-primary m-2">
+                <button *ngIf="formEstado == enCRUD.Crear" (click)="guardar()"  class="btn btn-primary m-2">
 
                   <i class="fa fa-save"></i>
                   Guardar
@@ -285,6 +285,7 @@
 
         </div>
 
+        
         <div class="row">
 
           <div class="col-md-12">
@@ -312,15 +313,16 @@
         <div class="row">
 
           <div class="col-md-12">
-
+            <!--
             <div class="alert alert-info" role="alert">
-              El ancho mínimo de la imagen debe ser de 2000 px <br>
-              El alto mínimo de la imagen debe ser de 700 px
+              El ancho mínimo de la imagen debe ser de 2000 px
             </div>
-
+            -->
             <div class="form-group">
 
-              <label for="">Imagenes</label>
+              <label for="">{{ imgTitulo }}
+                <span style="color:red;font-weight:bold;">*</span>
+              </label>
 
               <div class="wrapper-dropzone">
 
@@ -338,7 +340,7 @@
 
                     <output id="list">
 
-                      <span *ngFor="let element of mCategoriasSelect.imagenes">
+                      <span *ngFor="let element of fichasSelect.img1fa">
                         <img class="thumb" [src]="element.imagen" style="height:150px;" title="">
                       </span>
 
@@ -362,20 +364,24 @@
           </div>
 
         </div>
-
-
+        
+<!--
+  <hr>
         <div class="row">
 
           <div class="col-md-12">
-
-            <div class="alert alert-info" role="alert">
-              El ancho mínimo de la imagen debe ser de 2000 px <br>
-              El alto mínimo de la imagen debe ser de 700 px
-            </div>
+          
+            
 
             <div class="form-group">
 
-              <label for="">Imagenes</label>
+              <label for="">Imagenes de la Propiedad
+                <span style="color:red;font-weight:bold;">*</span>
+              </label>
+
+              <div class="alert alert-info" role="alert">
+                Maximo 15 fotos
+              </div>
 
               <div class="wrapper-dropzone">
 
@@ -393,7 +399,7 @@
 
                     <output id="list">
 
-                      <span *ngFor="let element of mCategoriasSelect.imagenes">
+                      <span *ngFor="let element of fichasSelect.img1fa">
                         <img class="thumb" [src]="element.imagen" style="height:150px;" title="">
                       </span>
 
@@ -417,6 +423,63 @@
           </div>
 
         </div>
+ <hr>
+        <div class="row">
+
+          <div class="col-md-12">
+          
+            
+
+            <div class="form-group">
+
+              <label for="">Imagenes del Plano 1 y 2 de la Propiedad</label>
+
+              <div class="alert alert-info" role="alert">
+                Maximo 2 fotos, <br>
+                No Obligatorio
+              </div>
+
+              <div class="wrapper-dropzone">
+
+                <div class="drop">
+
+                  <div class="cont">
+
+                    <div class="browse">
+                      Adjuntar imagen
+                    </div>
+
+                  </div>
+
+                  <div>
+
+                    <output id="list">
+
+                      <span *ngFor="let element of fichasSelect.img1fa">
+                        <img class="thumb" [src]="element.imagen" style="height:150px;" title="">
+                      </span>
+
+                    </output>
+
+                    <div id="files-errors">
+                    </div>
+ 
+                  </div>
+
+                  <div>
+                    <input id="files" multiple="true" name="files[]" type="file" (change)="handleFileSelect($event)" />
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      -->
       </form>
 
     </div>

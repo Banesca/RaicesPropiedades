@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder {
         $this->call(TipoPisoSeeder::class);
         $this->call(TipoLocalSeeder::class);
         $this->call(FichaPropiedadSeeder::class);
-        $this->call(SucursalesSeeder::class);
+        // $this->call(SucursalesSeeder::class);
 
         //$this->call(PublicacionesSeeder::class);
     }

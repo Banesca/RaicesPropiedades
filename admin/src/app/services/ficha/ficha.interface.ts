@@ -5,16 +5,12 @@ export interface IFichasRs {
 
 export interface IFichas {
   idFichas: number;
+  titulo: string;
   ubicacion: string;
   caracteristica: string;
   valor: string;
   comision: string;
-  img1fa: string,
-  img2pr: string,
-  img3pl: string,
-  img4pl: string,
-  img5sa: string,
-  img6sa: string,
+  img: any;
   fk_idPropiedad: number;
 }
 
@@ -22,16 +18,12 @@ export class Fichas {
   static empy() {
     return {
       idFichas: null,
+      titulo: '',
       ubicacion: '',
       caracteristica: '',
       valor: '',
       comision: '',
-      img1fa: '',
-      img2pr: '',
-      img3pl: '',
-      img4pl: '',
-      img5sa: '',
-      img6sa: '',
+      img: null,
       fk_idPropiedad: null
     } as IFichas;
   }
