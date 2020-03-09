@@ -66,10 +66,10 @@ class Ficha3Controller extends Controller {
 
             $propiedad->save();
 
-            Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email, $propiedad->descipcion, $propiedad->idPropiedad));
+            //Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email, $propiedad->descipcion, $propiedad->idPropiedad));
 
-            $sincronice = new SincroniceArgenController();
-            $sincronice->add($propiedad); //para add propiedad en argen pro
+            //$sincronice = new SincroniceArgenController();
+            //$sincronice->add($propiedad); //para add propiedad en argen pro
 
             @$propiedad->TipoPropiedad;
             @$propiedad->Disposicion;

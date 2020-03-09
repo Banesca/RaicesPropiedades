@@ -10,7 +10,6 @@
                   <ng-template matStepLabel>Datos generales</ng-template>
                   <form [formGroup]="formOne">
 
-
                      <div class="row">
                         <div class="col-md-9">
                            <div class="form-group">
@@ -534,6 +533,30 @@
                            </div>
                         </div>
                      </fieldset>
+                    <fieldset>
+                      <div class="row">
+                        <div class="col-md-12 ">
+                          <legend> Información Adicional</legend>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <div class="example-container">
+                              <mat-form-field>
+                                <input matInput placeholder="Información Adicional*" formControlName="informacion_adicional">
+                                <mat-error>
+                                  Este valor es
+                                  <strong>requerido</strong>
+                                </mat-error>
+
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
                      <!--********************************************************************************-->
                      <fieldset>
                         <div class="row">
@@ -2251,31 +2274,6 @@
                            </div>
                         </fieldset>
                      </fieldset>
-
-                    <fieldset *ngIf="informacion_adicional">
-                      <div class="row">
-                        <div class="col-md-12 ">
-                          <legend> Información Adicional</legend>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <div class="example-container">
-                              <mat-form-field>
-                                <input matInput placeholder="Información Adicional*" formControlName="informacion_adicional">
-                                <mat-error>
-                                  Este valor es
-                                  <strong>requerido</strong>
-                                </mat-error>
-
-                              </mat-form-field>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </fieldset>
 
 
                      <fieldset>
