@@ -430,7 +430,7 @@
             <div class="content">
 
                 <!-- START HEADER IMAGE CONTAINER -->
-                <img class="header" src="{{ asset('img/raices/header.jpg') }}" alt="">
+                <img class="header" src="{!! $message->embed(public_path('img/raices/header.jpg'))!!}" alt="">
                 <!-- START HEADER IMAGE CONTAINER -->
 
                 <!-- START CENTERED WHITE CONTAINER -->
@@ -442,11 +442,13 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <h2>Hola! {{$transaccion->email}} Se ha creado su tasalación correctamente.</h2>
+                                        <h2>Gracias por contactarse con RAICES Propiedades</h2>
                                         <hr>
                                         <p>
-
-
+                                            Hemos recibido su solicitud, la cual estamos procesando para su correcta contestación a la mayor brevedad.
+                                        </p>
+                                        <p>
+                                            Lo saludamos cordialmente.
                                         </p>
                                         <h5>www.raicespropiedades.com</h5>
                                     </td>
@@ -461,7 +463,7 @@
 
                 <!-- START FOOTER -->
                 <div class="wrapper-footer">
-                    <img src="{{ asset('img/raices/footer-o.jpg') }}" alt="" class="footer">
+                    <img src="{!! $message->embed(public_path('img/raices/footer-o.jpg'))!!}" alt="" class="footer">
                 </div>
                 <!-- END FOOTER -->
             </div>

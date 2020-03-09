@@ -422,7 +422,7 @@
     </style>
 </head>
 <body class="">
-<span class="preheader">Notificación de Pago</span>
+<span class="preheader">NOTIFICACION PAGO</span>
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
     <tr>
         <td>&nbsp;</td>
@@ -442,16 +442,16 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <h2>Gracias por registrar su pago</h2>
+                                        <h2>Gracias por contactarse con RAICES Propiedades</h2>
                                         <hr>
                                         <p>
-                                            Nº : {!! $pago->n_transferencia_deposito !!}
+                                            Hemos recibido su notificación, el cual estamos procesando para su correcta acreditación.
                                         </p>
 
                                         <p>
-                                            Detalle : {!! $pago->detalle !!}
+                                            Lo saludamos cordialmente.
                                         </p>
-                                        <img src="{!! $message->embed(public_path('storage/pagos/'.$pago->dir_adjunto))!!}" alt="">
+                                        {{-- <img src="{!! $message->embed(public_path('storage/pagos/'.$pago->dir_adjunto))!!}" alt=""> --}}
                                         <h5>www.raicespropiedades.com</h5>
                                     </td>
                                 </tr>
@@ -466,22 +466,6 @@
                 <!-- START FOOTER -->
                 <div class="wrapper-footer">
                     <img src="{!! $message->embed(public_path('img/raices/footer-o.jpg'))!!}" alt="" class="footer">
-                    {{--<div class="wrapper-footer-social">
-                        <a target="_blank" href="https://facebook.com">
-                            <img class="item-a" src="{!! $message->embed(public_path('img/raices/facebook.jpg'))!!}" alt="">
-                        </a>
-
-                        <a target="_blank" href="https://twitter.com">
-                            <img class="item-b" src="{!! $message->embed(public_path('img/raices/twitter.jpg'))!!}" alt="">
-                        </a>
-                        <a target="_blank" href="https://instagram.com">
-                            <img class="item-c" src="{!! $message->embed(public_path('img/raices/instagram.jpg'))!!}" alt="">
-                        </a>
-                        <a target="_blank" href="https://main.com">
-                            <img class="item-d" src="{!! $message->embed(public_path('img/raices/main.jpg'))!!}" alt="">
-                        </a>
-                    </div>
-                    --}}
                 </div>
                 <!-- END FOOTER -->
             </div>

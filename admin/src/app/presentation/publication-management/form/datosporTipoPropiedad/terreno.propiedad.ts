@@ -39,8 +39,14 @@ export const arrayInstalacionesTerreno = [
     { label: "Molino", variableName: "Instalaciones_Molino", selected: false },
     { label: "Pavimento", variableName: "Instalaciones_Pavimento", selected: false },
     { label: "Potrero", variableName: "Instalaciones_Potrero", selected: false },
+    { label: "Piso Radiante Individual", variableName: "piso_Radiante_Individual", selected: false },
+    { label: "Piso Radiante Central", variableName: "piso_Radiante_Central", selected: false },
+    { label: "Hidromasaje", variableName: "hidromasaje", selected: false },
+    { label: "Radiadores", variableName: "Instalaciones_Radiadores", selected: false },
+    { label: "Calefón", variableName: "calefon", selected: false },
     { label: "Tambo", variableName: "Instalaciones_Tambo", selected: false },
     { label: "Vivienda", variableName: "Instalaciones_Vivienda", selected: false },
+
 ];
 
 export const arrayServiciosTerreno = [

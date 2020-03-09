@@ -9,6 +9,6 @@ export interface IConfigG
         correo: string;
         url_face?: string;
         url_intagram: string;
-        //url_twitter: string;
+        url_twitter: string;
     }
 }

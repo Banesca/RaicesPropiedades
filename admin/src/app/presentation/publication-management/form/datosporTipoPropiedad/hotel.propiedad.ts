@@ -50,6 +50,11 @@ export const arrayInstalacionesHotel = [
     { label: "Juegos Para Chicos", variableName: "Instalaciones_JuegosParaChicos", selected: false },
     { label: "Laundry", variableName: "Instalaciones_Laundry", selected: false },
     { label: "Pileta", variableName: "Instalaciones_Pileta", selected: false },
+    { label: "Piso Radiante Individual", variableName: "piso_Radiante_Individual", selected: false },
+    { label: "Piso Radiante Central", variableName: "piso_Radiante_Central", selected: false },
+    { label: "Hidromasaje", variableName: "hidromasaje", selected: false },
+    { label: "Radiadores", variableName: "Instalaciones_Radiadores", selected: false },
+    { label: "Calefón", variableName: "calefon", selected: false },
     { label: "Salón De Fiestas", variableName: "Instalaciones_SalonDeFiestas", selected: false },
     { label: "Sauna", variableName: "Instalaciones_Sauna", selected: false },
 ];

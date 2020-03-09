@@ -33,6 +33,6 @@ class SuscripcionMail extends Mailable /*implements ShouldQueue*/
     public function build()
     {
         return $this->view('correos.suscripcion')
-            ->subject('Gracias por Suscribirte');
+            ->subject('Muchas Gracias por contactarse con RAICES Propiedades');
     }
 }

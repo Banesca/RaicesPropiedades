@@ -1,6 +1,5 @@
 <div class="row">
 
-
    <div class="col-12">
       <mat-card class="example-card">
          <mat-progress-bar *ngIf="loading" class="card-progress-bar" mode="indeterminate"></mat-progress-bar>
@@ -139,20 +138,9 @@
                   </form>
                </mat-step>
 
-
-
-
-
                <!-- *********************************************************************************************************************** -->
-
-
-
-
-
-
                <mat-step [stepControl]="formTwo">
                   <ng-template matStepLabel>Imágenes</ng-template>
-
                   <div class="row">
                         <div class="col-md-12" >
                               <div class="alert alert-info" role="alert">
@@ -415,8 +403,6 @@
                         </mat-card>
                      </div>
                   </div>
-
-
                   <div class="row">
                      <div class="col-12 text-right">
                         <div>
@@ -433,14 +419,7 @@
                   </div>
                </mat-step>
 
-
-
-
                <!-- ************************************************************************************************************************  -->
-
-
-
-
 
                <mat-step [stepControl]="formThree">
                   <ng-template matStepLabel>Datos de propiedades</ng-template>
@@ -2171,7 +2150,7 @@
                      <fieldset *ngIf="vista.instalaciones && vista.instalaciones.length > 0">
                         <div class="row">
                            <div class="col-md-12 ">
-                              <legend>Instalaciones</legend>
+                              <legend>Instalaciones del Departamento</legend>
                            </div>
                         </div>
 
@@ -2191,7 +2170,7 @@
                      <fieldset *ngIf="vista.servicios && vista.servicios.length > 0">
                         <div class="row">
                            <div class="col-md-12 ">
-                              <legend>Servicios</legend>
+                              <legend>Servicios del Departamento</legend>
                            </div>
                         </div>
 
@@ -2255,7 +2234,7 @@
                         <fieldset *ngIf="vista.edificio && vista.edificio.servicios && vista.servicios.length > 0">
                            <div class="row">
                               <div class="col-md-12 ">
-                                 <legend>Edificio - Servicios</legend>
+                                 <legend>Servicios del Edificio </legend>
                               </div>
                            </div>
 
@@ -2272,6 +2251,31 @@
                            </div>
                         </fieldset>
                      </fieldset>
+
+                    <fieldset *ngIf="informacion_adicional">
+                      <div class="row">
+                        <div class="col-md-12 ">
+                          <legend> Información Adicional</legend>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <div class="example-container">
+                              <mat-form-field>
+                                <input matInput placeholder="Información Adicional*" formControlName="informacion_adicional">
+                                <mat-error>
+                                  Este valor es
+                                  <strong>requerido</strong>
+                                </mat-error>
+
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
 
 
                      <fieldset>

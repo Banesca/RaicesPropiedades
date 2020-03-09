@@ -7,6 +7,7 @@ export interface IPublicacion {
     esUnaOportunidad: number;
     esUnaNovedad: number;
     aparece_en_galeria: number;
+    informacion_adicional: string;
 
     //2do Step
     imagen_para_galeria?: any;

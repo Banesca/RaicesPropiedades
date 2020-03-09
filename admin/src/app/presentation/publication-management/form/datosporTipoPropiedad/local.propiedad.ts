@@ -59,10 +59,15 @@ export const arrayInstalacionesLocal = [
     { label: "Ascensores Principales", variableName: "Instalaciones_AscensoresPrincipales", selected: false },
     { label: "Boxes", variableName: "Instalaciones_Boxes", selected: false },
     { label: "Caja Fuerte", variableName: "Instalaciones_CajaFuerte", selected: false },
-    { label: "Caldera", variableName: "Instalaciones_Caldera", selected: false },
+    { label: "Caldera Individual", variableName: "Instalaciones_Caldera", selected: false },
     { label: "Calefacción", variableName: "Instalaciones_Calefaccion", selected: false },
-    { label: "Movilidad Reducida", variableName: "Instalaciones_MovilidadReducida", selected: false },
+    { label: "Acceso Reducida", variableName: "Instalaciones_MovilidadReducida", selected: false },
     { label: "Pavimento", variableName: "Instalaciones_Pavimento", selected: false },
+    { label: "Piso Radiante Individual", variableName: "piso_Radiante_Individual", selected: false },
+    { label: "Piso Radiante Central", variableName: "piso_Radiante_Central", selected: false },
+    { label: "Hidromasaje", variableName: "hidromasaje", selected: false },
+    { label: "Radiadores", variableName: "Instalaciones_Radiadores", selected: false },
+    { label: "Calefón", variableName: "calefon", selected: false },
 ];
 
 

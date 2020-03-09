@@ -31,4 +31,9 @@ class FichaPropiedad extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    public function propiedad()
+    {
+        return $this->belongsTo('App\Propiedad', 'fk_idPropiedad');
+    }
 }

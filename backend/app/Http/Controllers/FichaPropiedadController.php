@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use PDF;
 
 class FichaPropiedadController extends Controller
 {
@@ -267,5 +268,21 @@ class FichaPropiedadController extends Controller
 
             return response()->json($response, 404);
         }
+    }
+
+    public function pdf($idFicha = false)
+    {
+        $data = FichaPropiedad::with('propiedad')->find($idFicha);
+
+        if ($idFicha == false || is_null($data)) {
+            $response = [
+                'msj' => 'Debe pasar algun id de la ficha valido',
+            ];
+
+            return response()->json($response, 404);
+        }
+        $pdf = PDF::loadView('pedidos', ['ficha' => $data]);
+
+        return $pdf->download($data->idFichas . '.pdf');
     }
 }

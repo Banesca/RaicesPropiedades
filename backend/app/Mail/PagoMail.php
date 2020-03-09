@@ -31,6 +31,6 @@ class PagoMail extends Mailable
     public function build()
     {
         return $this->view('correos.pago')
-            ->subject('Se ha creado su pago correctamente');
+            ->subject('Gracias por contactarse con RAICES Propiedades');
     }
 }

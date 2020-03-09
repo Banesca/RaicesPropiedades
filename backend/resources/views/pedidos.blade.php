@@ -9,28 +9,32 @@
         * {
             margin: 0;
             padding: 0;
+            font-family: 'Helvetica' !important;
         }
-        @page{
-            margin-top:150px!important;
-        }
-        @page:first {
-            margin-top: 8cm!important;
-        }
-       
-       
-       
 
-        
+        @page {
+            margin-top: 100px !important;
+
+        }
+
+        @page :first {
+            margin-top: 5cm !important;
+        }
+
         :root {
             --main-lines-color: #80ced6; /*  color de las lineas  */
             --tabla-text-color: #e97604; /* color para las letras de la tabla*/
         }
 
-        h2 {
-            font-style: italic;
+        h1 {
             text-align: center;
-            color: #e97604;
+            font-size: 30px;
+            font-weight: bold;
+        }
 
+        h2 {
+            font-weight: bold;
+            font-size: 20px;
         }
 
         body {
@@ -45,7 +49,7 @@
         header {
             position: fixed;
             left: 0px;
-            top: -150px;
+            top: -100px;
             right: 0px;
             height: 100px;
 
@@ -58,9 +62,8 @@
 
         .header h2 {
             margin: 0 0 10px 0;
-            color: #e97604;
+            /*color: #e97604;*/
         }
-
 
         .footer {
             position: fixed;
@@ -73,14 +76,13 @@
             /*  border-bottom: 2px solid #ddd; */
         }
 
-      /*   footer .page:after {
-            content: counter(page);
-            
+        /*   footer .page:after {
+              content: counter(page);
 
 
-        } */
-       
-      
+
+          } */
+
         .footer table {
             width: 100%;
         }
@@ -95,13 +97,13 @@
         }
 
         .cuerpo {
-            padding-top: 7%;
+            padding-top: 1%;
             padding-left: 10%;
             padding-right: 10%;
-            
+
             /*margin-bottom: 5%;*/
         }
-       
+
         .recibo {
             padding-bottom: 30px;
             color: #55ACEE;
@@ -130,23 +132,24 @@
              */
         }
 
-        table tr:nth-child(2n-1) td {
+        /*table tr:nth-child(2n-1) td {
             background: #d5f4e6;
-        }
+        }*/
 
         th {
             /*  border-bottom: var(--main-lines-color) solid 2px; */
             text-align: center;
-            height: 20px;
-            background-color: #3498DB;
-            color: white;
+            font-size: 17px;
+            /*background-color: #3498DB;*/
+            color: #636363;
+            text-align: justify;
             /* border: 1px solid ; */
         }
 
-        tr {
+        /*tr {
             border: 1px solid;
             border-radius: 7px;
-        }
+        }*/
 
         td {
             text-align: center;
@@ -179,127 +182,182 @@
             height: 50px;
             margin-left: 80px;
         }
-        .test{
-            vertical-align:middle;
+
+        .test {
+            vertical-align: middle;
         }
-        body{
-            height:400px;
-            margin-top:100px!important;
-            margin-bottom:250px!important;
+
+        body {
+            height: 400px;
+            margin-top: 60px !important;
+            margin-bottom: 250px !important;
         }
-    
+
     </style>
 
 </head>
 
 <body>
 
-<header >
-   <div class="header">
-    <img src = "{!! public_path('img/pedidos/RESUMEN-PEDIDOS-HEADER.jpg') !!}" alt = "" width = "100%" height = "200px"> 
+<header>
+    <div class = "header">
+        <img src = "{!! public_path('img/pedidos/RESUMEN-PEDIDOS-HEADER.jpg') !!}" alt = "" width = "100%" height = "200px">
 
     </div>
-<div class="footer">
-<img src = "{!! public_path('img/pedidos/RESUMEN-PEDIDOS-FOOTER.jpg') !!}" alt = "" width = "100%" height = "200px">
+    <div class = "footer">
+        <img src = "{!! public_path('img/pedidos/RESUMEN-PEDIDOS-FOOTER.jpg') !!}" alt = "" width = "100%" height = "200px">
 
-</div> 
+    </div>
 </header>
 
-<!--  cabecera  img  -->
-<div class = "col-md-12 header ">
-
-<!--      <img src = "{!! public_path('img/pedidos/RESUMEN-PEDIDOS-HEADER.jpg') !!}" alt = "" width = "100%" height = "200px"> 
- -->
-</div>
-
 <div class = " test container-fluid">
-  
-<div class="text"></div>
+
+    <div class = "text"></div>
     <!--  -----------  -->
 
     <!-- cuerpo  -->
     <div class = "cuerpo">
-
-        <h2><strong style = "font-weight: bold;">RESUMEN DE COMPRA</strong></h2>
-
+        <br>
+        <br> <br>
+        <br> <br>
+        <br> <br>
+        <h1><strong style = "font-weight: bold;">{{strtoupper($ficha->titulo)}}</strong></h1>
+        <h1 style = "font-size: 20px"><strong style = "font-weight: bold;">{{strtoupper($ficha->ubicacion)}}</strong>
+        </h1>
+        <br>
+        <br>
         <div class = "row justify-content-center fecha ">
-            <div class = "col-md-12 ">
-                <!--  Tabla datos pedido -->
+            <div class = "col-md-12">
+                <h2>Ubicación:</h2>
+                <br>
                 <table>
-
                     <tr>
-                        <th scope = "col"><strong>FECHA</strong></th>
-                        <th scope = "col"><strong>NUMERO PEDIDO</strong></th>
-                        <th scope = "col"><strong>DOMICILIO ENTREGA</strong></th>
-                        <th scope = "col"><strong>FECHA ENTREGA</strong></th>
-                        <th scope = "col"><strong>PERSONA AUTORIZADA</strong></th>
+                        <th>{{$ficha->ubicacion}}</th>
                     </tr>
-
+                </table>
+                <br>
+                <br>
+                <h2>Características:</h2>
+                <br>
+                <table>
                     <tr>
-                        <td>{!! @$pedido->fecha !!}</td>
-                        <td>N° {!! @$pedido->Numero_Pedido !!} </td>
-                        <td>{!! @$pedido->Domicilio_Entrega !!}</td>
-                        <td>{!! @$pedido->fecha_retiro !!}</td>
-                        <td>{!! @$pedido->personasAutorizadas !!}</td>
-                        >
+                        <th>{{$ficha->caracteristica}}<</th>
                     </tr>
-
+                </table>
+                <br>
+                <br>
+                <h2>Valor:</h2>
+                <br>
+                <table>
+                    <tr>
+                        <th>${{$ficha->valor}}</th>
+                    </tr>
+                </table>
+                <br>
+                <br>
+                <h2>Comisión Imobiliaria:</h2>
+                <br>
+                <table>
+                    <tr>
+                        <th>{{$ficha->comision}}</th>
+                    </tr>
                 </table>
             </div>
+        </div>
+    </div>
+
+    {{--SALTO DE PAGINA --}}
+    <div style = "page-break-after:always;"></div>
+    {{--SALTO DE PAGINA --}}
+    <br>
+    <br>
+    <br>
+    <br>
+    {{-- SECCION DE LAS IMAGENES--}}
+    <div class = "cuerpo">
+        <div class = "row justify-content-center ">
+            <!--  Tabla de imagenes-->
+            <table cellspacing = 15>
+                <tr>
+                    <td>
+                        <img src = "{!! !is_null($ficha->img1fa) ? public_path('storage\\fichaPropiedad\\'.$ficha->img1fa) : null !!}" alt = "" width = "500px" height = "250px">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src = "{!! !is_null($ficha->img2pr) ? public_path('storage\\fichaPropiedad\\'.$ficha->img2pr) : null !!}" alt = "" width = "500px" height = "250px">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {{--SALTO DE PAGINA --}}
+    <div style = "page-break-after:always;"></div>
+    {{--SALTO DE PAGINA --}}
+    <br>
+    <br>
+    <br>
+    <br>
+    {{-- SECCION DE LAS IMAGENES--}}
+    <div class = "cuerpo">
+        <div class = "row justify-content-center ">
+            <!--  Tabla de imagenes-->
+            <table cellspacing = 15>
+                <tr>
+                    <td>
+                        <img src = "{!! !is_null($ficha->img3pl) ? public_path('storage\\fichaPropiedad\\'.$ficha->img3pl) : null !!}" alt = "" width = "500px" height = "250px">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src = "{!! !is_null($ficha->img3pl) ? public_path('storage\\fichaPropiedad\\'.$ficha->img3pl) : null !!}" alt = "" width = "500px" height = "250px">
+                    </td>
+                </tr>
+            </table>
 
         </div>
+    </div>
+    {{--SALTO DE PAGINA --}}
+    <div style = "page-break-after:always;"></div>
+    {{--SALTO DE PAGINA --}}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {{-- SECCION DE LAS IMAGENES--}}
+    <div class = "cuerpo">
+        <div class = "row justify-content-center ">
+            <!--  Tabla de imagenes-->
+            <table cellspacing = 15>
 
-        <div class = "row justify-content-center fecha ">
-            <!--  Tabla de productos pedidos -->
-            <table>
                 <tr>
-                    <th scope = "col"><strong>PRODUCTO</strong></th>
-                    <th scope = "col"><strong>DESCRIPCIÓN</strong></th>
-                    <th scope = "col"><strong>CANTIDAD</strong></th>
-                    <th scope = "col"><strong>PRECIO</strong></th>
-                    <th scope = "col"><strong>TOTAL</strong></th>
+                    <td>
+                        <img src = "{!! !is_null($ficha->img5sa) ? public_path('storage\\fichaPropiedad\\'.$ficha->img5sa) : null !!}" alt = "" width = "500px" height = "250px">
+                    </td>
+
                 </tr>
-                @php
-                    $suma_total=0;
-                @endphp
-
-                @foreach($pedido->orderBody as $elementos)
-
-                    <tr>
-                        <td>{!! $elementos->producto->nombre !!} </td>
-                        <td>{!! $elementos->producto->titulo !!} </td>
-                        <td>{!! $elementos->Cantidad_Producto !!} </td>
-                        <td>$ {!! number_format($elementos->PrecioUnitario_Producto,null,',','.')!!} </td>
-                        <td>$ {!! number_format($elementos->Cantidad_Producto*$elementos->PrecioUnitario_Producto,null,',','.') !!}   </td>
-
-                    </tr>
-                    @php
-                        $suma_total=$suma_total+$elementos->Cantidad_Producto*$elementos->PrecioUnitario_Producto;
-                    @endphp
-
-                @endforeach
+                <tr>
+                    <td>
+                        <img src = "{!! !is_null($ficha->img6sa) ? public_path('storage\\fichaPropiedad\\'.$ficha->img6sa) : null !!}" alt = "" width = "500px" height = "250px">
+                    </td>
+                </tr>
 
             </table>
 
         </div>
-
-        <div class = "total-cont">
-            <h3>TOTAL: <strong>$ {!! number_format($suma_total,null,',','.')!!} </strong></h3>
-        </div>
-     
-        
-        
     </div>
-    <!-- ---------  -->
-    <!-- footer img -->
-   
-    <!-- ---------  -->
+
 </div>
+<!-- ---------  -->
+<!-- footer img -->
+
+<!-- ---------  -->
 </body>
 <!-- <footer class = "">
   
 
-        <img src = "{!! public_path('img/pedidos/RESUMEN-PEDIDOS-FOOTER.jpg') !!}" alt = "" width = "100%" height = "200px">
+        <img src = "{!! public_path('img/pedidos/RESUMEN-PEDIDOS-FOOTER.jpg') !!}" alt = "" width = "100%" height = "300px">
     </footer> -->
 
 </html>

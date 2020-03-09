@@ -430,7 +430,7 @@
             <div class="content">
 
                 <!-- START HEADER IMAGE CONTAINER -->
-                <img class="header" src="{{ asset('img/raices/header.jpg') }}" alt="">
+                <img class="header" src="{!! $message->embed(public_path('img/raices/header.jpg'))!!}" alt="">
                 <!-- START HEADER IMAGE CONTAINER -->
 
                 <!-- START CENTERED WHITE CONTAINER -->
@@ -442,12 +442,13 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <h2>Hola! {{$sus->email}} Se ha suscrito correctamente.</h2>
+                                        <h2>Muchas Gracias por contactarse con RAICES Propiedades</h2>
                                         <hr>
                                         <p>
-                                            Si desea cancelar la suscripcion siga el siguiente link
-                                            <a target="_blank" href=" http://127.0.0.1:8000/formCancelarSuscripcion/{{ $sus->tocken }}"> Aqui</a>
-
+                                            Hemos recibido su solicitud y la estamos procesando a la mayor brevedad para que seas parte de la comunidad RAICES Propiedades.
+                                        </p>
+                                        <p>
+                                            Te saludamos cordialmente.
                                         </p>
                                         <h5>www.raicespropiedades.com</h5>
                                     </td>
@@ -462,7 +463,7 @@
 
                 <!-- START FOOTER -->
                 <div class="wrapper-footer">
-                    <img src="{{ asset('img/raices/footer-o.jpg') }}" alt="" class="footer">
+                    <img src="{!! $message->embed(public_path('img/raices/footer-o.jpg'))!!}" alt="" class="footer">
                 </div>
                 <!-- END FOOTER -->
             </div>
