@@ -203,7 +203,7 @@ class FichaPropiedadController extends Controller
     {
         $fichaPropiedad = FichaPropiedad::find($idFichas);
         if (! is_null($fichaPropiedad)) {
-            $fichaPropiedad->delete(); //se le asiga la fehca de borrado
+            $fichaPropiedad->delete(); //se le asigna la fecha de borrado
             $response = [
                 'msj' => 'Ficha borrada Exitosamente',
             ];
