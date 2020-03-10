@@ -15,6 +15,7 @@ class FichaPropiedadController extends Controller
     public function add(Request $request)
     {
 
+
         $this->validate($request, [
             'titulo'         => 'required',
             'ubicacion'      => 'required',
@@ -24,7 +25,6 @@ class FichaPropiedadController extends Controller
             'img1fa'         => 'required',
             'img2pr'         => 'required',
             'img3pl'         => 'required',
-            'fk_idPropiedad' => 'required',
         ], [
             'titulo.required'         => 'El Campo es requerido',
             'ubicacion.required'      => 'El Campo es requerido',
@@ -33,8 +33,7 @@ class FichaPropiedadController extends Controller
             'comision.required'       => 'El Campo es requerido',
             'img1fa.required'         => 'El Campo es requerido',
             'img2pr.required'         => 'El Campo es requerido',
-            'img3pl.required'         => 'El Campo es requerido',
-            'fk_idPropiedad.required' => 'El Campo es requerido',
+            'img3pl.required'         => 'El Campo es requerido'
         ]);
 
         DB::beginTransaction();

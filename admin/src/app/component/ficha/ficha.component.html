@@ -11,7 +11,7 @@
       <h3 class="py-5 text-center font-weight-bold" *ngIf="formEstado == enCRUD.Crear">
         Nueva Ficha de Propiedad
       </h3>
-      
+
       <h3 class="py-5 text-center font-weight-bold" *ngIf="formEstado == enCRUD.Actualizar">
         Actualizar Ficha de Propiedad
       </h3>
@@ -32,8 +32,8 @@
 <!--
             <div class="w-50">
 
-              <input class="form-control ng-untouched ng-pristine ng-valid" 
-                formControlName="search" 
+              <input class="form-control ng-untouched ng-pristine ng-valid"
+                formControlName="search"
                 placeholder="Buscar por título o descripción"
                 type="text"/>
 
@@ -41,11 +41,11 @@
 
             <div class="w-25 ml-2">
 
-              <button class="btn btn-success btn-block" 
-                type="button" 
-                (click)="filter()" 
-                [disabled]="mLoading" 
-                ngbTooltip="Buscar" 
+              <button class="btn btn-success btn-block"
+                type="button"
+                (click)="filter()"
+                [disabled]="mLoading"
+                ngbTooltip="Buscar"
                 placement="top">
 
                 Buscar  <i class="fa fa-search"></i>
@@ -91,11 +91,11 @@
 
           <tbody>
 
-            <tr *ngFor="let ficha of fichas | 
-              paginate: { 
-                itemsPerPage: 5, 
-                currentPage: p 
-              }; 
+            <tr *ngFor="let ficha of fichas |
+              paginate: {
+                itemsPerPage:10,
+                currentPage: p
+              };
               let i = index">
 
               <td class="float-center">{{i + 1}}</td>
@@ -105,19 +105,15 @@
               <td>{{ficha.comision}}</td>
 
               <td class="float-right">
-                <button (click)="ver(ficha)" type="button" class="btn mr-2 btn-info">
+                <button  (click)="goPdf(ficha.idFichas)"  class="btn mr-2 btn-info">
 
-                  <i class="far fa-eye"></i>
-
-                </button>
-
-                <button (click)="modificar(ficha)" type="button" class="btn mr-2 btn-primary">
-
-                  <i class="fas fa-pencil-alt"></i>
+                  <i class="fas fa-file-pdf"></i>
 
                 </button>
 
-                <button (click)="eliminar(ficha, id.idFicha)" type="button" class="btn mr-2 btn-danger">
+
+
+                <button (click)="eliminar(ficha.idFichas)" type="button" class="btn mr-2 btn-danger">
 
                   <i class="fa fa-trash"></i>
 
@@ -197,16 +193,16 @@
 
             <div class="form-group">
 
-              <label for="">Nombre de la Propiedad <span style="color:red;font-weight:bold;">*</span></label>
+              <label for="">Nombre de la Ficha <span style="color:red;font-weight:bold;">*</span></label>
               <input type="input" formControlName="titulo" class="form-control">
 
             </div>
 
             <div *ngIf="form.controls['titulo'].errors && !form.controls['titulo'].pristine"
               class="alert alert-danger">
-              
-              <span *ngIf="form.controls['titulo'].errors.required"> 
-                El Nombre de la Propiedad no puede estar vacío.<br>
+
+              <span *ngIf="form.controls['titulo'].errors.required">
+                El Nombre de la Ficha no puede estar vacío.<br>
               </span>
 
             </div>
@@ -223,11 +219,11 @@
             <div *ngIf="form.controls['valor'].errors && !form.controls['valor'].pristine"
               class="alert alert-danger">
 
-              <span *ngIf="form.controls['valor'].errors.required"> 
+              <span *ngIf="form.controls['valor'].errors.required">
                 El Valor de la propiedad no puede estar vacío.<br>
               </span>
 
-              <!-- <span *ngIf="form.controls['valor'].errors.pattern"> 
+              <!-- <span *ngIf="form.controls['valor'].errors.pattern">
                 El Número de Contacto debe ser sólo números.<br>
               </span> -->
             </div>
@@ -275,7 +271,7 @@
             <div *ngIf="form.controls['caracteristica'].errors && !form.controls['caracteristica'].pristine"
               class="alert alert-danger">
 
-              <span *ngIf="form.controls['caracteristica'].errors.required"> 
+              <span *ngIf="form.controls['caracteristica'].errors.required">
                 Las Caracteristicas de la Propiedad no puede estar vacía. <br>
               </span>
 
@@ -299,7 +295,7 @@
             <div *ngIf="form.controls['comision'].errors && !form.controls['comision'].pristine"
               class="alert alert-danger">
 
-              <span *ngIf="form.controls['comision'].errors.required"> 
+              <span *ngIf="form.controls['comision'].errors.required">
                 La comision inmobiliaria no puede estar vacía. <br>
               </span>
 
@@ -311,110 +307,198 @@
 
         <div class="row">
 
-          <div class="col-md-12">
+          <div class="col-md-6">
+            <mat-card class="card-material">
+              <img mat-card-image class="img-card"
+                 [src]="this.form.value.img1fa ? this.form.value.img1fa :  imageNotFound"
+                 alt="Imagen 1">
+              <mat-card-actions style="overflow: hidden">
+                <div class="wrapper-dropzone">
+                 <div class="drop">
+                   <div class="cont">
+                     <div class="browse">
+                       Arrastra y suelta la imagen
+                     </div>
+                   </div>
+                   <div>
+                     <div id="files-errors">
+                     </div>
+                   </div>
+                   <div>
+                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img1fa')" />
+                   </div>
+                 </div>
+               </div>
+               </mat-card-actions>
 
-            <div class="alert alert-info" role="alert">
-              El ancho mínimo de la imagen debe ser de 2000 px <br>
-              El alto mínimo de la imagen debe ser de 700 px
-            </div>
-
-            <div class="form-group">
-
-              <label for="">Imagenes</label>
-
-              <div class="wrapper-dropzone">
-
-                <div class="drop">
-
-                  <div class="cont">
-
-                    <div class="browse">
-                      Adjuntar imagen
-                    </div>
-
-                  </div>
-
-                  <div>
-
-                    <output id="list">
-
-                      <span *ngFor="let element of mCategoriasSelect.imagenes">
-                        <img class="thumb" [src]="element.imagen" style="height:150px;" title="">
-                      </span>
-
-                    </output>
-
-                    <div id="files-errors">
-                    </div>
- 
-                  </div>
-
-                  <div>
-                    <input id="files" multiple="true" name="files[]" type="file" (change)="handleFileSelect($event)" />
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
+              <mat-card-subtitle class="card-subtitle">
+                 Imagen 1 (Requerido)
+              </mat-card-subtitle>
+           </mat-card>
 
           </div>
 
-        </div>
+          <div class="col-md-6">
+            <mat-card class="card-material">
+              <img mat-card-image class="img-card"
+                 [src]="this.form.value.img2pr ? this.form.value.img2pr :  imageNotFound"
+                 alt="Imagen 1">
+              <mat-card-actions style="overflow: hidden">
+                <div class="wrapper-dropzone">
+                 <div class="drop">
+                   <div class="cont">
+                     <div class="browse">
+                       Arrastra y suelta la imagen
+                     </div>
+                   </div>
+                   <div>
+                     <div id="files-errors">
+                     </div>
+                   </div>
+                   <div>
+                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img2pr')" />
+                   </div>
+                 </div>
+               </div>
+               </mat-card-actions>
 
-
-        <div class="row">
-
-          <div class="col-md-12">
-
-            <div class="alert alert-info" role="alert">
-              El ancho mínimo de la imagen debe ser de 2000 px <br>
-              El alto mínimo de la imagen debe ser de 700 px
-            </div>
-
-            <div class="form-group">
-
-              <label for="">Imagenes</label>
-
-              <div class="wrapper-dropzone">
-
-                <div class="drop">
-
-                  <div class="cont">
-
-                    <div class="browse">
-                      Adjuntar imagen
-                    </div>
-
-                  </div>
-
-                  <div>
-
-                    <output id="list">
-
-                      <span *ngFor="let element of mCategoriasSelect.imagenes">
-                        <img class="thumb" [src]="element.imagen" style="height:150px;" title="">
-                      </span>
-
-                    </output>
-
-                    <div id="files-errors">
-                    </div>
- 
-                  </div>
-
-                  <div>
-                    <input id="files" multiple="true" name="files[]" type="file" (change)="handleFileSelect($event)" />
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
+              <mat-card-subtitle class="card-subtitle">
+                 Imagen 2 (Requerido)
+              </mat-card-subtitle>
+           </mat-card>
 
           </div>
+
+
+          <div class="col-md-6">
+            <mat-card class="card-material">
+              <img mat-card-image class="img-card"
+                 [src]="this.form.value.img3pl ? this.form.value.img3pl :  imageNotFound"
+                 alt="Imagen 3">
+              <mat-card-actions style="overflow: hidden">
+                <div class="wrapper-dropzone">
+                 <div class="drop">
+                   <div class="cont">
+                     <div class="browse">
+                       Arrastra y suelta la imagen
+                     </div>
+                   </div>
+                   <div>
+                     <div id="files-errors">
+                     </div>
+                   </div>
+                   <div>
+                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img3pl')" />
+                   </div>
+                 </div>
+               </div>
+               </mat-card-actions>
+
+              <mat-card-subtitle class="card-subtitle">
+                 Imagen 3 (Requerido)
+              </mat-card-subtitle>
+           </mat-card>
+
+          </div>
+
+
+          <div class="col-md-6">
+            <mat-card class="card-material">
+              <img mat-card-image class="img-card"
+                 [src]="this.form.value.img4pl ? this.form.value.img4pl :  imageNotFound"
+                 alt="Imagen 4">
+              <mat-card-actions style="overflow: hidden">
+                <div class="wrapper-dropzone">
+                 <div class="drop">
+                   <div class="cont">
+                     <div class="browse">
+                       Arrastra y suelta la imagen
+                     </div>
+                   </div>
+                   <div>
+                     <div id="files-errors">
+                     </div>
+                   </div>
+                   <div>
+                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img4pl')" />
+                   </div>
+                 </div>
+               </div>
+               </mat-card-actions>
+
+              <mat-card-subtitle class="card-subtitle">
+                 Imagen 4 (Requerido)
+              </mat-card-subtitle>
+           </mat-card>
+
+          </div>
+
+
+          <div class="col-md-6">
+            <mat-card class="card-material">
+              <img mat-card-image class="img-card"
+                 [src]="this.form.value.img5sa ? this.form.value.img5sa :  imageNotFound"
+                 alt="Imagen 5">
+              <mat-card-actions style="overflow: hidden">
+                <div class="wrapper-dropzone">
+                 <div class="drop">
+                   <div class="cont">
+                     <div class="browse">
+                       Arrastra y suelta la imagen
+                     </div>
+                   </div>
+                   <div>
+                     <div id="files-errors">
+                     </div>
+                   </div>
+                   <div>
+                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img5sa')" />
+                   </div>
+                 </div>
+               </div>
+               </mat-card-actions>
+
+              <mat-card-subtitle class="card-subtitle">
+                 Imagen 5 (Requerido)
+              </mat-card-subtitle>
+           </mat-card>
+
+          </div>
+
+
+          <div class="col-md-6">
+            <mat-card class="card-material">
+              <img mat-card-image class="img-card"
+                 [src]="this.form.value.img6sa ? this.form.value.img6sa :  imageNotFound"
+                 alt="Imagen 6">
+              <mat-card-actions style="overflow: hidden">
+                <div class="wrapper-dropzone">
+                 <div class="drop">
+                   <div class="cont">
+                     <div class="browse">
+                       Arrastra y suelta la imagen
+                     </div>
+                   </div>
+                   <div>
+                     <div id="files-errors">
+                     </div>
+                   </div>
+                   <div>
+                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img6sa')" />
+                   </div>
+                 </div>
+               </div>
+               </mat-card-actions>
+
+              <mat-card-subtitle class="card-subtitle">
+                 Imagen 6 (Requerido)
+              </mat-card-subtitle>
+           </mat-card>
+
+          </div>
+
+
+
 
         </div>
       </form>
