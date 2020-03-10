@@ -1,0 +1,215 @@
+{
+	"variables": [],
+	"info": {
+		"name": "nuevos",
+		"_postman_id": "ba1797b4-c504-eb2c-390f-ae7d397d979e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "banner clientes galeria de clientes",
+			"description": "",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"url": "localhost:8000/api/auth/banner/add",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ0NTNkZWIyMmJkODI0YTBlOGE4NWNiOTBkMGFkOThjMjllOTQ5YWMyMTU1ZDkxMWFmZDc3YTY5ZWM2NzBjZjI1OGMwYTVmY2U1YmI4YTU5In0.eyJhdWQiOiIxIiwianRpIjoiZDQ1M2RlYjIyYmQ4MjRhMGU4YTg1Y2I5MGQwYWQ5OGMyOWU5NDlhYzIxNTVkOTExYWZkNzdhNjllYzY3MGNmMjU4YzBhNWZjZTViYjhhNTkiLCJpYXQiOjE1ODM4NDUyMzYsIm5iZiI6MTU4Mzg0NTIzNiwiZXhwIjoxNTgzOTMxNjM1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.hH67OK4r0DbtNs7HVTFreZiaLe1gUijr9aPnCO4xgRrOa58plTjXM-oPrM_KsOWTXWwZrIqnLfx-SLSw27mqL4iXoDfQ5c4BXv5XKxtuyvJK-dhvaqhga5TNNRgxh5HqnorXQcOiEat4AR4CwYLZdQZQ5mFP3ItMHIx9jI1sTYqSWpuHc7SUjyQ3qSlk_DnYzEllV6FHJKW7XZIeJbmXTMfYT_sK1eVxXnfikDR805GiiaT68x5dUPznCyrymDgUKCzFrrf12TlNVySLhFdlrRzqrVWBMWz1jJTZoxesvY29F_RnmaS7JCCMo13pPaYYYtxuzUtsbfkzXVugmE5xtbgujRvwnD40ICWuN1MyQYi8k3UW3I_uZewSUDXH-hPm1YjomutyY5fhmQ4OPbYgQSBDhyfcBFXkZIGtnVecsZ6tdvHGkDpQ9XKTxl4K6N1uVXEhDzOOjcQdY4p9CVYW3lkznVBBxRGKbOQhkVyB9tu5T1gVgOjMpfWJdMPQ-uKOQpOMN9HdMrrTINDB_fTeIghhGZYTRFvi6yOfDxxanteGeIbboqLQhiZRpVZPJ0hk6mv-3-E0SNfSRvraEUNb5lp4Qu927O2fDtEoq3sYzzQHB92KrZFJg0GTJjrrRGCU730e7gCV5emGMZ8OMWXPpTL1vpN-cwsjQZ9WP_CCacg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_imagen",
+									"value": "",
+									"type": "file",
+									"description": ""
+								},
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "orden",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"url": "localhost:8000/api/auth/banner/edit/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ0NTNkZWIyMmJkODI0YTBlOGE4NWNiOTBkMGFkOThjMjllOTQ5YWMyMTU1ZDkxMWFmZDc3YTY5ZWM2NzBjZjI1OGMwYTVmY2U1YmI4YTU5In0.eyJhdWQiOiIxIiwianRpIjoiZDQ1M2RlYjIyYmQ4MjRhMGU4YTg1Y2I5MGQwYWQ5OGMyOWU5NDlhYzIxNTVkOTExYWZkNzdhNjllYzY3MGNmMjU4YzBhNWZjZTViYjhhNTkiLCJpYXQiOjE1ODM4NDUyMzYsIm5iZiI6MTU4Mzg0NTIzNiwiZXhwIjoxNTgzOTMxNjM1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.hH67OK4r0DbtNs7HVTFreZiaLe1gUijr9aPnCO4xgRrOa58plTjXM-oPrM_KsOWTXWwZrIqnLfx-SLSw27mqL4iXoDfQ5c4BXv5XKxtuyvJK-dhvaqhga5TNNRgxh5HqnorXQcOiEat4AR4CwYLZdQZQ5mFP3ItMHIx9jI1sTYqSWpuHc7SUjyQ3qSlk_DnYzEllV6FHJKW7XZIeJbmXTMfYT_sK1eVxXnfikDR805GiiaT68x5dUPznCyrymDgUKCzFrrf12TlNVySLhFdlrRzqrVWBMWz1jJTZoxesvY29F_RnmaS7JCCMo13pPaYYYtxuzUtsbfkzXVugmE5xtbgujRvwnD40ICWuN1MyQYi8k3UW3I_uZewSUDXH-hPm1YjomutyY5fhmQ4OPbYgQSBDhyfcBFXkZIGtnVecsZ6tdvHGkDpQ9XKTxl4K6N1uVXEhDzOOjcQdY4p9CVYW3lkznVBBxRGKbOQhkVyB9tu5T1gVgOjMpfWJdMPQ-uKOQpOMN9HdMrrTINDB_fTeIghhGZYTRFvi6yOfDxxanteGeIbboqLQhiZRpVZPJ0hk6mv-3-E0SNfSRvraEUNb5lp4Qu927O2fDtEoq3sYzzQHB92KrZFJg0GTJjrrRGCU730e7gCV5emGMZ8OMWXPpTL1vpN-cwsjQZ9WP_CCacg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_imagen",
+									"value": "",
+									"type": "file",
+									"description": ""
+								},
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "orden",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar todos",
+					"request": {
+						"url": "localhost:8000/api/auth/banner/listar",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ0NTNkZWIyMmJkODI0YTBlOGE4NWNiOTBkMGFkOThjMjllOTQ5YWMyMTU1ZDkxMWFmZDc3YTY5ZWM2NzBjZjI1OGMwYTVmY2U1YmI4YTU5In0.eyJhdWQiOiIxIiwianRpIjoiZDQ1M2RlYjIyYmQ4MjRhMGU4YTg1Y2I5MGQwYWQ5OGMyOWU5NDlhYzIxNTVkOTExYWZkNzdhNjllYzY3MGNmMjU4YzBhNWZjZTViYjhhNTkiLCJpYXQiOjE1ODM4NDUyMzYsIm5iZiI6MTU4Mzg0NTIzNiwiZXhwIjoxNTgzOTMxNjM1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.hH67OK4r0DbtNs7HVTFreZiaLe1gUijr9aPnCO4xgRrOa58plTjXM-oPrM_KsOWTXWwZrIqnLfx-SLSw27mqL4iXoDfQ5c4BXv5XKxtuyvJK-dhvaqhga5TNNRgxh5HqnorXQcOiEat4AR4CwYLZdQZQ5mFP3ItMHIx9jI1sTYqSWpuHc7SUjyQ3qSlk_DnYzEllV6FHJKW7XZIeJbmXTMfYT_sK1eVxXnfikDR805GiiaT68x5dUPznCyrymDgUKCzFrrf12TlNVySLhFdlrRzqrVWBMWz1jJTZoxesvY29F_RnmaS7JCCMo13pPaYYYtxuzUtsbfkzXVugmE5xtbgujRvwnD40ICWuN1MyQYi8k3UW3I_uZewSUDXH-hPm1YjomutyY5fhmQ4OPbYgQSBDhyfcBFXkZIGtnVecsZ6tdvHGkDpQ9XKTxl4K6N1uVXEhDzOOjcQdY4p9CVYW3lkznVBBxRGKbOQhkVyB9tu5T1gVgOjMpfWJdMPQ-uKOQpOMN9HdMrrTINDB_fTeIghhGZYTRFvi6yOfDxxanteGeIbboqLQhiZRpVZPJ0hk6mv-3-E0SNfSRvraEUNb5lp4Qu927O2fDtEoq3sYzzQHB92KrZFJg0GTJjrrRGCU730e7gCV5emGMZ8OMWXPpTL1vpN-cwsjQZ9WP_CCacg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_imagen",
+									"value": "",
+									"type": "file",
+									"description": ""
+								},
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "orden",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "listar por id",
+					"request": {
+						"url": "localhost:8000/api/auth/banner/listar/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ0NTNkZWIyMmJkODI0YTBlOGE4NWNiOTBkMGFkOThjMjllOTQ5YWMyMTU1ZDkxMWFmZDc3YTY5ZWM2NzBjZjI1OGMwYTVmY2U1YmI4YTU5In0.eyJhdWQiOiIxIiwianRpIjoiZDQ1M2RlYjIyYmQ4MjRhMGU4YTg1Y2I5MGQwYWQ5OGMyOWU5NDlhYzIxNTVkOTExYWZkNzdhNjllYzY3MGNmMjU4YzBhNWZjZTViYjhhNTkiLCJpYXQiOjE1ODM4NDUyMzYsIm5iZiI6MTU4Mzg0NTIzNiwiZXhwIjoxNTgzOTMxNjM1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.hH67OK4r0DbtNs7HVTFreZiaLe1gUijr9aPnCO4xgRrOa58plTjXM-oPrM_KsOWTXWwZrIqnLfx-SLSw27mqL4iXoDfQ5c4BXv5XKxtuyvJK-dhvaqhga5TNNRgxh5HqnorXQcOiEat4AR4CwYLZdQZQ5mFP3ItMHIx9jI1sTYqSWpuHc7SUjyQ3qSlk_DnYzEllV6FHJKW7XZIeJbmXTMfYT_sK1eVxXnfikDR805GiiaT68x5dUPznCyrymDgUKCzFrrf12TlNVySLhFdlrRzqrVWBMWz1jJTZoxesvY29F_RnmaS7JCCMo13pPaYYYtxuzUtsbfkzXVugmE5xtbgujRvwnD40ICWuN1MyQYi8k3UW3I_uZewSUDXH-hPm1YjomutyY5fhmQ4OPbYgQSBDhyfcBFXkZIGtnVecsZ6tdvHGkDpQ9XKTxl4K6N1uVXEhDzOOjcQdY4p9CVYW3lkznVBBxRGKbOQhkVyB9tu5T1gVgOjMpfWJdMPQ-uKOQpOMN9HdMrrTINDB_fTeIghhGZYTRFvi6yOfDxxanteGeIbboqLQhiZRpVZPJ0hk6mv-3-E0SNfSRvraEUNb5lp4Qu927O2fDtEoq3sYzzQHB92KrZFJg0GTJjrrRGCU730e7gCV5emGMZ8OMWXPpTL1vpN-cwsjQZ9WP_CCacg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dir_imagen",
+									"value": "",
+									"type": "file",
+									"description": ""
+								},
+								{
+									"key": "fk_idUser",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								},
+								{
+									"key": "orden",
+									"value": "1",
+									"type": "text",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "borrar con softdelees",
+					"request": {
+						"url": "localhost:8000/api/auth/banner/borrar/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ0NTNkZWIyMmJkODI0YTBlOGE4NWNiOTBkMGFkOThjMjllOTQ5YWMyMTU1ZDkxMWFmZDc3YTY5ZWM2NzBjZjI1OGMwYTVmY2U1YmI4YTU5In0.eyJhdWQiOiIxIiwianRpIjoiZDQ1M2RlYjIyYmQ4MjRhMGU4YTg1Y2I5MGQwYWQ5OGMyOWU5NDlhYzIxNTVkOTExYWZkNzdhNjllYzY3MGNmMjU4YzBhNWZjZTViYjhhNTkiLCJpYXQiOjE1ODM4NDUyMzYsIm5iZiI6MTU4Mzg0NTIzNiwiZXhwIjoxNTgzOTMxNjM1LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.hH67OK4r0DbtNs7HVTFreZiaLe1gUijr9aPnCO4xgRrOa58plTjXM-oPrM_KsOWTXWwZrIqnLfx-SLSw27mqL4iXoDfQ5c4BXv5XKxtuyvJK-dhvaqhga5TNNRgxh5HqnorXQcOiEat4AR4CwYLZdQZQ5mFP3ItMHIx9jI1sTYqSWpuHc7SUjyQ3qSlk_DnYzEllV6FHJKW7XZIeJbmXTMfYT_sK1eVxXnfikDR805GiiaT68x5dUPznCyrymDgUKCzFrrf12TlNVySLhFdlrRzqrVWBMWz1jJTZoxesvY29F_RnmaS7JCCMo13pPaYYYtxuzUtsbfkzXVugmE5xtbgujRvwnD40ICWuN1MyQYi8k3UW3I_uZewSUDXH-hPm1YjomutyY5fhmQ4OPbYgQSBDhyfcBFXkZIGtnVecsZ6tdvHGkDpQ9XKTxl4K6N1uVXEhDzOOjcQdY4p9CVYW3lkznVBBxRGKbOQhkVyB9tu5T1gVgOjMpfWJdMPQ-uKOQpOMN9HdMrrTINDB_fTeIghhGZYTRFvi6yOfDxxanteGeIbboqLQhiZRpVZPJ0hk6mv-3-E0SNfSRvraEUNb5lp4Qu927O2fDtEoq3sYzzQHB92KrZFJg0GTJjrrRGCU730e7gCV5emGMZ8OMWXPpTL1vpN-cwsjQZ9WP_CCacg",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
