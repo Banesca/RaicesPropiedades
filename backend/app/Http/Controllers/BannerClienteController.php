@@ -47,7 +47,7 @@ class BannerClienteController extends Controller {
 
             $banner->save();
             if ($request->exists('dir_imagen')) {
-
+                $banner->urlImagen = asset('storage\\BannerClientes\\'.@$banner->dir_imagen);
             }
 
             $response          = [
