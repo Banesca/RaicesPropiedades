@@ -1,0 +1,265 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ficha",
+		"_postman_id": "d27e3f96-e6c6-925e-70ab-1af229924af6",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ficha add",
+			"request": {
+				"url": "localhost:8000/api/v1/fichaPropiedad/agregar",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "titulo",
+							"value": "Casa En Tipuro II 300 M2",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "ubicacion",
+							"value": "Sector Tipuro, calle principal de farmatodo",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "caracteristica",
+							"value": "Casa con todas la comodidades, estacionamiento amplio, tv, internet",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "valor",
+							"value": "1000",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "comision",
+							"value": "20%",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "fk_idPropiedad",
+							"value": "1",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "img6sa",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "img4pl",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "img5sa",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "img1fa",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "img2pr",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "img3pl",
+							"value": "",
+							"type": "file",
+							"description": ""
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ficha edit",
+			"request": {
+				"url": "localhost:8000/api/v1/fichaPropiedad/editar",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "titulo",
+							"value": "Casa En Tipuro II 300 M2",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "ubicacion",
+							"value": "Sector Tipuro, calle principal de farmatodo",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "caracteristica",
+							"value": "Casa con todas la comodidades, estacionamiento amplio, tv, internet",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "valor",
+							"value": "1000",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "comision",
+							"value": "20%",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "fk_idPropiedad",
+							"value": "1",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "img6sa",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "img4pl",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "img5sa",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "img1fa",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "img2pr",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "img3pl",
+							"value": "",
+							"type": "file",
+							"description": ""
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ficha delete",
+			"request": {
+				"url": "localhost:8000/api/v1/fichaPropiedad/borrar/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ficha get all",
+			"request": {
+				"url": "localhost:8000/api/v1/fichaPropiedad/getAll",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ficha get por id",
+			"request": {
+				"url": "localhost:8000/api/v1/fichaPropiedad/ver/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ficha get pdf",
+			"request": {
+				"url": "localhost:8000/api/v1/fichaPropiedad/pdf/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
