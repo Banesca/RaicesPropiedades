@@ -15,13 +15,12 @@ class BannerClienteController extends Controller {
         $this->validate($request, [
             'dir_imagen' => 'required',
             'fk_idUser'  => 'required',
-            'orden'      => 'required|unique:tb_banner_clientes,orden,'.$request->idBannerCliente.',idBannerCliente',
+            'orden'      => 'required'
         ], [
             'dir_imagen.required' => 'El campo es requerido',
             'fk_idUser.required'  => 'El campo es requerido',
-            'orden.required'      => 'El campo es requerido',
-            'orden.unique'        => 'Órden repetido',
-        ]);
+            'orden.required'      => 'El campo es requerido'
+                    ]);
 
         DB::beginTransaction();
 

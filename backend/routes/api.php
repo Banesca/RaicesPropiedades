@@ -57,6 +57,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('crearUser', 'UserController@store');
     Route::post('listarUsers', 'UserController@listar');
     Route::post('buscadorPersonas', 'UserController@buscarPersonas');
+    Route::get('banner/listar', 'BannerClienteController@listar');
 
     Route::post('modulo/listar', 'ModuloController@listar');
     Route::post('asinacion/modulos/listar', 'ModulosDelUserController@listar');

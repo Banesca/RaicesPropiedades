@@ -2,6 +2,16 @@
     msj: string;
     data: IGaleria[];
   }
+
+  export interface IGaleriaC{
+    msj: string;
+    banner: IGaleriaClientes[];
+  }
+
+   export interface IGaleriaClientes {
+    orden: string;
+    urlImagen: string;
+  }
   
   export interface IGaleria {
     idGaleria: number;

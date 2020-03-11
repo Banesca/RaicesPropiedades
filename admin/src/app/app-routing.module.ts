@@ -17,6 +17,7 @@ import {TransaccionesComponent} from './component/transacciones/transacciones.co
 import {UsuariosComponent} from './component/usuarios/usuarios.component';
 import {AuthGuard} from './guards/auth.guard';
 import {RandomGuard} from './guards/random.guard';
+import { GaleriaClientesComponent } from './component/galeria-clientes/galeria-clientes.component';
 //import { PublicacionesFacebookComponent } from './component/publicaciones-facebook/publicaciones-facebook.component';
 //import { GestionPublicacionesComponent } from './component/gestion-publicaciones/gestion-publicaciones.component';
 
@@ -30,6 +31,7 @@ const routes: Routes = [
          { path: '', redirectTo: 'perfil', pathMatch: 'full' },
          { path: 'gestionar-usuarios', component: UsuariosComponent, canActivate: [RandomGuard] },
          { path: 'galeria-home', component: GaleriaHomeComponent, canActivate: [RandomGuard] },
+         { path: 'galeria-clientes', component: GaleriaClientesComponent, canActivate: [RandomGuard] },
          // { path: 'gestionar-publicaciones', component: GestionPublicacionesComponent, canActivate: [RandomGuard] },
          //{ path: 'publicaciones-facebook', component: PublicacionesFacebookComponent, canActivate: [RandomGuard] },
          { path: 'mail-suscribers', component: MailSuscribersComponent, canActivate: [RandomGuard] },

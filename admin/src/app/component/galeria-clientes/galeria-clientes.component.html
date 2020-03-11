@@ -1,0 +1,176 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Eliminar">
+        Galería Clientes
+      </h3>
+      <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Crear">
+        Nueva Galería Home
+      </h3>
+      <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Actualizar">
+        Actualizar Galería Home
+      </h3>
+      <h3 class="py-5 text-center font-weight-bold" *ngIf="mFormaEstado == enCRUD.Leer">
+        Detalles Galería Home
+      </h3>
+      <div class="mb-5" *ngIf="
+            mFormaEstado != enCRUD.Crear &&
+            mFormaEstado != enCRUD.Actualizar &&
+            mFormaEstado != enCRUD.Asignar
+          ">
+          <div class="">
+            <form [formGroup]="filterForm" *ngIf="mFormaEstado != enCRUD.Crear && mFormaEstado != enCRUD.Actualizar && mFormaEstado !=
+            enCRUD.Leer" class="d-flex align-items-center">
+              <div class="w-25 mr-2">
+                <button (click)="nuevo()" class="btn btn-success btn-block" ngbTooltip="Nuevo" placement="top">
+                  Nuevo <i class="fa fa-plus"></i>
+                </button>
+              </div>
+
+            </form>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-12" *ngIf="mFormaEstado == enCRUD.Eliminar">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead class="thead-dark ">
+                <th class="d-flex justify-content-center">#</th>
+                <th>Orden</th>
+                <th>Imagen</th>
+                <th>Acción</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let categoria of mCategorias | paginate: { itemsPerPage: 5, currentPage: p }; let i = index"
+                  (dblclick)="modificar(categoria)">
+                  <td class=" justify-content-center">{{i + 1}}</td>
+                  <td>{{categoria.orden}}</td>
+                  <td><img width="50px" src="{{categoria.urlImagen}}"></td>
+                  <td class="float-right">
+                     <!--<button (click)="ver(categoria)" type="button" class="btn mr-2 btn-info">
+                      <i class="far fa-eye"></i>
+                    </button>
+                   <button (click)="modificar(categoria)" type="button" class="btn mr-2 btn-primary">
+                      <i class="fas fa-pencil-alt"></i>
+                    </button>-->
+                    <button (click)="eliminar(categoria.idBannerCliente)" type="button" class="btn mr-2 btn-danger">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="w-100">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+            <div *ngIf="(mCategorias | keys).length === 0 && !mLoading" class="alert alert-info" role="alert">
+              <strong>No existen</strong> Clientes que mostrar...
+            </div>
+            <div *ngIf="mLoading" class="alert alert-warning" role="alert">
+              <strong>Cargando</strong> por favor espere...
+            </div>
+          </div>
+    </div>
+    <div class="col-md-12" *ngIf="mFormaEstado == enCRUD.Crear ||  mFormaEstado == enCRUD.Actualizar" >
+
+        <form [formGroup]="mForma" #vForma="ngForm">
+          <div class="form-group text-right">
+            <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
+              <i class="fa fa-backward"></i>
+              Regresar
+            </button>
+            <button *ngIf="mFormaEstado == enCRUD.Crear" (click)="onSubmit()" style="margin: 5px" class="btn btn-primary">
+              <i class="fa fa-save"></i>
+              Guardar
+            </button>
+
+            <button *ngIf="mFormaEstado == enCRUD.Actualizar" (click)="actualizar(mCategoriasSelect.idBannerCliente)" [disabled]="!vForma.valid"
+              style="margin: 5px" class="btn btn-primary">
+              <i class="fa fa-save"></i>
+              Modificar
+            </button>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="">Orden de galería</label>
+                <input class="form-control" type="number" formControlName="orden" placeholder="Orden" [(ngModel)]="mCategoriasSelect.orden"
+                  oninput="this.value=this.value.replace(/[^\d+]/,'')" />
+                <div *ngIf="f.orden.errors" type="alert" class="invalid-feedback d-block">
+                  <div *ngIf="submitted && f.orden.errors.required">El orden es requerida</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="form-group">
+                <label for="">Imagen</label>
+                <div class="wrapper-dropzone">
+                  <div class="drop">
+                    <div class="cont">
+                      <div class="browse">
+                        Adjuntar imagen
+                      </div>
+                    </div>
+                    <div>
+                      <output id="list">
+                        <span *ngFor="let element of mCategoriasSelect.dir_imagen">
+                          <img class="thumb" [src]="element.imagen" style="height:150px;" title="">
+                        </span>
+                      </output>
+                      <div id="files-errors">
+                      </div>
+                    </div>
+                    <div>
+                      <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event)" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+    </div>
+    <div *ngIf="mFormaEstado == enCRUD.Leer" class="col-md-12">
+        <form>
+          <div class="form-group text-right">
+            <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
+              <i class="fa fa-backward"></i>
+              Regresar
+            </button>
+          </div>
+          <div class="form-group">
+            <label for="">Orden</label>
+            <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.orden" name="mCategoriasSelect.orden"
+              readonly />
+          </div>
+
+
+        </form>
+    </div>
+    <div *ngIf="mFormaEstado == enCRUD.Actualizar" class="col-md-6 m-auto" style="">
+        <ngb-carousel *ngIf="mCategoriasSelect.dir_imagen?.length>0">
+          <ng-template ngbSlide *ngFor="let element of mCategoriasSelect.dir_imagen; let i = index">
+            <div class="item">
+              <div class="related_product_item">
+                <div class="related_product_pic">
+                  <div class="picsum-img-wrapper">
+                    <img [src]="element.imagen" alt="Random first slide" class="w-100">
+                  </div>
+                  <div class="carousel-caption">
+                    <h3>Imagen {{i+1}}/{{mCategoriasSelect.dir_imagen.length}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+    </div>
+  </div>
+</div>
