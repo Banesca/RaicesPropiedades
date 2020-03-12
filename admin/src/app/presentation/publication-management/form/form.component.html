@@ -516,8 +516,7 @@
                                        <div class="example-container">
                                           <mat-form-field>
                                              <mat-select placeholder="Estado*" formControlName="fk_Estado">
-                                                <mat-option *ngFor="let item of arrayEstadoDePropiedad"
-                                                   [value]="item.idEstadoPropiedad">
+                                                <mat-option *ngFor="let item of arrayEstadoDePropiedad" [value]="item.idEstadoPropiedad">
                                                    {{item.descripcion}}
                                                 </mat-option>
                                              </mat-select>

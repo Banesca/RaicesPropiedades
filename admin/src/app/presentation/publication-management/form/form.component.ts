@@ -250,6 +250,7 @@ export class FormComponent implements OnInit {
             tipoDeUnidad: ['', Validators.required],
             fk_idTipoOperaion: ['', Validators.required], // se coloca fk_idTipoOperaion para coincidir con el campo del backend
             precio: ['', Validators.required],
+            informacion_adicional: ['', Validators.required],
             fk_idMonedas: ['', Validators.required],
             no_publicar_precio_inter: [false],
             fk_Estado: ['', Validators.required],
