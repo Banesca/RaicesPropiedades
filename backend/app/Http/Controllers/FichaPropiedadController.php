@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\Storage;
 use Image;
 use PDF;
 
+ini_set('memory_limit', '512M');
+ini_set('max_execution_time', '3000');
+
 class FichaPropiedadController extends Controller
 {
     public function add(Request $request)
     {
-
-
         $this->validate($request, [
             'titulo'         => 'required',
             'ubicacion'      => 'required',
