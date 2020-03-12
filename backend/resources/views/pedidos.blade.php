@@ -206,7 +206,6 @@
     </div>
     <div class = "footer">
         <img src = "{!! public_path('img/pedidos/RESUMEN-PEDIDOS-FOOTER.jpg') !!}" alt = "" width = "100%" height = "200px">
-
     </div>
 </header>
 
@@ -280,12 +279,12 @@
             <table cellspacing = 15>
                 <tr>
                     <td>
-                        <img src = "{!! !is_null($ficha->img1fa) ? public_path('storage\\fichaPropiedad\\'.$ficha->img1fa) : null !!}" alt = "" width = "500px" height = "250px">
+                        <img src = "{!! !is_null($ficha->img1fa) ? public_path('storage/fichaPropiedad/'.$ficha->img1fa) : null !!}" alt = "" width = "500px" height = "250px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <img src = "{!! !is_null($ficha->img2pr) ? public_path('storage\\fichaPropiedad\\'.$ficha->img2pr) : null !!}" alt = "" width = "500px" height = "250px">
+                        <img src = "{!! !is_null($ficha->img2pr) ? public_path('storage/fichaPropiedad/'.$ficha->img2pr) : null !!}" alt = "" width = "500px" height = "250px">
                     </td>
                 </tr>
             </table>
@@ -305,12 +304,12 @@
             <table cellspacing = 15>
                 <tr>
                     <td>
-                        <img src = "{!! !is_null($ficha->img3pl) ? public_path('storage\\fichaPropiedad\\'.$ficha->img3pl) : null !!}" alt = "" width = "500px" height = "250px">
+                        <img src = "{!! !is_null($ficha->img3pl) ? public_path('storage/fichaPropiedad/'.$ficha->img3pl) : null !!}" alt = "" width = "500px" height = "250px">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <img src = "{!! !is_null($ficha->img3pl) ? public_path('storage\\fichaPropiedad\\'.$ficha->img3pl) : null !!}" alt = "" width = "500px" height = "250px">
+                        <img src = "{!! !is_null($ficha->img3pl) ? public_path('storage/fichaPropiedad/'.$ficha->img3pl) : null !!}" alt = "" width = "500px" height = "250px">
                     </td>
                 </tr>
             </table>
@@ -333,13 +332,13 @@
 
                 <tr>
                     <td>
-                        <img src = "{!! !is_null($ficha->img5sa) ? public_path('storage\\fichaPropiedad\\'.$ficha->img5sa) : null !!}" alt = "" width = "500px" height = "250px">
+                        <img src = "{!! !is_null($ficha->img5sa) ? public_path('storage/fichaPropiedad/'.$ficha->img5sa) : null !!}" alt = "" width = "500px" height = "250px">
                     </td>
 
                 </tr>
                 <tr>
                     <td>
-                        <img src = "{!! !is_null($ficha->img6sa) ? public_path('storage\\fichaPropiedad\\'.$ficha->img6sa) : null !!}" alt = "" width = "500px" height = "250px">
+                        <img src = "{!! !is_null($ficha->img6sa) ? public_path('storage/fichaPropiedad/'.$ficha->img6sa) : null !!}" alt = "" width = "500px" height = "250px">
                     </td>
                 </tr>
 
