@@ -192,7 +192,7 @@ class PaisesController extends Controller
 
             $Paises   = subBarrios::where('fk_barrio', '=', $idBarrio)->get();
             $response = [
-                'subBarrios' => $Paises,
+                'SubBarrios' => $Paises,
             ];
             DB::commit();
 
