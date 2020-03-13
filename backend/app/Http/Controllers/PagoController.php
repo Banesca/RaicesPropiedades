@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ConfigGeneral;
 use App\Mail\PagoMail;
+use App\Mail_;
 use App\Pago;
 use Config;
 use Illuminate\Http\Request;
@@ -67,6 +68,14 @@ class PagoController extends Controller {
 
             if ($mail) {
                 Mail::to($mail)->send(new PagoMail($pago));
+            }
+
+            /*Copia a Emails de Recepción*/
+            $cc = Mail_::all();
+            foreach ($cc as $mail) {
+                if ($mail->email) {
+                    Mail::to($mail->email)->send(new PagoMail($pago));
+                }
             }
 
             return response()->json($response, 200);
