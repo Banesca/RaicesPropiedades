@@ -59,6 +59,8 @@ class Ficha123Controller extends Controller {
                 'imagen5'             => ! is_null(@$ficha123->imagen5) ? asset('storage\\ficha2\\'.@$ficha123->imagen5) : '',
                 'imagen6'             => ! is_null(@$ficha123->imagen6) ? asset('storage\\ficha2\\'.@$ficha123->imagen6) : '',
                 'imagen7'             => ! is_null(@$ficha123->imagen7) ? asset('storage\\ficha2\\'.@$ficha123->imagen7) : '',
+                'imagen8'             => ! is_null(@$ficha123->imagen8) ? asset('storage\\ficha2\\'.@$ficha123->imagen8) : '',
+                'imagen9'             => ! is_null(@$ficha123->imagen9) ? asset('storage\\ficha2\\'.@$ficha123->imagen9) : '',
                 'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
             ];
 
@@ -132,6 +134,8 @@ class Ficha123Controller extends Controller {
                     'imagen5'             => ! is_null(@$ficha123->imagen5) ? asset('storage\\ficha2\\'.@$ficha123->imagen5) : '',
                     'imagen6'             => ! is_null(@$ficha123->imagen6) ? asset('storage\\ficha2\\'.@$ficha123->imagen6) : '',
                     'imagen7'             => ! is_null(@$ficha123->imagen7) ? asset('storage\\ficha2\\'.@$ficha123->imagen7) : '',
+                    'imagen8'             => ! is_null(@$ficha123->imagen8) ? asset('storage\\ficha2\\'.@$ficha123->imagen8) : '',
+                    'imagen9'             => ! is_null(@$ficha123->imagen9) ? asset('storage\\ficha2\\'.@$ficha123->imagen9) : '',
                     'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
                 ];
             });
@@ -203,6 +207,8 @@ class Ficha123Controller extends Controller {
                     'imagen5'             => ! is_null(@$ficha123->imagen5) ? asset('storage\\ficha2\\'.@$ficha123->imagen5) : '',
                     'imagen6'             => ! is_null(@$ficha123->imagen6) ? asset('storage\\ficha2\\'.@$ficha123->imagen6) : '',
                     'imagen7'             => ! is_null(@$ficha123->imagen7) ? asset('storage\\ficha2\\'.@$ficha123->imagen7) : '',
+                    'imagen8'             => ! is_null(@$ficha123->imagen8) ? asset('storage\\ficha2\\'.@$ficha123->imagen8) : '',
+                    'imagen9'             => ! is_null(@$ficha123->imagen9) ? asset('storage\\ficha2\\'.@$ficha123->imagen9) : '',
                     'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
                 ];
             });
