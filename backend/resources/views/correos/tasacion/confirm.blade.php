@@ -445,7 +445,7 @@
                                         <h2>Recibimos su tasación</h2>
                                         <hr>
                                         <p>
-                                            Hola! {{$tasacion->nombre_apellido}} Se ha recibido su tasacion titulada: {{$tasacion->titulo}}.
+                                            Hola! {{$tasacion->nombre_apellido}} Se ha recibido su tasación.
                                         </p>
                                         <h5>www.raicespropiedades.com</h5>
                                     </td>
