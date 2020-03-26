@@ -6,3 +6,10 @@
 .dropdown-item.active {
     background-color: #39211F;
 }
+
+@media (max-width: 575.98px) {
+
+    .pago{
+        min-width:0px;
+    }
+}

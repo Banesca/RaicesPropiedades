@@ -40,6 +40,11 @@
                     <span class="nav-underline yellow-text text-uppercase" style="cursor: pointer;">Tasaciónes</span>
                   </a>
                 </li>
+                <li>
+                  <a (click)="openModalPayment()" (click)="status = !status" class="link-nav text-center">
+                    <span class="nav-underline yellow-text text-uppercase" style="cursor: pointer;">Notificar Pago</span>
+                  </a>
+                </li>
   </ul>    
   <a class="back-link" id="back-link" (click)="status = !status" [ngClass]="status ? 'active' : 'hide'"></a>
 <div class="text-white">
@@ -89,7 +94,7 @@
     color: #39211f;
     font-weight: bold;
     font-size: 19px;" class="link-nav">
-                  <span class="nav-underline  ">Notificar Pago</span>
+                  <span class="nav-underline">Notificar Pago</span>
                 </a>
               </li>
              
