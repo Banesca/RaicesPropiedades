@@ -312,6 +312,8 @@ class Propiedad extends Model {
         'imagen5',
         'imagen6',
         'imagen7',
+        'imagen8',
+        'imagen9',
         'imagen_para_galeria',
 
 

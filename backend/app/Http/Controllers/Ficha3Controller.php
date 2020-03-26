@@ -37,6 +37,8 @@ class Ficha3Controller extends Controller {
                 'imagen5',
                 'imagen6',
                 'imagen7',
+                'imagen8',
+                'imagen9',
                 'imagen_para_galeria',
             ];
 
@@ -116,6 +118,8 @@ class Ficha3Controller extends Controller {
                     'imagen5'             => asset('storage\\ficha2\\'.@$propiedad->imagen5),
                     'imagen6'             => asset('storage\\ficha2\\'.@$propiedad->imagen6),
                     'imagen7'             => asset('storage\\ficha2\\'.@$propiedad->imagen7),
+                    'imagen8'             => asset('storage\\ficha2\\'.@$propiedad->imagen8),
+                    'imagen9'             => asset('storage\\ficha2\\'.@$propiedad->imagen9),
                     'imagen_para_galeria' => asset('storage\\ficha2\\'.@$propiedad->imagen_para_galeria),
                 ],
                 'datos_propiedad' => [
@@ -156,6 +160,8 @@ class Ficha3Controller extends Controller {
                     'imagen5',
                     'imagen6',
                     'imagen7',
+                    'imagen8',
+                    'imagen9',
                     'imagen_para_galeria',
                 ];
 
@@ -231,6 +237,8 @@ class Ficha3Controller extends Controller {
                         'imagen5'             => asset('storage\\ficha2\\'.@$propiedad->imagen5),
                         'imagen6'             => asset('storage\\ficha2\\'.@$propiedad->imagen6),
                         'imagen7'             => asset('storage\\ficha2\\'.@$propiedad->imagen7),
+                        'imagen8'             => asset('storage\\ficha2\\'.@$propiedad->imagen8),
+                        'imagen9'             => asset('storage\\ficha2\\'.@$propiedad->imagen9),
                         'imagen_para_galeria' => asset('storage\\ficha2\\'.@$propiedad->imagen_para_galeria),
                     ],
                     'datos_propiedad' => [

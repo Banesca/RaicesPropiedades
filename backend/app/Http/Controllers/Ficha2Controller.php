@@ -35,6 +35,8 @@ class Ficha2Controller extends Controller {
                 'imagen5',
                 'imagen6',
                 'imagen7',
+                'imagen8',
+                'imagen9',
                 'imagen_para_galeria',
             ];
 
@@ -76,6 +78,8 @@ class Ficha2Controller extends Controller {
                     'imagen5'             => asset('storage\\ficha2\\'.@$ficha2->imagen5),
                     'imagen6'             => asset('storage\\ficha2\\'.@$ficha2->imagen6),
                     'imagen7'             => asset('storage\\ficha2\\'.@$ficha2->imagen7),
+                    'imagen8'             => asset('storage\\ficha2\\'.@$ficha2->imagen8),
+                    'imagen9'             => asset('storage\\ficha2\\'.@$ficha2->imagen9),
                     'imagen_para_galeria' => asset('storage\\ficha2\\'.@$ficha2->imagen_para_galeria),
                     'idFicha2'              => $ficha2->idFicha2,
                 ],
