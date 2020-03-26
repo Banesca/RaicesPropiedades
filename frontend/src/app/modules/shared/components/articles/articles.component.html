@@ -69,6 +69,11 @@
                         <span>{{filterData.idBarrio.nombre}}</span>
                         <mat-icon matChipRemove>cancel</mat-icon>
                     </mat-chip>
+                    <!--CHIP Calle-->
+                    <mat-chip removable="true" (removed)="removeChip('idCalle')" *ngIf="filterData.idCalle && filterData.idCalle.idCalle">
+                        <span>{{filterData.idCalle.nombre}}</span>
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
                     <!--CHIP Zona-->
                     <mat-chip removable="true" (removed)="removeChip('zona')" *ngIf="filterData.zona">
                         <span>{{filterData.zona.nombre}}</span>
