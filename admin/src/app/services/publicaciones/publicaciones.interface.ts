@@ -18,6 +18,8 @@ export interface IPublicacion {
     imagen5?: any;
     imagen6?: any;
     imagen7?: any;
+    imagen8?: any;
+    imagen9?: any;
 
 
 
@@ -32,6 +34,7 @@ export interface IPublicacion {
 
     fk_Direccion_Ciudad_Id?: number;
     fk_Direccion_Barrio_Id?: number;
+    fk_Direccion_Calle_Id?: number;
     fk_Direccion_SubBarrio_Id?: number;
     Direccion_Nombrecalle?: string;
     Direccion_Numero?: string;

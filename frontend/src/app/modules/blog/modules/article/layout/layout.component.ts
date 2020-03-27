@@ -233,6 +233,10 @@ export class LayoutComponent implements OnInit {
           this.images.push(this.gPropiedades.imagenes.imagen6);
         if (this.gPropiedades.imagenes.imagen7)
           this.images.push(this.gPropiedades.imagenes.imagen7);
+        if (this.gPropiedades.imagenes.imagen8)
+          this.images.push(this.gPropiedades.imagenes.imagen8);
+        if (this.gPropiedades.imagenes.imagen9)
+          this.images.push(this.gPropiedades.imagenes.imagen9);
         if (
           !this.gPropiedades.imagenes.imagen1 &&
           !this.gPropiedades.imagenes.imagen2 &&
@@ -240,7 +244,9 @@ export class LayoutComponent implements OnInit {
           !this.gPropiedades.imagenes.imagen4 &&
           !this.gPropiedades.imagenes.imagen5 &&
           !this.gPropiedades.imagenes.imagen6 &&
-          !this.gPropiedades.imagenes.imagen7
+          !this.gPropiedades.imagenes.imagen7 &&
+          !this.gPropiedades.imagenes.imagen8 &&
+          !this.gPropiedades.imagenes.imagen9
         ) {
           this.images.push("https://picsum.photos/id/539/900/500");
         }
