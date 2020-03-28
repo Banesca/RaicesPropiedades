@@ -222,6 +222,10 @@ export class SearchComponent implements OnInit {
      console.log(error);
      });
      };*/
+    setBarrio = (data: any) => {
+        //console.log("opcion selecionda: "+data);
+        this.selectedBarrio = data;
+    }
 
 
     setCalle = (data: any) => {
