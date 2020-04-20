@@ -1,4 +1,4 @@
-export const ip = 'http://localhost:8000'
+export const ip = 'https://raicespropiedades.com/backend/public'
 
 export const environment = {
   production: true,

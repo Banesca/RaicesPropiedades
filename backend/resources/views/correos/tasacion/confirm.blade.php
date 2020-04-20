@@ -445,7 +445,7 @@
                                         <h2>Recibimos su tasación</h2>
                                         <hr>
                                         <p>
-                                            Hola! {{$tasacion->nombre_apellido}} Se ha recibido su tasación.
+                                            Hola! {{$tasacion->nombre_apellido}} confirmamos la tasación de tu propiedad, en breve llamaremos para coordinar día y horario de realización..
                                         </p>
                                         <h5>www.raicespropiedades.com</h5>
                                     </td>

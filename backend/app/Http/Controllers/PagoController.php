@@ -66,16 +66,17 @@ class PagoController extends Controller {
 
             $mail = $mail->correo;
 
-            if ($mail) {
-                Mail::to($mail)->send(new PagoMail($pago));
-            }
-
             /*Copia a Emails de Recepción*/
-            $cc = Mail_::all();
-            foreach ($cc as $mail) {
-                if ($mail->email) {
-                    Mail::to($mail->email)->send(new PagoMail($pago));
-                }
+            $cc = Mail_::pluck('email');
+
+            if ($mail) {
+                Mail::to($mail)
+                    ->cc($cc)
+                    ->send(new PagoMail($pago));
+            }else{
+                Mail::to($cc[0])
+                    ->cc($cc)
+                    ->send(new PagoMail($pago));
             }
 
             return response()->json($response, 200);

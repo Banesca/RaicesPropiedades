@@ -17,11 +17,30 @@ class Ficha3Controller extends Controller {
 
     public function add(Request $request) {
         //return response()->json($request->all());
-        /*$this->validate($request, [
-            'fk_ficha2' => 'required',
+
+        $this->validate($request, [
+            'imagen1'             => 'image|max:10240',
+            'imagen2'             => 'image|max:10240',
+            'imagen3'             => 'image|max:10240',
+            'imagen4'             => 'image|max:10240',
+            'imagen5'             => 'image|max:10240',
+            'imagen6'             => 'image|max:10240',
+            'imagen7'             => 'image|max:10240',
+            'imagen8'             => 'image|max:10240',
+            'imagen9'             => 'image|max:10240',
+            'imagen_para_galeria' => 'image|max:10240',
         ], [
-            'fk_ficha2.required' => 'El Campo es requerido',
-        ]);*/
+            'imagen1.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen2.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen3.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen4.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen5.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen6.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen7.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen8.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen9.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen_para_galeria.max' => 'El tamaño de la imágen es de maximo 10MB',
+        ]);
 
         DB::beginTransaction();
 
@@ -142,6 +161,30 @@ class Ficha3Controller extends Controller {
     }
 
     public function edit(Request $request, $idPropiedad) {
+
+        $this->validate($request, [
+            'imagen1'             => 'image|max:10240',
+            'imagen2'             => 'image|max:10240',
+            'imagen3'             => 'image|max:10240',
+            'imagen4'             => 'image|max:10240',
+            'imagen5'             => 'image|max:10240',
+            'imagen6'             => 'image|max:10240',
+            'imagen7'             => 'image|max:10240',
+            'imagen8'             => 'image|max:10240',
+            'imagen9'             => 'image|max:10240',
+            'imagen_para_galeria' => 'image|max:10240',
+        ], [
+            'imagen1.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen2.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen3.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen4.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen5.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen6.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen7.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen8.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen9.max'             => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen_para_galeria.max' => 'El tamaño de la imágen es de maximo 10MB',
+        ]);
 
         DB::beginTransaction();
 
@@ -295,6 +338,7 @@ class Ficha3Controller extends Controller {
             $response = [
                 'msj' => 'Propiedad borrada Exitosamente',
             ];
+
             return response()->json($response, 201);
         } else {
             $response = [
@@ -311,7 +355,7 @@ class Ficha3Controller extends Controller {
             'msj' => 'No hay propiedades borradas',
         ];
 
-        return response()->json(count($p = Propiedad::where('fk_estado_publicacion',3)->with(
+        return response()->json(count($p = Propiedad::where('fk_estado_publicacion', 3)->with(
             'TipoPropiedad',
             'Disposicion',
             'Estado',

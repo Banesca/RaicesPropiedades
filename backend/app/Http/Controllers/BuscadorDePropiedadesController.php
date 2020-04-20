@@ -139,8 +139,8 @@ class BuscadorDePropiedadesController extends Controller {
                 'imagen5'             => ! is_null(@$resultadoUnico->imagen5) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen5) : '',
                 'imagen6'             => ! is_null(@$resultadoUnico->imagen6) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen6) : '',
                 'imagen7'             => ! is_null(@$resultadoUnico->imagen7) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen7) : '',
-                'imagen8'             => ! is_null(@$resultadoUnico->imagen7) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen8) : '',
-                'imagen9'             => ! is_null(@$resultadoUnico->imagen7) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen9) : '',
+                'imagen8'             => ! is_null(@$resultadoUnico->imagen8) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen8) : '',
+                'imagen9'             => ! is_null(@$resultadoUnico->imagen9) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen9) : '',
                 'imagen_para_galeria' => ! is_null(@$resultadoUnico->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen_para_galeria) : '',
             ];
         });
@@ -215,8 +215,8 @@ class BuscadorDePropiedadesController extends Controller {
                 'imagen5'             => ! is_null(@$resultadoUnico->imagen5) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen5) : '',
                 'imagen6'             => ! is_null(@$resultadoUnico->imagen6) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen6) : '',
                 'imagen7'             => ! is_null(@$resultadoUnico->imagen7) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen7) : '',
-                'imagen8'             => ! is_null(@$resultadoUnico->imagen7) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen8) : '',
-                'imagen9'             => ! is_null(@$resultadoUnico->imagen7) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen9) : '',
+                'imagen8'             => ! is_null(@$resultadoUnico->imagen8) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen8) : '',
+                'imagen9'             => ! is_null(@$resultadoUnico->imagen9) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen9) : '',
                 'imagen_para_galeria' => ! is_null(@$resultadoUnico->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$resultadoUnico->imagen_para_galeria) : '',
             ];
         });

@@ -65,7 +65,7 @@
                      </div>
 
                      <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                            <div class="form-group">
                               <div class="example-container">
                                  <mat-form-field>
@@ -86,7 +86,7 @@
                            </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                            <div class="form-group">
                               <label for="">Es una oportunidad*</label>
                               <div class="example-container">
@@ -98,7 +98,7 @@
                            </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                            <div class="form-group">
                               <label for="">Es una novedad*</label>
                               <div class="example-container">
@@ -110,7 +110,7 @@
                            </div>
                         </div>
 
-                        <!-- <div class="col-md-3">
+                        <div class="col-md-3">
                            <div class="form-group">
                               <label for="">Aparecera en la galería*</label>
                               <div class="example-container">
@@ -121,7 +121,7 @@
                                  </mat-radio-group>
                               </div>
                            </div>
-                        </div> -->
+                        </div>
                      </div>
 
                      <div class="row">
@@ -160,7 +160,7 @@
                               <div class="drop">
                                 <div class="cont">
                                   <div class="browse">
-                                    Adjuntar imagen
+                                    Arrastra y suelta la imagen
                                   </div>
                                 </div>
                                 <div>
@@ -168,7 +168,7 @@
                                   </div>
                                 </div>
                                 <div>
-                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'imageG')" />
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'imageGalery')" />
                                 </div>
                               </div>
                             </div>
@@ -398,6 +398,70 @@
                            </mat-card-actions>
                            <mat-card-subtitle class="card-subtitle">
                               Imagen 7
+                           </mat-card-subtitle>
+                        </mat-card>
+                     </div>
+
+                    <!--Imagen 8-->
+                     <div class="col-sm-3">
+                        <mat-card class="card-material">
+
+                           <img mat-card-image class="img-card"
+                              [src]="this.formTwo.value.image8 ? this.formTwo.value.image8 : imageNotFound"
+                              alt="Imagen 8">
+
+                           <mat-card-actions style="overflow: hidden">
+                            <div class="wrapper-dropzone">
+                              <div class="drop">
+                                <div class="cont">
+                                  <div class="browse">
+                                    Arrastra y suelta la imagen
+                                  </div>
+                                </div>
+                                <div>
+                                  <div id="files-errors">
+                                  </div>
+                                </div>
+                                <div>
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'image8')" />
+                                </div>
+                              </div>
+                            </div>
+                           </mat-card-actions>
+                           <mat-card-subtitle class="card-subtitle">
+                              Imagen 8
+                           </mat-card-subtitle>
+                        </mat-card>
+                     </div>
+
+                    <!--Imagen 9-->
+                     <div class="col-sm-3">
+                        <mat-card class="card-material">
+
+                           <img mat-card-image class="img-card"
+                              [src]="this.formTwo.value.image9 ? this.formTwo.value.image9 : imageNotFound"
+                              alt="Imagen 9">
+
+                           <mat-card-actions style="overflow: hidden">
+                            <div class="wrapper-dropzone">
+                              <div class="drop">
+                                <div class="cont">
+                                  <div class="browse">
+                                    Arrastra y suelta la imagen
+                                  </div>
+                                </div>
+                                <div>
+                                  <div id="files-errors">
+                                  </div>
+                                </div>
+                                <div>
+                                  <input id="files" multiple="false" name="files[]" type="file" (change)="onFileChange($event,'image9')" />
+                                </div>
+                              </div>
+                            </div>
+                           </mat-card-actions>
+                           <mat-card-subtitle class="card-subtitle">
+                              Imagen 9
                            </mat-card-subtitle>
                         </mat-card>
                      </div>
@@ -660,6 +724,26 @@
                                           (selectionChange)="reloadBarrios($event)">
 
                                           <mat-option *ngFor="let item of arrayLocalidad" [value]="item.id">
+                                             {{item.nombre}}
+                                          </mat-option>
+                                       </mat-select>
+                                       <mat-error>
+                                          Este valor es
+                                          <strong>requerido</strong>
+                                       </mat-error>
+
+                                    </mat-form-field>
+                                 </div>
+                              </div>
+                           </div>
+
+                          <div class="col-md-3">
+                              <div class="form-group">
+                                 <div class="example-container">
+                                    <mat-form-field>
+                                       <mat-select placeholder="Calle*" formControlName="fk_Direccion_Calle_Id">
+
+                                          <mat-option *ngFor="let item of arrayCalle" [value]="item.idCalle">
                                              {{item.nombre}}
                                           </mat-option>
                                        </mat-select>

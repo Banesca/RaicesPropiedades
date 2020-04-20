@@ -54,12 +54,12 @@ export class ArticlesComponent implements OnInit {
   ngOnInit() {
     let resultsElement = document.getElementById("resultados-busqueda");
     resultsElement.scrollIntoView();
-    console.log("articles.component.ts ngOnInit");
+    //console.log("articles.component.ts ngOnInit");
     this.articuloService.search.subscribe(data => {
-      console.log("this.articuloService.search.subscribe:", data);
+      //console.log("this.articuloService.search.subscribe:", data);
       if (data) {
-        console.log("true=======");
-        console.log("articles.component.ts searchResult");
+        //console.log("true=======");
+        //console.log("articles.component.ts searchResult");
         this.propiedadesInPromise = true;
         this.articuloService.filter.subscribe(filterData => {
           if (filterData) {
@@ -80,16 +80,17 @@ export class ArticlesComponent implements OnInit {
               idPartido: this.filterData.idPartido.id,
               idLocalidad: this.filterData.idLocalidad.id,
               idBarrio: this.filterData.idBarrio.id,
+              idCalle: this.filterData.idCalle.idCalle,
               habitantes: this.filterData.habitantes
             };
-            console.log("this.objectFilter:", this.objectFilter);
+            //console.log("this.objectFilter:", this.objectFilter);
             this.articuloService
               .getItemsBySearch(this.objectFilter)
               .then(data => {
                 this.articulos = data.propiedades;
-                console.log("this.articulos:", this.articulos);
+                //console.log("this.articulos:", this.articulos);
                 this.arbol = data.arbol;
-                console.log("this.arbol:", this.arbol);
+                //console.log("this.arbol:", this.arbol);
                 this.propiedadesInPromise = false;
                 // this.articuloService.completeSubjects();
                 // this.articuloService.newSubjects();
@@ -136,6 +137,10 @@ export class ArticlesComponent implements OnInit {
       data.idBarrio && data.idBarrio.id
         ? (value = value + data.idBarrio.nombre + +" / ")
         : "";
+
+      data.idCalle && data.idCalle.idCalle
+        ? (value = value + data.idCalle.nombre + +" / ")
+        : "";
       data.Ambientes_Cochera ? (value = value + "Con cochera / ") : "";
     }
     return value;
@@ -162,7 +167,9 @@ export class ArticlesComponent implements OnInit {
       opcion == "idLocalidad"
     ) {
       this.filterData.idBarrio = null;
+      this.filterData.idCalle = null;
       this.objectFilter.idBarrio = null;
+      this.objectFilter.idCalle = null;
     }
     if (opcion == "minM2") {
       this.minM2 = null;
@@ -211,6 +218,10 @@ export class ArticlesComponent implements OnInit {
         break;
       case "idBarrio":
         this.objectFilter[opcion] = value.id;
+        this.filterData[opcion] = value;
+        break;
+      case "idCalle":
+        this.objectFilter[opcion] = value.idCalle;
         this.filterData[opcion] = value;
         break;
       case "montos":

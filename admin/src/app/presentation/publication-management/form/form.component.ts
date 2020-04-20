@@ -39,6 +39,8 @@ export class FormComponent implements OnInit {
     image5: File;
     image6: File;
     image7: File;
+    image8: File;
+    image9: File;
 
     //Variables del 3er Step
     arrayTipoDeUnidad: any[] = [];
@@ -243,7 +245,9 @@ export class FormComponent implements OnInit {
             image4: [''],
             image5: [''],
             image6: [''],
-            image7: ['']
+            image7: [''],
+            image8: [''],
+            image9: ['']
         })
         this.formThree = this.fb.group({
             //Datos Basicos
@@ -265,6 +269,7 @@ export class FormComponent implements OnInit {
             fk_Direccion_Partido_Id: ['', Validators.required],
             fk_Direccion_Localidad_Id: ['', Validators.required],
             fk_Direccion_Ciudad_Id: [''],
+            fk_Direccion_Calle_Id: [''],
             fk_Direccion_Barrio_Id: [''],
             fk_Direccion_SubBarrio_Id: [''],
             Direccion_Nombrecalle: [''],
@@ -417,7 +422,9 @@ export class FormComponent implements OnInit {
                     image4: res.imagen4 ? res.imagenes.imagen4 : null,
                     image5: res.imagen5 ? res.imagenes.imagen5 : null,
                     image6: res.imagen6 ? res.imagenes.imagen6 : null,
-                    image7: res.imagen7 ? res.imagenes.imagen7 : null
+                    image7: res.imagen7 ? res.imagenes.imagen7 : null,
+                    image8: res.imagen8 ? res.imagenes.imagen8 : null,
+                    image9: res.imagen9 ? res.imagenes.imagen9 : null
                 });
 
                 //Cargamos el 3er step
@@ -425,7 +432,8 @@ export class FormComponent implements OnInit {
                 this.reloadPartidos({value: res.fk_Direccion_Provincia_Id});
                 this.reloadLocalidades({value: res.fk_Direccion_Partido_Id});
                 res.fk_Direccion_Localidad_Id ? this.reloadBarrios({value: res.fk_Direccion_Localidad_Id}) : null;
-                res.fk_Direccion_Barrio_Id ? this.reloadSubBarrios({vakue: res.fk_Direccion_Barrio_Id}) : null;
+                res.fk_Direccion_Barrio_Id ? this.reloadSubBarrios({value: res.fk_Direccion_Barrio_Id}) : null;
+                res.fk_Direccion_Calle_Id ? this.reloadCalles({value: res.fk_Direccion_Calle_Id}) : null;
 
                 this.formThree.setValue({
                     //Datos Basicos
@@ -446,6 +454,7 @@ export class FormComponent implements OnInit {
                     fk_Direccion_Provincia_Id: res.fk_Direccion_Provincia_Id,
                     fk_Direccion_Partido_Id: res.fk_Direccion_Partido_Id,
                     fk_Direccion_Localidad_Id: res.fk_Direccion_Localidad_Id,
+                    fk_Direccion_Calle_Id: res.fk_Direccion_Calle_Id,
                     fk_Direccion_Ciudad_Id: res.fk_Direccion_Ciudad_Id,
                     fk_Direccion_Barrio_Id: res.fk_Direccion_Barrio_Id,
                     fk_Direccion_SubBarrio_Id: res.fk_Direccion_SubBarrio_Id,
@@ -627,6 +636,8 @@ export class FormComponent implements OnInit {
         this.image5 ? obj.imagen5 = this.image5 : null;
         this.image6 ? obj.imagen6 = this.image6 : null;
         this.image7 ? obj.imagen7 = this.image7 : null;
+        this.image8 ? obj.imagen8 = this.image8 : null;
+        this.image9 ? obj.imagen9 = this.image9 : null;
 
         //Asignamos los datos del 3er Step
         //Obetenemos el objeto del 3er formulario
@@ -689,6 +700,7 @@ export class FormComponent implements OnInit {
         obj.fk_Direccion_Localidad_Id = data3.fk_Direccion_Localidad_Id;
         obj.fk_Direccion_Ciudad_Id = data3.fk_Direccion_Ciudad_Id ? data3.fk_Direccion_Ciudad_Id : '';
         obj.fk_Direccion_Barrio_Id = data3.fk_Direccion_Barrio_Id ? data3.fk_Direccion_Barrio_Id : '';
+        obj.fk_Direccion_Calle_Id = data3.fk_Direccion_Calle_Id ? data3.fk_Direccion_Calle_Id : '';
         obj.fk_Direccion_SubBarrio_Id = data3.fk_Direccion_SubBarrio_Id ? data3.fk_Direccion_SubBarrio_Id : '';
         obj.Direccion_Nombrecalle = data3.Direccion_Nombrecalle ? data3.Direccion_Nombrecalle : '';
         obj.Direccion_Numero = data3.Direccion_Numero ? data3.Direccion_Numero : '';
@@ -1034,9 +1046,11 @@ export class FormComponent implements OnInit {
                 return;
             }
 
+
             //Validamos el tamaño del archivo
-            if (fileTo.size > 5000000) {
-                this.alertService.msg('ERR', 'Error:', 'El archivo es muy pesado, peso máximo 5Mb');
+            const kilobytes=Math.round((fileTo.size / 1024))
+            if ( kilobytes > 10240) { //archivos mayores a 10mb no se podran procesar
+                this.alertService.msg('ERR', 'Error:', 'El archivo es muy pesado, peso máximo 10Mb');
                 return;
             }
 
@@ -1095,6 +1109,20 @@ export class FormComponent implements OnInit {
                         this.formTwo.controls['image7'].setValue((<FileReader>event.target).result);
                     }
                     break;
+
+                case "image8":
+                    this.image8 = fileTo;
+                    reader.onload = (event) => {
+                        this.formTwo.controls['image8'].setValue((<FileReader>event.target).result);
+                    }
+                    break;
+
+                case "image9":
+                    this.image9 = fileTo;
+                    reader.onload = (event) => {
+                        this.formTwo.controls['image9'].setValue((<FileReader>event.target).result);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -1125,6 +1153,15 @@ export class FormComponent implements OnInit {
         if (event.value >= 0) {
             this.service.getBarrios(event.value).then((resp: any) => {
                 this.arrayBarrio = resp.Barrios;
+            });
+        }
+        this.reloadCalles(event)
+    }
+    reloadCalles(event) {
+        this.formThree.controls['fk_Direccion_Calle_Id'].setValue('');
+        if (event.value >= 0) {
+            this.service.getCalles(event.value).then((resp: any) => {
+                this.arrayCalle = resp.calles;
             });
         }
     }

@@ -230,6 +230,19 @@ export class PublicacionesService {
       })).toPromise();
   }
 
+  getCalles(idLocalidad: number) {
+    let data = {
+      idLocalidad: idLocalidad
+    }
+    return this._HttpClient.post(environment.apiHost + this.mService + 'calle/get', data, {
+      headers: getHeaders()
+    }).pipe(
+      map((data: any[]) => {
+        return data;
+
+      })).toPromise();
+  }
+
   getSubBarrios(idBarrio: number) {
     let data = {
       idBarrio: idBarrio

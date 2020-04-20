@@ -1,9 +1,8 @@
-export interface ISucursales{
+export interface ISucursales {
     msj: string;
     suculsales: ISucursal[];
 }
-export interface ISucursal
-{   
+export interface ISucursal {
     idSucursal: number;
     nombreSucursal?: string;
     telefonoSucursal: string;
