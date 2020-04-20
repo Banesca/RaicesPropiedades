@@ -8,8 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class PagoMail extends Mailable
-{
+class PagoMail extends Mailable {
     use Queueable, SerializesModels;
 
     /**
@@ -18,8 +17,8 @@ class PagoMail extends Mailable
      * @return void
      */
     public $pago; //al hacer public la variable no hace falta usar with en la vista
-    public function __construct(Pago $pago)
-    {
+
+    public function __construct(Pago $pago) {
         $this->pago = $pago;
     }
 
@@ -28,9 +27,9 @@ class PagoMail extends Mailable
      *
      * @return $this
      */
-    public function build()
-    {
+    public function build() {
         return $this->view('correos.pago')
-            ->subject('Gracias por contactarse con RAICES Propiedades');
+            ->with('pago', $this->pago)
+            ->subject('Notificación de Pago');
     }
 }
