@@ -6,202 +6,222 @@
         <div class="filters">
             <div class="articulos-infotitle">
                 {{ verifyStringOrObject() }}
+            <div>{{articulos.length}} resultados</div>
+
             </div>
         </div>
         <span (click)="goBack()" class="goHome">Volver Atrás</span>
     </div>
-    <div class="articulos-content">
-        <div class="articulos-filter" *ngIf="!propiedadesInPromise">
-            <div class="articulos-filterTitle">{{articulos.length}} resultados</div>
+<div class="articulos-content">
+             <div class="row" *ngIf="!propiedadesInPromise">
+              
 
-            <div class="articulos-filterSections">
-                <mat-chip-list #chipList aria-label="Filtro Seleccionado" *ngIf="filterData">
-                    <!--CHIP TipoOperaion-->
-                    <mat-chip removable="true" (removed)="removeChip('idTipoOperaion')" *ngIf="filterData.idTipoOperaion && filterData.idTipoOperaion.idTipoOperaion">
-                        <span>{{filterData.idTipoOperaion.descripcion}}</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
+                <div class="col-sm">
+                    <div class="articulos-filterSections">
+                        <mat-chip-list #chipList aria-label="Filtro Seleccionado" *ngIf="filterData">
+                            <!--CHIP TipoOperaion-->
+                            <mat-chip removable="true" (removed)="removeChip('idTipoOperaion')" *ngIf="filterData.idTipoOperaion && filterData.idTipoOperaion.idTipoOperaion">
+                                <span>{{filterData.idTipoOperaion.descripcion}}</span>
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
 
-                    <!--CHIP TipoPropiedad-->
-                    <mat-chip removable="true" (removed)="removeChip('idTipoPropiedad')" *ngIf="filterData.idTipoPropiedad && filterData.idTipoPropiedad.idTipoPropiedad">
-                        <span></span> {{filterData.idTipoPropiedad.descripcion}}
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
+                            <!--CHIP TipoPropiedad-->
+                            <mat-chip removable="true" (removed)="removeChip('idTipoPropiedad')" *ngIf="filterData.idTipoPropiedad && filterData.idTipoPropiedad.idTipoPropiedad">
+                                <span></span> {{filterData.idTipoPropiedad.descripcion}}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
 
-                    <!--CHIP Moneda-->
-                    <mat-chip removable="true" (removed)="removeChip('idMonedas')" *ngIf="filterData.idMonedas && filterData.idMonedas.idMonedas">
-                        <span></span> {{filterData.idMonedas.moneda}}
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
+                            <!--CHIP Moneda-->
+                            <mat-chip removable="true" (removed)="removeChip('idMonedas')" *ngIf="filterData.idMonedas && filterData.idMonedas.idMonedas">
+                                <span></span> {{filterData.idMonedas.moneda}}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
 
-                    <!--CHIP Mont. Max-->
-                    <mat-chip removable="true" (removed)="removeChip('montoMinimo')" *ngIf="filterData.montoMinimo && filterData.montoMinimo != 'Indistinto'">
-                        <span></span> Mín {{filterData.montoMinimo}}
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
+                            <!--CHIP Mont. Max-->
+                            <mat-chip removable="true" (removed)="removeChip('montoMinimo')" *ngIf="filterData.montoMinimo && filterData.montoMinimo != 'Indistinto'">
+                                <span></span> Mín {{filterData.montoMinimo}}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
 
-                    <!--CHIP Mont. Min-->
-                    <mat-chip removable="true" (removed)="removeChip('montoMaximo')" *ngIf="filterData.montoMaximo && filterData.montoMaximo != 'Indistinto'">
-                        <span></span> Máx {{filterData.montoMaximo}}
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
+                            <!--CHIP Mont. Min-->
+                            <mat-chip removable="true" (removed)="removeChip('montoMaximo')" *ngIf="filterData.montoMaximo && filterData.montoMaximo != 'Indistinto'">
+                                <span></span> Máx {{filterData.montoMaximo}}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
 
-                    <!--CHIP Provincia-->
-                    <mat-chip removable="true" (removed)="removeChip('idProvincia')" *ngIf="filterData.idProvincia && filterData.idProvincia.id">
-                        <span></span> {{filterData.idProvincia.nombre}}
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
+                            <!--CHIP Provincia-->
+                            <mat-chip removable="true" (removed)="removeChip('idProvincia')" *ngIf="filterData.idProvincia && filterData.idProvincia.id">
+                                <span></span> {{filterData.idProvincia.nombre}}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
 
-                    <!--CHIP Partido-->
-                    <mat-chip removable="true" (removed)="removeChip('idPartido')" *ngIf="filterData.idPartido && filterData.idPartido.id">
-                        <span></span> {{filterData.idPartido.nombre}}
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
+                            <!--CHIP Partido-->
+                            <mat-chip removable="true" (removed)="removeChip('idPartido')" *ngIf="filterData.idPartido && filterData.idPartido.id">
+                                <span></span> {{filterData.idPartido.nombre}}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
 
-                    <!--CHIP Localidad-->
-                    <mat-chip removable="true" (removed)="removeChip('idLocalidad')" *ngIf="filterData.idLocalidad && filterData.idLocalidad.id">
-                        <span>{{filterData.idLocalidad.nombre}}</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
+                            <!--CHIP Localidad-->
+                            <mat-chip removable="true" (removed)="removeChip('idLocalidad')" *ngIf="filterData.idLocalidad && filterData.idLocalidad.id">
+                                <span>{{filterData.idLocalidad.nombre}}</span>
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
 
-                    <!--CHIP Barrio-->
-                    <mat-chip removable="true" (removed)="removeChip('idBarrio')" *ngIf="filterData.idBarrio && filterData.idBarrio.id">
-                        <span>{{filterData.idBarrio.nombre}}</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                    <!--CHIP Calle-->
-                    <mat-chip removable="true" (removed)="removeChip('idCalle')" *ngIf="filterData.idCalle && filterData.idCalle.idCalle">
-                        <span>{{filterData.idCalle.nombre}}</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                    <!--CHIP Zona-->
-                    <mat-chip removable="true" (removed)="removeChip('zona')" *ngIf="filterData.zona">
-                        <span>{{filterData.zona.nombre}}</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                    <!--CHIP Relevancia y precio-->
-                    <mat-chip removable="true" (removed)="removeChip('relevanceyprice')" *ngIf="filterData.relevanceyprice">
-                        <span>{{filterData.relevanceyprice.label}}</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                    <!--CHIP Metros cubiertos (mín)-->
-                    <mat-chip removable="true" (removed)="removeChip('minM2')" *ngIf="filterData.minM2">
-                        <span>Mín M2: {{filterData.minM2}}</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                    <!--CHIP Metros cubiertos (máx)-->
-                    <mat-chip removable="true" (removed)="removeChip('maxM2')" *ngIf="filterData.maxM2">
-                        <span>Máx M2: {{filterData.maxM2}}</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                   <!--CHIP habitantes-->
-                    <mat-chip removable="true" (removed)="removeChip('habitantes')" *ngIf="filterData.habitantes">
-                        <span>{{filterData.habitantes}} ambientes</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                    <!--CHIP cochera-->
-                    <mat-chip removable="true" (removed)="removeChip('Ambientes_Cochera')" *ngIf="filterData.Ambientes_Cochera">
-                        <span>Con cochera</span>
-                        <mat-icon matChipRemove>cancel</mat-icon>
-                    </mat-chip>
-                </mat-chip-list>
-            </div>
-            <!--
-      <div class="articulos-relevante">
-        <div class="title">
-          Ordenar por Publicaciones
-        </div>
-        <div class="textContent">
-          mas relevantes
-          <i class="material-icons icon">
-            keyboard_arrow_down
-          </i>
-        </div>
-      </div>
-      -->
-            <!-- (!filterData.TipoOperaion || !filterData.TipoOperaion.idTipoOperaion) && arbol.TipoOperaion && -->
-            <!-- arbol.TipoOperaion.length -->
-            <!-- <div class="articulos-relevante">
-                <div class="title">
-                    Obtener publicaciones
-                </div>
-                <div class="textContent2">
-                    <div (click)="setFilter('relevanceyprice', {label:'Más relevante',value:'mostrelevant'})">
-                        <span>Más relevante</span>
-                    </div>
-                    <div (click)="setFilter('relevanceyprice', {label:'Mayor precio',value:'higherprice'})">
-                        <span>Mayor precio</span>
-                    </div>
-                    <div (click)="setFilter('relevanceyprice', {label:'Menor precio',value:'lowerprice'})">
-                        <span>Menor precio</span>
+                            <!--CHIP Barrio-->
+                            <mat-chip removable="true" (removed)="removeChip('idBarrio')" *ngIf="filterData.idBarrio && filterData.idBarrio.id">
+                                <span>{{filterData.idBarrio.nombre}}</span>
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+
+                            <!--CHIP Zona-->
+                            <mat-chip removable="true" (removed)="removeChip('zona')" *ngIf="filterData.zona">
+                                <span>{{filterData.zona.nombre}}</span>
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+
+                            <!--CHIP Relevancia y precio-->
+                            <mat-chip removable="true" (removed)="removeChip('relevanceyprice')" *ngIf="filterData.relevanceyprice">
+                                <span>{{filterData.relevanceyprice.label}}</span>
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+
+                            <!--CHIP Metros cubiertos (mín)-->
+                            <mat-chip removable="true" (removed)="removeChip('minM2')" *ngIf="filterData.minM2">
+                                <span>Mín M2: {{filterData.minM2}}</span>
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+
+                            <!--CHIP Metros cubiertos (máx)-->
+                            <mat-chip removable="true" (removed)="removeChip('maxM2')" *ngIf="filterData.maxM2">
+                                <span>Máx M2: {{filterData.maxM2}}</span>
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+
+                            <!--CHIP habitantes-->
+                            <mat-chip removable="true" (removed)="removeChip('habitantes')" *ngIf="filterData.habitantes">
+                                <span>{{filterData.habitantes}} ambientes</span>
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+
+                            <!--CHIP cochera-->
+                            <mat-chip removable="true" (removed)="removeChip('Ambientes_Cochera')" *ngIf="filterData.Ambientes_Cochera">
+                                <span>Con cochera</span>
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+
+                        </mat-chip-list>
+
+                         <!--sin  filtro -->
+                        <mat-chip-list #chipList  *ngIf="filterData?.length < 1">
+                            <mat-chip removable="true" >
+                                <span>Sin Filtro seleccionado</span>
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                            </mat-chip>
+                         </mat-chip-list>
                     </div>
                 </div>
-            </div> -->
-            <!-- !filterData.TipoBarrio &&  -->
-            <div *ngIf="arbol" class="articulos-filterTitle">Zonas</div>
-            <div *ngIf="arbol" class="articulos-filterSections">
-                <div *ngIf="arbol.TipoProvincia && arbol.TipoProvincia.length" class="articulos-relevante">
-                    <div class="title">
-                        Provincias
-                    </div>
-                    <div class="textContent2">
-                        <ng-container *ngFor="let item of arbol.TipoProvincia">
-                            <div *ngIf="item.provincia" (click)="setFilter('idProvincia', item.provincia)">
-                                <span>{{item.provincia.nombre}}</span>
+
+                <div class="col-sm">
+                    <div class="row" *ngIf="arbol" class="articulos-filterSections">
+                            <div class="col-sm">
+                            
+                                <div *ngIf="arbol.TipoProvincia && arbol.TipoProvincia.length" class="articulos-relevante" style='margin-top: -20px;'>
+                                        <div class="title">
+                                            Provincias
+                                        </div>
+                                        <div class="textContent2">
+                                            <ng-container *ngFor="let item of arbol.TipoProvincia">
+                                                <div class="autotext" *ngIf="item.provincia" (click)="setFilter('idProvincia', item.provincia)">
+                                                    <span>{{item.provincia.nombre}}</span>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                </div>
                             </div>
-                        </ng-container>
                     </div>
                 </div>
-                <div *ngIf="arbol.TipoPartido && arbol.TipoPartido.length" class="articulos-relevante">
-                    <div class="title">
-                        Partidos
-                    </div>
-                    <div class="textContent2">
-                        <ng-container *ngFor="let item of arbol.TipoPartido">
-                            <div *ngIf="item.partido" (click)="setFilter('idPartido', item.partido)">
-                                <span>{{item.partido.nombre}}</span>
+
+                 <div class="col-sm">
+                    <div class="row" *ngIf="arbol" class="articulos-filterSections">
+                           
+
+                            <div class="col-sm">
+                            <div *ngIf="arbol.TipoPartido && arbol.TipoPartido.length" class="articulos-relevante" style='margin-top: -20px;'>
+                                    <div class="title">
+                                        Partidos
+                                    </div>
+                                    <div class="textContent2">
+                                        <ng-container *ngFor="let item of arbol.TipoPartido">
+                                            <div class="autotext" *ngIf="item.partido" (click)="setFilter('idPartido', item.partido)">
+                                                <span>{{item.partido.nombre}}</span>
+                                            </div>
+                                        </ng-container>                        
+                                    </div>
+                                </div>
                             </div>
-                        </ng-container>                        
+
+                            
                     </div>
                 </div>
-                <div *ngIf="arbol.TipoLocalidad && arbol.TipoLocalidad.length" class="articulos-relevante">
-                    <div class="title">
-                        Localidades
-                    </div>
-                    <div class="textContent2">
-                        <ng-container *ngFor="let item of arbol.TipoLocalidad">
-                            <div *ngIf="item.localidad" (click)="setFilter('idLocalidad', item.localidad)">
-                                <span>{{item.localidad.nombre}}</span>
+
+                 <div class="col-sm">
+                    <div class="row" *ngIf="arbol" class="articulos-filterSections">
+                            
+
+                            <div class="col-sm">
+                            <div *ngIf="arbol.TipoLocalidad && arbol.TipoLocalidad.length" class="articulos-relevante"  style='margin-top: -20px;'>
+                                    <div class="title">
+                                        Localidades
+                                    </div>
+                                    <div class="textContent2">
+                                        <ng-container *ngFor="let item of arbol.TipoLocalidad">
+                                            <div class="autotext" *ngIf="item.localidad" (click)="setFilter('idLocalidad', item.localidad)">
+                                                <span>{{item.localidad.nombre}}</span>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
                             </div>
-                        </ng-container>
+
+                            
                     </div>
                 </div>
-                <div *ngIf="arbol.TipoBarrio && arbol.TipoBarrio.length" class="articulos-relevante">
-                    <div class="title">
-                    Barrios
-                    </div>
-                    <div class="textContent2">
-                        <ng-container *ngFor="let item of arbol.TipoBarrio">
-                            <div *ngIf="item.barrio" (click)="setFilter('idBarrio', item.barrio)">
-                                <span>{{item.barrio.nombre}}</span>
+
+                 <div class="col-sm">
+                    <div class="row" *ngIf="arbol" class="articulos-filterSections">
+                            
+                            <div class="col-sm">
+                            <div *ngIf="arbol.TipoBarrio && arbol.TipoBarrio.length" class="articulos-relevante" style='margin-top: -20px;'>
+                                    <div class="title">
+                                    Barrios
+                                    </div>
+                                    <div class="textContent2">
+                                        <ng-container *ngFor="let item of arbol.TipoBarrio">
+                                            <div class="autotext" *ngIf="item.barrio" (click)="setFilter('idBarrio', item.barrio)">
+                                                <span>{{item.barrio.nombre}}</span>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
                             </div>
-                        </ng-container>
                     </div>
                 </div>
-            </div>
-            <div class="articulos-relevante">
+
+                
+                 <div class="col-sm">
+                <div class="articulos-relevante">
                 <div class="title">
                     Precio
                 </div>
                 <div class="textContent2">
                     <div class="row">
                         <div class="col-md-12">
-                            <input [(ngModel)]="montoMinimo"  placeholder="Monto mínimo" type="number" class="btn search-dropdown btn-block mb-2" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+                            <input [(ngModel)]="montoMinimo"  placeholder="Mínimo" type="number" class="btn search-dropdown btn-block mb-2" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <input [(ngModel)]="montoMaximo"  placeholder="Monto máximo" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
+                            <input [(ngModel)]="montoMaximo"  placeholder="Máximo" type="number" class="btn search-dropdown btn-block" oninput="this.value=this.value.replace(/[^\d+]/,'')"/>
                         </div>
                     </div>
                     <div *ngIf="montoMinimo && montoMaximo && montoMinimo<montoMaximo" class="row">
@@ -211,7 +231,10 @@
                     </div>
                 </div>
             </div>
-            <div class="articulos-relevante">
+                </div>
+
+                 <div class="col-sm">
+                <div class="articulos-relevante">
                 <div class="title">
                     Metros cubiertos
                 </div>
@@ -233,6 +256,10 @@
                     </div>
                 </div>
             </div>
+                </div>
+
+                 <div class="col-sm">
+                 
             <div class="articulos-relevante">
                 <div class="title">
                     Con cochera
@@ -248,18 +275,15 @@
                     </div>
                 </div>
             </div>
-            <!--
-      <div class="articulos-relevante">
-        <div class="title">
-          Mas Especificaciones
-        </div>
-        <div class="textContent">
-          alberca(10)
-        </div>
-      </div>
-      -->
-        </div>
+                </div>
+            </div>
 
+       
+    </div>
+
+
+    <div class="articulos-content">
+           
         <!-- inmuebles -->
         <div class="articulos-article">
             <div class="row" style="width: 100%" *ngIf="propiedadesInPromise">
@@ -339,4 +363,4 @@
         </div>
         </div>
         </section>
-</div>
+    </div>
