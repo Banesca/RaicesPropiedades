@@ -48,6 +48,7 @@ export class ArticlesComponent implements OnInit {
         Object.values(element)[0] + ""
       );
     });
+    console.log("-----"+filterData)
     return formData;
   }
   ngOnInit() {

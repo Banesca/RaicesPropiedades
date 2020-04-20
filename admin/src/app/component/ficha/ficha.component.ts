@@ -143,8 +143,8 @@ export class FichaComponent implements OnInit {
     }
 
     //Validamos el tamaño del archivo
-    if (fileTo.size > 1250000) {
-        this._AlertsService.msg('ERR', 'Error:', 'El archivo es muy pesado, peso máximo 1Mb');
+    if (fileTo.size > 5000000) {
+        this._AlertsService.msg('ERR', 'Error:', 'El archivo es muy pesado, peso máximo 5Mb');
         return;
     }
 

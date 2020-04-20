@@ -37,10 +37,10 @@
          
           
           <div class="col-sm-12">
-            <label for="exampleFormControlSelect1" class="text-uppercase">Detalle</label>
+            <label for="exampleFormControlSelect1" class="text-uppercase">Identificar propiedad e inquilino</label>
             <div class="form-group mb-3">
               <textarea formControlName="detalle" name="" [ngClass]="{ 'is-invalid': submitted && f.detalle.errors }" cols="20"
-                rows="2" placeholder="Detalle" class="form-control form-control-lg"></textarea>
+                rows="2" placeholder="Identificar propiedad e inquilino" class="form-control form-control-lg"></textarea>
               <div *ngIf="f.detalle.errors" type="alert" class="invalid-feedback">
                 <div *ngIf="submitted && f.detalle.errors.required">El Detalle es Requerida</div>
               </div>

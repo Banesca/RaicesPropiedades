@@ -42,10 +42,10 @@
               [routerLink]="[baseUrl, publicaciones.idPropiedad]"
               class="card"
             >
-              <img
-                [src]="publicaciones.imagenes.imagen1"
-                class="card-img-top"
-              />
+              
+                <img [src]="publicaciones.imagenes.imagen1"  width="100%" height="250px" style="max-height: 250px;"
+                  onerror="this.src='assets/images/no_image_aviable.jpg'" />
+
               <div class="card-footer font-weight-semibold text-uppercase ">
                 {{ publicaciones.descipcion }}
               </div>

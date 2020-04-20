@@ -197,12 +197,15 @@
     .textContent2 {
       padding-top: 15px;
       font-size: 14px;
-      display: flex;
+      //display: flex;
       justify-content: flex-end;
       align-items: flex-end;
       flex-direction: column;
       font-weight: bold;
       cursor: pointer;
+      
+      max-height: 100px;
+      overflow: scroll;
     }
 
     .icon {
@@ -289,4 +292,12 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+.autotext{
+  white-space: nowrap;
+    width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
