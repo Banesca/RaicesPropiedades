@@ -197,15 +197,15 @@
     .textContent2 {
       padding-top: 15px;
       font-size: 14px;
-      //display: flex;
+      display: flex;
       justify-content: flex-end;
       align-items: flex-end;
       flex-direction: column;
       font-weight: bold;
       cursor: pointer;
       
-      max-height: 100px;
-      overflow: scroll;
+      //max-height: 100px;
+      //overflow: scroll;
     }
 
     .icon {
