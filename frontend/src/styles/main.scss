@@ -14,9 +14,11 @@ html {
 
 li {
   list-style: none;
+
   .footer-icons {
     width: 0.6rem;
   }
+
   .footer-contact-icons {
     width: 25px;
     height: 25px;
@@ -28,7 +30,7 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-router-outlet ~ * {
+router-outlet~* {
   height: 100%;
   width: 100%;
 }
@@ -44,6 +46,7 @@ router-outlet ~ * {
 
 a {
   text-decoration: none;
+
   &:hover {
     text-decoration: none;
   }
@@ -62,6 +65,7 @@ a {
     .link-nav {
       color: $brown_main_color;
     }
+
     .nav-underline::before {
       width: 100%;
     }
@@ -74,9 +78,11 @@ a {
   margin: 0;
   padding: 0;
 }
+
 .navbar-brand {
   display: none;
 }
+
 .link-nav {
   display: block;
   padding: 16px;
@@ -130,6 +136,7 @@ a {
   background-color: $brown_main_color;
   color: $white;
   border-radius: 0;
+
   &:hover {
     color: $white;
     opacity: 0.9;
@@ -195,6 +202,7 @@ a {
 footer {
   background-color: $brown_main_color;
   color: $white;
+
   hr {
     border-color: $white;
   }
@@ -233,6 +241,7 @@ footer {
   background-color: $white;
   color: $gray_main_color;
   border-radius: 0;
+
   &::after {
     color: $yellow_main_color;
   }
@@ -242,9 +251,11 @@ footer {
   .carousel-image {
     height: 100%;
   }
+
   .navbar-brand {
     display: block;
   }
+
   .navigation-responsive {
     position: fixed;
     z-index: 1024;
@@ -255,13 +266,16 @@ footer {
     transform: translateX(-100%);
     transition: all 0.6s ease;
     overflow: scroll;
+
     &.active {
       transform: translateX(-0%);
     }
+
     span {
       font-size: 1.5rem;
     }
   }
+
   .back-link {
     position: fixed;
     width: 100%;
@@ -271,6 +285,7 @@ footer {
     opacity: 0.5;
     z-index: 1023;
     display: none;
+
     &.active {
       display: block;
     }
@@ -279,6 +294,7 @@ footer {
 
 // Font-Sizes
 .transaction-modal {
+
   select,
   textarea::-webkit-input-placeholder,
   input::-webkit-input-placeholder {
@@ -287,6 +303,7 @@ footer {
     font-size: 1rem;
   }
 }
+
 // Input file
 .form-file {
   cursor: pointer;
@@ -308,4 +325,9 @@ footer {
 
 .form-file::-webkit-file-upload-button {
   visibility: hidden;
+}
+
+.modal-content>.carousel>.carousel-inner>.carousel-item:after {
+  background: rgba(0, 0, 0, 0) !important;
+
 }

@@ -94,12 +94,14 @@ hr {
 .gray-icon-text {
   color: #bfc0c4;
 }
+
 .galery-image {
   @media (max-width: 700px) {
     position: absolute;
     bottom: 0px;
     right: 0px;
   }
+
   img {
     width: 142px;
     height: auto;
@@ -110,6 +112,7 @@ hr {
     }
   }
 }
+
 .group {
   position: relative;
   margin-bottom: 2rem;
@@ -120,6 +123,7 @@ hr {
   border-radius: 10px;
   border: 1px solid;
 }
+
 input,
 textarea {
   font-size: 18px;
@@ -150,13 +154,14 @@ label {
 }
 
 /* active state */
-input:focus ~ label,
-input:valid ~ label,
-textarea:focus ~ label,
-textarea:valid ~ label {
+input:focus~label,
+input:valid~label,
+textarea:focus~label,
+textarea:valid~label {
   top: -20px;
   font-size: 14px;
   color: #39211f;
+
   &.invalid {
     color: #970d00;
   }
@@ -168,6 +173,7 @@ textarea:valid ~ label {
   display: block;
   width: 300px;
 }
+
 .bar:before,
 .bar:after {
   content: "";
@@ -179,22 +185,25 @@ textarea:valid ~ label {
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
+
   &.invalid {
     background: #970d00;
   }
 }
+
 .bar:before {
   left: 50%;
 }
+
 .bar:after {
   right: 50%;
 }
 
 /* active state */
-input:focus ~ .bar:before,
-input:focus ~ .bar:after,
-textarea:focus ~ .bar:before,
-textarea:focus ~ .bar:after {
+input:focus~.bar:before,
+input:focus~.bar:after,
+textarea:focus~.bar:before,
+textarea:focus~.bar:after {
   width: 50%;
 }
 
@@ -210,8 +219,8 @@ textarea:focus ~ .bar:after {
 }
 
 /* active state */
-input:focus ~ .highlight,
-textarea:focus ~ .highlight {
+input:focus~.highlight,
+textarea:focus~.highlight {
   -webkit-animation: inputHighlighter 0.3s ease;
   -moz-animation: inputHighlighter 0.3s ease;
   animation: inputHighlighter 0.3s ease;
@@ -222,24 +231,29 @@ textarea:focus ~ .highlight {
   from {
     background: #39211f;
   }
+
   to {
     width: 0;
     background: transparent;
   }
 }
+
 @-moz-keyframes inputHighlighter {
   from {
     background: #39211f;
   }
+
   to {
     width: 0;
     background: transparent;
   }
 }
+
 @keyframes inputHighlighter {
   from {
     background: #39211f;
   }
+
   to {
     width: 0;
     background: transparent;
@@ -279,6 +293,7 @@ textarea:focus ~ .highlight {
   bottom: -48px;
   transform: skewY(-5deg);
 }
+
 .sec1:before {
   content: "";
   width: 50%;
@@ -305,12 +320,12 @@ textarea:focus ~ .highlight {
 
 
 .carousel-image {
-    height: 100vh !important;
+  height: 100vh !important;
 }
 
-
-.carousel-item {
-  background: none !important;
-}
 
 /// modale
+.modal-content>.carousel>.carousel-inner>.carousel-item:after {
+  background: rgba(0, 0, 0, 0) !important;
+
+}
