@@ -268,7 +268,7 @@
                 Valor
               </h6>
             </div>
-            <div *ngIf="gPropiedades.CantidadBanos=='1'" class="col-md-2 col-4 flex-column">
+            <!-- <div *ngIf="gPropiedades.CantidadBanos=='1'" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
                 <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 9.svg" class=""
                   alt="" />
@@ -276,7 +276,7 @@
               <h6 class="gray-icon-text text-center font-weight-bold">
                 Valor
               </h6>
-            </div>
+            </div> -->
             <div *ngIf="gPropiedades.CantidadCocheras=='1'" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
                 <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 17.svg" class=""
@@ -341,9 +341,9 @@
             </h6>
             <hr class="my-1" />
             <div class="col-lg-12">
-              <p class="pt-4 gray-text font-weight-semibold">
-                {{gPropiedades.descipcion}}
-              </p>
+              <pre class="pt-4 gray-text font-weight-semibold" style="font-family: 'Open Sans', sans-serif !important;
+              font-size: 100% !important;">{{gPropiedades.descipcion}}
+              </pre>
             </div>
           </div>
           <div class="col-sm-12 text-white d-flex justify-content-center py-5">
