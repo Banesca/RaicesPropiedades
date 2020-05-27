@@ -272,7 +272,7 @@ export class FormComponent implements OnInit {
             fk_Direccion_Calle_Id: [''],
             fk_Direccion_Barrio_Id: [''],
             fk_Direccion_SubBarrio_Id: [''],
-            Direccion_Nombrecalle: [''],
+            //Direccion_Nombrecalle: [''],
             Direccion_Numero: [''],
             Direccion_Piso: [''],
             Direccion_Departamento: [''],
@@ -458,7 +458,7 @@ export class FormComponent implements OnInit {
                     fk_Direccion_Ciudad_Id: res.fk_Direccion_Ciudad_Id,
                     fk_Direccion_Barrio_Id: res.fk_Direccion_Barrio_Id,
                     fk_Direccion_SubBarrio_Id: res.fk_Direccion_SubBarrio_Id,
-                    Direccion_Nombrecalle: res.Direccion_Nombrecalle,
+                    //Direccion_Nombrecalle: res.Direccion_Nombrecalle,
                     Direccion_Numero: res.Direccion_Numero,
                     Direccion_Piso: res.Direccion_Piso,
                     Direccion_Departamento: res.Direccion_Departamento,
@@ -702,7 +702,7 @@ export class FormComponent implements OnInit {
         obj.fk_Direccion_Barrio_Id = data3.fk_Direccion_Barrio_Id ? data3.fk_Direccion_Barrio_Id : '';
         obj.fk_Direccion_Calle_Id = data3.fk_Direccion_Calle_Id ? data3.fk_Direccion_Calle_Id : '';
         obj.fk_Direccion_SubBarrio_Id = data3.fk_Direccion_SubBarrio_Id ? data3.fk_Direccion_SubBarrio_Id : '';
-        obj.Direccion_Nombrecalle = data3.Direccion_Nombrecalle ? data3.Direccion_Nombrecalle : '';
+        //obj.Direccion_Nombrecalle = data3.Direccion_Nombrecalle ? data3.Direccion_Nombrecalle : '';
         obj.Direccion_Numero = data3.Direccion_Numero ? data3.Direccion_Numero : '';
         obj.Direccion_Piso = data3.Direccion_Piso ? data3.Direccion_Piso : '';
         obj.Direccion_Departamento = data3.Direccion_Departamento ? data3.Direccion_Departamento : '';

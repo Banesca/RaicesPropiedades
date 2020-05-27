@@ -741,16 +741,12 @@
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
-                                       <mat-select placeholder="Calle*" formControlName="fk_Direccion_Calle_Id">
+                                       <mat-select placeholder="Calle" formControlName="fk_Direccion_Calle_Id">
 
                                           <mat-option *ngFor="let item of arrayCalle" [value]="item.idCalle">
                                              {{item.nombre}}
                                           </mat-option>
                                        </mat-select>
-                                       <mat-error>
-                                          Este valor es
-                                          <strong>requerido</strong>
-                                       </mat-error>
 
                                     </mat-form-field>
                                  </div>
@@ -800,7 +796,7 @@
 
                         <div class="row">
 
-                           <div class="col-md-3">
+                           <!--<div class="col-md-3">
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
@@ -814,7 +810,7 @@
                                     </mat-form-field>
                                  </div>
                               </div>
-                           </div>
+                           </div>-->
 
                            <div class="col-md-3">
                               <div class="form-group">
