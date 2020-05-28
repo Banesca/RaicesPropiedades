@@ -15,7 +15,7 @@ class SuscripcionController extends Controller {
     public function nuevaSus(Request $request) {
 
         $this->validate($request, [
-            'email' => 'required|email|unique:tb_suscripcions,email,'.$request->idSuscripcion.',idSuscripcion',
+            'email' => 'required|email|unique:tb_suscripcions,email,2,fk_idStatusSistema',
         ], [
             'email.unique'   => 'Este Email ya se encuentra en uso',
             'email.email'    => 'El Email debe de tener un formato ejemplo@ejemplo.com',
