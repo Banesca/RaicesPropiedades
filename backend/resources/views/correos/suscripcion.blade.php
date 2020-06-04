@@ -450,6 +450,8 @@
                                         <p>
                                             Te saludamos cordialmente.
                                         </p>
+
+                                        <p style = "text-align: center;color:#E97604;">Si desea cancelar la suscripción haga click <a href = "https://www.raicespropiedades.com/backend/public/formCancelarSuscripcion/{{ $sus->tocken }}">Aquí</a></p>
                                         <h5>www.raicespropiedades.com</h5>
                                     </td>
                                 </tr>
