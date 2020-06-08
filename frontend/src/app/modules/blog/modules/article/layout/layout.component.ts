@@ -273,4 +273,8 @@ export class LayoutComponent implements OnInit {
     this.successMensaje = false;
     this.submitted = false;
   }
+  volver() {
+    this.errorMensaje = null;
+    this.submitted = false;
+  }
 }
