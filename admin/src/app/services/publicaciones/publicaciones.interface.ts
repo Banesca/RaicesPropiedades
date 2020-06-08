@@ -46,6 +46,7 @@ export interface IPublicacion {
     precio: number;
     fk_idMonedas: number;
     no_publicar_precio_inter: number;
+    boolCalleMod?: boolean;
     /**
      * Estado de Propiedad
      */

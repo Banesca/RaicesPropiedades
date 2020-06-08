@@ -90,7 +90,7 @@ export class FormComponent implements OnInit {
     }
 
     inPromise: boolean = false;
-
+    boolCalle = false;
     constructor(private service: PublicacionesService,
                 private activatedRoute: ActivatedRoute,
                 private router: Router,
@@ -272,7 +272,8 @@ export class FormComponent implements OnInit {
             fk_Direccion_Calle_Id: [''],
             fk_Direccion_Barrio_Id: [''],
             fk_Direccion_SubBarrio_Id: [''],
-            //Direccion_Nombrecalle: [''],
+            boolCalleMod: [''],
+            Direccion_Nombrecalle: [''],
             Direccion_Numero: [''],
             Direccion_Piso: [''],
             Direccion_Departamento: [''],
@@ -433,7 +434,15 @@ export class FormComponent implements OnInit {
                 this.reloadLocalidades({value: res.fk_Direccion_Partido_Id});
                 res.fk_Direccion_Localidad_Id ? this.reloadBarrios({value: res.fk_Direccion_Localidad_Id}) : null;
                 res.fk_Direccion_Barrio_Id ? this.reloadSubBarrios({value: res.fk_Direccion_Barrio_Id}) : null;
-                res.fk_Direccion_Calle_Id ? this.reloadCalles({value: res.fk_Direccion_Calle_Id}) : null;
+                res.fk_Direccion_Calle_Id ? this.reloadCalles({value: res.fk_Direccion_Localidad_Id}) : null;
+
+                //validando check de calle manual
+                if (res.boolCalleMod) {
+                    this.boolCalle = true;
+                    //this.formThree.controls['fk_Direccion_Calle_Id'].setValue(res.fk_Direccion_Calle_Id);
+                } else {
+                    this.boolCalle = false;
+                }
 
                 this.formThree.setValue({
                     //Datos Basicos
@@ -458,7 +467,8 @@ export class FormComponent implements OnInit {
                     fk_Direccion_Ciudad_Id: res.fk_Direccion_Ciudad_Id,
                     fk_Direccion_Barrio_Id: res.fk_Direccion_Barrio_Id,
                     fk_Direccion_SubBarrio_Id: res.fk_Direccion_SubBarrio_Id,
-                    //Direccion_Nombrecalle: res.Direccion_Nombrecalle,
+                    boolCalleMod: res.boolCalleMod,
+                    Direccion_Nombrecalle: res.Direccion_Nombrecalle,
                     Direccion_Numero: res.Direccion_Numero,
                     Direccion_Piso: res.Direccion_Piso,
                     Direccion_Departamento: res.Direccion_Departamento,
@@ -702,7 +712,8 @@ export class FormComponent implements OnInit {
         obj.fk_Direccion_Barrio_Id = data3.fk_Direccion_Barrio_Id ? data3.fk_Direccion_Barrio_Id : '';
         obj.fk_Direccion_Calle_Id = data3.fk_Direccion_Calle_Id ? data3.fk_Direccion_Calle_Id : '';
         obj.fk_Direccion_SubBarrio_Id = data3.fk_Direccion_SubBarrio_Id ? data3.fk_Direccion_SubBarrio_Id : '';
-        //obj.Direccion_Nombrecalle = data3.Direccion_Nombrecalle ? data3.Direccion_Nombrecalle : '';
+        obj.boolCalleMod = data3.boolCalleMod ? data3.boolCalleMod : '';
+        obj.Direccion_Nombrecalle = data3.Direccion_Nombrecalle ? data3.Direccion_Nombrecalle : '';
         obj.Direccion_Numero = data3.Direccion_Numero ? data3.Direccion_Numero : '';
         obj.Direccion_Piso = data3.Direccion_Piso ? data3.Direccion_Piso : '';
         obj.Direccion_Departamento = data3.Direccion_Departamento ? data3.Direccion_Departamento : '';
@@ -1048,8 +1059,8 @@ export class FormComponent implements OnInit {
 
 
             //Validamos el tamaño del archivo
-            const kilobytes=Math.round((fileTo.size / 1024))
-            if ( kilobytes > 10240) { //archivos mayores a 10mb no se podran procesar
+            const kilobytes = Math.round((fileTo.size / 1024))
+            if (kilobytes > 10240) { //archivos mayores a 10mb no se podran procesar
                 this.alertService.msg('ERR', 'Error:', 'El archivo es muy pesado, peso máximo 10Mb');
                 return;
             }
@@ -1157,6 +1168,7 @@ export class FormComponent implements OnInit {
         }
         this.reloadCalles(event)
     }
+
     reloadCalles(event) {
         this.formThree.controls['fk_Direccion_Calle_Id'].setValue('');
         if (event.value >= 0) {
@@ -1187,6 +1199,7 @@ export class FormComponent implements OnInit {
             const element = keys[index];
             formData.append(element, obj[element]);
         }
+        //console.log(formData);
         //Registramos el objeto
         this.service.addPropiedad(formData).then((resp: any) => {
             this.inPromise = false
@@ -1224,6 +1237,10 @@ export class FormComponent implements OnInit {
                 "Modificación",
                 resp.msj
             );
+            this.formOne.reset();
+            this.formTwo.reset();
+            this.formThree.reset();
+            this.router.navigate(['/gestionar-publicaciones']);
 
         }).catch(e => {
             console.error(e);
@@ -1267,6 +1284,19 @@ export class FormComponent implements OnInit {
     }
 
     delete() {
+    }
+
+    activarCamposDireccion(obj) {
+        let bo = obj.checked;
+        //console.log(this.formThree.controls['fk_Direccion_Localidad_Id']);
+        if (bo) {
+            this.boolCalle = true;
+            this.formThree.controls['fk_Direccion_Calle_Id'].setValue('');
+        } else {
+            this.boolCalle = false;
+            this.formThree.controls['Direccion_Nombrecalle'].setValue('');
+            this.formThree.controls['Direccion_Numero'].setValue('');
+        }
     }
 
 

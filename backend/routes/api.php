@@ -262,9 +262,14 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('fichaPropiedad/getAll', 'FichaPropiedadController@listarTodo');
     Route::get('fichaPropiedad/ver/{idFicha}', 'FichaPropiedadController@listarPorId');
     Route::get('fichaPropiedad/pdf/{idFicha}', 'FichaPropiedadController@pdf');
+
+    Route::get('123',function (){
+        $con=\App\ContactoDePropiedad::with('propiedad')->find(6);
+
+
+        return view('correos.contactoDePropiedadMail')->with('contacto',$con);
+    });
 });
 
 
-
-    
 
