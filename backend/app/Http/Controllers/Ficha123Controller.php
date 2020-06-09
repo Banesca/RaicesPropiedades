@@ -64,6 +64,7 @@ class Ficha123Controller extends Controller {
                 'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
             ];
 
+            //$ficha123->UrlArgen=@SincroniceArgenController::buscarURLdePropiedadArgen($ficha123->idPropiedad);
             return response()->json($ficha123);
         } else {
             $response = [
@@ -138,6 +139,7 @@ class Ficha123Controller extends Controller {
                     'imagen9'             => ! is_null(@$ficha123->imagen9) ? asset('storage\\ficha2\\'.@$ficha123->imagen9) : '',
                     'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
                 ];
+                //$ficha123->UrlArgen=@SincroniceArgenController::buscarURLdePropiedadArgen($ficha123->idPropiedad);
             });
 
             return response()->json($ficha123);
@@ -211,6 +213,7 @@ class Ficha123Controller extends Controller {
                     'imagen9'             => ! is_null(@$ficha123->imagen9) ? asset('storage\\ficha2\\'.@$ficha123->imagen9) : '',
                     'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
                 ];
+               // $ficha123->UrlArgen=@SincroniceArgenController::buscarURLdePropiedadArgen($ficha123->idPropiedad);
             });
 
             return response()->json($ficha123);

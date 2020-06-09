@@ -183,7 +183,6 @@ Route::group(['prefix' => 'v1'], function () {
 
     //Route::post('sincronice','SincroniceArgenController@add'); /*Faltan pruebas*/
     Route::get('listarPropiedades/{idPropiedad}', 'Ficha123Controller@listar');
-    Route::get('listarPropiedades/{idPropiedad}', 'Ficha123Controller@listar');
     Route::get('listarPropiedades', 'Ficha123Controller@listarTodo');
     Route::get('listarTodasPropiedades', 'Ficha123Controller@listarTodoSinFiltro');
 
@@ -266,9 +265,23 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('123',function (){
         $con=\App\ContactoDePropiedad::with('propiedad')->find(6);
 
+        foreach (json_decode(json_encode($con->propiedad), true) as $key=>$item){
+                      dd($key,$item);
+
+
+            /*foreach ($item[$key] as $item2){
+               dd($item2);
+            }*/
+        }
 
         return view('correos.contactoDePropiedadMail')->with('contacto',$con);
     });
+
+    Route::get('visibilidad/{id}','SincroniceArgenController@buscarIdAvisoPorIdVisibilidad');
+    //Route::get('baja/{id}','SincroniceArgenController@darDeBaja');
+    //Route::get('url/{id}','SincroniceArgenController@buscarURLdePropiedadArgen');
+
+    Route::get('activarPropiedadEnArgen/{idPropiedad}','SincroniceArgenController@reactivar');
 });
 
 
