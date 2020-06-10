@@ -262,17 +262,8 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('fichaPropiedad/ver/{idFicha}', 'FichaPropiedadController@listarPorId');
     Route::get('fichaPropiedad/pdf/{idFicha}', 'FichaPropiedadController@pdf');
 
-    Route::get('123',function (){
-        $con=\App\ContactoDePropiedad::with('propiedad')->find(6);
-
-        foreach (json_decode(json_encode($con->propiedad), true) as $key=>$item){
-                      dd($key,$item);
-
-
-            /*foreach ($item[$key] as $item2){
-               dd($item2);
-            }*/
-        }
+    Route::get('123/{id}',function ($id){
+        $con=\App\ContactoDePropiedad::with('propiedad')->find($id);
 
         return view('correos.contactoDePropiedadMail')->with('contacto',$con);
     });
@@ -283,6 +274,4 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::get('activarPropiedadEnArgen/{idPropiedad}','SincroniceArgenController@reactivar');
 });
-
-
 

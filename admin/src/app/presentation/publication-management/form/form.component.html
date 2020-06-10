@@ -733,7 +733,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-3">
+                                    <div class="col-md-3" *ngIf="!boolCalle">
                     <div class="form-group">
                       <div class="example-container">
                         <mat-form-field>
@@ -787,17 +787,29 @@
                       </div>
                     </div>
                   </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="example-container">
+
+                                                <mat-checkbox formControlName="boolCalleMod"
+                                                              (change)="activarCamposDireccion($event)">
+                                                    Definir calle manualmente
+                                                </mat-checkbox>
+
+                                            </div>
+                                        </div>
+                                    </div>
 
                 </div>
 
                 <div class="row">
 
-                  <!--<div class="col-md-3">
+                                        <div class="col-md-3" *ngIf="boolCalle">
                               <div class="form-group">
                                  <div class="example-container">
                                     <mat-form-field>
                                        <input type="text" formControlName="Direccion_Nombrecalle" matInput
-                                          placeholder="Nombre de Calle">
+                                                               placeholder="Nombre de Calle*">
                                        <mat-error>
                                           Este valor es
                                           <strong>requerido</strong>
@@ -806,13 +818,14 @@
                                     </mat-form-field>
                                  </div>
                               </div>
-                           </div>-->
+                                        </div>
 
-                  <div class="col-md-3">
+                                        <div class="col-md-3" *ngIf="boolCalle">
                     <div class="form-group">
                       <div class="example-container">
                         <mat-form-field>
-                          <input type="text" formControlName="Direccion_Numero" matInput placeholder="Número">
+                                                        <input type="text" formControlName="Direccion_Numero" matInput
+                                                               placeholder="Número de la Calle*">
                           <mat-error>
                             Este valor es
                             <strong>requerido</strong>

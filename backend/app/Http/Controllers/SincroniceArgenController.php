@@ -1573,42 +1573,44 @@ class SincroniceArgenController extends Controller {
         /*activar una publicacion desactivada en argen Pro*/
         $propi = Propiedad::find($idPropiedad);
         //dd($IdAviso);
+        if($propi){
+            $contenido = self::QueryHtml([
+                'usr'                    => env('usr'),
+                'psd'                    => env('psd'),
+                'aviso.IdOrigen'         => '575Y_raices_'.$propi->idPropiedad.'_propiedades',
+                'aviso.SistemaOrigen.Id' => 10,
+            ]);
 
-        $contenido = self::QueryHtml([
-            'usr'                    => env('usr'),
-            'psd'                    => env('psd'),
-            'aviso.IdOrigen'         => '575Y_raices_'.$propi->idPropiedad.'_propiedades',
-            'aviso.SistemaOrigen.Id' => 10,
-        ]);
+            $curl = curl_init();
 
-        $curl = curl_init();
+            curl_setopt_array($curl, [
+                CURLOPT_URL            => "http://www.inmuebles.clarin.com/Publicaciones/Activar/?contentType=json",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING       => "",
+                CURLOPT_MAXREDIRS      => 10,
+                CURLOPT_TIMEOUT        => 30,
+                CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST  => "POST",
+                CURLOPT_POSTFIELDS     => $contenido,
+                CURLOPT_HTTPHEADER     => [
+                    "accept: application/json",
+                    // "cache-control: no-cache",
+                    "content-type: application/x-www-form-urlencoded",
+                    // "postman-token: d0b4a2ae-696c-01aa-605b-6e16a8788770"
+                ],
+            ]);
 
-        curl_setopt_array($curl, [
-            CURLOPT_URL            => "http://www.inmuebles.clarin.com/Publicaciones/Activar/?contentType=json",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING       => "",
-            CURLOPT_MAXREDIRS      => 10,
-            CURLOPT_TIMEOUT        => 30,
-            CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST  => "POST",
-            CURLOPT_POSTFIELDS     => $contenido,
-            CURLOPT_HTTPHEADER     => [
-                "accept: application/json",
-                // "cache-control: no-cache",
-                "content-type: application/x-www-form-urlencoded",
-                // "postman-token: d0b4a2ae-696c-01aa-605b-6e16a8788770"
-            ],
-        ]);
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            curl_close($curl);
 
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-        curl_close($curl);
-
-        if ($err) {
-            dd("cURL Error #:".$err);
-        } else {
-            return $response;
+            if ($err) {
+                dd("cURL Error #:".$err);
+            } else {
+                return $response;
+            }
         }
+
     }
 
     public static function buscarIdAvisoPorIdVisibilidad($idVisibilidad) {

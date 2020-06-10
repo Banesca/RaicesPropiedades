@@ -81,6 +81,16 @@
                 <td>{{ item.esUnaNovedad == 1 ? "Si" : "No" }}</td>
                 <td>{{ item.estado_publicacion.descripcion }}</td>
                 <td class="float-right">
+                  <a href="{{item.UrlPropiedadArgen}}" target="_blank">
+                  <button class
+                          type="button"
+                          class="btn btn-primary"
+                          [disabled]="item.estado_publicacion.idEstadoPublicaion == 3 && !item.UrlPropiedadArgen"
+                          style="margin-right: 5px;"
+                  >
+                    <i class="fa fa-link"></i>
+                  </button>
+                  </a>
                   <button
                     [routerLink]="[
                       '/gestionar-publicaciones/form',

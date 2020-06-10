@@ -102,7 +102,7 @@ export class FormComponent implements OnInit {
   };
 
   inPromise: boolean = false;
-
+    boolCalle = false;
   constructor(
     private service: PublicacionesService,
     private activatedRoute: ActivatedRoute,
@@ -274,25 +274,21 @@ export class FormComponent implements OnInit {
 
       //Ubicación
       //fk_Direccion_Pais_Id: ['', Validators.required],
-      fk_Direccion_Provincia_Id: ["", Validators.required],
-      fk_Direccion_Partido_Id: ["", Validators.required],
-      fk_Direccion_Localidad_Id: ["", Validators.required],
-      fk_Direccion_Ciudad_Id: [""],
-      fk_Direccion_Calle_Id: [""],
-      fk_Direccion_Barrio_Id: [""],
-      fk_Direccion_SubBarrio_Id: [""],
-      //Direccion_Nombrecalle: [''],
-      Direccion_Numero: [""],
-      Direccion_Piso: [""],
-      Direccion_Departamento: [""],
-      Direccion_Coordenadas_Latitud: [
-        "",
-        Validators.pattern("^-?[0-9]+(.[0-9]{0,20})?$"),
-      ],
-      Direccion_Coordenadas_Longitud: [
-        "",
-        Validators.pattern("^-?[0-9]+(.[0-9]{0,20})?$"),
-      ],
+            fk_Direccion_Provincia_Id: ['', Validators.required],
+            fk_Direccion_Partido_Id: ['', Validators.required],
+            fk_Direccion_Localidad_Id: ['', Validators.required],
+            fk_Direccion_Ciudad_Id: [''],
+            fk_Direccion_Calle_Id: [''],
+            fk_Direccion_Barrio_Id: [''],
+            fk_Direccion_SubBarrio_Id: [''],
+            boolCalleMod: [''],
+            Direccion_Nombrecalle: [''],
+            Direccion_Numero: [''],
+            Direccion_Piso: [''],
+            Direccion_Departamento: [''],
+            Direccion_Coordenadas_Latitud: ['', Validators.pattern("^-?[0-9]+(.[0-9]{0,20})?$")],
+            Direccion_Coordenadas_Longitud: ['', Validators.pattern("^-?[0-9]+(.[0-9]{0,20})?$")],
+
 
       //Caracteristicas
       //Inputs
@@ -451,9 +447,15 @@ export class FormComponent implements OnInit {
         res.fk_Direccion_Barrio_Id
           ? this.reloadSubBarrios({ value: res.fk_Direccion_Barrio_Id })
           : null;
-        res.fk_Direccion_Calle_Id
-          ? this.reloadCalles({ value: res.fk_Direccion_Calle_Id })
-          : null;
+                res.fk_Direccion_Calle_Id ? this.reloadCalles({value: res.fk_Direccion_Localidad_Id}) : null;
+
+                //validando check de calle manual
+                if (res.boolCalleMod) {
+                    this.boolCalle = true;
+                    //this.formThree.controls['fk_Direccion_Calle_Id'].setValue(res.fk_Direccion_Calle_Id);
+                } else {
+                    this.boolCalle = false;
+                }
 
         this.formThree.setValue({
           //Datos Basicos
@@ -480,7 +482,8 @@ export class FormComponent implements OnInit {
           fk_Direccion_Ciudad_Id: res.fk_Direccion_Ciudad_Id,
           fk_Direccion_Barrio_Id: res.fk_Direccion_Barrio_Id,
           fk_Direccion_SubBarrio_Id: res.fk_Direccion_SubBarrio_Id,
-          //Direccion_Nombrecalle: res.Direccion_Nombrecalle,
+                    boolCalleMod: res.boolCalleMod,
+                    Direccion_Nombrecalle: res.Direccion_Nombrecalle,
           Direccion_Numero: res.Direccion_Numero,
           Direccion_Piso: res.Direccion_Piso,
           Direccion_Departamento: res.Direccion_Departamento,
@@ -717,30 +720,17 @@ export class FormComponent implements OnInit {
     obj.fk_Direccion_Provincia_Id = data3.fk_Direccion_Provincia_Id;
     obj.fk_Direccion_Partido_Id = data3.fk_Direccion_Partido_Id;
     obj.fk_Direccion_Localidad_Id = data3.fk_Direccion_Localidad_Id;
-    obj.fk_Direccion_Ciudad_Id = data3.fk_Direccion_Ciudad_Id
-      ? data3.fk_Direccion_Ciudad_Id
-      : "";
-    obj.fk_Direccion_Barrio_Id = data3.fk_Direccion_Barrio_Id
-      ? data3.fk_Direccion_Barrio_Id
-      : "";
-    obj.fk_Direccion_Calle_Id = data3.fk_Direccion_Calle_Id
-      ? data3.fk_Direccion_Calle_Id
-      : "";
-    obj.fk_Direccion_SubBarrio_Id = data3.fk_Direccion_SubBarrio_Id
-      ? data3.fk_Direccion_SubBarrio_Id
-      : "";
-    //obj.Direccion_Nombrecalle = data3.Direccion_Nombrecalle ? data3.Direccion_Nombrecalle : '';
-    obj.Direccion_Numero = data3.Direccion_Numero ? data3.Direccion_Numero : "";
-    obj.Direccion_Piso = data3.Direccion_Piso ? data3.Direccion_Piso : "";
-    obj.Direccion_Departamento = data3.Direccion_Departamento
-      ? data3.Direccion_Departamento
-      : "";
-    obj.Direccion_Coordenadas_Latitud = data3.Direccion_Coordenadas_Latitud
-      ? data3.Direccion_Coordenadas_Latitud
-      : "";
-    obj.Direccion_Coordenadas_Longitud = data3.Direccion_Coordenadas_Longitud
-      ? data3.Direccion_Coordenadas_Longitud
-      : "";
+        obj.fk_Direccion_Ciudad_Id = data3.fk_Direccion_Ciudad_Id ? data3.fk_Direccion_Ciudad_Id : '';
+        obj.fk_Direccion_Barrio_Id = data3.fk_Direccion_Barrio_Id ? data3.fk_Direccion_Barrio_Id : '';
+        obj.fk_Direccion_Calle_Id = data3.fk_Direccion_Calle_Id ? data3.fk_Direccion_Calle_Id : '';
+        obj.fk_Direccion_SubBarrio_Id = data3.fk_Direccion_SubBarrio_Id ? data3.fk_Direccion_SubBarrio_Id : '';
+        obj.boolCalleMod = data3.boolCalleMod ? data3.boolCalleMod : '';
+        obj.Direccion_Nombrecalle = data3.Direccion_Nombrecalle ? data3.Direccion_Nombrecalle : '';
+        obj.Direccion_Numero = data3.Direccion_Numero ? data3.Direccion_Numero : '';
+        obj.Direccion_Piso = data3.Direccion_Piso ? data3.Direccion_Piso : '';
+        obj.Direccion_Departamento = data3.Direccion_Departamento ? data3.Direccion_Departamento : '';
+        obj.Direccion_Coordenadas_Latitud = data3.Direccion_Coordenadas_Latitud ? data3.Direccion_Coordenadas_Latitud : '';
+        obj.Direccion_Coordenadas_Longitud = data3.Direccion_Coordenadas_Longitud ? data3.Direccion_Coordenadas_Longitud : '';
 
     //Llenamos las caracteristicas
     //Inputs
@@ -1396,5 +1386,21 @@ export class FormComponent implements OnInit {
 
   show() {}
 
-  delete() {}
+    delete() {
+    }
+
+    activarCamposDireccion(obj) {
+        let bo = obj.checked;
+        //console.log(this.formThree.controls['fk_Direccion_Localidad_Id']);
+        if (bo) {
+            this.boolCalle = true;
+            this.formThree.controls['fk_Direccion_Calle_Id'].setValue('');
+        } else {
+            this.boolCalle = false;
+            this.formThree.controls['Direccion_Nombrecalle'].setValue('');
+            this.formThree.controls['Direccion_Numero'].setValue('');
+        }
+    }
+
+
 }
