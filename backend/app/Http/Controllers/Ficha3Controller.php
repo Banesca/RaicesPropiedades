@@ -330,7 +330,8 @@ class Ficha3Controller extends Controller {
             $propiedad->update([ 'fk_estado_publicacion' => 3 ]);  //se cambia de estatus
             //$propiedad->delete(); //se le asiga la fehca de borrado
             $respuestaArgen = SincroniceArgenController::darDeBaja($propiedad->idPropiedad);
-            if ($respuestaArgen) {
+
+            if ($respuestaArgen=="true") {
                 Log::info('Se ha desactivado correctamente en ArgenPro la propiedad idPropiedad: '.$propiedad->idPropiedad);
             } else {
                 Log::error('Ha ocurrido un error en al desactivar la propiedad en ArgenPro: idPropiedad: '.$propiedad->idPropiedad);
