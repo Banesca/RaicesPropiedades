@@ -326,16 +326,5 @@ Route::group(['prefix' => 'v1'], function () {
 
     });*/
 
-    Route::get('p120',function (){
-       $p1=[boolval(0),boolval(1)];
-       $p2=[boolval("0"),boolval("1")];
-       $p3=[(boolean)0,(boolean)1];
-       $p4=[(boolean)"0",(boolean)"1"];
-
-
-       $a=[$p1,$p2,$p3,$p4];
-       dd($a);
-
-    });
 });
 

@@ -24,6 +24,8 @@ export class FormComponent implements OnInit {
   formThree: FormGroup;
 
   id: string;
+  nameBarrio: string='Barrio';
+  nameCalle: string='Calle';
 
   publication: any;
 
@@ -1256,6 +1258,18 @@ export class FormComponent implements OnInit {
   reloadPartidos(event) {
     this.formThree.controls["fk_Direccion_Partido_Id"].setValue("");
     if (event.value >= 0) {
+      console.log(event.value);
+      if (event.value==2) { //Validando que cuando sea Capital Federal sea requerido el barrio
+        this.formThree.controls["fk_Direccion_Barrio_Id"].setValidators([Validators.required]);
+        this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([Validators.required]);
+        this.nameBarrio='Barrio*';
+        this.nameCalle='Calle*';
+      }else{
+        this.formThree.controls["fk_Direccion_Barrio_Id"].setValidators([]);
+        this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([]);
+        this.nameBarrio='Barrio';
+        this.nameCalle='Calle';
+      }
       this.service.getPartidos(event.value).then((resp: any) => {
         this.arrayPartido = resp.Partidos;
       });

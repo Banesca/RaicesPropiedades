@@ -737,7 +737,7 @@
                     <div class="form-group">
                       <div class="example-container">
                         <mat-form-field>
-                          <mat-select placeholder="Calle" formControlName="fk_Direccion_Calle_Id">
+                          <mat-select placeholder="{{nameCalle}}" formControlName="fk_Direccion_Calle_Id">
 
                             <mat-option *ngFor="let item of arrayCalle" [value]="item.idCalle">
                               {{item.nombre}}
@@ -753,7 +753,7 @@
                     <div class="form-group">
                       <div class="example-container">
                         <mat-form-field>
-                          <mat-select placeholder="Barrio" formControlName="fk_Direccion_Barrio_Id"
+                          <mat-select placeholder="{{nameBarrio}}" formControlName="fk_Direccion_Barrio_Id"
                             (selectionChange)="reloadSubBarrios($event)">
                             <mat-option *ngFor="let item of arrayBarrio" [value]="item.id">
                               {{item.nombre}}
