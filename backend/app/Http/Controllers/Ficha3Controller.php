@@ -18,6 +18,7 @@ class Ficha3Controller extends Controller {
     public function add(Request $request) {
         //return response()->json($request->all());
 
+
         $this->validate($request, [
             'imagen1'             => 'image|max:10240',
             'imagen2'             => 'image|max:10240',
@@ -47,6 +48,7 @@ class Ficha3Controller extends Controller {
         try {
 
             $propiedad = new Propiedad($request->all());
+
             if ($request->boolCalleMod) {
                 $propiedad->boolCalleMod = 1;
             } else {
@@ -96,9 +98,10 @@ class Ficha3Controller extends Controller {
             $propiedad->save();
 
             //Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email, $propiedad->descipcion, $propiedad->idPropiedad));
-
+//return response()->json($propiedad);
             $sincronice = new SincroniceArgenController();
             $sincronice->add($propiedad); //para add propiedad en argen pro
+
 
             @$propiedad->TipoPropiedad;
             @$propiedad->Disposicion;
@@ -330,8 +333,9 @@ class Ficha3Controller extends Controller {
             $propiedad->update([ 'fk_estado_publicacion' => 3 ]);  //se cambia de estatus
             //$propiedad->delete(); //se le asiga la fehca de borrado
             $respuestaArgen = SincroniceArgenController::darDeBaja($propiedad->idPropiedad);
+            //return response()->json($respuestaArgen);
 
-            if ($respuestaArgen=="true") {
+            if ($respuestaArgen == true) {
                 Log::info('Se ha desactivado correctamente en ArgenPro la propiedad idPropiedad: '.$propiedad->idPropiedad);
             } else {
                 Log::error('Ha ocurrido un error en al desactivar la propiedad en ArgenPro: idPropiedad: '.$propiedad->idPropiedad);
@@ -341,7 +345,7 @@ class Ficha3Controller extends Controller {
                 'msj' => 'Propiedad borrada Exitosamente',
             ];
 
-            return response()->json($response, 201);
+            return response()->json($response, 200);
         } else {
             $response = [
                 'msj' => 'No existe la propiedad',

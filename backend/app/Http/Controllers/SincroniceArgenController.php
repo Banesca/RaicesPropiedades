@@ -8,7 +8,7 @@ class SincroniceArgenController extends Controller {
     public function add(Propiedad $request1) {
         $contenido;
         //departamento
-        if ($request1->fk_idTipoPropiedad = 1) {
+        if ($request1->fk_idTipoPropiedad == 1) {
 
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
@@ -68,7 +68,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.TipoExpensas'                                    => $request1->fk_TipoExpensas,
                 //'propiedad.TipoVista'                                       => $request1->fk_TipoVista,
                 //'propiedad.TipoCosta'                                       => $request1->fk_TipoCosta,
-                'propiedad.TipoUnidad'                                      => $request1->fk_TipoUnidadDepartamento,
+                'propiedad.TipoUnidad'                                      => is_null($request1->fk_TipoUnidadCasa) ? $request1->fk_TipoUnidadDepartamento : $request1->fk_TipoUnidadCasa,
                 'propiedad.Estado'                                          => $request1->fk_Estado,
                 'propiedad.CantidadBanos'                                   => $request1->CantidadBanos,
                 'propiedad.CantidadAmbientes'                               => $request1->CantidadAmbientes,
@@ -202,7 +202,7 @@ class SincroniceArgenController extends Controller {
             ]);
 
         } //'Departamento Tipo Casa
-        elseif ($request1->fk_idTipoPropiedad = 2) {
+        elseif ($request1->fk_idTipoPropiedad == 2) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -348,7 +348,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Ambientes.Vestidor'                        => (boolean) $request1->Ambientes_Vestidor ? 'true' : 'false',
             ]);
         } //Casa
-        elseif ($request1->fk_idTipoPropiedad = 3) {
+        elseif ($request1->fk_idTipoPropiedad == 3) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -399,7 +399,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.SuperficieDescubierta'                     => $request1->SuperficieDescubierta,
                 'propiedad.Antiguedad'                                => $request1->Antiguedad,
                 'propiedad.Estado'                                    => $request1->fk_Estado,
-                'propiedad.TipoUnidad'                                => $request1->fk_TipoUnidadCasa,
+                'propiedad.TipoUnidad'                                => is_null($request1->fk_TipoUnidadCasa) ? $request1->fk_TipoUnidadDepartamento : $request1->fk_TipoUnidadCasa,
                 'propiedad.TipoTecho'                                 => $request1->fk_TipoTecho,
                 'propiedad.TipoPiso'                                  => $request1->fk_TipoPiso,
                 'propiedad.CantidadPlantas'                           => $request1->CantidadPlantas,
@@ -508,7 +508,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Ambientes.Vestuario'                       => (boolean) $request1->Ambientes_Vestuario ? 'True' : 'False',
             ]);
         } //Quinta
-        elseif ($request1->fk_idTipoPropiedad = 4) {
+        elseif ($request1->fk_idTipoPropiedad == 4) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -560,9 +560,9 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Casa.SuperficieDescubierta'                     => $request1->SuperficieDescubierta,
                 'propiedad.Casa.Antiguedad'                                => $request1->Antiguedad,
                 'propiedad.Casa.Estado'                                    => $request1->fk_Estado,
-                'propiedad.Casa.TipoUnidad'                                => $request1->fk_TipoUnidadCasa,
-                'propiedad.Casa.TipoTecho'                                 => $request1->TipoTecho,
-                'propiedad.Casa.TipoPiso'                                  => $request1->TipoPiso,
+                'propiedad.Casa.TipoUnidad'                                => is_null($request1->fk_TipoUnidadCasa) ? $request1->fk_TipoUnidadDepartamento : $request1->fk_TipoUnidadCasa,
+                'propiedad.Casa.TipoTecho'                                 => $request1->fk_TipoTecho,
+                'propiedad.Casa.TipoPiso'                                  => $request1->fk_TipoPiso,
                 'propiedad.Casa.CantidadPlantas'                           => $request1->CantidadPlantas,
                 'propiedad.Casa.CantidadBanos'                             => $request1->CantidadBanos,
                 'propiedad.Casa.CantidadAmbientes'                         => $request1->CantidadAmbientes,
@@ -571,101 +571,101 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Casa.Orientacion'                               => $request1->fk_Orientacion,
                 'propiedad.Casa.TipoCosta'                                 => $request1->fk_TipoCosta,
                 'propiedad.Casa.TipoVista'                                 => $request1->fk_TipoVista,
-                'propiedad.Casa.TipoPendiente'                             => (boolean) $request1->fk_TipoPendiente,
-                'propiedad.Casa.Servicios.ABL'                             => (boolean) $request1->Servicios_ABL,
-                'propiedad.Casa.Servicios.AguaCorriente'                   => (boolean) $request1->Servicios_AguaCorriente,
-                'propiedad.Casa.Servicios.Calefaccion'                     => (boolean) $request1->Servicios_Calefaccion,
-                'propiedad.Casa.Servicios.Conmutador'                      => (boolean) $request1->Servicios_Conmutador,
-                'propiedad.Casa.Servicios.Electricidad'                    => (boolean) $request1->Servicios_Electricidad,
-                'propiedad.Casa.Servicios.GasEnvasado'                     => (boolean) $request1->Servicios_GasEnvasado,
-                'propiedad.Casa.Servicios.GasNatural'                      => (boolean) $request1->Servicios_GasNatural,
-                'propiedad.Casa.Servicios.Internet'                        => (boolean) $request1->Servicios_Internet,
-                'propiedad.Casa.Servicios.Refrigeracion'                   => (boolean) $request1->Servicios_Refrigeracion,
-                'propiedad.Casa.Servicios.Rentas'                          => (boolean) $request1->Servicios_Rentas,
-                'propiedad.Casa.Servicios.Seguridad'                       => (boolean) $request1->Servicios_Seguridad,
-                'propiedad.Casa.Servicios.Telefono'                        => (boolean) $request1->Servicios_Telefono,
-                'propiedad.Casa.Servicios.Videocable'                      => (boolean) $request1->Servicios_Videocable,
-                'propiedad.Casa.Servicios.Vigilancia'                      => (boolean) $request1->Servicios_Vigilancia,
-                'propiedad.Casa.Instalaciones.AguaCloaca'                  => (boolean) $request1->Instalaciones_AguaCloaca,
-                'propiedad.Casa.Instalaciones.AguaCorriente'               => (boolean) $request1->Instalaciones_AguaCorriente,
-                'propiedad.Casa.Instalaciones.AireAcondicionadoCentral'    => (boolean) $request1->Instalaciones_AireAcondicionadoCentral,
-                'propiedad.Casa.Instalaciones.AireAcondicionadoIndividual' => (boolean) $request1->Instalaciones_AireAcondicionadoIndividual,
-                'propiedad.Casa.Instalaciones.AireCaliente'                => (boolean) $request1->Instalaciones_AireCaliente,
-                'propiedad.Casa.Instalaciones.Amoblado'                    => (boolean) $request1->Instalaciones_Amoblado,
-                'propiedad.Casa.Instalaciones.ArtefactosDeCocina'          => (boolean) $request1->Instalaciones_ArtefactosDeCocina,
-                'propiedad.Casa.Instalaciones.Ascensor'                    => (boolean) $request1->Instalaciones_Ascensor,
-                'propiedad.Casa.Instalaciones.Cable'                       => (boolean) $request1->Instalaciones_Cable,
-                'propiedad.Casa.Instalaciones.Caldera'                     => (boolean) $request1->Instalaciones_Caldera,
-                'propiedad.Casa.Instalaciones.Calefaccion'                 => (boolean) $request1->Instalaciones_Calefaccion,
-                'propiedad.Casa.Instalaciones.Desayunador'                 => (boolean) $request1->Instalaciones_Desayunador,
-                'propiedad.Casa.Instalaciones.Electricidad'                => (boolean) $request1->Instalaciones_Electricidad,
-                'propiedad.Casa.Instalaciones.EspacioParaVehiculo'         => (boolean) $request1->Instalaciones_EspacioParaVehiculo,
-                'propiedad.Casa.Instalaciones.ExtractorDeAire'             => (boolean) $request1->Instalaciones_ExtractorDeAire,
-                'propiedad.Casa.Instalaciones.GasEnvasado'                 => (boolean) $request1->Instalaciones_GasEnvasado,
-                'propiedad.Casa.Instalaciones.GasNatural'                  => (boolean) $request1->Instalaciones_GasNatural,
-                'propiedad.Casa.Instalaciones.HogarALena'                  => (boolean) $request1->Instalaciones_HogarALena,
-                'propiedad.Casa.Instalaciones.LosaRadiante'                => (boolean) $request1->Instalaciones_LosaRadiante,
-                'propiedad.Casa.Instalaciones.MueblesDeCocina'             => (boolean) $request1->Instalaciones_MueblesDeCocina,
-                'propiedad.Casa.Instalaciones.Pileta'                      => (boolean) $request1->Instalaciones_Pileta,
-                'propiedad.Casa.Instalaciones.Radiadores'                  => (boolean) $request1->Instalaciones_Radiadores,
-                'propiedad.Casa.Instalaciones.Termotanque'                 => (boolean) $request1->Instalaciones_Termotanque,
-                'propiedad.Casa.Ambientes.Altillo'                         => (boolean) $request1->Ambientes_Altillo,
-                'propiedad.Casa.Ambientes.AnteCocina'                      => (boolean) $request1->Ambientes_AnteCocina,
-                'propiedad.Casa.Ambientes.Antesala'                        => (boolean) $request1->Ambientes_Antesala,
-                'propiedad.Casa.Ambientes.Azotea'                          => (boolean) $request1->Ambientes_Azotea,
-                'propiedad.Casa.Ambientes.Balcon'                          => (boolean) $request1->Ambientes_Balcon,
-                'propiedad.Casa.Ambientes.Bano'                            => (boolean) $request1->Ambientes_Bano,
-                'propiedad.Casa.Ambientes.Bar'                             => (boolean) $request1->Ambientes_Bar,
-                'propiedad.Casa.Ambientes.Baulera'                         => (boolean) $request1->Ambientes_Baulera,
-                'propiedad.Casa.Ambientes.Biblioteca'                      => (boolean) $request1->Ambientes_Biblioteca,
-                'propiedad.Casa.Ambientes.Bodega'                          => (boolean) $request1->Ambientes_Bodega,
-                'propiedad.Casa.Ambientes.Cochera'                         => (boolean) $request1->Ambientes_Cochera,
-                'propiedad.Casa.Ambientes.Cocina'                          => (boolean) $request1->Ambientes_Cocina,
-                'propiedad.Casa.Ambientes.CocinaComedor'                   => (boolean) $request1->Ambientes_CocinaComedor,
-                'propiedad.Casa.Ambientes.CocinaKitchinette'               => (boolean) $request1->Ambientes_CocinaKitchinette,
-                'propiedad.Casa.Ambientes.Comedor'                         => (boolean) $request1->Ambientes_Comedor,
-                'propiedad.Casa.Ambientes.ComedorDiario'                   => (boolean) $request1->Ambientes_ComedorDiario,
-                'propiedad.Casa.Ambientes.CuartoDeHerramientas'            => (boolean) $request1->Ambientes_CuartoDeHerramientas,
-                'propiedad.Casa.Ambientes.CuartoDePlanchar'                => (boolean) $request1->Ambientes_CuartoDePlanchar,
-                'propiedad.Casa.Ambientes.Dependencia'                     => (boolean) $request1->Ambientes_Dependencia,
-                'propiedad.Casa.Ambientes.DependenciaDeServicio'           => (boolean) $request1->Ambientes_DependenciaDeServicio,
-                'propiedad.Casa.Ambientes.Dormitorio'                      => (boolean) $request1->Ambientes_Dormitorio,
-                'propiedad.Casa.Ambientes.Entrepiso'                       => (boolean) $request1->Ambientes_Entrepiso,
-                'propiedad.Casa.Ambientes.Estudio'                         => (boolean) $request1->Ambientes_Estudio,
-                'propiedad.Casa.Ambientes.FamilyRoom'                      => (boolean) $request1->Ambientes_FamilyRoom,
-                'propiedad.Casa.Ambientes.Galeria'                         => (boolean) $request1->Ambientes_Galeria,
-                'propiedad.Casa.Ambientes.Galpon'                          => (boolean) $request1->Ambientes_Galpon,
-                'propiedad.Casa.Ambientes.Garage'                          => (boolean) $request1->Ambientes_Garage,
-                'propiedad.Casa.Ambientes.Hall'                            => (boolean) $request1->Ambientes_Hall,
-                'propiedad.Casa.Ambientes.Jardin'                          => (boolean) $request1->Ambientes_Jardin,
-                'propiedad.Casa.Ambientes.Lavadero'                        => (boolean) $request1->Ambientes_Lavadero,
-                'propiedad.Casa.Ambientes.Living'                          => (boolean) $request1->Ambientes_Living,
-                'propiedad.Casa.Ambientes.LivingComedor'                   => (boolean) $request1->Ambientes_LivingComedor,
-                'propiedad.Casa.Ambientes.Local'                           => (boolean) $request1->Ambientes_Local,
-                'propiedad.Casa.Ambientes.Oficina'                         => (boolean) $request1->Ambientes_Oficina,
-                'propiedad.Casa.Ambientes.Palier'                          => (boolean) $request1->Ambientes_Palier,
-                'propiedad.Casa.Ambientes.Patio'                           => (boolean) $request1->Ambientes_Patio,
-                'propiedad.Casa.Ambientes.Playroom'                        => (boolean) $request1->Ambientes_Playroom,
-                'propiedad.Casa.Ambientes.Quincho'                         => (boolean) $request1->Ambientes_Quincho,
-                'propiedad.Casa.Ambientes.Sala'                            => (boolean) $request1->Ambientes_Sala,
-                'propiedad.Casa.Ambientes.Sotano'                          => (boolean) $request1->Ambientes_Sotano,
-                'propiedad.Casa.Ambientes.Suite'                           => (boolean) $request1->Ambientes_Suite,
-                'propiedad.Casa.Ambientes.Terraza'                         => (boolean) $request1->Ambientes_Terraza,
-                'propiedad.Casa.Ambientes.Toilette'                        => (boolean) $request1->Ambientes_Toilette,
-                'propiedad.Casa.Ambientes.Vestibulo'                       => (boolean) $request1->Ambientes_Vestibulo,
-                'propiedad.Casa.Ambientes.Vestidor'                        => (boolean) $request1->Ambientes_Vestidor,
-                'propiedad.Casa.Ambientes.Vestuario'                       => (boolean) $request1->Ambientes_Vestuario,
-                'propiedad.Instalaciones.CanchaDeBasquet'                  => (boolean) $request1->Instalaciones_CanchaDeBasquet,
-                'propiedad.Instalaciones.CanchaDeFutbol'                   => (boolean) $request1->Instalaciones_CanchaDeFutbol,
-                'propiedad.Instalaciones.CanchaDeHockey'                   => (boolean) $request1->Instalaciones_CanchaDeHockey,
-                'propiedad.Instalaciones.CanchaDePaddle'                   => (boolean) $request1->Instalaciones_CanchaDePaddle,
-                'propiedad.Instalaciones.CanchaDePaleta'                   => (boolean) $request1->Instalaciones_CanchaDePaleta,
-                'propiedad.Instalaciones.CanchaDeSquash'                   => (boolean) $request1->Instalaciones_CanchaDeSquash,
-                'propiedad.Instalaciones.CanchaDeTenis'                    => (boolean) $request1->Instalaciones_CanchaDeTenis,
-                'propiedad.Instalaciones.CanchaDeVoley'                    => (boolean) $request1->Instalaciones_CanchaDeVoley,
+                'propiedad.Casa.TipoPendiente'                             => $request1->fk_TipoPendiente,
+                'propiedad.Casa.Servicios.ABL'                             => (boolean) $request1->Servicios_ABL ? 'True' : 'False',
+                'propiedad.Casa.Servicios.AguaCorriente'                   => (boolean) $request1->Servicios_AguaCorriente ? 'True' : 'False',
+                'propiedad.Casa.Servicios.Calefaccion'                     => (boolean) $request1->Servicios_Calefaccion ? 'True' : 'False',
+                'propiedad.Casa.Servicios.Conmutador'                      => (boolean) $request1->Servicios_Conmutador ? 'True' : 'False',
+                'propiedad.Casa.Servicios.Electricidad'                    => (boolean) $request1->Servicios_Electricidad ? 'True' : 'False',
+                'propiedad.Casa.Servicios.GasEnvasado'                     => (boolean) $request1->Servicios_GasEnvasado ? 'True' : 'False',
+                'propiedad.Casa.Servicios.GasNatural'                      => (boolean) $request1->Servicios_GasNatural ? 'True' : 'False',
+                'propiedad.Casa.Servicios.Internet'                        => (boolean) $request1->Servicios_Internet ? 'True' : 'False',
+                'propiedad.Casa.Servicios.Refrigeracion'                   => (boolean) $request1->Servicios_Refrigeracion ? 'True' : 'False',
+                'propiedad.Casa.Servicios.Rentas'                          => (boolean) $request1->Servicios_Rentas ? 'True' : 'False',
+                'propiedad.Casa.Servicios.Seguridad'                       => (boolean) $request1->Servicios_Seguridad ? 'True' : 'False',
+                'propiedad.Casa.Servicios.Telefono'                        => (boolean) $request1->Servicios_Telefono ? 'True' : 'False',
+                'propiedad.Casa.Servicios.Videocable'                      => (boolean) $request1->Servicios_Videocable ? 'True' : 'False',
+                'propiedad.Casa.Servicios.Vigilancia'                      => (boolean) $request1->Servicios_Vigilancia ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.AguaCloaca'                  => (boolean) $request1->Instalaciones_AguaCloaca ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.AguaCorriente'               => (boolean) $request1->Instalaciones_AguaCorriente ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.AireAcondicionadoCentral'    => (boolean) $request1->Instalaciones_AireAcondicionadoCentral ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.AireAcondicionadoIndividual' => (boolean) $request1->Instalaciones_AireAcondicionadoIndividual ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.AireCaliente'                => (boolean) $request1->Instalaciones_AireCaliente ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.Amoblado'                    => (boolean) $request1->Instalaciones_Amoblado ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.ArtefactosDeCocina'          => (boolean) $request1->Instalaciones_ArtefactosDeCocina ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.Ascensor'                    => (boolean) $request1->Instalaciones_Ascensor ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.Cable'                       => (boolean) $request1->Instalaciones_Cable ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.Caldera'                     => (boolean) $request1->Instalaciones_Caldera ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.Calefaccion'                 => (boolean) $request1->Instalaciones_Calefaccion ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.Desayunador'                 => (boolean) $request1->Instalaciones_Desayunador ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.Electricidad'                => (boolean) $request1->Instalaciones_Electricidad ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.EspacioParaVehiculo'         => (boolean) $request1->Instalaciones_EspacioParaVehiculo ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.ExtractorDeAire'             => (boolean) $request1->Instalaciones_ExtractorDeAire ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.GasEnvasado'                 => (boolean) $request1->Instalaciones_GasEnvasado ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.GasNatural'                  => (boolean) $request1->Instalaciones_GasNatural ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.HogarALena'                  => (boolean) $request1->Instalaciones_HogarALena ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.LosaRadiante'                => (boolean) $request1->Instalaciones_LosaRadiante ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.MueblesDeCocina'             => (boolean) $request1->Instalaciones_MueblesDeCocina ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.Pileta'                      => (boolean) $request1->Instalaciones_Pileta ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.Radiadores'                  => (boolean) $request1->Instalaciones_Radiadores ? 'True' : 'False',
+                'propiedad.Casa.Instalaciones.Termotanque'                 => (boolean) $request1->Instalaciones_Termotanque ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Altillo'                         => (boolean) $request1->Ambientes_Altillo ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.AnteCocina'                      => (boolean) $request1->Ambientes_AnteCocina ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Antesala'                        => (boolean) $request1->Ambientes_Antesala ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Azotea'                          => (boolean) $request1->Ambientes_Azotea ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Balcon'                          => (boolean) $request1->Ambientes_Balcon ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Bano'                            => (boolean) $request1->Ambientes_Bano ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Bar'                             => (boolean) $request1->Ambientes_Bar ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Baulera'                         => (boolean) $request1->Ambientes_Baulera ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Biblioteca'                      => (boolean) $request1->Ambientes_Biblioteca ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Bodega'                          => (boolean) $request1->Ambientes_Bodega ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Cochera'                         => (boolean) $request1->Ambientes_Cochera ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Cocina'                          => (boolean) $request1->Ambientes_Cocina ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.CocinaComedor'                   => (boolean) $request1->Ambientes_CocinaComedor ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.CocinaKitchinette'               => (boolean) $request1->Ambientes_CocinaKitchinette ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Comedor'                         => (boolean) $request1->Ambientes_Comedor ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.ComedorDiario'                   => (boolean) $request1->Ambientes_ComedorDiario ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.CuartoDeHerramientas'            => (boolean) $request1->Ambientes_CuartoDeHerramientas ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.CuartoDePlanchar'                => (boolean) $request1->Ambientes_CuartoDePlanchar ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Dependencia'                     => (boolean) $request1->Ambientes_Dependencia ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.DependenciaDeServicio'           => (boolean) $request1->Ambientes_DependenciaDeServicio ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Dormitorio'                      => (boolean) $request1->Ambientes_Dormitorio ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Entrepiso'                       => (boolean) $request1->Ambientes_Entrepiso ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Estudio'                         => (boolean) $request1->Ambientes_Estudio ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.FamilyRoom'                      => (boolean) $request1->Ambientes_FamilyRoom ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Galeria'                         => (boolean) $request1->Ambientes_Galeria ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Galpon'                          => (boolean) $request1->Ambientes_Galpon ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Garage'                          => (boolean) $request1->Ambientes_Garage ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Hall'                            => (boolean) $request1->Ambientes_Hall ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Jardin'                          => (boolean) $request1->Ambientes_Jardin ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Lavadero'                        => (boolean) $request1->Ambientes_Lavadero ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Living'                          => (boolean) $request1->Ambientes_Living ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.LivingComedor'                   => (boolean) $request1->Ambientes_LivingComedor ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Local'                           => (boolean) $request1->Ambientes_Local ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Oficina'                         => (boolean) $request1->Ambientes_Oficina ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Palier'                          => (boolean) $request1->Ambientes_Palier ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Patio'                           => (boolean) $request1->Ambientes_Patio ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Playroom'                        => (boolean) $request1->Ambientes_Playroom ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Quincho'                         => (boolean) $request1->Ambientes_Quincho ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Sala'                            => (boolean) $request1->Ambientes_Sala ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Sotano'                          => (boolean) $request1->Ambientes_Sotano ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Suite'                           => (boolean) $request1->Ambientes_Suite ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Terraza'                         => (boolean) $request1->Ambientes_Terraza ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Toilette'                        => (boolean) $request1->Ambientes_Toilette ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Vestibulo'                       => (boolean) $request1->Ambientes_Vestibulo ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Vestidor'                        => (boolean) $request1->Ambientes_Vestidor ? 'True' : 'False',
+                'propiedad.Casa.Ambientes.Vestuario'                       => (boolean) $request1->Ambientes_Vestuario ? 'True' : 'False',
+                'propiedad.Instalaciones.CanchaDeBasquet'                  => (boolean) $request1->Instalaciones_CanchaDeBasquet ? 'True' : 'False',
+                'propiedad.Instalaciones.CanchaDeFutbol'                   => (boolean) $request1->Instalaciones_CanchaDeFutbol ? 'True' : 'False',
+                'propiedad.Instalaciones.CanchaDeHockey'                   => (boolean) $request1->Instalaciones_CanchaDeHockey ? 'True' : 'False',
+                'propiedad.Instalaciones.CanchaDePaddle'                   => (boolean) $request1->Instalaciones_CanchaDePaddle ? 'True' : 'False',
+                'propiedad.Instalaciones.CanchaDePaleta'                   => (boolean) $request1->Instalaciones_CanchaDePaleta ? 'True' : 'False',
+                'propiedad.Instalaciones.CanchaDeSquash'                   => (boolean) $request1->Instalaciones_CanchaDeSquash ? 'True' : 'False',
+                'propiedad.Instalaciones.CanchaDeTenis'                    => (boolean) $request1->Instalaciones_CanchaDeTenis ? 'True' : 'False',
+                'propiedad.Instalaciones.CanchaDeVoley'                    => (boolean) $request1->Instalaciones_CanchaDeVoley ? 'True' : 'False',
             ]);
-        } //Cochera
-        elseif ($request1->fk_idTipoPropiedad = 5) {
+        } //Cocher ? 'True' : 'False'a
+        elseif ($request1->fk_idTipoPropiedad == 5) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -725,7 +725,7 @@ class SincroniceArgenController extends Controller {
 
             ]);
         } //Local
-        elseif ($request1->fk_idTipoPropiedad = 6) {
+        elseif ($request1->fk_idTipoPropiedad == 6) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -837,7 +837,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.Generales.SeguroCaucion'                   => (boolean) $request1->Generales_SeguroCaucion ? 'true' : 'false',
             ]);
         } //Hotel
-        elseif ($request1->fk_idTipoPropiedad = 7) {
+        elseif ($request1->fk_idTipoPropiedad == 7) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -952,7 +952,7 @@ class SincroniceArgenController extends Controller {
 
             ]);
         } //Terreno
-        elseif ($request1->fk_idTipoPropiedad = 8) {
+        elseif ($request1->fk_idTipoPropiedad == 8) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -1004,8 +1004,8 @@ class SincroniceArgenController extends Controller {
                 'propiedad.FrenteIrregular'                => (boolean) $request1->FrenteIrregular ? 'true' : 'false',
                 'propiedad.LateralDerechoIrregular'        => (boolean) $request1->LateralDerechoIrregular ? 'true' : 'false',
                 'propiedad.LateralIzquierdoIrregular'      => (boolean) $request1->LateralIzquierdoIrregular ? 'true' : 'false',
-                'propiedad.MedidaLinealDerecha'            => (boolean) $request1->MedidaLinealDerecha ? 'true' : 'false',
-                'propiedad.MedidaLinealIzquierda'          => (boolean) $request1->MedidaLinealIzquierda ? 'true' : 'false',
+                'propiedad.MedidaLinealDerecha'            => $request1->MedidaLinealDerecha,
+                'propiedad.MedidaLinealIzquierda'          => $request1->MedidaLinealIzquierda ,
                 'propiedad.LongitudFrente'                 => $request1->LongitudFrente,
                 'propiedad.LongitudFondo'                  => $request1->LongitudFondo,
                 'propiedad.Estado'                         => $request1->fk_Estado,
@@ -1046,7 +1046,7 @@ class SincroniceArgenController extends Controller {
 
             ]);
         } //Oficina
-        elseif ($request1->fk_idTipoPropiedad = 9) {
+        elseif ($request1->fk_idTipoPropiedad == 9) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -1169,7 +1169,7 @@ class SincroniceArgenController extends Controller {
 
             ]);
         } //Campo
-        elseif ($request1->fk_idTipoPropiedad = 10) {
+        elseif ($request1->fk_idTipoPropiedad == 10) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -1254,7 +1254,7 @@ class SincroniceArgenController extends Controller {
 
             ]);
         } //Fondo_de_Comercio
-        elseif ($request1->fk_idTipoPropiedad = 11) {
+        elseif ($request1->fk_idTipoPropiedad == 11) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -1327,7 +1327,7 @@ class SincroniceArgenController extends Controller {
 
             ]);
         } //Galpón
-        elseif ($request1->fk_idTipoPropiedad = 12) {
+        elseif ($request1->fk_idTipoPropiedad == 12) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -1432,7 +1432,7 @@ class SincroniceArgenController extends Controller {
 
             ]);
         } //Negocio_Especial
-        elseif ($request1->fk_idTipoPropiedad = 13) {
+        elseif ($request1->fk_idTipoPropiedad == 13) {
             $contenido = self::QueryHtml([
                 'usr'                             => env('usr'),
                 'psd'                             => env('psd'),
@@ -1512,7 +1512,7 @@ class SincroniceArgenController extends Controller {
             $propidad = Propiedad::find($request1->idPropiedad);
 
             if (isset($propidad)) {
-                $propidad->update([ 'visibilidad' => $response]);
+                $propidad->update([ 'visibilidad' => $response ]);
             }
         }
     }
@@ -1560,13 +1560,13 @@ class SincroniceArgenController extends Controller {
         curl_close($curl);
 
         if ($err) {
-            return $err;
+            return false;
+            //return $err;
             //dd("cURL Error #:".$err);
         } else {
-            return $response;
+            return true;
         }
     }
-
 
 
     public function reactivar($idPropiedad) {
@@ -1574,7 +1574,7 @@ class SincroniceArgenController extends Controller {
         /*activar una publicacion desactivada en argen Pro*/
         $propi = Propiedad::find($idPropiedad);
         //dd($IdAviso);
-        if($propi){
+        if ($propi) {
             $contenido = self::QueryHtml([
                 'usr'                    => env('usr'),
                 'psd'                    => env('psd'),
@@ -1658,51 +1658,54 @@ class SincroniceArgenController extends Controller {
 
     public static function buscarURLdePropiedadArgen($idPropiedad) {
         $propi = Propiedad::find($idPropiedad);
-        $idVisibilidad = json_decode($propi->visibilidad)[0];
-        $IdAviso = self::buscarIdAvisoPorIdVisibilidad($idVisibilidad);
+        $idVisibilidad = @json_decode($propi->visibilidad)[0];
+        if($idVisibilidad){
+            $IdAviso = self::buscarIdAvisoPorIdVisibilidad($idVisibilidad);
 
-        $contenido = self::QueryHtml([
-            'usr'     => env('usr'),
-            'psd'     => env('psd'),
-            'IdAviso' => $IdAviso,
-        ]);
+            $contenido = self::QueryHtml([
+                'usr'     => env('usr'),
+                'psd'     => env('psd'),
+                'IdAviso' => $IdAviso,
+            ]);
 
-        $curl = curl_init();
+            $curl = curl_init();
 
-        curl_setopt_array($curl, [
-            CURLOPT_URL            => "https://www.inmuebles.clarin.com/Avisos/findbyidaviso/?contentType=json",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING       => "",
-            CURLOPT_MAXREDIRS      => 10,
-            CURLOPT_TIMEOUT        => 30,
-            CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST  => "POST",
-            CURLOPT_POSTFIELDS     => $contenido,
-            CURLOPT_HTTPHEADER     => [
-                "accept: application/json",
-                // "cache-control: no-cache",
-                "content-type: application/x-www-form-urlencoded",
-                // "postman-token: d0b4a2ae-696c-01aa-605b-6e16a8788770"
-            ],
-        ]);
+            curl_setopt_array($curl, [
+                CURLOPT_URL            => "https://www.inmuebles.clarin.com/Avisos/findbyidaviso/?contentType=json",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING       => "",
+                CURLOPT_MAXREDIRS      => 10,
+                CURLOPT_TIMEOUT        => 30,
+                CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST  => "POST",
+                CURLOPT_POSTFIELDS     => $contenido,
+                CURLOPT_HTTPHEADER     => [
+                    "accept: application/json",
+                    // "cache-control: no-cache",
+                    "content-type: application/x-www-form-urlencoded",
+                    // "postman-token: d0b4a2ae-696c-01aa-605b-6e16a8788770"
+                ],
+            ]);
 
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-        curl_close($curl);
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            curl_close($curl);
 
-        if ($err) {
-            return [ 'status' => false, 'msj' => 'Problema con la consulta' ];
-            //dd("cURL Error #:".$err);
-        } else {
-            if (is_null($IdAviso)) {
-                return [ 'status' => false, 'msj' => 'Propiedad Inactiva en ArgenPro' ];
-                //return 'Propiedad Inactiva en ArgenPro';
+            if ($err) {
+                return [ 'status' => false, 'msj' => 'Problema con la consulta' ];
+                //dd("cURL Error #:".$err);
             } else {
-                $obj122 = json_decode($response);
-                if ($obj122) {
-                    return [ 'status' => true, 'msj' => $obj122->Url ];
-                    //return $obj122->Url;
+                if (is_null($IdAviso)) {
+                    return [ 'status' => false, 'msj' => 'Propiedad Inactiva en ArgenPro' ];
+                    //return 'Propiedad Inactiva en ArgenPro';
+                } else {
+                    $obj122 = json_decode($response);
+                    if ($obj122) {
+                        return [ 'status' => true, 'msj' => $obj122->Url ];
+                        //return $obj122->Url;
+                    }
                 }
+
             }
 
         }

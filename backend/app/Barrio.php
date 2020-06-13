@@ -10,6 +10,7 @@ class Barrio extends Model
     protected $primaryKey = 'idBarrio';
 
     protected $fillable = [
+        'idBarrio',
         'descripcion',
         'fk_idLocalidad',
     ];

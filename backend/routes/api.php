@@ -268,10 +268,74 @@ Route::group(['prefix' => 'v1'], function () {
         return view('correos.contactoDePropiedadMail')->with('contacto',$con);
     });
 
-    Route::get('visibilidad/{id}','SincroniceArgenController@buscarIdAvisoPorIdVisibilidad');
+    //Route::get('visibilidad/{id}','SincroniceArgenController@buscarIdAvisoPorIdVisibilidad');
     //Route::get('baja/{id}','SincroniceArgenController@darDeBaja');
     //Route::get('url/{id}','SincroniceArgenController@buscarURLdePropiedadArgen');
 
     Route::get('activarPropiedadEnArgen/{idPropiedad}','SincroniceArgenController@reactivar');
+
+    /*Route::get('sincronizarBarrios',function (){
+
+        //BARRIOS
+        foreach (Localidades::get() as $localidad) {
+            $url = 'https://www.inmuebles.clarin.com/Regiones/FindBarrios?contentType=json&idLocalidad='.$localidad->id;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            $err = curl_error($ch);  //if you need
+            curl_close($ch);
+            $result_LOCALIDADES = json_decode($response, true);
+            if (isset($result_LOCALIDADES)) {
+                foreach ($result_LOCALIDADES as $key => $barrio) {
+                    if (! \App\Barrios::where('nombre', '=', $barrio['Nombre'])->exists()) {
+                        \App\Barrios::create([
+                            'id'     => $barrio['Id'],
+                            'nombre'       => $barrio['Nombre'],
+                            'fk_localidad' => $localidad->id,
+                        ]);
+                    }
+                }
+            }
+        }
+
+        //SUB-BARRIOS
+        foreach (\App\Barrios::get() as $key => $barrio) {
+            $url = 'https://www.inmuebles.clarin.com/Regiones/FindSubBarrios?contentType=json&idBarrio='.$barrio->id;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            $err = curl_error($ch);
+            curl_close($ch);
+            $result_subBarrios = json_decode($response, true);
+            if (isset($result_subBarrios)) {
+                foreach ($result_subBarrios as $SubBarrio) {
+                    if (! \App\subBarrios::where('nombre', '=', $SubBarrio['Nombre'])->exists()) {
+                        \App\subBarrios::create([
+                            'id'        => $SubBarrio['Id'],
+                            'nombre'    => $SubBarrio['Nombre'],
+                            'fk_barrio' => $barrio->id,
+                        ]);
+                    }
+                }
+            }
+        }
+
+    });*/
+
+    Route::get('p120',function (){
+       $p1=[boolval(0),boolval(1)];
+       $p2=[boolval("0"),boolval("1")];
+       $p3=[(boolean)0,(boolean)1];
+       $p4=[(boolean)"0",(boolean)"1"];
+
+
+       $a=[$p1,$p2,$p3,$p4];
+       dd($a);
+
+    });
 });
 
