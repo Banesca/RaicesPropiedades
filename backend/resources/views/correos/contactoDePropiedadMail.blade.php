@@ -534,6 +534,11 @@
                                         <strong>Mensaje: </strong>{!! $contacto->mensaje !!}
                                     </p>
                                 </tr>
+                                <tr>
+                                    <p>
+                                        <strong>Título de Propiedad: </strong>{!! $contacto->titulo !!}
+                                    </p>
+                                </tr>
 
                             </table>
                         </td>
