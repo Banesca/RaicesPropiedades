@@ -61,7 +61,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.CantidadCocheras'                                => $request1->CantidadCocheras,
                 'propiedad.CocheraOptativa'                                 => (boolean) $request1->CocheraOptativa ? 'True' : 'False',
                 'propiedad.Disposicion'                                     => $request1->fk_Disposicion,
-                'propiedad.Expensas'                                        => $request1->fk_TipoExpensas,
+                'propiedad.Expensas'                                        => $request1->Expensas,
                 'propiedad.Orientacion'                                     => $request1->fk_Orientacion,
                 'propiedad.PropiedadOcupada'                                => (boolean) $request1->PropiedadOcupada ? 'True' : 'False',
                 'propiedad.TipoBalcon'                                      => $request1->fk_TipoBalcon,
