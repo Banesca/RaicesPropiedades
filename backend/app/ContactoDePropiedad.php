@@ -30,3 +30,6 @@ class ContactoDePropiedad extends Model {
         return $this->belongsTo('App\Propiedad', 'fk_idPropiedad');
     }
 }
+
+
+

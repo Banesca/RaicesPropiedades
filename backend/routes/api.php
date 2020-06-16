@@ -183,7 +183,6 @@ Route::group(['prefix' => 'v1'], function () {
 
     //Route::post('sincronice','SincroniceArgenController@add'); /*Faltan pruebas*/
     Route::get('listarPropiedades/{idPropiedad}', 'Ficha123Controller@listar');
-    Route::get('listarPropiedades/{idPropiedad}', 'Ficha123Controller@listar');
     Route::get('listarPropiedades', 'Ficha123Controller@listarTodo');
     Route::get('listarTodasPropiedades', 'Ficha123Controller@listarTodoSinFiltro');
 
@@ -262,9 +261,70 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('fichaPropiedad/getAll', 'FichaPropiedadController@listarTodo');
     Route::get('fichaPropiedad/ver/{idFicha}', 'FichaPropiedadController@listarPorId');
     Route::get('fichaPropiedad/pdf/{idFicha}', 'FichaPropiedadController@pdf');
+
+    Route::get('123/{id}',function ($id){
+        $con=\App\ContactoDePropiedad::with('propiedad')->find($id);
+
+        return view('correos.contactoDePropiedadMail')->with('contacto',$con);
+    });
+
+    //Route::get('visibilidad/{id}','SincroniceArgenController@buscarIdAvisoPorIdVisibilidad');
+    //Route::get('baja/{id}','SincroniceArgenController@darDeBaja');
+    //Route::get('url/{id}','SincroniceArgenController@buscarURLdePropiedadArgen');
+
+    Route::get('activarPropiedadEnArgen/{idPropiedad}','SincroniceArgenController@reactivar');
+
+    /*Route::get('sincronizarBarrios',function (){
+
+        //BARRIOS
+        foreach (Localidades::get() as $localidad) {
+            $url = 'https://www.inmuebles.clarin.com/Regiones/FindBarrios?contentType=json&idLocalidad='.$localidad->id;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            $err = curl_error($ch);  //if you need
+            curl_close($ch);
+            $result_LOCALIDADES = json_decode($response, true);
+            if (isset($result_LOCALIDADES)) {
+                foreach ($result_LOCALIDADES as $key => $barrio) {
+                    if (! \App\Barrios::where('nombre', '=', $barrio['Nombre'])->exists()) {
+                        \App\Barrios::create([
+                            'id'     => $barrio['Id'],
+                            'nombre'       => $barrio['Nombre'],
+                            'fk_localidad' => $localidad->id,
+                        ]);
+                    }
+                }
+            }
+        }
+
+        //SUB-BARRIOS
+        foreach (\App\Barrios::get() as $key => $barrio) {
+            $url = 'https://www.inmuebles.clarin.com/Regiones/FindSubBarrios?contentType=json&idBarrio='.$barrio->id;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            $err = curl_error($ch);
+            curl_close($ch);
+            $result_subBarrios = json_decode($response, true);
+            if (isset($result_subBarrios)) {
+                foreach ($result_subBarrios as $SubBarrio) {
+                    if (! \App\subBarrios::where('nombre', '=', $SubBarrio['Nombre'])->exists()) {
+                        \App\subBarrios::create([
+                            'id'        => $SubBarrio['Id'],
+                            'nombre'    => $SubBarrio['Nombre'],
+                            'fk_barrio' => $barrio->id,
+                        ]);
+                    }
+                }
+            }
+        }
+
+    });*/
+
 });
-
-
-
-    
 

@@ -346,6 +346,8 @@ class Propiedad extends Model {
         'radiadores',
         'calefon',
         'cobertura_cochera',
+        'boolCalleMod',
+        'UrlPropiedadArgen'
     ];
 
     protected $hidden = [

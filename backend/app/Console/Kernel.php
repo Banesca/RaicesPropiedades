@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
 
         /*$schedule->command('email:prueba')
                  ->everyMinute(); */
-        $schedule->command('supervisor:pro')
+        $schedule->command('sin:urlargen')
                  ->everyFiveMinutes();
 
     }

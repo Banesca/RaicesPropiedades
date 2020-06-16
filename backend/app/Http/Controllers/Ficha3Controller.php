@@ -18,6 +18,7 @@ class Ficha3Controller extends Controller {
     public function add(Request $request) {
         //return response()->json($request->all());
 
+
         $this->validate($request, [
             'imagen1'             => 'image|max:10240',
             'imagen2'             => 'image|max:10240',
@@ -48,6 +49,15 @@ class Ficha3Controller extends Controller {
 
             $propiedad = new Propiedad($request->all());
 
+            if ($request->boolCalleMod) {
+                $propiedad->boolCalleMod = 1;
+            } else {
+                $propiedad->boolCalleMod = 0;
+            }
+            //dd($propiedad);
+            /*return response()->json($propiedad);
+            exit();*/
+
             $imgs = [
                 'imagen1',
                 'imagen2',
@@ -74,7 +84,7 @@ class Ficha3Controller extends Controller {
                     });*/
 
                     $nombre_publico = $originalImage->getClientOriginalName();
-                    $extension      = $originalImage->getClientOriginalExtension();
+                    $extension = $originalImage->getClientOriginalExtension();
 
                     $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
                     $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
@@ -88,9 +98,10 @@ class Ficha3Controller extends Controller {
             $propiedad->save();
 
             //Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email, $propiedad->descipcion, $propiedad->idPropiedad));
+//return response()->json($propiedad);
+            $sincronice = new SincroniceArgenController();
+            $sincronice->add($propiedad); //para add propiedad en argen pro
 
-            //$sincronice = new SincroniceArgenController();
-            //$sincronice->add($propiedad); //para add propiedad en argen pro
 
             @$propiedad->TipoPropiedad;
             @$propiedad->Disposicion;
@@ -150,7 +161,6 @@ class Ficha3Controller extends Controller {
 
             return response()->json($response, 201);
         } catch (\Exception $e) {
-
             DB::rollback();
             Log::error('Ha ocurrido un error en PropiedadController: '.$e->getMessage().', Linea: '.$e->getLine());
 
@@ -191,7 +201,13 @@ class Ficha3Controller extends Controller {
         try {
 
             $propiedad = Propiedad::find($idPropiedad);
+
             $propiedad->fill($request->all());
+            if ($request->boolCalleMod) {
+                $propiedad->boolCalleMod = 1;
+            } else {
+                $propiedad->boolCalleMod = 0;
+            }
 
             if (! is_null($propiedad)) {
 
@@ -221,7 +237,7 @@ class Ficha3Controller extends Controller {
                         });*/
 
                         $nombre_publico = $originalImage->getClientOriginalName();
-                        $extension      = $originalImage->getClientOriginalExtension();
+                        $extension = $originalImage->getClientOriginalExtension();
 
                         $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
                         $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
@@ -234,7 +250,7 @@ class Ficha3Controller extends Controller {
                 }
 
                 $propiedad->save();
-
+                /*Aqui sincronizo de nuevo la propiedad*/
                 $sincronice = new SincroniceArgenController();
                 $sincronice->add($propiedad); //para edit propiedad en argen pro
 
@@ -316,11 +332,20 @@ class Ficha3Controller extends Controller {
         if (! is_null($propiedad)) {
             $propiedad->update([ 'fk_estado_publicacion' => 3 ]);  //se cambia de estatus
             //$propiedad->delete(); //se le asiga la fehca de borrado
+            $respuestaArgen = SincroniceArgenController::darDeBaja($propiedad->idPropiedad);
+            //return response()->json($respuestaArgen);
+
+            /*if ($respuestaArgen == true) {
+                Log::info('Se ha desactivado correctamente en ArgenPro la propiedad idPropiedad: '.$propiedad->idPropiedad);
+            } else {
+                Log::error('Ha ocurrido un error en al desactivar la propiedad en ArgenPro: idPropiedad: '.$propiedad->idPropiedad);
+            }*/
+
             $response = [
                 'msj' => 'Propiedad borrada Exitosamente',
             ];
 
-            return response()->json($response, 201);
+            return response()->json($response, 200);
         } else {
             $response = [
                 'msj' => 'No existe la propiedad',

@@ -73,7 +73,7 @@ class PagoController extends Controller {
                 Mail::to($mail)
                     ->cc($cc)
                     ->send(new PagoMail($pago));
-            }else{
+            } else {
                 Mail::to($cc[0])
                     ->cc($cc)
                     ->send(new PagoMail($pago));

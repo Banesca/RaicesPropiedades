@@ -1,6 +1,7 @@
 <ngb-carousel>
   <ng-template ngbSlide *ngFor="let image of images">
-    <img [src]="image" class="carousel-image w-100" alt="Random slide" style="max-height: 600px; " onerror="this.src='assets/images/no_image_aviable.jpg'"/>
+    <img [src]="image" class="carousel-image w-100" alt="Random slide" style="max-height: 600px; "
+      onerror="this.src='assets/images/no_image_aviable.jpg'" />
     <div class="carousel-caption" style="margin-top: 100px;">
       <h1 class="font-weight-light text-uppercase text-left">
         <!--  gPropiedades.ficha1.descipcion  -->
@@ -9,42 +10,104 @@
       <h1 class="font-weight-extrabold text-uppercase text-left">{{gPropiedades.precio}}$</h1>
       <!-- container d-none d-md-block d-md-flex py-4 justify-content-center -->
       <div class="galery-image">
-        <a href="{{gPropiedades.imagenes.imagen1}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen1" [src]="gPropiedades.imagenes.imagen1" alt="" /></a>
-        <a href="{{gPropiedades.imagenes.imagen2}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen2" [src]="gPropiedades.imagenes.imagen2" alt="" /></a>
-        <a href="{{gPropiedades.imagenes.imagen3}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen3" [src]="gPropiedades.imagenes.imagen3" alt="" /></a>
-        <a href="{{gPropiedades.imagenes.imagen4}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen4" [src]="gPropiedades.imagenes.imagen4" alt="" /></a>
-        <a href="{{gPropiedades.imagenes.imagen5}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen5" [src]="gPropiedades.imagenes.imagen5" alt="" /></a>
-        <a href="{{gPropiedades.imagenes.imagen6}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen6" [src]="gPropiedades.imagenes.imagen6" alt="" /></a>
-        <a href="{{gPropiedades.imagenes.imagen7}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen7" [src]="gPropiedades.imagenes.imagen7" alt="" /></a>
-        <a href="{{gPropiedades.imagenes.imagen8}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen8" [src]="gPropiedades.imagenes.imagen8" alt="" /></a>
-        <a href="{{gPropiedades.imagenes.imagen9}}" target="_blank"><img *ngIf="gPropiedades.imagenes.imagen9" [src]="gPropiedades.imagenes.imagen9" alt="" /></a>
+        <img (click)="open(content);carousel.next(0)" *ngIf="gPropiedades.imagenes.imagen1"
+          [src]="gPropiedades.imagenes.imagen1" alt="" />
+        <img (click)="open(content);carousel.next(1)" *ngIf="gPropiedades.imagenes.imagen2"
+          [src]="gPropiedades.imagenes.imagen2" alt="" />
+        <img (click)="open(content)" *ngIf="gPropiedades.imagenes.imagen3" [src]="gPropiedades.imagenes.imagen3"
+          alt="" />
+        <img (click)="open(content)" *ngIf="gPropiedades.imagenes.imagen4" [src]="gPropiedades.imagenes.imagen4"
+          alt="" />
+        <img (click)="open(content)" *ngIf="gPropiedades.imagenes.imagen5" [src]="gPropiedades.imagenes.imagen5"
+          alt="" />
+        <img (click)="open(content)" *ngIf="gPropiedades.imagenes.imagen6" [src]="gPropiedades.imagenes.imagen6"
+          alt="" />
+        <img (click)="open(content)" *ngIf="gPropiedades.imagenes.imagen7" [src]="gPropiedades.imagenes.imagen7"
+          alt="" />
+        <img (click)="open(content)" *ngIf="gPropiedades.imagenes.imagen8" [src]="gPropiedades.imagenes.imagen8"
+          alt="" />
+        <img (click)="open(content)" *ngIf="gPropiedades.imagenes.imagen9" [src]="gPropiedades.imagenes.imagen9"
+          alt="" />
       </div>
     </div>
   </ng-template>
 </ngb-carousel>
-<app-search>  
+<app-search>
 </app-search>
 
 <div *ngIf="searchClicked">
   <app-articles></app-articles>
 </div>
 
+
+
+<ng-template #content let-modal>
+  <button style="    position: absolute;
+  z-index: 10;
+  background-color: transparent;
+  color: white;
+  right: 10px;
+    top: 10px;" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <ngb-carousel #carousel [showNavigationArrows]="true" [showNavigationIndicators]="true">
+
+    <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen1">
+      <div class="picsum-img-wrapper">
+        <img style="width:100%" [src]="gPropiedades.imagenes.imagen1" alt="" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen2">
+      <div class="picsum-img-wrapper"><img style="width:100%" [src]="gPropiedades.imagenes.imagen2" alt="" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen3">
+      <div class="picsum-img-wrapper"><img style="width:100%" [src]="gPropiedades.imagenes.imagen3" alt="" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen4">
+      <div class="picsum-img-wrapper"><img style="width:100%" [src]="gPropiedades.imagenes.imagen4" alt="" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen5">
+      <div class="picsum-img-wrapper"><img style="width:100%" [src]="gPropiedades.imagenes.imagen5" alt="" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen6">
+      <div class="picsum-img-wrapper"><img style="width:100%" [src]="gPropiedades.imagenes.imagen6" alt="" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen7">
+      <div class="picsum-img-wrapper"><img style="width:100%" [src]="gPropiedades.imagenes.imagen7" alt="" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen8">
+      <div class="picsum-img-wrapper"> <img style="width:100%" [src]="gPropiedades.imagenes.imagen8" alt="" />
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen9">
+      <div class="picsum-img-wrapper"><img style="width:100%" [src]="gPropiedades.imagenes.imagen9" alt="" />
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+</ng-template>
+
 <div *ngIf="!searchClicked">
-  
+
 
   <section *ngIf="gPropiedades">
     <div class="container-fluid sec1 section-container">
       <div class="container" style="z-index: 3;">
         <div class="col-sm-12 ">
-          <h3
-            class="text-center brown-text text-uppercase font-weight-extrabold"
-          >
+          <h3 class="text-center brown-text text-uppercase font-weight-extrabold">
             Descripción
           </h3>
           <div class="row justify-content-center">
             <div *ngIf="gPropiedades.SuperficieConstruible" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 {{gPropiedades.SuperficieConstruible}}
@@ -52,10 +115,11 @@
               <h6 class="text-center font-weight-extrabold text-uppercase mt-3">
                 Superficie construible
               </h6>
-            </div>            
+            </div>
             <div *ngIf="gPropiedades.SuperficieCubierta" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 {{gPropiedades.SuperficieCubierta}}
@@ -66,7 +130,8 @@
             </div>
             <div *ngIf="gPropiedades.SuperficieCubiertaCasa" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 {{gPropiedades.SuperficieCubiertaCasa}}
@@ -77,7 +142,8 @@
             </div>
             <div *ngIf="gPropiedades.SuperficieDeposito" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 {{gPropiedades.SuperficieDeposito}}
@@ -88,7 +154,8 @@
             </div>
             <div *ngIf="gPropiedades.SuperficieDescubierta" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 {{gPropiedades.SuperficieDescubierta}}
@@ -99,7 +166,8 @@
             </div>
             <div *ngIf="gPropiedades.SuperficieLocal" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 {{gPropiedades.SuperficieLocal}}
@@ -110,7 +178,8 @@
             </div>
             <div *ngIf="gPropiedades.SuperficieOficina" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 {{gPropiedades.SuperficieOficina}}
@@ -121,7 +190,8 @@
             </div>
             <div *ngIf="gPropiedades.SuperficiePlanta=='1'" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 Valor unidad
@@ -132,7 +202,8 @@
             </div>
             <div *ngIf="gPropiedades.SuperficiePlaya=='1'" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 Valor unidad
@@ -143,7 +214,8 @@
             </div>
             <div *ngIf="gPropiedades.SuperficieTerreno=='1'" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 Valor unidad
@@ -154,7 +226,8 @@
             </div>
             <div *ngIf="gPropiedades.SuperficieTotal=='1'" class="col-md-2">
               <div class="d-flex justify-content-center">
-                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 19.svg" />
+                <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
+                  src="../../../../../../assets/images/icons/Recurso 19.svg" />
               </div>
               <h4 class="yellow-text text-center font-weight-extrabold text-uppercase mt-3">
                 Valor unidad
@@ -164,18 +237,14 @@
               </h6>
             </div>
           </div>
-          
+
         </div>
         <div class="justify-content-center col-md-12">
           <div class="row justify-content-center">
             <div *ngIf="gPropiedades.tipo_propiedad" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
-                <img
-                  style="width: 3rem; height: 3rem;"
-                  src="../../../../assets/images/icons/Recurso 18.svg"
-                  class=""
-                  alt=""
-                />
+                <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 18.svg" class=""
+                  alt="" />
               </div>
               <h6 class="gray-icon-text text-center font-weight-bold">
                 {{gPropiedades.tipo_propiedad.descripcion}}
@@ -183,12 +252,8 @@
             </div>
             <div *ngIf="gPropiedades.tipo_opeacion" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
-                <img
-                  style="width: 3rem; height: 3rem;"
-                  src="../../../../../../assets/images/icons/Recurso 8.svg"
-                  class=""
-                  alt=""
-                />
+                <img style="width: 3rem; height: 3rem;" src="../../../../../../assets/images/icons/Recurso 8.svg"
+                  class="" alt="" />
               </div>
               <h6 class="gray-icon-text text-center font-weight-bold">
                 {{gPropiedades.tipo_opeacion.descripcion}}
@@ -196,38 +261,26 @@
             </div>
             <div *ngIf="gPropiedades.CantidadDormitorios=='1'" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
-                <img
-                  style="width: 3rem; height: 3rem;"
-                  src="../../../../assets/images/icons/Recurso 20.svg"
-                  class=""
-                  alt=""
-                />
-              </div>
-              <h6  class="gray-icon-text text-center font-weight-bold">
-                Valor
-              </h6>
-            </div>
-            <div *ngIf="gPropiedades.CantidadBanos=='1'" class="col-md-2 col-4 flex-column">
-              <div class="d-flex justify-content-center mt-4 mb-2">
-                <img
-                  style="width: 3rem; height: 3rem;"
-                  src="../../../../assets/images/icons/Recurso 9.svg"
-                  class=""
-                  alt=""
-                />
+                <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 20.svg" class=""
+                  alt="" />
               </div>
               <h6 class="gray-icon-text text-center font-weight-bold">
                 Valor
               </h6>
             </div>
+            <!-- <div *ngIf="gPropiedades.CantidadBanos=='1'" class="col-md-2 col-4 flex-column">
+              <div class="d-flex justify-content-center mt-4 mb-2">
+                <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 9.svg" class=""
+                  alt="" />
+              </div>
+              <h6 class="gray-icon-text text-center font-weight-bold">
+                Valor
+              </h6>
+            </div> -->
             <div *ngIf="gPropiedades.CantidadCocheras=='1'" class="col-md-2 col-4 flex-column">
               <div class="d-flex justify-content-center mt-4 mb-2">
-                <img
-                  style="width: 3rem; height: 3rem;"
-                  src="../../../../assets/images/icons/Recurso 17.svg"
-                  class=""
-                  alt=""
-                />
+                <img style="width: 3rem; height: 3rem;" src="../../../../assets/images/icons/Recurso 17.svg" class=""
+                  alt="" />
               </div>
               <h6 class="gray-icon-text text-center font-weight-bold">
                 Valor
@@ -244,14 +297,9 @@
             <div class="Ambientescontainer my-3">
               <div class="row d-flex">
                 <ng-container *ngFor="let ambiente of vista.ambientes">
-                  <li *ngIf="ambiente.selected"
-                  class="my-3 d-flex gray-text font-semibold col-lg-3 text-center"
-                  >
-                    <img
-                    src="../../../../../assets/images/icons/Recurso 22.svg"
-                    class="mr-2 footer-contact-icons"
-                    alt=""
-                    />{{ambiente.label}}
+                  <li *ngIf="ambiente.selected" class="my-3 d-flex gray-text font-semibold col-lg-3 text-center">
+                    <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons"
+                      alt="" />{{ambiente.label}}
                   </li>
                 </ng-container>
               </div>
@@ -264,13 +312,14 @@
               <div class="row d-flex">
                 <ng-container *ngFor="let instalacion of vista.instalaciones">
                   <li *ngIf="instalacion.selected" class="my-3 d-flex gray-text font-semibold col-lg-3 text-center">
-                    <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons" alt="" />{{instalacion.label}}
+                    <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons"
+                      alt="" />{{instalacion.label}}
                   </li>
                 </ng-container>
               </div>
             </div>
           </div>
-          <div  class="col-lg-12 my-5">
+          <div class="col-lg-12 my-5">
             <h6 class="gray-text col-lg-12 font-weight-bold">
               Servicios
             </h6>
@@ -279,7 +328,8 @@
               <div class="row d-flex">
                 <ng-container *ngFor="let servicio of vista.servicios">
                   <li *ngIf="servicio.selected" class="my-3 d-flex gray-text font-semibold col-lg-3 text-center">
-                    <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons" alt="" />{{servicio.label}}
+                    <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons"
+                      alt="" />{{servicio.label}}
                   </li>
                 </ng-container>
               </div>
@@ -291,16 +341,13 @@
             </h6>
             <hr class="my-1" />
             <div class="col-lg-12">
-              <p class="pt-4 gray-text font-weight-semibold">
-                {{gPropiedades.descipcion}}
-              </p>
+              <pre class="pt-4 gray-text font-weight-semibold" style="font-family: 'Open Sans', sans-serif !important;
+              font-size: 100% !important;">{{gPropiedades.descipcion}}
+              </pre>
             </div>
           </div>
           <div class="col-sm-12 text-white d-flex justify-content-center py-5">
-            <button
-              (click)="contact()"
-              class="btn brown-button btn-lg text-uppercase font-weight-bold"
-            >
+            <button (click)="contact()" class="btn brown-button btn-lg text-uppercase font-weight-bold">
               Contactar
             </button>
           </div>
@@ -311,7 +358,8 @@
       <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
         <div class="container  py-5 ">
           <div class="col-sm-12 d-flex justify-content-center">
-            <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase">Formulario <span class="font-weight-extrabold">de
+            <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase">Formulario <span
+                class="font-weight-extrabold">de
                 contacto</span></h3>
           </div>
           <div class="row">
@@ -399,11 +447,13 @@
                           <h3 class="text-center mt-3 font-weight-bold">Ocurrió un error al enviar la información</h3>
                           <div *ngIf="errorMensaje.error.errors">
                             <ul *ngIf="errorMensaje.error.errors.email" class="p-0">
-                              <li class="text-center" *ngFor="let error of errorMensaje.error.errors.email">{{error}}</li>
+                              <li class="text-center" *ngFor="let error of errorMensaje.error.errors.email">{{error}}
+                              </li>
                             </ul>
                           </div>
-                          <p class="mb-5 text-center font-weight-bold">Por favor intete nuevamente</p>
-                          <button (click)="reintentar()" class="btn brown-button btn-lg mx-auto btn-block col-lg-5">Volver</button>
+                          <p class="mb-5 text-center font-weight-bold">Por favor intente nuevamente</p>
+                          <button (click)="volver()"
+                            class="btn brown-button btn-lg mx-auto btn-block col-lg-5">Volver</button>
                         </div>
                       </div>
                     </div>
@@ -420,8 +470,8 @@
                     </div>
                   </div>-->
         </div>
-    
-    
+
+
         <div class="col-sm-12" style="z-index: 2;">
           <div class="d-flex justify-content-center">
             <button class="btn shadow btn-block brown-button text-uppercase font-weight-bold col-lg-4">Enviar
@@ -430,37 +480,23 @@
         </div>
       </form>
     </div>
-    <div
-      class="container-fluid sec3"
-      style="background: #E6B706; padding-top: 5rem !important;"
-    >
+    <div class="container-fluid sec3" style="background: #E6B706; padding-top: 5rem !important;">
       <div class="container  py-5 ">
         <div class="col-sm-12">
-          <h3
-            class="font-weight-extrabold text-center text-white text-uppercase my-3"
-          >
+          <h3 class="font-weight-extrabold text-center text-white text-uppercase my-3">
             Contacto
           </h3>
-          <h6
-            class="font-weight-semibold text-center text-white text-uppercase"
-          >
+          <h6 class="font-weight-semibold text-center text-white text-uppercase">
             horario
           </h6>
-          <h5
-            class="font-weight-extrabold text-center text-white text-uppercase"
-          >
+          <h5 class="font-weight-extrabold text-center text-white text-uppercase">
             08:00 AM - 07:00PM
           </h5>
         </div>
         <div class="row">
           <div class="col-md-4 flex-column" style="z-index: 2;">
             <div class="d-flex justify-content-center mt-4 mb-2">
-              <img
-                style="width: 6rem;"
-                src="../../../../assets/images/icons/Recurso 14.svg"
-                class="img-fluid"
-                alt=""
-              />
+              <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 14.svg" class="img-fluid" alt="" />
             </div>
             <h5 class="text-white text-center font-weight-semibold">
               Brandsen 805, C1161 CABA, Argentina
@@ -468,12 +504,7 @@
           </div>
           <div class="col-md-4 flex-column" style="z-index: 2;">
             <div class="d-flex justify-content-center mt-4 mb-2">
-              <img
-                style="width: 6rem;"
-                src="../../../../assets/images/icons/Recurso 16.svg"
-                class="img-fluid"
-                alt=""
-              />
+              <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 16.svg" class="img-fluid" alt="" />
             </div>
             <h5 class="text-white text-center font-weight-semibold">
               +51 444222555
@@ -481,12 +512,7 @@
           </div>
           <div class="col-md-4 flex-column" style="z-index: 2;">
             <div class="d-flex justify-content-center mt-4 mb-2">
-              <img
-                style="width: 6rem;"
-                src="../../../../assets/images/icons/Recurso 15.svg"
-                class="img-fluid"
-                alt=""
-              />
+              <img style="width: 6rem;" src="../../../../assets/images/icons/Recurso 15.svg" class="img-fluid" alt="" />
             </div>
             <h5 class="text-white text-center font-weight-semibold">
               raices@example.org
@@ -497,21 +523,20 @@
     </div>
     <div class="bg-light sec2" style="padding-top: 5rem !important;">
       <div class="container-fluid d-flex align-items-center">
-        <div
-          class="container col-lg-4 col-md-6 py-5 ml-lg-5"
-          style="z-index: 4;"
-        >
+        <div class="container col-lg-4 col-md-6 py-5 ml-lg-5" style="z-index: 4;">
           <div class="col-sm-12">
-            <h3
-              class="font-weight-light text-center text-md-left brown-text text-uppercase mb-3"
-            >
+            <h3 class="font-weight-light text-center text-md-left brown-text text-uppercase mb-3">
               Dirección
             </h3>
           </div>
-          <p
-            class="col-sm-12 font-weight-semibold text-md-left text-center brown-text"
-          >
-            La Empresa actualmente tiene dos sedes, la Casa Central ubicada en la Ciudad de Pilar y la sucrusal Open Door, ubicada en el Centro Comercial Open Door, sita en la Av. Cabred N° 589. La empresa desarrolla todo tipo de proyectos tanto comerciales, administrativos como así también multifamiliares. En la sede central de Pilar, en los últimos años se ha enfocado en proyectos de Condominios y Edificios, construyendo los siguientes complejos multifamiliares: Edificio Marina I, Condominio Soler I, Condominio Vega I, Condominio Naon, Edificio Caral II. También nos especializamos en la locación de grandes inmuebles comerciales en Pilar Centro, teniendo una marcada presencia en la principal zona comercial de Pilar.
+          <p class="col-sm-12 font-weight-semibold text-md-left text-center brown-text">
+            La Empresa actualmente tiene dos sedes, la Casa Central ubicada en la Ciudad de Pilar y la sucrusal Open
+            Door, ubicada en el Centro Comercial Open Door, sita en la Av. Cabred N° 589. La empresa desarrolla todo
+            tipo de proyectos tanto comerciales, administrativos como así también multifamiliares. En la sede central de
+            Pilar, en los últimos años se ha enfocado en proyectos de Condominios y Edificios, construyendo los
+            siguientes complejos multifamiliares: Edificio Marina I, Condominio Soler I, Condominio Vega I, Condominio
+            Naon, Edificio Caral II. También nos especializamos en la locación de grandes inmuebles comerciales en Pilar
+            Centro, teniendo una marcada presencia en la principal zona comercial de Pilar.
           </p>
         </div>
         <div class="col-md-8 d-none d-md-block"></div>

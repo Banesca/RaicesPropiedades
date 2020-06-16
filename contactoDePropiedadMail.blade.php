@@ -3,13 +3,14 @@
 <head>
     <meta name = "viewport" content = "width=device-width"/>
     <meta http-equiv = "Content-Type" content = "text/html; charset=UTF-8"/>
-    <title>Email</title>
+    <title>Recibimos tu propiedad</title>
     <style>
         /* -------------------------------------
             GLOBAL RESETS
         ------------------------------------- */
 
         /*All the styling goes here*/
+
         img {
             border: none;
             -ms-interpolation-mode: bicubic;
@@ -135,8 +136,8 @@
         }
 
         h1 {
-            font-size: 35px;
-            font-weight: 300;
+            font-size: 20px;
+            font-weight: 600;
             text-align: center;
             text-transform: capitalize;
         }
@@ -157,7 +158,7 @@
         ul,
         ol {
             font-family: sans-serif;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: normal;
             margin: 0;
             margin-bottom: 15px;
@@ -376,6 +377,10 @@
                 left: 2.5%;
             }
 
+            .wrapper {
+                padding: 20px 5px;
+            }
+
             .wrapper-footer .item-a,
             .wrapper-footer .item-b,
             .wrapper-footer .item-c,
@@ -388,6 +393,10 @@
         @media only screen and (max-width: 320px) {
             .wrapper-footer-social {
                 top: 50%;
+            }
+
+            .wrapper {
+                padding: 20px 10px;
             }
 
             .wrapper-footer .item-a,
@@ -448,15 +457,14 @@
     </style>
 </head>
 <body class = "">
-<span class = "preheader">NOTIFICACION PAGO</span>
+<span class = "preheader">Recibimos tu propiedad</span>
 <table role = "presentation" border = "0" cellpadding = "0" cellspacing = "0" class = "body">
     <tr>
-        <td>&nbsp;</td>
         <td class = "container">
             <div class = "content">
 
                 <!-- START HEADER IMAGE CONTAINER -->
-                <img class = "header" src = "{!! $message->embed(public_path('img/raices/header.jpg'))!!}" alt = "">
+                <img class = "header" src = "{{ asset('img/raices/header.jpg') }}" alt = "">
                 <!-- START HEADER IMAGE CONTAINER -->
 
                 <!-- START CENTERED WHITE CONTAINER -->
@@ -465,26 +473,29 @@
                     <!-- START MAIN CONTENT AREA -->
                     <tr>
                         <td class = "wrapper">
+                            <h1>Recibimos tu propiedad</h1>
                             <table role = "presentation" border = "0" cellpadding = "0" cellspacing = "0">
                                 <tr>
-                                    <td>
-                                        <h2>Notificación de pago</h2>
-                                        <hr>
-                                        <p>
-                                            El cliente <b>{{$pago->nombre}}</b>,
-                                            Solicitó la acreditación del pago Nº: <b>{{$pago->n_transferencia_deposito}}</b>
-                                        </p>
-                                        <p>
-                                            Detalle: <b>{{$pago->detalle}}</b>
-                                        </p>
-                                        <p>
-                                            Soporte del pago:
-                                        </p>
-                                        <img src = "{!! $message->embed(public_path('storage/pagos/'.$pago->dir_adjunto))!!}" alt = "">
-
-                                        <h5>www.raicespropiedades.com</h5>
-                                    </td>
+                                    <p>
+                                        <strong>Nombre: </strong>{!! $contacto->nombre !!}
+                                    </p>
                                 </tr>
+                                <tr>
+                                    <p>
+                                        <strong>Email: </strong>{!! $contacto->email !!}
+                                    </p>
+                                </tr>
+                                <tr>
+                                    <p>
+                                        <strong>Teléfono: </strong>{!! $contacto->telefono !!}
+                                    </p>
+                                </tr>
+                                <tr>
+                                    <p>
+                                        <strong>Mensaje: </strong>{!! $contacto->mensaje !!}
+                                    </p>
+                                </tr>
+
                             </table>
                         </td>
                     </tr>
@@ -493,14 +504,117 @@
                 </table>
                 <!-- END CENTERED WHITE CONTAINER -->
 
+                <!-- START CENTERED WHITE DATA PROPIEDAD -->
+                <table role = "presentation" class = "main">
+
+                    <!-- START MAIN CONTENT AREA -->
+                    <tr>
+                        <td class = "wrapper">
+                            <h2 style = " font-size: 15px;
+                                        font-weight: 600;
+                                        text-align: center;
+                                        text-transform: capitalize;">
+                                DATOS DE LA PROPIEDAD </h2>
+                            <table role = "presentation" border = "0" cellpadding = "0" cellspacing = "0">
+                                <?php
+                                $r = 0;
+                                ?>
+
+                                @foreach(json_decode(json_encode($contacto->propiedad), true) as $key=>$item)
+                                    @if($key!='idPropiedad'
+                                      && $key!='fk_idTipoPropiedad'
+                                      && $key!='fk_Direccion_Barrio_Id'
+                                      && $key!='fk_Direccion_Calle_Id'
+                                      && $key!='fk_Direccion_Ciudad_Id'
+                                      && $key!='fk_Direccion_Localidad_Id'
+                                      && $key!='fk_Direccion_Pais_Id'
+                                      && $key!='fk_Direccion_Partido_Id'
+                                      && $key!='fk_Direccion_Provincia_Id'
+                                      && $key!='fk_Direccion_SubBarrio_Id'
+                                      && $key!='fk_Direccion_Region_Id'
+                                      && $key!='fk_Disposicion'
+                                      && $key!='fk_Estado'
+                                      && $key!='fk_Orientacion'
+                                      && $key!='fk_TipoAcceso'
+                                      && $key!='fk_TipoAscensor'
+                                      && $key!='fk_TipoBalcon'
+                                      && $key!='fk_TipoBano'
+                                      && $key!='fk_TipoCalefaccion'
+                                      && $key!='fk_TipoCampo'
+                                      && $key!='fk_TipoCobertura'
+                                      && $key!='fk_TipoCoche'
+                                      && $key!='fk_TipoCochera'
+                                      && $key!='fk_TipoCosta'
+                                      && $key!='fk_TipoEdificio'
+                                      && $key!='fk_TipoExpensas'
+                                      && $key!='fk_TipoFondoComercio'
+                                      && $key!='fk_TipoFrente'
+                                      && $key!='fk_TipoHotel'
+                                      && $key!='fk_TipoLocal'
+                                      && $key!='fk_TipoPendiente'
+                                      && $key!='fk_TipoPiso'
+                                      && $key!='fk_TipoPorton'
+                                      && $key!='fk_TipoTecho'
+                                      && $key!='fk_TipoTechoIndustrial'
+                                      && $key!='fk_TipoTerreno'
+                                      && $key!='fk_TipoUnidadCasa'
+                                      && $key!='fk_TipoUnidadDepartamento'
+                                      && $key!='fk_TipoVista'
+                                      && $key!='fk_ficha2'
+                                      && $key!='fk_estado_publicacion'
+                                      && $key!='fk_idTipoOperaion'
+                                      && $key!='fk_idMonedas'
+                                      && $key!=''
+                                      && $item!=''
+                                      )
+                                        @if($r==0)
+                                            <tr>
+                                                @endif
+
+                                                <td width = "40%" align = "left" style = "font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                                    <p>
+
+                                                        <strong>
+                                                            {!! !is_null($key) || $key!='' ? $key : ''!!}
+                                                        </strong> : {!! !is_null($item) || $item!='' ? $item : ''!!}
+
+                                                    </p>
+                                                </td>
+
+                                                <?php
+                                                    $r++;
+                                                ?>
+                                                @if($r==2)
+                                                    </tr>
+                                                @endif
+                                    @endif
+                                    @if($r==2)
+                                        <?php
+                                        $r = 0;
+                                        ?>
+                                    @endif
+
+                                    {{-- <p>
+                                        <img class = "img-fluid mt-3" style = "width: 3rem; height: 3rem;" src = "{{url('/img\icons\Recurso 19.svg')}}"/>
+                                    </p>
+                                    --}}
+
+                                @endforeach
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- END MAIN CONTENT AREA -->
+                </table>
+                <!-- END CENTERED WHITE DATA PROPIEDAD -->
+
                 <!-- START FOOTER -->
                 <div class = "wrapper-footer">
-                    <img src = "{!! $message->embed(public_path('img/raices/footer-o.jpg'))!!}" alt = "" class = "footer">
+                    <img src = "{{ asset('img/raices/footer-o.jpg') }}" alt = "" class = "footer">
                 </div>
                 <!-- END FOOTER -->
             </div>
         </td>
-        <td>&nbsp;</td>
     </tr>
 </table>
 </body>

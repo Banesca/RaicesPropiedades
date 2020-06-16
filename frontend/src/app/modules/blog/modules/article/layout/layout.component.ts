@@ -1,30 +1,30 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import {
   PublicacionesService,
   ContactoService,
-  ArticuloService
-} from "src/app/servicios/servicios.index";
-import { ActivatedRoute } from "@angular/router";
-import { NgbCarouselConfig } from "@ng-bootstrap/ng-bootstrap";
-import { VistaPublicaciones } from "src/app/servicios/publicaciones/publicaciones.interface";
-import { DataByTipoPropiedad } from "../../../../../presentation/publication-management/form/datosPorTipoPropiedad";
-import { IContacto } from "src/app/servicios/interfaces.index";
+  ArticuloService,
+} from 'src/app/servicios/servicios.index';
+import { ActivatedRoute } from '@angular/router';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { VistaPublicaciones } from 'src/app/servicios/publicaciones/publicaciones.interface';
+import { DataByTipoPropiedad } from '../../../../../presentation/publication-management/form/datosPorTipoPropiedad';
+import { IContacto } from 'src/app/servicios/interfaces.index';
 import {
   NgForm,
   FormGroup,
   FormControl,
   FormBuilder,
-  Validators
-} from "@angular/forms";
+  Validators,
+} from '@angular/forms';
 import {
   NgbModalConfig,
   NgbModal,
-  NgbModalRef
-} from "@ng-bootstrap/ng-bootstrap";
+  NgbModalRef,
+} from '@ng-bootstrap/ng-bootstrap';
 @Component({
-  selector: "app-layout",
-  templateUrl: "./layout.component.html",
-  styleUrls: ["./layout.component.scss"]
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
   gPropiedades: any;
@@ -48,8 +48,8 @@ export class LayoutComponent implements OnInit {
     edificio: {
       caracteristicas: [],
       instalaciones: [],
-      servicios: []
-    }
+      servicios: [],
+    },
   };
   constructor(
     private _PublicacionesService: PublicacionesService,
@@ -57,10 +57,11 @@ export class LayoutComponent implements OnInit {
     private _ActivatedRoute: ActivatedRoute,
     private articuloService: ArticuloService,
     private _formBuilder: FormBuilder,
-    private _ContactoService: ContactoService
+    private _ContactoService: ContactoService,
+    private modalService: NgbModal
   ) {
-    this._ActivatedRoute.params.subscribe(param => {
-      this.mId = param["ruta"];
+    this._ActivatedRoute.params.subscribe((param) => {
+      this.mId = param['ruta'];
     });
     config.interval = 10000;
     config.wrap = false;
@@ -73,12 +74,15 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     this.contactForm = this.getContactForm();
     this.GetPublicacionUrl();
-    this.articuloService.search.subscribe(data => {
+    this.articuloService.search.subscribe((data) => {
       this.searchClicked = data;
     });
   }
   get f() {
     return this.contactForm.controls;
+  }
+  open(content) {
+    this.modalService.open(content);
   }
   onSubmit() {
     this.submitted = true;
@@ -87,7 +91,7 @@ export class LayoutComponent implements OnInit {
       return;
     }
 
-    this.contactForm.controls["fk_idPropiedad"].setValue(this.mId);
+    this.contactForm.controls['fk_idPropiedad'].setValue(this.mId);
     this.guardar();
   }
   guardar() {
@@ -95,13 +99,13 @@ export class LayoutComponent implements OnInit {
     this.submitted = true;
     this._ContactoService
       .NewContactPropiedad(this.contactForm.value)
-      .then(data => {
+      .then((data) => {
         this.successMensaje = true;
         this.mLoading = false;
         this.submitted = false;
         this.contactForm.reset();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
         this.errorMensaje = error;
         this.mLoading = false;
@@ -110,27 +114,27 @@ export class LayoutComponent implements OnInit {
   getContactForm() {
     return this._formBuilder.group({
       nombre: [
-        "",
+        '',
         [
           Validators.required,
-          Validators.pattern("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$"),
-          Validators.minLength(6)
-        ]
+          Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
+          Validators.minLength(6),
+        ],
       ],
       email: [
-        "",
+        '',
         [
           Validators.required,
           Validators.email,
-          Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")
-        ]
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+        ],
       ],
       telefono: [
-        "",
-        [Validators.required, Validators.pattern("^[0-9]{10,12}$")]
+        '',
+        [Validators.required, Validators.pattern('^[0-9]{10,12}$')],
       ],
-      mensaje: ["", Validators.required],
-      fk_idPropiedad: [""]
+      mensaje: ['', Validators.required],
+      fk_idPropiedad: [''],
     });
   }
   setVistaValue(idTipoVivienda) {
@@ -185,38 +189,38 @@ export class LayoutComponent implements OnInit {
   GetPublicacionUrl() {
     this._PublicacionesService
       .getPublicacion(this.mId)
-      .then(data => {
+      .then((data) => {
         this.gPropiedades = data;
         this.setVistaValue(this.gPropiedades.tipo_propiedad.idTipoPropiedad);
         if (this.vista.ambientes) {
-          this.vista.ambientes.forEach(element => {
+          this.vista.ambientes.forEach((element) => {
             element.selected =
-              this.gPropiedades[element.variableName] == "1" ? true : false;
+              this.gPropiedades[element.variableName] == '1' ? true : false;
           });
         }
 
         //Obtenemos y llenamos los selects de Instalaciones
         if (this.vista.instalaciones) {
-          this.vista.instalaciones.forEach(element => {
+          this.vista.instalaciones.forEach((element) => {
             element.selected =
-              this.gPropiedades[element.variableName] == "1" ? true : false;
+              this.gPropiedades[element.variableName] == '1' ? true : false;
           });
         }
 
         //Obtenemos y llenamos los selects de Servicios
         if (this.vista.servicios) {
-          this.vista.servicios.forEach(element => {
+          this.vista.servicios.forEach((element) => {
             element.selected =
-              this.gPropiedades[element.variableName] == "1" ? true : false;
+              this.gPropiedades[element.variableName] == '1' ? true : false;
           });
         }
 
         //Obtenemos y llenamos los selects de Edificios
         if (this.vista.edificio) {
           //Servicios
-          this.vista.edificio.servicios.forEach(element => {
+          this.vista.edificio.servicios.forEach((element) => {
             element.selected =
-              this.gPropiedades[element.variableName] == "1" ? true : false;
+              this.gPropiedades[element.variableName] == '1' ? true : false;
           });
         }
         if (this.gPropiedades.imagenes.imagen1)
@@ -248,11 +252,11 @@ export class LayoutComponent implements OnInit {
           !this.gPropiedades.imagenes.imagen8 &&
           !this.gPropiedades.imagenes.imagen9
         ) {
-          this.images.push("https://picsum.photos/id/539/900/500");
+          this.images.push('https://picsum.photos/id/539/900/500');
         }
       })
 
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -267,6 +271,10 @@ export class LayoutComponent implements OnInit {
   }
   submittedClose() {
     this.successMensaje = false;
+    this.submitted = false;
+  }
+  volver() {
+    this.errorMensaje = null;
     this.submitted = false;
   }
 }

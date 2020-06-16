@@ -49,7 +49,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 465),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -63,8 +63,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'somoslibreando@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'No_responder'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no_responder@raicespropiedades.com'),
+        'name' => env('MAIL_FROM_NAME', 'Raices Propiedades'),
     ],
 
     /*

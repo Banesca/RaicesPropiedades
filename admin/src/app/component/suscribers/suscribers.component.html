@@ -3,48 +3,24 @@
     <h3 class="py-5 text-center font-weight-bold">Suscriptores</h3>
     <div class="mb-5">
       <div class="">
-        <form
-          class="d-flex align-items-center"
-          [formGroup]="filterForm"
-          #vForma="ngForm"
-        >
+        <form class="d-flex align-items-center" [formGroup]="filterForm" #vForma="ngForm">
           <div class="w-25 mr-2">
-            <button
-              class="btn btn-success w-50"
-              (click)="activos = !activos"
-              [disabled]="activos"
-              ngbTooltip="Activos"
-              placement="top"
-            >
+            <button class="btn btn-success w-50" (click)="activos = !activos" [disabled]="activos" ngbTooltip="Activos"
+              placement="top">
               <i class="fa fa-check"></i>
             </button>
-            <button
-              class="btn btn-danger w-50"
-              (click)="activos = !activos"
-              [disabled]="!activos"
-              ngbTooltip="Cancelados"
-              placement="top"
-            >
+            <button class="btn btn-danger w-50" (click)="activos = !activos" [disabled]="!activos"
+              ngbTooltip="Cancelados" placement="top">
               <i class="fa fa-remove"></i>
             </button>
           </div>
           <div class="w-50">
-            <input
-              type="text"
-              placeholder="Buscar por email"
-              class="form-control ng-untouched ng-pristine ng-valid"
-              formControlName="search"
-            />
+            <input type="text" placeholder="Buscar por email" class="form-control ng-untouched ng-pristine ng-valid"
+              formControlName="search" />
           </div>
           <div class="w-25 ml-2">
-            <button
-              type="button"
-              class="btn btn-success btn-block"
-              ngbTooltip="Buscar"
-              placement="top"
-              [disabled]="mLoading"
-              (click)="filter()"
-            >
+            <button type="button" class="btn btn-success btn-block" ngbTooltip="Buscar" placement="top"
+              [disabled]="mLoading" (click)="filter()">
               Buscar <i class="fa fa-search"></i>
             </button>
           </div>
@@ -61,29 +37,21 @@
                 <th class="col">Email</th>
               </thead>
               <tbody *ngIf="activos">
-                <tr
-                  *ngFor="
+                <tr *ngFor="
                     let categoria of mCategorias
                       | paginate: { itemsPerPage: 5, currentPage: p };
                     let i = index
-                  "
-                  (dblclick)="modificar(categoria)"
-                >
+                  " (dblclick)="ver(categoria)">
                   <td>{{ i + 1 }}</td>
                   <td>{{ categoria.email }}</td>
                 </tr>
               </tbody>
             </table>
             <div class="w-100">
-              <pagination-controls
-                (pageChange)="p = $event"
-              ></pagination-controls>
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </div>
-            <div
-              *ngIf="(mCategorias | keys).length === 0 && !mLoading && activos"
-              class="alert alert-info"
-              role="alert"
-            >
+            <div *ngIf="(mCategorias | keys).length === 0 && !mLoading && activos" class="alert alert-info"
+              role="alert">
               <strong>No existen</strong> Mails que mostrar...
             </div>
             <div *ngIf="!activos" class="alert alert-info" role="alert">
@@ -101,24 +69,15 @@
       <div class="col-md-12">
         <form>
           <div class="form-group text-right">
-            <button
-              (click)="mFormaEstado = enCRUD.Eliminar"
-              type="button"
-              class="btn btn-primary"
-            >
+            <button (click)="mFormaEstado = enCRUD.Eliminar" type="button" class="btn btn-primary">
               <i class="fa fa-backward"></i>
               Regresar
             </button>
           </div>
           <div class="form-group">
             <label for="">Email</label>
-            <input
-              class="form-control"
-              type="text"
-              [(ngModel)]="mCategoriasSelect.email"
-              name="mCategoriasSelect.email"
-              readonly
-            />
+            <input class="form-control" type="text" [(ngModel)]="mCategoriasSelect.email" name="mCategoriasSelect.email"
+              readonly />
           </div>
         </form>
       </div>

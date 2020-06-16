@@ -1,35 +1,43 @@
 <div class="container-fluid">
-
   <div class="row">
-
     <div class="col-md-12">
-
-      <h3 class="py-5 text-center font-weight-bold" *ngIf="formEstado == enCRUD.Eliminar">
+      <h3
+        class="py-5 text-center font-weight-bold"
+        *ngIf="formEstado == enCRUD.Eliminar"
+      >
         Ficha de Propiedad para Cliente
       </h3>
 
-      <h3 class="py-5 text-center font-weight-bold" *ngIf="formEstado == enCRUD.Crear">
+      <h3
+        class="py-5 text-center font-weight-bold"
+        *ngIf="formEstado == enCRUD.Crear"
+      >
         Nueva Ficha de Propiedad
       </h3>
 
-      <h3 class="py-5 text-center font-weight-bold" *ngIf="formEstado == enCRUD.Actualizar">
+      <h3
+        class="py-5 text-center font-weight-bold"
+        *ngIf="formEstado == enCRUD.Actualizar"
+      >
         Actualizar Ficha de Propiedad
       </h3>
 
-      <div class="mb-5" *ngIf="formEstado != enCRUD.Crear && formEstado != enCRUD.Actualizar">
-
+      <div
+        class="mb-5"
+        *ngIf="formEstado != enCRUD.Crear && formEstado != enCRUD.Actualizar"
+      >
         <div>
-
-          <form class="d-flex align-items-center" [formGroup]="filterForm" *ngIf="formEstado == enCRUD.Eliminar">
-
+          <form
+            class="d-flex align-items-center"
+            [formGroup]="filterForm"
+            *ngIf="formEstado == enCRUD.Eliminar"
+          >
             <div class="w-25 mr-2">
-
               <button class="btn btn-success btn-block" (click)="nuevo()">
                 Nuevo <i class="fa fa-plus"></i>
               </button>
-
             </div>
-<!--
+            <!--
             <div class="w-50">
 
               <input class="form-control ng-untouched ng-pristine ng-valid"
@@ -54,27 +62,18 @@
             </div>
 -->
           </form>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 
   <div class="row" *ngIf="formEstado == enCRUD.Eliminar">
-
     <div class="col-md-12">
-
       <div class="table-responsive">
-
         <table class="table table-striped">
-
-          <thead class="thead-dark ">
-
+          <thead class="thead-dark">
             <tr>
-              <th class="d-flex justify-content-center"> # </th>
+              <th class="d-flex justify-content-center">#</th>
 
               <th>Título</th>
 
@@ -86,100 +85,102 @@
 
               <th>Acción</th>
             </tr>
-
           </thead>
 
           <tbody>
-
-            <tr *ngFor="let ficha of fichas |
-              paginate: {
-                itemsPerPage:10,
-                currentPage: p
-              };
-              let i = index">
-
-              <td class="float-center">{{i + 1}}</td>
-              <td>{{ficha.titulo}}</td>
-              <td>{{ficha.ubicacion}}</td>
-              <td>{{ficha.valor}}</td>
-              <td>{{ficha.comision}}</td>
+            <tr
+              *ngFor="
+                let ficha of fichas
+                  | paginate
+                    : {
+                        itemsPerPage: 10,
+                        currentPage: p
+                      };
+                let i = index
+              "
+            >
+              <td class="float-center">{{ i + 1 }}</td>
+              <td>{{ ficha.titulo }}</td>
+              <td>{{ ficha.ubicacion }}</td>
+              <td>{{ ficha.valor }}</td>
+              <td>{{ ficha.comision }}</td>
 
               <td class="float-right">
-                <button  (click)="goPdf(ficha.idFichas)"  class="btn mr-2 btn-info">
-
+                <button
+                  (click)="update(ficha)"
+                  type="button"
+                  class="btn mr-2 btn-info"
+                >
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button
+                  (click)="goPdf(ficha.idFichas)"
+                  class="btn mr-2 btn-warning"
+                >
                   <i class="fas fa-file-pdf"></i>
-
                 </button>
 
-
-
-                <button (click)="eliminar(ficha.idFichas)" type="button" class="btn mr-2 btn-danger">
-
+                <button
+                  (click)="eliminar(ficha.idFichas)"
+                  type="button"
+                  class="btn mr-2 btn-danger"
+                >
                   <i class="fa fa-trash"></i>
-
                 </button>
-
               </td>
-
-
-
             </tr>
-
           </tbody>
-
         </table>
 
         <div class="w-100">
-
           <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 
   <!--Formulario de CREAR Y ACTUALIZAR -->
-  <div *ngIf="formEstado == enCRUD.Crear ||  formEstado == enCRUD.Actualizar" class="row animated fadeIn fast">
-
+  <div
+    *ngIf="formEstado == enCRUD.Crear || formEstado == enCRUD.Actualizar"
+    class="row animated fadeIn fast"
+  >
     <div class="col-md-12">
-
       <form [formGroup]="form">
-
         <div class="row m-2">
+          <!-- BOTONES CABECERA-->
+          <div class="col-md-12">
+            <div class="pull-right">
+              <button
+                (click)="formEstado = enCRUD.Eliminar"
+                type="button"
+                class="btn btn-primary m-2"
+              >
+                <i class="fa fa-backward"></i>
+                Regresar
+              </button>
 
-            <!-- BOTONES CABECERA-->
-            <div class="col-md-12">
+              <button
+                *ngIf="formEstado == enCRUD.Crear"
+                (click)="guardar()"
+                [disabled]="!form.valid || progressBar"
+                class="btn btn-primary m-2"
+              >
+                <i class="fa fa-save"></i>
+                Guardar
+              </button>
 
-              <div class="pull-right">
-
-                <button (click)="formEstado = enCRUD.Eliminar" type="button" class="btn btn-primary m-2">
-
-                  <i class="fa fa-backward"></i>
-                  Regresar
-
-                </button>
-
-                <button *ngIf="formEstado == enCRUD.Crear" (click)="guardar()" [disabled]="!form.valid || progressBar" class="btn btn-primary m-2">
-
-                  <i class="fa fa-save"></i>
-                  Guardar
-
-                </button>
-
-                <button *ngIf="formEstado == enCRUD.Actualizar" (click)="actualizar(fichasSelected.idFichas)"
-                  [disabled]="!form.valid || progressBar" class="btn btn-primary m-2">
-
-                  <i class="fa fa-save"></i>
-                  Modificar
-
-                </button>
-              </div>
+              <button
+                *ngIf="formEstado == enCRUD.Actualizar"
+                (click)="actualizar()"
+                [disabled]="!form.valid || progressBar"
+                class="btn btn-primary m-2"
+              >
+                <i class="fa fa-save"></i>
+                Modificar
+              </button>
             </div>
-            <!--FIN BOTONES CABECERA-->
-
+          </div>
+          <!--FIN BOTONES CABECERA-->
         </div>
 
         <div class="row" *ngIf="progressBar">
@@ -188,39 +189,56 @@
 
         <!--INPUTS-->
         <div class="row">
-
           <div class="col-md-8">
-
             <div class="form-group">
-
-              <label for="">Nombre de la Ficha <span style="color:red;font-weight:bold;">*</span></label>
-              <input type="input" formControlName="titulo" class="form-control">
-
+              <label for=""
+                >Nombre de la Ficha
+                <span style="color: red; font-weight: bold;">*</span></label
+              >
+              <input
+                type="input"
+                formControlName="titulo"
+                class="form-control"
+              />
             </div>
 
-            <div *ngIf="form.controls['titulo'].errors && !form.controls['titulo'].pristine"
-              class="alert alert-danger">
-
+            <div
+              *ngIf="
+                form.controls['titulo'].errors &&
+                !form.controls['titulo'].pristine
+              "
+              class="alert alert-danger"
+            >
               <span *ngIf="form.controls['titulo'].errors.required">
-                El Nombre de la Ficha no puede estar vacío.<br>
+                El Nombre de la Ficha no puede estar vacío.<br />
               </span>
-
             </div>
           </div>
 
           <div class="col-md-4">
             <div class="form-group">
-
-              <label for="">Valor de la Propiedad<span style="color:red;font-weight:bold;">*</span></label>
-              <input type="input" formControlName="valor" class="form-control">
-
+              <label for=""
+                >Valor de la Propiedad<span
+                  style="color: red; font-weight: bold;"
+                  >*</span
+                ></label
+              >
+              <input
+                type="input"
+                formControlName="valor"
+                class="form-control"
+              />
             </div>
 
-            <div *ngIf="form.controls['valor'].errors && !form.controls['valor'].pristine"
-              class="alert alert-danger">
-
+            <div
+              *ngIf="
+                form.controls['valor'].errors &&
+                !form.controls['valor'].pristine
+              "
+              class="alert alert-danger"
+            >
               <span *ngIf="form.controls['valor'].errors.required">
-                El Valor de la propiedad no puede estar vacío.<br>
+                El Valor de la propiedad no puede estar vacío.<br />
               </span>
 
               <!-- <span *ngIf="form.controls['valor'].errors.pattern">
@@ -228,283 +246,351 @@
               </span> -->
             </div>
           </div>
-
         </div>
 
         <div class="row">
           <div class="col-md-12">
-
             <div class="form-group">
-
-              <label for="">Ubicación <span style="color:red;font-weight:bold;">*</span></label>
-              <input type="input" formControlName="ubicacion" class="form-control">
-
+              <label for=""
+                >Ubicación
+                <span style="color: red; font-weight: bold;">*</span></label
+              >
+              <input
+                type="input"
+                formControlName="ubicacion"
+                class="form-control"
+              />
             </div>
 
-            <div *ngIf="form.controls['ubicacion'].errors && !form.controls['ubicacion'].pristine"
-              class="alert alert-danger">
-
+            <div
+              *ngIf="
+                form.controls['ubicacion'].errors &&
+                !form.controls['ubicacion'].pristine
+              "
+              class="alert alert-danger"
+            >
               <span *ngIf="form.controls['ubicacion'].errors.required">
-                La ubicacion no puede estar vacío.<br>
+                La ubicacion no puede estar vacío.<br />
               </span>
 
               <!-- <span *ngIf="form.controls['ubicacion'].errors.pattern">
                 El formato del Correo es incorrecto.<br>
               </span> -->
-
             </div>
-
           </div>
         </div>
 
         <div class="row">
-
           <div class="col-md-12">
-
             <div class="form-group">
-
-              <label for="">Caracteristicas <span style="color:red;font-weight:bold;">*</span></label>
-              <textarea formControlName="caracteristica" class="form-control"></textarea>
-
+              <label for=""
+                >Caracteristicas
+                <span style="color: red; font-weight: bold;">*</span></label
+              >
+              <textarea
+                formControlName="caracteristica"
+                class="form-control"
+              ></textarea>
             </div>
 
-            <div *ngIf="form.controls['caracteristica'].errors && !form.controls['caracteristica'].pristine"
-              class="alert alert-danger">
-
+            <div
+              *ngIf="
+                form.controls['caracteristica'].errors &&
+                !form.controls['caracteristica'].pristine
+              "
+              class="alert alert-danger"
+            >
               <span *ngIf="form.controls['caracteristica'].errors.required">
-                Las Caracteristicas de la Propiedad no puede estar vacía. <br>
+                Las Caracteristicas de la Propiedad no puede estar vacía. <br />
               </span>
-
             </div>
-
           </div>
-
         </div>
 
         <div class="row">
-
           <div class="col-md-12">
-
             <div class="form-group">
-
-              <label for="">Comisión Inmobiliaria<span style="color:red;font-weight:bold;">*</span></label>
-              <input type="text" formControlName="comision" class="form-control">
-
+              <label for=""
+                >Comisión Inmobiliaria<span
+                  style="color: red; font-weight: bold;"
+                  >*</span
+                ></label
+              >
+              <input
+                type="text"
+                formControlName="comision"
+                class="form-control"
+              />
             </div>
 
-            <div *ngIf="form.controls['comision'].errors && !form.controls['comision'].pristine"
-              class="alert alert-danger">
-
+            <div
+              *ngIf="
+                form.controls['comision'].errors &&
+                !form.controls['comision'].pristine
+              "
+              class="alert alert-danger"
+            >
               <span *ngIf="form.controls['comision'].errors.required">
-                La comision inmobiliaria no puede estar vacía. <br>
+                La comision inmobiliaria no puede estar vacía. <br />
               </span>
-
             </div>
-
           </div>
-
         </div>
 
         <div class="row">
-
           <div class="col-md-6">
             <mat-card class="card-material">
-              <img mat-card-image class="img-card"
-                 [src]="this.form.value.img1fa ? this.form.value.img1fa :  imageNotFound"
-                 alt="Imagen 1">
-              <mat-card-actions style="overflow: hidden">
+              <img
+                mat-card-image
+                class="img-card"
+                [src]="
+                  this.form.value.img1fa
+                    ? this.form.value.img1fa
+                    : imageNotFound
+                "
+                alt="Imagen 1"
+              />
+              <mat-card-actions style="overflow: hidden;">
                 <div class="wrapper-dropzone">
-                 <div class="drop">
-                   <div class="cont">
-                     <div class="browse">
-                       Arrastra y suelta la imagen
-                     </div>
-                   </div>
-                   <div>
-                     <div id="files-errors">
-                     </div>
-                   </div>
-                   <div>
-                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img1fa')" />
-                   </div>
-                 </div>
-               </div>
-               </mat-card-actions>
+                  <div class="drop">
+                    <div class="cont">
+                      <div class="browse">
+                        Arrastra y suelta la imagen
+                      </div>
+                    </div>
+                    <div>
+                      <div id="files-errors"></div>
+                    </div>
+                    <div>
+                      <input
+                        id="files"
+                        multiple="false"
+                        name="files[]"
+                        type="file"
+                        (change)="handleFileSelect($event, 'img1fa')"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </mat-card-actions>
 
               <mat-card-subtitle class="card-subtitle">
-                 Imagen 1 (Requerido)
+                Imagen 1 (Requerido)
               </mat-card-subtitle>
-           </mat-card>
-
+            </mat-card>
           </div>
 
           <div class="col-md-6">
             <mat-card class="card-material">
-              <img mat-card-image class="img-card"
-                 [src]="this.form.value.img2pr ? this.form.value.img2pr :  imageNotFound"
-                 alt="Imagen 1">
-              <mat-card-actions style="overflow: hidden">
+              <img
+                mat-card-image
+                class="img-card"
+                [src]="
+                  this.form.value.img2pr
+                    ? this.form.value.img2pr
+                    : imageNotFound
+                "
+                alt="Imagen 1"
+              />
+              <mat-card-actions style="overflow: hidden;">
                 <div class="wrapper-dropzone">
-                 <div class="drop">
-                   <div class="cont">
-                     <div class="browse">
-                       Arrastra y suelta la imagen
-                     </div>
-                   </div>
-                   <div>
-                     <div id="files-errors">
-                     </div>
-                   </div>
-                   <div>
-                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img2pr')" />
-                   </div>
-                 </div>
-               </div>
-               </mat-card-actions>
+                  <div class="drop">
+                    <div class="cont">
+                      <div class="browse">
+                        Arrastra y suelta la imagen
+                      </div>
+                    </div>
+                    <div>
+                      <div id="files-errors"></div>
+                    </div>
+                    <div>
+                      <input
+                        id="files"
+                        multiple="false"
+                        name="files[]"
+                        type="file"
+                        (change)="handleFileSelect($event, 'img2pr')"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </mat-card-actions>
 
               <mat-card-subtitle class="card-subtitle">
-                 Imagen 2 (Requerido)
+                Imagen 2 (Requerido)
               </mat-card-subtitle>
-           </mat-card>
-
+            </mat-card>
           </div>
-
 
           <div class="col-md-6">
             <mat-card class="card-material">
-              <img mat-card-image class="img-card"
-                 [src]="this.form.value.img3pl ? this.form.value.img3pl :  imageNotFound"
-                 alt="Imagen 3">
-              <mat-card-actions style="overflow: hidden">
+              <img
+                mat-card-image
+                class="img-card"
+                [src]="
+                  this.form.value.img3pl
+                    ? this.form.value.img3pl
+                    : imageNotFound
+                "
+                alt="Imagen 3"
+              />
+              <mat-card-actions style="overflow: hidden;">
                 <div class="wrapper-dropzone">
-                 <div class="drop">
-                   <div class="cont">
-                     <div class="browse">
-                       Arrastra y suelta la imagen
-                     </div>
-                   </div>
-                   <div>
-                     <div id="files-errors">
-                     </div>
-                   </div>
-                   <div>
-                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img3pl')" />
-                   </div>
-                 </div>
-               </div>
-               </mat-card-actions>
+                  <div class="drop">
+                    <div class="cont">
+                      <div class="browse">
+                        Arrastra y suelta la imagen
+                      </div>
+                    </div>
+                    <div>
+                      <div id="files-errors"></div>
+                    </div>
+                    <div>
+                      <input
+                        id="files"
+                        multiple="false"
+                        name="files[]"
+                        type="file"
+                        (change)="handleFileSelect($event, 'img3pl')"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </mat-card-actions>
 
               <mat-card-subtitle class="card-subtitle">
-                 Imagen 3 (Requerido)
+                Imagen 3 (Requerido)
               </mat-card-subtitle>
-           </mat-card>
-
+            </mat-card>
           </div>
-
 
           <div class="col-md-6">
             <mat-card class="card-material">
-              <img mat-card-image class="img-card"
-                 [src]="this.form.value.img4pl ? this.form.value.img4pl :  imageNotFound"
-                 alt="Imagen 4">
-              <mat-card-actions style="overflow: hidden">
+              <img
+                mat-card-image
+                class="img-card"
+                [src]="
+                  this.form.value.img4pl
+                    ? this.form.value.img4pl
+                    : imageNotFound
+                "
+                alt="Imagen 4"
+              />
+              <mat-card-actions style="overflow: hidden;">
                 <div class="wrapper-dropzone">
-                 <div class="drop">
-                   <div class="cont">
-                     <div class="browse">
-                       Arrastra y suelta la imagen
-                     </div>
-                   </div>
-                   <div>
-                     <div id="files-errors">
-                     </div>
-                   </div>
-                   <div>
-                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img4pl')" />
-                   </div>
-                 </div>
-               </div>
-               </mat-card-actions>
+                  <div class="drop">
+                    <div class="cont">
+                      <div class="browse">
+                        Arrastra y suelta la imagen
+                      </div>
+                    </div>
+                    <div>
+                      <div id="files-errors"></div>
+                    </div>
+                    <div>
+                      <input
+                        id="files"
+                        multiple="false"
+                        name="files[]"
+                        type="file"
+                        (change)="handleFileSelect($event, 'img4pl')"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </mat-card-actions>
 
               <mat-card-subtitle class="card-subtitle">
-                 Imagen 4 (Requerido)
+                Imagen 4 (Requerido)
               </mat-card-subtitle>
-           </mat-card>
-
+            </mat-card>
           </div>
-
 
           <div class="col-md-6">
             <mat-card class="card-material">
-              <img mat-card-image class="img-card"
-                 [src]="this.form.value.img5sa ? this.form.value.img5sa :  imageNotFound"
-                 alt="Imagen 5">
-              <mat-card-actions style="overflow: hidden">
+              <img
+                mat-card-image
+                class="img-card"
+                [src]="
+                  this.form.value.img5sa
+                    ? this.form.value.img5sa
+                    : imageNotFound
+                "
+                alt="Imagen 5"
+              />
+              <mat-card-actions style="overflow: hidden;">
                 <div class="wrapper-dropzone">
-                 <div class="drop">
-                   <div class="cont">
-                     <div class="browse">
-                       Arrastra y suelta la imagen
-                     </div>
-                   </div>
-                   <div>
-                     <div id="files-errors">
-                     </div>
-                   </div>
-                   <div>
-                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img5sa')" />
-                   </div>
-                 </div>
-               </div>
-               </mat-card-actions>
+                  <div class="drop">
+                    <div class="cont">
+                      <div class="browse">
+                        Arrastra y suelta la imagen
+                      </div>
+                    </div>
+                    <div>
+                      <div id="files-errors"></div>
+                    </div>
+                    <div>
+                      <input
+                        id="files"
+                        multiple="false"
+                        name="files[]"
+                        type="file"
+                        (change)="handleFileSelect($event, 'img5sa')"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </mat-card-actions>
 
               <mat-card-subtitle class="card-subtitle">
-                 Imagen 5 (Requerido)
+                Imagen 5
               </mat-card-subtitle>
-           </mat-card>
-
+            </mat-card>
           </div>
-
 
           <div class="col-md-6">
             <mat-card class="card-material">
-              <img mat-card-image class="img-card"
-                 [src]="this.form.value.img6sa ? this.form.value.img6sa :  imageNotFound"
-                 alt="Imagen 6">
-              <mat-card-actions style="overflow: hidden">
+              <img
+                mat-card-image
+                class="img-card"
+                [src]="
+                  this.form.value.img6sa
+                    ? this.form.value.img6sa
+                    : imageNotFound
+                "
+                alt="Imagen 6"
+              />
+              <mat-card-actions style="overflow: hidden;">
                 <div class="wrapper-dropzone">
-                 <div class="drop">
-                   <div class="cont">
-                     <div class="browse">
-                       Arrastra y suelta la imagen
-                     </div>
-                   </div>
-                   <div>
-                     <div id="files-errors">
-                     </div>
-                   </div>
-                   <div>
-                     <input id="files" multiple="false" name="files[]" type="file" (change)="handleFileSelect($event,'img6sa')" />
-                   </div>
-                 </div>
-               </div>
-               </mat-card-actions>
+                  <div class="drop">
+                    <div class="cont">
+                      <div class="browse">
+                        Arrastra y suelta la imagen
+                      </div>
+                    </div>
+                    <div>
+                      <div id="files-errors"></div>
+                    </div>
+                    <div>
+                      <input
+                        id="files"
+                        multiple="false"
+                        name="files[]"
+                        type="file"
+                        (change)="handleFileSelect($event, 'img6sa')"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </mat-card-actions>
 
               <mat-card-subtitle class="card-subtitle">
-                 Imagen 6 (Requerido)
+                Imagen 6
               </mat-card-subtitle>
-           </mat-card>
-
+            </mat-card>
           </div>
-
-
-
-
         </div>
       </form>
-
     </div>
-
   </div>
-
 </div>
