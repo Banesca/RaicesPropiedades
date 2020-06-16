@@ -45,12 +45,13 @@
   <button style="    position: absolute;
   z-index: 10;
   background-color: transparent;
-  color: white;
+  color: #7a0000;
+  border: none;
   right: 10px;
     top: 10px;" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
-  <ngb-carousel #carousel [showNavigationArrows]="true" [showNavigationIndicators]="true">
+  <ngb-carousel #carousel [showNavigationArrows]="true"  [showNavigationIndicators]="true">
 
     <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen1">
       <div class="picsum-img-wrapper">
