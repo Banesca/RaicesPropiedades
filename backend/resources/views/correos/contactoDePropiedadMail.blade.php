@@ -536,7 +536,7 @@
                                 </tr>
                                 <tr>
                                     <p>
-                                        <strong>Título de Propiedad: </strong>{!! $contacto->titulo !!}
+                                        <strong>Título de Propiedad: </strong>{!! $contacto->propiedad->titulo !!}
                                     </p>
                                 </tr>
 
