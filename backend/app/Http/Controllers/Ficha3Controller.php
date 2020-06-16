@@ -335,11 +335,11 @@ class Ficha3Controller extends Controller {
             $respuestaArgen = SincroniceArgenController::darDeBaja($propiedad->idPropiedad);
             //return response()->json($respuestaArgen);
 
-            if ($respuestaArgen == true) {
+            /*if ($respuestaArgen == true) {
                 Log::info('Se ha desactivado correctamente en ArgenPro la propiedad idPropiedad: '.$propiedad->idPropiedad);
             } else {
                 Log::error('Ha ocurrido un error en al desactivar la propiedad en ArgenPro: idPropiedad: '.$propiedad->idPropiedad);
-            }
+            }*/
 
             $response = [
                 'msj' => 'Propiedad borrada Exitosamente',
