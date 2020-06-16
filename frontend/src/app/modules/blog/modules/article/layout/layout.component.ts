@@ -65,9 +65,9 @@ export class LayoutComponent implements OnInit {
     });
     config.interval = 10000;
     config.wrap = false;
-    config.keyboard = false;
+    config.keyboard = true;
     config.pauseOnHover = false;
-    config.showNavigationIndicators = false;
+    config.showNavigationIndicators = true;
     this.searchClicked = false;
   }
 
