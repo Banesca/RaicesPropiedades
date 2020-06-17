@@ -194,16 +194,13 @@ class BuscadorDePropiedadesController extends Controller {
             'tipoOpeacion',
             'tipoMoneda'
         )
-            ->where(function($query)
-            use (
-                $busqueda
-            ) {
+            ->where(function($query) use ($busqueda) {
                 $query->where('fk_idTipoOperaion', 'like', $busqueda);
-                $query->where('fk_idTipoPropiedad', 'like', $busqueda);
-                $query->where('titulo', 'like', $busqueda);
-                $query->where('descipcion', 'like', $busqueda);
+                $query->orwhere('fk_idTipoPropiedad', 'like', $busqueda);
+                $query->orwhere('titulo', 'like', $busqueda);
+                $query->orwhere('descipcion', 'like', $busqueda);
             })
-            ->where('fk_estado_publicacion', 1)
+            //->where('fk_estado_publicacion', 1)
             ->get();
 
         $resultadoUnico->each(function($resultadoUnico) {
