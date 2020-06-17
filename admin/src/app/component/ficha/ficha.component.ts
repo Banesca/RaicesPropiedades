@@ -69,7 +69,7 @@ export class FichaComponent implements OnInit {
       comision: ["", Validators.required],
       img1fa: ["", Validators.required],
       img2pr: ["", Validators.required],
-      img3pl: ["", Validators.required],
+      img3pl: [""],
       img4pl: [""],
       img5sa: [""],
       img6sa: [""],
