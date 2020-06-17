@@ -215,7 +215,7 @@ export class TransaccionesComponent implements OnInit {
     this._TransaccionesService
       .filter(this.filterForm.value)
       .then(data => {
-        console.log(data);
+        this.mCategorias = data;
       })
       .catch(err => {
         console.log(err);
