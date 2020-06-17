@@ -296,7 +296,12 @@ class TransaccionesController extends Controller {
         })->get();
 
 
-        return response()->json(['request'=>$resultadoUnico]);
+        /*$response = [
+            'msj'  => 'Transacciones',
+            'data' => $resultadoUnico,
+        ];*/
+        return response()->json($resultadoUnico);
+
     }
 
 }

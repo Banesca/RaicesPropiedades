@@ -124,8 +124,7 @@ Route::group(['prefix' => 'v1'], function () {
     /* Galeria */
 
     Route::get('limpiar_cache', function () {
-        Artisan::call(
-            'cache:clear');
+        Artisan::call('cache:clear');
         Artisan::call('config:cache');
         Artisan::call('storage:link');
 
