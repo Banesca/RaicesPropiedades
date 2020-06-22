@@ -326,10 +326,16 @@ export const arrayInstalacionesDepartamento = [
     variableName: 'Instalaciones_CajaFuerte',
     selected: false,
   },
-  { label: 'Caldera', variableName: 'Instalaciones_Caldera', selected: false },
+  { label: 'Caldera Individual', variableName: 'Instalaciones_Caldera', selected: false },
+  { label: 'Calefon', variableName: "calefon", selected: false },
   {
     label: 'Calefacción',
     variableName: 'Instalaciones_Calefaccion',
+    selected: false,
+  },
+  {
+    label: 'Calefacción/balanceado',
+    variableName: 'calefaccion_Tipo_Balanceado',
     selected: false,
   },
   {
@@ -373,6 +379,11 @@ export const arrayInstalacionesDepartamento = [
     selected: false,
   },
   {
+    label: 'Hidromasajes',
+    variableName: 'Instalaciones_Hidromasaje',
+    selected: false,
+  },
+  {
     label: 'Instalación Parrilla',
     variableName: 'Instalaciones_InstalacionParrilla',
     selected: false,
@@ -393,8 +404,23 @@ export const arrayInstalacionesDepartamento = [
     selected: false,
   },
   {
+    label: 'Radiadores',
+    variableName: 'Instalaciones_Radiadores',
+    selected: false,
+  },
+  {
     label: 'Pavimento',
     variableName: 'Instalaciones_Pavimento',
+    selected: false,
+  },
+  {
+    label: 'Piso Radiante Individual',
+    variableName: 'piso_Radiante_Individual',
+    selected: false,
+  },
+  {
+    label: 'Piso Radiante Central',
+    variableName: 'piso_Radiante_Central',
     selected: false,
   },
   {
@@ -426,6 +452,7 @@ export const arrayServiciosDepartamento = [
     variableName: 'Servicios_Calefaccion',
     selected: false,
   },
+  { label: 'Cocina', variableName: 'Servicios_Cocina', selected: false },
   {
     label: 'Electricidad',
     variableName: 'Servicios_Electricidad',

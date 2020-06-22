@@ -47,15 +47,15 @@
                 </div>
               </div>
             <div class="col-sm-12">
-              <label for="exampleFormControlSelect1" class="text-uppercase">Tipo de operación</label>
+              <label for="exampleFormControlSelect1" class="text-uppercase">Tipo de inmueble</label>
               <div class="form-group mb-3">
                 <select formControlName="fk_tipoPropiedad" [ngClass]="{ 'is-invalid': submitted && f.fk_tipoPropiedad.errors }"
                   class="form-control form-control-lg">
-                  <option value="">Seleciona un tipo de operación</option>
+                  <option value="">Seleciona un tipo de inmueble</option>
                   <option *ngFor="let categoria of mCategorias" type="number" [value]="categoria.idTipoPropiedad">{{categoria.descripcion}}</option>
                 </select>
                 <div *ngIf="f.fk_tipoPropiedad.errors" type="alert" class="invalid-feedback">
-                  <div *ngIf="submitted && f.fk_tipoPropiedad.errors.required">El tipo de operación de la propiedades es Requerida</div>
+                  <div *ngIf="submitted && f.fk_tipoPropiedad.errors.required">El tipo de inmueble de la propiedades es Requerida</div>
                 </div>
               </div>
             </div>

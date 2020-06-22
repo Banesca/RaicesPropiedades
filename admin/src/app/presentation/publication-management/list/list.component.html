@@ -75,7 +75,7 @@
               <tr *ngFor="let item of data; let i = index">
                 <td scope="row">{{ item.idPropiedad }}</td>
                 <td>{{ item.titulo }}</td>
-                <td>{{ item.descipcion }}</td>
+                <td  style=" max-width: 300px; overflow: hidden;text-overflow: ellipsis; white-space: nowrap;" >{{ item.descipcion }}</td>
                 <td>{{ item.tipo_propiedad.descripcion }}</td>
                 <td>{{ item.esUnaOportunidad == 1 ? "Si" : "No" }}</td>
                 <td>{{ item.esUnaNovedad == 1 ? "Si" : "No" }}</td>

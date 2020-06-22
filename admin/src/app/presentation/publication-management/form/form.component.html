@@ -50,7 +50,7 @@
                   <div class="form-group">
                     <div class="example-container">
                       <mat-form-field>
-                        <textarea matInput placeholder="Descripción*" formControlName="descipcion"></textarea>
+                        <textarea rows="6"  matInput placeholder="Descripción*" formControlName="descipcion"></textarea>
                         <mat-error>
                           Este valor es
                           <strong>requerido</strong>
@@ -519,7 +519,7 @@
                         <div class="form-group">
                           <div class="example-container">
                             <mat-form-field>
-                              <mat-select placeholder="Tipo de operación*" formControlName="fk_idTipoOperaion">
+                              <mat-select placeholder="Tipo de inmueble*" formControlName="fk_idTipoOperaion">
                                 <mat-option *ngFor="let item of arrayTipoDeOperacion" [value]="item.idTipoOperaion">
                                   {{item.descripcion}}
                                 </mat-option>
@@ -595,7 +595,7 @@
               <fieldset>
                 <div class="row">
                   <div class="col-md-12 ">
-                    <legend> Información Adicional</legend>
+                    <legend> Información Privada</legend>
                   </div>
                 </div>
 
@@ -604,10 +604,9 @@
                     <div class="form-group">
                       <div class="example-container">
                         <mat-form-field>
-                          <input matInput placeholder="Información Adicional*" formControlName="informacion_adicional">
+                          <input matInput placeholder="Información Privada" formControlName="informacion_adicional">
                           <mat-error>
                             Este valor es
-                            <strong>requerido</strong>
                           </mat-error>
 
                         </mat-form-field>
