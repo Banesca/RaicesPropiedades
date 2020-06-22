@@ -224,10 +224,7 @@ class GaleriaController extends Controller
         $busqueda = "%" . $request->search . "%";
 
         $resultadoUnico = Galeria::
-        where(function ($query)
-        use (
-            $busqueda
-        ) {
+        where(function ($query) use ($busqueda) {
             $query->orwhere('titulo', 'like', $busqueda);
             $query->orwhere('descripcion', 'like', $busqueda);
         })
