@@ -12,9 +12,9 @@
 
 use App\Localidades;
 
-Route::group(['prefix' => 'auth'], function () {
+Route::group([ 'prefix' => 'auth' ], function () {
 
-    Route::group(['middleware' => 'auth:api'], function () {
+    Route::group([ 'middleware' => 'auth:api' ], function () {
         Route::get('logout', 'API\AuthController@logout');//cerrar sesion
         Route::get('getUser', 'API\AuthController@user');//Obtener usuario autenticado
         Route::post('editarUser/{idUser}', 'UserController@update');
@@ -51,7 +51,7 @@ Route::group(['prefix' => 'auth'], function () {
     });
 });
 
-Route::group(['prefix' => 'v1'], function () {
+Route::group([ 'prefix' => 'v1' ], function () {
 
     Route::post('login', 'API\AuthController@login'); //logear
     Route::post('crearUser', 'UserController@store');
@@ -229,13 +229,13 @@ Route::group(['prefix' => 'v1'], function () {
         ini_set('memory_limit', '512M');
         ini_set('max_execution_time', '15000');
         foreach (Localidades::get() as $localidad) {
-            $url = 'https://www.inmuebles.clarin.com/Regiones/FindCalles?contentType=json&idLocalidad=' . $localidad->id;
-            $ch  = curl_init();
+            $url = 'https://www.inmuebles.clarin.com/Regiones/FindCalles?contentType=json&idLocalidad='.$localidad->id;
+            $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_POST, 0);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($ch);
-            $err      = curl_error($ch);  //if you need
+            $err = curl_error($ch);  //if you need
             curl_close($ch);
             $result_LOCALIDADES = json_decode($response, true);
             if (isset($result_LOCALIDADES)) {
@@ -261,17 +261,17 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('fichaPropiedad/ver/{idFicha}', 'FichaPropiedadController@listarPorId');
     Route::get('fichaPropiedad/pdf/{idFicha}', 'FichaPropiedadController@pdf');
 
-    Route::get('123/{id}',function ($id){
-        $con=\App\ContactoDePropiedad::with('propiedad')->find($id);
+    Route::get('123/{id}', function ($id) {
+        $con = \App\ContactoDePropiedad::with('propiedad')->find($id);
 
-        return view('correos.contactoDePropiedadMail')->with('contacto',$con);
+        return view('correos.contactoDePropiedadMail')->with('contacto', $con);
     });
 
     //Route::get('visibilidad/{id}','SincroniceArgenController@buscarIdAvisoPorIdVisibilidad');
     //Route::get('baja/{id}','SincroniceArgenController@darDeBaja');
     //Route::get('url/{id}','SincroniceArgenController@buscarURLdePropiedadArgen');
 
-    Route::get('activarPropiedadEnArgen/{idPropiedad}','SincroniceArgenController@reactivar');
+    Route::get('activarPropiedadEnArgen/{idPropiedad}', 'SincroniceArgenController@reactivar');
 
     /*Route::get('sincronizarBarrios',function (){
 
@@ -324,6 +324,16 @@ Route::group(['prefix' => 'v1'], function () {
         }
 
     });*/
+
+    Route::get('oi', function () {
+
+        /*$t = new stdClass();
+        $t->tocken = 'sdlmkfñsdnmfñlk23n4ñl3';
+        $t->email = 'ejemplo@asdfsd.com';*/
+
+
+        return view('correos.suscripcion');
+    });
 
 });
 

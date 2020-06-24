@@ -8,8 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class MailsMasivos extends Mailable
-{
+class MailsMasivos extends Mailable {
     use Queueable, SerializesModels;
 
     /**
@@ -19,12 +18,13 @@ class MailsMasivos extends Mailable
      */
     public $sus; //al hacer public la variable no hace falta usar with en la vista
     public $email;
+    protected $tocken = false;
 
 
-    public function __construct(SuscripcionUser $sus,$email)
-    {
+    public function __construct(SuscripcionUser $sus, $email, $tocken) {
         $this->sus = $sus;
         $this->email = $email;
+        $this->tocken = $tocken;
     }
 
     /**
@@ -32,9 +32,8 @@ class MailsMasivos extends Mailable
      *
      * @return $this
      */
-    public function build()
-    {
+    public function build() {
         return $this->view('correos.mailsMasivos')
-            ->subject($this->sus->titulo);
+            ->subject($this->sus->titulo)->with('tocken', $this->tocken);
     }
 }

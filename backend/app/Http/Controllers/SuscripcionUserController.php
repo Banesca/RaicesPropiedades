@@ -35,12 +35,12 @@ class SuscripcionUserController extends Controller {
             $cc=Mail_::all();
 
             foreach ($TodosCorreos as $correo){
-                Mail::to($correo->email)->send(new MailsMasivos($sus,$correo->email));
+                Mail::to($correo->email)->send(new MailsMasivos($sus,$correo->email, $correo->tocken));
             }
 
             /*Copia a Emails de Recepción*/
             foreach ($cc as $correo){
-                Mail::to($correo->email)->send(new MailsMasivos($sus,$correo->email));
+                Mail::to($correo->email)->send(new MailsMasivos($sus,$correo->email,false));
             }
 
 

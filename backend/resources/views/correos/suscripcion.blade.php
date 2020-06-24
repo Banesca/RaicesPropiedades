@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Email</title>
     <style>
         /* -------------------------------------
@@ -32,7 +32,9 @@
             border-collapse: separate;
             mso-table-lspace: 0pt;
             mso-table-rspace: 0pt;
-            width: 100%; }
+            width: 100%;
+        }
+
         table td {
             font-family: sans-serif;
             font-size: 14px;
@@ -162,6 +164,7 @@
             word-break: break-word;
             overflow-wrap: break-word;
         }
+
         p li,
         ul li,
         ol li {
@@ -175,6 +178,7 @@
 
         a {
             text-decoration: none;
+
         }
 
         /* -------------------------------------
@@ -182,17 +186,23 @@
         ------------------------------------- */
         .btn {
             box-sizing: border-box;
-            width: 100%; }
+            width: 100%;
+        }
+
         .btn > tbody > tr > td {
-            padding-bottom: 15px; }
+            padding-bottom: 15px;
+        }
+
         .btn table {
             width: auto;
         }
+
         .btn table td {
             background-color: #ffffff;
             border-radius: 5px;
             text-align: center;
         }
+
         .btn a {
             background-color: #ffffff;
             border: solid 1px #3498db;
@@ -300,6 +310,7 @@
                 transform: translateY(-50%);
                 left: 5%;
             }
+
             .wrapper-footer .item-a,
             .wrapper-footer .item-b,
             .wrapper-footer .item-c,
@@ -307,10 +318,12 @@
                 height: 32px;
                 max-height: 32px;
             }
+
             table[class=body] h1 {
                 font-size: 28px !important;
                 margin-bottom: 10px !important;
             }
+
             table[class=body] p,
             table[class=body] ul,
             table[class=body] ol,
@@ -319,29 +332,36 @@
             table[class=body] a {
                 font-size: 16px !important;
             }
+
             table[class=body] .wrapper,
             table[class=body] .article {
                 padding: 10px !important;
             }
+
             table[class=body] .content {
                 padding: 0 !important;
             }
+
             table[class=body] .container {
                 padding: 0 !important;
                 width: 100% !important;
                 max-width: 100% !important;
             }
+
             table[class=body] .main {
                 border-left-width: 0 !important;
                 border-radius: 0 !important;
                 border-right-width: 0 !important;
             }
+
             table[class=body] .btn table {
                 width: 100% !important;
             }
+
             table[class=body] .btn a {
                 width: 100% !important;
             }
+
             table[class=body] .img-responsive {
                 height: auto !important;
                 max-width: 100% !important;
@@ -356,6 +376,7 @@
                 transform: translateY(-50%);
                 left: 2.5%;
             }
+
             .wrapper-footer .item-a,
             .wrapper-footer .item-b,
             .wrapper-footer .item-c,
@@ -369,6 +390,7 @@
             .wrapper-footer-social {
                 top: 50%;
             }
+
             .wrapper-footer .item-a,
             .wrapper-footer .item-b,
             .wrapper-footer .item-c,
@@ -386,6 +408,7 @@
             .ExternalClass {
                 width: 100%;
             }
+
             .ExternalClass,
             .ExternalClass p,
             .ExternalClass span,
@@ -394,6 +417,7 @@
             .ExternalClass div {
                 line-height: 100%;
             }
+
             .apple-link a {
                 color: inherit !important;
                 font-family: inherit !important;
@@ -402,6 +426,7 @@
                 line-height: inherit !important;
                 text-decoration: none !important;
             }
+
             #MessageViewBody a {
                 color: inherit;
                 text-decoration: none;
@@ -410,9 +435,11 @@
                 font-weight: inherit;
                 line-height: inherit;
             }
+
             .btn-primary table td:hover {
                 background-color: #34495e !important;
             }
+
             .btn-primary a:hover {
                 background-color: #34495e !important;
                 border-color: #34495e !important;
@@ -422,7 +449,7 @@
     </style>
 </head>
 <body class="">
-<span class="preheader">Hola {!! $sus->email !!}</span>
+<span class="preheader">Hola {{-- {!! $sus->email !!} --}}</span>
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
     <tr>
         <td>&nbsp;</td>
@@ -430,7 +457,7 @@
             <div class="content">
 
                 <!-- START HEADER IMAGE CONTAINER -->
-                <img class="header" src="{!! $message->embed(public_path('img/raices/header.jpg'))!!}" alt="">
+                 <img class="header" src="{!! $message->embed(public_path('img/raices/header.jpg'))!!}" alt="">
                 <!-- START HEADER IMAGE CONTAINER -->
 
                 <!-- START CENTERED WHITE CONTAINER -->
@@ -445,13 +472,13 @@
                                         <h2>Muchas Gracias por contactarse con RAICES Propiedades</h2>
                                         <hr>
                                         <p>
-                                            Hemos recibido su solicitud y la estamos procesando a la mayor brevedad para que seas parte de la comunidad RAICES Propiedades.
+                                            Hemos recibido su solicitud y la estamos procesando a la mayor brevedad para
+                                            que seas parte de la comunidad RAICES Propiedades.
                                         </p>
                                         <p>
                                             Te saludamos cordialmente.
                                         </p>
 
-                                        <p style = "text-align: center;color:#E97604;">Si desea cancelar la suscripción haga click <a href = "https://www.raicespropiedades.com/backend/public/formCancelarSuscripcion/{{ $sus->tocken }}">Aquí</a></p>
                                         <h5>www.raicespropiedades.com</h5>
                                     </td>
                                 </tr>
@@ -468,6 +495,10 @@
                     <img src="{!! $message->embed(public_path('img/raices/footer-o.jpg'))!!}" alt="" class="footer">
                 </div>
                 <!-- END FOOTER -->
+
+                <p style="text-align: right;color:#ceddce;font-size: 12px">Si desea cancelar la suscripción haga click
+                    <a style="color: #ceddce;" href="https://www.raicespropiedades.com/backend/public/formCancelarSuscripcion/{{ $sus->tocken }}">Aquí</a>
+                </p>
             </div>
         </td>
         <td>&nbsp;</td>

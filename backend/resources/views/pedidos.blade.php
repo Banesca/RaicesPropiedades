@@ -55,6 +55,17 @@
 
         }
 
+        .footer {
+            position: fixed;
+            left: 0px;
+            bottom: 100px;
+            right: 0px;
+            height: 0px;
+            margin-top: 15%;
+            /*margin: 0;*/
+            /*  border-bottom: 2px solid #ddd; */
+        }
+
         header h1 {
             margin: 10px 0;
             color: #e97604;
@@ -65,16 +76,7 @@
             /*color: #e97604;*/
         }
 
-        .footer {
-            position: fixed;
-            left: 0px;
-            bottom: 200px;
-            right: 0px;
-            height: 0px;
-            margin-top: 15%;
-            /*margin: 0;*/
-            /*  border-bottom: 2px solid #ddd; */
-        }
+
 
         /*   footer .page:after {
               content: counter(page);
@@ -201,11 +203,11 @@
 
 <header>
     <div class = "header">
-        <img src = "{!! public_path('img/pedidos/RESUMEN-PEDIDOS-HEADER.jpg') !!}" alt = "" width = "100%" height = "200px">
+        <img src = "{!! public_path('img/raices/header.jpg') !!}" alt = "" width = "100%" >
 
     </div>
     <div class = "footer">
-        <img src = "{!! public_path('img/pedidos/RESUMEN-PEDIDOS-FOOTER.jpg') !!}" alt = "" width = "100%" height = "200px">
+        <img src = "{!! public_path('img/raices/footer-o.jpg') !!}" alt = "" width = "100%" >
     </div>
 </header>
 
@@ -217,14 +219,15 @@
     <!-- cuerpo  -->
     <div class = "cuerpo">
         <br>
-        <br> <br>
-        <br> <br>
-        <br> <br>
+
         <h1><strong style = "font-weight: bold;">{{strtoupper($ficha->titulo)}}</strong></h1>
-        <h1 style = "font-size: 20px"><strong style = "font-weight: bold;">{{strtoupper($ficha->ubicacion)}}</strong>
+        {{-- <h1 style = "font-size: 20px"><strong style = "font-weight: bold;">{{strtoupper($ficha->ubicacion)}}</strong>--}}
         </h1>
         <br>
         <br>
+        <br> <br>
+        <br> <br>
+        <br> <br>
         <div class = "row justify-content-center fecha ">
             <div class = "col-md-12">
                 <h2>Ubicación:</h2>
@@ -290,6 +293,8 @@
             </table>
         </div>
     </div>
+    @if($ficha->img3pl)
+
     {{--SALTO DE PAGINA --}}
     <div style = "page-break-after:always;"></div>
     {{--SALTO DE PAGINA --}}
@@ -324,6 +329,8 @@
     <br>
     <br>
     <br>
+    @endif
+    @if($ficha->img5sa)
     {{-- SECCION DE LAS IMAGENES--}}
     <div class = "cuerpo">
         <div class = "row justify-content-center ">
@@ -346,6 +353,7 @@
 
         </div>
     </div>
+    @endif
 
 </div>
 <!-- ---------  -->
