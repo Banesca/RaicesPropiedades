@@ -114,6 +114,7 @@ export const arrayServiciosQuinta = [
     { label: "ABL", variableName: "Servicios_ABL", selected: false },
     { label: "Agua Corriente", variableName: "Servicios_AguaCorriente", selected: false },
     { label: "Calefacción", variableName: "Servicios_Calefaccion", selected: false },
+    { label: "Cocina", variableName: "Servicios_Cocina", selected: false },
     { label: "Conmutador", variableName: "Servicios_Conmutador", selected: false },
     { label: "Electricidad", variableName: "Servicios_Electricidad", selected: false },
     { label: "Gas Envasado", variableName: "Servicios_GasEnvasado", selected: false },
