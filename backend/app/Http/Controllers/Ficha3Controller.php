@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
-
+ini_set('memory_limit', '512M');
+ini_set('max_execution_time', '3000');
 class Ficha3Controller extends Controller {
 
     public function add(Request $request) {
@@ -100,7 +101,7 @@ class Ficha3Controller extends Controller {
             //Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email, $propiedad->descipcion, $propiedad->idPropiedad));
 //return response()->json($propiedad);
             $sincronice = new SincroniceArgenController();
-            $sincronice->add($propiedad); //para add propiedad en argen pro
+           $sincronice->add($propiedad); //para add propiedad en argen pro
 
 
             @$propiedad->TipoPropiedad;
@@ -166,6 +167,8 @@ class Ficha3Controller extends Controller {
 
             return response()->json([
                 'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
+                'message' => $e->getMessage(),
+                'linea' => $e->getLine(),
             ], 500);
         }
     }
@@ -443,4 +446,5 @@ class Ficha3Controller extends Controller {
 
         return $response;
     }
+
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Propiedad;
 
+ini_set('memory_limit', '512M');
+ini_set('max_execution_time', '60');
+
+
 class SincroniceArgenController extends Controller {
     public function add(Propiedad $request1) {
         $contenido;
@@ -22,6 +26,9 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
+
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -215,6 +222,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -230,7 +238,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento % 20de % 20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.Direccion.Pais.Id'                         => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'                    => $request1->fk_Direccion_Provincia_Id,
@@ -361,6 +369,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -376,7 +385,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.Direccion.Pais.Id'                         => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'                    => $request1->fk_Direccion_Provincia_Id,
@@ -521,6 +530,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -536,7 +546,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento % 20de % 20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.AptoCredito'                                    => (boolean) $request1->AptoCredito ? 'true' : 'false',
                 'propiedad.Direccion.Pais.Id'                              => $request1->fk_Direccion_Pais_Id,
@@ -678,6 +688,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -693,7 +704,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.AptoCredito'                    => (boolean) $request1->AptoCredito ? 'True' : 'False',
                 'propiedad.Direccion.Pais.Id'              => $request1->fk_Direccion_Pais_Id,
@@ -738,6 +749,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -753,7 +765,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento % 20de % 20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.Direccion.Pais.Id'                         => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'                    => $request1->fk_Direccion_Provincia_Id,
@@ -850,6 +862,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -865,7 +878,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.Direccion.Pais.Id'                         => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'                    => $request1->fk_Direccion_Provincia_Id,
@@ -965,6 +978,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -980,7 +994,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento % 20de % 20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.Direccion.Pais.Id'              => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'         => $request1->fk_Direccion_Provincia_Id,
@@ -1005,7 +1019,7 @@ class SincroniceArgenController extends Controller {
                 'propiedad.LateralDerechoIrregular'        => (boolean) $request1->LateralDerechoIrregular ? 'true' : 'false',
                 'propiedad.LateralIzquierdoIrregular'      => (boolean) $request1->LateralIzquierdoIrregular ? 'true' : 'false',
                 'propiedad.MedidaLinealDerecha'            => $request1->MedidaLinealDerecha,
-                'propiedad.MedidaLinealIzquierda'          => $request1->MedidaLinealIzquierda ,
+                'propiedad.MedidaLinealIzquierda'          => $request1->MedidaLinealIzquierda,
                 'propiedad.LongitudFrente'                 => $request1->LongitudFrente,
                 'propiedad.LongitudFondo'                  => $request1->LongitudFondo,
                 'propiedad.Estado'                         => $request1->fk_Estado,
@@ -1059,6 +1073,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -1074,7 +1089,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.Direccion.Pais.Id'                         => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'                    => $request1->fk_Direccion_Provincia_Id,
@@ -1182,6 +1197,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -1197,7 +1213,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento % 20de % 20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.Direccion.Pais.Id'                  => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'             => $request1->fk_Direccion_Provincia_Id,
@@ -1267,6 +1283,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -1282,7 +1299,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.Direccion.Pais.Id'              => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'         => $request1->fk_Direccion_Provincia_Id,
@@ -1340,6 +1357,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -1355,7 +1373,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento % 20de % 20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.Direccion.Pais.Id'              => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'         => $request1->fk_Direccion_Provincia_Id,
@@ -1445,6 +1463,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
                 'aviso.Vendedor.Id'               => '242566',
+                'aviso.PublicaPrecio'             => 'True',
 
                 'aviso.Fotos[0].Url' => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.Fotos[1].Url' => ! is_null($request1->imagen2) ? asset('storage\\ficha2\\'.@$request1->imagen2) : null,
@@ -1460,7 +1479,7 @@ class SincroniceArgenController extends Controller {
                 'aviso.Multimedia[0].Url'    => ! is_null($request1->imagen1) ? asset('storage\\ficha2\\'.@$request1->imagen1) : null,
                 'aviso.TipoMultimedia[0].Id' => '1',
 
-                //'aviso.InformacionAdicional'      => 'Departamento%20de%20test',
+                'aviso.InformacionAdicional' => $request1->descipcion,
 
                 'propiedad.Direccion.Pais.Id'              => $request1->fk_Direccion_Pais_Id,
                 'propiedad.Direccion.Provincia.Id'         => $request1->fk_Direccion_Provincia_Id,
@@ -1482,6 +1501,8 @@ class SincroniceArgenController extends Controller {
 
             ]);
         }
+
+        //return response()->json($contenido);
 
         $curl = curl_init();
 
@@ -1507,7 +1528,7 @@ class SincroniceArgenController extends Controller {
         curl_close($curl);
 
         if ($err) {
-            //dd("cURL Error #:".$err);
+            dd("cURL Error #:".$err);
         } else {
             $propidad = Propiedad::find($request1->idPropiedad);
 
@@ -1659,7 +1680,7 @@ class SincroniceArgenController extends Controller {
     public static function buscarURLdePropiedadArgen($idPropiedad) {
         $propi = Propiedad::find($idPropiedad);
         $idVisibilidad = @json_decode($propi->visibilidad)[0];
-        if($idVisibilidad){
+        if ($idVisibilidad) {
             $IdAviso = self::buscarIdAvisoPorIdVisibilidad($idVisibilidad);
 
             $contenido = self::QueryHtml([
