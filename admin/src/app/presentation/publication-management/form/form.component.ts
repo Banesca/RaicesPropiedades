@@ -26,6 +26,7 @@ export class FormComponent implements OnInit {
     id: string;
     nameBarrio: string = 'Barrio';
     nameCalle: string = 'Calle';
+    numeroCalle: string = 'Número de la Calle';
 
     publication: any;
 
@@ -1268,15 +1269,18 @@ export class FormComponent implements OnInit {
                 if (!this.boolCalle) {
                     this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([Validators.required]);
                     this.nameCalle = 'Calle*';
+                    this.numeroCalle = 'Número de la Calle*';
                 }else{
                     this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([]);
                     this.nameCalle = 'Calle';
+                    this.numeroCalle = 'Número de la Calle';
                 }
             } else {
                 this.formThree.controls["fk_Direccion_Barrio_Id"].setValidators([]);
                 this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([]);
                 this.nameBarrio = 'Barrio';
                 this.nameCalle = 'Calle';
+                this.numeroCalle = 'Número de la Calle';
             }
             this.service.getPartidos(event.value).then((resp: any) => {
                 this.arrayPartido = resp.Partidos;
@@ -1425,8 +1429,10 @@ export class FormComponent implements OnInit {
             this.boolCalle = true;
             this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([]);
             this.formThree.controls['fk_Direccion_Calle_Id'].setValue('');
+            this.formThree.controls["Direccion_Nombrecalle"].setValidators([Validators.required]);
         } else {
             this.boolCalle = false;
+            this.formThree.controls["Direccion_Nombrecalle"].setValidators([]);
             this.formThree.controls['Direccion_Nombrecalle'].setValue('');
             this.formThree.controls['Direccion_Numero'].setValue('');
             this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([Validators.required]);
