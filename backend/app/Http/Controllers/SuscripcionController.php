@@ -129,7 +129,7 @@ class SuscripcionController extends Controller {
 
     public function listarSuscripciones() {
 
-        $sus = Suscripcion::where('fk_idStatusSistema', 1)->get();
+        $sus = Suscripcion::get();
 
         $response = [
             'msj'         => 'Suscripcion',

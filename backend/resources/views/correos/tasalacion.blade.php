@@ -442,7 +442,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <h2>Gracias por contactarse con RAICES Propiedades</h2>
+                                        <h2>Gracias por contactarse con Raices Propiedades</h2>
                                         <hr>
                                         <p>
                                             Hemos recibido su solicitud, la cual estamos procesando para su correcta contestación a la mayor brevedad.

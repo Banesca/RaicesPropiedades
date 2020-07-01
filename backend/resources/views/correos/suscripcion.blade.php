@@ -469,11 +469,11 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <h2>Muchas Gracias por contactarse con RAICES Propiedades</h2>
+                                        <h2>Muchas gracias por contactarse con Raices Propiedades</h2>
                                         <hr>
                                         <p>
                                             Hemos recibido su solicitud y la estamos procesando a la mayor brevedad para
-                                            que seas parte de la comunidad RAICES Propiedades.
+                                            que seas parte de la comunidad Raices Propiedades.
                                         </p>
                                         <p>
                                             Te saludamos cordialmente.

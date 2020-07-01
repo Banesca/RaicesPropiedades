@@ -31,6 +31,6 @@ class TasalacionMail extends Mailable
     public function build()
     {
         return $this->view('correos.tasalacion')
-            ->subject('Gracias por contactarse con RAICES Propiedades');
+            ->subject('Gracias por contactarse con Raices Propiedades');
     }
 }
