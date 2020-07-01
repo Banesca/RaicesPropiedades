@@ -337,8 +337,6 @@ class Propiedad extends Model {
         'Detalle',
         'TipoBien',
         'visibilidad',
-
-        'cantidad_Toilette',
         'calefaccion_Tipo_Balanceado',
         'piso_Radiante_Individual',
         'piso_Radiante_Central',
@@ -517,6 +515,4 @@ class Propiedad extends Model {
     public function Calle() {
         return $this->belongsTo('App\Calle', 'fk_Direccion_Calle_Id');
     }
-
-
 }

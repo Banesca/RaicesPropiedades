@@ -58,7 +58,7 @@ Route::get('formCancelarSuscripcion/{tocken}', function($e) {
 });
 
 Route::get('irtienda',function(){
-    return Redirect::to('http://raicesonline.com.ar/front/');
+    return Redirect::to('http://www.raicespropiedades.com');
 });
 
 Route::get('hola',function(){
