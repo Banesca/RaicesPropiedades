@@ -19,7 +19,7 @@ class SuscripcionUserController extends Controller {
             'titulo'      => 'required',
             'descripcion' => 'required',
         ], [
-            'titulo.required'        => 'El título es requerido',
+            'titulo.required'      => 'El título es requerido',
             'descripcion.required' => 'La descripción es requerida',
         ]);
 
@@ -31,18 +31,17 @@ class SuscripcionUserController extends Controller {
 
             $sus->save();
 
-            $TodosCorreos=Suscripcion::get();
-            $cc=Mail_::all();
+            $TodosCorreos = Suscripcion::where('fk_idStatusSistema', 1)->get();
+            $cc           = Mail_::all();
 
-            foreach ($TodosCorreos as $correo){
-                Mail::to($correo->email)->send(new MailsMasivos($sus,$correo->email, $correo->tocken));
+            foreach ($TodosCorreos as $correo) {
+                Mail::to($correo->email)->send(new MailsMasivos($sus, $correo->email, $correo->tocken));
             }
 
             /*Copia a Emails de Recepción*/
-            foreach ($cc as $correo){
-                Mail::to($correo->email)->send(new MailsMasivos($sus,$correo->email,false));
+            foreach ($cc as $correo) {
+                Mail::to($correo->email)->send(new MailsMasivos($sus, $correo->email, false));
             }
-
 
 
             $response = [
@@ -83,7 +82,7 @@ class SuscripcionUserController extends Controller {
             'titulo'      => 'required',
             'descripcion' => 'required',
         ], [
-            'titulo.required'        => 'El título es requerido',
+            'titulo.required'      => 'El título es requerido',
             'descripcion.required' => 'La descripción es requerida',
         ]);
         if (is_null($idSuscripcionUser)) {
