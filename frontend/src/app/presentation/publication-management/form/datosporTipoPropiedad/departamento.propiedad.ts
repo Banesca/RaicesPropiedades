@@ -453,6 +453,7 @@ export const arrayServiciosDepartamento = [
     selected: false,
   },
   { label: 'Cocina', variableName: 'Servicios_Cocina', selected: false },
+  { label: 'Cocina', variableName: 'Edificio_Servicios_Cocina', selected: false },
   {
     label: 'Electricidad',
     variableName: 'Servicios_Electricidad',
