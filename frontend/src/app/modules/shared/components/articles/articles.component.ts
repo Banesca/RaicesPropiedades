@@ -261,7 +261,17 @@ export class ArticlesComponent implements OnInit {
     // this.articuloService.filter.next(this.objectFilter);
   }
 
-  onClickPublicacion() {
-    this.articuloService.search.next(false);
+  onClickPublicacion(url,id) {
+    
+     // alert()
+     this.articuloService.search.next(false);
+
+         //window.location.href = '/#'+url+id
+
+         setTimeout(function(){
+         
+              window.location.reload();
+     }, 1000);
+
   }
 }

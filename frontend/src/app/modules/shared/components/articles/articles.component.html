@@ -344,7 +344,8 @@
 
                     <div class="row" style="padding-left: 20px; width: 100%" *ngIf="!propiedadesInPromise">
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 " *ngFor="let item of articulos"
-                            [routerLink]="[baseUrl, item.idPropiedad]" (click)="onClickPublicacion()"
+                            [routerLink]="[baseUrl, item.idPropiedad]" 
+                            (click)="onClickPublicacion()"
                             style="height: max-content;">
                             <div *ngIf="item">
                                 <div class="articulos-image" *ngIf="item.imagenes.imagen1">
