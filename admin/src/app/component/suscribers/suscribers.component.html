@@ -4,7 +4,7 @@
     <div class="mb-5">
       <div class="">
         <form class="d-flex align-items-center" [formGroup]="filterForm" #vForma="ngForm">
-          <div class="w-25 mr-2">
+          <!--<div class="w-25 mr-2">
             <button class="btn btn-success w-50" (click)="activos = !activos" [disabled]="activos" ngbTooltip="Activos"
               placement="top">
               <i class="fa fa-check"></i>
@@ -13,8 +13,8 @@
               ngbTooltip="Cancelados" placement="top">
               <i class="fa fa-remove"></i>
             </button>
-          </div>
-          <div class="w-50">
+          </div>-->
+          <div class="w-75">
             <input type="text" placeholder="Buscar por email" class="form-control ng-untouched ng-pristine ng-valid"
               formControlName="search" />
           </div>
@@ -33,8 +33,9 @@
           <div class="table-responsive">
             <table class="table table-striped">
               <thead class="thead-dark">
-                <th class="pr-5">#</th>
-                <th class="col">Email</th>
+              <th class="d-flex justify-content-center">#</th>
+                <th>Email</th>
+                <th>Estado</th>
               </thead>
               <tbody *ngIf="activos">
                 <tr *ngFor="
@@ -44,6 +45,7 @@
                   " (dblclick)="ver(categoria)">
                   <td>{{ i + 1 }}</td>
                   <td>{{ categoria.email }}</td>
+                  <td>{{ categoria.status.descripcion }}</td>
                 </tr>
               </tbody>
             </table>

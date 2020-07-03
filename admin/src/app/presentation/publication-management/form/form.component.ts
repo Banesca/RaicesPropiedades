@@ -464,7 +464,6 @@ export class FormComponent implements OnInit {
                 res.fk_Direccion_Calle_Id ? this.reloadCalles({value: res.fk_Direccion_Localidad_Id}) : null;
 
 
-
                 this.formThree.setValue({
                     //Datos Basicos
                     informacion_adicional: res.informacion_adicional
@@ -1270,7 +1269,7 @@ export class FormComponent implements OnInit {
                     this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([Validators.required]);
                     this.nameCalle = 'Calle*';
                     this.numeroCalle = 'Número de la Calle*';
-                }else{
+                } else {
                     this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([]);
                     this.nameCalle = 'Calle';
                     this.numeroCalle = 'Número de la Calle';
@@ -1312,7 +1311,17 @@ export class FormComponent implements OnInit {
         if (event.value >= 0) {
             this.service.getCalles(event.value).then((resp: any) => {
                 this.arrayCalle = resp.calles;
+                if (this.arrayCalle.length > 0) {
+                    this.activarCamposDireccion({
+                        'checked': false
+                    });
+                } else {
+                    this.activarCamposDireccion({
+                        'checked': true
+                    });
+                }
             });
+
         }
     }
 
@@ -1424,7 +1433,7 @@ export class FormComponent implements OnInit {
     activarCamposDireccion(obj) {
         let bo = obj.checked;
         //console.log(this.formThree.controls['fk_Direccion_Localidad_Id']);
-        //console.log(bo)
+        console.log(obj);
         if (bo) {
             this.boolCalle = true;
             this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([]);
