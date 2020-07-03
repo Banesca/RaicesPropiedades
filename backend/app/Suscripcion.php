@@ -9,6 +9,7 @@ class Suscripcion extends Model {
     use SoftDeletes;
     protected $table      = 'tb_suscripcions';
     protected $primaryKey = 'idSuscripcion';
+    protected $with       = [ 'status' ];
 
     protected $fillable = [
         'email',
@@ -32,7 +33,7 @@ class Suscripcion extends Model {
 
 
     public function status() {
-        return $this->belongsTo('App\StatusUser', 'fk_idStatusSistema')->select('descripcion');
+        return $this->belongsTo('App\StatusUser', 'fk_idStatusSistema');
     }
 
 }

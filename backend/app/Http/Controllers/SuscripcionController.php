@@ -130,7 +130,6 @@ class SuscripcionController extends Controller {
     public function listarSuscripciones() {
 
         $sus = Suscripcion::get();
-
         $response = [
             'msj'         => 'Suscripcion',
             'suscripcion' => $sus->each(function($sus) {
@@ -206,13 +205,13 @@ class SuscripcionController extends Controller {
         $busqueda = "%" . $request->search . "%";
 
         $resultadoUnico = Suscripcion::
-        where(function ($query)
-        use (
-            $busqueda
-        ) {
-            $query->orwhere('email', 'like', $busqueda);
+        where(function ($query) use ($busqueda) {
+            $query->where('email', 'like', $busqueda);
             $query->orwhere('motivoDeCancelacion', 'like', $busqueda);
             $query->orwhere('sugerencia', 'like', $busqueda);
+            $query->wherehas('status',function($query) use ($busqueda){
+                $query->orwhere('descripcion','like', $busqueda);
+            });
         })
             ->get();
 
