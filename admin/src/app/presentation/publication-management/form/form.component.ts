@@ -1438,12 +1438,15 @@ export class FormComponent implements OnInit {
             this.boolCalle = true;
             this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([]);
             this.formThree.controls['fk_Direccion_Calle_Id'].setValue('');
+            this.formThree.controls['Direccion_Numero'].setValue('');
             this.formThree.controls["Direccion_Nombrecalle"].setValidators([Validators.required]);
         } else {
             this.boolCalle = false;
             this.formThree.controls["Direccion_Nombrecalle"].setValidators([]);
             this.formThree.controls['Direccion_Nombrecalle'].setValue('');
-            this.formThree.controls['Direccion_Numero'].setValue('');
+
+                //this.formThree.controls['Direccion_Numero'].setValue('');
+
             this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([Validators.required]);
         }
     }
