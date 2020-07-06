@@ -45,7 +45,7 @@
                   " (dblclick)="ver(categoria)">
                   <td>{{ i + 1 }}</td>
                   <td>{{ categoria.email }}</td>
-                  <td>{{ categoria.status.descripcion }}</td>
+                  <td>{{ categoria.status!=null ? categoria.status.descripcion : 'Sin estatus'}}</td>
                 </tr>
               </tbody>
             </table>

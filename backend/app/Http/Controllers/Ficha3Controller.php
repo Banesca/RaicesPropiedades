@@ -168,7 +168,7 @@ class Ficha3Controller extends Controller {
 
             return response()->json([
                 'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
-                'message' => $e->getMessage(),
+                'message1' => $e->getMessage(),
                 'linea' => $e->getLine(),
             ], 500);
         }
