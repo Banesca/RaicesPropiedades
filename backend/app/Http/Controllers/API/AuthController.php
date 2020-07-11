@@ -11,11 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
+use function response;
 
-class AuthController extends Controller
-{
-    public function login(Request $request)
-    {
+class AuthController extends Controller {
+    public function login(Request $request) {
         if (! isset($request->idUser) || is_null($request->idUser)) {
             $request->validate([
                 'email'       => 'required|string|email',
@@ -33,8 +32,8 @@ class AuthController extends Controller
             $cre = Auth::loginUsingId($request->idUser);
         } else {
             //para autenticar con el email y el password
-            $credentials = request(['email', 'password']);
-            $cre = Auth::attempt($credentials);
+            $credentials = request([ 'email', 'password' ]);
+            $cre         = Auth::attempt($credentials);
         }
 
 
@@ -74,14 +73,19 @@ class AuthController extends Controller
      *
      * @return [string] message
      */
-    public function logout(Request $request)
-    {
+    public function logout(Request $request) {
+        try {
+            $request->user()->token()->revoke();
+            return response()->json([
+                'message' => 'Se ha desconectado correctamente',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Se ha desconectado correctamente',
+            ]);
+        }
 
-        $request->user()->token()->revoke();
 
-        return response()->json([
-            'message' => 'Se ha desconectado correctamente',
-        ]);
     }
 
     /**
@@ -89,8 +93,7 @@ class AuthController extends Controller
      *
      * @return [json] user object
      */
-    public function user(Request $request)
-    {
+    public function user(Request $request) {
 
         $u = $request->user();
 
@@ -133,7 +136,7 @@ class AuthController extends Controller
 
             return response()->json($u, 200);
         } catch (\Exception $e) {
-            Log::error('Ha ocurrido un error en AuthController: ' . $e->getMessage() . ', Linea: ' . $e->getLine());
+            Log::error('Ha ocurrido un error en AuthController: '.$e->getMessage().', Linea: '.$e->getLine());
 
             return response()->json([
                 'message' => 'Ha ocurrido un error al tratar de obtener los datos.',
@@ -141,13 +144,11 @@ class AuthController extends Controller
         }
     }
 
-    public function redirectToProvider()
-    {
+    public function redirectToProvider() {
         return Socialite::driver('google')->redirect();
     }
 
-    public function handleProviderCallback()
-    {
+    public function handleProviderCallback() {
         try {
             $user = Socialite::driver('google')->user();
         } catch (\Exception $e) {
@@ -158,7 +159,7 @@ class AuthController extends Controller
         $existingUser = User::where('email', $user->email)->first();
         if ($existingUser) {
             //loguar si existe
-            return $this->login(new Request(['idUser' => $existingUser->id]));
+            return $this->login(new Request([ 'idUser' => $existingUser->id ]));
         } else {
             // crear un nuevo usuario y luego regresar el tocken
             $newUser                = new User;
@@ -168,7 +169,7 @@ class AuthController extends Controller
 
             $newUser->save();
 
-            return $this->login(new Request(['idUser' => $newUser->id]));
+            return $this->login(new Request([ 'idUser' => $newUser->id ]));
         }
     }
 }

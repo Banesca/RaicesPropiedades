@@ -18,6 +18,8 @@ import {element} from "@angular/core/src/render3";
 })
 export class FormComponent implements OnInit {
     loading: boolean = false;
+    edit: boolean = false;
+    fusible: boolean = false;
 
     formOne: FormGroup;
     formTwo: FormGroup;
@@ -401,6 +403,7 @@ export class FormComponent implements OnInit {
         this.loadSelects();
 
         if (isUpdate) {
+            this.edit = true;
             this.service.getPropiedad(this.id).then((res: any) => {
                 if (res.msj) {
                     this.alertService.msg("ERR", "Propiedad", res.msj);
@@ -488,7 +491,7 @@ export class FormComponent implements OnInit {
                     fk_Direccion_Ciudad_Id: res.fk_Direccion_Ciudad_Id,
                     fk_Direccion_Barrio_Id: res.fk_Direccion_Barrio_Id,
                     fk_Direccion_SubBarrio_Id: res.fk_Direccion_SubBarrio_Id,
-                    boolCalleMod: res.boolCalleMod,
+
                     Direccion_Nombrecalle: res.Direccion_Nombrecalle,
                     Direccion_Numero: res.Direccion_Numero,
                     Direccion_Piso: res.Direccion_Piso,
@@ -553,6 +556,7 @@ export class FormComponent implements OnInit {
                     TipoBien: res.TipoBien,
 
                     //Checks
+                    boolCalleMod: res.boolCalleMod == "1" ? true : false,
                     AptoCredito: res.AptoCredito == "1" ? true : false,
                     AptoProfesional: res.AptoProfesional == "1" ? true : false,
                     CocheraOptativa: res.CocheraOptativa == "1" ? true : false,
@@ -1308,21 +1312,23 @@ export class FormComponent implements OnInit {
 
     reloadCalles(event) {
         this.formThree.controls["fk_Direccion_Calle_Id"].setValue("");
-        if (event.value >= 0) {
+        if (event.value >= 0 && (!this.edit || this.fusible)) {
             this.service.getCalles(event.value).then((resp: any) => {
                 this.arrayCalle = resp.calles;
                 if (this.arrayCalle.length > 0) {
+                    this.formThree.controls['boolCalleMod'].setValue(false);
                     this.activarCamposDireccion({
                         'checked': false
                     });
                 } else {
+                    this.formThree.controls['boolCalleMod'].setValue(true);
                     this.activarCamposDireccion({
                         'checked': true
                     });
                 }
             });
-
         }
+        this.fusible = true;
     }
 
     reloadSubBarrios(event) {
@@ -1438,14 +1444,13 @@ export class FormComponent implements OnInit {
             this.boolCalle = true;
             this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([]);
             this.formThree.controls['fk_Direccion_Calle_Id'].setValue('');
-            this.formThree.controls['Direccion_Numero'].setValue('');
+            //this.formThree.controls['Direccion_Numero'].setValue('');
             this.formThree.controls["Direccion_Nombrecalle"].setValidators([Validators.required]);
         } else {
             this.boolCalle = false;
             this.formThree.controls["Direccion_Nombrecalle"].setValidators([]);
             this.formThree.controls['Direccion_Nombrecalle'].setValue('');
-
-                //this.formThree.controls['Direccion_Numero'].setValue('');
+            //this.formThree.controls['Direccion_Numero'].setValue('');
 
             this.formThree.controls["fk_Direccion_Calle_Id"].setValidators([Validators.required]);
         }
