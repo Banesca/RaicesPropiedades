@@ -30,9 +30,14 @@ class Transacciones extends Model
     ];
 
     
-    public function tipoPropiedad()
+    /*public function tipoPropiedad()
     {
         return $this->belongsTo('App\TipoPropiedad', 'fk_tipoPropiedad');
+    }*/
+
+    public function tipoPropiedad()
+    {
+        return $this->belongsTo('App\TipoTasacion', 'fk_tipoPropiedad');
     }
 
 

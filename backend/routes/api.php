@@ -127,6 +127,7 @@ Route::group([ 'prefix' => 'v1' ], function () {
         Artisan::call('cache:clear');
         Artisan::call('config:cache');
         Artisan::call('storage:link');
+        Artisan::call('optimize:clear');
 
         //Artisan::call('vendor:publish');
         return response()->json('cache borrada y configurada');
