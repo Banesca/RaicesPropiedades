@@ -140,15 +140,15 @@
             font-size: 20px;
             font-weight: 600;
             text-align: center;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         h2 {
             font-weight: 600;
             font-size: 26px;
             text-align: left;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         h5 {
             font-size: 22px;
@@ -217,8 +217,8 @@
             margin: 0;
             padding: 12px 25px;
             text-decoration: none;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         .btn-primary table td {
             background-color: #3498db;

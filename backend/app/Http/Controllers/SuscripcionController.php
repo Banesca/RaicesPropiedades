@@ -28,7 +28,7 @@ class SuscripcionController extends Controller {
         DB::beginTransaction();
 
         try {
-            if (count(Suscripcion::where('email', $request->email)->where('fk_idStatusSistema', 2)->get())>0) {
+            if (count(Suscripcion::where('email', $request->email)->where('fk_idStatusSistema', 2)->get()) > 0) {
                 Suscripcion::where('email', $request->email)->where('fk_idStatusSistema', 2)->delete();
             }
 
