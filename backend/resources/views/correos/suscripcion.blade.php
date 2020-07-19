@@ -469,7 +469,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <h2>Muchas gracias por contactarse con Raices Propiedades</h2>
+                                        <h2>Muchas gracias por contactarse con raices propiedades</h2>
                                         <hr>
                                         <p>
                                             Hemos recibido su solicitud y la estamos procesando a la mayor brevedad para

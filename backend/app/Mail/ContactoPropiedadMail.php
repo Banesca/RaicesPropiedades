@@ -32,6 +32,6 @@ class ContactoPropiedadMail extends Mailable
     public function build()
     {
         return $this->view('correos.contactoDePropiedadMail')->with('contacto',$this->con)
-            ->subject('Información de Propiedad');
+            ->subject('Recibimos tu consulta');
     }
 }
