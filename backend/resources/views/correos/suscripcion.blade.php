@@ -138,15 +138,15 @@
             font-size: 35px;
             font-weight: 300;
             text-align: center;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         h2 {
             font-weight: 600;
             font-size: 26px;
             text-align: left;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         h5 {
             font-size: 22px;
@@ -216,8 +216,8 @@
             margin: 0;
             padding: 12px 25px;
             text-decoration: none;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         .btn-primary table td {
             background-color: #3498db;
@@ -469,7 +469,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <h2>Muchas gracias por contactarse con Raices Propiedades</h2>
+                                        <h2>Muchas gracias por contactarse con raices propiedades</h2>
                                         <hr>
                                         <p>
                                             Hemos recibido su solicitud y la estamos procesando a la mayor brevedad para

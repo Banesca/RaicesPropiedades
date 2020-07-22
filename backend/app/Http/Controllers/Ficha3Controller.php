@@ -99,7 +99,7 @@ class Ficha3Controller extends Controller {
             $propiedad->save();
 
             //Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email, $propiedad->descipcion, $propiedad->idPropiedad));
-//return response()->json($propiedad);
+
             $sincronice = new SincroniceArgenController();
            //return response()->json($sincronice->add($propiedad)); //para add propiedad en argen pro
 
@@ -256,6 +256,7 @@ class Ficha3Controller extends Controller {
                 $propiedad->save();
                 /*Aqui sincronizo de nuevo la propiedad*/
                 $sincronice = new SincroniceArgenController();
+                //return response()->json($sincronice->add($propiedad)); //para add propiedad en argen pro
                 $sincronice->add($propiedad); //para edit propiedad en argen pro
 
                 @$propiedad->TipoPropiedad;

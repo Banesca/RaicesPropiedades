@@ -196,6 +196,7 @@ class Ficha123Controller extends Controller {
             'tipoOpeacion',
             'tipoMoneda'
         )
+            ->orderby('idPropiedad','desc')
             ->get();
 
         if (! is_null($ficha123)) {

@@ -50,7 +50,7 @@ export class LoginService {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Access-Control-Allow-Origin': '*',
-        'Authorization': 'Bearer ' + this.token,
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
       })
     });
   }

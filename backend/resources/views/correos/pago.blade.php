@@ -138,14 +138,15 @@
             font-size: 35px;
             font-weight: 300;
             text-align: center;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         h2 {
             font-weight: 600;
             font-size: 26px;
             text-align: left;
-            text-transform: capitalize;
+        {{--  text-transform: capitalize;--}}
+
         }
 
         h5 {
@@ -181,7 +182,7 @@
         }
 
         /* -------------------------------------
-            BUTTONS
+         BUTTONS
         ------------------------------------- */
         .btn {
             box-sizing: border-box;
@@ -215,8 +216,8 @@
             margin: 0;
             padding: 12px 25px;
             text-decoration: none;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         .btn-primary table td {
             background-color: #3498db;
@@ -229,7 +230,7 @@
         }
 
         /* -------------------------------------
-            OTHER STYLES THAT MIGHT BE USEFUL
+         OTHER STYLES THAT MIGHT BE USEFUL
         ------------------------------------- */
         .last {
             margin-bottom: 0;
@@ -287,7 +288,7 @@
         }
 
         /* -------------------------------------
-            RESPONSIVE AND MOBILE FRIENDLY STYLES
+         RESPONSIVE AND MOBILE FRIENDLY STYLES
         ------------------------------------- */
         @media only screen and (max-width: 1250px) {
             .wrapper-footer-social {
@@ -401,7 +402,7 @@
         }
 
         /* -------------------------------------
-            PRESERVE THESE STYLES IN THE HEAD
+         PRESERVE THESE STYLES IN THE HEAD
         ------------------------------------- */
         @media all {
             .ExternalClass {
@@ -471,8 +472,9 @@
                                         <h2>Notificación de pago</h2>
                                         <hr>
                                         <p>
-                                            El cliente <b>{{$pago->nombre}}</b>,
-                                            Solicitó la acreditación del pago Nº: <b>{{$pago->n_transferencia_deposito}}</b>
+                                            El cliente <b>{{strtolower($pago->nombre)}}</b>,
+                                            Solicitó la acreditación del pago Nº:
+                                            <b>{{$pago->n_transferencia_deposito}}</b>
                                         </p>
                                         <p>
                                             Detalle: <b>{{$pago->detalle}}</b>
@@ -480,8 +482,9 @@
                                         <p>
                                             Soporte del pago:
                                         </p>
-                                        <img src = "{!! $message->embed(public_path('storage/pagos/'.$pago->dir_adjunto))!!}" alt = "">
-
+                                        @if($pago->dir_adjunto)
+                                            <img src = "{!! $message->embed(public_path('storage/pagos/'.$pago->dir_adjunto))!!}" alt = "">
+                                        @endif
                                         <h5>www.raicespropiedades.com</h5>
                                     </td>
                                 </tr>

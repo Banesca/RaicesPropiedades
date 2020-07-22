@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Recibimos tu propiedad</title>
+    <title>Recibimos tu consulta</title>
     <style>
         /* -------------------------------------
             GLOBAL RESETS
@@ -140,15 +140,15 @@
             font-size: 20px;
             font-weight: 600;
             text-align: center;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         h2 {
             font-weight: 600;
             font-size: 26px;
             text-align: left;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         h5 {
             font-size: 22px;
@@ -217,8 +217,8 @@
             margin: 0;
             padding: 12px 25px;
             text-decoration: none;
-            text-transform: capitalize;
-        }
+        {{--  text-transform: capitalize;--}}
+}
 
         .btn-primary table td {
             background-color: #3498db;
@@ -496,7 +496,7 @@
 </head>
 
 <body class="">
-<span class="preheader">Recibimos tu propiedad</span>
+<span class="preheader">Recibimos tu consulta</span>
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
     <tr>
         <td class="container">
@@ -512,7 +512,7 @@
                     <!-- START MAIN CONTENT AREA -->
                     <tr>
                         <td class="wrapper">
-                            <h1>Recibimos tu propiedad</h1>
+                            <h1>Recibimos tu consulta</h1>
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <p>
@@ -537,6 +537,12 @@
                                 <tr>
                                     <p>
                                         <strong>Título de Propiedad: </strong>{!! $contacto->propiedad->titulo !!}
+                                    </p>
+                                </tr>
+
+                                <tr>
+                                    <p>
+                                        <strong>Dirección: </strong>{!! @$contacto->propiedad->Provincia->nombre !!} - {!! @$contacto->propiedad->Partido->nombre !!} - {!! @$contacto->propiedad->Localidad->nombre !!} - {!! @$contacto->propiedad->Barrio->nombre !!} - {!! @$contacto->propiedad->Calle->nombre !!} - {!! @$contacto->propiedad->Direccion_Nombrecalle !!} - {!! @$contacto->propiedad->Direccion_Numero !!}
                                     </p>
                                 </tr>
 

@@ -17,18 +17,19 @@ use Image;
 class PagoController extends Controller {
     public function store(Request $request) {
         $this->validate($request, [
-            'n_transferencia_deposito' => 'required|unique:tb_pagos,n_transferencia_deposito,'.$request->idPago.',idPago,deleted_at,NULL',
+            'n_transferencia_deposito' => 'required|unique:tb_pagos,n_transferencia_deposito,null,null,deleted_at,NULL',
+
             'nombre'                   => 'required',
             //'apellido'                 => 'required',
             'detalle'                  => 'required',
-            'dir_adjunto'              => 'required',
+            //'dir_adjunto'              => 'required',
         ], [
             'n_transferencia_deposito.required' => 'El campo es requerido',
             'n_transferencia_deposito.unique'   => 'Este número de referencia ya existe por favor verifique',
             'nombre.required'                   => 'El campo es requerido',
             //'apellido.required'                 => 'El campo es requerido',
             'detalle.required'                  => 'El campo es requerido',
-            'dir_adjunto.required'              => 'El campo es requerido',
+            //'dir_adjunto.required'              => 'El campo es requerido',
 
         ]);
 
@@ -38,7 +39,7 @@ class PagoController extends Controller {
 
             $pago = new Pago($request->all());
 
-            if ($request->exists('dir_adjunto')) {
+            if ($request->exists('dir_adjunto') && $request->dir_adjunto!='') {
                 $originalImage = $request->dir_adjunto;
 
                 $thumbnailImage = Image::make($originalImage);

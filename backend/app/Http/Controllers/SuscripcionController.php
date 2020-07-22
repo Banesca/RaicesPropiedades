@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Mail\SuscripcionMail;
 use App\Suscripcion;
 use App\SuscripcionUser;
+use function count;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use function response;
 
 class SuscripcionController extends Controller {
 
@@ -26,6 +28,9 @@ class SuscripcionController extends Controller {
         DB::beginTransaction();
 
         try {
+            if (count(Suscripcion::where('email', $request->email)->where('fk_idStatusSistema', 2)->get()) > 0) {
+                Suscripcion::where('email', $request->email)->where('fk_idStatusSistema', 2)->delete();
+            }
 
             $sus                     = new Suscripcion($request->all());
             $sus->fk_idStatusSistema = 1;
@@ -129,7 +134,7 @@ class SuscripcionController extends Controller {
 
     public function listarSuscripciones() {
 
-        $sus = Suscripcion::get();
+        $sus      = Suscripcion::get();
         $response = [
             'msj'         => 'Suscripcion',
             'suscripcion' => $sus->each(function($sus) {
@@ -185,11 +190,12 @@ class SuscripcionController extends Controller {
             return response()->json($response, 404);
         }
     }
+
     public function filter(Request $request) {
-        $busqueda = "%" . $request->search . "%";
+        $busqueda = "%".$request->search."%";
 
         $resultadoUnico = SuscripcionUser::
-        where(function ($query)
+        where(function($query)
         use (
             $busqueda
         ) {
@@ -199,23 +205,24 @@ class SuscripcionController extends Controller {
             ->get();
 
 
-        return response()->json(['request'=>$resultadoUnico]);
+        return response()->json([ 'request' => $resultadoUnico ]);
     }
+
     public function filterSuscriptores(Request $request) {
-        $busqueda = "%" . $request->search . "%";
+        $busqueda = "%".$request->search."%";
 
         $resultadoUnico = Suscripcion::
-        where(function ($query) use ($busqueda) {
+        where(function($query) use ($busqueda) {
             $query->where('email', 'like', $busqueda);
             $query->orwhere('motivoDeCancelacion', 'like', $busqueda);
             $query->orwhere('sugerencia', 'like', $busqueda);
-            $query->wherehas('status',function($query) use ($busqueda){
-                $query->orwhere('descripcion','like', $busqueda);
+            $query->wherehas('status', function($query) use ($busqueda) {
+                $query->orwhere('descripcion', 'like', $busqueda);
             });
         })
             ->get();
 
 
-        return response()->json(['request'=>$resultadoUnico]);
+        return response()->json([ 'request' => $resultadoUnico ]);
     }
 }

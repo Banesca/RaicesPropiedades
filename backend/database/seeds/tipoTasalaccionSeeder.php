@@ -19,5 +19,15 @@ class tipoTasalaccionSeeder extends Seeder
             'idTipoTasaccion' => '2',
             'descripcion' => 'Alquiler',
         ]);
+
+        \App\TipoTasacion::create([
+            'idTipoTasaccion' => '3',
+            'descripcion' => 'Alquiler por temporada',
+        ]);
+
+        \App\TipoTasacion::create([
+            'idTipoTasaccion' => '4',
+            'descripcion' => 'Tiempo Compartido',
+        ]);
     }
 }

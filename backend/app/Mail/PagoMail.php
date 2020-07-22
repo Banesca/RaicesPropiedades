@@ -30,6 +30,6 @@ class PagoMail extends Mailable {
     public function build() {
         return $this->view('correos.pago')
             ->with('pago', $this->pago)
-            ->subject('Notificación de Pago');
+            ->subject('Notificación de pago');
     }
 }

@@ -106,9 +106,9 @@
         </div>
 
         <br>
-        <p>Sugerencias</p>
+        {{--<p>Sugerencias</p> --}}
         <div class = "sugerencias">
-            <textarea name = "sugerencia" rows = "10" cols = "30" required></textarea>
+            {{-- <textarea name = "sugerencia" rows = "10" cols = "30" required></textarea> --}}
             <div class = "sugerencias">
                 <button id="bcancelar" type = "button" onClick = "cancelar('{!!  $tocken !!}')">Enviar</button>
             </div>
