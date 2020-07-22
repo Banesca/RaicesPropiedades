@@ -17,7 +17,7 @@ class tipoTasalaccionSeeder extends Seeder
         ]);
         \App\TipoTasacion::create([
             'idTipoTasaccion' => '2',
-            'descripcion' => 'Alquier',
+            'descripcion' => 'Alquiler',
         ]);
     }
 }
