@@ -12,11 +12,19 @@ class UsersTableSeeder extends Seeder {
      */
     public function run() {
         // Usuario por defecto 
-        DB::table('tb_users')->insert([
+        /*DB::table('tb_users')->insert([
             'name'        => 'Admin',
             'password'    => bcrypt('1a2b3c_4f5e+6_78-9'),
             'email'       => 'admin@raicespropiedades.com',
             'fk_statusUser'  => '1',
+        ]);*/
+
+        DB::table('tb_users')->insert([
+            'name'        => 'Admin',
+            'password'    => bcrypt('87gfrtr_%ttt+rE·frrRTG-w'),
+            'email'       => 'soporte@bioonix.com',
+            'fk_statusUser'  => '1',
         ]);
+
     }
 }

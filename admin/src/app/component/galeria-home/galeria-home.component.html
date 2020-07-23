@@ -114,7 +114,7 @@
               <div class="form-group">
                 <label for="">Publicación</label>
                 <select [(ngModel)]="mCategoriasSelect.fk_publicaciones" formControlName="fk_publicaciones" class="form-control form-control-lg">
-                  <option value="">Seleciona Una Publicación</option>
+                  <option value="">Selecciona Una Publicación</option>
                   <option *ngFor="let publicacion of mPublicaciones" type="number" [value]="publicacion.idPropiedad">{{publicacion.descipcion}}</option>
                 </select>
                 <!--<div *ngIf="submitted && f.fk_publicaciones.errors" type="alert" class="invalid-feedback d-block">
