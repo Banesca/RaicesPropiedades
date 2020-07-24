@@ -16,6 +16,7 @@ class CreateMailsTable extends Migration
         Schema::create('tb_mails', function (Blueprint $table) {
             $table->increments('idMail');
             $table->string('email');
+            $table->string('modulo');
             $table->timestamps();
             $table->softDeletes();
         });

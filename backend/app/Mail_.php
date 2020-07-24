@@ -13,6 +13,7 @@ class Mail_ extends Model
 
     protected $fillable = [
         'email',
+        'modulo',
     ];
 
     protected $hidden = [
