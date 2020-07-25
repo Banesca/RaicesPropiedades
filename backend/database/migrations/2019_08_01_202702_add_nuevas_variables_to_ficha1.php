@@ -14,7 +14,7 @@ class AddNuevasVariablesToFicha1 extends Migration
     public function up()
     {
         Schema::table('tb_propiedades', function (Blueprint $table) {
-            $table->string('descipcion')->nullable();
+            $table->text('descipcion')->nullable();
             $table->integer('fk_tipoPropiedad')->unsigned()->nullable();
             $table->integer('esUnaPropiedad')->nullable();
             $table->integer('esUnaNovedad')->nullable();
