@@ -185,13 +185,17 @@ export class LayoutComponent implements OnInit {
         //Cuando se ingrese algo desconocido
         break;
     }
+  
   }
   GetPublicacionUrl() {
     this._PublicacionesService
       .getPublicacion(this.mId)
       .then((data) => {
+
         this.gPropiedades = data;
+
         this.setVistaValue(this.gPropiedades.tipo_propiedad.idTipoPropiedad);
+        
         if (this.vista.ambientes) {
           this.vista.ambientes.forEach((element) => {
             element.selected =
@@ -206,6 +210,7 @@ export class LayoutComponent implements OnInit {
               this.gPropiedades[element.variableName] == '1' ? true : false;
           });
         }
+
 
         //Obtenemos y llenamos los selects de Servicios
         if (this.vista.servicios) {
@@ -223,6 +228,31 @@ export class LayoutComponent implements OnInit {
               this.gPropiedades[element.variableName] == '1' ? true : false;
           });
         }
+
+
+
+        //Obtenemos y llenamos los selects de Caracteristicas
+        if (this.vista.caracteristicas) {
+          this.vista.caracteristicas.forEach((element) => {
+            element.selected =
+              this.gPropiedades[element.variableName] >=1 ? true : false;
+
+              if(this.gPropiedades[element.variableName] > 1){
+                element.value = this.gPropiedades[element.variableName];
+              }
+
+              if(this.gPropiedades[element.variableName] != null){
+                if(this.gPropiedades[element.variableName].descripcion != null){
+                  element.selected = true
+                   element.value = this.gPropiedades[element.variableName].descripcion;
+                }
+                
+              }
+          });
+        }
+
+
+
         if (this.gPropiedades.imagenes.imagen1)
           this.images.push(this.gPropiedades.imagenes.imagen1);
         if (this.gPropiedades.imagenes.imagen2)

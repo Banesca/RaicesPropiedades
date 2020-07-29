@@ -1,27 +1,27 @@
 import { isMedidas } from './funcion';
 
-export const caracteristicasCasa = {
-  LongitudFrente: true,
-  LongitudFondo: true,
-  SuperficieTerreno: true,
-  SuperficieCubierta: true,
-  SuperficieDescubierta: true,
-  Antiguedad: true,
-  fk_TipoTecho: true,
-  fk_TipoPiso: true,
-  CantidadPlantas: true,
-  CantidadBanos: true,
-  CantidadAmbientes: true,
-  CantidadDormitorios: true,
-  CantidadCocheras: true,
-  fk_Orientacion: true,
-  fk_TipoCosta: true,
-  fk_TipoVista: true,
-  fk_TipoPendiente: true,
-  AptoCredito: true,
-  Generales_PermiteMascotas: true,
-  Generales_SeguroCaucion: true,
-};
+export const caracteristicasCasa = [
+    { label: "Longitud Frente", variableName: "LongitudFrente",selected: false, value:""},
+    { label: "Longitud Fondo", variableName: "LongitudFondo",  selected: false, value:""},
+    { label: "Superficie Terreno", variableName: "SuperficieTerreno", selected: false, value:""},
+    { label: "Superficie Cubierta", variableName: "SuperficieCubierta",  selected: false, value:""},
+    { label: "Superficie Descubierta", variableName: "SuperficieDescubierta",  selected: false, value:""},
+    { label: "Antiguedad", variableName: "Antiguedad",  selected: false, value:""},
+    { label: "Cantidad de Plantas", variableName: "CantidadPlantas",  selected: false, value:""},
+    { label: "Cantidad de Banos", variableName: "CantidadBanos",  selected: false, value:""},
+    { label: "Cantidad de Ambientes", variableName: "CantidadAmbientes",  selected: false, value:""},
+    { label: "Cantidad de Dormitorios", variableName: "CantidadDormitorios",  selected: false, value:""},
+    { label: "Cantidad de Cocheras", variableName: "CantidadCocheras",  selected: false, value:""},
+    { label: "Apto Credito", variableName: "AptoCredito",  selected: false, value:""},
+    { label: "Permite Mascotas", variableName: "Generales_PermiteMascotas",  selected: false, value:""},
+    { label: "Seguro Caucion", variableName: "Generales_SeguroCaucion",  selected: false, value:""},
+    { label: "Tipo de Techo", variableName: "tipo_techo",  selected: false, value:""},
+    { label: "Orientación", variableName: "orientacion",  selected: false, value:""},
+    { label: "Tipo de Vista", variableName: "tipo_vista",  selected: false, value:""},
+    { label: "Tipo de Costa", variableName: "tipo_costa",  selected: false, value:""},
+    { label: "Tipo de Pido", variableName: "tipo_piso",  selected: false, value:""}
+
+];
 
 export const arrayAmbientesCasa = [
   {

@@ -105,7 +105,7 @@
             Descripción
           </h3>
           <div class="row justify-content-center">
-            <div *ngIf="gPropiedades.SuperficieConstruible" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficieConstruible" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -117,7 +117,7 @@
                 Superficie construible
               </h6>
             </div>
-            <div *ngIf="gPropiedades.SuperficieCubierta" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficieCubierta" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -129,7 +129,7 @@
                 Superficie cubierta
               </h6>
             </div>
-            <div *ngIf="gPropiedades.SuperficieCubiertaCasa" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficieCubiertaCasa" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -141,7 +141,7 @@
                 Superficie cubierta de casa
               </h6>
             </div>
-            <div *ngIf="gPropiedades.SuperficieDeposito" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficieDeposito" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -153,7 +153,7 @@
                 Superficie deposito
               </h6>
             </div>
-            <div *ngIf="gPropiedades.SuperficieDescubierta" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficieDescubierta" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -165,7 +165,7 @@
                 Superficie descubierta
               </h6>
             </div>
-            <div *ngIf="gPropiedades.SuperficieLocal" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficieLocal" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -177,7 +177,7 @@
                 Superficie local
               </h6>
             </div>
-            <div *ngIf="gPropiedades.SuperficieOficina" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficieOficina" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -189,7 +189,7 @@
                 Superficie oficina
               </h6>
             </div>
-            <div *ngIf="gPropiedades.SuperficiePlanta=='1'" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficiePlanta=='1'" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -201,7 +201,7 @@
                 Superficie planta
               </h6>
             </div>
-            <div *ngIf="gPropiedades.SuperficiePlaya=='1'" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficiePlaya=='1'" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -213,7 +213,7 @@
                 Superficie playa
               </h6>
             </div>
-            <div *ngIf="gPropiedades.SuperficieTerreno=='1'" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficieTerreno=='1'" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -225,7 +225,7 @@
                 Superficie terreno
               </h6>
             </div>
-            <div *ngIf="gPropiedades.SuperficieTotal=='1'" class="col-md-2">
+            <div *ngIf="gPropiedades.SuperficieTotal=='1'" class="col-md-3">
               <div class="d-flex justify-content-center">
                 <img class="img-fluid mt-3" style="width: 3rem; height: 3rem;"
                   src="../../../../../../assets/images/icons/Recurso 19.svg" />
@@ -238,6 +238,7 @@
               </h6>
             </div>
           </div>
+          
 
         </div>
         <div class="justify-content-center col-md-12">
@@ -332,6 +333,26 @@
                     <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons"
                       alt="" />{{servicio.label}}
                   </li>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+           <div class="col-lg-12 my-5">
+            <h6 class="gray-text col-lg-12 font-weight-bold">
+              Caracteristicas
+            </h6>
+            <hr class="my-1" />
+            <div class="Ambientescontainer my-3">
+              <div class="row d-flex">
+                <ng-container *ngFor="let caracteristica of vista.caracteristicas">
+                  <li *ngIf="caracteristica.selected" class="my-3 d-flex gray-text font-semibold col-lg-3 text-center">
+                    <img src="../../../../../assets/images/icons/Recurso 22.svg" class="mr-2 footer-contact-icons"
+                      alt="" />
+                      {{caracteristica.label}} <br>
+                      {{caracteristica.value}}
+                       
+                  </li>
+                 
                 </ng-container>
               </div>
             </div>
