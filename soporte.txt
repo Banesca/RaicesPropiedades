@@ -1,3 +1,24 @@
 -----ftp------
 rt5_@raicespropiedades.com
 xyEM5lY5g*GleV*V
+
+---argen_prod---
+
+SincroniceArgenController
+	 'aviso.SistemaOrigen.Id'          => '10',
+	 'aviso.Vendedor.IdOrigen'         => 'BM83',
+	 'aviso.Vendedor.SistemaOrigen.Id' => '10',
+	 'aviso.Vendedor.Id'               => '102338',
+.env
+	usr=raicespropiedades@api.com
+	psd=t152t701
+
+---argen_pruebas---
+SincroniceArgenController
+	'aviso.SistemaOrigen.Id'          => '10',
+    'aviso.Vendedor.IdOrigen'         => '575Y_',
+    'aviso.Vendedor.SistemaOrigen.Id' => '10',
+    'aviso.Vendedor.Id'               => '102338',
+.env
+	usr=integrador@argenprop.com
+	psd=123456

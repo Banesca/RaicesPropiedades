@@ -68,7 +68,7 @@ class PagoController extends Controller {
             $mail = $mail->correo;
 
             /*Copia a Emails de Recepción*/
-            $cc = Mail_::pluck('email');
+            $cc = Mail_::where('modulo','pagos')->pluck('email');
 
             if ($mail) {
                 Mail::to($mail)
