@@ -253,7 +253,7 @@ export class FormComponent implements OnInit {
             aparece_en_galeria: ["0", Validators.required], //Por defecto no aparece en galeria, por lo tanto el valor es 0
         });
         this.formTwo = this.fb.group({
-            imageGalery: ["", Validators.required], //Validators.required],
+            imageGalery: [""], //Validators.required],
             image1: ["", Validators.required],
             image2: [""],
             image3: [""],
@@ -924,12 +924,13 @@ export class FormComponent implements OnInit {
     }
 
     changeApareceEnGaleria() {
-        if (this.formOne.value.aparece_en_galeria == "1") {
+        /*if (this.formOne.value.aparece_en_galeria == "1") {
             this.formTwo.controls["imageGalery"].enable();
-        } else {
+        } else {*/
             this.formTwo.controls["imageGalery"].disable();
-        }
+        /*}*/
     }
+
 
     changeTipoPropiedad(event) {
         //Validamos que tipo de propiedad se selecciona para cargar los tipos de unidad que se van a mostrar

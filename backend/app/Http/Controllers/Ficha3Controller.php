@@ -3,23 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Ficha123;
+use App\Galeria;
 use App\Mail\PropiedadMail;
 use App\Propiedad;
+use function count;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use function response;
 
 ini_set('memory_limit', '512M');
 ini_set('max_execution_time', '3000');
+
 class Ficha3Controller extends Controller {
 
     public function add(Request $request) {
         //return response()->json($request->all());
-
-
         $this->validate($request, [
             'imagen1'             => 'image|max:10240',
             'imagen2'             => 'image|max:10240',
@@ -85,7 +87,7 @@ class Ficha3Controller extends Controller {
                     });*/
 
                     $nombre_publico = $originalImage->getClientOriginalName();
-                    $extension = $originalImage->getClientOriginalExtension();
+                    $extension      = $originalImage->getClientOriginalExtension();
 
                     $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
                     $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
@@ -101,9 +103,23 @@ class Ficha3Controller extends Controller {
             //Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email, $propiedad->descipcion, $propiedad->idPropiedad));
 
             $sincronice = new SincroniceArgenController();
-           //return response()->json($sincronice->add($propiedad)); //para add propiedad en argen pro
+            //return response()->json($sincronice->add($propiedad)); //para add propiedad en argen pro
 
             $sincronice->add($propiedad);
+
+            /*REGISTRANDO EN GALERIA*/
+            if ($propiedad->aparece_en_galeria == 1 && $request->exists('imagen_para_galeria')) {
+                $r = new GaleriaController();
+                $r->store(new Request([
+                    'titulo'           => $request->titulo,
+                    'descripcion'      => $request->descipcion,
+                    'fk_publicaciones' => $propiedad->idPropiedad,
+                    'images'           => [ $request->imagen_para_galeria ],
+                ]));
+            }
+            /*return response()->json($r);
+            exit();*/
+            /*REGISTRANDO EN GALERIA*/
 
             @$propiedad->TipoPropiedad;
             @$propiedad->Disposicion;
@@ -167,9 +183,9 @@ class Ficha3Controller extends Controller {
             Log::error('Ha ocurrido un error en PropiedadController: '.$e->getMessage().', Linea: '.$e->getLine());
 
             return response()->json([
-                'message' => 'Ha ocurrido un error al tratar de guardar los datos.',
+                'message'  => 'Ha ocurrido un error al tratar de guardar los datos.',
                 'message1' => $e->getMessage(),
-                'linea' => $e->getLine(),
+                'linea'    => $e->getLine(),
             ], 500);
         }
     }
@@ -241,7 +257,7 @@ class Ficha3Controller extends Controller {
                         });*/
 
                         $nombre_publico = $originalImage->getClientOriginalName();
-                        $extension = $originalImage->getClientOriginalExtension();
+                        $extension      = $originalImage->getClientOriginalExtension();
 
                         $nombre_interno = str_replace('.'.$extension, '', $nombre_publico);
                         $nombre_interno = str_slug($nombre_interno, '-').'-'.time().'-'.strval(rand(100, 999)).'.'.$extension;
@@ -258,6 +274,29 @@ class Ficha3Controller extends Controller {
                 $sincronice = new SincroniceArgenController();
                 //return response()->json($sincronice->add($propiedad)); //para add propiedad en argen pro
                 $sincronice->add($propiedad); //para edit propiedad en argen pro
+
+                /*REGISTRANDO EN GALERIA*/
+                if ($request->aparece_en_galeria == 1 && $request->exists('imagen_para_galeria')) {
+                    $idGaleria = Galeria::where('fk_publicaciones', $propiedad->idPropiedad)->get();
+                    $r         = new GaleriaController();
+
+                    if (count($idGaleria)>0) {
+                        $r->update(new Request([
+                            'titulo'           => $request->titulo,
+                            'descripcion'      => $request->descipcion,
+                            'fk_publicaciones' => $propiedad->idPropiedad,
+                            'images'           => [ $request->imagen_para_galeria ],
+                        ]), $idGaleria[0]->idGaleria);
+                    }else{
+                        $r->store(new Request([
+                            'titulo'           => $request->titulo,
+                            'descripcion'      => $request->descipcion,
+                            'fk_publicaciones' => $propiedad->idPropiedad,
+                            'images'           => [ $request->imagen_para_galeria ],
+                        ]));
+                    }
+
+                }
 
                 @$propiedad->TipoPropiedad;
                 @$propiedad->Disposicion;
