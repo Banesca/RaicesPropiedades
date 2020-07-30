@@ -1,17 +1,17 @@
-export const caracteristicasCampo = {
-    SuperficieCubierta: true,
-    SuperficieCubiertaCasa: true,
-    SuperficieDescubierta: true,
-    CantidadHectareas: true,
-    Ganaderia: true,
-    Agricultura: true,
-    CasaPrincipal: true,
-    CasaCaseros: true,
-    PropiedadOcupada: true,
-    DistanciaPavimento: true,
-    Generales_SeguroCaucion: true,
+export const caracteristicasCampo = [
+    { label: "Superficie Cubierta", variableName: "SuperficieCubierta",selected: false, value:""},
+    { label: "Superficie CubiertaCasa", variableName: "SuperficieCubiertaCasa",selected: false, value:""},
+    { label: "Superficie Descubierta", variableName: "SuperficieDescubierta",selected: false, value:""},
+    { label: "Cantidad Hectareas", variableName: "CantidadHectareas",selected: false, value:""},
+    { label: "Ganaderia", variableName: "Ganaderia",selected: false, value:""},
+    { label: "Agricultura", variableName: "Agricultura",selected: false, value:""},
+    { label: "Casa Principal", variableName: "CasaPrincipal",selected: false, value:""},
+    { label: "Casa Caseros", variableName: "CasaCaseros",selected: false, value:""},
+    { label: "Propiedad Ocupada", variableName: "PropiedadOcupada",selected: false, value:""},
+    { label: "Distancia Pavimento", variableName: "DistanciaPavimento",selected: false, value:""},
+    { label: "Generales SeguroCaucion", variableName: "Generales_SeguroCaucion",selected: false, value:""},
 
-}
+]
 
 export const arrayInstalacionesCampo = [
 

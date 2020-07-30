@@ -1,25 +1,25 @@
 import { isMedidas } from './funcion';
 
-export const caracteristicasHotel = {
-  SuperficieTerreno: true,
-  SuperficieCubierta: true,
-  SuperficieDescubierta: true,
-  SuperficiePlaya: true,
-  SuperficieDeposito: true,
-  Antiguedad: true,
-  CantidadPisos: true,
-  HabitacionesPorPiso: true,
-  CantidadPersonal: true,
-  RentabilidadAnual: true,
-  CantidadHabitaciones: true,
-  CantidadEstrellas: true,
-  PropiedadOcupada: true,
-  CantidadPlazas: true,
-  CantidadCubiertos: true,
-  fk_TipoVista: true,
-  fk_TipoCosta: true,
-  fk_TipoPendiente: true,
-};
+export const caracteristicasHotel = [
+              { label:"Superficie Terreno", variableName: "SuperficieTerreno",selected: false, value:""},
+              { label:"Superficie Cubierta", variableName: "SuperficieCubierta",selected: false, value:""},
+              { label:"Superficie Descubierta", variableName: "SuperficieDescubierta",selected: false, value:""},
+              { label:"Superficie Playa", variableName: "SuperficiePlaya",selected: false, value:""},
+              { label:"Superficie Deposito", variableName: "SuperficieDeposito",selected: false, value:""},
+              { label:"Antiguedad", variableName: "Antiguedad",selected: false, value:""},
+              { label:"Cantidad Pisos", variableName: "CantidadPisos",selected: false, value:""},
+              { label:"Habitaciones Por Piso", variableName: "HabitacionesPorPiso",selected: false, value:""},
+              { label:"Cantidad Personal", variableName: "CantidadPersonal",selected: false, value:""},
+              { label:"Rentabilidad Anual", variableName: "RentabilidadAnual",selected: false, value:""},
+              { label:"Cantidad Habitaciones", variableName: "CantidadHabitaciones",selected: false, value:""},
+              { label:"Cantidad Estrellas", variableName: "CantidadEstrellas",selected: false, value:""},
+              { label:"Propiedad Ocupada", variableName: "PropiedadOcupada",selected: false, value:""},
+              { label:"Cantidad Plazas", variableName: "CantidadPlazas",selected: false, value:""},
+              { label:"Cantidad Cubiertos", variableName: "CantidadCubiertos",selected: false, value:""},
+              { label:"Tipo Vista", variableName: "tipo_vista",selected: false, value:""},
+              { label:"Tipo Costa", variableName: "tipo_costa",selected: false, value:""},
+              { label:"Tipo Pendiente", variableName: "tipo_pendiente",selected: false, value:""},
+];
 
 export const arrayAmbientesHotel = [
   {

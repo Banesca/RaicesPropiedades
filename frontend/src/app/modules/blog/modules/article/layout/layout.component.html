@@ -10,10 +10,12 @@
       <h1 class="font-weight-extrabold text-uppercase text-left">{{gPropiedades.precio}}$</h1>
       <!-- container d-none d-md-block d-md-flex py-4 justify-content-center -->
       <div class="galery-image">
-        <img (click)="open(content);carousel.next(0)" *ngIf="gPropiedades.imagenes.imagen1"
+        <img (click)="open(content);carousel.next(0)" *ngIf="gPropiedades.imagenes.imagen_para_galeria"
+          [src]="gPropiedades.imagenes.imagen_para_galeria" alt="" />
+        <img (click)="open(content);carousel.next(1)" *ngIf="gPropiedades.imagenes.imagen1"
           [src]="gPropiedades.imagenes.imagen1" alt="" />
-        <img (click)="open(content);carousel.next(1)" *ngIf="gPropiedades.imagenes.imagen2"
-          [src]="gPropiedades.imagenes.imagen2" alt="" />
+        <img (click)="open(content);" *ngIf="gPropiedades.imagenes.imagen2"[src]="gPropiedades.imagenes.imagen2"
+         alt="" />
         <img (click)="open(content)" *ngIf="gPropiedades.imagenes.imagen3" [src]="gPropiedades.imagenes.imagen3"
           alt="" />
         <img (click)="open(content)" *ngIf="gPropiedades.imagenes.imagen4" [src]="gPropiedades.imagenes.imagen4"
@@ -52,7 +54,11 @@
     <span aria-hidden="true">&times;</span>
   </button>
   <ngb-carousel #carousel [showNavigationArrows]="true"  [showNavigationIndicators]="true">
-
+    <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen_para_galeria">
+      <div class="picsum-img-wrapper">
+        <img style="width:100%" [src]="gPropiedades.imagenes.imagen_para_galeria" alt="" />
+      </div>
+    </ng-template>
     <ng-template ngbSlide *ngIf="gPropiedades.imagenes.imagen1">
       <div class="picsum-img-wrapper">
         <img style="width:100%" [src]="gPropiedades.imagenes.imagen1" alt="" />

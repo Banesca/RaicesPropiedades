@@ -1,23 +1,23 @@
 import { isMedidas } from "./funcion";
 
-export const caracteristicasFondoComercio = {
-    SuperficieTerreno: true,
-    SuperficiePlaya: true,
-    SuperficieDeposito: true,
-    SuperficieLocal: true,
-    Antiguedad: true,
-    ReferenciaCercana: true,
-    CantidadBanos: true,
-    Vivienda: true,
-    Expensas: true,
-    CantidadCocheras: true,
-    CantidadAmbientes: true,
-    AntiguedadComercio: true,
-    RecaudacionMensual: true,
-    Local: true,
-    VentaMercaderia: true,
-    MetrosDeLaEsquina: true,
-}
+export const caracteristicasFondoComercio = [
+        { label: "Superficie Terreno", variableName: "SuperficieTerreno",selected: false, value:""},
+        { label: "Superficie Playa", variableName: "SuperficiePlaya",selected: false, value:""},
+        { label: "Superficie Deposito", variableName: "SuperficieDeposito",selected: false, value:""},
+        { label: "Superficie Local", variableName: "SuperficieLocal",selected: false, value:""},
+        { label: "Antiguedad", variableName: "Antiguedad",selected: false, value:""},
+        { label: "Referencia Cercana", variableName: "ReferenciaCercana",selected: false, value:""},
+        { label: "Cantidad Baños", variableName: "CantidadBanos",selected: false, value:""},
+        { label: "Vivienda", variableName: "Vivienda",selected: false, value:""},
+        { label: "Expensas", variableName: "Expensas",selected: false, value:""},
+        { label: "Cantidad Cocheras", variableName: "CantidadCocheras",selected: false, value:""},
+        { label: "Cantidad Ambientes", variableName: "CantidadAmbientes",selected: false, value:""},
+        { label: "Antiguedad Comercio", variableName: "AntiguedadComercio",selected: false, value:""},
+        { label: "Recaudacion Mensual", variableName: "RecaudacionMensual",selected: false, value:""},
+        { label: "Local", variableName: "Local",selected: false, value:""},
+        { label: "Venta Mercaderia", variableName: "VentaMercaderia",selected: false, value:""},
+        { label: "Metros de la Esquina", variableName: "MetrosDeLaEsquina",selected: false, value:""}
+]
 
 export const arrayAmbientesFondoComercio = [
     { label: "Cocina", variableName: "Ambientes_Cocina", isMedidas: isMedidas("Cocina"), medidas: '', selected: false },

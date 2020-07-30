@@ -241,10 +241,17 @@ export class LayoutComponent implements OnInit {
                 element.value = this.gPropiedades[element.variableName];
               }
 
+
               if(this.gPropiedades[element.variableName] != null){
                 if(this.gPropiedades[element.variableName].descripcion != null){
                   element.selected = true
                    element.value = this.gPropiedades[element.variableName].descripcion;
+                }
+                
+                if(this.gPropiedades[element.variableName] > 0 && this.gPropiedades[element.variableName].descripcion == null){
+                  element.selected = true
+                  element.value = this.gPropiedades[element.variableName];
+          
                 }
                 
               }
@@ -252,7 +259,8 @@ export class LayoutComponent implements OnInit {
         }
 
 
-
+        if (this.gPropiedades.imagenes.imagen_para_galeria)
+          this.images.push(this.gPropiedades.imagenes.imagen_para_galeria);
         if (this.gPropiedades.imagenes.imagen1)
           this.images.push(this.gPropiedades.imagenes.imagen1);
         if (this.gPropiedades.imagenes.imagen2)
@@ -272,6 +280,8 @@ export class LayoutComponent implements OnInit {
         if (this.gPropiedades.imagenes.imagen9)
           this.images.push(this.gPropiedades.imagenes.imagen9);
         if (
+          
+          !this.gPropiedades.imagenes.imagen_para_galeria &&
           !this.gPropiedades.imagenes.imagen1 &&
           !this.gPropiedades.imagenes.imagen2 &&
           !this.gPropiedades.imagenes.imagen3 &&

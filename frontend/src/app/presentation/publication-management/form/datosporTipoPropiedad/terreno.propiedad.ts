@@ -1,23 +1,23 @@
-export const caracteristicasTerreno = {
-    SuperficieTotal: true,
-    SuperficieConstruible: true,
-    PropiedadOcupada: true,
-    Demolicion: true,
-    FondoIrregular:true,
-    FrenteIrregular: true,
-    LateralDerechoIrregular: true,
-    LateralIzquierdoIrregular: true,
-    MedidaLinealDerecha: true,
-    MedidaLinealIzquierda: true,
-    LongitudFrente: true,
-    LongitudFondo: true,
-    fk_TipoCosta: true,
-    fk_TipoPendiente: true,
-    fk_TipoVista: true,
-    FOT: true,
-    Zonificacion:true,
-    Generales_SeguroCaucion: true,
-}
+export const caracteristicasTerreno = [
+                  { label:"SuperficieTotal", variableName: "SuperficieTotal",selected: false, value:""},
+                  { label:"SuperficieConstruible", variableName: "SuperficieConstruible",selected: false, value:""},
+                  { label:"PropiedadOcupada", variableName: "PropiedadOcupada",selected: false, value:""},
+                  { label:"Demolicion", variableName: "Demolicion",selected: false, value:""},
+                  { label:"FondoIrregular", variableName: "FondoIrregular",selected: false, value:""},
+                  { label:"FrenteIrregular", variableName: "FrenteIrregular",selected: false, value:""},
+                  { label:"LateralDerechoIrregular", variableName: "LateralDerechoIrregular",selected: false, value:""},
+                  { label:"LateralIzquierdoIrregular", variableName: "LateralIzquierdoIrregular",selected: false, value:""},
+                  { label:"MedidaLinealDerecha", variableName: "MedidaLinealDerecha",selected: false, value:""},
+                  { label:"MedidaLinealIzquierda", variableName: "MedidaLinealIzquierda",selected: false, value:""},
+                  { label:"LongitudFrente", variableName: "LongitudFrente",selected: false, value:""},
+                  { label:"LongitudFondo", variableName: "LongitudFondo",selected: false, value:""},
+                  { label:"fk_TipoCosta", variableName: "tipo_costa",selected: false, value:""},
+                  { label:"fk_TipoPendiente", variableName: "tipo_pendiente",selected: false, value:""},
+                  { label:"fk_TipoVista", variableName: "tipo_vista",selected: false, value:""},
+                  { label:"FOT", variableName: "FOT",selected: false, value:""},
+                  { label:"Zonificacion", variableName: "Zonificacion",selected: false, value:""},
+                  { label:"Generales_SeguroCaucion", variableName: "Generales_SeguroCaucion",selected: false, value:""},
+]
 
 export const arrayInstalacionesTerreno = [
 

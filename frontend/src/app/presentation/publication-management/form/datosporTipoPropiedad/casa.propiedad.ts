@@ -8,7 +8,7 @@ export const caracteristicasCasa = [
     { label: "Superficie Descubierta", variableName: "SuperficieDescubierta",  selected: false, value:""},
     { label: "Antiguedad", variableName: "Antiguedad",  selected: false, value:""},
     { label: "Cantidad de Plantas", variableName: "CantidadPlantas",  selected: false, value:""},
-    { label: "Cantidad de Banos", variableName: "CantidadBanos",  selected: false, value:""},
+    { label: "Cantidad de Baños", variableName: "CantidadBanos",  selected: false, value:""},
     { label: "Cantidad de Ambientes", variableName: "CantidadAmbientes",  selected: false, value:""},
     { label: "Cantidad de Dormitorios", variableName: "CantidadDormitorios",  selected: false, value:""},
     { label: "Cantidad de Cocheras", variableName: "CantidadCocheras",  selected: false, value:""},

@@ -1,22 +1,22 @@
 import { isMedidas } from "./funcion";
 
 
-export const caracteristicasLocal = {
-    Antiguedad: true,
-    CantidadBanos: true,
-    CantidadCocheras: true,
-    PropiedadOcupada:true,
-    Vivienda:true, 
-    CantidadPlantas:true,
-    MontoExpensas: true,
-    TerrenoPropio: true,
-    Vidriera: true,
-    MetrosDeLaEsquina: true,
-    EnEdificio: true,
-    UltimaActividad: true,
-    GaleriaShopping: true,
-    Generales_SeguroCaucion: true,
-}
+export const caracteristicasLocal = [
+              { label: "Antiguedad", variableName: "Antiguedad",selected: false, value:""},
+              { label: "Cantidad Baño", variableName: "CantidadBanos",selected: false, value:""},
+              { label: "Cantidad Cocheras", variableName: "CantidadCocheras",selected: false, value:""},
+              { label: "Propiedad Ocupada", variableName: "PropiedadOcupada",selected: false, value:""},
+              { label: "Vivienda", variableName: "Vivienda",selected: false, value:""},
+              { label: "Cantidad Plantas", variableName: "CantidadPlantas",selected: false, value:""},
+              { label: "Monto Expensas", variableName: "MontoExpensas",selected: false, value:""},
+              { label: "Terreno Propio", variableName: "TerrenoPropio",selected: false, value:""},
+              { label: "Vidriera", variableName: "Vidriera",selected: false, value:""},
+              { label: "Metros de la Esquina", variableName: "MetrosDeLaEsquina",selected: false, value:""},
+              { label: "En Edificio", variableName: "EnEdificio",selected: false, value:""},
+              { label: "Ultima Actividad", variableName: "UltimaActividad",selected: false, value:""},
+              { label: "Galeria Shopping", variableName: "GaleriaShopping",selected: false, value:""},
+              { label: "Generales Seguro Caucion", variableName: "Generales_SeguroCaucion",selected: false, value:""},
+]
 
 
 export const arrayAmbientesLocal = [

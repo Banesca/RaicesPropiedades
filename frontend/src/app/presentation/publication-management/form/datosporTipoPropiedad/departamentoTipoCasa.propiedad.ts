@@ -1,24 +1,26 @@
 import { isMedidas } from './funcion';
 
-export const caracteristicasDepartamentoTipoCasa = {
-  LongitudFrente: true,
-  LongitudFondo: true,
-  SuperficieCubierta: true,
-  SuperficieDescubierta: true,
-  Antiguedad: true,
-  CantidadAmbientes: true,
-  CantidadDormitorios: true,
-  AptoCredito: true,
-  AptoProfesional: true,
-  fk_TipoTecho: true,
-  CantidadPlantas: true,
-  CantidadBanos: true,
-  CantidadCocheras: true,
-  fk_Disposicion: true,
-  fk_Orientacion: true,
-  Generales_PermiteMascotas: true,
-  Generales_SeguroCaucion: true,
-};
+export const caracteristicasDepartamentoTipoCasa = [
+    { label: "Longitud Frente", variableName: "LongitudFrente",selected: false, value:""},
+    { label: "Longitud Fondo", variableName: "LongitudFondo",selected: false, value:""},
+    { label: "Superficie Cubierta", variableName: "SuperficieCubierta",selected: false, value:""},
+    { label: "Superficie Descubierta", variableName: "SuperficieDescubierta",selected: false, value:""},
+    { label: "Antiguedad", variableName: "Antiguedad",selected: false, value:""},
+    { label: "Cantidad Ambientes", variableName: "CantidadAmbientes",selected: false, value:""},
+    { label: "Cantidad Dormitorios", variableName: "CantidadDormitorios",selected: false, value:""},
+    { label: "Apto Credito", variableName: "AptoCredito",selected: false, value:""},
+    { label: "Apto Profesional", variableName: "AptoProfesional",selected: false, value:""},
+    { label: "Tipo Techo", variableName: "tipo_techo",selected: false, value:""},
+    { label: "Cantidad Plantas", variableName: "CantidadPlantas",selected: false, value:""},
+    { label: "Cantidad Baños", variableName: "CantidadBanos",selected: false, value:""},
+    { label: "Cantidad Cocheras", variableName: "CantidadCocheras",selected: false, value:""},
+    { label: "Disposicion", variableName: "disposicion",selected: false, value:""},
+    { label: "Orientacion", variableName: "orientacion",selected: false, value:""},
+    { label: "Generales PermiteMascotas", variableName: "Generales_PermiteMascotas",selected: false, value:""},
+    { label: "Generales SeguroCaucion", variableName: "Generales_SeguroCaucion",selected: false, value:""},
+];
+
+
 export const arrayAmbientesDepartamentoTipoCasa = [
   {
     label: 'Altillo',

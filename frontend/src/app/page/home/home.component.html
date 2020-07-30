@@ -32,10 +32,57 @@
             style="max-height: 230px; min-height:230px; height: 100%"
             onerror="this.src='assets/images/no_image_aviable.jpg'"
           />
-          <div class="card-footer font-weight-semibold text-uppercase ">
+          <!--<div class="card-footer font-weight-semibold text-uppercase ">
             {{ publicaciones.descipcion }}
-          </div>
+          </div>-->
+           <div class="articulos-precios">
+                <div class="articulos-title2">
+                    {{publicaciones.precio | number:'1.2-2'}}
+                    <span
+                        *ngIf="publicaciones.tipo_moneda && publicaciones.tipo_moneda.idMonedas && publicaciones.tipo_moneda.idMonedas == 1">
+                        $ARS
+                    </span>
+                    <span
+                        *ngIf="publicaciones.tipo_moneda && publicaciones.tipo_moneda.idMonedas && publicaciones.tipo_moneda.idMonedas == 2">
+                        $USD
+                    </span>
+                    <span
+                        *ngIf="publicaciones.tipo_moneda && publicaciones.tipo_moneda.idMonedas && publicaciones.tipo_moneda.idMonedas == 3">
+                        $UYU
+                    </span>
+                </div>
+                <div class="articulos-subtitle">
+                    {{publicaciones.titulo}}
+                </div>
+            </div>
         </div>
+        <div class="articulos-info">
+                                    <div *ngIf="publicaciones.tipo_propiedad.descripcion && publicaciones.tipo_opeacion.descripcion"
+                                        class="articulos-subtitle3">
+                                        <span style="font-size: 15px">
+                                            <b>{{publicaciones.tipo_propiedad.descripcion}}</b>
+                                        </span> <br>
+                                        En {{publicaciones.tipo_opeacion.descripcion}}
+
+                                    </div>
+                                    <div class="articulos-subtitle3">
+                                        <span *ngIf="publicaciones.sub_barrio && publicaciones.sub_barrio.nombre">
+                                            {{publicaciones.sub_barrio.nombre}} -
+                                        </span>
+                                        <span *ngIf="publicaciones.barrio && publicaciones.barrio.nombre">
+                                            {{publicaciones.barrio.nombre}} -
+                                        </span>
+                                        <span *ngIf="publicaciones.localidad && publicaciones.localidad.nombre">
+                                            {{publicaciones.localidad.nombre}} -
+                                        </span>
+                                        <span *ngIf="publicaciones.partido && publicaciones.partido.nombre">
+                                            {{publicaciones.partido.nombre}} -
+                                        </span>
+                                        <span *ngIf="publicaciones.provincia && publicaciones.provincia.nombre">
+                                            {{publicaciones.provincia.nombre}}
+                                        </span>
+                                    </div>
+                                </div>
       </div>
     </ng-container>
   </app-propiertys-list>

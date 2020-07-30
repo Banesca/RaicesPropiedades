@@ -1,25 +1,26 @@
 import { isMedidas } from './funcion';
 
-export const caracteristicasOficina = {
-  Antiguedad: true,
-  fk_Orientacion: true,
-  CantidadBanos: true,
-  fk_TipoBano: true,
-  SuperficiePlanta: true,
-  PropedadOcupada: true,
-  MontoExpensas: true,
-  Reciclado: true,
-  DepartamentosPorPiso: true,
-  AptoProfesional: true,
-  SuperficieDeposito: true,
-  SuperficieOficina: true,
-  fk_TipoAscensor: true,
-  fk_TipoPiso: true,
-  fk_TipoBalcon: true,
-  CantidadAmbientes: true,
-  CantidadCocheras: true,
-  Generales_SeguroCaucion: true,
-};
+export const caracteristicasOficina = [
+
+      { label: "Antiguedad", variableName: "Antiguedad",selected: false, value:""},
+      { label: "Orientacion", variableName: "orientacion",selected: false, value:""},
+      { label: "Cantidad Baños", variableName: "CantidadBanos",selected: false, value:""},
+      { label: "Tipo Baño", variableName: "tipo_bano",selected: false, value:""},
+      { label: "Superficie Planta", variableName: "SuperficiePlanta",selected: false, value:""},
+      { label: "Propedad Ocupada", variableName: "PropedadOcupada",selected: false, value:""},
+      { label: "Monto Expensas", variableName: "MontoExpensas",selected: false, value:""},
+      { label: "Reciclado", variableName: "Reciclado",selected: false, value:""},
+      { label: "Departamentos Por Piso", variableName: "DepartamentosPorPiso",selected: false, value:""},
+      { label: "Apto Profesional", variableName: "AptoProfesional",selected: false, value:""},
+      { label: "Superficie Deposito", variableName: "SuperficieDeposito",selected: false, value:""},
+      { label: "Superficie Oficina", variableName: "SuperficieOficina",selected: false, value:""},
+      { label: "Tipo Ascensor", variableName: "tipo_ascensor",selected: false, value:""},
+      { label: "Tipo Piso", variableName: "tipo_piso",selected: false, value:""},
+      { label: "Tipo Balcon", variableName: "tipo_balcon",selected: false, value:""},
+      { label: "Cantidad Ambientes", variableName: "CantidadAmbientes",selected: false, value:""},
+      { label: "Cantidad Cocheras", variableName: "CantidadCocheras",selected: false, value:""},
+      { label: "Generales SeguroCaucion", variableName: "Generales_SeguroCaucion",selected: false, value:""}
+    ];
 
 export const arrayAmbientesOficina = [
   {

@@ -1,26 +1,26 @@
 import { isMedidas } from "./funcion";
 
 
-export const caracteristicasQuinta = {
-    AptoCredito: true,
-    LongitudFrente: true,
-    LongitudFondo: true,
-    SuperficieTerreno: true,
-    SuperficieCubierta: true,
-    SuperficieDescubierta: true,
-    Antiguedad: true,
-    fk_TipoTecho: true,
-    fk_TipoPiso: true,
-    CantidadPlantas: true,
-    CantidadBanos: true,
-    CantidadAmbientes: true,
-    CantidadDormitorios: true,
-    CantidadCocheras: true,
-    fk_Orientacion: true,
-    fk_TipoCosta: true,
-    fk_TipoVista: true,
-    fk_TipoPendiente: true,
-}
+export const caracteristicasQuinta = [
+    { label:"Apto Credito", variableName: "AptoCredito",selected: false, value:""},
+    { label:"Longitud Frente", variableName: "LongitudFrente",selected: false, value:""},
+    { label:"Longitud Fondo", variableName: "LongitudFondo",selected: false, value:""},
+    { label:"Superficie Terreno", variableName: "SuperficieTerreno",selected: false, value:""},
+    { label:"Superficie Cubierta", variableName: "SuperficieCubierta",selected: false, value:""},
+    { label:"Superficie Descubierta", variableName: "SuperficieDescubierta",selected: false, value:""},
+    { label:"Antiguedad", variableName: "Antiguedad",selected: false, value:""},
+    { label:"Tipo Techo", variableName: "tipo_techo",selected: false, value:""},
+    { label:"Tipo Piso", variableName: "tipo_piso",selected: false, value:""},
+    { label:"CantidadPlantas", variableName: "CantidadPlantas",selected: false, value:""},
+    { label:"Cantidad Baños", variableName: "CantidadBanos",selected: false, value:""},
+    { label:"Cantidad Ambientes", variableName: "CantidadAmbientes",selected: false, value:""},
+    { label:"Cantidad Dormitorios", variableName: "CantidadDormitorios",selected: false, value:""},
+    { label:"Cantidad Cocheras", variableName: "CantidadCocheras",selected: false, value:""},
+    { label:"Orientacion", variableName: "tipo_orientacion",selected: false, value:""},
+    { label:"Tipo Costa", variableName: "tiipoCosta",selected: false, value:""},
+    { label:"Tipo Vista", variableName: "tipo_vista",selected: false, value:""},
+    { label:"Tipo Pendiente", variableName: "tipo_pendiente",selected: false, value:""},
+]
 
 
 export const arrayAmbientesQuinta = [
