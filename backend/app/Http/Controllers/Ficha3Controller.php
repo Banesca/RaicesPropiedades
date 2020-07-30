@@ -6,12 +6,14 @@ use App\Ficha123;
 use App\Galeria;
 use App\Mail\PropiedadMail;
 use App\Propiedad;
+use function count;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use function response;
 
 ini_set('memory_limit', '512M');
 ini_set('max_execution_time', '3000');
@@ -106,7 +108,7 @@ class Ficha3Controller extends Controller {
             $sincronice->add($propiedad);
 
             /*REGISTRANDO EN GALERIA*/
-            if ($propiedad->aparece_en_galeria == 1) {
+            if ($propiedad->aparece_en_galeria == 1 && $request->exists('imagen_para_galeria')) {
                 $r = new GaleriaController();
                 $r->store(new Request([
                     'titulo'           => $request->titulo,
@@ -274,15 +276,26 @@ class Ficha3Controller extends Controller {
                 $sincronice->add($propiedad); //para edit propiedad en argen pro
 
                 /*REGISTRANDO EN GALERIA*/
-                if ($propiedad->aparece_en_galeria == 1) {
-                    $idGaleria = Galeria::where('fk_publicaciones', $propiedad->idPropiedad)->get()[0];
+                if ($request->aparece_en_galeria == 1 && $request->exists('imagen_para_galeria')) {
+                    $idGaleria = Galeria::where('fk_publicaciones', $propiedad->idPropiedad)->get();
                     $r         = new GaleriaController();
-                    $r->update(new Request([
-                        'titulo'           => $request->titulo,
-                        'descripcion'      => $request->descipcion,
-                        'fk_publicaciones' => $propiedad->idPropiedad,
-                        'images'           => [ $request->imagen_para_galeria ],
-                    ]), $idGaleria);
+
+                    if (count($idGaleria)>0) {
+                        $r->update(new Request([
+                            'titulo'           => $request->titulo,
+                            'descripcion'      => $request->descipcion,
+                            'fk_publicaciones' => $propiedad->idPropiedad,
+                            'images'           => [ $request->imagen_para_galeria ],
+                        ]), $idGaleria[0]->idGaleria);
+                    }else{
+                        $r->store(new Request([
+                            'titulo'           => $request->titulo,
+                            'descripcion'      => $request->descipcion,
+                            'fk_publicaciones' => $propiedad->idPropiedad,
+                            'images'           => [ $request->imagen_para_galeria ],
+                        ]));
+                    }
+
                 }
 
                 @$propiedad->TipoPropiedad;
