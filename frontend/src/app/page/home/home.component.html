@@ -65,7 +65,15 @@
                                         En {{publicaciones.tipo_opeacion.descripcion}}
 
                                     </div>
+
                                     <div class="articulos-subtitle3">
+                                       <span *ngIf="publicaciones.Direccion_Nombrecalle">
+                                            {{publicaciones.Direccion_Nombrecalle}} 
+                                      </span>
+                                      <span *ngIf="publicaciones.Direccion_Numero">
+                                              {{publicaciones.Direccion_Numero}} 
+                                      </span>
+                                      <br>
                                         <span *ngIf="publicaciones.sub_barrio && publicaciones.sub_barrio.nombre">
                                             {{publicaciones.sub_barrio.nombre}} -
                                         </span>

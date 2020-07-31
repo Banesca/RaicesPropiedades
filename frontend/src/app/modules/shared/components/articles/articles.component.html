@@ -383,7 +383,18 @@
                                         En {{item.tipo_opeacion.descripcion}}
 
                                     </div>
+                                   
+                                   
+
                                     <div class="articulos-subtitle3">
+                                     <span *ngIf="item.Direccion_Nombrecalle">
+                                            {{item.Direccion_Nombrecalle}} 
+                                      </span>
+                                      <span *ngIf="item.Direccion_Numero">
+                                              {{item.Direccion_Numero}} 
+                                      </span>
+                                      <br>
+
                                         <span *ngIf="item.sub_barrio && item.sub_barrio.nombre">
                                             {{item.sub_barrio.nombre}} -
                                         </span>
