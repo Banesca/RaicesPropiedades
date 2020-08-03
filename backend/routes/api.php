@@ -183,6 +183,7 @@ Route::group([ 'prefix' => 'v1' ], function () {
 
     //Route::post('sincronice','SincroniceArgenController@add'); /*Faltan pruebas*/
     Route::get('listarPropiedades/{idPropiedad}', 'Ficha123Controller@listar');
+    Route::get('listarPropiedadesTodas/{idPropiedad}', 'Ficha123Controller@listarTodas');
     Route::get('listarPropiedades', 'Ficha123Controller@listarTodo');
     Route::get('listarTodasPropiedades', 'Ficha123Controller@listarTodoSinFiltro');
 
@@ -223,7 +224,6 @@ Route::group([ 'prefix' => 'v1' ], function () {
 
     // pago 
     Route::post('pago/add', 'PagoController@store');
-
 
     Route::get('p200', function () {
         /*calles*/

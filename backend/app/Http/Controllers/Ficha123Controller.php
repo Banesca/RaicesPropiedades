@@ -48,7 +48,77 @@ class Ficha123Controller extends Controller {
             'estadoPublicacion',
             'tipoOpeacion',
             'tipoMoneda')
-            ->wherein('fk_estado_publicacion', [ 1, 2 ])
+            ->wherein('fk_estado_publicacion', [ 1 ])
+            ->find($idFichas);
+        if (! is_null($ficha123)) {
+            $ficha123->imagenes = [
+                'imagen1'             => ! is_null(@$ficha123->imagen1) ? asset('storage\\ficha2\\'.@$ficha123->imagen1) : '',
+                'imagen2'             => ! is_null(@$ficha123->imagen2) ? asset('storage\\ficha2\\'.@$ficha123->imagen2) : '',
+                'imagen3'             => ! is_null(@$ficha123->imagen3) ? asset('storage\\ficha2\\'.@$ficha123->imagen3) : '',
+                'imagen4'             => ! is_null(@$ficha123->imagen4) ? asset('storage\\ficha2\\'.@$ficha123->imagen4) : '',
+                'imagen5'             => ! is_null(@$ficha123->imagen5) ? asset('storage\\ficha2\\'.@$ficha123->imagen5) : '',
+                'imagen6'             => ! is_null(@$ficha123->imagen6) ? asset('storage\\ficha2\\'.@$ficha123->imagen6) : '',
+                'imagen7'             => ! is_null(@$ficha123->imagen7) ? asset('storage\\ficha2\\'.@$ficha123->imagen7) : '',
+                'imagen8'             => ! is_null(@$ficha123->imagen8) ? asset('storage\\ficha2\\'.@$ficha123->imagen8) : '',
+                'imagen9'             => ! is_null(@$ficha123->imagen9) ? asset('storage\\ficha2\\'.@$ficha123->imagen9) : '',
+                'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
+            ];
+
+            //$ficha123->UrlArgen=@SincroniceArgenController::buscarURLdePropiedadArgen($ficha123->idPropiedad);
+            return response()->json($ficha123);
+        } else {
+            $response = [
+                'msj' => 'No existe la propiedad',
+            ];
+
+            return response()->json($response, 200);
+        }
+
+
+    }
+
+    public function listarTodas(Request $request, $idFichas) {
+        $ficha123 = Propiedad::with(
+            'TipoPropiedad',
+            'Disposicion',
+            'Estado',
+            'Orientacion',
+            'TipoAcceso',
+            'TipoAscensor',
+            'TipoBalcon',
+            'TipoBano',
+            'TipoCalefaccion',
+            'TipoCampo',
+            'TipoCobertura',
+            'TipoCoche',
+            'TipoCochera',
+            'TipoCosta',
+            'TipoEdificio',
+            'TipoExpensas',
+            'TipoFondoComercio',
+            'TipoFrente',
+            'TipoHotel',
+            'TipoLocal',
+            'TipoPendiente',
+            'TipoPiso',
+            'TipoPorton',
+            'TipoTecho',
+            'TipoTechoIndustrial',
+            'TipoTerreno',
+            'TipoUnidadCasa',
+            'TipoUnidadDepartamento',
+            'Barrio',
+            'Localidad',
+            'Pais',
+            'Partido',
+            'Provincia',
+            'SubBarrio',
+            'Region',
+            'TipoVista',
+            'estadoPublicacion',
+            'tipoOpeacion',
+            'tipoMoneda')
+            ->wherein('fk_estado_publicacion', [ 1, 2, 3 ])
             ->find($idFichas);
         if (! is_null($ficha123)) {
             $ficha123->imagenes = [
@@ -121,7 +191,7 @@ class Ficha123Controller extends Controller {
             'tipoOpeacion',
             'tipoMoneda'
         )
-            ->wherein('fk_estado_publicacion', [ 1, 2 ])
+            ->wherein('fk_estado_publicacion', [ 1 ])
             ->get();
 
         if (! is_null($ficha123)) {
@@ -196,7 +266,7 @@ class Ficha123Controller extends Controller {
             'tipoOpeacion',
             'tipoMoneda'
         )
-            ->orderby('idPropiedad','desc')
+            ->orderby('idPropiedad', 'desc')
             ->get();
 
         if (! is_null($ficha123)) {
@@ -214,7 +284,7 @@ class Ficha123Controller extends Controller {
                     'imagen9'             => ! is_null(@$ficha123->imagen9) ? asset('storage\\ficha2\\'.@$ficha123->imagen9) : '',
                     'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
                 ];
-               // $ficha123->UrlArgen=@SincroniceArgenController::buscarURLdePropiedadArgen($ficha123->idPropiedad);
+                // $ficha123->UrlArgen=@SincroniceArgenController::buscarURLdePropiedadArgen($ficha123->idPropiedad);
             });
 
             return response()->json($ficha123);

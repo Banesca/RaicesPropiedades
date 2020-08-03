@@ -480,7 +480,7 @@ export class PublicacionesService {
       ).toPromise();
   }
   getPropiedad(pKey) {
-    return this._HttpClient.get(environment.apiHost + this.mService + 'listarPropiedades/' + pKey, {
+    return this._HttpClient.get(environment.apiHost + this.mService + 'listarPropiedadesTodas/' + pKey, {
       headers: getHeaders()
     }).pipe(
       map((data: any[]) => {
