@@ -135,7 +135,7 @@ a {
 .brown-button {
   background-color: $brown_main_color;
   color: $white;
-  border-radius: 0;
+  border-radius: 4px;
 
   &:hover {
     color: $white;
@@ -237,14 +237,32 @@ footer {
   font-weight: 900;
 }
 
+.font-weight-extrabold-browun {
+  font-weight: 900;
+	color: $brown_main_color !important;
+}
+
 .search-dropdown {
   background-color: $white;
-  color: $gray_main_color;
-  border-radius: 0;
+  color: $white;
+  border-radius: 10px;
 
   &::after {
     color: $yellow_main_color;
   }
+
+
+  background: $brown_main_color;
+  
+}
+
+.searchinput::placeholder {
+  color: wheat;
+}
+
+.dropdown-toggle:hover {
+  color: wheat !important;
+
 }
 
 @media (max-width: 768px) {

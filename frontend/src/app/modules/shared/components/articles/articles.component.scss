@@ -304,3 +304,7 @@ input:checked+.slider:before {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.searchinput::placeholder {
+  color: wheat;
+}

@@ -1,8 +1,8 @@
 <div>
   <div class="bg-yellow sec2 pt-4 section-container">
     <div class="col-sm-12 text-white" style="z-index: 2;">
-      <h3 class="font-weight-extrabold text-center text-uppercase">Buscador</h3>
-      <h5 class="font-weight-light text-center text-uppercase">
+      <h3 class="font-weight-extrabold bold-bwoun text-center text-uppercase">Buscador</h3>
+      <h5 class="font-weight-extrabold bold-bwoun text-center text-uppercase">
         Encontrá el inmueble ideal para vos
       </h5>
     </div>
@@ -10,7 +10,7 @@
       <div class="row mt-4">
         <div class="col-lg-5 d-flex  px-0">
           <div class="col-lg-6 py-3 mt-auto px-1">
-            <label class="col font-weight-extrabold text-uppercase">Tipo Operación:</label>
+            <label class="col font-weight-extrabold-browun text-uppercase">Tipo Operación:</label>
             <div ngbDropdown class="d-inline-block w-100">
               <input
                 type="button"
@@ -31,7 +31,7 @@
             </div>
           </div>
           <div class="col-lg-6 py-3 mt-auto px-1">
-            <label class="col font-weight-extrabold text-uppercase">Tipo de inmueble:</label>
+            <label class="col font-weight-extrabold-browun text-uppercase">Tipo de inmueble:</label>
             <div ngbDropdown class="d-inline-block w-100">
               <input
                 type="button"
@@ -77,16 +77,16 @@
           <div class="col-md-8 d-flex p-0">
 
             <div class="col-md-6 py-1  col-6 px-1">
-              <label class="col font-weight-extrabold text-uppercase">Monto Mínimo:</label>
+              <label class="col font-weight-extrabold-browun text-uppercase">Monto Mínimo:</label>
               <div ngbDropdown class="d-inline-block w-100 w-100">
-                <input type="number" class="btn search-dropdown btn-block" placeholder="Monto Mínimo" [(ngModel)]="selectedMinimo"
+                <input type="number" class="btn search-dropdown btn-block searchinput" placeholder="Monto Mínimo" [(ngModel)]="selectedMinimo"
                 oninput="this.value=this.value.replace(/[^\d+]/,'')" />
               </div>
             </div>
             <div class="col-md-6 py-1 col-6 px-1">
-              <label class="col font-weight-extrabold text-uppercase">Monto Máximo:</label>
+              <label class="col font-weight-extrabold-browun text-uppercase">Monto Máximo:</label>
               <div ngbDropdown class="d-inline-block w-100 w-100">
-                <input type="number" class="btn search-dropdown btn-block" placeholder="Monto Máximo" [(ngModel)]="selectedMaximo"
+                <input type="number" class="btn search-dropdown btn-block searchinput" placeholder="Monto Máximo" [(ngModel)]="selectedMaximo"
                 oninput="this.value=this.value.replace(/[^\d+]/,'')" />
               </div>
             </div>
@@ -95,7 +95,7 @@
         </div>
       </div>
       <div class="row mt-3">
-        <label class="col font-weight-extrabold text-uppercase">Buscar en:</label>
+        <label class="col font-weight-extrabold-browun text-uppercase">Buscar en:</label>
       </div>
       <div class="row">
         <div class="col-sm">
@@ -209,17 +209,17 @@
           </div>
         </div>
           <div class="col-sm">
-         <!--  <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label> -->
+         <!--  <label class="col font-weight-extrabold-browun text-uppercase">Cantidad de habitantes</label> -->
           <!-- regiones -->
           <div class="d-inline-block w-100 w-100">
-            <input placeholder="Ambientes" type="number" class="btn search-dropdown btn-block" id="" [(ngModel)]="habitantes" oninput="this.value=this.value.replace(/[^\d+]/,'')" />
+            <input placeholder="Ambientes" type="number" class="searchinput btn search-dropdown btn-block" id="" [(ngModel)]="habitantes" oninput="this.value=this.value.replace(/[^\d+]/,'')" />
           </div>
         </div>
 
       </div>
    <!--    <div class="row mt-3">
         <div class="col-lg-3 col-12 my-2 my-lg-0 px-1">
-          <label class="col font-weight-extrabold text-uppercase">Cantidad de habitantes</label>
+          <label class="col font-weight-extrabold-browun text-uppercase">Cantidad de habitantes</label>
           regiones
           <div class="d-inline-block w-100 w-100">
             <input placeholder="Habitantes" type="number" class="btn search-dropdown btn-block" id="" [(ngModel)]="habitantes" oninput="this.value=this.value.replace(/[^\d+]/,'')" />
@@ -236,7 +236,7 @@
 
     <div class="col-sm-12 text-white d-flex justify-content-center py-5">
       <button
-        (click)="searchFilter()"
+        (click)="searchFilter()" style="    border-radius: 5px;"
         class="btn brown-button btn-lg text-uppercase font-weight-bold"
       >
         Buscar información
