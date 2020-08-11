@@ -26,3 +26,4 @@ backend/public/storage/
 !/backend/app/Mail/MailsMasivos.php
 .phpintel/
 /admin/dist/
+*.zip
