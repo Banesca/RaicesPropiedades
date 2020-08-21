@@ -15,7 +15,7 @@ pass : mcRfSTEbY06H
 ---FTP---
 user : er877ttere@bioonix.com
 pass : A4aqqw79er
-dir : /home/bioonix/public_html/raices_pruebas
+dir : public_html/raices_pruebas
 
 argen pro pruebas
 usr=integrador@argenprop.com
