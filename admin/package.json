@@ -6,6 +6,7 @@
     "start": "ng serve --ssl true",
     "start:local": "ng serve -c local -o",
     "build": "ng build --prod=true --base-href https://www.raicespropiedades.com/admin/",
+    "build_pruebas": "ng build --prod=true --base-href https://www.raicespropiedades.com/developer/admin/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
