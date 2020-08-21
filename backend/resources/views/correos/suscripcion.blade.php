@@ -497,7 +497,7 @@
                 <!-- END FOOTER -->
 
                 <p style="text-align: right;color:#ceddce;font-size: 12px">Si desea cancelar la suscripción haga click
-                    <a style="color: #ceddce;" href="https://www.raicespropiedades.com/backend/public/formCancelarSuscripcion/{{ $sus->tocken }}">Aquí</a>
+                    <a style="color: #ceddce;" href="https://www.raicespropiedades.com/developer/backend/public/formCancelarSuscripcion/{{ $sus->tocken }}">Aquí</a>
                 </p>
             </div>
         </td>
