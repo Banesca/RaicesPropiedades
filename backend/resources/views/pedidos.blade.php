@@ -76,8 +76,6 @@
             /*color: #e97604;*/
         }
 
-
-
         /*   footer .page:after {
               content: counter(page);
 
@@ -195,6 +193,22 @@
             margin-bottom: 250px !important;
         }
 
+        #div1 {
+            height: auto ! important;
+            overfloat: auto;
+        }
+
+        #div2 {
+            width: 680px;
+            height: auto;
+            font-size: 20px;
+            line-height: 19px;
+            font-weight: bold;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+
     </style>
 
 </head>
@@ -203,11 +217,11 @@
 
 <header>
     <div class = "header">
-        <img src = "{!! public_path('img/raices/header.jpg') !!}" alt = "" width = "100%" >
+        <img src = "{!! public_path('img/raices/header.jpg') !!}" alt = "" width = "100%">
 
     </div>
     <div class = "footer">
-        <img src = "{!! public_path('img/raices/footer-o.jpg') !!}" alt = "" width = "100%" >
+        <img src = "{!! public_path('img/raices/footer-o.jpg') !!}" alt = "" width = "100%">
     </div>
 </header>
 
@@ -217,16 +231,14 @@
     <!--  -----------  -->
 
     <!-- cuerpo  -->
+    <div id = "div1">
+        <div id = "div2">
+            {{strtoupper($ficha->titulo)}}
+        </div>
+    </div>
     <div class = "cuerpo">
-        <br>
 
-        <h1><strong style = "font-weight: bold;">{{strtoupper($ficha->titulo)}}</strong></h1>
-        {{-- <h1 style = "font-size: 20px"><strong style = "font-weight: bold;">{{strtoupper($ficha->ubicacion)}}</strong>--}}
-        </h1>
         <br>
-        <br>
-        <br> <br>
-        <br> <br>
         <br> <br>
         <div class = "row justify-content-center fecha ">
             <div class = "col-md-12">
@@ -252,7 +264,7 @@
                 <br>
                 <table>
                     <tr>
-                        <th>${{$ficha->valor}}</th>
+                        <th>{{$ficha->valor}}</th>
                     </tr>
                 </table>
                 <br>
@@ -295,64 +307,64 @@
     </div>
     @if($ficha->img3pl)
 
-    {{--SALTO DE PAGINA --}}
-    <div style = "page-break-after:always;"></div>
-    {{--SALTO DE PAGINA --}}
-    <br>
-    <br>
-    <br>
-    <br>
-    {{-- SECCION DE LAS IMAGENES--}}
-    <div class = "cuerpo">
-        <div class = "row justify-content-center ">
-            <!--  Tabla de imagenes-->
-            <table cellspacing = 15>
-                <tr>
-                    <td>
-                        <img src = "{!! !is_null($ficha->img3pl) ? public_path('storage/fichaPropiedad/'.$ficha->img3pl) : null !!}" alt = "" width = "500px" height = "250px">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src = "{!! !is_null($ficha->img3pl) ? public_path('storage/fichaPropiedad/'.$ficha->img3pl) : null !!}" alt = "" width = "500px" height = "250px">
-                    </td>
-                </tr>
-            </table>
+        {{--SALTO DE PAGINA --}}
+        <div style = "page-break-after:always;"></div>
+        {{--SALTO DE PAGINA --}}
+        <br>
+        <br>
+        <br>
+        <br>
+        {{-- SECCION DE LAS IMAGENES--}}
+        <div class = "cuerpo">
+            <div class = "row justify-content-center ">
+                <!--  Tabla de imagenes-->
+                <table cellspacing = 15>
+                    <tr>
+                        <td>
+                            <img src = "{!! !is_null($ficha->img3pl) ? public_path('storage/fichaPropiedad/'.$ficha->img3pl) : null !!}" alt = "" width = "500px" height = "250px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src = "{!! !is_null($ficha->img3pl) ? public_path('storage/fichaPropiedad/'.$ficha->img3pl) : null !!}" alt = "" width = "500px" height = "250px">
+                        </td>
+                    </tr>
+                </table>
 
+            </div>
         </div>
-    </div>
-    {{--SALTO DE PAGINA --}}
-    <div style = "page-break-after:always;"></div>
-    {{--SALTO DE PAGINA --}}
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+        {{--SALTO DE PAGINA --}}
+        <div style = "page-break-after:always;"></div>
+        {{--SALTO DE PAGINA --}}
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     @endif
     @if($ficha->img5sa)
-    {{-- SECCION DE LAS IMAGENES--}}
-    <div class = "cuerpo">
-        <div class = "row justify-content-center ">
-            <!--  Tabla de imagenes-->
-            <table cellspacing = 15>
+        {{-- SECCION DE LAS IMAGENES--}}
+        <div class = "cuerpo">
+            <div class = "row justify-content-center ">
+                <!--  Tabla de imagenes-->
+                <table cellspacing = 15>
 
-                <tr>
-                    <td>
-                        <img src = "{!! !is_null($ficha->img5sa) ? public_path('storage/fichaPropiedad/'.$ficha->img5sa) : null !!}" alt = "" width = "500px" height = "250px">
-                    </td>
+                    <tr>
+                        <td>
+                            <img src = "{!! !is_null($ficha->img5sa) ? public_path('storage/fichaPropiedad/'.$ficha->img5sa) : null !!}" alt = "" width = "500px" height = "250px">
+                        </td>
 
-                </tr>
-                <tr>
-                    <td>
-                        <img src = "{!! !is_null($ficha->img6sa) ? public_path('storage/fichaPropiedad/'.$ficha->img6sa) : null !!}" alt = "" width = "500px" height = "250px">
-                    </td>
-                </tr>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src = "{!! !is_null($ficha->img6sa) ? public_path('storage/fichaPropiedad/'.$ficha->img6sa) : null !!}" alt = "" width = "500px" height = "250px">
+                        </td>
+                    </tr>
 
-            </table>
+                </table>
 
+            </div>
         </div>
-    </div>
     @endif
 
 </div>

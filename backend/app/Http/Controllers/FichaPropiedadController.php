@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Image;
 use PDF;
+use function view;
 
 ini_set('memory_limit', '512M');
 ini_set('max_execution_time', '3000');
@@ -109,6 +110,7 @@ class FichaPropiedadController extends Controller {
     }
 
     public function edit(Request $request, $idFichas) {
+        //return response()->json($request->all());
 
         $this->validate($request, [
             'titulo'         => 'required',
@@ -290,6 +292,7 @@ class FichaPropiedadController extends Controller {
 
             return response()->json($response, 404);
         }
+        //return view('pedidos')->with([ 'ficha' => $data ]);
         $pdf = PDF::loadView('pedidos', [ 'ficha' => $data ]);
 
         return $pdf->download($data->idFichas.'.pdf');
