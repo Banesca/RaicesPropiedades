@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\FichaPropiedad;
 use App\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -204,7 +205,7 @@ class FichaPropiedadController extends Controller {
 
                 return response()->json($response, 404);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
 
             DB::rollback();
             Log::error('Ha ocurrido un error en FichaPropiedadController: '.$e->getMessage().', Linea: '.$e->getLine());

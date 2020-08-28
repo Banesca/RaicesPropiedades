@@ -1,4 +1,4 @@
  {
-   "UrlAPI": "https://www.raicespropiedades.com/backend/public",
+   "UrlAPI": "http://localhost/argentina/RaicesPropiedades/backend/public",
    "timeOut": 1000
  }

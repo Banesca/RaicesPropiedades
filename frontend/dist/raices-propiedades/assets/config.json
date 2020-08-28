@@ -1,6 +1,6 @@
 {
     //"UrlAPI": "http://127.0.0.1:8000",
-    "UrlAPI": "https://www.raicespropiedades.com/backend/public",
+    "UrlAPI": "http://localhost:8000",
     "timeOut": 1000
   }
   
