@@ -7,7 +7,21 @@
         <!--  gPropiedades.ficha1.descipcion  -->
       </h1>
       <hr class="col-1 mx-0 mt-1 mb-4" style="border-bottom: 2px solid white;" />
-      <h1 class="font-weight-extrabold text-uppercase text-left">{{gPropiedades.precio}}$</h1>
+      <h1 class="font-weight-extrabold text-uppercase text-left">
+                  {{gPropiedades.precio | number:'1.0'}}
+                    <span
+                        *ngIf="gPropiedades.tipo_moneda && gPropiedades.tipo_moneda.idMonedas && gPropiedades.tipo_moneda.idMonedas == 1">
+                        $ARS
+                    </span>
+                    <span
+                        *ngIf="gPropiedades.tipo_moneda && gPropiedades.tipo_moneda.idMonedas && gPropiedades.tipo_moneda.idMonedas == 2">
+                        $USD
+                    </span>
+                    <span
+                        *ngIf="gPropiedades.tipo_moneda && gPropiedades.tipo_moneda.idMonedas && gPropiedades.tipo_moneda.idMonedas == 3">
+                        $UYU
+                    </span>
+        </h1>
       <!-- container d-none d-md-block d-md-flex py-4 justify-content-center -->
       <div class="galery-image">
         <img (click)="open(content);carousel.next(0)" *ngIf="gPropiedades.imagenes.imagen_para_galeria"

@@ -1,7 +1,7 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-export const ip = "https://raicespropiedades.com/backend/public";
+export const ip = "https://raicespropiedades.com/developer/backend/public";
 //export const ip = 'http://127.0.0.1:8000'
 
 export const environment = {
