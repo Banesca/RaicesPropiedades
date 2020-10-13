@@ -1566,7 +1566,7 @@ class SincroniceArgenController extends Controller {
         $contenido = self::QueryHtml([
             'usr'                    => env('usr'),
             'psd'                    => env('psd'),
-            'aviso.IdOrigen'         => '575Y_raices_'.$propi->idPropiedad.'_propiedades',
+            'aviso.IdOrigen'         => '575Y_raices_'.$propi->idPropiedad.'_propiedades_prod',
             'aviso.SistemaOrigen.Id' => 10,
         ]);
 
@@ -1612,7 +1612,7 @@ class SincroniceArgenController extends Controller {
             $contenido = self::QueryHtml([
                 'usr'                    => env('usr'),
                 'psd'                    => env('psd'),
-                'aviso.IdOrigen'         => '575Y_raices_'.$propi->idPropiedad.'_propiedades',
+                'aviso.IdOrigen'         => '575Y_raices_'.$propi->idPropiedad.'_propiedades_prod',
                 'aviso.SistemaOrigen.Id' => 10,
             ]);
 
