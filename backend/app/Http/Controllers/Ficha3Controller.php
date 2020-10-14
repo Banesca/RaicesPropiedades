@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Ficha123;
 use App\Galeria;
-use App\Mail\PropiedadMail;
 use App\Propiedad;
-use function count;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use function count;
 use function response;
 
 ini_set('memory_limit', '512M');
@@ -33,17 +30,19 @@ class Ficha3Controller extends Controller {
             'imagen8'             => 'image|max:10240',
             'imagen9'             => 'image|max:10240',
             'imagen_para_galeria' => 'image|max:10240',
+            'Direccion_Numero'    => 'integer',
         ], [
-            'imagen1.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen2.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen3.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen4.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen5.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen6.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen7.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen8.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen9.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen_para_galeria.max' => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen1.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen2.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen3.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen4.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen5.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen6.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen7.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen8.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen9.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen_para_galeria.max'  => 'El tamaño de la imágen es de maximo 10MB',
+            'Direccion_Numero.integer' => 'El campo solo acepta números',
         ]);
 
         DB::beginTransaction();
@@ -203,17 +202,19 @@ class Ficha3Controller extends Controller {
             'imagen8'             => 'image|max:10240',
             'imagen9'             => 'image|max:10240',
             'imagen_para_galeria' => 'image|max:10240',
+            'Direccion_Numero'    => 'integer',
         ], [
-            'imagen1.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen2.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen3.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen4.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen5.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen6.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen7.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen8.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen9.max'             => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen_para_galeria.max' => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen1.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen2.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen3.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen4.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen5.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen6.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen7.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen8.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen9.max'              => 'El tamaño de la imágen es de maximo 10MB',
+            'imagen_para_galeria.max'  => 'El tamaño de la imágen es de maximo 10MB',
+            'Direccion_Numero.integer' => 'El campo solo acepta números',
         ]);
 
         DB::beginTransaction();
@@ -280,14 +281,14 @@ class Ficha3Controller extends Controller {
                     $idGaleria = Galeria::where('fk_publicaciones', $propiedad->idPropiedad)->get();
                     $r         = new GaleriaController();
 
-                    if (count($idGaleria)>0) {
+                    if (count($idGaleria) > 0) {
                         $r->update(new Request([
                             'titulo'           => $request->titulo,
                             'descripcion'      => $request->descipcion,
                             'fk_publicaciones' => $propiedad->idPropiedad,
                             'images'           => [ $request->imagen_para_galeria ],
                         ]), $idGaleria[0]->idGaleria);
-                    }else{
+                    } else {
                         $r->store(new Request([
                             'titulo'           => $request->titulo,
                             'descripcion'      => $request->descipcion,
