@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Image;
 use function count;
+use function is_null;
 use function response;
 
 ini_set('memory_limit', '512M');
@@ -18,33 +19,70 @@ ini_set('max_execution_time', '3000');
 class Ficha3Controller extends Controller {
 
     public function add(Request $request) {
-        //return response()->json($request->all());
-        $this->validate($request, [
-            'imagen1'             => 'image|max:10240',
-            'imagen2'             => 'image|max:10240',
-            'imagen3'             => 'image|max:10240',
-            'imagen4'             => 'image|max:10240',
-            'imagen5'             => 'image|max:10240',
-            'imagen6'             => 'image|max:10240',
-            'imagen7'             => 'image|max:10240',
-            'imagen8'             => 'image|max:10240',
-            'imagen9'             => 'image|max:10240',
-            'imagen_para_galeria' => 'image|max:10240',
-            'Direccion_Numero'    => 'integer',
-        ], [
-            'imagen1.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen2.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen3.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen4.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen5.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen6.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen7.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen8.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen9.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen_para_galeria.max'  => 'El tamaño de la imágen es de maximo 10MB',
-            'Direccion_Numero.integer' => 'El campo solo acepta números',
-        ]);
+        if ($request->exists('Direccion_Numero') && $request->Direccion_Numero != '' && ! is_null($request->Direccion_Numero)) {
+            $this->validate($request, [
+                'imagen1'             => 'image|max:10240',
+                'imagen2'             => 'image|max:10240',
+                'imagen3'             => 'image|max:10240',
+                'imagen4'             => 'image|max:10240',
+                'imagen5'             => 'image|max:10240',
+                'imagen6'             => 'image|max:10240',
+                'imagen7'             => 'image|max:10240',
+                'imagen8'             => 'image|max:10240',
+                'imagen9'             => 'image|max:10240',
+                'imagen_para_galeria' => 'image|max:10240',
+                'Direccion_Numero'    => 'integer',
+            ], [
+                'imagen1.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen2.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen3.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen4.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen5.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen6.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen7.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen8.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen9.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen_para_galeria.max'  => 'El tamaño de la imágen es de maximo 10MB',
+                'Direccion_Numero.integer' => 'El campo solo acepta números',
+            ]);
 
+        } else {
+            $this->validate($request, [
+                'imagen1'             => 'image|max:10240',
+                'imagen2'             => 'image|max:10240',
+                'imagen3'             => 'image|max:10240',
+                'imagen4'             => 'image|max:10240',
+                'imagen5'             => 'image|max:10240',
+                'imagen6'             => 'image|max:10240',
+                'imagen7'             => 'image|max:10240',
+                'imagen8'             => 'image|max:10240',
+                'imagen9'             => 'image|max:10240',
+                'imagen_para_galeria' => 'image|max:10240',
+
+            ], [
+                'imagen1.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen2.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen3.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen4.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen5.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen6.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen7.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen8.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen9.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen_para_galeria.max' => 'El tamaño de la imágen es de maximo 10MB',
+
+            ]);
+
+        }
+
+        if ($request->fk_idTipoPropiedad == 8) {
+            $this->validate($request, [
+                'SuperficieTotal' => 'required',
+
+            ], [
+                'SuperficieTotal.required' => 'EL campo SuperficieTotal es Obligatorio',
+            ]);
+        }
         DB::beginTransaction();
 
         try {
@@ -105,6 +143,12 @@ class Ficha3Controller extends Controller {
             //return response()->json($sincronice->add($propiedad)); //para add propiedad en argen pro
 
             $sincronice->add($propiedad);
+            // $bol=$sincronice->add($propiedad);
+            // if (!$bol['bol']) {
+            //     return response()->json([
+            //         'message'  => $bol['msj'],
+            //     ], 500);
+            // }
 
             /*REGISTRANDO EN GALERIA*/
             if ($propiedad->aparece_en_galeria == 1 && $request->exists('imagen_para_galeria')) {
@@ -190,32 +234,69 @@ class Ficha3Controller extends Controller {
     }
 
     public function edit(Request $request, $idPropiedad) {
+        if ($request->exists('Direccion_Numero') && $request->Direccion_Numero != '' && ! is_null($request->Direccion_Numero)) {
 
-        $this->validate($request, [
-            'imagen1'             => 'image|max:10240',
-            'imagen2'             => 'image|max:10240',
-            'imagen3'             => 'image|max:10240',
-            'imagen4'             => 'image|max:10240',
-            'imagen5'             => 'image|max:10240',
-            'imagen6'             => 'image|max:10240',
-            'imagen7'             => 'image|max:10240',
-            'imagen8'             => 'image|max:10240',
-            'imagen9'             => 'image|max:10240',
-            'imagen_para_galeria' => 'image|max:10240',
-            'Direccion_Numero'    => 'integer',
-        ], [
-            'imagen1.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen2.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen3.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen4.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen5.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen6.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen7.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen8.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen9.max'              => 'El tamaño de la imágen es de maximo 10MB',
-            'imagen_para_galeria.max'  => 'El tamaño de la imágen es de maximo 10MB',
-            'Direccion_Numero.integer' => 'El campo solo acepta números',
-        ]);
+            $this->validate($request, [
+                'imagen1'             => 'image|max:10240',
+                'imagen2'             => 'image|max:10240',
+                'imagen3'             => 'image|max:10240',
+                'imagen4'             => 'image|max:10240',
+                'imagen5'             => 'image|max:10240',
+                'imagen6'             => 'image|max:10240',
+                'imagen7'             => 'image|max:10240',
+                'imagen8'             => 'image|max:10240',
+                'imagen9'             => 'image|max:10240',
+                'imagen_para_galeria' => 'image|max:10240',
+                'Direccion_Numero'    => 'integer',
+            ], [
+                'imagen1.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen2.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen3.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen4.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen5.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen6.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen7.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen8.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen9.max'              => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen_para_galeria.max'  => 'El tamaño de la imágen es de maximo 10MB',
+                'Direccion_Numero.integer' => 'El campo solo acepta números',
+            ]);
+        } else {
+            $this->validate($request, [
+                'imagen1'             => 'image|max:10240',
+                'imagen2'             => 'image|max:10240',
+                'imagen3'             => 'image|max:10240',
+                'imagen4'             => 'image|max:10240',
+                'imagen5'             => 'image|max:10240',
+                'imagen6'             => 'image|max:10240',
+                'imagen7'             => 'image|max:10240',
+                'imagen8'             => 'image|max:10240',
+                'imagen9'             => 'image|max:10240',
+                'imagen_para_galeria' => 'image|max:10240',
+                //'Direccion_Numero'    => 'integer',
+            ], [
+                'imagen1.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen2.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen3.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen4.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen5.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen6.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen7.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen8.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen9.max'             => 'El tamaño de la imágen es de maximo 10MB',
+                'imagen_para_galeria.max' => 'El tamaño de la imágen es de maximo 10MB',
+                //'Direccion_Numero.integer' => 'El campo solo acepta números',
+            ]);
+        }
+
+        if ($request->fk_idTipoPropiedad == 8) {
+            $this->validate($request, [
+                'SuperficieTotal' => 'required',
+
+            ], [
+                'SuperficieTotal.required' => 'EL campo SuperficieTotal es Obligatorio',
+            ]);
+        }
 
         DB::beginTransaction();
 
@@ -275,6 +356,12 @@ class Ficha3Controller extends Controller {
                 $sincronice = new SincroniceArgenController();
                 //return response()->json($sincronice->add($propiedad)); //para add propiedad en argen pro
                 $sincronice->add($propiedad); //para edit propiedad en argen pro
+                // $bol=$sincronice->add($propiedad); //para edit propiedad en argen pro
+                // if (!$bol['bol']) {
+                //     return response()->json([
+                //         'message'  => $bol['msj'],
+                //     ], 500);
+                // }
 
                 /*REGISTRANDO EN GALERIA*/
                 if ($request->aparece_en_galeria == 1 && $request->exists('imagen_para_galeria')) {
