@@ -22,7 +22,7 @@ class PaisesController extends Controller {
         DB::beginTransaction();
 
         try {
-            $Paises = Paises::get();
+            $Paises   = Paises::get();
             $response = [
                 'Paises' => $Paises,
             ];
@@ -71,7 +71,7 @@ class PaisesController extends Controller {
         DB::beginTransaction();
         try {
 
-            $Paises = Provincias::where('fk_pais', '=', $idPais)->get();
+            $Paises   = Provincias::where('fk_pais', '=', $idPais)->get();
             $response = [
                 'Provincias' => $Paises,
             ];
@@ -126,7 +126,7 @@ class PaisesController extends Controller {
 
         try {
 
-            $Paises = Localidades::where('fk_idPartido', '=', $fk_idPartido)->get();
+            $Paises   = Localidades::where('fk_idPartido', '=', $fk_idPartido)->get();
             $response = [
                 'Localidades' => $Paises,
             ];
@@ -153,7 +153,7 @@ class PaisesController extends Controller {
 
         try {
 
-            $Paises = Barrios::where('fk_localidad', '=', $idLocalidad)->get();
+            $Paises   = Barrios::where('fk_localidad', '=', $idLocalidad)->get();
             $response = [
                 'Barrios' => $Paises,
             ];
@@ -181,7 +181,7 @@ class PaisesController extends Controller {
 
         try {
 
-            $Paises = subBarrios::where('fk_barrio', '=', $idBarrio)->get();
+            $Paises   = subBarrios::where('fk_barrio', '=', $idBarrio)->get();
             $response = [
                 'SubBarrios' => $Paises,
             ];
@@ -209,7 +209,7 @@ class PaisesController extends Controller {
 
         try {
 
-            $calles = Calle::where('fk_localidad', '=', $idLocalidad)->get();
+            $calles   = Calle::where('fk_localidad', '=', $idLocalidad)->get();
             $response = [
                 'calles' => $calles,
             ];
@@ -241,7 +241,7 @@ class PaisesController extends Controller {
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
             $response = curl_exec($ch);
-            $err = curl_error($ch);  //if you need
+            $err      = curl_error($ch);  //if you need
             curl_close($ch);
             $result = json_decode($response, true);
             // return response()->json($response, 201);
@@ -261,7 +261,7 @@ class PaisesController extends Controller {
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                 $response = curl_exec($ch);
-                $err = curl_error($ch);  //if you need
+                $err      = curl_error($ch);  //if you need
                 curl_close($ch);
                 $result = json_decode($response, true);
                 //  return response()->json($response, 201);
@@ -287,7 +287,7 @@ class PaisesController extends Controller {
                                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                                 $response = curl_exec($ch);
-                                $err = curl_error($ch);  //if you need
+                                $err      = curl_error($ch);  //if you need
                                 curl_close($ch);
                                 $result = json_decode($response, true);
                                 // return response()->json($response, 201);
@@ -341,7 +341,7 @@ class PaisesController extends Controller {
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                 $response = curl_exec($ch);
-                $err = curl_error($ch);  //if you need
+                $err      = curl_error($ch);  //if you need
                 curl_close($ch);
                 $result = json_decode($response, true);
                 // return response()->json($response, 201);
@@ -364,7 +364,7 @@ class PaisesController extends Controller {
                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                         $response = curl_exec($ch);
-                        $err = curl_error($ch);  //if you need
+                        $err      = curl_error($ch);  //if you need
                         curl_close($ch);
                         $result = json_decode($response, true);
                         // return response()->json($response, 201);
@@ -386,7 +386,7 @@ class PaisesController extends Controller {
                                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                                 $response = curl_exec($ch);
-                                $err = curl_error($ch);  //if you need
+                                $err      = curl_error($ch);  //if you need
                                 curl_close($ch);
                                 $result = json_decode($response, true);
 
@@ -408,7 +408,7 @@ class PaisesController extends Controller {
                                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                                         $response = curl_exec($ch);
-                                        $err = curl_error($ch);  //if you need
+                                        $err      = curl_error($ch);  //if you need
                                         curl_close($ch);
                                         $result = json_decode($response, true);
 
@@ -433,7 +433,7 @@ class PaisesController extends Controller {
                                                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                                                 $response = curl_exec($ch);
-                                                $err = curl_error($ch);  //if you need
+                                                $err      = curl_error($ch);  //if you need
                                                 curl_close($ch);
                                                 $result = json_decode($response, true);
                                                 if (isset($result)) {
@@ -482,12 +482,12 @@ class PaisesController extends Controller {
 
             /*paises*/
             $url = 'http://www.inmuebles.clarin.com/Regiones/FindPaises?contentType=json';
-            $ch = curl_init();
+            $ch  = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_POST, 0);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($ch);
-            $err = curl_error($ch);
+            $err      = curl_error($ch);
             curl_close($ch);
             $result = json_decode($response, true);
             foreach ($result as $pais) {
@@ -502,19 +502,19 @@ class PaisesController extends Controller {
 
             /*regiones*/
             $url = 'http://www.inmuebles.clarin.com/Regiones/FindRegionesByPaisBusquedaHome?contentType=json&idPais=1';
-            $ch = curl_init();
+            $ch  = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_POST, 0);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($ch);
-            $err = curl_error($ch);
+            $err      = curl_error($ch);
             curl_close($ch);
             $result = json_decode($response, true);
             if (isset($result)) {
                 foreach ($result as $regiones) {
                     if (isset($regiones)) {
                         foreach ($regiones as $region) {
-                            if (! Regiones::where('nombre', '=', $region['Nombre'])->exists()) {
+                            if (! Regiones::where('nombre', '=', $region['Nombre'])->where('id', '=', $region['Id'])->exists()) {
                                 $regiones = Regiones::create([
                                     'id'      => $region['Id'],
                                     'nombre'  => $region['Nombre'],
@@ -529,18 +529,18 @@ class PaisesController extends Controller {
 
             /*PROVINCIAS*/
             $url = 'http://www.inmuebles.clarin.com/Regiones/FindProvincias?contentType=json&idPais=1';
-            $ch = curl_init();
+            $ch  = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_POST, 0);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($ch);
-            $err = curl_error($ch);  //if you need
+            $err      = curl_error($ch);  //if you need
             curl_close($ch);
             $result_PROVINCIA = json_decode($response, true);
             // return response()->json($response, 201);
             if (isset($result_PROVINCIA)) {
                 foreach ($result_PROVINCIA as $provincias) {
-                    if (! Provincias::where('nombre', '=', $provincias['Nombre'])->exists()) {
+                    if (! Provincias::where('nombre', '=', $provincias['Nombre'])->where('id', '=', $provincias['Id'])->exists()) {
                         Provincias::create([
                             'id'      => $provincias['Id'],
                             'nombre'  => $provincias['Nombre'],
@@ -550,17 +550,17 @@ class PaisesController extends Controller {
 
                     /*PARTIDOS*/
                     $url = 'http://www.inmuebles.clarin.com/Regiones/FindPartidos?contentType=json&IdProvincia='.$provincias['Id'];
-                    $ch = curl_init();
+                    $ch  = curl_init();
                     curl_setopt($ch, CURLOPT_URL, $url);
                     curl_setopt($ch, CURLOPT_POST, 0);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     $response = curl_exec($ch);
-                    $err = curl_error($ch);
+                    $err      = curl_error($ch);
                     curl_close($ch);
                     $result_PARTIDOS = json_decode($response, true);
                     if (isset($result_PARTIDOS)) {
                         foreach ($result_PARTIDOS as $partido) {
-                            if (! Partidos::where('nombre', '=', $partido['Nombre'])->exists()) {
+                            if (! Partidos::where('nombre', '=', $partido['Nombre'])->where('id', '=', $partido['Id'])->exists()) {
                                 Partidos::create([
                                     'id'           => $partido['Id'],
                                     'nombre'       => $partido['Nombre'],
@@ -577,17 +577,17 @@ class PaisesController extends Controller {
             /*LOCALIDADES*/
             foreach (Partidos::get() as $partido) {
                 $url = 'https://gestion.argenprop.com/Regiones/FindLocalidades?idPartido='.$partido->id;
-                $ch = curl_init();
+                $ch  = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_POST, 0);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 $response = curl_exec($ch);
-                $err = curl_error($ch);  //if you need
+                $err      = curl_error($ch);  //if you need
                 curl_close($ch);
                 $result_LOCALIDADES = json_decode($response, true);
                 if (isset($result_LOCALIDADES)) {
                     foreach ($result_LOCALIDADES as $key => $localidad) {
-                        if (! Localidades::where('nombre', '=', $localidad['Nombre'])->exists()) {
+                        if (! Localidades::where('nombre', '=', $localidad['Nombre'])->where('id', '=', $localidad['Id'])->exists()) {
                             Localidades::create([
                                 'id'           => $localidad['Id'],
                                 'nombre'       => $localidad['Nombre'],
@@ -602,19 +602,19 @@ class PaisesController extends Controller {
             /*BARRIOS*/
             foreach (Localidades::get() as $localidad) {
                 $url = 'https://www.inmuebles.clarin.com/Regiones/FindBarrios?contentType=json&idLocalidad='.$localidad->id;
-                $ch = curl_init();
+                $ch  = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_POST, 0);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 $response = curl_exec($ch);
-                $err = curl_error($ch);  //if you need
+                $err      = curl_error($ch);  //if you need
                 curl_close($ch);
                 $result_LOCALIDADES = json_decode($response, true);
                 if (isset($result_LOCALIDADES)) {
                     foreach ($result_LOCALIDADES as $key => $barrio) {
-                        if (! Barrios::where('nombre', '=', $barrio['Nombre'])->exists()) {
+                        if (! Barrios::where('nombre', '=', $barrio['Nombre'])->where('id', '=', $barrio['Id'])->exists()) {
                             Barrios::create([
-                                'id'     => $barrio['Id'],
+                                'id'           => $barrio['Id'],
                                 'nombre'       => $barrio['Nombre'],
                                 'fk_localidad' => $localidad->id,
                             ]);
@@ -627,17 +627,17 @@ class PaisesController extends Controller {
             /*SUB-BARRIOS*/
             foreach (Barrios::get() as $key => $barrio) {
                 $url = 'https://www.inmuebles.clarin.com/Regiones/FindSubBarrios?contentType=json&idBarrio='.$barrio->id;
-                $ch = curl_init();
+                $ch  = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_POST, 0);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 $response = curl_exec($ch);
-                $err = curl_error($ch);
+                $err      = curl_error($ch);
                 curl_close($ch);
                 $result_subBarrios = json_decode($response, true);
                 if (isset($result_subBarrios)) {
                     foreach ($result_subBarrios as $SubBarrio) {
-                        if (! subBarrios::where('nombre', '=', $SubBarrio['Nombre'])->exists()) {
+                        if (! subBarrios::where('nombre', '=', $SubBarrio['Nombre'])->where('id', '=', $SubBarrio['Id'])->exists()) {
                             subBarrios::create([
                                 'id'        => $SubBarrio['Id'],
                                 'nombre'    => $SubBarrio['Nombre'],

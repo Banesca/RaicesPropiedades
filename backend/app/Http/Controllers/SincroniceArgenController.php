@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Propiedad;
+use function count;
+use Exception;
 
 ini_set('memory_limit', '512M');
 ini_set('max_execution_time', '60');
@@ -20,12 +22,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -217,12 +219,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -365,12 +367,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -527,12 +529,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -686,12 +688,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -748,12 +750,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -862,12 +864,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -979,12 +981,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -1075,12 +1077,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -1200,12 +1202,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -1287,12 +1289,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -1362,12 +1364,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -1469,12 +1471,12 @@ class SincroniceArgenController extends Controller {
                 'tipoPropiedad'                   => $request1->fk_idTipoPropiedad,
                 'aviso.EsWeb'                     => 'True',
                 'aviso.Titulo'                    => $request1->titulo,
-                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'                  => '575Y_raices_'.$request1->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id'          => '10',
                 'aviso.TipoOperacion'             => $request1->fk_idTipoOperaion,
-                'aviso.Vendedor.IdOrigen'         => 'BM83',
+                'aviso.Vendedor.IdOrigen'         => '575Y_',
                 'aviso.Vendedor.SistemaOrigen.Id' => '10',
-                'aviso.Vendedor.Id'               => '102338',
+                'aviso.Vendedor.Id'               => '242566',
                 'aviso.PublicaPrecio'             => (boolean) $request1->no_publicar_precio_inter ? 'false' : 'true',
                 'visibilidades[0].MontoOperacion' => $request1->precio,
                 'visibilidades[0].Moneda.Id'      => $request1->fk_idMonedas,
@@ -1515,7 +1517,7 @@ class SincroniceArgenController extends Controller {
             ]);
         }
 
-       // return response()->json($contenido);
+        // return response()->json($contenido);
 
         $curl = curl_init();
 
@@ -1544,10 +1546,20 @@ class SincroniceArgenController extends Controller {
             dd("cURL Error #:".$err);
         } else {
             $propidad = Propiedad::find($request1->idPropiedad);
-
             if (isset($propidad)) {
                 $propidad->update([ 'visibilidad' => $response ]);
             }
+            // try {
+            //     $array    = explode(",", $response);
+            //     if (count($array) > 1) {
+            //         return [ 'bol' => true ];
+            //     } else {
+            //         return [ 'bol' => false, 'msj' => $response ];
+            //     }
+            // } catch (Exception $e) {
+            //     return [ 'bol' => false, 'msj' => $response ];
+            // }
+
         }
     }
 
@@ -1566,7 +1578,7 @@ class SincroniceArgenController extends Controller {
         $contenido = self::QueryHtml([
             'usr'                    => env('usr'),
             'psd'                    => env('psd'),
-            'aviso.IdOrigen'         => '575Y_raices_'.$propi->idPropiedad.'_propiedades_prod',
+            'aviso.IdOrigen'         => '575Y_raices_'.$propi->idPropiedad.'_propiedades_pruebas',
             'aviso.SistemaOrigen.Id' => 10,
         ]);
 
@@ -1612,7 +1624,7 @@ class SincroniceArgenController extends Controller {
             $contenido = self::QueryHtml([
                 'usr'                    => env('usr'),
                 'psd'                    => env('psd'),
-                'aviso.IdOrigen'         => '575Y_raices_'.$propi->idPropiedad.'_propiedades_prod',
+                'aviso.IdOrigen'         => '575Y_raices_'.$propi->idPropiedad.'_propiedades_pruebas',
                 'aviso.SistemaOrigen.Id' => 10,
             ]);
 
