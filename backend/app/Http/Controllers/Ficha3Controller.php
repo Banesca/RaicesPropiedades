@@ -149,7 +149,9 @@ class Ficha3Controller extends Controller {
             //         'message'  => $bol['msj'],
             //     ], 500);
             // }
-
+            if ($request->fk_estado_publicacion==2) {
+                SincroniceArgenController::suspender($propiedad->idPropiedad);
+            }
             /*REGISTRANDO EN GALERIA*/
             if ($propiedad->aparece_en_galeria == 1 && $request->exists('imagen_para_galeria')) {
                 $r = new GaleriaController();
@@ -362,6 +364,11 @@ class Ficha3Controller extends Controller {
                 //         'message'  => $bol['msj'],
                 //     ], 500);
                 // }
+
+                if ($request->fk_estado_publicacion==2) {
+                    SincroniceArgenController::suspender($idPropiedad);
+                }
+
 
                 /*REGISTRANDO EN GALERIA*/
                 if ($request->aparece_en_galeria == 1 && $request->exists('imagen_para_galeria')) {
