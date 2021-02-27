@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Propiedad;
-use function count;
 use Exception;
+use Illuminate\Support\Facades\Log;
+use const true;
 
 ini_set('memory_limit', '512M');
 ini_set('max_execution_time', '60');
@@ -12,6 +13,7 @@ ini_set('max_execution_time', '60');
 
 class SincroniceArgenController extends Controller {
     public function add(Propiedad $request1) {
+        //return "a";
         $contenido;
         //departamento
         if ($request1->fk_idTipoPropiedad == 1) {
@@ -1532,35 +1534,32 @@ class SincroniceArgenController extends Controller {
             CURLOPT_POSTFIELDS     => $contenido,
             CURLOPT_HTTPHEADER     => [
                 "accept: application/json",
-                // "cache-control: no-cache",
                 "content-type: application/x-www-form-urlencoded",
-                // "postman-token: d0b4a2ae-696c-01aa-605b-6e16a8788770"
             ],
         ]);
 
-        $response = curl_exec($curl);
-        $err      = curl_error($curl);
-        curl_close($curl);
-
-        if ($err) {
-            dd("cURL Error #:".$err);
-        } else {
-            $propidad = Propiedad::find($request1->idPropiedad);
-            if (isset($propidad)) {
-                $propidad->update([ 'visibilidad' => $response ]);
+        try {
+            $response = curl_exec($curl);
+            $err      = curl_error($curl);
+            curl_close($curl);
+            if ($err) {
+                Log::info('Ha ocurrido un error en SincroniceController: '.$err);
+                // dd("cURL Error #:".$err);
+                return false;
+            } else {
+                $propidad = Propiedad::find($request1->idPropiedad);
+                if (isset($propidad)) {
+                    $propidad->update([ 'visibilidad' => $response ]);
+                    return true;
+                }
             }
-            // try {
-            //     $array    = explode(",", $response);
-            //     if (count($array) > 1) {
-            //         return [ 'bol' => true ];
-            //     } else {
-            //         return [ 'bol' => false, 'msj' => $response ];
-            //     }
-            // } catch (Exception $e) {
-            //     return [ 'bol' => false, 'msj' => $response ];
-            // }
 
+        } catch (Exception $e) {
+            Log::error('Ha ocurrido un error en PropiedadController: '.$e->getMessage().', Linea: '.$e->getLine());
+            return false;
         }
+
+
     }
 
     public static function QueryHtml($array) {
@@ -1606,6 +1605,8 @@ class SincroniceArgenController extends Controller {
         curl_close($curl);
 
         if ($err) {
+            Log::error('Ha ocurrido un error al darDeBaja en SincroniceController: '.$err);
+
             return false;
             //return $err;
             //dd("cURL Error #:".$err);
@@ -1649,6 +1650,8 @@ class SincroniceArgenController extends Controller {
         curl_close($curl);
 
         if ($err) {
+            Log::error('Ha ocurrido un error al suspender en SincroniceController: '.$err);
+
             return false;
             //return $err;
             //dd("cURL Error #:".$err);
@@ -1734,7 +1737,7 @@ class SincroniceArgenController extends Controller {
         curl_close($curl);
 
         if ($err) {
-            dd("cURL Error #:".$err);
+            Log::error('Ha ocurrido un error al buscarIdAvisoPorIdVisibilidad en SincroniceController: '.$err);
         } else {
             $obj122 = json_decode($response);
             if ($obj122) {
@@ -1780,6 +1783,8 @@ class SincroniceArgenController extends Controller {
             curl_close($curl);
 
             if ($err) {
+                Log::error('Ha ocurrido un error al buscarURLdePropiedadArgen en SincroniceController: '.$err);
+
                 return [ 'status' => false, 'msj' => 'Problema con la consulta' ];
                 //dd("cURL Error #:".$err);
             } else {

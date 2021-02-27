@@ -10,48 +10,6 @@ class Propiedad extends Model {
     protected $primaryKey = 'idPropiedad';
 
     use SoftDeletes;
-    protected $hidden = [
-        'created_at',
-        'updated_at',
-    ];
-
-    public function TipoPropiedad() {
-        return $this->belongsTo('App\TipoPropiedad', 'fk_idTipoPropiedad');
-    }
-
-
-    public function Disposicion() {
-        return $this->belongsTo('App\Disposicion', 'fk_Disposicion');
-    }
-
-    public function Estado() {
-        return $this->belongsTo('App\EstadoPropiedad', 'fk_Estado');
-    }
-
-    public function Orientacion() {
-        return $this->belongsTo('App\Orientacion', 'fk_Orientacion');
-    }
-
-    public function TipoAcceso() {
-        return $this->belongsTo('App\TipoAcceso', 'fk_TipoAcceso');
-    }
-
-    public function TipoAscensor() {
-        return $this->belongsTo('App\TipoAscensor', 'fk_TipoAscensor');
-    }
-
-    public function TipoBalcon() {
-        return $this->belongsTo('App\TipoBalcon', 'fk_TipoBalcon');
-    }
-
-    public function TipoBano() {
-        return $this->belongsTo('App\TipoBaño', 'fk_TipoBano');
-    }
-
-    public function TipoCalefaccion() {
-        return $this->belongsTo('App\TipoCalefaccion', 'fk_TipoCalefaccion');
-    }
-
     protected $fillable = [
         'fk_idTipoPropiedad',
         'Agricultura',
@@ -378,6 +336,8 @@ class Propiedad extends Model {
         'Detalle',
         'TipoBien',
         'visibilidad',
+
+        'cantidad_Toilette',
         'calefaccion_Tipo_Balanceado',
         'piso_Radiante_Individual',
         'piso_Radiante_Central',
@@ -386,8 +346,51 @@ class Propiedad extends Model {
         'calefon',
         'cobertura_cochera',
         'boolCalleMod',
-        'UrlPropiedadArgen'
+        'UrlPropiedadArgen',
+        'estaSincConArgen'
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
+
+    public function TipoPropiedad() {
+        return $this->belongsTo('App\TipoPropiedad', 'fk_idTipoPropiedad');
+    }
+
+    public function Disposicion() {
+        return $this->belongsTo('App\Disposicion', 'fk_Disposicion');
+    }
+
+    public function Estado() {
+        return $this->belongsTo('App\EstadoPropiedad', 'fk_Estado');
+    }
+
+    public function Orientacion() {
+        return $this->belongsTo('App\Orientacion', 'fk_Orientacion');
+    }
+
+    public function TipoAcceso() {
+        return $this->belongsTo('App\TipoAcceso', 'fk_TipoAcceso');
+    }
+
+    public function TipoAscensor() {
+        return $this->belongsTo('App\TipoAscensor', 'fk_TipoAscensor');
+    }
+
+    public function TipoBalcon() {
+        return $this->belongsTo('App\TipoBalcon', 'fk_TipoBalcon');
+    }
+
+    public function TipoBano() {
+        return $this->belongsTo('App\TipoBaño', 'fk_TipoBano');
+    }
+
+    public function TipoCalefaccion() {
+        return $this->belongsTo('App\TipoCalefaccion', 'fk_TipoCalefaccion');
+    }
 
     public function TipoCampo() {
         return $this->belongsTo('App\TipoCampo', 'fk_TipoCampo');

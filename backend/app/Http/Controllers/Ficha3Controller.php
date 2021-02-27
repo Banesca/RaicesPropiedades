@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use const false;
 use function count;
 use function is_null;
 use function response;
@@ -95,8 +96,8 @@ class Ficha3Controller extends Controller {
                 $propiedad->boolCalleMod = 0;
             }
             //dd($propiedad);
-            /*return response()->json($propiedad);
-            exit();*/
+            //return response()->json($propiedad);
+            //exit();
 
             $imgs = [
                 'imagen1',
@@ -140,16 +141,18 @@ class Ficha3Controller extends Controller {
             //Mail::to($request->user()->email)->send(new PropiedadMail($request->user()->email, $propiedad->descipcion, $propiedad->idPropiedad));
 
             $sincronice = new SincroniceArgenController();
-            //return response()->json($sincronice->add($propiedad)); //para add propiedad en argen pro
+            //return response()->json($sincronice->add($propiedad), 201);
+            //$sincronice->add($propiedad);
 
-            $sincronice->add($propiedad);
-            // $bol=$sincronice->add($propiedad);
-            // if (!$bol['bol']) {
-            //     return response()->json([
-            //         'message'  => $bol['msj'],
-            //     ], 500);
-            // }
-            if ($request->fk_estado_publicacion==2) {
+
+            $bol = $sincronice->add($propiedad);
+            if (! $bol) {
+                $propiedad->update([ 'estaSincConArgen' => false ]);
+                //return response()->json([
+                //    'message'  => $bol['msj'],
+                //], 500);
+            }
+            if ($request->fk_estado_publicacion == 2) {
                 SincroniceArgenController::suspender($propiedad->idPropiedad);
             }
             /*REGISTRANDO EN GALERIA*/
@@ -365,7 +368,7 @@ class Ficha3Controller extends Controller {
                 //     ], 500);
                 // }
 
-                if ($request->fk_estado_publicacion==2) {
+                if ($request->fk_estado_publicacion == 2) {
                     SincroniceArgenController::suspender($idPropiedad);
                 }
 

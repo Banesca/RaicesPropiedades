@@ -18,7 +18,7 @@ class CreateContactoDePropiedadsTable extends Migration
             $table->string('nombre')->nullable();
             $table->string('email')->nullable();
             $table->string('telefono')->nullable();
-            $table->string('mensaje')->nullable();
+            $table->text('mensaje')->nullable();
             $table->integer('fk_idPropiedad');
             $table->softDeletes();
             $table->timestamps();
