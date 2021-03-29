@@ -6,6 +6,7 @@ use App\Propiedad;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use const true;
+use function json_decode;
 
 ini_set('memory_limit', '512M');
 ini_set('max_execution_time', '60');
@@ -1524,7 +1525,7 @@ class SincroniceArgenController extends Controller {
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL            => "http://www.inmuebles.clarin.com/Publicaciones/PublicarIntranet?contentType=json",
+            CURLOPT_URL            => "http://www.inmuebles.clarin.com/Publicaciones/Publicar?contentType=json",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING       => "",
             CURLOPT_MAXREDIRS      => 10,
@@ -1542,20 +1543,27 @@ class SincroniceArgenController extends Controller {
             $response = curl_exec($curl);
             $err      = curl_error($curl);
             curl_close($curl);
+            //return json_decode($response)[0];
             if ($err) {
                 Log::info('Ha ocurrido un error en SincroniceController: '.$err);
+
                 // dd("cURL Error #:".$err);
                 return false;
             } else {
                 $propidad = Propiedad::find($request1->idPropiedad);
-                if (isset($propidad)) {
-                    $propidad->update([ 'visibilidad' => $response ]);
+                // if (isset($propidad)) {
+                    $propidad->update([ 'visibilidad'       => $response,
+                                        'idAviso'           => json_decode($response)[0],
+                                        'UrlPropiedadArgen' => 'https://www.argenprop.com/propiedad--' . json_decode($response)[0],
+                    ]);
+
                     return true;
-                }
+                // }
             }
 
         } catch (Exception $e) {
             Log::error('Ha ocurrido un error en PropiedadController: '.$e->getMessage().', Linea: '.$e->getLine());
+
             return false;
         }
 

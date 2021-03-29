@@ -347,7 +347,8 @@ class Propiedad extends Model {
         'cobertura_cochera',
         'boolCalleMod',
         'UrlPropiedadArgen',
-        'estaSincConArgen'
+        'estaSincConArgen',
+        'idAviso'
     ];
 
     protected $hidden = [

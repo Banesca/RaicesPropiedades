@@ -124,6 +124,8 @@ class Ficha3Controller extends Controller {
                         $constraint->aspectRatio();
                     });*/
 
+                    @$thumbnailImage->orientate();
+
                     $nombre_publico = $originalImage->getClientOriginalName();
                     $extension      = $originalImage->getClientOriginalExtension();
 
@@ -146,6 +148,7 @@ class Ficha3Controller extends Controller {
 
 
             $bol = $sincronice->add($propiedad);
+            //return response()->json($bol, 404);
             if (! $bol) {
                 $propiedad->update([ 'estaSincConArgen' => false ]);
                 //return response()->json([
@@ -342,7 +345,7 @@ class Ficha3Controller extends Controller {
                         /*$thumbnailImage->fit(2048, 2048, function($constraint) {
                             $constraint->aspectRatio();
                         });*/
-
+                        @$thumbnailImage->orientate();
                         $nombre_publico = $originalImage->getClientOriginalName();
                         $extension      = $originalImage->getClientOriginalExtension();
 
@@ -367,6 +370,8 @@ class Ficha3Controller extends Controller {
                 //         'message'  => $bol['msj'],
                 //     ], 500);
                 // }
+
+
 
                 if ($request->fk_estado_publicacion == 2) {
                     SincroniceArgenController::suspender($idPropiedad);
