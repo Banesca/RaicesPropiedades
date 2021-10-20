@@ -279,6 +279,18 @@ export class LayoutComponent implements OnInit {
           this.images.push(this.gPropiedades.imagenes.imagen8);
         if (this.gPropiedades.imagenes.imagen9)
           this.images.push(this.gPropiedades.imagenes.imagen9);
+        if (this.gPropiedades.imagenes.imagen10)
+          this.images.push(this.gPropiedades.imagenes.imagen10);
+        if (this.gPropiedades.imagenes.imagen11)
+          this.images.push(this.gPropiedades.imagenes.imagen11);
+        if (this.gPropiedades.imagenes.imagen12)
+          this.images.push(this.gPropiedades.imagenes.imagen12);
+        if (this.gPropiedades.imagenes.imagen13)
+          this.images.push(this.gPropiedades.imagenes.imagen13);
+        if (this.gPropiedades.imagenes.imagen14)
+          this.images.push(this.gPropiedades.imagenes.imagen14);
+        if (this.gPropiedades.imagenes.imagen15)
+          this.images.push(this.gPropiedades.imagenes.imagen15);
         if (
           
           !this.gPropiedades.imagenes.imagen_para_galeria &&
@@ -290,7 +302,13 @@ export class LayoutComponent implements OnInit {
           !this.gPropiedades.imagenes.imagen6 &&
           !this.gPropiedades.imagenes.imagen7 &&
           !this.gPropiedades.imagenes.imagen8 &&
-          !this.gPropiedades.imagenes.imagen9
+          !this.gPropiedades.imagenes.imagen9 &&
+          !this.gPropiedades.imagenes.imagen10 &&
+          !this.gPropiedades.imagenes.imagen11 &&
+          !this.gPropiedades.imagenes.imagen12 &&
+          !this.gPropiedades.imagenes.imagen13 &&
+          !this.gPropiedades.imagenes.imagen14 &&
+          !this.gPropiedades.imagenes.imagen15
         ) {
           this.images.push('https://picsum.photos/id/539/900/500');
         }

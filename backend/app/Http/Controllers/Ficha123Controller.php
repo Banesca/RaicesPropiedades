@@ -131,6 +131,12 @@ class Ficha123Controller extends Controller {
                 'imagen7'             => ! is_null(@$ficha123->imagen7) ? asset('storage\\ficha2\\'.@$ficha123->imagen7) : '',
                 'imagen8'             => ! is_null(@$ficha123->imagen8) ? asset('storage\\ficha2\\'.@$ficha123->imagen8) : '',
                 'imagen9'             => ! is_null(@$ficha123->imagen9) ? asset('storage\\ficha2\\'.@$ficha123->imagen9) : '',
+                'imagen10'             => ! is_null(@$ficha123->imagen10) ? asset('storage\\ficha2\\'.@$ficha123->imagen10) : '',
+                'imagen11'             => ! is_null(@$ficha123->imagen11) ? asset('storage\\ficha2\\'.@$ficha123->imagen11) : '',
+                'imagen12'             => ! is_null(@$ficha123->imagen12) ? asset('storage\\ficha2\\'.@$ficha123->imagen12) : '',
+                'imagen13'             => ! is_null(@$ficha123->imagen13) ? asset('storage\\ficha2\\'.@$ficha123->imagen13) : '',
+                'imagen14'             => ! is_null(@$ficha123->imagen14) ? asset('storage\\ficha2\\'.@$ficha123->imagen14) : '',
+                'imagen15'             => ! is_null(@$ficha123->imagen15) ? asset('storage\\ficha2\\'.@$ficha123->imagen15) : '',
                 'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
             ];
 

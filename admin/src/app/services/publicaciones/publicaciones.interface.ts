@@ -20,6 +20,12 @@ export interface IPublicacion {
     imagen7?: any;
     imagen8?: any;
     imagen9?: any;
+    imagen10?: any;
+    imagen11?: any;
+    imagen12?: any;
+    imagen13?: any;
+    imagen14?: any;
+    imagen15?: any;
 
 
 
