@@ -339,6 +339,14 @@ class PublicacionesSeeder extends Seeder {
                 'imagen5'             => 'http://placeimg.com/640/480/arch',
                 'imagen6'             => 'http://placeimg.com/640/480/arch',
                 'imagen7'             => 'http://placeimg.com/640/480/arch',
+                'imagen8'             => 'http://placeimg.com/640/480/arch',
+                'imagen9'             => 'http://placeimg.com/640/480/arch',
+                'imagen10'             => 'http://placeimg.com/640/480/arch',
+                'imagen11'             => 'http://placeimg.com/640/480/arch',
+                'imagen12'             => 'http://placeimg.com/640/480/arch',
+                'imagen13'             => 'http://placeimg.com/640/480/arch',
+                'imagen14'             => 'http://placeimg.com/640/480/arch',
+                'imagen15'             => 'http://placeimg.com/640/480/arch',
                 'imagen_para_galeria' => 'http://placeimg.com/640/480/arch',
 
             ]);
