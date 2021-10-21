@@ -26,6 +26,8 @@ Requisitos: tener instalado nodejs
 
 npm install -g @angular/cli
 
+si no funciona en front se debe instalar node 12.2 y ejecutar npm rebuild node-sass
+
 pasar al front y ejecutar lo siguiente
 
 npm install
