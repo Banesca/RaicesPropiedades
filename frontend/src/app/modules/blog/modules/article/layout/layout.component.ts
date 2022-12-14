@@ -291,6 +291,16 @@ export class LayoutComponent implements OnInit {
           this.images.push(this.gPropiedades.imagenes.imagen14);
         if (this.gPropiedades.imagenes.imagen15)
           this.images.push(this.gPropiedades.imagenes.imagen15);
+        if (this.gPropiedades.imagenes.imagen16)
+          this.images.push(this.gPropiedades.imagenes.imagen16);
+        if (this.gPropiedades.imagenes.imagen17)
+          this.images.push(this.gPropiedades.imagenes.imagen17);
+        if (this.gPropiedades.imagenes.imagen18)
+          this.images.push(this.gPropiedades.imagenes.imagen18);
+        if (this.gPropiedades.imagenes.imagen19)
+          this.images.push(this.gPropiedades.imagenes.imagen19);
+        if (this.gPropiedades.imagenes.imagen20)
+          this.images.push(this.gPropiedades.imagenes.imagen20);
         if (
           
           !this.gPropiedades.imagenes.imagen_para_galeria &&
@@ -308,7 +318,12 @@ export class LayoutComponent implements OnInit {
           !this.gPropiedades.imagenes.imagen12 &&
           !this.gPropiedades.imagenes.imagen13 &&
           !this.gPropiedades.imagenes.imagen14 &&
-          !this.gPropiedades.imagenes.imagen15
+          !this.gPropiedades.imagenes.imagen15 &&
+          !this.gPropiedades.imagenes.imagen16 &&
+          !this.gPropiedades.imagenes.imagen17 &&
+          !this.gPropiedades.imagenes.imagen18 &&
+          !this.gPropiedades.imagenes.imagen19 &&
+          !this.gPropiedades.imagenes.imagen20
         ) {
           this.images.push('https://picsum.photos/id/539/900/500');
         }

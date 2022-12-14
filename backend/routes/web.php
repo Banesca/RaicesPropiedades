@@ -65,6 +65,10 @@ Route::get('hola',function(){
    return view('correos.activar-cuenta');
 });
 
+Route::get('re',function(){
+    return view('auth.register');
+});
+
 
 
 

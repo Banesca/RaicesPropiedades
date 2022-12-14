@@ -54,6 +54,11 @@ export class FormComponent implements OnInit {
   image13: File;
   image14: File;
   image15: File;
+  image16: File;
+  image17: File;
+  image18: File;
+  image19: File;
+  image20: File;
 
   //Variables del 3er Step
   arrayTipoDeUnidad: any[] = [];
@@ -275,6 +280,11 @@ export class FormComponent implements OnInit {
       image13: [""],
       image14: [""],
       image15: [""],
+      image16: [""],
+      image17: [""],
+      image18: [""],
+      image19: [""],
+      image20: [""],
     });
     this.formThree = this.fb.group({
       //Datos Basicos
@@ -466,6 +476,11 @@ export class FormComponent implements OnInit {
           image13: res.imagen13 ? res.imagenes.imagen13 : null,
           image14: res.imagen14 ? res.imagenes.imagen14 : null,
           image15: res.imagen15 ? res.imagenes.imagen15 : null,
+          image16: res.imagen16 ? res.imagenes.imagen16 : null,
+          image17: res.imagen17 ? res.imagenes.imagen17 : null,
+          image18: res.imagen18 ? res.imagenes.imagen18 : null,
+          image19: res.imagen19 ? res.imagenes.imagen19 : null,
+          image20: res.imagen20 ? res.imagenes.imagen20 : null,
         });
 
 
@@ -687,6 +702,11 @@ export class FormComponent implements OnInit {
     this.image13 ? (obj.imagen13 = this.image13) : null;
     this.image14 ? (obj.imagen14 = this.image14) : null;
     this.image15 ? (obj.imagen15 = this.image15) : null;
+    this.image16 ? (obj.imagen16 = this.image16) : null;
+    this.image17 ? (obj.imagen17 = this.image17) : null;
+    this.image18 ? (obj.imagen18 = this.image18) : null;
+    this.image19 ? (obj.imagen19 = this.image19) : null;
+    this.image20 ? (obj.imagen20 = this.image20) : null;
 
     //Asignamos los datos del 3er Step
     //Obetenemos el objeto del 3er formulario
@@ -1321,6 +1341,7 @@ export class FormComponent implements OnInit {
             );
           };
           break;
+
           case "image15":
           this.image15 = fileTo;
           reader.onload = (event) => {
@@ -1328,6 +1349,47 @@ export class FormComponent implements OnInit {
               (<FileReader>event.target).result
             );
           };
+            break;
+          case "image16":
+          this.image16 = fileTo;
+          reader.onload = (event) => {
+            this.formTwo.controls["image16"].setValue(
+              (<FileReader>event.target).result
+            );
+          };
+            break;
+          case "image17":
+          this.image17 = fileTo;
+          reader.onload = (event) => {
+            this.formTwo.controls["image17"].setValue(
+              (<FileReader>event.target).result
+            );
+          };
+            break;
+          case "image18":
+          this.image18 = fileTo;
+          reader.onload = (event) => {
+            this.formTwo.controls["image18"].setValue(
+              (<FileReader>event.target).result
+            );
+          }; break;
+
+          case "image19":
+          this.image19 = fileTo;
+          reader.onload = (event) => {
+            this.formTwo.controls["image19"].setValue(
+              (<FileReader>event.target).result
+            );
+          };
+            break;
+          case "image20":
+          this.image20 = fileTo;
+          reader.onload = (event) => {
+            this.formTwo.controls["image20"].setValue(
+              (<FileReader>event.target).result
+            );
+          };
+
           break;
         default:
           break;

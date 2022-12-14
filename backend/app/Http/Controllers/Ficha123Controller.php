@@ -67,6 +67,11 @@ class Ficha123Controller extends Controller {
                 'imagen13'             => ! is_null(@$ficha123->imagen13) ? asset('storage\\ficha2\\'.@$ficha123->imagen13) : '',
                 'imagen14'             => ! is_null(@$ficha123->imagen14) ? asset('storage\\ficha2\\'.@$ficha123->imagen14) : '',
                 'imagen15'             => ! is_null(@$ficha123->imagen15) ? asset('storage\\ficha2\\'.@$ficha123->imagen15) : '',
+                'imagen16'             => ! is_null(@$ficha123->imagen16) ? asset('storage\\ficha2\\'.@$ficha123->imagen16) : '',
+                'imagen17'             => ! is_null(@$ficha123->imagen17) ? asset('storage\\ficha2\\'.@$ficha123->imagen17) : '',
+                'imagen18'             => ! is_null(@$ficha123->imagen18) ? asset('storage\\ficha2\\'.@$ficha123->imagen18) : '',
+                'imagen19'             => ! is_null(@$ficha123->imagen19) ? asset('storage\\ficha2\\'.@$ficha123->imagen19) : '',
+                'imagen20'             => ! is_null(@$ficha123->imagen20) ? asset('storage\\ficha2\\'.@$ficha123->imagen20) : '',
                 'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
             ];
 
@@ -143,6 +148,12 @@ class Ficha123Controller extends Controller {
                 'imagen13'             => ! is_null(@$ficha123->imagen13) ? asset('storage\\ficha2\\'.@$ficha123->imagen13) : '',
                 'imagen14'             => ! is_null(@$ficha123->imagen14) ? asset('storage\\ficha2\\'.@$ficha123->imagen14) : '',
                 'imagen15'             => ! is_null(@$ficha123->imagen15) ? asset('storage\\ficha2\\'.@$ficha123->imagen15) : '',
+                'imagen16'             => ! is_null(@$ficha123->imagen16) ? asset('storage\\ficha2\\'.@$ficha123->imagen16) : '',
+                'imagen17'             => ! is_null(@$ficha123->imagen17) ? asset('storage\\ficha2\\'.@$ficha123->imagen17) : '',
+                'imagen18'             => ! is_null(@$ficha123->imagen18) ? asset('storage\\ficha2\\'.@$ficha123->imagen18) : '',
+                'imagen19'             => ! is_null(@$ficha123->imagen19) ? asset('storage\\ficha2\\'.@$ficha123->imagen19) : '',
+                'imagen20'             => ! is_null(@$ficha123->imagen20) ? asset('storage\\ficha2\\'.@$ficha123->imagen20) : '',
+
                 'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
             ];
 
@@ -225,6 +236,12 @@ class Ficha123Controller extends Controller {
                     'imagen13'             => ! is_null(@$ficha123->imagen13) ? asset('storage\\ficha2\\'.@$ficha123->imagen13) : '',
                     'imagen14'             => ! is_null(@$ficha123->imagen14) ? asset('storage\\ficha2\\'.@$ficha123->imagen14) : '',
                     'imagen15'             => ! is_null(@$ficha123->imagen15) ? asset('storage\\ficha2\\'.@$ficha123->imagen15) : '',
+                    'imagen16'             => ! is_null(@$ficha123->imagen16) ? asset('storage\\ficha2\\'.@$ficha123->imagen16) : '',
+                    'imagen17'             => ! is_null(@$ficha123->imagen17) ? asset('storage\\ficha2\\'.@$ficha123->imagen17) : '',
+                    'imagen18'             => ! is_null(@$ficha123->imagen18) ? asset('storage\\ficha2\\'.@$ficha123->imagen18) : '',
+                    'imagen19'             => ! is_null(@$ficha123->imagen19) ? asset('storage\\ficha2\\'.@$ficha123->imagen19) : '',
+                    'imagen20'             => ! is_null(@$ficha123->imagen20) ? asset('storage\\ficha2\\'.@$ficha123->imagen20) : '',
+
                     'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
                 ];
                 //$ficha123->UrlArgen=@SincroniceArgenController::buscarURLdePropiedadArgen($ficha123->idPropiedad);
@@ -306,6 +323,12 @@ class Ficha123Controller extends Controller {
                     'imagen13'             => ! is_null(@$ficha123->imagen13) ? asset('storage\\ficha2\\'.@$ficha123->imagen13) : '',
                     'imagen14'             => ! is_null(@$ficha123->imagen14) ? asset('storage\\ficha2\\'.@$ficha123->imagen14) : '',
                     'imagen15'             => ! is_null(@$ficha123->imagen15) ? asset('storage\\ficha2\\'.@$ficha123->imagen15) : '',
+                    'imagen16'             => ! is_null(@$ficha123->imagen16) ? asset('storage\\ficha2\\'.@$ficha123->imagen16) : '',
+                    'imagen17'             => ! is_null(@$ficha123->imagen17) ? asset('storage\\ficha2\\'.@$ficha123->imagen17) : '',
+                    'imagen18'             => ! is_null(@$ficha123->imagen18) ? asset('storage\\ficha2\\'.@$ficha123->imagen18) : '',
+                    'imagen19'             => ! is_null(@$ficha123->imagen19) ? asset('storage\\ficha2\\'.@$ficha123->imagen19) : '',
+                    'imagen20'             => ! is_null(@$ficha123->imagen20) ? asset('storage\\ficha2\\'.@$ficha123->imagen20) : '',
+
                     'imagen_para_galeria' => ! is_null(@$ficha123->imagen_para_galeria) ? asset('storage\\ficha2\\'.@$ficha123->imagen_para_galeria) : '',
                 ];
                 // $ficha123->UrlArgen=@SincroniceArgenController::buscarURLdePropiedadArgen($ficha123->idPropiedad);

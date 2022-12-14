@@ -341,5 +341,6 @@ Route::group([ 'prefix' => 'v1' ], function() {
         return view('correos.suscripcion');
     });
 
+
 });
 

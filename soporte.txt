@@ -22,3 +22,8 @@ SincroniceArgenController
 .env
 	usr=integrador@argenprop.com
 	psd=123456
+
+
+
+	compilar front ng build --prod --base-href https://www.raicespropiedades.com/
+	compilar admin ng build --prod --base-href https://www.raicespropiedades.com/admin/

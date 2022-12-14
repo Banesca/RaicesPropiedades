@@ -320,6 +320,11 @@ class Propiedad extends Model {
         'imagen13',
         'imagen14',
         'imagen15',
+        'imagen16',
+        'imagen17',
+        'imagen18',
+        'imagen19',
+        'imagen20',
         'imagen_para_galeria',
 
         'Edificio_Servicios_ABL',
